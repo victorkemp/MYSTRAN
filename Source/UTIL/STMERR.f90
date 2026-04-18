@@ -48,12 +48,7 @@
       INTEGER(LONG)                   :: IEND              ! Index
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STMERR_BEGEND
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=FILE_NAM_MAXLEN,1,-1

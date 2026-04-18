@@ -99,12 +99,7 @@
       
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, (OPT(I),I=1,6)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X,6A1)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure we are not here for an element that does not support offsets

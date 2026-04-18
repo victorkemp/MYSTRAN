@@ -126,11 +126,9 @@
       CHARACTER( 6*BYTE)              :: NAM_POS 
       CHARACTER( 7*BYTE)              :: NAM_STA 
       CHARACTER(11*BYTE)              :: NAM_RWS 
-      CHARACTER( 3*BYTE)              :: UNIT_NAME = '???' ! Extension of FILNAM (e.g. F06, etc)
  
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! Unit number file is attached to
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to. Input to subr FILE_OPEN
-      INTEGER(LONG)                   :: DEC_PT            ! Position in FILNAM where '.' exists
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IERR              ! Error count
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
@@ -138,25 +136,7 @@
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         INQUIRE(FILE=FILNAM, OPENED=FILE_OPND)
-         IF ((UNIT /= F04) .AND. (UNIT /= IN1)) THEN
-            DEC_PT = INDEX(FILNAM,'.',.TRUE.)
-            IF (DEC_PT > 0) THEN
-               UNIT_NAME = FILNAM(DEC_PT+1:DEC_PT+4)
-            ENDIF
-            INQUIRE(FILE=FILNAM, EXIST=FILE_EXIST)
-            NAM_STA(1:) = STATUS
-            NAM_FOR(1:) = FORMAT
-            NAM_ACT(1:) = ACTION
-            NAM_POS(1:) = POSITION
-            NAM_RWS(1:) = RW_STIME
-            WRITE(F04,9001) SUBR_NAME, TSEC, FILE_EXIST, FILE_OPND, NAM_STA, NAM_FOR, NAM_ACT, NAM_POS, NAM_RWS, UNIT_NAME
-         ENDIF
- 9001    FORMAT(1X,A,' BEGN ',F10.3,2L2,',',1X,A7,',',1X,A11,',',1X,A9,',',1X,A6,',',1X,A11,',  Opening file unit: ',A)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Check inputs for sensibility (coding errors if wrong)

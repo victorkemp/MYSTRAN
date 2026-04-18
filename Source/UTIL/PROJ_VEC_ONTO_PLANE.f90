@@ -49,12 +49,7 @@
       REAL(DOUBLE) , INTENT(OUT)      :: VEC_C(3)           ! Vector projection of VEC_A onto plane to which VEC_B is normal
       REAL(DOUBLE)                    :: VEC_DUM(3)         ! Dummy vector in the calc of VEC_C
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CALL CROSS ( VEC_A, VEC_B, VEC_DUM )

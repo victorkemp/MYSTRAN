@@ -79,12 +79,7 @@
       INTEGER(LONG)                   :: RELID     = 0     ! This rigid elements' ID
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE1_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN 
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! RBE1 Bulk Data Card routine

@@ -100,12 +100,7 @@
       REAL(DOUBLE) , INTENT(OUT)      :: DPSHG(3,NUM_NODES)! Derivatives of PSH with respect to xi, eta, zi.
       REAL(DOUBLE)                    :: PHI               ! Intermediate variable in calculating DPSHG
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
+
 ! **********************************************************************************************************************************
 ! Initialize outputs
 

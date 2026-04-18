@@ -50,15 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OPNERR_BEGEND
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         INQUIRE (FILE=F04FIL,OPENED=FILE_OPENED)
-         IF (.NOT.FILE_OPENED) THEN
-            WRITE(F04,9001) SUBR_NAME,TSEC
-         ENDIF
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! IOCHK < 0 is due to EOF/EOR during open. IOCHK > 0 is due to error during open.

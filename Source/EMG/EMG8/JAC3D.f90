@@ -61,12 +61,7 @@
       REAL(DOUBLE)                    :: XL(ELGP,3)        ! Array of local element coords for the element (note: cannot use XEL
 !                                                            directly since it is dimensioned MELGP x 3, not ELGP x 3)
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
+
 ! **********************************************************************************************************************************
 ! Initialize outputs
 

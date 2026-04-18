@@ -386,11 +386,7 @@ k_do6:            DO K=EID1,EID2
       INTEGER(LONG), INTENT(INOUT)    :: EL_PRES_ERR       ! Count of errors where elem ID is wrong (*ERROR  1320)
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRESSURE_DATA_PROC_BEGEND + 2
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs

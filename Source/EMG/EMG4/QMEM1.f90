@@ -153,12 +153,7 @@
       REAL(DOUBLE)                    :: SUMD              ! An intermediate variable used in calc B matrix for reduced integration
       REAL(DOUBLE)                    :: TBAR              ! Average elem temperature 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, OPT
- 9001    FORMAT(1X,A,' BEGN ',F10.3, ' OPT = ', 6A2)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Generate BM matrices. Dimensions 1 and 2 of BM store a element BM matrix for 1 Gauss point. The 3rd dimension has BM for all other

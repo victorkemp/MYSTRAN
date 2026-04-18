@@ -100,12 +100,7 @@
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file LINK1A
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1A_BEGEND
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Default units for writing errors the screen (until LINK1A is read)

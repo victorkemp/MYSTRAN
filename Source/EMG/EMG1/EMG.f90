@@ -89,12 +89,6 @@
       TYPE  = ETYPE(INT_ELEM_ID)
       CALL IS_ELEM_PCOMP_PROPS ( INT_ELEM_ID )
  
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC,EID,TYPE, OPT
- 9001    FORMAT(1X,A,' BEGN ',F10.3,5X,'Element No. ',I8,' ,Type ',A, ' OPT = ', 6A2)
-      ENDIF
-! **********************************************************************************************************************************
       NUM_EMG_FATAL_ERRS = 0
 
 

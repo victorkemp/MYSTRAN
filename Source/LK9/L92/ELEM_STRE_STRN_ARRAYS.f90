@@ -87,12 +87,7 @@
       REAL(DOUBLE)                    :: TBAR              ! Average elem temperature 
       REAL(DOUBLE)                    :: STR_TENSOR(3,3)   ! 2D stress or strain tensor
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, ' STR_PT_NUM = ', STR_PT_NUM
- 9001    FORMAT(1X,A,' BEGN ',F10.3, A, I8)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize

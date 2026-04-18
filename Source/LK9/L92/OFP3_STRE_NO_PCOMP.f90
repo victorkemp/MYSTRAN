@@ -64,7 +64,6 @@
       INTEGER(LONG), INTENT(IN)       :: ITE               ! Unit number for text files for OTM row descriptors 
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Solution vector number
       INTEGER(LONG), INTENT(INOUT)    :: OT4_EROW          ! Row number in OT4 file for elem related OTM descriptors
-      LOGICAL                         :: NEW_RESULT
       INTEGER(LONG)                   :: ELOUT_STRE        ! If > 0, there are STRESS   requests for some elems                
       INTEGER(LONG)                   :: I,J,K,L,M         ! DO loop indices
       INTEGER(LONG)                   :: IERROR    = 0     ! Local error count
@@ -106,13 +105,7 @@
       INTRINSIC IAND
       ITABLE = 0
       TABLE_NAME = "OES ERR "
-! **********************************************************************************************************************************
-      !NEW_RESULT = .TRUE.
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 
 ! **********************************************************************************************************************************

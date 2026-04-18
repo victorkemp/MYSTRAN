@@ -60,12 +60,6 @@
 !                                                            rigid body motions/constant strain distortions)
   
 ! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
-! **********************************************************************************************************************************
 ! Initialize outputs
 
       DO I=1,3

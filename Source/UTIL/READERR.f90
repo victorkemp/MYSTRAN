@@ -50,12 +50,7 @@
       INTEGER(LONG)                   :: IEND              ! End col for MESSAG
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READERR_BEGEND
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! First, truncate trailing blanks in MESSAG

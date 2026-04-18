@@ -42,8 +42,7 @@
       USE OUTA_HERE_USE_IFs
 
       IMPLICIT NONE
- 
-      LOGICAL                         :: FILE_OPND         ! Output from INQUIRE intrinsic function         
+
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OUTA_HERE'
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRITE_TO_L1A      ! Y/N indicator of whether to call subr WRITE_L1A
@@ -51,14 +50,7 @@
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTA_HERE_BEGEND
 
 ! **********************************************************************************************************************************
-      INQUIRE(UNIT=F04,OPENED=FILE_OPND)
-      IF (FILE_OPND) THEN
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            CALL OURTIM
-!xx         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001       FORMAT(1X,A,' BEGN ',F10.3)
-         ENDIF
-      ENDIF
+
 
 ! Write data to LINK1A, if we are in LINK1
 

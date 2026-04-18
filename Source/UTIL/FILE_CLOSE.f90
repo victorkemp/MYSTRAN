@@ -48,29 +48,14 @@
 
       CHARACTER(LEN=*)   , INTENT(IN) :: CLOSE_STAT        ! Status for close
       CHARACTER(LEN=*)   , INTENT(IN) :: WRITE_F04         ! If 'Y' write to F04, otherwise do not
-      CHARACTER( 6*BYTE)              :: NAM_CLS 
-      CHARACTER( 3*BYTE)              :: UNIT_NAME = '???' ! Extension of FILNAM (e.g. F06, etc)
+
+
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
-      INTEGER(LONG)                   :: DEC_PT            ! Position in FILNAM where '.' exists
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when closing a file
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
 
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         INQUIRE(FILE=FILNAM,OPENED=FILE_OPND)
-         IF (UNIT /= F04) THEN
-            DEC_PT = INDEX(FILNAM,'.',.TRUE.)
-            IF (DEC_PT > 0) THEN
-               UNIT_NAME = FILNAM(DEC_PT+1:DEC_PT+4)
-            ENDIF
-            INQUIRE(FILE=FILNAM,EXIST=FILE_EXIST)
-            NAM_CLS(1:) = CLOSE_STAT
-            WRITE(F04,9001) SUBR_NAME, TSEC, FILE_EXIST, FILE_OPND, NAM_CLS, UNIT_NAME
-         ENDIF
- 9001    FORMAT(1X,A,' BEGN ',F10.3,2L2,',',1X,A6,1X,',',44X,',  Closing file unit: ',A)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CLOSE ( UNIT,STATUS=CLOSE_STAT,IOSTAT=IOCHK )
