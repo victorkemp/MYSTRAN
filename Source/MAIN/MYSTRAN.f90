@@ -75,7 +75,7 @@
 
       USE IOUNT1, ONLY                :  IN0_MSG, IN1_MSG, L1A_MSG 
 
-      USE IOUNT1, ONLY                :  BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, F04STAT, F04STAT_OLD, PCHSTAT, OP2STAT
+      USE IOUNT1, ONLY                :  BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, PCHSTAT, OP2STAT
 
       USE IOUNT1, ONLY                :  LEN_INPUT_FNAME, LEN_RESTART_FNAME,LINK1A, WRT_LOG, BUGOUT, RESTART_FILNAM
 
@@ -197,7 +197,6 @@
 
             BUGSTAT_OLD = BUGSTAT                          ! Default value from module IOUNT1
             ERRSTAT_OLD = ERRSTAT                          ! Default value from module IOUNT1
-            F04STAT_OLD = F04STAT                          ! Default value from module IOUNT1
 
          ELSE                                              ! This is a RESTART
 
@@ -208,7 +207,6 @@
 
             BUGSTAT_OLD = BUGSTAT                          ! Old value from LINK1A
             ERRSTAT_OLD = ERRSTAT                          ! Old value from LINK1A
-            F04STAT_OLD = F04STAT                          ! Old value from LINK1A
 
             NSUB  = 0                                      ! Initialize items read from L1A that could be changed in the RESTART
             NTSUB = 0
@@ -378,15 +376,6 @@ iters:      DO
          ENDIF
       ENDIF
 
-      IF (WRT_LOG > 0) THEN
-         F04STAT = 'KEEP'
-      ELSE
-         IF (F04STAT_OLD == 'KEEP    ') THEN
-            F04STAT = 'KEEP'
-         ELSE
-            F04STAT = 'DELETE'
-         ENDIF
-      ENDIF
 
 !xx   IF (WRITE_NEU) THEN
 !xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP', 'Y' )
@@ -409,7 +398,7 @@ iters:      DO
          CALL FILE_INQUIRE ( 'near end of MAIN' )
       ENDIF
 
-      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, F04STAT, OP2STAT, PCHSTAT )
+      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, OP2STAT, PCHSTAT )
 
 ! Close LIJ files
 
