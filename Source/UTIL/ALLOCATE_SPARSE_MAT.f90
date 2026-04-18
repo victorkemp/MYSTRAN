@@ -91,7 +91,6 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ALLOCATE_SPARSE_MAT'
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name of the matrix to be allocated in sparse format
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Array name of the matrix to be allocated in sparse format
-      CHARACTER(14*BYTE)              :: NAMEL             ! First 14 bytes of NAME
       CHARACTER(6*BYTE)               :: NAME1             ! Array name (used for output error message)
       CHARACTER(6*BYTE)               :: NAME2             ! Array name (used for output error message)
  
@@ -7036,16 +7035,6 @@
 ! **********************************************************************************************************************************
       CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         NAMEL(1:LEN(NAMEL)) = ' '
-         NAMEL(1:)           = NAME(1:)
-         IF (DEBUG(107) == 0) THEN
-            WRITE(F04,9002) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NROWS, NTERMS, TOT_MB_MEM_ALLOC
-         ELSE
-            WRITE(F04,9004) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NROWS, NTERMS, TOT_MB_MEM_ALLOC
-         ENDIF
-      ENDIF
 
       RETURN
 
@@ -7062,9 +7051,6 @@
  1699 FORMAT('               THE SUBR IN WHICH THESE ALLOCATION ERRORS WERE FOUND (',A,')'                                         &
                     ,/,14X,' WAS CALLED BY SUBR ',A)
 
- 9002 FORMAT(1X,A,' END  ',F10.3,F13.3,' MB ',A15,':',I12,' row,',I12,' nonzero, T:',F10.3)
-
- 9004 FORMAT(1X,A,' END  ',F10.3,F13.6,' MB ',A15,':',I12,' row,',I12,' nonzero, T:',F13.6)
 
 12345 FORMAT(7X,'Equate ',A5,' with ',I8,' rows ',A)
 

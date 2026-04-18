@@ -44,7 +44,6 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DEALLOCATE_LAPACK_MAT'
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Name of matrix to be allocated
-      CHARACTER(14*BYTE)              :: NAMEL             ! First 14 bytes of NAMEO
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
@@ -202,16 +201,6 @@
 ! **********************************************************************************************************************************
       CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         NAMEL(1:LEN(NAMEL)) = ' '
-         NAMEL(1:) = NAME(1:)
-         IF (DEBUG(107) == 0) THEN
-            WRITE(F04,9003) SUBR_NAME, TSEC, -CUR_MB_ALLOCATED, NAMEL, TOT_MB_MEM_ALLOC
-         ELSE
-            WRITE(F04,9005) SUBR_NAME, TSEC, -CUR_MB_ALLOCATED, NAMEL, TOT_MB_MEM_ALLOC
-         ENDIF
-      ENDIF
 
       RETURN
 
@@ -221,9 +210,7 @@
 
   992 FORMAT(' *ERROR   992: CANNOT DEALLOCATE MEMORY FROM ARRAY ',A,' IN SUBROUTINE ',A)
  
- 9003    FORMAT(1X,A,' END  ',F10.3,F13.3,' MB ',A15,':',39X,'T:',F10.3)
 
- 9005    FORMAT(1X,A,' END  ',F10.3,F13.6,' MB ',A15,':',39X,'T:',F13.6)
 
 ! **********************************************************************************************************************************
  

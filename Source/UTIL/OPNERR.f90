@@ -106,15 +106,6 @@
          CALL OUTA_HERE ( 'N' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         INQUIRE (FILE=F04FIL,OPENED=FILE_OPENED)
-         IF (.NOT.FILE_OPENED) THEN
-            WRITE(F04,9002) SUBR_NAME,TSEC
-         ENDIF
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

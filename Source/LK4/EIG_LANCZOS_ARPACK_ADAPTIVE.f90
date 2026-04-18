@@ -702,12 +702,6 @@
 
       WRITE(SC1,1014) NUM_EIGENS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME, TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

@@ -37,9 +37,6 @@
       USE FILE_CLOSE_USE_IFs
 
       IMPLICIT NONE
- 
-      LOGICAL                         :: FILE_EXIST
-      LOGICAL                         :: FILE_OPND
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'FILE_CLOSE'
 
@@ -67,16 +64,6 @@
          STOP
       ENDIF
 
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         IF (UNIT /= F04) THEN
-            INQUIRE(FILE=FILNAM,EXIST=FILE_EXIST)
-            INQUIRE(FILE=FILNAM,OPENED=FILE_OPND)
-            WRITE(F04,9002) SUBR_NAME,TSEC,FILE_EXIST,FILE_OPND
-         ENDIF
- 9002    FORMAT(1X,A,' END  ',F10.3,2L2)
-      ENDIF
 
       RETURN
 

@@ -160,12 +160,7 @@
       !
       WRITE(OP2) (GID_OUT_ARRAY(I,1)*10+DEVICE_CODE, G_OR_S(I), (REAL(OGEL(I,J),4), J=1,6), I=1,NUM)
       CALL END_OP2_TABLE(ITABLE)
-! **********************************************************************************************************************************
-!      IF (WRT_LOG >= SUBR_BEGEND) THEN
-!         CALL OURTIM
-!         WRITE(F04,9002) SUBR_NAME,TSEC
-! 9002    FORMAT(1X,A,' END  ',F10.3)
-!      ENDIF
+
 
       RETURN
 

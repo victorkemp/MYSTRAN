@@ -50,7 +50,6 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  TSEC
       USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SFF_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL
@@ -96,11 +95,8 @@
       REAL(DOUBLE) , INTENT(OUT)      :: C(NROWS_A,NCOLS_B)! Real values in matrix c
       REAL(DOUBLE) , INTENT(IN )      :: CONS              ! Constant multiplier in cons*A*B to get C
       REAL(DOUBLE)                    :: EPS1              ! A small value to compare to zero
-      real(double)                    :: tsec_beg          !
-      real(double)                    :: tsec_end          !
 
 
-      tsec_beg = tsec
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -237,13 +233,6 @@ k_do:       DO K=1,NTERM_AROW                              ! The following 2 loo
       IF (DEBUG(82) == 1) CALL MATMULT_SFF_DEB ( '9', '   ' )
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         tsec_end = tsec
-         WRITE(F04,9003) SUBR_NAME,TSEC,tsec_end-tsec_beg
- 9003    FORMAT(1X,A,' END  ',F10.3,' (',f6.3,' sec elapsed time for subr MATMULT_SFF)')
-      ENDIF
       RETURN
 
 ! **********************************************************************************************************************************

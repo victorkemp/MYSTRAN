@@ -81,12 +81,7 @@
       ELSE                                                 ! There was no 1st contin card. This is error that will be caught later
          DELTA_LEDAT = MEDAT_CHEXA20                       ! For this error, set DELTA_LEDAT to largest until error is caught
       ENDIF
-!***********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

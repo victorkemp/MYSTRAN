@@ -47,7 +47,6 @@
       CHARACTER(LEN=*), INTENT(IN)    :: SET               ! Set name of the displ matrix
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Array name of the matrix to be allocated in sparse format
       CHARACTER(14*BYTE)              :: NAME              ! Specific array name used for output error message
-      CHARACTER(14*BYTE)              :: NAMEL             ! First 14 bytes of NAME
  
       INTEGER(LONG)                   :: I,J               ! DO loop indices 
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
@@ -287,16 +286,6 @@
       MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS)*REAL(NCOLS)/ONEPP6
       CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         NAMEL(1:LEN(NAMEL)) = ' '
-         NAMEL(1:) = NAME(1:)
-         IF (DEBUG(107) == 0) THEN
-            WRITE(F04,9002) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NROWS, NCOLS, TOT_MB_MEM_ALLOC
-         ELSE
-            WRITE(F04,9004) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NROWS, NCOLS, TOT_MB_MEM_ALLOC
-         ENDIF
-      ENDIF
 
       RETURN
 
@@ -311,10 +300,6 @@
                     ,/,14X,' ALLOCATION STAT = ',I8)
 
  1699 FORMAT('               THE SUBR IN WHICH THESE ERRORS WERE FOUND (',A,') WAS CALLED BY SUBR ',A)
-
- 9002 FORMAT(1X,A,' END  ',F10.3,F13.3,' MB ',A15,':',I12,' row,',I12,' col    , T:',F10.3)
-
- 9004 FORMAT(1X,A,' END  ',F10.3,F13.6,' MB ',A15,':',I12,' row,',I12,' col    , T:',F13.6)
 
 ! **********************************************************************************************************************************
  

@@ -2843,11 +2843,6 @@ c
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -3822,11 +3817,6 @@ c
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -10354,13 +10344,6 @@ CIBM           PREFER SCALAR
 *
 12345 format(5X,'Iteration number ',i4,' : J = ',i8,' to ',i8, a)
 
-! **********************************************************************************************************************************
- 9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
