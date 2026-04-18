@@ -56,12 +56,7 @@
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NROWS,NCOLS)! Input full matrix
       REAL(DOUBLE) , INTENT(OUT)      :: SMALL             ! Filter for small terms
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (DEBUG(196) == 0) THEN

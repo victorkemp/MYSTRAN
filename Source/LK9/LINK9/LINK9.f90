@@ -240,9 +240,6 @@
       ! Write info to text files
       WRITE(ERR,150) LINKNO
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
 
       ! Read LINK1A file
       CALL READ_L1A ( 'KEEP', 'Y' )
@@ -706,16 +703,6 @@ j_do: DO JVEC=1,NUM_SOLNS
             WRITE(NEU,9011) FEMAP_BLK
          ENDIF
 
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            IF      ((SOL_NAME(1: 7) == 'STATICS') .OR. (SOL_NAME(1:8) == 'NLSTATIC') .OR.                                         &
-                    ((SOL_NAME(1: 8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1))) THEN
-               WRITE(F04,9095) JVEC
-            ELSE IF ((SOL_NAME(1: 5) == 'MODES') .OR. ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 2))) THEN
-               WRITE(F04,9096) JVEC
-            ELSE IF  (SOL_NAME(1:12) == 'GEN CB MODEL') THEN
-               WRITE(F04,9097) JVEC
-            ENDIF
-         ENDIF
 
          IF ((SOL_NAME(1:8) == 'BUCKLING') .OR. (SOL_NAME(1:8) == 'DIFFEREN')) THEN
             JTSUB = 1
@@ -1315,11 +1302,8 @@ j_do: DO JVEC=1,NUM_SOLNS
          ENDIF
       ENDIF
 
-      ! Write LINK9 end to F04, F06
+      ! Write LINK9 end to F06
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
       ! Leave the closing of BUG, ERR, F04, F06 files until after LINK9 returns to MYSTRAN.for

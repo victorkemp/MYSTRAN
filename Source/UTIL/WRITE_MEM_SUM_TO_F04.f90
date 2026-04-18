@@ -37,7 +37,6 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name that has MB_ALLOCATED mem allocated
       CHARACTER(LEN=*), INTENT(IN)    :: WHAT              ! Whether to write allocated or deallocated memory
-      CHARACTER(15*BYTE)              :: NAMEL             ! 14 bytes of NAME (or padded blanks - for F04 output)
 
       INTEGER(LONG)   , INTENT(IN)    :: NCOLS             ! Number of cols for matrix NAME
       INTEGER(LONG)   , INTENT(IN)    :: NROWS             ! Number of rows for matrix NAME
@@ -45,34 +44,10 @@
 
       REAL(DOUBLE)    , INTENT(IN)    :: MB_MEM            ! Megabytes of mmemory allocated to array NAME
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         NAMEL(1:) = ' '
-         NAMEL(1:) = NAME(1:)
-         IF      (WHAT == 'ALLOC') THEN
-            IF (DEBUG(107) == 0) THEN
-               WRITE(F04,9002) MB_MEM, NAMEL, NROWS, NCOLS, TOT_MB_MEM_ALLOC
-            ELSE
-               WRITE(F04,9004) MB_MEM, NAMEL, NROWS, NCOLS, TOT_MB_MEM_ALLOC
-            ENDIF
-         ELSE IF (WHAT == 'DEALLOC') THEN
-            IF (DEBUG(107) == 0) then
-               WRITE(F04,9003) MB_MEM, NAMEL,               TOT_MB_MEM_ALLOC
-            ELSE
-               WRITE(F04,9005) MB_MEM, NAMEL,               TOT_MB_MEM_ALLOC
-            ENDIF
-         ENDIF
-      ENDIF
+
 
       RETURN
-! **********************************************************************************************************************************
- 9002 FORMAT(                48X,F13.3,' MB ',A15,':',I12,' row,',I12,' col    , T:',F10.3)
 
- 9003 FORMAT(                48X,F13.3,' MB ',A15,':',39X,'T:',F10.3)
-
- 9004 FORMAT(                48X,F13.6,' MB ',A15,':',I12,' row,',I12,' col    , T:',F13.6)
-
- 9005 FORMAT(                48X,F13.6,' MB ',A15,':',39X,'T:',F13.6)
 
 ! **********************************************************************************************************************************
 

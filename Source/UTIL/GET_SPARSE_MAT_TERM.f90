@@ -56,12 +56,7 @@
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! Real vals in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(OUT)      :: MATIN_VAL
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize output value

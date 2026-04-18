@@ -248,7 +248,6 @@ c
          dsaupd_loop_count = dsaupd_loop_count + 1
       endif
       write(sc1,12345,advance='no') iter+1,dsaupd_loop_count,ido,cr13_a
-      Write(f04, 9876) iter+1, dsaupd_loop_count, ido
 
 ! **********************************************************************
       if (ido .eq. -1) then
@@ -591,8 +590,6 @@ c
       Write(f06,*) ! blank line after eigen iteration results
 ! **********************************************************************************************************************************
 12345 format(5X,'Iteration',i4,' Rev comm loop',i4,' with IDO =',i3,a)
-
- 9876 format(7X,'Iteration',i4,' Rev comm loop',i4,' with IDO =',i3)
 
  4907 FORMAT(/,22X,A
      &      ,/,7X,'1',12X,'2',12X,'3',12X,'4',12X,'5',12X,'6',12X,

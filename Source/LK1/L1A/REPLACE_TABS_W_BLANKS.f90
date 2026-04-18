@@ -46,12 +46,7 @@
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REPLACE_TABS_W_BLANKS_BEGEND
 		INTEGER(LONG)                   :: I                 ! DO loop index
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Strip all tab chars from input CARD

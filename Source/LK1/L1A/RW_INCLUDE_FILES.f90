@@ -48,12 +48,7 @@
       INTEGER(LONG)                   :: ICNT        = 0   ! Counter
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading an entry from INCL_FILNAM
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       WRITE(UNIT_OUT,201,IOSTAT=IOCHK) INCFIL

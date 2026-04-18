@@ -116,9 +116,6 @@
 ! Write info to text files
   
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
 ! Read LINK1A file
@@ -423,9 +420,6 @@
 ! Write LINK6 end to F04, F06
 
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
 ! Close files

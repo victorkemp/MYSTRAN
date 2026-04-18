@@ -48,12 +48,7 @@
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_XTIME_BEGEND
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! *********************************************************************************************************************************
       REWIND (UNT)
