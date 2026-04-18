@@ -62,12 +62,6 @@
       INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = CHK_CC_CMD_DESCRIBERS_BEGEND
       LOGICAL                          :: IS_PLOT, IS_PRINT, IS_PUNCH
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       IF      (WHAT == 'ACCE') THEN;   OUTPUT_TYPE( 1) = 'ACCE';   JCOL =  1;

@@ -52,12 +52,6 @@
       REAL(DOUBLE), INTENT(INOUT)     :: I12               ! MOI of the bar or beam
       REAL(DOUBLE)                    :: EPS1              ! A small number
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
 ! Initialize

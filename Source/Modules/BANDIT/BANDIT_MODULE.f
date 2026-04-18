@@ -388,11 +388,6 @@ C
       integer KOM(MEM)
 
 ! B////////////////////////////////////////////////////////////////////B
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
 
 ! E////////////////////////////////////////////////////////////////////E
 C

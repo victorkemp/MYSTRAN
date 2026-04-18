@@ -53,12 +53,6 @@
       INTEGER(LONG)                   :: IDOFG             ! Count of G-set DOF's  (1 to NDOFG)
       INTEGER(LONG)                   :: NUM_COMPS         ! 6 if GRID_NUM is an physical grid, 1 if an SPOINT
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       IERR = 0
