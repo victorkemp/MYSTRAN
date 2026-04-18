@@ -47,7 +47,7 @@
       CHARACTER(LEN(JCARD))           :: JCARD_EDAT(10)    ! JCARD values sent to subr ELEPRO
  
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CROD_BEGEND
+
  
 
 

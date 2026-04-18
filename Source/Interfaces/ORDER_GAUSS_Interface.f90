@@ -43,7 +43,7 @@
       IMPLICIT NONE
 
       INTEGER(LONG), INTENT(IN)       :: KORDER               ! Gaussian integration order to use
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) ,INTENT(OUT)       :: SSS(MAX_ORDER_GAUSS) ! Gauss abscissa's
       REAL(DOUBLE) ,INTENT(OUT)       :: HHH(MAX_ORDER_GAUSS) ! Gauss weight coeffs

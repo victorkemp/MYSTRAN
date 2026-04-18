@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: J_A(NTERMS_A)     ! Col numbers for nonzero terms in A
       INTEGER(LONG), INTENT(OUT)      :: I_B(NTERMS_A)     ! Row numbers for nonzero terms in B
       INTEGER(LONG), INTENT(OUT)      :: J_B(NCOLS_A+1)    ! J_B(I+1) - J_B(I) are the number of nonzeros in B col I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_SPARSE_CCS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERMS_A)       ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERMS_A)       ! Real nonzero values in output matrix B

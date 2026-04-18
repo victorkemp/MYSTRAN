@@ -75,7 +75,7 @@
       INTEGER(LONG)                   :: RMG_ROW_NUM       ! Row no. of a term in array RMG
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: DELTA_0(3,3)      ! 3 x 3 matrix of diffs in coords bet dep & indep grids in basic coords
       REAL(DOUBLE)                    :: DUM1(3,3)         ! Intermediate result in obtaining RDI_GLOBAL

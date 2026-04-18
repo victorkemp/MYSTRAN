@@ -81,7 +81,7 @@
       INTEGER(LONG)                   :: IORD_IJ            ! Integration order in the triangular plane for PENTA elements
       INTEGER(LONG)                   :: IORD_K             ! Integration order in Z direction for PENTA elements
       INTEGER(LONG)                   :: INT41,INT42        ! An integer used in getting MATANGLE
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMG_BEGEND
+
  
 ! **********************************************************************************************************************************
       EPNTK = EPNT(INT_ELEM_ID)

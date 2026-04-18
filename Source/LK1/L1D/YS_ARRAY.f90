@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: SE_SET_COL_NUM    ! Col no., in TDOF array, of the SE-set DOF list
       INTEGER(LONG)                   :: TDOF_ROW_NUM      ! Row num in array TDOF for DOF corresponding to GRID_ID_ROW_NUM, COMP
       INTEGER(LONG)                   :: YSDOF             ! SE-set DOF number for the DOF corresponding to GRID_ID_ROW_NUM, COMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = YS_ARRAY_BEGEND
+
  
       REAL(DOUBLE)                    :: YSV               ! Enforced displ value read from file LINK1H
  

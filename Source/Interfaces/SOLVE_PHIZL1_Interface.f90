@@ -49,7 +49,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
       INTEGER(LONG), INTENT(IN)       :: NTERM_CRS3        ! Number of terms in matrix CRS3  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_PHIZL1_BEGEND
+
 
       END SUBROUTINE SOLVE_PHIZL1
 

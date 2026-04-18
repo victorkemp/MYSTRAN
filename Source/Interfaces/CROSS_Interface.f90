@@ -39,7 +39,7 @@
       
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CROSS_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: A(3)              ! Components of input  vector A
       REAL(DOUBLE), INTENT(IN)        :: B(3)              ! Components of input  vector B

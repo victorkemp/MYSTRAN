@@ -85,7 +85,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CALL_OUTA_HERE    ! 'Y'/'N' indicator of whether to call OUTA_HERE (this should be 'Y'
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_L1A_BEGEND
+
 
       END SUBROUTINE WRITE_L1A
 

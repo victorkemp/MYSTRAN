@@ -47,7 +47,7 @@
       CHARACTER(LEN=*), INTENT(IN)     :: WHAT              ! What Case Control output is this call for (e.g. 'DISP')
 
       INTEGER(LONG), INTENT(IN)        :: NUM_WORDS         ! Number of words we need to check in CC_CMD_DESCRIBERS
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = CHK_CC_CMD_DESCRIBERS_BEGEND
+
  
       END SUBROUTINE CHK_CC_CMD_DESCRIBERS
 

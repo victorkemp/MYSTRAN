@@ -64,7 +64,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ESP0'
 
       INTEGER(LONG)                   :: LTERM             ! Count of number of estimated terms in KGG or KGGD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND
+
 
 
 
@@ -138,7 +138,7 @@
       INTEGER(LONG), INTENT(OUT)      :: LTERM             ! Count of number of estimated terms in KGG or KGGD
       INTEGER(LONG)                   :: DELTA_LTERM       ! Increment of LTERM for one element
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
+
  
  
 
@@ -207,7 +207,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ESP0_1'
 
       INTEGER(LONG), INTENT(OUT)      :: LTERM             ! Count of number of estimated terms in KGG or KGGD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
+
  
  
 
@@ -265,7 +265,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ESP0_2'
 
       INTEGER(LONG), INTENT(OUT)      :: LTERM             ! Count of number of estimated terms in KGG or KGGD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
+
  
  
 
@@ -329,7 +329,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IERROR            ! Local error indicator
       INTEGER(LONG)                   :: KSTART            ! Index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND
+
 
       REAL(DOUBLE)                    :: DQE(MELDOF,NSUB)  ! Dummy array in call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

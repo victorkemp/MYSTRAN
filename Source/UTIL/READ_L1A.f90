@@ -98,7 +98,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG)                   :: REC_NO            ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file LINK1A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1A_BEGEND
+
  
 
 

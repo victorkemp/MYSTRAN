@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: NCOLA             ! No. cols in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG)                   :: NCOLB             ! No. cols in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG)                   :: NROWA             ! No. rows in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONM2_PROC_2_BEGEND
+
  
       REAL(DOUBLE)                    :: DX_0              ! Offset of mass from grid in basic coord sys X direction
       REAL(DOUBLE)                    :: DY_0              ! Offset of mass from grid in basic coord sys Y direction

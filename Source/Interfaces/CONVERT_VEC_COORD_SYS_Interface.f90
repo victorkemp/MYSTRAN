@@ -44,7 +44,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: NCID              ! Actual coord system number. INPUT_VEC is to be transformed to this sys.
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONVERT_VEC_COORD_SYS_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: INPUT_VEC(NDOFG)  ! G-set input vector to be transformed from global to NCID
       REAL(DOUBLE), INTENT(OUT)       :: OUTPUT_VEC(NDOFG) ! Transformed output vector

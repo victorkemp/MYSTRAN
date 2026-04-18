@@ -92,7 +92,7 @@
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NCOLS             ! Number of cols allocated
       INTEGER(LONG)                   :: NROWS             ! Number of rows allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_MODEL_STUF_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -130,7 +130,6 @@
             MB_ALLOCATED = RLONG*REAL(LSETS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSETS, 1, SUBR_BEGEND )
                DO I=1,LSETS
                   SETS_IDS(I) = 0
                ENDDO
@@ -155,7 +154,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(ALL_SETS_ARRAY))*REAL(LSETLN)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 1, LSETLN, SUBR_BEGEND )
                DO I=1,LSETLN
                   ALL_SETS_ARRAY(I)(1:) = ' '
                ENDDO
@@ -180,7 +178,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(ONE_SET_ARRAY)*LSETLN)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 1, LSETLN, SUBR_BEGEND )
                DO I=1,LSETLN
                   ONE_SET_ARRAY(I)(1:) = ' '
                ENDDO
@@ -207,7 +204,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(TITLE)*LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   TITLE(I)(1:) = ' '
                ENDDO
@@ -232,7 +228,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(STITLE)*LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   STITLE(I)(1:) = ' '
                ENDDO
@@ -257,7 +252,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(LABEL)*LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   LABEL(I)(1:) = ' '
                ENDDO
@@ -284,7 +278,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_ACCE = 0
                ENDDO
@@ -309,7 +302,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_DISP = 0
                ENDDO
@@ -334,7 +326,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_ELFE = 0
                ENDDO
@@ -359,7 +350,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_ELFN = 0
                ENDDO
@@ -384,7 +374,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_GPFO = 0
                ENDDO
@@ -409,7 +398,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_MPCF = 0
                ENDDO
@@ -434,7 +422,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_OLOA = 0
                ENDDO
@@ -459,7 +446,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_SPCF = 0
                ENDDO
@@ -484,7 +470,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_STRE = 0
                ENDDO
@@ -509,7 +494,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SC_STRN = 0
                ENDDO
@@ -536,7 +520,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SCNUM(I) = 0
                ENDDO
@@ -563,7 +546,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)*TWO/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 2, SUBR_BEGEND )
                DO I=1,LSUB
                   SUBLOD(I,1) = 0
                   SUBLOD(I,2) = 0                  
@@ -590,7 +572,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   SPCSETS(I) = 0
                ENDDO
@@ -614,7 +595,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   MPCSETS(I) = 0
                ENDDO
@@ -641,7 +621,6 @@
             MB_ALLOCATED = RLONG*REAL(LSEQ)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSEQ, 1, SUBR_BEGEND )
                DO I=1,LSEQ
                   SEQ1(I) = 0
                ENDDO
@@ -666,7 +645,6 @@
             MB_ALLOCATED = RLONG*REAL(LSEQ)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSEQ, 1, SUBR_BEGEND )
                DO I=1,LSEQ
                   SEQ2(I) = 0
                ENDDO
@@ -693,7 +671,6 @@
             MB_ALLOCATED = RLONG*REAL(LFORCE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LFORCE, 1, SUBR_BEGEND )
                DO I=1,LFORCE
                   FORMOM_SIDS(I) = 0
                ENDDO
@@ -720,7 +697,6 @@
             MB_ALLOCATED = RLONG*REAL(LPLOAD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPLOAD, 1, SUBR_BEGEND )
                DO I=1,LPLOAD
                   PRESS_SIDS(I) = 0
                ENDDO
@@ -747,7 +723,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRAV)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRAV, 1, SUBR_BEGEND )
                DO I=1,LGRAV
                   GRAV_SIDS(I) = 0
                ENDDO
@@ -774,7 +749,6 @@
             MB_ALLOCATED = RLONG*REAL(LLOADR)*REAL(LLOADC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LLOADR, LLOADC, SUBR_BEGEND )
                DO I=1,LLOADR
                   DO J=1,LLOADC
                      LOAD_SIDS(I,J) = 0
@@ -801,7 +775,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LLOADR)*REAL(LLOADC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LLOADR, LLOADC, SUBR_BEGEND )
                DO I=1,LLOADR
                   DO J=1,LLOADC
                      LOAD_FACS(I,J) = ZERO
@@ -830,7 +803,6 @@
             MB_ALLOCATED = RLONG*REAL(LMPC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LMPC, 1, SUBR_BEGEND )
                DO I=1,LMPC
                   MPC_SIDS(I) = 0
                ENDDO
@@ -857,7 +829,6 @@
             MB_ALLOCATED = RLONG*REAL(NUM_MPCSIDS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NUM_MPCSIDS, 1, SUBR_BEGEND )
                DO I=1,NUM_MPCSIDS
                   MPCSIDS(I) = 0
                ENDDO
@@ -884,7 +855,6 @@
             MB_ALLOCATED = RLONG*REAL(LMPCADDR)*REAL(LMPCADDC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LMPCADDR, LMPCADDC, SUBR_BEGEND )
                DO I=1,LMPCADDR
                   DO J=1,LMPCADDC
                      MPCADD_SIDS(I,J) = 0
@@ -913,7 +883,6 @@
             MB_ALLOCATED = RLONG*REAL(LRFORCE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LRFORCE, 1, SUBR_BEGEND )
                DO I=1,LRFORCE
                   RFORCE_SIDS(I) = 0
                ENDDO
@@ -940,7 +909,6 @@
             MB_ALLOCATED = RLONG*REAL(LSLOAD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSLOAD, 1, SUBR_BEGEND )
                DO I=1,LSLOAD
                   SLOAD_SIDS(I) = 0
                ENDDO
@@ -967,7 +935,6 @@
             MB_ALLOCATED = RLONG*REAL(LSPC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSPC, 1, SUBR_BEGEND )
                DO I=1,LSPC
                   SPC_SIDS(I) = 0
                ENDDO
@@ -992,7 +959,6 @@
             MB_ALLOCATED = RLONG*REAL(LSPC1)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSPC1, 1, SUBR_BEGEND )
                DO I=1,LSPC1
                   SPC1_SIDS(I) = 0
                ENDDO
@@ -1019,7 +985,6 @@
             MB_ALLOCATED = RLONG*REAL(NUM_SPCSIDS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NUM_SPCSIDS, 1, SUBR_BEGEND )
                DO I=1,NUM_SPCSIDS
                   SPCSIDS(I) = 0
                ENDDO
@@ -1046,7 +1011,6 @@
             MB_ALLOCATED = RLONG*REAL(LSPCADDR)*REAL(LSPCADDC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSPCADDR, LSPCADDC, SUBR_BEGEND )
                DO I=1,LSPCADDR
                   DO J=1,LSPCADDC
                      SPCADD_SIDS(I,J) = 0
@@ -1075,7 +1039,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(ETYPE))*REAL(LELE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, 1, SUBR_BEGEND )
                DO I=1,LELE
                   ETYPE(I)(1:) = ' '
                ENDDO
@@ -1100,7 +1063,6 @@
             MB_ALLOCATED = RLONG*REAL(LEDAT)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LEDAT, 1, SUBR_BEGEND )
                DO I=1,LEDAT
                   EDAT(I) = 0
                ENDDO
@@ -1125,7 +1087,6 @@
             MB_ALLOCATED = RLONG*REAL((LELE+1))/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE+1, 1, SUBR_BEGEND )
                DO I=1,LELE+1
                   EPNT(I) = 0
                ENDDO
@@ -1152,7 +1113,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, 1, SUBR_BEGEND )
                DO I=1,LELE
                   EOFF(I) = 'N'
                ENDDO
@@ -1179,7 +1139,6 @@
             MB_ALLOCATED = RLONG*REAL(LMATL)*REAL(MMATL)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LMATL, MMATL, SUBR_BEGEND )
                DO I=1,LMATL
                   DO J=1,MMATL
                      MATL(I,J) = 0
@@ -1206,7 +1165,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LMATL)*REAL(MRMATLC)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LMATL, MRMATLC, SUBR_BEGEND )
                DO I=1,LMATL
                   DO J=1,MRMATLC
                      RMATL(I,J) = ZERO
@@ -1233,7 +1191,6 @@
             MB_ALLOCATED = RLONG*REAL(LPBAR)*REAL(MPBAR)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBAR, MPBAR, SUBR_BEGEND )
                DO I=1,LPBAR
                   DO J=1,MPBAR
                      PBAR(I,J) = 0
@@ -1260,7 +1217,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPBAR)*REAL(MRPBAR)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBAR, MRPBAR, SUBR_BEGEND )
                DO I=1,LPBAR
                   DO J=1,MRPBAR
                      RPBAR(I,J) = ZERO
@@ -1287,7 +1243,6 @@
             MB_ALLOCATED = RLONG*REAL(LPBEAM)*REAL(MPBEAM)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBEAM, MPBEAM, SUBR_BEGEND )
                DO I=1,LPBEAM
                   DO J=1,MPBEAM
                      PBEAM(I,J) = 0
@@ -1314,7 +1269,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPBEAM)*REAL(MRPBEAM)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBEAM, MRPBEAM, SUBR_BEGEND )
                DO I=1,LPBEAM
                   DO J=1,MRPBEAM
                      RPBEAM(I,J) = ZERO
@@ -1341,7 +1295,6 @@
             MB_ALLOCATED = RLONG*REAL(LPBUSH)*REAL(MPBUSH)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBUSH, MPBUSH, SUBR_BEGEND )
                DO I=1,LPBUSH
                   DO J=1,MPBUSH
                      PBUSH(I,J) = 0
@@ -1368,7 +1321,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPBUSH)*REAL(MRPBUSH)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPBUSH, MRPBUSH, SUBR_BEGEND )
                DO I=1,LPBUSH
                   DO J=1,MRPBUSH
                      RPBUSH(I,J) = ZERO
@@ -1395,7 +1347,6 @@
             MB_ALLOCATED = RLONG*REAL(LPCOMP)*REAL(MPCOMP0+MPCOMP_PLIES*LPCOMP_PLIES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPCOMP, MPCOMP0+MPCOMP_PLIES*LPCOMP_PLIES, SUBR_BEGEND )
                DO I=1,LPCOMP
                   DO J=1,MPCOMP0+MPCOMP_PLIES*LPCOMP_PLIES
                      PCOMP(I,J) = 0
@@ -1422,7 +1373,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPCOMP)*REAL(MRPCOMP0+MRPCOMP_PLIES*LPCOMP_PLIES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPCOMP, MRPCOMP0+MRPCOMP_PLIES*LPCOMP_PLIES, SUBR_BEGEND )
                DO I=1,LPCOMP
                   DO J=1,MRPCOMP0+MRPCOMP_PLIES*LPCOMP_PLIES
                      RPCOMP(I,J) = ZERO
@@ -1449,7 +1399,6 @@
             MB_ALLOCATED = RLONG*REAL(LPELAS)*REAL(MPELAS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPELAS, MPELAS, SUBR_BEGEND )
                DO I=1,LPELAS
                   DO J=1,MPELAS
                      PELAS(I,J) = 0
@@ -1476,7 +1425,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPELAS)*REAL(MRPELAS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPELAS, MRPELAS, SUBR_BEGEND )
                DO I=1,LPELAS
                   DO J=1,MRPELAS
                      RPELAS(I,J) = ZERO
@@ -1503,7 +1451,6 @@
             MB_ALLOCATED = RLONG*REAL(LPROD)*REAL(MPROD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPROD, MPROD, SUBR_BEGEND )
                DO I=1,LPROD
                   DO J=1,MPROD
                      PROD(I,J) = 0
@@ -1530,7 +1477,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPROD)*REAL(MRPROD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPROD, MRPROD, SUBR_BEGEND )
                DO I=1,LPROD
                   DO J=1,MRPROD
                      RPROD(I,J) = ZERO
@@ -1557,7 +1503,6 @@
             MB_ALLOCATED = RLONG*REAL(LPSHEAR)*REAL(MPSHEAR)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPSHEAR, MPSHEAR, SUBR_BEGEND )
                DO I=1,LPSHEAR
                   DO J=1,MPSHEAR
                      PSHEAR(I,J) = 0
@@ -1584,7 +1529,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPSHEAR)*REAL(MRPSHEAR)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPSHEAR, MRPSHEAR, SUBR_BEGEND )
                DO I=1,LPSHEAR
                   DO J=1,MRPSHEAR
                      RPSHEAR(I,J) = ZERO
@@ -1611,7 +1555,6 @@
             MB_ALLOCATED = RLONG*REAL(LPSHEL)*REAL(MPSHEL)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPSHEL, MPSHEL, SUBR_BEGEND )
                DO I=1,LPSHEL
                   DO J=1,MPSHEL
                      PSHEL(I,J) = 0
@@ -1638,7 +1581,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPSHEL)*REAL(MRPSHEL)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPSHEL, MRPSHEL, SUBR_BEGEND )
                DO I=1,LPSHEL
                   DO J=1,MRPSHEL
                      RPSHEL(I,J) = ZERO
@@ -1665,7 +1607,6 @@
             MB_ALLOCATED = RLONG*REAL(LPSOLID)*REAL(MPSOLID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPSOLID, MPSOLID, SUBR_BEGEND )
                DO I=1,LPSOLID
                   DO J=1,MPSOLID
                      PSOLID(I,J) = 0
@@ -1692,7 +1633,6 @@
             MB_ALLOCATED = RLONG*REAL(LPUSER1)*REAL(MPUSER1)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPUSER1, MPUSER1, SUBR_BEGEND )
                DO I=1,LPUSER1
                   DO J=1,MPUSER1
                      PUSER1(I,J) = 0
@@ -1719,7 +1659,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPUSER1)*REAL(MRPUSER1)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPUSER1, MRPUSER1, SUBR_BEGEND )
                DO I=1,LPUSER1
                   DO J=1,MRPUSER1
                      RPUSER1(I,J) = ZERO
@@ -1746,7 +1685,6 @@
             MB_ALLOCATED = RLONG*REAL(LPUSERIN)*REAL(MPUSERIN)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPUSERIN, MPUSERIN, SUBR_BEGEND )
                DO I=1,LPUSERIN
                   DO J=1,MPUSERIN
                      PUSERIN(I,J) = 0
@@ -1773,7 +1711,6 @@
             MB_ALLOCATED = RLONG*REAL(LPUSERIN)*REAL(MUSERIN_MAT_NAMES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPUSERIN, MUSERIN_MAT_NAMES, SUBR_BEGEND )
                DO I=1,LPUSERIN
                   DO J=1,MUSERIN_MAT_NAMES
                      USERIN_MAT_NAMES(I,J)(1:) = ' '
@@ -1802,7 +1739,6 @@
             MB_ALLOCATED = RLONG*REAL(USERIN_NUM_ACT_GRDS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, USERIN_NUM_ACT_GRDS, 1, SUBR_BEGEND )
                DO I=1,USERIN_NUM_ACT_GRDS
                   USERIN_ACT_GRIDS(I) = 0
                ENDDO
@@ -1827,7 +1763,6 @@
             MB_ALLOCATED = RLONG*REAL(USERIN_NUM_ACT_GRDS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, USERIN_NUM_ACT_GRDS, 1, SUBR_BEGEND )
                DO I=1,USERIN_NUM_ACT_GRDS
                   USERIN_ACT_COMPS(I) = 0
                ENDDO
@@ -1854,7 +1789,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LVVEC)*THREE/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LVVEC, 3, SUBR_BEGEND )
                DO I=1,LVVEC
                   DO J=1,3
                      VVEC(I,J) = ZERO
@@ -1881,7 +1815,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LBAROFF)*SIX/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LBAROFF, 6, SUBR_BEGEND )
                DO I=1,LBAROFF
                   DO J=1,6
                      BAROFF(I,J) = ZERO
@@ -1908,7 +1841,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LBUSHOFF)*SIX/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LBUSHOFF, 6, SUBR_BEGEND )
                DO I=1,LBUSHOFF
                   DO J=1,6
                      BUSHOFF(I,J) = ZERO
@@ -1935,7 +1867,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPLATEOFF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPLATEOFF, 1, SUBR_BEGEND )
                DO I=1,LPLATEOFF
                   PLATEOFF(I) = ZERO
                ENDDO
@@ -1960,7 +1891,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPLATETHICK)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPLATETHICK, 1, SUBR_BEGEND )
                DO I=1,LPLATETHICK
                   PLATETHICK(I) = ZERO
                ENDDO
@@ -1985,7 +1915,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LMATANGLE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LMATANGLE, 1, SUBR_BEGEND )
                DO I=1,LMATANGLE
                   MATANGLE(I) = ZERO
                ENDDO
@@ -2012,7 +1941,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRID)*REAL(MGRID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, MGRID, SUBR_BEGEND )
                DO I=1,LGRID
                   DO J=1,MGRID
                      GRID(I,J) = 0
@@ -2039,7 +1967,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LGRID)*REAL(MRGRID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, MRGRID, SUBR_BEGEND )
                DO I=1,LGRID
                   DO J=1,MRGRID
                      RGRID(I,J) = ZERO
@@ -2068,7 +1995,6 @@
             MB_ALLOCATED = RLONG*REAL(LCORD)*REAL(MCORD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCORD, MCORD, SUBR_BEGEND )
                DO I=1,LCORD
                   DO J=1,MCORD
                      CORD(I,J) = 0
@@ -2095,7 +2021,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LCORD)*REAL(MRCORD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCORD, MRCORD, SUBR_BEGEND )
                DO I=1,LCORD
                   DO J=1,MRCORD
                      RCORD(I,J) = ZERO
@@ -2124,7 +2049,6 @@
             MB_ALLOCATED = RLONG*REAL(LCMASS)*REAL(MCMASS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCMASS, MCMASS, SUBR_BEGEND )
                DO I=1,LCMASS
                   DO J=1,MCMASS
                      CMASS(I,J) = 0
@@ -2151,7 +2075,6 @@
             MB_ALLOCATED = RLONG*REAL(LPMASS)*REAL(MPMASS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPMASS, MPMASS, SUBR_BEGEND )
                DO I=1,LPMASS
                   DO J=1,MPMASS
                      PMASS(I,J) = 0
@@ -2178,7 +2101,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LCMASS)*REAL(MRPMASS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCMASS, MRPMASS, SUBR_BEGEND )
                DO I=1,LPMASS
                   DO J=1,MRPMASS
                      RPMASS(I,J) = ZERO
@@ -2207,7 +2129,6 @@
             MB_ALLOCATED = RLONG*REAL(LCONM2)*REAL(MCONM2)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCONM2, MCONM2, SUBR_BEGEND )
                DO I=1,LCONM2
                   DO J=1,MCONM2
                      CONM2(I,J) = 0
@@ -2234,7 +2155,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LCONM2)*REAL(MRCONM2)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LCONM2, MRCONM2, SUBR_BEGEND )
                DO I=1,LCONM2
                   DO J=1,MRCONM2
                      RCONM2(I,J) = ZERO
@@ -2263,7 +2183,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, 1, SUBR_BEGEND )
                DO I=1,LELE
                   ESORT1(I) = 0
                ENDDO
@@ -2290,7 +2209,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, 1, SUBR_BEGEND )
                DO I=1,LELE
                   ESORT2(I) = 0
                ENDDO
@@ -2317,7 +2235,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, 1, SUBR_BEGEND )
                DO I=1,LGRID
                   GRID_ID(I) = 0
                ENDDO
@@ -2344,7 +2261,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, 1, SUBR_BEGEND )
                DO I=1,LGRID
                   GRID_SEQ(I) = 0
                ENDDO
@@ -2369,7 +2285,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRID)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, 1, SUBR_BEGEND )
                DO I=1,LGRID
                   INV_GRID_SEQ(I) = 0
                ENDDO
@@ -2397,7 +2312,6 @@
             MB_ALLOCATED = RLONG*REAL(LSNORM)*REAL(MSNORM)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSNORM, MSNORM, SUBR_BEGEND )
                DO I=1,LSNORM
                   DO J=1,MSNORM
                      SNORM(I,J) = 0
@@ -2424,7 +2338,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LSNORM)*REAL(MRSNORM)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSNORM, MRSNORM, SUBR_BEGEND )
                DO I=1,LSNORM
                   DO J=1,MRSNORM
                      RSNORM(I,J) = ZERO
@@ -2453,7 +2366,6 @@
             MB_ALLOCATED = RLONG*REAL(NGRID)*REAL(MGRID_SNORM)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NGRID, MGRID_SNORM, SUBR_BEGEND )
                DO I=1,NGRID
                   DO J=1,MGRID_SNORM
                      GRID_SNORM(I,J) = ZERO
@@ -2482,7 +2394,6 @@
             MB_ALLOCATED = RDOUBLE*THREE*THREE*REAL(LCORD)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, 3*LCORD, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,3
                      DO K=1,LCORD
@@ -2513,7 +2424,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   OGROUT(I) = 0
                ENDDO
@@ -2538,7 +2448,6 @@
             MB_ALLOCATED = RLONG*REAL(LGRID)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, LSUB, SUBR_BEGEND )
                DO I=1,LGRID
                   DO J=1,LSUB
                      GROUT(I,J) = 0
@@ -2565,7 +2474,6 @@
             MB_ALLOCATED = RLONG*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LSUB, 1, SUBR_BEGEND )
                DO I=1,LSUB
                   OELOUT(I) = 0
                ENDDO
@@ -2590,7 +2498,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, LSUB, SUBR_BEGEND )
                DO I=1,LELE
                   DO J=1,LSUB
                      ELOUT(I,J) = 0
@@ -2619,7 +2526,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, 1, SUBR_BEGEND )
                DO I=1,LELE
                   ELDT(I) = 0
                ENDDO
@@ -2646,7 +2552,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(NDOFG)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NDOFG, LSUB, SUBR_BEGEND )
                DO I=1,NDOFG
                   DO J=1,LSUB
                      SYS_LOAD(I,J) = ZERO
@@ -2675,7 +2580,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LGRID)*REAL(NTSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, NTSUB, SUBR_BEGEND )
                DO I=1,LGRID
                   DO J=1,NTSUB
                      GTEMP(I,J) = GTEMP_INIT
@@ -2704,7 +2608,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(CGTEMP))*REAL(LGRID)*REAL(NTSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LGRID, NTSUB, SUBR_BEGEND )
                DO I=1,LGRID
                   DO J=1,NTSUB
                      CGTEMP(I,J) = CGTEMP_ERR
@@ -2733,7 +2636,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LELE)*REAL(NTSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, NTSUB, SUBR_BEGEND )
                DO I=1,LELE
                   DO J=1,NTSUB
                      ETEMP(I,J) = ETEMP_INIT
@@ -2762,7 +2664,6 @@
             MB_ALLOCATED = RBYTE*REAL(LEN(CETEMP))*REAL(LELE)*REAL(NTSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, NTSUB, SUBR_BEGEND )
                DO I=1,LELE
                   DO J=1,NTSUB
                      CETEMP(I,J) = CETEMP_ERR
@@ -2791,7 +2692,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)*REAL(NTSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, NTSUB, SUBR_BEGEND )
                DO I=1,LELE
                   DO J=1,NTSUB
                      TPNT(I,J) = 0
@@ -2818,7 +2718,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LTDAT)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LTDAT, 1, SUBR_BEGEND )
                DO I=1,LTDAT
                   TDATA(I) = ZERO
                ENDDO
@@ -2845,7 +2744,6 @@
             MB_ALLOCATED = RLONG*REAL(LELE)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LELE, LSUB, SUBR_BEGEND )
                DO I=1,LELE
                   DO J=1,LSUB
                      PPNT(I,J) = 0
@@ -2872,7 +2770,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(LPDAT)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPDAT, 1, SUBR_BEGEND )
                DO I=1,LPDAT
                   PDATA(I) = ZERO
                ENDDO
@@ -2897,7 +2794,6 @@
             MB_ALLOCATED = REAL(BYTE)*REAL(LPDAT)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPDAT, 1, SUBR_BEGEND )
                DO I=1,LELE
                   PTYPE(I) = ' '
                ENDDO
@@ -2924,7 +2820,6 @@
             MB_ALLOCATED = RLONG*REAL(NPLOAD4_3D)*REAL(MPLOAD4_3D_DATA)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LPDAT, 1, SUBR_BEGEND )
                DO I=1,NPLOAD4_3D
                   DO J=1,MPLOAD4_3D_DATA
                      PLOAD4_3D_DATA(I,J) = 0
@@ -2953,7 +2848,6 @@
             MB_ALLOCATED = RLONG*REAL(MELGP+1)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELGP+1, 1, SUBR_BEGEND )
                DO I=1,MELGP+1
                   AGRID(I) = 0
                ENDDO
@@ -2978,7 +2872,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3007,7 +2900,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3036,7 +2928,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3065,7 +2956,6 @@
             MB_ALLOCATED = RLONG*REAL(MELGP+1)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELGP+1, 1, SUBR_BEGEND )
                DO I=1,MELGP+1
                   BGRID(I) = 0
                ENDDO
@@ -3090,7 +2980,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   DOFPIN(I) = 0
                ENDDO
@@ -3115,7 +3004,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MDT)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MDT, LSUB, SUBR_BEGEND )
                DO I=1,MDT
                   DO J=1,LSUB
                      DT(I,J) = ZERO
@@ -3142,7 +3030,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, MELDOF, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,MELDOF
                      KE(I,J) = ZERO
@@ -3169,7 +3056,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, MELDOF, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,MELDOF
                      KEG(I,J) = ZERO
@@ -3196,7 +3082,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, MELDOF, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,MELDOF
                      KED(I,J) = ZERO
@@ -3223,7 +3108,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, MELDOF, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,MELDOF
                      KEM(I,J) = ZERO
@@ -3250,7 +3134,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, MELDOF, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,MELDOF
                      ME(I,J) = ZERO
@@ -3277,7 +3160,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MOFFSET)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MOFFSET, 3, SUBR_BEGEND )
                DO I=1,MOFFSET
                   DO J=1,3
                      OFFDIS(I,J) = ZERO
@@ -3304,7 +3186,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MOFFSET)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MOFFSET, 3, SUBR_BEGEND )
                DO I=1,MOFFSET
                   DO J=1,3
                      OFFDIS_O(I,J) = ZERO
@@ -3331,7 +3212,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MOFFSET)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MOFFSET, 3, SUBR_BEGEND )
                DO I=1,MOFFSET
                   DO J=1,3
                      OFFDIS_B(I,J) = ZERO
@@ -3358,7 +3238,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MOFFSET)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MOFFSET, 3, SUBR_BEGEND )
                DO I=1,MOFFSET
                   DO J=1,3
                      OFFDIS_G(I,J) = ZERO
@@ -3385,7 +3264,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MOFFSET)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MOFFSET, 1, SUBR_BEGEND )
                DO I=1,MOFFSET
                   OFFSET(I)(1:) = 'N'
                ENDDO 
@@ -3410,7 +3288,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   PEB(I) = 0
                ENDDO
@@ -3435,7 +3312,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   PEG(I) = 0
                ENDDO
@@ -3460,7 +3336,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   PEL(I) = 0
                ENDDO
@@ -3485,7 +3360,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, LSUB, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,LSUB
                      PPE(I,J) = ZERO
@@ -3512,7 +3386,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MPRESS)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MPRESS, LSUB, SUBR_BEGEND )
                DO I=1,MPRESS
                   DO J=1,LSUB
                      PRESS(I,J) = ZERO
@@ -3539,7 +3412,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELDOF)*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, LSUB, SUBR_BEGEND )
                DO I=1,MELDOF
                   DO J=1,LSUB
                      PTE(I,J) = ZERO
@@ -3566,7 +3438,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3595,7 +3466,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3624,7 +3494,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(3)*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, MELDOF*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,MELDOF
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3653,7 +3522,6 @@
             MB_ALLOCATED = RDOUBLE*THREE*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, LSUB*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,LSUB
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3682,7 +3550,6 @@
             MB_ALLOCATED = RDOUBLE*THREE*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, LSUB*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,LSUB
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3711,7 +3578,6 @@
             MB_ALLOCATED = RDOUBLE*THREE*REAL(LSUB)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, 3, LSUB*MAX_STRESS_POINTS+1, SUBR_BEGEND )
                DO I=1,3
                   DO J=1,LSUB
                      DO K=1,MAX_STRESS_POINTS+1
@@ -3740,7 +3606,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   UEB(I) = 0
                ENDDO
@@ -3765,7 +3630,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   UEG(I) = 0
                ENDDO
@@ -3790,7 +3654,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   UEL(I) = 0
                ENDDO
@@ -3815,7 +3678,6 @@
             MB_ALLOCATED = RLONG*REAL(MELDOF)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELDOF, 1, SUBR_BEGEND )
                DO I=1,MELDOF
                   UGG(I) = 0
                ENDDO
@@ -3840,7 +3702,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELGP+1)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELGP+1, 3, SUBR_BEGEND )
                DO I=1,MELGP+1
                   DO J=1,3
                      XEB(I,J) = ZERO
@@ -3867,7 +3728,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELGP)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MELGP, 3, SUBR_BEGEND )
                DO I=1,MELGP
                   DO J=1,3
                      XEL(I,J) = ZERO
@@ -3894,7 +3754,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(MELGP)*REAL(3)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, MAX_GAUSS_POINTS*MAX_GAUSS_POINTS, 3, SUBR_BEGEND )
                DO I=1,MAX_GAUSS_POINTS
                   DO J=1,2
                      XGL(I,J) = ZERO
@@ -3923,7 +3782,6 @@
             MB_ALLOCATED = RLONG*REAL(LRIGEL)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LRIGEL, 1, SUBR_BEGEND )
                DO I=1,LRIGEL
                   RIGID_ELEM_IDS(I) = 0
                ENDDO
@@ -3950,7 +3808,6 @@
             MB_ALLOCATED = RLONG*REAL(LIND_GRDS_MPCS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LIND_GRDS_MPCS, 1, SUBR_BEGEND )
                DO I=1,LIND_GRDS_MPCS
                   MPC_IND_GRIDS(I) = 0
                ENDDO
@@ -3977,7 +3834,6 @@
             MB_ALLOCATED = RLONG*REAL(NGRID)*REAL(MAX_ELEM_DEGREE+2)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NGRID, MAX_ELEM_DEGREE+2, SUBR_BEGEND )
                DO I=1,NGRID
                   DO J=1,MAX_ELEM_DEGREE+2
                      GRID_ELEM_CONN_ARRAY(I,J) = 0

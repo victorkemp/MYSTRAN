@@ -91,7 +91,7 @@
       INTEGER(LONG)                   :: TDOF_ROW_NUM      ! Row number in array TDOF
                                                            ! Indicator for output of elem data to BUG file
       INTEGER(LONG)                   :: LTERM             ! Either LTERM_KGGD (BUCKLING) or LTERM_KGG otherwise
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP_BEGEND
+
 
       REAL(DOUBLE)                    :: DQE(MELDOF,NSUB)  ! Dummy array in call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

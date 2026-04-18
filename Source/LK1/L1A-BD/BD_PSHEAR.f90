@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: MATERIAL_ID   = 0 ! Material ID
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this parent property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PSHEAR_BEGEND
+
 
       REAL(DOUBLE)                    :: R8INP             ! Real value read from a field on the PSHEAR entry
 

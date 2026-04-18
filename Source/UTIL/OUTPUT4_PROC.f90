@@ -125,7 +125,7 @@
       INTEGER(LONG)                   :: VAL_C             ! Non-zero vals in OU4_PARTVEC_ROWS
       INTEGER(LONG)                   :: VAL_R             ! Non-zero vals in OU4_PARTVEC_COLS
       INTEGER(LONG)                   :: UNT               ! 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTPUT4_PROC_BEGEND
+
 
 
 

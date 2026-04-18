@@ -85,7 +85,7 @@
       INTEGER(LONG)                   :: IORDXX            ! Gaussian integration order to use when subr ORDER is called
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 4     ! Quad has 4 nodes
                                                            ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT2_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

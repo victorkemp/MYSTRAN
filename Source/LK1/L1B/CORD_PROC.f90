@@ -116,7 +116,7 @@
 !                                                            CORD1R each of the 3 cols will have the same coord sys value in row 1.
 
       INTEGER(LONG)                   :: RID_ARRAY_COL     ! Col number in RID_ARRAY
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CORD_PROC_BEGEND
+
   
       REAL(DOUBLE)                    :: EMTN(3,3)         ! A coord transf matrix from some coord system to basic
       REAL(DOUBLE)                    :: EPS1              ! A small number
@@ -1178,7 +1178,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
       INTEGER(LONG), INTENT(OUT)      :: IERROR            ! Count of the number of duplicate coord system ID's
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: DUMCORD(NCORD)    ! Dummy array of coord system ID's sorted
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CORD_PROC_BEGEND
+
   
 
 

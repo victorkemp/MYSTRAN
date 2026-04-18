@@ -61,7 +61,7 @@
       INTEGER(LONG)                   :: GID        = 0     ! Grid ID (or 0) of the grid that the rotational grav accels refer to
       INTEGER(LONG)                   :: JERR       = 0     ! A local error count
       INTEGER(LONG)                   :: SETID      = 0     ! Set ID on the GRAV card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_GRAV_BEGEND
+
   
       REAL(DOUBLE)                    :: ACCEL(6)           ! Gravity magnitudes in the 3 translational and 3 rotational dirs
       REAL(DOUBLE)                    :: SCALEF     = ZERO  ! Scale factor on the GRAV card

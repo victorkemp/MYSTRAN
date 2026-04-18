@@ -48,7 +48,7 @@
 
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_DLR_BEGEND
+
 
       END SUBROUTINE SOLVE_DLR
 

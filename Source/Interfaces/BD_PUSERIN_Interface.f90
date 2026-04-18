@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
       INTEGER(LONG)                   :: IN4_NUM           ! IN4 file number read from field 3 of RPUSERIN entry
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PUSERIN_BEGEND
+
 
       END SUBROUTINE BD_PUSERIN
 

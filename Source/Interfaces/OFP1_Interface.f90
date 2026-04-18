@@ -59,7 +59,7 @@
       INTEGER(LONG), INTENT(INOUT)    :: ITABLE            ! 
       LOGICAL, INTENT(INOUT)          :: NEW_RESULT        ! is this the first result of a table
       INTEGER(LONG)                   :: NREQ              ! Number of user requested outputs of displ/force
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP1_BEGEND
+
 
       END SUBROUTINE OFP1
 

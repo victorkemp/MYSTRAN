@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: MATIN_SDIA        ! No. of superdiags in the MATIN upper triangle
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows in sparse matrix MATIN
       INTEGER(LONG), PARAMETER        :: NUM_COLS    = 1   ! Number of vectors to solve in this call
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FBS_LAPACK_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: EQUIL_SCALE_FACS(NROWS)
 

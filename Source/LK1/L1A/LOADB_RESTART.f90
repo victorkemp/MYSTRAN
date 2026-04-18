@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: INT_VAL             ! Integer value read fron a card field
       INTEGER(LONG)                   :: IERR                ! Error indicator from subr FFIELD
       INTEGER(LONG)                   :: IOCHK               ! IOSTAT error number when reading Bulk Data cards from unit IN1 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB_RESTART_BEGEND
+
  
 
 

@@ -71,7 +71,7 @@
 !                                                            (this can be > NUM_ELEM since more than 1 row is written to OGEL
 !                                                            for ELFORCE(NODE) - elem nodal forces)
                                                            ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_ELFN_BEGEND
+
  
       INTRINSIC IAND
   

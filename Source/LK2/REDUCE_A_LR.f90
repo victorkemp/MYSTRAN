@@ -75,7 +75,7 @@
       INTEGER(LONG)                   :: I,J                   ! DO loop indices               
       INTEGER(LONG)                   :: PART_VEC_A_LR(NDOFA)  ! Partitioning vector (N set into F and S sets) 
       INTEGER(LONG)                   :: PART_VEC_SUB(NSUB)    ! Partitioning vector (1's for all subcases) 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_A_LR_BEGEND
+
 
       REAL(DOUBLE)                    :: KLL_DIAG(NDOFL)       ! Diagonal terms from KLL
       REAL(DOUBLE)                    :: KLL_MAX_DIAG          ! Max diag term from  KLL

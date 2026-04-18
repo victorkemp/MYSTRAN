@@ -43,7 +43,7 @@
       CHARACTER(LEN=JCARD_LEN)               :: TCHR_FLD          ! Temporary char field 
  
       INTEGER(LONG)                          :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER               :: SUBR_BEGEND = LEFT_ADJ_BDFLD_BEGEND
+
  
 
 

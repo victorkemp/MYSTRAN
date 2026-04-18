@@ -52,7 +52,7 @@
 
       INTEGER(LONG)                   :: GAUSS_PT             ! Gauss point number (used for DEBUG output in subr SHP2DQ
       INTEGER(LONG), PARAMETER        :: IORD_PCOMP = 2       ! Int order for nonsym layup PCOMP must be 2 (checked in subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QDEL1_BEGEND
+
   
       REAL(DOUBLE)                    :: M0                   ! An intermediate variable used in calc elem mass, ME
 

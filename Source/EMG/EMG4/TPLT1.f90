@@ -59,7 +59,7 @@
       INTEGER(LONG)                   :: I2                ! Part of a computed index into array S
       INTEGER(LONG)                   :: J1                ! A computed index into array KE
       INTEGER(LONG)                   :: K1                ! A computed index into array KE
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TPLT1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: X2E               ! x coord of elem node 2
@@ -498,7 +498,7 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ATRA'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TPLT1_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A1(3,3)           ! ALPHA-mi matrix
       REAL(DOUBLE) , INTENT(IN)       :: A2(3,3)           ! ALPHA-kj matrix

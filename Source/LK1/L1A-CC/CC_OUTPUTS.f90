@@ -61,7 +61,7 @@
       INTEGER(LONG)                   :: IERR        = 0   ! Error designator from subr PARSE_CSV_STRING
       INTEGER(LONG)                   :: NUM_WORDS   = 0   ! Number of words in the string between parens (), if present
       INTEGER(LONG)                   :: STRING_LEN  = 0   ! Length of character string between "()" in the ELDATA card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_OUTPUTS_BEGEND
+
  
 
 

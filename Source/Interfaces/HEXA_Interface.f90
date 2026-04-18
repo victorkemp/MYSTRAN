@@ -55,7 +55,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID             ! Internal element ID
       INTEGER(LONG), INTENT(IN)       :: IORD                   ! Gaussian integration order for element
       INTEGER(LONG)                   :: GAUSS_PT               ! Gauss point number (used for DEBUG output in subr SHP3DH
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = HEXA_BEGEND
+
   
       REAL(DOUBLE)                    :: CBAR(3,3*ELGP)         ! Derivatives of shape fcns wrt x,y,z used in diff stiff matrix
       REAL(DOUBLE)                    :: DUM0(3*ELGP)           ! Intermediate matrix used in solving for elem matrices

@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       CHARACTER(8*BYTE), INTENT(IN)   :: ETYPE             ! the name of the element
       INTEGER(LONG), INTENT(INOUT)    :: ITABLE            ! the op2 subtable name
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PLY_STRAINS_BEGEND
+
       INTEGER(LONG)                   :: STRESS_CODE       ! flag for op2
   
       END SUBROUTINE WRITE_PLY_STRAINS

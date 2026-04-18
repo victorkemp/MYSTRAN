@@ -67,7 +67,7 @@
       INTEGER(LONG), PARAMETER        :: IORD_PCOMP = 2       ! Int order for nonsym layup PCOMP must be 2 (checked in subr
 !                                                               SHELL_ABD_MATRICES)
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QDEL1_BEGEND
+
   
       REAL(DOUBLE)                    :: AREA                 ! Elem area
       REAL(DOUBLE)                    :: AR                   ! Elem aspect ratio

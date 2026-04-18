@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_SPC_FND        ! 'Y' if B.D  card w/ same set ID as C.C. SPC = SID
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPCADD_BEGEND
+
  
       END SUBROUTINE BD_SPCADD
 

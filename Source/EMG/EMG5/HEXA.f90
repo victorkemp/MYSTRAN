@@ -86,7 +86,7 @@
       INTEGER(LONG)                   :: K1,K2,K3,K4            ! Array indices
       INTEGER(LONG)                   :: K5,K6,K7,K8            ! Array indices
                                                                 ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = HEXA_BEGEND
+
       INTEGER(LONG)                   :: STR_PT_NUM             ! Stress point number. 1 is center, 2+ are element nodes 1+.
 
       REAL(DOUBLE)                    :: ALP(6)                 ! First col of ALPVEC

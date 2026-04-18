@@ -43,7 +43,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILERR_BEGEND
+
 
 
 

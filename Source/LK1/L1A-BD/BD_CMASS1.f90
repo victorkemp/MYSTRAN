@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: CMASS_ELID        ! Element ID
       INTEGER(LONG)                   :: GPOINT1,GPOINT2   ! 2 grid points (1 must be blank or zero)
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CMASS_BEGEND
+
  
 
 

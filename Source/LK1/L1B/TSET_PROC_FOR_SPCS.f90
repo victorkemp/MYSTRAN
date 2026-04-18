@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: RSPC              ! SPC displ value (nonzero's are enforced displ's)

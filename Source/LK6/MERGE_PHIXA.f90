@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: ROW_NUM_DLR         ! Row number in matrix DLR
       INTEGER(LONG)                   :: ROW_NUM_EV          ! Row number in matrix EIGEN_VEC (L-set eigenvectors)
       INTEGER(LONG)                   :: ROW_NUM_IRR         ! Row number in matrix IRR (R-set identity matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_PHIXA_BEGEND
+
        
 
 

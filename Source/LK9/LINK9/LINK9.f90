@@ -158,7 +158,7 @@
       INTEGER(LONG)                   :: SC_STRE_OUTPUT    ! = 1 if requests for output of elem stresses in a particular S/C
       INTEGER(LONG)                   :: SC_STRN_OUTPUT    ! = 1 if requests for output of elem strains  in a particular S/C
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: EPS1              ! Small number to compare against zero
       REAL(DOUBLE)                    :: UGV               ! A G-set vector read from file L5A

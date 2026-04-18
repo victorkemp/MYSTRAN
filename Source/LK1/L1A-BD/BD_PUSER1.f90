@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: MATERIAL_ID   = 0 ! Material ID (field 3 of this property card)
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PUSER1_BEGEND
+
 
 
 

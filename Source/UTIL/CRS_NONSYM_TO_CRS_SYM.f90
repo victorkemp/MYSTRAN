@@ -78,7 +78,7 @@
       INTEGER(LONG)                   :: KEND_A            ! Index into array I_A where a row of matrix A ends
       INTEGER(LONG)                   :: KTERM_B           ! Count of number of nonzero terms put into output matrix B
       INTEGER(LONG)                   :: A_NTERM_ROW_I     ! Number of terms in a row of input matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRS_NONSYM_TO_CRS_SYM_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERM_A)        ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)        ! Real nonzero values in output matrix B

@@ -49,7 +49,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_FULL_MAT_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_FULL_MAT
 

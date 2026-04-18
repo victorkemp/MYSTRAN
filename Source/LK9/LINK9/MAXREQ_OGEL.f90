@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: MAXELOUT             ! Max of MAXELOUT_SC for all subcases
       INTEGER(LONG)                   :: NREQ_EL(METYPE,0:15) ! No. of requests in ELOUT for each bit of ELOUT for 1 subcase
       INTEGER(LONG)                   :: NREQ_GR(0:15)        ! No. of requests in GROUT for each bit of GROUT for 1 subcase
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MAXREQ_OGEL_BEGEND
+
  
       INTRINSIC                       :: IAND, MAX 
  

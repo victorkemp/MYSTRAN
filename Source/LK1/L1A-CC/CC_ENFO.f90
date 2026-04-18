@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: ECOL              ! Col, on CARD, where "=" sign is located
       INTEGER(LONG)                   :: IEND              ! Col where end of data is on CARD1
       INTEGER(LONG)                   :: IERR              ! Output from subr CSHIFT indicating an error
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_ENFO_BEGEND
+
  
 
 

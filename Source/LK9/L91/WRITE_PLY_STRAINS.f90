@@ -59,7 +59,7 @@
       INTEGER(LONG)                   :: BDY_GRID          ! Grid for a boundary DOF in CB analyses
       INTEGER(LONG)                   :: BDY_DOF_NUM       ! DOF number for BDY_GRID/BDY_COMP
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PLY_STRAINS_BEGEND
+
   
       REAL(DOUBLE)                    :: ABS_ANS(10)       ! Max ABS for all grids output for each of the 6 disp components
       REAL(DOUBLE)                    :: MAX_ANS(10)       ! Max for all grids output for each of the 6 disp components

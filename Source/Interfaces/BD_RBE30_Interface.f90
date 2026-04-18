@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: IRBE3             ! Count of number of grid/comp/coeff triplets on this RBE3 logical card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE30_BEGEND
+
  
       END SUBROUTINE BD_RBE30
 

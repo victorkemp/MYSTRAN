@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
       INTEGER(LONG)                   :: SETID     = 0     ! SPC set ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPC1_BEGEND
+
 
       REAL(DOUBLE) , PARAMETER        :: RSPCJ     = ZERO  ! Enforced displ value (always zero on SPC1). Included for file LINK1O
 !                                                            with SPC format.

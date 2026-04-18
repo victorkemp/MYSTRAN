@@ -77,7 +77,7 @@
       INTEGER(LONG)                   :: NUM_PTS(METYPE)   ! Num diff force points for one element
       integer(long)                   :: num_pcomp_elems   ! number of elements that are composites (used to prevent output of engr
 !                                                            forces for PCOMP elems until I fix that output)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_ELFE_2D_BEGEND
+
                                                            ! Stress index (1 through 9) where poly fit err is max
       INTEGER(LONG)                   :: STRESS_OUT_ERR_INDEX(MAX_STRESS_POINTS)
 

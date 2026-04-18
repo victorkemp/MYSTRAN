@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: COL               ! A computed col number in the elem stiff matrix
       INTEGER(LONG)                   :: NCOL              ! An input to subr MULT_OFFSET, called herein
       INTEGER(LONG)                   :: METH              ! An input to subr MULT_OFFSET, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOFF_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM3(3,3)         ! An intermediate result when calculating offset SEi
       REAL(DOUBLE)                    :: DUM4(3,3)         ! An intermediate result when calculating offset SEi
@@ -654,7 +654,7 @@
       INTEGER(LONG), INTENT(IN)       :: METH              ! = 1 if A*E is to be calculated
                                                            ! = 2 if E(transp)*A is to be calculated
       INTEGER(LONG), INTENT(IN)       :: NCOLA             ! Number of cols in matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOFF_BEGEND + 1
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(3,NCOLA)        ! Matrix to either post-multiply E by or pre-multiply E(transp) by
       REAL(DOUBLE) , INTENT(IN)       :: DX                ! Offset distance in direction 1

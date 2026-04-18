@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_L1_MGG_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -85,7 +85,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   I2_MGG(I) = 0
                ENDDO
@@ -111,7 +110,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   I_MGGC(I) = 1
                ENDDO
@@ -136,7 +134,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   J_MGGC(I) = 0
                ENDDO
@@ -161,7 +158,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   MGGC(I) = ZERO
                ENDDO
@@ -188,7 +184,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   I_MGGE(I) = 1
                ENDDO
@@ -213,7 +208,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   J_MGGE(I) = 0
                ENDDO
@@ -238,7 +232,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   MGGE(I) = ZERO
                ENDDO
@@ -265,7 +258,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   I_MGGS(I) = 1
                ENDDO
@@ -290,7 +282,6 @@
             MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   J_MGGS(I) = 0
                ENDDO
@@ -315,7 +306,6 @@
             MB_ALLOCATED = RDOUBLE*REAL(NROWS)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   MGGS(I) = ZERO
                ENDDO

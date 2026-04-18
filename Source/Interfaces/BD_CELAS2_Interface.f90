@@ -42,7 +42,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CELAS_BEGEND
+
  
       END SUBROUTINE BD_CELAS2
 

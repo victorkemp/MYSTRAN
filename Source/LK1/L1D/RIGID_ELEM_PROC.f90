@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: IERR  = 0         ! Count of read errors when rigid elem data file is read
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND
+
  
 
 

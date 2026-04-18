@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IERROR            ! Count of errors. Error occurs if a diag KE for a pinflaged DOF is zero
       INTEGER(LONG)                   :: PDOF              ! A DOF component number (1 digit) from array DOFPIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PINFLG_BEGEND
+
   
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare for real zero
  

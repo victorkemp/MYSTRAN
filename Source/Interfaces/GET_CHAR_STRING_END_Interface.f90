@@ -42,7 +42,7 @@
       CHARACTER(LEN=*) , INTENT(IN)   :: CHAR_STRING       ! String to get ending of
 
       INTEGER(LONG)    , INTENT(OUT)  :: IEND              ! Col where CHAR_STRING stops having non blanks 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_CHAR_STRING_END_BEGEND
+
 
       END SUBROUTINE GET_CHAR_STRING_END
 

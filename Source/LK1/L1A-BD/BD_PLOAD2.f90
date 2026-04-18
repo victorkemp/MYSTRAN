@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: J                  ! DO loop index
       INTEGER(LONG)                   :: JERR               ! Error count
       INTEGER(LONG)                   :: SETID              ! Load set ID on PLOADi card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PLOAD2_BEGEND
+
   
       REAL(DOUBLE)  :: RPRESS
  

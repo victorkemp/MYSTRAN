@@ -129,7 +129,7 @@
       INTEGER(LONG)                   :: NULSET            ! Output from subr SETPRO. If 0, there were no SET's in ALL_SETS_ARRAY
       INTEGER(LONG)                   :: SETID             ! = 0, -1, or pos integer set ID read from array SC_xxxx
       INTEGER(LONG)                   :: TOKLEN        = 0 ! Length (bytes) of TOKSTR sent to subr STOKEN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND
+
   
       INTRINSIC                       :: IAND,IBCLR,IBSET
  
@@ -1353,7 +1353,7 @@ token_loop3:DO                                             ! Call STOKEN in a DO
       INTEGER(LONG)                   :: SET_2_BEG         ! Pos'n in SETCHR where next 'SET' begins (where the chars 'SET' begin)
       INTEGER(LONG)                   :: SID_BEG           ! Pos'n in SETCHR where a sets ID begins
       INTEGER(LONG)                   :: SID_END           ! Pos'n in SETCHR where a sets ID ends
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND + 1
+
  
       INTRINSIC INDEX
  

@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: R_SET_GRIDS(NDOFR)! Array of grids for the R-set
       INTEGER(LONG)                   :: R_SET_COMPS(NDOFR)! Array of displ components for the R-set
       INTEGER(LONG)                   :: R_SET_COL         ! Col in TDOFI array where R-set exists
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MPFACTOR_BEGEND
+
 
       REAL(DOUBLE)                    :: CYCLES            ! Circular frequency of a mode
       !LOGICAL                        :: WRITE_F06  ! flag

@@ -59,7 +59,7 @@
  
       INTEGER(LONG)                   :: NG                 ! Actual num grids on CUSERIN (not incl SPOINT's)
       INTEGER(LONG)                   :: NS                 ! Actual num SPOINT'ss on CUSERIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB_BEGEND
+
  
       END SUBROUTINE LOADB
 

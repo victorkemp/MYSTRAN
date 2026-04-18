@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: PGM_ERR   = 0     ! A  count of the number of coding errors
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_BAROR_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small value to compare zero to
       REAL(DOUBLE)                    :: R8INP             ! A value read from input file that should be a real value

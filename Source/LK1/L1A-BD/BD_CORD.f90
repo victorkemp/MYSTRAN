@@ -54,7 +54,7 @@
       INTEGER(LONG)                   :: I4INP     = 0     ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: ICONT     = 0     ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CORD_BEGEND
+
  
 
 

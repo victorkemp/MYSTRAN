@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: ID(9)             ! An input to subr BCHECK, called herein if
       INTEGER(LONG), PARAMETER        :: NR        = 3     ! An input to subr BCHECK, called herein if
       INTEGER(LONG), PARAMETER        :: NC        = 9     ! An input to subr BCHECK, called herein if
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BBMIN3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: A(3)              ! Diffs in x coords of elem
       REAL(DOUBLE) , INTENT(IN)       :: B(3)              ! Diffs in y coords of elem

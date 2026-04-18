@@ -62,7 +62,7 @@
       INTEGER(LONG)                   :: NTERM_KSF              ! Number of nonzeros in sparse matrix KSF (should = NTERM_KFS)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1        ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2        ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KNN_TO_KFF_BEGEND
+
 
       INTRINSIC                       :: DABS
 

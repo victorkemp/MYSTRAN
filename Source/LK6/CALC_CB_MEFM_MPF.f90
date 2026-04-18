@@ -59,7 +59,7 @@
 !                                                              'N' for nonsymmetric storage)
 
       INTEGER(LONG)                   :: I,J,K                   ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_CB_MEFM_MPF_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM1(NDOFR,6)           ! Intermediate matrix
       REAL(DOUBLE)                    :: MEFW_MAT_RR(NDOFR,NDOFR)! Modal eff wgt for 1 mode for all R DOF's

@@ -62,7 +62,7 @@
       INTEGER(LONG)                   :: PCOMP_INDEX       ! Index into PCOMP array
       INTEGER(LONG)                   :: PCOMP_PLIES       ! Number of plies in PCOMP array
       INTEGER(LONG)                   :: PROPERTY_ID       ! Property ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEM_PROP_MATL_IIDS_BEGEND
+
  
 
 

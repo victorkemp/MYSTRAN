@@ -80,7 +80,7 @@
  
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRT_MATS_ON_RESTART_BEGEND
+
 
       END SUBROUTINE PRT_MATS_ON_RESTART
 

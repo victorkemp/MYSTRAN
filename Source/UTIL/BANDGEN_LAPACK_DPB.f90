@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: I,J                  ! DO loop indices
       INTEGER(LONG)                   :: K                    ! Counter
       INTEGER(LONG)                   :: NUM_TERMS_ROW_I      ! Number of terms in MATIN matrix in row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDGEN_BEGEND
+
      
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_MATIN)   ! Array of terms in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(INOUT)    :: MATOUT(KD+1,N)       ! Array of terms in band matrix MATOUT

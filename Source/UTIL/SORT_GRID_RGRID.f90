@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: SORTPK              ! Intermediate variable used in setting a DO loop range.
       INTEGER(LONG)                   :: SORT_NUM            ! How many times the sort has to be performed in order for the data
 !                                                              to be in sort order. SORT_MAX is max value
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORT_GRID_RGRID_BEGEND
+
  
       REAL(DOUBLE),  INTENT(INOUT)    :: RARRAY(NSIZE,MRGRID)! Array RGRID 
       REAL(DOUBLE)                    :: RDUM1               ! Dummy values in RARRAY used when switching RARRAY rows during sort

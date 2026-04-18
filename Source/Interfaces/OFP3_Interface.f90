@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Solution vector number
       INTEGER(LONG), INTENT(INOUT)    :: OT4_EROW          ! Row number in OT4 file for elem related OTM descriptors
       INTEGER(LONG), PARAMETER        :: MERROR = 6        ! Number of error indicators used
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_BEGEND
+
  
       END SUBROUTINE OFP3
 

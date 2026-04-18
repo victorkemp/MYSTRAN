@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: NCOLB             ! No. cols in a matrix for subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG), PARAMETER        :: NROW      = 3     ! No. rows to get/put for subrs MATGET/MATPUT, called herein
       INTEGER(LONG), PARAMETER        :: NROWA     = 3     ! No. rows in a matrix for subr MATMULT_FFF/MATMULT_FFF_T, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMTLB_BEGEND
+
   
       REAL(DOUBLE)                    :: DUM11(3,3)        ! An intermediate result when calculating transformed KE
       REAL(DOUBLE)                    :: DUM12(3,3)        ! An intermediate result when calculating transformed KE

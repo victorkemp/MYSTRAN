@@ -47,7 +47,7 @@
       INTEGER(LONG)                   :: ECOL              ! Col, on CARD, where "=" sign is located
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IERR              ! Output from subr CSHIFT indicating an error
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_LABE_BEGEND
+
  
 
 

@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWS_MAT         ! Number of rows in MAT
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number where to write matrix
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_GRD_OT4_BEGEND
+
  
 
 

@@ -50,7 +50,7 @@
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NET_CG_LOADS_LTM_BEGEND
+
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 

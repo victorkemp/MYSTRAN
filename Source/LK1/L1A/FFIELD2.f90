@@ -85,7 +85,7 @@
  
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! = 1 if a field  is longer than 8 chars on a free field card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FFIELD2_BEGEND
+
  
 
 

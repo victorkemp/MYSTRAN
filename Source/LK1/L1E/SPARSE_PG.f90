@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: KTERM_PG          ! Count of the number of terms written to file L1E for PG loads
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_PG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
 

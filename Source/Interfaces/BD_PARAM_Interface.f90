@@ -81,7 +81,7 @@
 
       INTEGER(LONG)                   :: LOWER             ! Lower allowable value for an integer parameter
       INTEGER(LONG)                   :: UPPER             ! Upper allowable value for an integer parameter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARAM_BEGEND
+
 
       END SUBROUTINE BD_PARAM
 

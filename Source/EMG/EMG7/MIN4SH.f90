@@ -45,7 +45,7 @@
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRT_BUG_THIS_TIME ! If 'Y' then write to BUG file if WRT_BUG array says to
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MIN4SH_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point coordinate
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point coordinate

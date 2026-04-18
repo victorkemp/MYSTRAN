@@ -43,7 +43,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), INTENT(IN)       :: PART_VEC_A_LR(NDOFA)! Partitioning vector (N set into F and S sets) 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_PHIXA_BEGEND
+
        
       END SUBROUTINE MERGE_PHIXA
 

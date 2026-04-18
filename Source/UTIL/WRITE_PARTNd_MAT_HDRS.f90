@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: OUTPUT_1(10)        ! Part of a line of output
       INTEGER(LONG)                   :: OUTPUT_2(10)        ! Part of a line of output
       INTEGER(LONG)                   :: NUM_LEFT            ! Used when printing a line of 10 values in the set
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PARTNd_MAT_HDRS_BEGEND
+
 
 
 

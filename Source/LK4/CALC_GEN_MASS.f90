@@ -60,7 +60,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'CALC_GEN_MASS'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_GEN_MASS_BEGEND
+
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
 
       REAL(DOUBLE)                    :: DMIJ              ! DABS of MIJ

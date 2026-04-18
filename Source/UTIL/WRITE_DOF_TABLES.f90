@@ -44,7 +44,7 @@
       CHARACTER(LEN=DATA_NAM_LEN)     :: DATA_SET_NAME      ! A data set name for output purposes
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices or counters
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_DOF_TABLES_BEGEND
+
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN
 
 

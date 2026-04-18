@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices or counters
       INTEGER(LONG)                   :: INFO              ! Info on success of SuperLU solve
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_UO0_BEGEND
+
 
       REAL(DOUBLE)                    :: NULL_SCALE_FACS(NDOFO)
                                                            ! LAPACK_S values not used so null this vector

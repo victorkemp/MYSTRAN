@@ -67,7 +67,7 @@
       INTEGER(LONG), INTENT(IN )      :: J_A(NTERM_A)      ! Col no's for nonzero terms in matrix A
       INTEGER(LONG), INTENT(IN )      :: J_B(NTERM_B)      ! Col no's for nonzero terms in matrix B
       INTEGER(LONG), INTENT(OUT)      :: NTERM_C           ! Number of nonzero terms in output matrix C
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATADD_SSS_NTERM_BEGEND
+
 
 
       INTEGER(LONG)                   :: ROW

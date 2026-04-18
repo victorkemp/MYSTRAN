@@ -41,7 +41,7 @@
       IMPLICIT NONE
    
       INTEGER(LONG), INTENT(IN)       :: KORDER                   ! Triangular integration order to use
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) , INTENT(OUT)      :: SSS_I (MAX_ORDER_TETRA)  ! Gauss abscissa's
       REAL(DOUBLE) , INTENT(OUT)      :: SSS_J (MAX_ORDER_TETRA)  ! Gauss abscissa's

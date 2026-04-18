@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices.
       INTEGER(LONG)                   :: M1                ! One eigenvector number
       INTEGER(LONG)                   :: PM,QM             ! Indices used in reording the W and Z
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INVERT_EIGENS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: W(MLAM)           ! Eigenvalues
       REAL(DOUBLE) , INTENT(INOUT)    :: Z(N,NVEC)         ! Eigenvectors

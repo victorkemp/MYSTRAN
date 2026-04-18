@@ -52,7 +52,7 @@
       INTEGER(LONG), INTENT(INOUT)             :: TOKEN_BEG   ! On entry, where to start to look for a token in TOKSTR
       INTEGER(LONG), INTENT(OUT)               :: IERROR      ! Integer error no. when an error occurs when processing tokens
       INTEGER(LONG), INTENT(OUT)               :: NTOKEN      ! The number of tokens found in this execution
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = STOKEN_BEGEND
+
 
       END SUBROUTINE STOKEN
 

@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: JCARDI_BEG        ! Position where data begins in one JCARD
       INTEGER(LONG)                   :: JCARDI_END        ! Position where data ends   in one JCARD
       INTEGER(LONG)                   :: NUMBER(2:9)       ! Number of imbedded blanks found in a Bulk Data card field
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_IMBEDDED_BLANK_BEGEND
+
  
 
 

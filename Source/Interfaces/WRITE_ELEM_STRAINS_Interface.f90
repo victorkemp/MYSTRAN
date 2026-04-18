@@ -52,7 +52,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       INTEGER(LONG), INTENT(IN)       :: NUM_PTS           ! Num diff strain points for one element (3rd dim in arrays SEi, STEi)
       INTEGER(LONG), INTENT(INOUT)    :: ITABLE            ! the current op2 subtable, should be -3, -5, ...
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELEM_STRAINS_BEGEND
+
   
       END SUBROUTINE WRITE_ELEM_STRAINS
 

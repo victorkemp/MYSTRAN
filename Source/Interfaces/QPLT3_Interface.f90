@@ -73,7 +73,7 @@
                                                      23 /) ! IDM(12) = 23 means quad elem DOF 12 is MYSTRAN elem DOF 23
 
       INTEGER(LONG), PARAMETER        :: NUM_TRIAS = 4     ! DO NOT CHANGE THIS. Num of triangles that subdivide the QUAD4
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA_QUAD         ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

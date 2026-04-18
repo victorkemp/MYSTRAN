@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_XTIME_BEGEND
+
  
 
 

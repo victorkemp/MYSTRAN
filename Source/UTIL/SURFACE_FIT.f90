@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: I,J                   ! DO loop indices
       INTEGER(LONG)                   :: IFAULT                ! Return code from subr REGCF
       INTEGER(LONG), PARAMETER        :: MAX_COEFFS = 6        ! Maximum number of coefficients coded for ther polynomial fit
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SURFACE_FIT_BEGEND
+
 
       LOGICAL                         :: LINDEP(MAX_COEFFS)
 

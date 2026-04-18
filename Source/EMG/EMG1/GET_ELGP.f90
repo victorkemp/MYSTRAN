@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: NG                ! Number of GRID's for USERIN elem
       INTEGER(LONG)                   :: NS                ! Number of SPOINT's for USERIN elem
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELGP_BEGEND
+
 
 
 

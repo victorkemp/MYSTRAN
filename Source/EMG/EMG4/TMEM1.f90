@@ -58,7 +58,7 @@
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: ID(18)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TMEM1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: X2E               ! x coord of elem node 2

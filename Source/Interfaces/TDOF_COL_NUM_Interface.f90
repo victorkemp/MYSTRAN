@@ -43,7 +43,7 @@
  
       INTEGER(LONG), INTENT(OUT)      :: COL_NUM           ! Col number in array TDOF where displ set CHAR_SET exists
       INTEGER(LONG), PARAMETER        :: OFFSET    = 4     ! Columns of TDOF prior to where the G-set begins
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TDOF_COL_NUM_BEGEND
+
 
       END SUBROUTINE TDOF_COL_NUM
 

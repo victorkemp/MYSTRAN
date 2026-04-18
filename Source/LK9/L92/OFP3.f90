@@ -50,7 +50,7 @@
       INTEGER(LONG), PARAMETER        :: MERROR = 6        ! Number of error indicators used
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IERROR(MERROR)    ! Local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_BEGEND
+
  
 
 

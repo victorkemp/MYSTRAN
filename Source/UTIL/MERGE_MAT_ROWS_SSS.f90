@@ -71,7 +71,7 @@
       INTEGER(LONG)                   :: NUM_IN_ROW_OF_C         ! Num terms in a row of C matrix
       INTEGER(LONG)                   :: ROW_NUM_A               ! Row number in matrix A
       INTEGER(LONG)                   :: ROW_NUM_B               ! Row number in matrix B
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_MAT_ROWS_SSS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)              ! Nonzero terms in matrix A
       REAL(DOUBLE) , INTENT(IN )      :: B(NTERM_B)              ! Nonzero terms in matrix B

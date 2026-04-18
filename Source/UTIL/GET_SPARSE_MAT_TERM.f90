@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: NUM_TERMS_IN_ROW  ! No. terms in row IROW of MATIN
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SPARSE_MAT_TERM_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! Real vals in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(OUT)      :: MATIN_VAL

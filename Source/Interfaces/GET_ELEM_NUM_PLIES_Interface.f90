@@ -41,7 +41,7 @@
       IMPLICIT NONE
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID for which
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELEM_NUM_PLIES_BEGEND
+
 
       END SUBROUTINE GET_ELEM_NUM_PLIES
 

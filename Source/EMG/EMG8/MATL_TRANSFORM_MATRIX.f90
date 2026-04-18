@@ -116,7 +116,7 @@
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'MATL_TRANSFORM_MATRIX'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATL_TRANSFORM_MATRIX_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: T21(3,3)          ! 3x3 matrix that transforms a vector in coord sys 1 to coord sys 2
       REAL(DOUBLE), INTENT(OUT)       :: TS(6,6)           ! 6x6 stress transformation matrix

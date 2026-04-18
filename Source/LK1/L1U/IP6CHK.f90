@@ -65,7 +65,7 @@
       INTEGER(LONG)                       :: I                 ! DO loop index
       INTEGER(LONG)                       :: NUM_DIGITS(6)     ! NUM_DIGITS(I) is a count of the num of digits found in JCARDI
       INTEGER(LONG)                       :: POSN              ! An position in JCARDO
-      INTEGER(LONG), PARAMETER            :: SUBR_BEGEND = IP6CHK_BEGEND
+
  
 
 

@@ -75,7 +75,7 @@
       INTEGER(LONG)                   :: NUM_ENTRIES       ! Count of number of entries placed into array GC_FLDS
       INTEGER(LONG)                   :: NUM_Ci            ! Number of displ components in a DCOMP field
       INTEGER(LONG)                   :: ELID      = 0     ! This elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RSPLINE_BEGEND
+
  
       REAL(DOUBLE)                    :: DL_RAT            ! Value in field 3 for D/L ratio
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this RSPLINE entry

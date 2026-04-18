@@ -90,7 +90,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_L1A_BEGEND
+
 
 
 

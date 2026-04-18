@@ -45,7 +45,7 @@
  
       INTEGER(LONG), PARAMETER        :: LOWER    = 1      ! Lower allowable value for an integer parameter
       INTEGER(LONG)                   :: UPPER    = NDEBUG ! Upper allowable value for an integer parameter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_DEBUG_BEGEND
+
   
       END SUBROUTINE BD_DEBUG
 

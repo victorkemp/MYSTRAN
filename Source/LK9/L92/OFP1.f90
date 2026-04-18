@@ -80,7 +80,7 @@
       INTEGER(LONG)                   :: NUM               ! Count of the number of rows added to array OGEL
       INTEGER(LONG)                   :: NUM_COMPS         ! Either 6 or 1 depending on whether grid is a physical grid or a SPOINT
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP1_BEGEND
+
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
       LOGICAL                         :: WRITE_NEU
 

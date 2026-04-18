@@ -103,7 +103,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: SPOINT            ! Scalra point read from a record of L1W (point where force acts)
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SLOAD_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: FMAG              ! Force magnitude read from a L1W record (force on the SPOINT)

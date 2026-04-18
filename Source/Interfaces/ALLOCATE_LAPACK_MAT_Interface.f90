@@ -50,7 +50,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows in array to be allocated
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols in array to be allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_LAPACK_MAT_BEGEND
+
  
       END SUBROUTINE ALLOCATE_LAPACK_MAT
 

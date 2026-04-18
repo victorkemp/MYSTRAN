@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: ICNT              ! A computed index into array A
       INTEGER(LONG)                   :: ICNT0             ! Part of ICNT
       INTEGER(LONG)                   :: II                ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATGET_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA*NCOLA)    ! Input matrix from which a partition will be extracted
       REAL(DOUBLE) , INTENT(OUT)      :: B(NROW*NCOL)      ! Output matrix, which is the partition extracted from A

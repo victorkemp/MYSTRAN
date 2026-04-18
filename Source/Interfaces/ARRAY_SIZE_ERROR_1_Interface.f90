@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: MATIN_NAME        ! Name of matrix (for output message purposes)
 
       INTEGER(LONG), INTENT(IN)       :: NTERM_VAL         ! Size of the array that was exceeded
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ARRAY_SIZE_ERROR_1_BEGEND
+
 
       END SUBROUTINE ARRAY_SIZE_ERROR_1
 

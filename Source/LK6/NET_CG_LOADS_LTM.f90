@@ -62,7 +62,7 @@
       INTEGER(LONG)                   :: NTERM_CCS1        ! Number of nonzero terms in scratch matrix CCS1
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of nonzero terms in scratch matrix CRS1
       INTEGER(LONG)                   :: NTERM_CRS2        ! Number of nonzero terms in scratch matrix CRS2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NET_CG_LOADS_LTM_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM1(NDOFR,6)     ! MRRcbn*TR6_CG
       REAL(DOUBLE)                    :: DUM2(6,NDOFR)     ! 

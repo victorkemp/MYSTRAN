@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: JERR      = 0     ! Error indicator for several types of error in format #2 of input
       INTEGER(LONG)                   :: SPOINT1   = 0     ! An SPOINT number
       INTEGER(LONG)                   :: SPOINT2   = 0     ! An SPOINT number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPOINT0_BEGEND
+
  
 
 

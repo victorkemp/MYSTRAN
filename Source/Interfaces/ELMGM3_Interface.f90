@@ -48,7 +48,7 @@
 
       INTEGER(LONG)                   :: SIDE_GRID1        ! Used for error output purposes
       INTEGER(LONG)                   :: SIDE_GRID2        ! Used for error output purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM3_BEGEND
+
 
       REAL(DOUBLE)                    :: HEXA_HBAR         ! Warp of HEXA element (only used in calc initial x direction along
       END SUBROUTINE ELMGM3

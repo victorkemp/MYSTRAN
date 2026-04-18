@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! An integer read
       INTEGER(LONG)                   :: IERR              ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CONROD_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read
 

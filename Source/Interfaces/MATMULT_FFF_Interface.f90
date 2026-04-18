@@ -43,7 +43,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWA             ! No. rows in input matrix A
       INTEGER(LONG), INTENT(IN)       :: NCOLA             ! No. cols in input matrix A 
       INTEGER(LONG), INTENT(IN)       :: NCOLB             ! No. cols in input matrix B 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_FFF_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA,NCOLA)    ! Input  matrix A
       REAL(DOUBLE) , INTENT(IN)       :: B(NCOLA,NCOLB)    ! Input  matrix B

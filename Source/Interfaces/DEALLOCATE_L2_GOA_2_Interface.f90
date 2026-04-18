@@ -44,7 +44,7 @@
 
       CHARACTER(24*BYTE)              :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_L2_GOA_2_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_L2_GOA_2
 

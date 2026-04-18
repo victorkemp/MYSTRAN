@@ -44,7 +44,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_IN4_FILES_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_IN4_FILES
 

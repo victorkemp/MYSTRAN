@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: ICNT              ! A computed index into array A
       INTEGER(LONG)                   :: ICNT0             ! Part of ICNT
       INTEGER(LONG)                   :: II                ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATPUT_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: B(NROW*NCOL)      ! Input matrix that will be put into A
       REAL(DOUBLE) , INTENT(INOUT)    :: A(NROWA*NCOLA)    ! Output matrix, containing inserted terms from B

@@ -47,7 +47,7 @@
       CHARACTER(8*BYTE), PARAMETER    :: NAME      = 'CONM2   '
  
       INTEGER(LONG)                   :: NUM_RCONM2_RESET  ! No. RCONM2's reset to zero because they are connected to SPOINT's
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONM2_PROC_1_BEGEND
+
  
       END SUBROUTINE CONM2_PROC_1
 

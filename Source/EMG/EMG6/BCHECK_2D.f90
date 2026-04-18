@@ -53,7 +53,7 @@
 !                                                            4 grids for a 4 node plate bending elem 
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: KK                ! A computed index into array W
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BCHECK_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: B(NROWB,NCOLB)    ! Strain-displ matrix
       REAL(DOUBLE) , INTENT(IN)       :: XB(NUM_GRIDS,3)   ! Basic coords of elem grids (diff than XEB for TPLT2's in a MIN4T QUAD4)

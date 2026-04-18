@@ -70,7 +70,7 @@
       INTEGER(LONG)                   :: O_SET_COL          ! Col no. in array TDOF where the  O-set is (from subr TDOF_COL_NUM)
       INTEGER(LONG)                   :: R_SET_COL          ! Col no. in array TDOF where the  R-set is (from subr TDOF_COL_NUM)
       INTEGER(LONG)                   :: ROW_NUM_START      ! DOF number where TDOF data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = KGG_SINGULARITY_PROC_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: KGRD(6,6)          ! 6x6 diagonal stiffness matrix for grid point AGRID
       REAL(DOUBLE)                    :: FAC                ! Multipling factor used in an intermediate calc

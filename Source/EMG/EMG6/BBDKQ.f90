@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: ID(12)            ! An input to subr BCHECK, called herein
       INTEGER(LONG), PARAMETER        :: NR        = 3     ! An input to subr BCHECK, called herein
       INTEGER(LONG), PARAMETER        :: NC        = 12    ! An input to subr BCHECK, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BBDKQ_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SLN(4)            ! Quad side lengths
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Array of 4 diffs of X dim. of sides

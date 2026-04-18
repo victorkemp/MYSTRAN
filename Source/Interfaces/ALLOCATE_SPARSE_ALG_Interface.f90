@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROW1             ! Number of rows, or starting row num, to allocate to matrix NAME
       INTEGER(LONG), INTENT(IN)       :: NROW2             ! End row number in allocation
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SPARSE_ALG_BEGEND
+
  
       END SUBROUTINE ALLOCATE_SPARSE_ALG
 

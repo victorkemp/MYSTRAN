@@ -45,7 +45,7 @@
       CHARACTER(LEN(JCARDI)), INTENT(OUT) :: JCARDO            ! Output 8 character field, described above
  
       INTEGER(LONG), INTENT(OUT)          :: TOTAL_NUM_DIGITS  ! Total of NUM_DIGITS(I)
-      INTEGER(LONG), PARAMETER            :: SUBR_BEGEND = IP6CHK_BEGEND
+
  
       END SUBROUTINE IP6CHK
 

@@ -54,7 +54,7 @@
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: I,J                ! DO loop indices
       INTEGER(LONG)                   :: NUM_ROWS           ! Number of rows of stress for an element (plates have 2 ZS vals)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHELL_STRAIN_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: ANGLE              ! Angle of prin strains in plate elems (calc'd in subr PRINCIPAL_2D)
       REAL(DOUBLE)                    :: FAILURE_INDEX      ! Failure index (scalar value)

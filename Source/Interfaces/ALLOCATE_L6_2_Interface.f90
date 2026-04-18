@@ -46,7 +46,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
  
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_L6_2_BEGEND
+
  
       END SUBROUTINE ALLOCATE_L6_2
 

@@ -45,7 +45,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Internal subcase or vector number for data to be written
       INTEGER(LONG), INTENT(IN)       :: WHICH             ! Which F2j file to write to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FIJFIL_BEGEND
+
  
       END SUBROUTINE WRITE_FIJFIL
 

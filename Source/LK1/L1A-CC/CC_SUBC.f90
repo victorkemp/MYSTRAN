@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: IERR              ! Output from subr CSHIFT indicating an error
       INTEGER(LONG)                   :: JERR              ! Error indicator if this subcase number is the same as a previous one
       INTEGER(LONG)                   :: SUBCASE_NUM       ! Subcase number from the SUBCASE card being read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SUBC_BEGEND
+
  
 
 

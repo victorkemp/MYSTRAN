@@ -135,7 +135,7 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! Row no. in array TDOF where data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRAV_PROC_BEGEND
+
       
       REAL(DOUBLE)                    :: ACCEL_I(6)        ! 6 components of accel due to gravity at a grid
       REAL(DOUBLE)                    :: ACCEL_I_T1(3)     ! 3 translational components of accel due to gravity at a grid

@@ -51,7 +51,7 @@
  
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: PCOMP_PLIES       ! Number of plies in 1 PCOMP entry incl sym plies not explicitly defined
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELSAVE_BEGEND
+
  
 
 

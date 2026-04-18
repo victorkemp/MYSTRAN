@@ -50,7 +50,7 @@
 !                                                            in the calling subr. In this subr, VEC_NAME is striped of trailing
 !                                                            blanks to get only the actual message. On exit VEC_NAME_LEN is the
 !                                                            length of the finite message in VEC_NAME (i.e. without trailing blanks)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_VECTOR_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: UX(NUM)           ! Vector to write out
  

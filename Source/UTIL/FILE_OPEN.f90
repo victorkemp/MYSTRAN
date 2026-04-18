@@ -131,7 +131,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
+
 
 
 

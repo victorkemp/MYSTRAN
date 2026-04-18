@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows for matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_EMS_ARRAYS_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -86,7 +86,6 @@
          MB_ALLOCATED = RLONG*REAL(NDOFG)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, NDOFG, CR13
             DO I=1,NDOFG
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, NDOFG, CR13
@@ -115,7 +114,6 @@
          MB_ALLOCATED = RLONG*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13
@@ -144,7 +142,6 @@
          MB_ALLOCATED = RLONG*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13
@@ -173,7 +170,6 @@
          MB_ALLOCATED = RDOUBLE*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13

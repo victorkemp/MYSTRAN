@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: NCOLS             ! Number of rows in element stiffness matrix
       INTEGER(LONG)                   :: NROWS             ! Number of cols in element stiffness matrix
       INTEGER(LONG)                   :: NUM_COMPS_GRID_1  ! No. displ components for 1st grid on ELAS elems
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_ELEM_NODE_FORCES_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM1(3),DUM2(3)   ! Intermediate variables
       REAL(DOUBLE)                    :: PHID, THETAD      ! Outputs from subr GEN_T0L

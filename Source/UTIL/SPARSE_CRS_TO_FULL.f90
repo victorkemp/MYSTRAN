@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_IN)   ! Col numbers for nonzero terms in MATIN
       INTEGER(LONG)                   :: I,J,K               ! DO loop indices or counters
       INTEGER(LONG)                   :: ROW_I_NTERMS        ! No. terms in row I of input matrix MATIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_TO_FULL_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_IN)     ! Real nonzero values in input  matrix MATIN
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NROWS,NCOLS) ! Real nonzero values in output matrix MATOUT

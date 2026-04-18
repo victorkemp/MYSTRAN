@@ -44,7 +44,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: N                 ! Dimension of the input vector X
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = VECINORM_BEGEND
+
 
       REAL(DOUBLE),  INTENT(IN)       :: X(N)              ! The input vector for which the infinity norm is calc'd      
       REAL(DOUBLE),  INTENT(OUT)      :: X_INORM           ! The calc'd infinity norm of X

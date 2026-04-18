@@ -46,7 +46,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows in array
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols in array FEMAP_EL_VECS
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_FEMAP_DATA_BEGEND
+
  
       END SUBROUTINE ALLOCATE_FEMAP_DATA
 

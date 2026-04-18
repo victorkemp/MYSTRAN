@@ -51,7 +51,7 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: LTM_MERGE_VEC(6+NDOFR) 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_LTM_BEGEND
+
 
 
 

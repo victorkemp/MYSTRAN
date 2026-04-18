@@ -61,7 +61,7 @@
       INTEGER(LONG), INTENT(IN )      :: COL_PART_VEC(NCOL_A)   ! Col partitioning vector (1's and 2's)
       INTEGER(LONG), INTENT(OUT)      :: AROW_MAX_TERMS         ! Max number of terms in any row of A
       INTEGER(LONG), INTENT(OUT)      :: NTERM_B                ! No. terms that go into MATOUT (from subr PARTITION_SS_NTERM)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_SS_NTERM_BEGEND
+
 
       END SUBROUTINE PARTITION_SS_NTERM
 

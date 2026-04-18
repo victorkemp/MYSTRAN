@@ -44,7 +44,7 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_L1Z_BEGEND
+
  
 
 

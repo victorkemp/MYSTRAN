@@ -91,7 +91,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Local error indicator
       INTEGER(LONG)                   :: II                ! An index in array EPSIL
       INTEGER(LONG)                   :: UPPER             ! Upper allowable value for an integer parameter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARAM_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: R8PARM            ! A value read from input file that should be a real value

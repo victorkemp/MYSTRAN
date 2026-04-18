@@ -45,7 +45,7 @@
       CHARACTER(LEN=*), INTENT(INOUT) :: CARD              ! A Bulk Data card
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MATL_BEGEND
+
 
       END SUBROUTINE BD_MAT2
 

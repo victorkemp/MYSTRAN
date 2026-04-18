@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: ISPCADD           ! Count of number of SPC or SPC1 set ID's defined on the SPCADD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPCADD0_BEGEND
+
  
       END SUBROUTINE BD_SPCADD0
 

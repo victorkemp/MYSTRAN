@@ -42,7 +42,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: KORDER                ! Triangular integration order to use
       INTEGER(LONG)                   :: I                     ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) ,INTENT(OUT)       :: SS_I(MAX_ORDER_TRIA)  ! Triangular integration abscissa's
       REAL(DOUBLE) ,INTENT(OUT)       :: SS_J(MAX_ORDER_TRIA)  ! Triangular integration abscissa's

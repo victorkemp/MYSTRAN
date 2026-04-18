@@ -59,7 +59,7 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: INFO              ! Output from SuperLU routine
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SYM_MAT_DECOMP_SUPRLU_BEGEND
+
       INTEGER(LONG)                   :: COMPV             ! Component number (1-6) of a grid DOF
       INTEGER(LONG)                   :: GRIDV             ! Grid number
 

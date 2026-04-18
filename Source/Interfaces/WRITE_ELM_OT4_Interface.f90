@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols in MAT
       INTEGER(LONG), INTENT(IN)       :: NROWS_MAT         ! Number of rows in MAT
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number where to write matrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELM_OT4_BEGEND
+
  
       END SUBROUTINE WRITE_ELM_OT4
 

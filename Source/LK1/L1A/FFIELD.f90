@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: IFD               ! Counter for the 10 fields of a Bulk Data CARD
       INTEGER(LONG)                   :: JCT               ! Column counter in free-field CARD
       INTEGER(LONG)                   :: K1S,K2S,K1L       ! Indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FFIELD_BEGEND
+
  
 
 

@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: DIAG_GRID2        ! Used for error output purposes
       INTEGER(LONG)                   :: SIDE_GRID1        ! Used for error output purposes
       INTEGER(LONG)                   :: SIDE_GRID2        ! Used for error output purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM2_BEGEND
+
 
       END SUBROUTINE ELMGM2
 

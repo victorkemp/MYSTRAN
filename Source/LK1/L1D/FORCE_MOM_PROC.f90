@@ -127,7 +127,7 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! Row no. in array TDOF where data begins for AGRID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FORCE_MOM_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: F1(3), F2(3)      ! 3 force or moment components in intermediate calcs

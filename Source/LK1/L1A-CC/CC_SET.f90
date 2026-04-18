@@ -72,7 +72,7 @@
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
       INTEGER(LONG)                   :: SETID     = 0     ! Set ID on this Case Control card
       INTEGER(LONG)                   :: TOKLEN    = 0     ! DATA_END - DATA_BEG + 1 (an input to subr STOKEN, called herein)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SET_BEGEND
+
  
       INTRINSIC INDEX
  

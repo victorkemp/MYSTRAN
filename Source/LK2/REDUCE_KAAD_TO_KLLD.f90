@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: KRRD_ROW_MAX_TERMS   ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KAAD_TO_KLLD_BEGEND
+
 
 
 

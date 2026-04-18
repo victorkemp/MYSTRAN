@@ -62,7 +62,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID        ! Internal element ID for which
       INTEGER(LONG)                   :: I,J,K              ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHELL_ABD_MATRICES_BEGEND
+
 
       REAL(DOUBLE)                    :: DET_SHELL_T        ! Determinant of SHELL_T
       REAL(DOUBLE)                    :: EPS1               ! Small number with which to comapre zero

@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
       INTEGER(LONG)                   :: JERR      = 0     ! Error indicator for several types of error
       INTEGER(LONG)                   :: NUM_PAIRS         ! Number of pairs of grid/comp found on this SUPORT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SUPORT_BEGEND
+
  
 
 

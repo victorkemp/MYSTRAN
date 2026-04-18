@@ -43,7 +43,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows in matrix MATOUT
       INTEGER(LONG), INTENT(IN)       :: INT_VEC(NROWS)    ! Integer vector to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_BY_COLS_BEGEND
+
 
       END SUBROUTINE WRITE_INTEGER_VEC
 

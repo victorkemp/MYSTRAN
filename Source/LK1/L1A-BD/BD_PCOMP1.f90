@@ -65,7 +65,7 @@
       INTEGER(LONG)                   :: PCOMP_PLIES        ! No. of plies in 1 PCOMP1 entry incl sym plies not explicitly defined
       INTEGER(LONG)                   :: PROPERTY_ID = 0    ! Property ID (field 2 of this parent property card)
       INTEGER(LONG)                   :: SOUT_INT    = 0    ! Entry in array PCOMP (not defined on PCOMP1)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PCOMP1_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1               ! A small number
       REAL(DOUBLE)                    :: NSM                ! Non structural mass

@@ -42,7 +42,7 @@
       CHARACTER(1*BYTE), INTENT(OUT)  :: CHAR_VALUE        ! If INT_NUM = 1, then CHAR_VALUE = '1', etc
  
       INTEGER(LONG), INTENT(IN)       :: INT_NUM           ! Integer 1, 2, 3, 4, 5 O5 6
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONVERT_INT_TO_CHAR_BEGEND
+
  
 
 

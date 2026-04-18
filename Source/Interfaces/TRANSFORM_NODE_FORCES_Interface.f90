@@ -50,7 +50,7 @@
       INTEGER(LONG), PARAMETER        :: NROW      = 3     ! An input to subr MATPUT, MATGET called herein
       INTEGER(LONG), PARAMETER        :: NCOL      = 1     ! An input to subr MATPUT, MATGET called herein
       INTEGER(LONG), PARAMETER        :: PCOL      = 1     ! An input to subr MATPUT, MATGET called herein 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TRANSFORM_NODE_FORCES_BEGEND
+
  
       REAL(DOUBLE)                    :: THETAD,PHID       ! Returns from subr GEN_T0L (not used here)
 

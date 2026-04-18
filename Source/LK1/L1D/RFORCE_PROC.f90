@@ -148,7 +148,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SETID             ! Load set ID read from record in file LINK1U
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RFORCE_PROC_BEGEND
+
       
       REAL(DOUBLE)                    :: ACCEL_I(6)        ! 6 components of accel due to gravity at a grid
       REAL(DOUBLE)                    :: ACCEL_I_T1(3)     ! 3 transl components of accel due to RFORCE at a grid in basic  coords

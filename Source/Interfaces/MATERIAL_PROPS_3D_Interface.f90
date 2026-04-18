@@ -44,7 +44,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATERIAL_PROPS_BEGEND
+
   
       END SUBROUTINE MATERIAL_PROPS_3D
 

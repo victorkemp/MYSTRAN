@@ -43,7 +43,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: IORD              ! Gaussian integration order to be used in obtaining the PSH shape fcns
       INTEGER(LONG), INTENT(IN)       :: NROW              ! Number of rows in XEP, XEA
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARAM_CORDS_ACT_CORDS_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: XEP(NROW,3)       ! Parametric coords of NCOL points
       REAL(DOUBLE), INTENT(OUT)       :: XEA(NROW,3)       ! Actual local element coords corresponding to XEP

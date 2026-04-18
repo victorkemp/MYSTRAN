@@ -55,7 +55,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_KIN(NROWS+1)      ! Row start indices for KIN 
       INTEGER(LONG), INTENT(IN)       :: J_KIN(NTERM_KIN)    ! Col numbers of terms in KIN 
       INTEGER(LONG), INTENT(IN)       :: OUTPUT              ! =1, output PRB, =2 output RB_STRN_ENRGY, =3 output both
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STIFF_MAT_EQUIL_CHK_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: KIN(NTERM_KIN)      ! Nonzero terms in KIN
       REAL(DOUBLE), INTENT(IN)        :: KIN_DIAG(NROWS)     ! Diagonal of KIN

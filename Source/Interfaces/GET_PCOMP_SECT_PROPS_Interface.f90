@@ -42,7 +42,7 @@
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_PCOMP_SECT_PROPS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: PCOMP_TM           ! Membrane thickness of PCOMP for equivalent PSHELL
       REAL(DOUBLE), INTENT(OUT)       :: PCOMP_IB           ! Bending MOI of PCOMP for equivalent PSHELL

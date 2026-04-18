@@ -45,7 +45,7 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'PRINCIPAL_2D'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRINCIPAL_2D_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: SX                 ! Normal x stress or strain
       REAL(DOUBLE), INTENT(IN)        :: SY                 ! Normal y stress or strain

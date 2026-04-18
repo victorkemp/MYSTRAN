@@ -47,7 +47,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD1             ! Card read in LOADE and shifted to begin in col 1
  
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator. If CHAR not found, IERR set to 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_PARTN_BEGEND
+
  
       END SUBROUTINE EC_PARTN
 

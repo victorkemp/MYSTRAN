@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IERR      = 0     ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR      = 0     ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_IN4_FILES_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -85,7 +85,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*REAL(LNUM_IN4_FILES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LNUM_IN4_FILES, 1, SUBR_BEGEND )
                DO I=1,LNUM_IN4_FILES
                   IN4FIL(I)(1:) = ' '
                ENDDO
@@ -108,7 +107,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*REAL(LNUM_IN4_FILES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LNUM_IN4_FILES, 1, SUBR_BEGEND )
                DO I=1,LNUM_IN4_FILES
                   IN4FIL_NUM(I) = 0
                ENDDO
@@ -132,7 +130,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*RNROWS*RNCOLS/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS
                   DO J=1,NCOLS
                      IN4_MAT(I,J) = ZERO
@@ -159,7 +156,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*RNROWS/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   IN4_COL_MAP(I) = 0
                ENDDO

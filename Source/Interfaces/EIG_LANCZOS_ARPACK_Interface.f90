@@ -57,7 +57,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       INTEGER(LONG)                   :: LWORKL            ! Used to dimension a work array
       INTEGER(LONG)                   :: NUM1              ! Number to use for max no. of eigens to find. Must be NUM1 <= NDOFL
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_LANCZOS_ARPACK_BEGEND
+
 
       END SUBROUTINE EIG_LANCZOS_ARPACK
 

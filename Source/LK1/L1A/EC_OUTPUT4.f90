@@ -75,7 +75,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! 
       INTEGER(LONG)                   :: SLASH1_COL        ! Col in matrix name where character  "/"  is  found
       INTEGER(LONG)                   :: SLASH2_COL        ! Col in matrix name where characters "//" are found
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_OUTPUT4_BEGEND
+
  
 
 

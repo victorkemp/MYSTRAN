@@ -42,7 +42,7 @@
       CHARACTER(LEN=*),  INTENT(INOUT):: CARD              ! 
  
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! = 1 if a field  is longer than 8 chars on a free field card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FFIELD_BEGEND
+
  
       END SUBROUTINE FFIELD
 

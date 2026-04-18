@@ -45,7 +45,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), INTENT(IN)       :: STR_PT_NUM        ! Which point (3rd index in SEi matrices) this call is for
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEM_STRE_STRN_ARRAYS_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM31(3)          ! Array used in an intermediate calc
       REAL(DOUBLE)                    :: DUM32(3)          ! Array used in an intermediate calc

@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: I4INP             ! An integer read
       INTEGER(LONG)                   :: IDOF              ! Displ component (1,2,3,4,5 or 6) that one end of CELSA conn. to
       INTEGER(LONG)                   :: IERR              ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CELAS_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read
 

@@ -46,7 +46,7 @@
  
       INTEGER(LONG)                   :: ICONT     = 0     ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CTRIA0_BEGEND
+
  
 
 

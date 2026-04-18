@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: BDY_DOF_NUM       ! DOF number for BDY_GRID/BDY_COMP
       INTEGER(LONG)                   :: I,J,J1,K,L        ! DO loop indices or counters
       INTEGER(LONG)                   :: NUM_TERMS         ! Number of terms to write out for shell elems
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELEM_ENGR_FORCE_BEGEND
+
       LOGICAL                         :: WRITE_F06, WRITE_OP2   ! flag
 
       REAL(DOUBLE)                    :: ABS_ANS(8)       ! Max ABS for all element output

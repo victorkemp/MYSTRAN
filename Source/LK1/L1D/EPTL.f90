@@ -67,7 +67,7 @@
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE2(1-5) = 3, 5, 0, 0, 0 
                                                            ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EPTL_BEGEND
+
 
       REAL(DOUBLE)                    :: DZE(MELDOF,MELDOF)! A dummy array for the call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

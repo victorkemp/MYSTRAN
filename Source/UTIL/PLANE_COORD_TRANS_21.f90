@@ -47,7 +47,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'PLANE_COORD_TRANS_21'
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Subr that called this one
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PLANE_COORD_TRANS_21_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: THETA             ! Angle from x axis of system 1 to x axis of system 2
       REAL(DOUBLE), INTENT(OUT)       :: T21(3,3)          ! Transformation matrix which will transform a vector, U1, in coord sys

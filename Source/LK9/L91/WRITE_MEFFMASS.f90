@@ -48,7 +48,7 @@
       CHARACTER(1*BYTE)               :: IHDR   = 'Y'      ! Indicator of whether to write an output header
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MEFFMASS_BEGEND
+
 
       REAL(DOUBLE)                    :: CYCLES            ! Circular frequency of a mode
       REAL(DOUBLE)                    :: EPS1              ! Small number to compare against zero

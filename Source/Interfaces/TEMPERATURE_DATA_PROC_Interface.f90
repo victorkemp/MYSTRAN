@@ -46,7 +46,7 @@
  
       CHARACTER(  1*BYTE)             :: NOTE              ! Used to indicate whether or not to print out a message
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND
+
  
       END SUBROUTINE TEMPERATURE_DATA_PROC
 

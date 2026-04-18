@@ -64,7 +64,7 @@
       INTEGER(LONG), INTENT(IN )      :: VAL_COLS               ! Value in COL_PART_VEC to look for for partitioning cols
       INTEGER(LONG), INTENT(OUT)      :: I_B(NROW_B+1)          ! Starting locations in B for each row
       INTEGER(LONG), INTENT(OUT)      :: J_B(NTERM_B)           ! Col number for each B output matrix term
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_SS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)             ! Input  matrix nonzero terms
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)             ! Output matrix nonzero terms

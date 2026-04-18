@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: ITE               ! Unit number for text files for OTM row descriptors 
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Solution vector number
       INTEGER(LONG), INTENT(INOUT)    :: OT4_EROW          ! Row number in OT4 file for elem related OTM descriptors
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_ELFE_1D_BEGEND
+
  
       END SUBROUTINE OFP3_ELFE_1D
 

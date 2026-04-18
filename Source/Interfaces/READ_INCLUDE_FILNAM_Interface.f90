@@ -43,7 +43,7 @@
       CHARACTER(LEN=EC_ENTRY_LEN), INTENT(IN)  :: CARD     ! An entry from an input data (DAT) file
 
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_INCLUDE_FILNAM_BEGEND
+
 
       END SUBROUTINE READ_INCLUDE_FILNAM
 

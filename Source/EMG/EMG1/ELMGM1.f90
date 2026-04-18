@@ -61,7 +61,7 @@
 
       INTEGER(LONG)                   :: ICID               ! Internal coord sys no. corresponding to an actual coord sys no. 
       INTEGER(LONG)                   :: ROWNUM             ! A row number in an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM1_BEGEND
+
   
       REAL(DOUBLE)                    :: DX1(3)             ! Array used in intermediate calc's
       REAL(DOUBLE)                    :: DX2(3)             ! Array used in intermediate calc's

@@ -49,7 +49,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: REF_PT            ! An actual grid ID (only used if REF_PT_TXT = 'GRID')
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RB_DISP_MATRIX_PROC_BEGEND + 1
+
  
       END SUBROUTINE RB_DISP_MATRIX_PROC
 

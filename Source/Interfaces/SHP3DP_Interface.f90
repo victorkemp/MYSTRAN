@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ORD_IJ        ! Integration order in triangle (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: INT_ORD_K         ! Integration order along z (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: NUM_NODES         ! Number of element nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component 1
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component 2

@@ -48,7 +48,7 @@
       CHARACTER( 1*BYTE)              :: FOUND_PSHEL       ! Used to indicate if a PSHELL prop ID was found 
       CHARACTER( 8*BYTE)              :: NAME = 'MATERIAL' ! Used for output error message
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEM_PROP_MATL_IIDS_BEGEND
+
  
       END SUBROUTINE ELEM_PROP_MATL_IIDS
 

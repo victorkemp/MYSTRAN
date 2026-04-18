@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: N                 ! Size of eigenvectors.
       INTEGER(LONG), INTENT(INOUT)    :: EIG_NUM(MLAM)     ! Eigenvector numbers.
       INTEGER(LONG)                   :: PM,QM             ! Indices used in reording the W and Z
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INVERT_EIGENS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: W(MLAM)           ! Eigenvalues
       REAL(DOUBLE) , INTENT(INOUT)    :: Z(N,NVEC)         ! Eigenvectors

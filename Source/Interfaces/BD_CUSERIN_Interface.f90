@@ -58,7 +58,7 @@
                                                            ! Array of displ components on the CUSERIN entry (for USERIN_GRIDS)
       INTEGER(LONG)                   :: USERIN_COMPS(LGUSERIN)
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CUSERIN_BEGEND
+
  
       END SUBROUTINE BD_CUSERIN
 

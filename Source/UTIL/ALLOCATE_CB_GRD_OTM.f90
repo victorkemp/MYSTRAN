@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: NCOLS             ! Number of cols in OTM matrix
       INTEGER(LONG)                   :: NROWS_MAT         ! Number of rows in OTM matrix
       INTEGER(LONG)                   :: NROWS_TXT         ! Number of rows in TXT mmatrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_CB_GRD_OTM_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -99,7 +99,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_ACCE(I,J) = ZERO
@@ -124,7 +123,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_ACCE(I)(1:) = ' '
                ENDDO
@@ -163,7 +161,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_DISP(I,J) = ZERO
@@ -188,7 +185,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_DISP(I)(1:) = ' '
                ENDDO
@@ -229,7 +225,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_MPCF(I,J) = ZERO
@@ -254,7 +249,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_MPCF(I)(1:) = ' '
                ENDDO
@@ -295,7 +289,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_SPCF(I,J) = ZERO
@@ -320,7 +313,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_SPCF(I)(1:) = ' '
                ENDDO

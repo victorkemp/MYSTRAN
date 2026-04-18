@@ -43,7 +43,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'WRITE_TSET'
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TSET_BEGEND
+
 
 
 

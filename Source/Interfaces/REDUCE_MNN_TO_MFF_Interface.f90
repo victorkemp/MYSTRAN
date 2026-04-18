@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: PART_VEC_N_FS(NDOFN)   ! Partitioning vector (N set into F and S sets) 
       INTEGER(LONG), PARAMETER        :: NUM1        = 1        ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2        ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_MNN_TO_MFF_BEGEND
+
 
       END SUBROUTINE REDUCE_MNN_TO_MFF
 

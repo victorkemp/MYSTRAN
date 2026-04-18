@@ -84,7 +84,7 @@
       INTEGER(LONG)                   :: MLL_NULL_ROWS       ! Number of null rows in the MLL mass matrix.
       INTEGER(LONG)                   :: NUM_FAIL            ! Number of eigenvalues/vectors that failed to converge.
       INTEGER(LONG)                   :: NUM1                ! Number to use for max no. of eigens to find. Must be NUM1 <= NDOFL
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_GIV_MGIV_BEGEND
+
 
       REAL(DOUBLE)                    :: ABSTOL              ! Tolerance number for LAPACK routines.
       REAL(DOUBLE)                    :: EPS1                ! Small number to compare variables against zero.

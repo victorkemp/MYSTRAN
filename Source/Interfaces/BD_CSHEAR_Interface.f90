@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
 
       INTEGER(LONG), INTENT(OUT)      :: NUM_GRD           ! Number of GRID's + SPOINT's for the elem
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CSHEAR_BEGEND
+
 
       END SUBROUTINE BD_CSHEAR
 

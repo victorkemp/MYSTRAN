@@ -49,7 +49,7 @@
  
       INTEGER(LONG)                   :: IDUM              ! Dummy variable used when flipping DOF's
       INTEGER(LONG)                   :: KSTART            ! Used in deciding whether to process all elem stiffness terms or only
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_FINAL_BEGEND
+
 
       END SUBROUTINE ESP0_FINAL
 

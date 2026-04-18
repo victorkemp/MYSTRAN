@@ -89,7 +89,7 @@
       INTEGER(LONG)                   :: I,K               ! DO loop indices
       INTEGER(LONG)                   :: IERRT     = 0     ! Sum of all grid and DOF errors
       INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components (1 for SPOINT, 6 for physical grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND
+
  
 
 

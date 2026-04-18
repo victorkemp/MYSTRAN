@@ -118,7 +118,7 @@
       INTEGER(LONG)                   :: NCOL_B                 ! Number of columns in the output matrix
       INTEGER(LONG)                   :: ROW_AT_COLJ_BEG(NCOL_A)! jth term is row number in A where col j nonzeros begin 
       INTEGER(LONG)                   :: ROW_AT_COLJ_END(NCOL_A)! jth term is row number in A where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_SS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)             ! Input  matrix nonzero terms
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)             ! Output matrix nonzero terms

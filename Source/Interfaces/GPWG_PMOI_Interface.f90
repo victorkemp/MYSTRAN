@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(OUT)      :: INFO              ! = 0:  successful exit
       INTEGER(LONG), PARAMETER        :: N         = 3     ! Order of matrix MOI1
       INTEGER(LONG), PARAMETER        :: LWORK     = 3*N-1 ! Size of array WORK
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: MOI1(3,3)         ! On entry, the MOI's about c.g. in basic coords
       REAL(DOUBLE) , INTENT(OUT)      :: Q(3,3)            ! Transformation from basic to principal directions

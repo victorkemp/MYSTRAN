@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: KIN_SDIA            ! No. of superdiags in KIN upper triangle
       INTEGER(LONG)                   :: ROW,COL             ! Row/col where max term in RB_STRAIN_ENERGY exists
       INTEGER(LONG)                   :: SA_SET_COL          ! Col no. in array TDOF where the  SA-set is (from subr TDOF_COL_NUM)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STIFF_MAT_EQUIL_CHK_BEGEND
+
 
       CHARACTER( 1*BYTE)              :: FLAG(NROWS)         ! Character to designate whether PRBN was normalized to diag KIN or not
 

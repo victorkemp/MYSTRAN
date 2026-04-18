@@ -45,7 +45,7 @@
  
       INTEGER(LONG), INTENT(OUT)               :: IERR              ! Error indicator. If CHAR not found, IERR set to 1
       INTEGER(LONG), INTENT(OUT)               :: CHAR_COL          ! Column number on CARD where character CHAR is found
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = CSHIFT_BEGEND
+
 
       END SUBROUTINE CSHIFT
 

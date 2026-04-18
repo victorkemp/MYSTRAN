@@ -47,7 +47,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BREL1_BEGEND
+
 
       REAL(DOUBLE)                    :: K1                ! Shear constant for plane 1 (used in K1*AREA*G)
       REAL(DOUBLE)                    :: K2                ! Shear constant for plane 2 (used in K1*AREA*G)

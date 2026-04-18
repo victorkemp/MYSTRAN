@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: XTIME             ! Time stamp read from file LINK1A
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IEND              ! Index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STMERR_BEGEND
+
  
 
 

@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: I4INP     = 0     ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_BEAMOR0_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A value read from input file that should be a real value
 

@@ -104,7 +104,7 @@
       INTEGER(LONG)                   :: NHITS_TOT_FOR_ROW_OF_A ! Num of "hits" of terms in a col of A existing where terms in any
 !                                                                 row of B exist when a row of A is multiplied by al cols of B
       INTEGER(LONG)                   :: NTERM_AROW             ! Max number of nonzero terms in one row of A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SSS_NTERM_BEGEND
+
        
       INTRINSIC                       :: MAX
 

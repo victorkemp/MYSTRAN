@@ -54,7 +54,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: ICOL               ! An input to subr MARGIN, called by this subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ONE_D_STRESS_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: C1,C2              ! Coords of point "C" on cross-section of a CBAR where stress is calc'd
       REAL(DOUBLE)                    :: D1,D2              ! Coords of point "D" on cross-section of a CBAR where stress is calc'd

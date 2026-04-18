@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: S_SET_COL         ! Col no. in TDOF for S  displ set definition
       INTEGER(LONG)                   :: SZ_SET_COL        ! Col no. in TDOF for SZ displ set definition
       INTEGER(LONG)                   :: SE_SET_COL        ! Col no. in TDOF for SE displ set definition
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_N_FS_BEGEND
+
 
       REAL(DOUBLE)                    :: USZ_COL(NDOFSZ)   ! Array of zero displs for the SZ set 
  

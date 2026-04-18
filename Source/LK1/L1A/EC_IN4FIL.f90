@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: JEND      = 0     ! 
       INTEGER(LONG)                   :: K         = 0     ! Counter
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_IN4FIL_BEGEND
+
  
       INTRINSIC INDEX
  

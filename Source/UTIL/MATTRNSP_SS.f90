@@ -74,7 +74,7 @@
       INTEGER(LONG), INTENT(OUT)      :: J_AT(NTERM)       ! Col numbers for nonzero terms in AT
       INTEGER(LONG)                   :: I,J               ! DO loop indices or counters
       INTEGER(LONG)                   :: ISTART            ! Starting value of I when looking for row number of a term in MATIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATTRNSP_SS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERM)          ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: AT(NTERM)         ! Real nonzero values in output matrix AT

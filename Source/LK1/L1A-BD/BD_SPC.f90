@@ -59,7 +59,7 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
       INTEGER(LONG)                   :: SETID     = 0     ! SPC set ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPC_BEGEND
+
  
       REAL(DOUBLE)                    :: DEPS1             ! A small positive number to compare real zero
       REAL(DOUBLE)                    :: RSPCJ     = ZERO  ! Enforced displ value 

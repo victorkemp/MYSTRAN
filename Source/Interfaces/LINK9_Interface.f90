@@ -101,7 +101,7 @@
       INTEGER(LONG), INTENT(IN)       :: LK9_PROC_NUM      ! 2 if this is the LINK9 call for the linear buckling step of 
       INTEGER(LONG), PARAMETER        :: NUM1      = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2      = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9_BEGEND + 1
+
  
       END SUBROUTINE LINK9
 

@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: J                  ! DO loop index
       INTEGER(LONG)                   :: JERR               ! Error count
       INTEGER(LONG)                   :: SETID              ! Load set ID on PLOADi card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PLOAD4_BEGEND
+
   
       REAL(DOUBLE)                    :: R8INP              ! A value read from input file that should be a real value
  

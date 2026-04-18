@@ -105,7 +105,7 @@
       INTEGER(LONG)                   :: NROW_B                 ! No. rows in B
       INTEGER(LONG)                   :: ROW_AT_COLJ_BEG(NCOL_A)! jth term is row number in MATIN where col j nonzeros begin 
       INTEGER(LONG)                   :: ROW_AT_COLJ_END(NCOL_A)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_SS_NTERM_BEGEND
+
 
       CHARACTER(LEN=LEN("       Det. part. size of BBBB, row")) :: COUNTER_TEMPLATE
 

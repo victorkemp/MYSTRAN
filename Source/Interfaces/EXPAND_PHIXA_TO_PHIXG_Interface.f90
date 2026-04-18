@@ -44,7 +44,7 @@
       USE SUBR_BEGEND_LEVELS, ONLY    :  EXPAND_PHIXA_TO_PHIXG_BEGEND
       IMPLICIT NONE
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EXPAND_PHIXA_TO_PHIXG_BEGEND
+
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 

@@ -49,7 +49,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: TDOF_MSG          ! Message to be printed out regarding at what point in the run the TDOF,I
       INTEGER(LONG)                   :: I_USET_U1         ! Counter for USET U1
       INTEGER(LONG)                   :: I_USET_U2         ! Counter for USET U2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND
+
  
       END SUBROUTINE TDOF_PROC
 

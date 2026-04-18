@@ -76,7 +76,7 @@
       INTEGER(LONG)                   :: NTOKEN            ! An output from subr STOKEN (how many tokens were read)
       INTEGER(LONG)                   :: SOL_INT           ! Integer value read from an Exec Control SOL entry
       INTEGER(LONG)                   :: TOKLEN            ! Length of character string sent to subr STOKEN (= LEN(CARD))
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE_BEGEND
+
  
 
 

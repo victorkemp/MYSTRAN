@@ -42,7 +42,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
       INTEGER(LONG), INTENT(OUT)      :: DELTA_SPOINT      ! Number of SPOINT's defined on this B.D. SPOINT entry
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPOINT0_BEGEND
+
  
       END SUBROUTINE BD_SPOINT0
 

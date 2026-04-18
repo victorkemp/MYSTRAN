@@ -63,7 +63,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: MESSAGE           ! Message written when this subr is called
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_INQUIRE_BEGEND
+
 
       END SUBROUTINE FILE_INQUIRE
 

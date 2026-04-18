@@ -45,7 +45,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
       CHARACTER( 8*BYTE), PARAMETER   :: RTYPE = 'RBE3    '! Rigid element type
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE3_BEGEND
+
  
       END SUBROUTINE BD_RBE3
 

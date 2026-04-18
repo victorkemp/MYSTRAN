@@ -46,7 +46,7 @@
  
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRITE_TO_L1A      ! Y/N indicator of whether to call subr WRITE_L1A
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTA_HERE_BEGEND
+
 
       END SUBROUTINE OUTA_HERE
 

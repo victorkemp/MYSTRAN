@@ -54,7 +54,7 @@
       INTEGER(LONG)                   :: I4INP     = 0     ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
       INTEGER(LONG)                   :: PGM_ERR   = 0     ! A  count of the number of coding errors
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_GRDSET_BEGEND
+
  
 
 

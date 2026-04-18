@@ -55,7 +55,7 @@
       INTEGER(LONG), PARAMETER        :: NUM1        = 1        ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2        ! Used in subr's that partition matrices
       INTEGER(LONG)                   :: NTERM_MSF              ! Number of nonzeros in sparse matrix MSF (should = NTERM_MFS)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_MNN_TO_MFF_BEGEND
+
 
       INTRINSIC                       :: DABS
 

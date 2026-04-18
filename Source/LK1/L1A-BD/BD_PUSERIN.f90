@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop indices
 !xx   INTEGER(LONG)                   :: ISTART            ! Start col in CARD for matrix names
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PUSERIN_BEGEND
+
 
 
 

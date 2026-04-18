@@ -48,7 +48,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows for matrix CRSi
       INTEGER(LONG), INTENT(IN)       :: NTERMS            ! Number of nonzero terms that will be in matrix CRSi
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SCR_CRS_MAT_BEGEND
+
 
       END SUBROUTINE ALLOCATE_SCR_CRS_MAT
 

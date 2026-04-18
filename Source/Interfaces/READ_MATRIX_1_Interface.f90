@@ -56,7 +56,7 @@
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number of FILNAM
       INTEGER(LONG), INTENT(OUT)      :: I_MATOUT(NROWS+1) ! Row numbers for terms in matrix MATOUT
       INTEGER(LONG), INTENT(OUT)      :: J_MATOUT(NTERM)   ! Col numbers for terms in matrix MATOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERM)     ! Real values for matrix MATOUT
  

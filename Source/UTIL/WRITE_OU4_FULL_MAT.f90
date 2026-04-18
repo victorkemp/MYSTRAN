@@ -56,7 +56,7 @@
       INTEGER(LONG), PARAMETER        :: IROW        = 1   ! A term written to UNT for the trailer record (just to be like NASTRAN)
       INTEGER(LONG), PARAMETER        :: PREC        = 2   ! Matrix precision (2 indicates double precision)
       INTEGER(LONG), PARAMETER        :: ROW_BEG     = 1   ! 1st row of matrix output to UNT is row 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_OU4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MAT(NROWS,NCOLS)  ! Array of terms in matrix MAT
  

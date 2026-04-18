@@ -78,7 +78,7 @@
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 8     ! DKQ element has 8 nodes (4 are internal)
                                                            ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

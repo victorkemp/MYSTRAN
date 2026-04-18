@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: JERR      = 0       ! A local error count
       INTEGER(LONG)                   :: NUM_PAIRS = 0       ! Bumber of pairs of SPOINT/FMAG on a SLOAD entry (can be up to 3)
       INTEGER(LONG)                   :: SETID     = 0       ! Set ID on the FORCE/MOMENT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SLOAD_BEGEND
+
   
       REAL(DOUBLE)                    :: FMAG(3)             ! Force magnitude
  

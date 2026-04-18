@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(OUT)      :: IRSPLINE          ! Count of number of grid/comp doublets on this RSPLINE logical card
       INTEGER(LONG)                   :: ICONT     = 0     ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RSPLINE0_BEGEND
+
  
 
 

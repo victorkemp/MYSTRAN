@@ -52,7 +52,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: J                  ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLID_STRAIN_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: MEAN               ! Mean strains
       REAL(DOUBLE)                    :: PRINCIPAL_STRAIN(3)! Principal strains

@@ -84,7 +84,7 @@
       INTEGER(LONG)                   :: NUM_TERMS         ! Head rec read from files that denotes how many records in FILNAM
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading FILNAM
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERM)     ! Real values for matrix MATOUT
       REAL(DOUBLE)                    :: RVAL              ! Real values read from FILNAM

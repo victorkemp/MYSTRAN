@@ -75,7 +75,7 @@
 !                                                            additional data will fit into EDAT can be made here.
       INTEGER(LONG)                   :: I4INP             ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEPRO_BEGEND
+
  
 
 

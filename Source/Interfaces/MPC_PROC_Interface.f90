@@ -44,7 +44,7 @@
 
       CHARACTER( 1*BYTE)              :: MPC_SET_USED      ! 'Y'/'N' indicator if an MPC set in B.D. is used
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MPC_PROC_BEGEND
+
 
       END SUBROUTINE MPC_PROC
 

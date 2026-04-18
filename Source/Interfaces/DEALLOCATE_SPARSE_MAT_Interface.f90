@@ -91,7 +91,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: NAME_IN           ! Array name (used for output error message)
       CHARACTER(6*BYTE)               :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_SPARSE_MAT_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_SPARSE_MAT
 

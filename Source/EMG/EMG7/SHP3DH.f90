@@ -112,7 +112,7 @@
       INTEGER(LONG)                   :: NODE(4)           ! Node numbers for sets of 4 corner nodes for 20 node HEX element
       INTEGER(LONG)                   :: NODES_8     = 8   ! Number of nodes for one type of element
       INTEGER(LONG)                   :: NODES_20    = 20  ! Number of nodes for one type of element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component 1
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component 2

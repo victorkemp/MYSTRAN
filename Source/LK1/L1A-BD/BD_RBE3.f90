@@ -71,7 +71,7 @@
       INTEGER(LONG)                   :: REFC      = 0     ! REFC value in field 5 of parent entry
       INTEGER(LONG)                   :: REFGRID   = 0     ! REFGRID value in field 4 of parent entry
       INTEGER(LONG)                   :: RELID     = 0     ! This elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE3_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this RBE3 entry
       REAL(DOUBLE)                    :: WGT               ! A weight read from a field on this RBE3 entry

@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices or counters
       INTEGER(LONG)                   :: NTERM_ROW_I       ! Number of terms in row I of MATIN
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_1_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM)      ! Real values for matrix MATIN
       

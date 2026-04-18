@@ -66,7 +66,7 @@
       INTEGER(LONG)                   :: NUM_COMPS         ! Either 6 or 1 depending on whether grid is a physical grid or a SPOINT
       INTEGER(LONG)                   :: REFPNT            ! Reference point for GPWG calc (either GRDPNT of MEFMGRID)
       INTEGER(LONG)                   :: REFPNT_DEF        ! Default value of GRDPNT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_BEGEND
+
 
       REAL(DOUBLE)                    :: BASIC_OFF(3)      ! Offsets of an element at a grid in basic coords
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

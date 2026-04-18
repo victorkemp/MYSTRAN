@@ -70,7 +70,7 @@
       INTEGER(LONG), INTENT(INOUT)    :: INFO              ! Output from LAPACK routine to do factorization of ABAND
 
       INTEGER(LONG), INTENT(OUT)      :: MATIN_SDIA        ! No. of superdiags in the MATIN upper triangle
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SYM_MAT_DECOMP_LAPACK_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! A small number to compare real zero
       REAL(DOUBLE) , INTENT(OUT)      :: RCOND             ! Recrip of cond no. of MATIN. Determined in  subr COND_NUM

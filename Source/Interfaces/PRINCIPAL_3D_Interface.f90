@@ -41,7 +41,7 @@
  
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRINCIPAL_3D_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STR(6)             ! Stress or strain vector
       REAL(DOUBLE), INTENT(OUT)       :: MEAN               ! Mean stresses or strains

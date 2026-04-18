@@ -69,7 +69,7 @@
       INTEGER(LONG)                   :: INFO        = 0   ! Input value for subr SYM_MAT_DECOMP_LAPACK (quit on sing KRRCB)
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening a file
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_PHIZL1_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
 

@@ -51,7 +51,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'EPSCALC'
 
       INTEGER(LONG), INTENT(IN)       :: ISUB              ! Internal subcase no. (1 to NSUB)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EPSCALC_BEGEND
+
 
       REAL(DOUBLE) , PARAMETER        :: ALPHA     =  ONE  ! Scalar multiplier for KLL in calc'ing residual vector, RES 
       REAL(DOUBLE) , PARAMETER        :: BETA      = -ONE  ! Scalar multiplier for PL in calc'ing residual vector, RES 

@@ -50,7 +50,7 @@
       CHARACTER( 1*BYTE)              :: NULL_COL          ! = 'Y' if col of PHIXA is null
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EXPAND_PHIXA_TO_PHIXG_BEGEND
+
 
       REAL(DOUBLE)                    :: PHIXG_FULL(NDOFG,NDOFR+NVEC)
 !                                                          ! Full representation of matrix PHIXG before converting to sparse matrix

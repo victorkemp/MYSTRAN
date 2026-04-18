@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(OUT)      :: IOR3D             ! Integration order for this PSOLID entry
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: ID        = 0     ! An integer ID read from a field of this card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PSOLID_BEGEND
+
  
 
 

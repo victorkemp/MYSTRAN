@@ -57,7 +57,7 @@
       INTEGER(LONG), PARAMETER        :: NCOL      = 1     ! An input to subr MATPUT, MATGET called herein
       INTEGER(LONG)                   :: PROW              ! An input to subr MATPUT, MATGET called herein
       INTEGER(LONG), PARAMETER        :: PCOL      = 1     ! An input to subr MATPUT, MATGET called herein 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TRANSFORM_NODE_FORCES_BEGEND
+
  
       REAL(DOUBLE)                    :: DXI               ! An offset distance in direction 1
       REAL(DOUBLE)                    :: DYI               ! An offset distance in direction 2

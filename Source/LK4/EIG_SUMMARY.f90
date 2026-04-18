@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: MAX_LANCZOS_EIGENS! Max number of eigenvalues that can be found by Lanczos method
       INTEGER(LONG)                   :: NUM_NEG_EIGENS    ! Number of eigenvalues that are negative
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_SUMMARY_BEGEND
+
   
       REAL(DOUBLE)                    :: CYCLES1           ! Circular frequency of a mode
       REAL(DOUBLE)                    :: GEN_STIFF1        ! Generalized stiffness for a mode

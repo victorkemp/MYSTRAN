@@ -73,7 +73,7 @@
                                                      21 /) ! ID2(12)= 21 means expand 12x12 elem DOF 12 is MYSTRAN 24X24 elem DOF 21
  
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 4     ! Quad has 4 nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QSHEAR_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords
       REAL(DOUBLE) , INTENT(IN)       :: YSD(4)            ! Diffs in y coords of quad sides in local coords

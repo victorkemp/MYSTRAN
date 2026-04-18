@@ -45,7 +45,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID for which
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDAT_BEGEND
+
 
       END SUBROUTINE ELMDAT2
 

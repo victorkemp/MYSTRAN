@@ -45,7 +45,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name of the matrix to be allocated in sparse format
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Array name of the matrix to be allocated in sparse format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_DOF_TABLES_BEGEND
+
  
       END SUBROUTINE ALLOCATE_DOF_TABLES
 

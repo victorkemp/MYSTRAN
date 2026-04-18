@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: PART_VEC_S_SzSe(NDOFS) ! Partitioning vector (S set into SZ and SE sets) 
       INTEGER(LONG), PARAMETER        :: NUM1        = 1        ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2        ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KNND_TO_KFFD_BEGEND
+
 
       END SUBROUTINE REDUCE_KNND_TO_KFFD
 

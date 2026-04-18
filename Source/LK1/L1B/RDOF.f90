@@ -47,7 +47,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: INTDOF            ! Integer field which should contain only the digits 1 - 6
       INTEGER(LONG)                   :: I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RDOF_BEGEND
+
  
 
 

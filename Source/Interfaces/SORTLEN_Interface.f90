@@ -43,7 +43,7 @@
       INTEGER(LONG), INTENT(IN)       :: NLEN              ! Length of the array that will be sorted in the calling procedure
       INTEGER(LONG), INTENT(OUT)      :: JCT               ! Sort parameter to be used by calling procedure
       INTEGER(LONG)                   :: MAX_JCT           ! Max practical value of JCT to use in sort by the calling procedure.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORTLEN_BEGEND
+
  
       END SUBROUTINE SORTLEN
 

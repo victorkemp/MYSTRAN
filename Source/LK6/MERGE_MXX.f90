@@ -69,7 +69,7 @@
       INTEGER(LONG)                   :: NTERM_MXXa         ! 
       INTEGER(LONG)                   :: NTERM_MXXb         ! 
 !xx   INTEGER(LONG)                   :: NUM_MNR_IN_ROW_I   ! Number of terms in row i of MNR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_MXX_BEGEND
+
 
       REAL(DOUBLE)                    :: GEN_MASS2(NVEC)
       REAL(DOUBLE)                    :: MNR(NTERM_MRN)

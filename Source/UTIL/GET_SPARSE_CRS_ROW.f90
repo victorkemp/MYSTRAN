@@ -52,7 +52,7 @@
       INTEGER(LONG), INTENT(IN )      :: ROW_NUM           ! Row number for the row to get in MATIN
       INTEGER(LONG)                   :: J,K               ! DO loop indices or counters
       INTEGER(LONG)                   :: NUM_TERMS_IN_ROW  ! No. terms in row ROW_NUM of MATIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SPARSE_CRS_ROW_BEGEND
+
                                  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM)      ! Nonzero terms in matrix MATIN
       REAL(DOUBLE) , INTENT(IN)       :: BETA              ! Scalar multiplier for row from MATIN

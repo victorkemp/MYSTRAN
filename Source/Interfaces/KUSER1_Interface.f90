@@ -44,7 +44,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = KUSER1_BEGEND
+
    
       END SUBROUTINE KUSER1
 

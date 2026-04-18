@@ -46,7 +46,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
       INTEGER(LONG), PARAMETER        :: ACID_0    = 0     ! Basic coord system
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RFORCE_PROC_BEGEND
+
       
       END SUBROUTINE RFORCE_PROC
 

@@ -65,7 +65,7 @@
       INTEGER(LONG)                   :: I,J                 ! DO loop indices
       INTEGER(LONG)                   :: PART_VEC_F_AO(NDOFF)! Partitioning vector (G set into N and M sets) 
       INTEGER(LONG)                   :: PART_VEC_SUB(NSUB)  ! Partitioning vector (1's for all subcases) 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_F_AO_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM_COL(NDOFO)      ! Temp variable used in SuperLU
       REAL(DOUBLE)                    :: KAA_DIAG(NDOFA)     ! Diagonal terms from KAA

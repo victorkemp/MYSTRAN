@@ -44,7 +44,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), INTENT(IN)       :: XTIME             ! Time stamp read from file LINK1A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STMERR_BEGEND
+
  
       END SUBROUTINE STMERR
 

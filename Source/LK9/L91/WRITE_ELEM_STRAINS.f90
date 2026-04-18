@@ -69,7 +69,7 @@
       INTEGER(LONG)                   :: I,J,L             ! DO loop indices
       INTEGER(LONG)                   :: K                 ! Counter
       INTEGER(LONG)                   :: NCOLS             ! Num of cols to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELEM_STRAINS_BEGEND
+
 
       REAL(DOUBLE)                    :: ABS_ANS(11)       ! Max ABS for all element output
       REAL(DOUBLE)                    :: MAX_ANS(11)       ! Max for all element output

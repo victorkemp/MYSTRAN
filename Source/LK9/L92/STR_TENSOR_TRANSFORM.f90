@@ -76,7 +76,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: ICORD             ! Internal coord system ID for STRESS_CORD_SYS
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STR_TENSOR_TRANSFORM_BEGEND
+
 
       REAL(DOUBLE), INTENT(INOUT)     :: STRESS_TENSOR(3,3)! 2D stress tensor (eqn 6 above)
       REAL(DOUBLE)                    :: DUM33(3,3)        ! Intermediate array used in calc outputs

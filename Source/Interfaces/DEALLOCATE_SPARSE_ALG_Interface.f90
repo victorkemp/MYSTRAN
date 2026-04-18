@@ -44,7 +44,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name of the matrix to be allocated in sparse format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_SPARSE_ALG_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_SPARSE_ALG
 

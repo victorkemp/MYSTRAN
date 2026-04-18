@@ -51,7 +51,7 @@
       CHARACTER(LEN=*), INTENT(OUT)   :: PBARL_TYPE        ! Name of the cross-section (e.g. I, BAR, etc)
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBARL_BEGEND
+
  
       END SUBROUTINE BD_PBARL
 

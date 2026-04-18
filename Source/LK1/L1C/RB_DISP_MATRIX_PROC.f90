@@ -72,7 +72,7 @@
       INTEGER(LONG)                   :: IGRID             ! Internal grid ID
       INTEGER(LONG)                   :: NUM_COMPS         ! 6 if GRID_NUM is an physical grid, 1 if an SPOINT
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RB_DISP_MATRIX_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: DUM1(6,6)         ! Intermediate result in obtaining RB_GRID_GLOBL
       REAL(DOUBLE)                    :: DX0               ! X coord difference between grid I and ref grid

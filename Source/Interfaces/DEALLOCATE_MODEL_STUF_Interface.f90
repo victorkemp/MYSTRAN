@@ -71,7 +71,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: NAME_IN           ! Name of group of arrays to allocate
       CHARACTER(31*BYTE)              :: NAME              ! Specific array name used for output error message
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_MODEL_STUF_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_MODEL_STUF
 

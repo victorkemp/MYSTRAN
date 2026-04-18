@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: J_KIN(NTERM)      ! Col numbers of terms in KIN
       INTEGER(LONG), INTENT(IN)       :: WRITE_WHAT        ! 1 write diagonal, 2 write summary stats, 3 write both
       INTEGER(LONG)                   :: AGRID_OLD         ! Actual grid number (used to add blank line bet grids when write diags)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MATRIX_DIAG_STATS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: KIN(NTERM)        ! Nonzero terms in the stiffness matrix
       REAL(DOUBLE) , INTENT(OUT)      :: KIN_DIAG(NROWS)   ! Diagonal terms from KIN

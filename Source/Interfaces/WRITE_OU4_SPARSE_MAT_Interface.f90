@@ -55,7 +55,7 @@
       INTEGER(LONG), PARAMETER        :: IROW        = 1   ! 
       INTEGER(LONG), PARAMETER        :: PREC        = 2   ! Matrix precision (2 indicates double precision)
       INTEGER(LONG), PARAMETER        :: ROW_BEG     = 1   ! 1st row of matrix output to UNT is row 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_OU4_SPARSE_MAT_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MAT(NTERM_MAT)    ! Array of terms in matrix MAT
  

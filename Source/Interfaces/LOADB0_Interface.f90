@@ -54,7 +54,7 @@
 
       INTEGER(LONG)                   :: NG_USERIN         ! Number of grids found on USERIN elems (not incl SPOINT's)
       INTEGER(LONG)                   :: NS_USERIN         ! Number of SPOINT's found on USERIN elems
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB0_BEGEND
+
  
       END SUBROUTINE LOADB0
 

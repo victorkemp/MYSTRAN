@@ -48,7 +48,7 @@
       CHARACTER(14*BYTE)              :: NAME              ! Specific array name used for output error message
  
       INTEGER(LONG), PARAMETER        :: NCOLS       = 6   ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_RBGLOBAL_BEGEND
+
 
       END SUBROUTINE ALLOCATE_RBGLOBAL
 

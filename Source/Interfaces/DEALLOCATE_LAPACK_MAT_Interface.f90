@@ -45,7 +45,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Name of matrix to be allocated
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_LAPACK_MAT_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_LAPACK_MAT
 

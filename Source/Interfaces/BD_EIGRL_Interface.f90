@@ -48,7 +48,7 @@
       CHARACTER(1*BYTE), INTENT(INOUT):: EIGFND            ! ='Y' if this EIGR card is the one called for in Case Control
       CHARACTER( 1*BYTE)              :: USE_THIS_EIG      ! ='Y' if this is the EIGR meth requested in CC
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_EIG_BEGEND
+
 
       END SUBROUTINE BD_EIGRL
 

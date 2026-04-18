@@ -46,7 +46,7 @@
       CHARACTER(LEN=*),INTENT(IN)     :: CARD              ! A Bulk Data card
 
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP6CHK not used herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARVEC_BEGEND
+
  
       END SUBROUTINE BD_PARVEC
 

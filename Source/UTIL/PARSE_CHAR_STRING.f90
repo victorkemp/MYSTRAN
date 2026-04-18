@@ -64,7 +64,7 @@
       INTEGER(LONG)                    :: CHAR_COUNT         ! Index into CHAR_STRING to a character in that string (not ' ' or ',')
       INTEGER(LONG)                    :: I,J                ! DO loop indices
       INTEGER(LONG)                    :: WORD_LEN           ! Length of one of the words in CHAR_STRING (must be <= MWLEN)
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = PARSE_CHAR_STRING_BEGEND
+
  
 
 ! **********************************************************************************************************************************

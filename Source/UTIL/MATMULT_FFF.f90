@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: NCOLB             ! No. cols in input matrix B 
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices or counters
       INTEGER(LONG)                   :: NROWB             ! 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_FFF_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA,NCOLA)    ! Input  matrix A
       REAL(DOUBLE) , INTENT(IN)       :: B(NCOLA,NCOLB)    ! Input  matrix B

@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows in array
       INTEGER(LONG)                   :: NCOLS             ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_DOF_TABLES_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array

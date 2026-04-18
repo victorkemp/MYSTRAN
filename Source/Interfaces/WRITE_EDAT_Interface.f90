@@ -52,7 +52,7 @@
 
       INTEGER(LONG)                   :: NG                ! Number of grids defined on a CUSERIN entry
       INTEGER(LONG)                   :: NS                ! Number of scalar points defined on a CUSERIN entry
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_EDAT_BEGEND
+
 
       END SUBROUTINE WRITE_EDAT
 

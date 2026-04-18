@@ -46,7 +46,7 @@
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_STF_ARRAYS_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -62,7 +62,6 @@
          IF (ALLOCATED(STFKEY)) THEN
             DEALLOCATE (STFKEY,STAT=IERR)
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME,SUBR_NAME
                WRITE(F06,992) NAME,SUBR_NAME
@@ -76,7 +75,6 @@
          IF (ALLOCATED(STFCOL)) THEN
             DEALLOCATE (STFCOL,STAT=IERR)
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME,SUBR_NAME
                WRITE(F06,992) NAME,SUBR_NAME
@@ -90,7 +88,6 @@
          IF (ALLOCATED(STFPNT)) THEN
             DEALLOCATE (STFPNT,STAT=IERR)
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME,SUBR_NAME
                WRITE(F06,992) NAME,SUBR_NAME
@@ -104,7 +101,6 @@
          IF (ALLOCATED(STF)) THEN
             DEALLOCATE (STF,STAT=IERR)
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME,SUBR_NAME
                WRITE(F06,992) NAME,SUBR_NAME
@@ -118,7 +114,6 @@
          IF (ALLOCATED(STF3)) THEN
             DEALLOCATE (STF3,STAT=IERR)
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME,SUBR_NAME
                WRITE(F06,992) NAME,SUBR_NAME

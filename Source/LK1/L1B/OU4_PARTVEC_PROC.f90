@@ -139,7 +139,7 @@
       INTEGER(LONG)                   :: TDOF_COL(2)        ! Col number in TDOF/TDOFI where CHAR_SET set data exists
       INTEGER(LONG), INTENT(OUT)      :: VAL_COLS           ! Number to enter into PARTVEC_COL for a col that is to be partitioned
       INTEGER(LONG), INTENT(OUT)      :: VAL_ROWS           ! Number to enter into PARTVEC_ROW for a row that is to be partitioned
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OU4_PARTVEC_PROC_BEGEND
+
  
 
 

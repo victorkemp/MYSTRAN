@@ -45,7 +45,7 @@
  
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRT_BUG_THIS_TIME ! If 'Y' then write to BUG file if WRT_BUG array says to
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = JACOBIAN_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! A Gauss point coord.
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! A Gauss point coord.

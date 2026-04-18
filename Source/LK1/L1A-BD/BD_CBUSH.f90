@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: NEDAT_START       ! Value of NEDAT at start of this subr
       INTEGER(LONG)                   :: OCID              ! Coord sys ID for offsets
       INTEGER(LONG)                   :: VVEC_NUM  = 0     ! V vector number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CBUSH_BEGEND
+
 
       REAL(DOUBLE)                    :: VV(3)             ! The 3 components of the V vector for this CBUSH elem
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

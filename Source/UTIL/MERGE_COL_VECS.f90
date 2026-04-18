@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: IN1_DOF           ! IN1_COL DOF number in array TDOFI of a term in UIN1
       INTEGER(LONG)                   :: IN2_DOF           ! IN2_COL DOF number in array TDOFI of a term in UIN2
       INTEGER(LONG)                   :: OUT_DOF           ! OUT_COL DOF number in array TDOFI of a term in UOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_COL_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN )      :: UIN1(IN1_NDOF)    ! Input  vector for IN1_COL displ set
       REAL(DOUBLE) , INTENT(IN )      :: UIN2(IN2_NDOF)    ! Input  vector for IN2_COL displ set

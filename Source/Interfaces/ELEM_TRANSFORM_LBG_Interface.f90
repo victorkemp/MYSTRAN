@@ -47,7 +47,7 @@
       INTEGER(LONG), PARAMETER        :: NCOLA     = 3     ! An input to subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG), PARAMETER        :: NROW_GET  = 3     ! An input to subr MATGET/MATPUT (no. rows to get/put)
       INTEGER(LONG), PARAMETER        :: NROWA     = 3     ! An input to subr MATMULT_FFF/MATMULT_FFF_T, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEM_TRANSFORM_LBG_BEGEND
+
  
       REAL(DOUBLE) , INTENT(INOUT)    :: QE(MELDOF,NSUB)  ! PTE or PPE if WHICH = 'PTE' or 'PPE'
       REAL(DOUBLE) , INTENT(INOUT)    :: ZE(MELDOF,MELDOF) ! Either the mass or stiff matrix of the element

@@ -93,7 +93,7 @@
       INTEGER(LONG)                   :: NUM_SOLNS         ! NSUB for statics, NVEC for eigenvalues, etc
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRT_MATS_ON_RESTART_BEGEND
+
 
       REAL(DOUBLE)                    :: KAA_DIAG(NDOFA)   ! Diagonal of KAA
       REAL(DOUBLE)                    :: KGG_DIAG(NDOFG)   ! Diagonal of KGG

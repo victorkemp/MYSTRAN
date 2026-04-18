@@ -64,7 +64,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
       INTEGER(LONG)     , PARAMETER   :: NUM_YS_COLS = 1       ! Variable for number of cols in array YSe 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_N_FS_BEGEND
+
 
       END SUBROUTINE REDUCE_N_FS
 

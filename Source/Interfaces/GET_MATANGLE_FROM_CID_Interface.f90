@@ -43,7 +43,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), INTENT(IN)       :: ACID              ! Actual coord system ID for the sys that defines the material axes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MATANGLE_FROM_CID_BEGEND
+
  
       END SUBROUTINE GET_MATANGLE_FROM_CID
 

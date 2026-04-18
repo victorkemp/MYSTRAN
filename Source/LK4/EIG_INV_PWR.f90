@@ -61,7 +61,7 @@
       INTEGER(LONG)                   :: INFO        = 0   ! 
       INTEGER(LONG)                   :: ITER_NUM          ! Number of iterations in converging on eigenvalue 
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_INV_PWR_BEGEND
+
 
       REAL(DOUBLE)                    :: EIGEN_VAL_APPROX(0:MXITERI)
                                                            ! Eigenvalue at a given iteration number

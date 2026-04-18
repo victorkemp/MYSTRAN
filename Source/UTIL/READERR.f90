@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: REC_NO            ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IEND              ! End col for MESSAG
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READERR_BEGEND
+
  
 
 

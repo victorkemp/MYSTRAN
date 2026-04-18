@@ -73,7 +73,7 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IERROR            ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELESORT_BEGEND
+
   
 
 

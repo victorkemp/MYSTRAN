@@ -51,7 +51,7 @@
   
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_INV_PWR_BEGEND
+
 
       END SUBROUTINE EIG_INV_PWR
 

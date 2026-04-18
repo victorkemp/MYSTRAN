@@ -54,7 +54,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NFIELD            ! Number of card fields to read from JCARD (start w/ field 2) 
       INTEGER(LONG), INTENT(IN)       :: NMORE             ! Number of terms that have to be written to EDAT for this element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEPRO_BEGEND
+
  
       END SUBROUTINE ELEPRO
 

@@ -53,7 +53,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'EMP0'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND
+
 
 
 
@@ -100,7 +100,7 @@
 
       INTEGER(LONG)                   :: DELTA_LTERM_MGGE  ! Increment of LTERM_MGGE for one element
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND + 1
+
  
  
 
@@ -165,7 +165,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IERROR            ! Local error indicator
       INTEGER(LONG)                   :: KSTART            ! Index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND
+
 
       REAL(DOUBLE)                    :: DQE(MELDOF,NSUB)  ! Dummy array in call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

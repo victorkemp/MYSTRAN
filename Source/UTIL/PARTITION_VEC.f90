@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: SET_X             ! Col no. in array TDOFI where the DOF list is for CSET_X
       INTEGER(LONG)                   :: SET_1             ! Col no. in array TDOFI where the DOF list is for CSET_1
       INTEGER(LONG)                   :: SET_2             ! Col no. in array TDOFI where the DOF list is for CSET_2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_VEC_BEGEND
+
 
 
 

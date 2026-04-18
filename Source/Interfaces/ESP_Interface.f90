@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy variable used when flipping DOF's
       INTEGER(LONG)                   :: KSTART            ! Used in deciding whether to process all elem stiffness terms or only
       INTEGER(LONG)                   :: MAX_NUM           ! MAX of NTERM_KGG/NDOFG (used for DEBUG printout)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP_BEGEND
+
 
       END SUBROUTINE ESP
 

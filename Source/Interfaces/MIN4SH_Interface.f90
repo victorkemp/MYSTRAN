@@ -43,7 +43,7 @@
       CHARACTER(17*BYTE)              :: NAME(2)           ! Used for BUG output annotation
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRT_BUG_THIS_TIME ! If 'Y' then write to BUG file if WRT_BUG array says to
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MIN4SH_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point coordinate
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point coordinate

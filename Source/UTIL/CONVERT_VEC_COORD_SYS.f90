@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: JCORD             ! Internal coord system number for either GCID or NCID
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
       INTEGER(LONG)                   :: NUM_COMPS         ! No. displ components (1 for SPOINT, 6 for actual grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONVERT_VEC_COORD_SYS_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: INPUT_VEC(NDOFG)  ! G-set input vector to be transformed from global to NCID
       REAL(DOUBLE), INTENT(OUT)       :: OUTPUT_VEC(NDOFG) ! Transformed output vector

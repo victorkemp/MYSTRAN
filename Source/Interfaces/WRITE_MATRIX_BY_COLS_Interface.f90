@@ -44,7 +44,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWS              ! Number of rows in matrix MATOUT
       INTEGER(LONG), INTENT(IN)       :: NCOLS              ! Number of cols in matrix MATOUT
       INTEGER(LONG), INTENT(IN)       :: OUT_UNT            ! Output unit number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_BY_COLS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATOUT(NROWS,NCOLS)! Matrix to write out
  

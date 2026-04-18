@@ -54,7 +54,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Solution vector number
       INTEGER(LONG)                   :: IB                ! Intermediate value used in determining NREQ
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GP_FORCE_BALANCE_PROC_BEGEND
+
 
       END SUBROUTINE GP_FORCE_BALANCE_PROC
 

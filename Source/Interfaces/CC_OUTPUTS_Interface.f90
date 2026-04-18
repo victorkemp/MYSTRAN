@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WHAT              ! Which CC type output to process (e.g., DISP, SPCF, etc)
  
       INTEGER(LONG), INTENT(OUT)      :: SETID             ! Set ID on this Case Control card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_OUTPUTS_BEGEND
+
  
       END SUBROUTINE CC_OUTPUTS
 

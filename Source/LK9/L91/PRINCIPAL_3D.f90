@@ -47,7 +47,7 @@
 
       INTEGER(LONG)                   :: I,J         = 0    ! DO loop indices
       INTEGER(LONG)                   :: INFO        = 0    ! An output from subr ROOTS_3D, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRINCIPAL_3D_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STR(6)             ! Stress or strain vector
       REAL(DOUBLE), INTENT(OUT)       :: MEAN               ! Mean stresses or strains
@@ -141,7 +141,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG), PARAMETER        :: N         = 3     ! Order of matrix STR_TENSOR
       INTEGER(LONG), PARAMETER        :: LWORK     = 3*N-1 ! Size of array WORK
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRINCIPAL_3D_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: STR_TENSOR(N,N)   ! On entry, the stress or strain tensor
 !                                                            On exit , the principal stresses or strains (if INFO = 0)

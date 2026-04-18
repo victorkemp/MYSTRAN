@@ -104,7 +104,7 @@
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SDOF              ! S-set DOF number
       INTEGER(LONG)                   :: SADOF             ! SA-set DOF number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP2_BEGEND
+
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
 
       REAL(DOUBLE)                    :: DEN               ! Intermediate variable

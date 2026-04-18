@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
  
       INTEGER(LONG), INTENT(OUT)      :: DELTA_LEDAT       ! Delta number of words to add to LEDAT for this element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CPENTA0_BEGEND
+
  
 
 

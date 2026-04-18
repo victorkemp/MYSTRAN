@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy variable used when flipping DOF's
       INTEGER(LONG)                   :: KSTART            ! Used in deciding whether to process all elem mass terms or only
       INTEGER(LONG)                   :: MAX_NUM           ! MAX of NTERM_MGGE/NDOFG (used for DEBUG printout)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP_BEGEND
+
  
       END SUBROUTINE EMP
 

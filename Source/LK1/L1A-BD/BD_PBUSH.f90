@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: NUM_ENTRIES       ! Num of quantities to read depending on field 3 of parent or cont entry
       INTEGER(LONG)                   :: OFFSET            ! Array index offset
       INTEGER(LONG)                   :: PROPERTY_ID = 0   ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBUSH_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this BD entry
 

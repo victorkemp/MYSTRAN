@@ -81,7 +81,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: I2_A(NTERM_A)     ! Row numbers of the terms in A
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRS_SYM_TO_CRS_NONSYM_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERM_A)        ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)        ! Real nonzero values in output matrix B

@@ -51,7 +51,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: ALL_SAME_CID      ! Indicator of whether all grids, for the output set, have the same
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Sol'n vector num. Can be internal subcase number or eigenvector number
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_GRD_PRT_OUTPUTS_BEGEND
+
 
       CHARACTER(1*BYTE), INTENT(IN)   :: WRITE_OGEL(NUM)   ! 'Y'/'N' as to whether to write OGEL for a grid (used to avoid writing
       END SUBROUTINE WRITE_GRD_PRT_OUTPUTS

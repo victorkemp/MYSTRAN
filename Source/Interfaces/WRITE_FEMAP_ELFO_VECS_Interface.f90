@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS         ! Number of rows of FEMAP data to write
       INTEGER(LONG), INTENT(IN)       :: FEMAP_SET_ID           ! FEMAP set ID to write out
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FEMAP_ELFO_VECS_BEGEND
+
 
       END SUBROUTINE WRITE_FEMAP_ELFO_VECS
 

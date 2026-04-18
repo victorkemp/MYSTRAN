@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: AGRID              ! Actual grid ID for IGRID
       INTEGER(LONG), INTENT(INOUT)    :: NUM_ASPC_BY_COMP(6)! The number of DOF's AUTOSPC'd for each displ component
       INTEGER(LONG)                   :: EIGENVAL_NUM(6)    ! Array to hold the eigenvalue number used in finding a SINGLR_COMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = KGG_SINGULARITY_PROC_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: KGRD(6,6)          ! 6x6 diagonal stiffness matrix for grid point AGRID
       REAL(DOUBLE)                    :: FAC                ! Multipling factor used in an intermediate calc

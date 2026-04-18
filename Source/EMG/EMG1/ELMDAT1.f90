@@ -93,7 +93,7 @@
       INTEGER(LONG)                   :: NFLAG              ! Row number in array DOFPIN
       INTEGER(LONG)                   :: NUM_COMPS          ! No. displ components (1 for SPOINT, 6 for actual grid)
       INTEGER(LONG)                   :: NUMMAT             ! No. matl properties for an element type
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDAT_BEGEND
+
 
       REAL(DOUBLE)                    :: DXI                ! An offset distance in direction 1
       REAL(DOUBLE)                    :: DYI                ! An offset distance in direction 2

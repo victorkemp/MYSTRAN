@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: NTERM_CRS1          ! Number of terms in matrix CRS1  
       INTEGER(LONG)                   :: NTERM_CRS2          ! Number of terms in matrix CRS2  
       INTEGER(LONG)                   :: NTERM_CRS3          ! Number of terms in matrix CRS3  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_MRN_BEGEND
+
 
 
 

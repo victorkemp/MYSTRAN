@@ -123,7 +123,7 @@
 
       INTEGER(LONG)                   :: PROG_ERR  = 0     ! Local error indicator
       INTEGER(LONG)                   :: TRIA_NUM          ! 1, 2, 3, or 4 designator of a subtriangle of the quad
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA_QUAD         ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

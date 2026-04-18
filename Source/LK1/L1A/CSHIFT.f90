@@ -50,7 +50,7 @@
       INTEGER(LONG)                            :: CARD_IN_LEN       ! Length of CARD 
       INTEGER(LONG)                            :: I                 ! DO loop index
       INTEGER(LONG)                            :: ISTART            ! The col on CARD where nonblank data begins after CHAR_COL
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = CSHIFT_BEGEND
+
 
       INTRINSIC INDEX
  

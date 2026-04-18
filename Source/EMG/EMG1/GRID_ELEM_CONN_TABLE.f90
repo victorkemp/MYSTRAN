@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: GRD_NUM_ELEM(NGRID)! Array that specifies the number of elements connected to each grid
       INTEGER(LONG)                   :: I,J,K              ! DO loop indices
       INTEGER(LONG)                   :: IGRID              ! Internal grid ID (row in array GRID_ID where an act grid num exists)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_ELEM_CONN_TABLE_BEGEND
+
 
 
 

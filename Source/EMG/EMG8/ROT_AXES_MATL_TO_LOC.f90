@@ -47,7 +47,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y' write warning messages, otherwise do not
       CHARACTER( 1*BYTE)              :: FOUND             ! If 'Y' we found something we were looking for
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROT_AXES_MATL_TO_LOC_BEGEND
+
       INTEGER(LONG)                   :: CORDM             ! Actual coord system ID (CORDM on PSOLID Bulk Data entry)
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: ICORD             ! Internal coord system ID for CORDM

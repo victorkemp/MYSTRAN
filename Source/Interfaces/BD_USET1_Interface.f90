@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: GRIDJ1    = 0     ! Grid ID on USET1 card
       INTEGER(LONG)                   :: GRIDJ2    = 0     ! Grid ID on USET1 card
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_USET1_BEGEND
+
 
       END SUBROUTINE BD_USET1
 

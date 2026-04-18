@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: I2_A(NTERMS_A)    ! Array of row numbers for each term in A
       INTEGER(LONG)                   :: COL_J_NUM_TERMS   ! Number of terms in col J of output matrix B
       INTEGER(LONG)                   :: ROW_I_NUM_TERMS   ! Number of terms in row I of input  matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_SPARSE_CCS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERMS_A)       ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERMS_A)       ! Real nonzero values in output matrix B

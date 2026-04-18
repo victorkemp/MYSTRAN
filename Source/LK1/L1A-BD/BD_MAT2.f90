@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: MATL_ID   = 0     ! The ID for this MAT2 (field 2)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MATL_BEGEND
+
 
       REAL(DOUBLE)                    :: R8INP             ! A real input value read
 

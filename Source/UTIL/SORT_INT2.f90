@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: N                 ! An array index
       INTEGER(LONG)                   :: SORTPK            ! Intermediate variable used in setting a DO loop range.
       INTEGER(LONG)                   :: SORT_NUM          ! How many times the sort has to be performed in order for the data
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORT_INT2_BEGEND
+
 
 
 

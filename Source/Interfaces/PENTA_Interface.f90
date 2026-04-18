@@ -54,7 +54,7 @@
       INTEGER(LONG), INTENT(IN)       :: IORD_IJ                 ! Integration order in the triangular plane
       INTEGER(LONG), INTENT(IN)       :: IORD_K                  ! Integration order in Z direction
       INTEGER(LONG)                   :: GAUSS_PT                ! Gauss point number (used for DEBUG output in subr SHP3DP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PENTA_BEGEND
+
   
       REAL(DOUBLE)                    :: CBAR(3,3*ELGP)          ! Derivatives of shape fcns wrt x,y,z used in diff stiff matrix
       REAL(DOUBLE)                    :: DUM0(3*ELGP)            ! Intermediate matrix used in solving for elem matrices

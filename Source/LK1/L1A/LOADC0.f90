@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: IERR              ! Error indicator. If CHAR not found, IERR set to 1
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading a Case Control card from unit IN1
       INTEGER(LONG)                   :: JERR              ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADC0_BEGEND
+
  
 
 

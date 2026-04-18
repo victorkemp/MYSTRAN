@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: PART_VEC_M(NDOFM)   ! Partitioning vector (1's for all M set DOF's) 
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_GMN_BEGEND + 1
+
 
       END SUBROUTINE SOLVE_GMN
 

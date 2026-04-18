@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: JSUB              ! Solution vector number
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       INTEGER(LONG), INTENT(IN)       :: NUM_ELGP          ! The number of grid points for the elem being processed
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELEM_NODE_FORCE_BEGEND
+
   
       END SUBROUTINE WRITE_ELEM_NODE_FORCE
 

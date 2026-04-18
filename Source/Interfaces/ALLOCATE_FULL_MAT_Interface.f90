@@ -52,7 +52,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Nunber of rows in array NAME being allocated
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Nunber of cols in array NAME being allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_FULL_MAT_BEGEND
+
  
       END SUBROUTINE ALLOCATE_FULL_MAT
 

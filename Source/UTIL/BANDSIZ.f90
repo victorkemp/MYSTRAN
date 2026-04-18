@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: K                    ! Counter        
       INTEGER(LONG)                   :: KD_TEMP              ! Temporary value of in calculation of KD
       INTEGER(LONG)                   :: NUM_TERMS_ROW_I      ! Number of terms in MATIN matrix in row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDSIZ_BEGEND
+
 
 
 

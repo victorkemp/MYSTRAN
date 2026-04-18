@@ -47,7 +47,7 @@
       INTEGER(LONG)                   :: IERROR       = 0  ! Local error indicator
       INTEGER(LONG)                   :: I,J               ! DO loop indices 
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATERIAL_PROPS_BEGEND
+
   
       REAL(DOUBLE)                    :: ALPHA             ! Isotropic coefficient of thermal expansion
       REAL(DOUBLE)                    :: DEN1              ! An intermaediate variable in calculating outputs

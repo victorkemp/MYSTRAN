@@ -47,7 +47,7 @@
 
       INTEGER(LONG), INTENT(OUT)      :: NUM_GRD           ! Number of GRID's + SPOINT's for the elem
       INTEGER(LONG)                   :: INT41,INT42        ! An integer used in getting MATANGLE
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CQUAD_BEGEND
+
  
       END SUBROUTINE BD_CQUAD
 

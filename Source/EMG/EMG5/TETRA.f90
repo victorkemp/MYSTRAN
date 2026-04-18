@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: ID(3*ELGP)              ! Array which shows equivalence of DOF's in virgin element with the
      !                                                             6 DOF/grid of the final element stiffness matrix
                                                                  ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TETRA_BEGEND
+
       INTEGER(LONG)                   :: STR_PT_NUM              ! Stress point number. 1 is center, 2+ are element nodes 1+.
       
       REAL(DOUBLE)                    :: ALP(6)                  ! First col of ALPVEC

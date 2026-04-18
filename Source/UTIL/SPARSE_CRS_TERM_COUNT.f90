@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_IN)   ! Col numbers for nonzero terms in MATIN
       INTEGER(LONG), INTENT(OUT)      :: NTERM_OUT           ! Number of nonzero terms in output matrix, MATOUT
       INTEGER(LONG)                   :: I,K                 ! DO loop indices or counters
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_TERM_COUNT_BEGEND
+
 
 
 

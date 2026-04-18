@@ -76,7 +76,7 @@
       INTEGER(LONG)                   :: NUM_CONN_ELEMS    ! The number of elements that are connected to a specific grid
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GP_FORCE_BALANCE_PROC_BEGEND
+
 
       INTEGER(SHORT), DIMENSION(1)    :: Udd = (/0220/)    ! 0220 is the 4 digit ASCII code for a capital U double-dot
 

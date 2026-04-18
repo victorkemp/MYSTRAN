@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID        ! Internal element ID for which
       INTEGER(LONG)                   :: I3_IN(3)           ! Integer array used in sorting VX. 
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM1_BEGEND
+
   
       REAL(DOUBLE)                    :: V13(3)             ! A vector from grid 1 to grid 3 (for BAR, BEAM or USER1 it is V vector)
   

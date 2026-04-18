@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WHAT              ! Title over output vector (e.g. DISPL, FORCE, etc.)
 
       INTEGER(LONG), INTENT(IN)       :: NUM               ! Size of vector UX to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_VECTOR_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: UX(NUM)           ! Vector to write out
  

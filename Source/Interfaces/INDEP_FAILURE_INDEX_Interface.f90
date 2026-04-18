@@ -44,7 +44,7 @@
 
       IMPLICIT NONE
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INDEP_FAILURE_INDEX_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STRE_ALLOWABLES(9)! Allowable stresses (incl tension and compr for normal stresses)
       REAL(DOUBLE), INTENT(IN)        :: STRN_ALLOWABLES(9)! Allowable strains (incl tension and compr for normal stresses)

@@ -60,7 +60,7 @@
                                                            ! Array that has USERIN grid num in col 1 and comp number in remaining 7
                                                            ! cols (1 col has all comps, others each indiv comp) for USERIN bdy DOF's
       INTEGER(LONG)                   :: USERIN_CID0_ICID  ! Internal coordinate system ID for USERIN_CID0
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USERIN_BEGEND
+
   
       REAL(DOUBLE)                    :: DX                ! X offset of USERIN elem CG from overall model basic sys origin
       REAL(DOUBLE)                    :: DY                ! Y offset of USERIN elem CG from overall model basic sys origin

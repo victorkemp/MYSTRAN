@@ -65,7 +65,7 @@
       INTEGER(LONG)                   :: ID(20)                 ! Vector ID's for FEMAP output
       INTEGER(LONG)                   :: VEC_ID_OFFSET          ! Offset in determining output vector ID
       INTEGER(LONG)                   :: VEC_ID                 ! Vector ID for FEMAP output
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FEMAP_STRN_VECS_BEGEND
+
 
       REAL(DOUBLE)                    :: ELEM_VEC(NUM_FEMAP_ROWS)    ! One column from FEMAP_EL_VECS
       REAL(DOUBLE)                    :: VEC_ABS                ! Abs value in vector

@@ -47,7 +47,7 @@
 
       INTEGER(LONG), PARAMETER        :: NR        = 2     ! An input to subr BCHECK, called herein
       INTEGER(LONG), PARAMETER        :: NC        = 9     ! An input to subr BCHECK, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BSMIN3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: A(3)              ! Vector of x coord differences
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Elem area

@@ -54,7 +54,7 @@
       INTEGER(LONG)                   :: COL_NUM               ! A column number from J_MATIN
       INTEGER(LONG)                   :: I,J,K                 ! DO loop indices or counters 
       INTEGER(LONG)                   :: NTERM_ROW_I           ! Number of terms in matrix A row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROW_AT_COLJ_BEGEND_BEGEND
+
 
 
 

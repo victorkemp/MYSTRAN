@@ -101,7 +101,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Subr that called this one
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTPUT4_PROC_BEGEND
+
 
       END SUBROUTINE OUTPUT4_PROC
 

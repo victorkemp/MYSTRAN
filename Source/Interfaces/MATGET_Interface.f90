@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWA             ! Number of rows in input matrix
       INTEGER(LONG), INTENT(IN)       :: NCOL              ! No. of cols to get from input matrix
       INTEGER(LONG), INTENT(IN)       :: NROW              ! No. of rows to get from input matrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATGET_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA*NCOLA)    ! Input matrix from which a partition will be extracted
       REAL(DOUBLE) , INTENT(OUT)      :: B(NROW*NCOL)      ! Output matrix, which is the partition extracted from A

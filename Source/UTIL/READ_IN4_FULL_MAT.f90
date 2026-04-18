@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: NC                ! From matrix trailer. Should be NCOLS+1
       INTEGER(LONG)                   :: PREC              ! Matrix precision (2 indicates double precision)
       INTEGER(LONG)                   :: REC_NUM           ! 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_IN4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE), ALLOCATABLE       :: CCS1_COL(:)       ! One column of MAT
       REAL(DOUBLE), INTENT(OUT)       :: MAT_FULL(NRI,NCI) ! Array of terms in matrix MAT

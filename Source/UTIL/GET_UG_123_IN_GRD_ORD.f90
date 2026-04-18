@@ -45,7 +45,7 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'GET_UG_123_IN_GRD_ORD'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_UG_123_IN_GRD_ORD_BEGEND
+
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Local error indicator
       INTEGER(LONG)                   :: GRDS_GLOBAL(NGRID)! 
       INTEGER(LONG)                   :: I,J               ! DO loop indices

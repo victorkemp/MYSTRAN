@@ -41,7 +41,7 @@
  
       CHARACTER( 1*BYTE), INTENT(OUT) :: CDOF(6)           ! Contains 1 in each of the 6 pos'ns corresponding to a DOF from INTDOF
       INTEGER(LONG), INTENT(IN)       :: INTDOF            ! Integer field which should contain only the digits 1 - 6
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RDOF_BEGEND
+
  
       END SUBROUTINE RDOF
 

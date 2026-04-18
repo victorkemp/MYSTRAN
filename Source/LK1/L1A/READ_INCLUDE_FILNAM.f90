@@ -50,7 +50,7 @@
       CHARACTER( 1*BYTE)              :: DONE              ! Indicator of having found start and end of file name
 
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_INCLUDE_FILNAM_BEGEND
+
       INTEGER(LONG)                   :: CHAR_COL          ! Column number on CARD where character CHAR is found
       INTEGER(LONG)                   :: DELTA_END_COL     ! Delta from START_ COL to END_COL
       INTEGER(LONG)                   :: END_COL           ! Col from CARD1 where the 2nd ' exists, if it does exist

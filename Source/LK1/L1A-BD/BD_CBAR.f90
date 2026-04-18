@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
       INTEGER(LONG)                   :: VVEC_NUM  = 0     ! V vector number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CBAR_BEGEND
+
  
       REAL(DOUBLE)                    :: VV(3)             ! The 3 components of the V vector for this CBAR/CBEAM elem
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

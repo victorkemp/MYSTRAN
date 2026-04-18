@@ -45,7 +45,7 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'GET_MACHINE_PARAMS'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MACHINE_PARAMS_BEGEND
+
 
       REAL(DOUBLE)                    :: DLAMCH
       EXTERNAL                        :: DLAMCH

@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: I1                ! The component no (1-6) at end A that this elem is connected to
       INTEGER(LONG)                   :: I2                ! The component no (1-6) at end B that this elem is connected to
       INTEGER(LONG)                   :: NUM_COMPS_GRID_1  ! No. displ components (1 for SPOINT, 6 for actual grid) for 1st grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELAS1_BEGEND
+
  
       REAL(DOUBLE)                    :: K                 ! Spring stiffness
       REAL(DOUBLE)                    :: GE                ! Material damping coeff

@@ -74,7 +74,7 @@
       INTEGER(LONG)                   :: NTERM_KMN           ! Number of nonzeros in sparse matrix KMN (should = NTERM_KNM)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KGG_TO_KNN_BEGEND
+
 
       REAL(DOUBLE)                    :: ALPHA = ONE         ! Scalar multiplier for matrix
       REAL(DOUBLE)                    :: BETA  = ONE         ! Scalar multiplier for matrix

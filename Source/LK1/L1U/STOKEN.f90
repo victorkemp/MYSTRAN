@@ -67,7 +67,7 @@
       INTEGER(LONG)                            :: TOKEN_END   ! Where, in TOKSTR, the end of the current token is located
       INTEGER(LONG)                            :: NUM_TOK_EXP ! No. of tokens we expect (if we find "THRU", we should find 3 tokens)
       INTEGER(LONG)                            :: PRINT_ITEM  ! An item number to print when DEBUG(19) is turned on
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = STOKEN_BEGEND
+
 
 
 
@@ -263,7 +263,7 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DEB_STOKEN'
 
       INTEGER(LONG), INTENT(IN)       :: PRINT_ITEM        ! What item to print
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STOKEN_BEGEND + 1
+
 
 
 

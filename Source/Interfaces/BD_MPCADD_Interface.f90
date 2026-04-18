@@ -46,7 +46,7 @@
       CHARACTER( 3*BYTE)              :: NAME1   = 'MPC'   ! Name for output error message use
       CHARACTER( 6*BYTE)              :: NAME2   = 'MPCADD'! Name for output error message use
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPCADD_BEGEND
+
  
       END SUBROUTINE BD_MPCADD
 

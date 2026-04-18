@@ -78,7 +78,7 @@
       INTEGER(LONG)                   :: TDOFI_ROW_OA_MAX  ! Row/Col in TDOFI where MAX_OA_DIAG_TERM is
       INTEGER(LONG)                   :: TDOFI_ROW_MIN     ! Row/Col in TDOFI where MIN_DIAG_TERM is
       INTEGER(LONG)                   :: TDOFI_ROW_MINP    ! Row/Col in TDOFI where MINP_DIAG_TERM is
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MATRIX_DIAG_STATS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: KIN(NTERM)        ! Nonzero terms in the stiffness matrix
       REAL(DOUBLE) , INTENT(OUT)      :: KIN_DIAG(NROWS)   ! Diagonal terms from KIN

@@ -64,7 +64,7 @@
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
       INTEGER(LONG)                   :: PN_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG)                   :: PM_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_PG_TO_PN_BEGEND
+
 
       REAL(DOUBLE)                    :: ALPHA = ONE         ! Scalar multiplier for matrix
       REAL(DOUBLE)                    :: BETA  = ONE         ! Scalar multiplier for matrix

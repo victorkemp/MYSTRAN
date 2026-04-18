@@ -43,7 +43,7 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: IERRT             ! Sum of all grid and DOF errors
       INTEGER(LONG)                   :: IDUM(6)           ! Integer values read that are not used
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: RDUM              ! Real value read that is not used
 

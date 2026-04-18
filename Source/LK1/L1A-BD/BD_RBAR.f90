@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
       INTEGER(LONG)                   :: RBDOF(4)          ! The DOF's in fields 5,6,7,8
       INTEGER(LONG)                   :: RELID     = 0     ! Rigid element ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBAR_BEGEND
+
  
 
 

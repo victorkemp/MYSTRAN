@@ -50,7 +50,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when closing a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
+
 
 
 

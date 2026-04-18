@@ -60,7 +60,7 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: INFO              ! Output from SuperLU routine
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SYM_MAT_DECOMP_SUPRLU_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! A small number to compare real zero
 

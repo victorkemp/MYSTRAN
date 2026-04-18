@@ -43,7 +43,7 @@
  
       CHARACTER(24*BYTE)              :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_EMS_ARRAYS_BEGEND
+
 
       END SUBROUTINE DEALLOCATE_EMS_ARRAYS
 

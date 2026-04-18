@@ -51,7 +51,7 @@
 
       INTEGER(LONG)                   :: IERR              ! Local error count
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RESTART_DATA_FOR_L3_BEGEND
+
  
 
 

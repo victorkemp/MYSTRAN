@@ -77,7 +77,7 @@
       INTEGER(LONG)                   :: JFLD2             ! A computed field number on the card
       INTEGER(LONG)                   :: NUM_IDOF_FLDS = 0 ! Number of fields that have independent DOF's specified
       INTEGER(LONG)                   :: RELID     = 0     ! This rigid elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE1_BEGEND
+
  
 
 

@@ -48,7 +48,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
 
       INTEGER(LONG)                   :: I1                ! Intermediate variable used in setting WRT_BUG(3) and OUT10
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EPTL_BEGEND
+
 
       END SUBROUTINE EPTL
 

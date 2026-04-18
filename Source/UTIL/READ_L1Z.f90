@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: SPCSET_OLD        ! SPC set ID from original run that is being restarted
       INTEGER(LONG)                   :: SUBLOD1_OLD       ! Load set ID (for 1 subcase) from original run that is being restarted
       INTEGER(LONG)                   :: SUBLOD2_OLD       ! Temp set ID (for 1 subcase) from original run that is being restarted
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1Z_BEGEND
+
  
 
 

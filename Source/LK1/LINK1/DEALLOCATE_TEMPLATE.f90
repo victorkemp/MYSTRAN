@@ -45,7 +45,7 @@
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_TEMPLATE_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -62,7 +62,6 @@
          DEALLOCATE (TEMPLATE,STAT=IERR)
          NAME = 'TEMPLATE'
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -77,7 +76,6 @@
          DEALLOCATE (CROW,STAT=IERR)
          NAME = 'CROW'
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME

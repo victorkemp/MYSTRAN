@@ -48,7 +48,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols for matrix CCSi
       INTEGER(LONG), INTENT(IN)       :: NTERMS            ! Number of nonzero terms that will be in matrix CCSi
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SCR_CCS_MAT_BEGEND
+
 
       END SUBROUTINE ALLOCATE_SCR_CCS_MAT
 

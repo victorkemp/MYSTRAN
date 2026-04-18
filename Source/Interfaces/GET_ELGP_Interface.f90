@@ -43,7 +43,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
       INTEGER(LONG)                   :: NG                ! Number of GRID's for USERIN elem
       INTEGER(LONG)                   :: NS                ! Number of SPOINT's for USERIN elem
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELGP_BEGEND
+
 
       END SUBROUTINE GET_ELGP
 

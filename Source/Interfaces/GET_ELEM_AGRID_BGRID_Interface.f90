@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CHECK_AGRID       ! If 'Y' perform check on AGRID's to see if appropriate type
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID for which
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELEM_AGRID_BGRID_BEGEND
+
 
       END SUBROUTINE GET_ELEM_AGRID_BGRID
 

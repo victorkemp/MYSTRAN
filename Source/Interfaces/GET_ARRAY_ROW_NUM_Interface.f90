@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: EXT_ID            ! External (actual) ID to find in ARRAY
       INTEGER(LONG), INTENT(OUT)      :: ROW_NUM           ! Internal ID (row in ARRAY) where EXT_ID exists
       INTEGER(LONG)                   :: HI, LO            ! Used to bound the range of N where EXT_ID is expected to be found
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ARRAY_ROW_NUM_BEGEND
+
  
       END SUBROUTINE GET_ARRAY_ROW_NUM
  

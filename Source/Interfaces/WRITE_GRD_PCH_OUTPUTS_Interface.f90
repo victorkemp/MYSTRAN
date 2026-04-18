@@ -46,7 +46,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: JSUB              ! Solution vector number
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_GRD_PCH_OUTPUTS_BEGEND
+
 
       END SUBROUTINE WRITE_GRD_PCH_OUTPUTS
 

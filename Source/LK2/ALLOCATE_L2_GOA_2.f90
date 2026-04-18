@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows in array
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_L2_GOA_2_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array

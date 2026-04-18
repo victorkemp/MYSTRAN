@@ -45,7 +45,7 @@
       INTEGER(LONG), INTENT(IN)       :: ID_LIST(NROWS)    ! The ID (grid or elem) numbers corresponding to rows in VECTOR
       INTEGER(LONG), INTENT(OUT)      :: ID_MAX            ! ID where vector is max
       INTEGER(LONG), INTENT(OUT)      :: ID_MIN            ! ID where vector is min
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_VEC_MIN_MAX_ABS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: VECTOR(NROWS)     ! Values to scan for MIN, MAX, ABS
       REAL(DOUBLE) , INTENT(OUT)      :: VEC_ABS           ! Abs value in vector

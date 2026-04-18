@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: A_SET_COL         ! Col no. in TDOF for A  displ set definition
       INTEGER(LONG)                   :: L_SET_COL         ! Col no. in TDOF for L  displ set definition
       INTEGER(LONG)                   :: R_SET_COL         ! Col no. in TDOF for R  displ set definition
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_A_LR_BEGEND
+
 
 
 

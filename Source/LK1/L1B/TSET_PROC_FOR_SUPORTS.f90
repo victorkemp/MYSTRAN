@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening or reading a file
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
 
 

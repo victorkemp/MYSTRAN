@@ -72,7 +72,7 @@
                                                       5, & ! ID(7) =  5 means virgin 9x9 elem DOF 7 is MYSTRAN 18x18 elem DOF  5
                                                      11, & ! ID(8) = 11 means virgin 9x9 elem DOF 8 is MYSTRAN 18x18 elem DOF 11
                                                      17 /) ! ID(9) = 17 means virgin 9x9 elem DOF 9 is MYSTRAN 18x18 elem DOF 17
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TPLT2_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: PSI               ! Angle to rotate orthotropic mat'l matrix of a sub-tria to align w QUAD

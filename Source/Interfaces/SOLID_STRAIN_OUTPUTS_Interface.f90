@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: SIZE_ALLOCATED     ! No. of rows allocated to array that will be written to
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLID_STRAIN_OUTPUTS_BEGEND
+
  
       END SUBROUTINE SOLID_STRAIN_OUTPUTS
 

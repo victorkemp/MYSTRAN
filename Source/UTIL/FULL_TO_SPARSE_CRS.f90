@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: JSTART               ! Starting value for a DO loop
       INTEGER(LONG)                   :: KTERM                ! Counter
       INTEGER(LONG)                   :: ROW_I_NTERMS         ! No. terms in row I of output matrix MATOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FULL_TO_SPARSE_CRS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN_FULL(N,M)      ! Real nonzero values in input matrix MATIN
       REAL(DOUBLE) , INTENT(IN)       :: SMALL                ! Terms < SMALL are filtered out (both here and in calling subr)

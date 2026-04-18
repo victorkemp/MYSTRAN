@@ -61,7 +61,7 @@
       INTEGER(LONG)                   :: GRIDJ     = 0     ! A grid point number read from a B.D. ASET/OMIT card in format #2
       INTEGER(LONG)                   :: GRIDJ1    = 0     ! 1st grid in format #1 of ASET/OMIT input
       INTEGER(LONG)                   :: GRIDJ2    = 0     ! 2nd grid in format #1 of ASET/OMIT input
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_ASET1_BEGEND
+
  
 
 

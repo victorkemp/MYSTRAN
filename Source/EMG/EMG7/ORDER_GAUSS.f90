@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: MM                   ! A computed index into SSS, HHH arrays
       INTEGER(LONG)                   :: NN                   ! A term in a computed index into SSS, HHH arrays
       INTEGER(LONG)                   :: IBEGIN(11) = (/0, 1, 2, 4, 6, 9,12,16,20,25,30/)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) ,INTENT(OUT)       :: SSS(MAX_ORDER_GAUSS) ! Gauss abscissa's
       REAL(DOUBLE) ,INTENT(OUT)       :: HHH(MAX_ORDER_GAUSS) ! Gauss weight coeffs

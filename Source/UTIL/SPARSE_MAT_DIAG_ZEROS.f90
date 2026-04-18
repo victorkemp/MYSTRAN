@@ -53,7 +53,7 @@
       INTEGER(LONG), INTENT(OUT)      :: NUM_A_DIAG_ZEROS   ! Number of zero diagonal terms in input matrix A
       INTEGER(LONG)                   :: I,K                ! DO loop indices 
       INTEGER(LONG)                   :: ZERO_DIAGS(NROWS_A)! Row numbers where there are zero diag terms
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_MAT_DIAG_ZEROS_BEGEND
+
 
 
 

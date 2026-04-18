@@ -46,7 +46,7 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components (1 for SPOINT, 6 for physical grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_TDOF_ROW_START_BEGEND
+
 
 
 

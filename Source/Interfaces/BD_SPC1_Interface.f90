@@ -47,7 +47,7 @@
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_SPC_FND        ! ='Y' if this SPC is a set requested in Case Control
 
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPC1_BEGEND
+
 
       REAL(DOUBLE) , PARAMETER        :: RSPCJ     = ZERO  ! Enforced displ value (always zero on SPC1). Included for file LINK1O
       END SUBROUTINE BD_SPC1

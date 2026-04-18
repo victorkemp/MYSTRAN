@@ -48,7 +48,7 @@
  
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BAR1_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: ALPHA             ! Coefficient of thermal expansion
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Cross-sectional area

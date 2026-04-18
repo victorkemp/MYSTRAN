@@ -52,7 +52,7 @@
 
       CHARACTER(LEN=*), INTENT(IN)    :: NAME_IN           ! Array name of the matrix to be allocated
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_CB_ELM_OTM_BEGEND
+
 
       END SUBROUTINE ALLOCATE_CB_ELM_OTM
 

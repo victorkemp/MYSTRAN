@@ -45,7 +45,7 @@
       INTEGER(LONG), INTENT(OUT)      :: NG                ! Number of GRID's
       INTEGER(LONG), INTENT(OUT)      :: NS                ! Number of SPOINT's
       INTEGER(LONG)                   :: I4INP     = 0     ! A value read from input file that should be an integer value
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CUSERIN0_BEGEND
+
  
 
 

@@ -104,7 +104,7 @@
       INTEGER(LONG)                   :: NTERM_AROW            ! Number of nonzero terms in AROW (one row of A)
       INTEGER(LONG)                   :: ROW_AT_COLJ_BEG(NROW_A)! jth term is row number in MATIN where col j nonzeros begin 
       INTEGER(LONG)                   :: ROW_AT_COLJ_END(NROW_A)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SFS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: CONS                  ! Constant multiplier in cons*A*B to get C
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)            ! Nonzero values in matrix A

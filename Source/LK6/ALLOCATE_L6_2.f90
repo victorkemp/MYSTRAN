@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows in array
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_L6_2_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -170,7 +170,6 @@
 ! **********************************************************************************************************************************
       MB_ALLOCATED = (REAL(DOUBLE))*(REAL(NROWS))/ONEPP6
       CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-      CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
 
 
       RETURN

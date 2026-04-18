@@ -48,7 +48,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Array name of the matrix to be allocated in sparse format
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_STF_ARRAYS_BEGEND
+
 
       END SUBROUTINE ALLOCATE_STF_ARRAYS
 

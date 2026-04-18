@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: IPLIES            ! Count of number of plies defined by this PCOMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PCOMP0_BEGEND
+
  
       END SUBROUTINE BD_PCOMP0
 

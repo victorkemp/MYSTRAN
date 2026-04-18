@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: I,J                 ! DO loop indices
       INTEGER(LONG)                   :: OUNT(2)             ! Output units for SURFACE_FIT
       INTEGER(LONG)                   :: SF_IERR             ! Output error indicator from subr SURFACE_FIT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = POLYNOM_FIT_STRE_STRN_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STR_IN(NROW,NCOL)   ! Input stress/strain vals. NROW are num of diff stress/strain vals and
 !                                                              NCOL are number of points to use in the poly fit for one value

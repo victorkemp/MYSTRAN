@@ -85,7 +85,7 @@
  
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 4     ! Quad has 4 nodes
                                                            ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QSHEAR_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords
       REAL(DOUBLE) , INTENT(IN)       :: YSD(4)            ! Diffs in y coords of quad sides in local coords

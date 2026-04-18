@@ -44,7 +44,7 @@
 
       CHARACTER(LEN=*), INTENT(IN)    :: PRTDEB            ! If 'Y' then print debug info if DEBUG(183) also > 0
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_TDOF_ROW_START_BEGEND
+
 
       END SUBROUTINE CALC_TDOF_ROW_START
 

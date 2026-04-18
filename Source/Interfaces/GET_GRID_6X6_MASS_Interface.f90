@@ -46,7 +46,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: AGRID             ! Actual grid number of grid for which we want the 6 x 6 mass matrix
       INTEGER(LONG), INTENT(IN)       :: IGRID             ! Internal grid number of grid for which we want the 6 x 6 mass matrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_GRID_6X6_MASS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: GRID_MGG(6,6)     ! 6 x 6 mass matrix for internal grid IGRID
 

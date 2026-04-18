@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)        :: STRING_LEN         ! Length, in characters, of CHAR_STRING
       INTEGER(LONG), INTENT(OUT)       :: IERR               ! Error designator
       INTEGER(LONG), INTENT(OUT)       :: NUM_WORDS          ! Number of distinct words in CHAR_STRING
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = PARSE_CHAR_STRING_BEGEND
+
  
       END SUBROUTINE PARSE_CHAR_STRING
 

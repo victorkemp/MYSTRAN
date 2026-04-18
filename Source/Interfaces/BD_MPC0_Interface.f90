@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: IMPC              ! Count of number of grid/comp/coeff triplets on this MPC logical card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPC0_BEGEND
+
  
       END SUBROUTINE BD_MPC0
 

@@ -59,7 +59,7 @@
       INTEGER(LONG)                   :: IERROR            ! Error count
       INTEGER(LONG)                   :: JCORD             ! Internal coord sys ID
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: ANG1              ! An angle in a cyl or sph coord sys from the RGRID array
       REAL(DOUBLE)                    :: ANG2              ! An angle in a cyl or sph coord sys from the RGRID array

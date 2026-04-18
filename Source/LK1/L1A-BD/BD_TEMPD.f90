@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: JERR      = 0       ! Error count
       INTEGER(LONG)                   :: I,J                 ! DO loop indices
       INTEGER(LONG)                   :: SID       = 0       ! Set ID read from CARD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_TEMPD_BEGEND
+
   
       REAL(DOUBLE)                    :: RTEMP     = ZERO    ! Real value of a temperature
  

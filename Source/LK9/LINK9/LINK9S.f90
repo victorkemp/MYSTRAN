@@ -74,7 +74,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number of a record read from a file
       INTEGER(LONG)                   :: UNT               ! Unit number of a file to be read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9S_BEGEND
+
 
 
 

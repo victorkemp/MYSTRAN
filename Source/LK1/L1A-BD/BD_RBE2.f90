@@ -66,7 +66,7 @@
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
       INTEGER(LONG)                   :: NUM_COMP  = 0     ! Total number of components specified in DDOF
       INTEGER(LONG)                   :: RELID      = 0     ! This elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE2_BEGEND
+
  
 
 

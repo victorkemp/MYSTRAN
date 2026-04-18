@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: J                  ! DO loop index
       INTEGER(LONG)                   :: MATERIAL_ID = 0    ! Material ID (field 3 of this property card)
       INTEGER(LONG)                   :: PROPERTY_ID = 0    ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBEAM_BEGEND
+
 
       REAL(DOUBLE)                    :: AREA_A      = ZERO ! Cross sectional area at end A
       REAL(DOUBLE)                    :: I1_A        = ZERO ! Moment of inertia, plane 1 at end A

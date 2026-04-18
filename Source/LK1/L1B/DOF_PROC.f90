@@ -58,7 +58,7 @@
 !                                                            tables are printed out
       CHARACTER(43*BYTE)              :: MODNAM            ! Name to write to screen to describe module being run
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND
+
  
 
 

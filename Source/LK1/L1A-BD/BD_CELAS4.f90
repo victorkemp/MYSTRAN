@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! Integer value read from a field of the CELAS4 entry
       INTEGER(LONG)                   :: IERR              ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CELAS_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! Real value read from a field on the PSHEAR entry
 

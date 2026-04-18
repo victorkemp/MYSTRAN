@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop induces
       INTEGER(LONG)                   :: IERROR            ! Local error indicator
       INTEGER(LONG)                   :: NUM_PFLAG_DOFS    ! The number of pin flagged DOF's for this element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BAR1_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: ALPHA             ! Coefficient of thermal expansion
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Cross-sectional area

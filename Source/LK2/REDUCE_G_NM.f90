@@ -83,7 +83,7 @@
       INTEGER(LONG)                   :: PART_VEC_SUB(NSUB)  ! Partitioning vector (1's for all subcases)
       INTEGER(LONG)                   :: SA_SET_COL          ! Col no. in array TDOF where the SA-set is (from subr TDOF_COL_NUM)
       INTEGER(LONG)                   :: TOT_NUM_ASPC        ! Sum of NUM_ASPC_BY_COMP(6)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_G_NM_BEGEND
+
       REAL(DOUBLE)                    :: KNN_DIAG(NDOFN)     ! Diagonal terms from KNN
       REAL(DOUBLE)                    :: KNN_MAX_DIAG        ! Max diag term from  KNN
       REAL(DOUBLE)                    :: KNND_DIAG(NDOFN)    ! Diagonal terms from KNND

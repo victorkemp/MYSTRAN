@@ -78,7 +78,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME     = 'MYSTRAN_FILES'
       CHARACTER(FILE_NAM_MAXLEN*BYTE) :: FILNAM            ! Name of the input file or restart file
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MYSTRAN_FILES_BEGEND
+
       INTEGER(LONG), INTENT(IN)       :: START_HOUR        ! The hour     when MYSTRAN started.
       INTEGER(LONG), INTENT(IN)       :: START_MINUTE      ! The minute   when MYSTRAN started.
       INTEGER(LONG), INTENT(IN)       :: START_SEC         ! The second   when MYSTRAN started.

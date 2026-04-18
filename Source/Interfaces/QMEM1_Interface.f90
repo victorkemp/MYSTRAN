@@ -75,7 +75,7 @@
  
       INTEGER(LONG), PARAMETER        :: IORD_STRESS_Q4 = 2! Gauss integration order for stress/strain recovery matrices
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 4     ! Quad has 4 nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QMEM1_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

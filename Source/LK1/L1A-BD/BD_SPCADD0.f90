@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
       INTEGER(LONG), INTENT(OUT)      :: ISPCADD           ! Count of number of SPC or SPC1 set ID's defined on the SPCADD
       INTEGER(LONG)                   :: J                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPCADD0_BEGEND
+
  
 
 

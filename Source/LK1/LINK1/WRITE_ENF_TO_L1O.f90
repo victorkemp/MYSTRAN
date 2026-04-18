@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr FILE_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Number of the record read from ENF file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ENF_TO_L1O_BEGEND
+
 
       REAL(DOUBLE)                    :: RSPC(6)           ! Enforced displ components read from file ENF
 

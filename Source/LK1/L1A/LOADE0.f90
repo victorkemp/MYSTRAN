@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: IEND              ! Col where FILNAM ends after trailing blanks
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator.
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading a Case Control card from unit IN1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE0_BEGEND
+
  
 
 

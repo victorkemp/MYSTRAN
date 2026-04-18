@@ -46,7 +46,7 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: NUM1              ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: I                 ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHELL_ENGR_FORCE_OGEL_BEGEND
+
  
 
 

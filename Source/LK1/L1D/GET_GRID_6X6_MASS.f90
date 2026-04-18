@@ -52,7 +52,7 @@
       INTEGER(LONG)                   :: I1,J1             ! Indices
       INTEGER(LONG)                   :: IGRID_DOF_NUM     ! G-set DOF number for IGRID
       INTEGER(LONG)                   :: NUM_COMPS         ! No. displ components (1 for SPOINT, 6 for actual grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_GRID_6X6_MASS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: GRID_MGG(6,6)     ! 6 x 6 mass matrix for internal grid IGRID
 

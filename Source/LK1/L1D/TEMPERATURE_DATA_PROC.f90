@@ -95,7 +95,7 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE2(1-5) = 3, 5, 0, 0, 0 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND
+
  
 
 
@@ -359,7 +359,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening a file
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: SID               ! Thermal load set ID read from an elem temperature B.D. card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
@@ -457,7 +457,7 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
@@ -618,7 +618,7 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: TB1               ! Bulk temperature from TEMPRB card 
       REAL(DOUBLE)                    :: TB2               ! Bulk temperature from TEMPRB card 
@@ -826,7 +826,7 @@ cont_cards: DO                                             ! Top of loop for rea
       INTEGER(LONG), INTENT(IN)       :: IELEM             ! Internal element number for a specific actual element ID
       INTEGER(LONG), INTENT(IN)       :: ISCNO             ! Internal subcase number
       INTEGER(LONG), INTENT(IN)       :: JTCOL             ! Col in thermal array CGTEMP, CETEMP for internal subcase no. ISCNO
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 2
+
  
 
 
@@ -918,7 +918,7 @@ cont_cards: DO                                             ! Top of loop for rea
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 2
+
  
       REAL(DOUBLE) , INTENT(IN)       :: TE_BULK           ! Bulk temperature from element temperature B.D. card
 

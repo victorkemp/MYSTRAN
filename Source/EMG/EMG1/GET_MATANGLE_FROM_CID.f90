@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: ACID              ! Actual coord system ID for the sys that defines the material axes
       INTEGER(LONG)                   :: I                 ! DO loop indices
       INTEGER(LONG)                   :: ICID              ! Internal coord sys ID for ACID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MATANGLE_FROM_CID_BEGEND
+
  
       REAL(DOUBLE)                    :: DOT_XM            ! Dot product of VEC_XE and VEC_ME
       REAL(DOUBLE)                    :: CROSS_XM(3)       ! Cross product of VEC_XE and VEC_ME

@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN )      :: IN1_NDOF          ! Size of array UIN1
       INTEGER(LONG), INTENT(IN )      :: IN2_NDOF          ! Size of array UIN2
       INTEGER(LONG), INTENT(IN )      :: OUT_NDOF          ! Size of array UOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_COL_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN )      :: UIN1(IN1_NDOF)    ! Input  vector for IN1_COL displ set
       REAL(DOUBLE) , INTENT(IN )      :: UIN2(IN2_NDOF)    ! Input  vector for IN2_COL displ set

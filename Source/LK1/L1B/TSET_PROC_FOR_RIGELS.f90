@@ -80,7 +80,7 @@
       INTEGER(LONG)                   :: REFC              ! Dependent components on RBE3
       INTEGER(LONG)                   :: REFGRID           ! Dependent grid on RBE3
       INTEGER(LONG)                   :: REID              ! Rigid elem ID read from file LINK1F
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: RDUM              ! Real value read that is not used
 

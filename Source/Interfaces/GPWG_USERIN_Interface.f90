@@ -45,7 +45,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'GPWG_USERIN'
 
       INTEGER(LONG), INTENT(IN)       :: IEID              ! Internal element ID for the USERIN element to process
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_USERIN_BEGEND
+
 
       REAL(DOUBLE)                    :: M0                ! An intermediate variable used in calc model mass props
  

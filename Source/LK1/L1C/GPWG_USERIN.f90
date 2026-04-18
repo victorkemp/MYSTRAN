@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: GRID_ID_ROW_NUM   ! Row number in array GRID_ID where an actual grid ID is found
       INTEGER(LONG)                   :: INFO        = 0   ! An output from subr GPWG_PMOI, called herein
       INTEGER(LONG)                   :: GRDPNT_DEF        ! Default value of GRDPNT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_USERIN_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: M0                ! An intermediate variable used in calc model mass props

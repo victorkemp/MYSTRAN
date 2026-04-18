@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: GRID_ID_ROW_NUM   ! Row num in GRID_ID where AGRID(I) exists
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: DELTA             ! Offset in EDAT (from 1st record for an elem) where grid no's begin
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELEM_AGRID_BGRID_BEGEND
+
 
 
 

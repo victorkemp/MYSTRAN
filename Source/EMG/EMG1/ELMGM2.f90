@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: IPNT              ! An internal grid (1,2,3 or 4) of an elem
       INTEGER(LONG)                   :: SIDE_GRID1        ! Used for error output purposes
       INTEGER(LONG)                   :: SIDE_GRID2        ! Used for error output purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM2_BEGEND
+
 
       REAL(DOUBLE)                    :: V12B(3)           ! Vector from G.P. 1 to G.P. 2 in basic coords
       REAL(DOUBLE)                    :: V13B(3)           ! Vector from G.P. 1 to G.P. 3 in basic coords (a diagonal)

@@ -44,7 +44,7 @@
  
       INTEGER(LONG), INTENT(OUT)      :: NG                ! Number of GRID's
       INTEGER(LONG), INTENT(OUT)      :: NS                ! Number of SPOINT's
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CUSERIN0_BEGEND
+
  
       END SUBROUTINE BD_CUSERIN0
 

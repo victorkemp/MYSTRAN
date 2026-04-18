@@ -41,7 +41,7 @@
 
       IMPLICIT NONE
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_COMP_SHELL_ALLOWS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: STRE_ALLOWABLES(9)! Stress allowables for the material
       REAL(DOUBLE), INTENT(OUT)       :: STRN_ALLOWABLES(9)! Strain allowables for the material

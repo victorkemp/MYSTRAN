@@ -44,7 +44,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), PARAMETER        :: NUMCOLS     = 1   ! Variable for number of cols of an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_G_NM_BEGEND
+
  
       END SUBROUTINE BUILD_G_NM
 

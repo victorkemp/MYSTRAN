@@ -46,7 +46,7 @@
       CHARACTER(LEN=JCARD_LEN)        :: JCARD(10)         ! The 10 fields of characters making up CARD
       CHARACTER(LEN(JCARD))           :: CHARINP           ! A character field from CARD
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARAM0_BEGEND
+
       INTEGER(LONG)                   :: I4INP             ! An integer value read
 
       REAL(DOUBLE)                    :: R8INP             ! A real value read

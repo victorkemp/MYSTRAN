@@ -68,7 +68,7 @@
                                                      19, & ! ID2(10)= 19
                                                      20, & ! ID2(11)= 20
                                                      21 /) ! ID2(12)= 21
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BMQMEM_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: DPSHX(2,4)        ! Derivatives of the 4 node bilinear isopar interps wrt elem x and y
       REAL(DOUBLE) , INTENT(OUT)      :: BM(3,8)           ! Output strain-displ matrix for this elem

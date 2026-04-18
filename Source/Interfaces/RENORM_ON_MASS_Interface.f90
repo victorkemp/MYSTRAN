@@ -45,7 +45,7 @@
       IMPLICIT NONE
   
       INTEGER(LONG), INTENT(IN)       :: NVC               ! Number of eigenvectors to be renormalized.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RENORM_ON_MASS_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: EPS1              ! Small number to compare variables against zero
 

@@ -95,7 +95,7 @@
       INTEGER(LONG)                   :: NUM_NEG_TERMS2    ! Number of negative terms on the diagonal of RFAC for EIG_FRQ2
       INTEGER(LONG)                   :: NUM_EST_EIGENS    ! Number of estimated eigens in the freq interval (EIG_FRQ2 - EIG_FRQ1)
       INTEGER(LONG)                   :: NUM_KMSM_DIAG_0   ! Number of zero diagonal terms in KMSM
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_LANCZOS_ARPACK_BEGEND
+
       INTEGER(LONG)                   :: MIN_NCV, MAX_NCV, LNONZEROS
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare zero to

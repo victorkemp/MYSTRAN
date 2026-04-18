@@ -47,7 +47,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows to allocate to matrix NAME
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols to allocate to matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_EIGEN1_MAT_BEGEND
+
  
       END SUBROUTINE ALLOCATE_EIGEN1_MAT
 

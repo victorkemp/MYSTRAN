@@ -54,7 +54,7 @@
       INTEGER(LONG), INTENT(IN )      :: J_B(NTERM_B)      ! Col no's for nonzero terms in matrix B
       INTEGER(LONG), INTENT(OUT)      :: I_C(NROWS+1)      ! I_C(I+1) - I_C(I) = no. terms in row I of matrix C
       INTEGER(LONG), INTENT(OUT)      :: J_C(NTERM_C)      ! Col no's for nonzero terms in matrix C
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATADD_SSS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)        ! Nonzero terms in matrix A
       REAL(DOUBLE) , INTENT(IN )      :: B(NTERM_B)        ! Nonzero terms in matrix B

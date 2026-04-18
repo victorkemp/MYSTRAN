@@ -49,7 +49,7 @@
       INTEGER(LONG), INTENT(IN)       :: NCOLS               ! Number of cols in the partitioned matrix MAT_NAME
       INTEGER(LONG), INTENT(IN)       :: NROWS               ! Number of rows in the partitioned matrix MAT_NAME
       INTEGER(LONG)                   :: NUM_LEFT            ! Used when printing a line of 10 values in the set
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PARTNd_MAT_HDRS_BEGEND
+
 
       END SUBROUTINE WRITE_PARTNd_MAT_HDRS
 

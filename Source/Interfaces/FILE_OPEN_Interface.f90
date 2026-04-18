@@ -55,7 +55,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! Unit number file is attached to
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to. Input to subr FILE_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
+
 
       END SUBROUTINE FILE_OPEN
 

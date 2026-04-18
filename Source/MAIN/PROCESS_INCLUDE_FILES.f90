@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: CHAR_COL          ! Column number on CARD where character CHAR is found
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator.
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading a Case Control card from unit IN1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PROCESS_INCLUDE_FILES_BEGEND
+
 
 
 

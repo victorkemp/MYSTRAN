@@ -72,7 +72,7 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: UNT(100)          ! Unit number of a MYSTRAN file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_INQUIRE_BEGEND
+
 
 
 

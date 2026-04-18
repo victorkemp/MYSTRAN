@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IROW              ! Row number in array TDOF or TDOFI
       INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components (1 for SPOINT, 6 for physical grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TDOF_BEGEND
+
 
 
 

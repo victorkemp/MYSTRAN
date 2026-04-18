@@ -43,7 +43,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_OLOA_BEGEND
+
  
       END SUBROUTINE CC_OLOA
 

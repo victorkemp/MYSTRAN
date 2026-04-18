@@ -46,7 +46,7 @@
 !                                                            row number in array EDAT where data begins for this element. 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: I1                ! Index into EDAT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ELEM_NUM_PLIES_BEGEND
+
 
 
 

@@ -62,7 +62,7 @@
       INTEGER(LONG)                   :: NTERM_CRS2          ! Number of terms in matrix CRS2  
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KFFD_TO_KAAD_BEGEND
+
 
       INTRINSIC                       :: DABS
 

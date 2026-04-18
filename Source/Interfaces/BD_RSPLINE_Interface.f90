@@ -45,7 +45,7 @@
 
       CHARACTER( 8*BYTE), PARAMETER   :: RTYPE = 'RSPLINE '! Rigid element type
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RSPLINE_BEGEND
+
  
       END SUBROUTINE BD_RSPLINE
 

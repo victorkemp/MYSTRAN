@@ -54,7 +54,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error value from READ
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr READERR
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file. Input to subr READERR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NEXTC_BEGEND
+
 
 
 

@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WHAT              ! Indicator if GRID_VEC is DISP, OLOA, SPCF or MPCF
 
       INTEGER(LONG), INTENT(IN)       :: FEMAP_SET_ID      ! FEMAP set ID to write out
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FEMAP_GRID_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: GRID_VEC(NDOFG)   ! G-set Vector to process
  

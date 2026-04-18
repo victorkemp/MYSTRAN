@@ -39,7 +39,7 @@
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RW_INCLUDE_FILES_BEGEND
+
       INTEGER(LONG), INTENT(IN)       :: UNIT_IN           ! Unit number to read  INCLUDE entries from
       INTEGER(LONG), INTENT(IN)       :: UNIT_OUT          ! Unit number to write INCLUDE entries to
  

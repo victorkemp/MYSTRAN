@@ -68,7 +68,7 @@
       INTEGER(LONG)                   :: NTERM_CRS2          ! Number of terms in matrix CRS2  
       INTEGER(LONG)                   :: NTERM_CRS3          ! Number of terms in matrix CRS3  
       INTEGER(LONG)                   :: NUM_MRRcb_DIAG_0    ! Number of zero diagonal terms in MRRcb
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_MRRcb_BEGEND
+
 
       REAL(DOUBLE)                    :: DUMR6(NDOFR,6)      ! Intermediate matrix
                                                              ! Full representation of MRRcb

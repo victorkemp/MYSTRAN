@@ -64,7 +64,7 @@
       INTEGER(LONG)                   :: PCOMP_PLIES0       ! Count of number of plies on PCOMP entry
       INTEGER(LONG)                   :: PCOMP_PLIES        ! No. of plies in 1 PCOMP entry incl sym plies not explicitly defined
       INTEGER(LONG)                   :: PROPERTY_ID = 0    ! Property ID (field 2 of this parent property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PCOMP_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1               ! A small number
       REAL(DOUBLE)                    :: GE                 ! Damping coeff

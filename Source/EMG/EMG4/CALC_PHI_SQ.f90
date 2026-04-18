@@ -67,7 +67,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'CALC_PHI_SQ'
 
       INTEGER(LONG), INTENT(OUT)      :: IERROR            ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_PHI_SQ_BEGEND
+
 
       REAL(DOUBLE)                    :: CBMIN  = ZERO     ! Either CBMIN3 or CBMIN4
       REAL(DOUBLE)                    :: DEN               ! Denominator term in calculating PHI_SQ

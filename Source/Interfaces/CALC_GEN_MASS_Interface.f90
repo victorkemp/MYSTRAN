@@ -49,7 +49,7 @@
 
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_GEN_MASS_BEGEND
+
 
       REAL(DOUBLE)                    :: MAX               ! Temporary variable used in finding MAXMIJ
       REAL(DOUBLE)                    :: MIJ               ! The i,j-th value from gen. mass matrix. Used to find MAXMIJ

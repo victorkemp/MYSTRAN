@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: KSTART            ! Used in deciding whether to process all elem mass terms or only
 !                                                            the ones on and above the diagonal (controlled by param SPARSTOR)
       INTEGER(LONG)                   :: MGGC_COL_NUM      ! A calculated col number for a nonzero term in MGG arrays
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGC_MASS_MATRIX_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: MGG_CONM2(6,6)    ! 6 X 6 mass matrix in global coords for one CONM2
@@ -156,7 +156,7 @@ i_do1:DO I=1,NGRID
 !                                                            one CONM2 (if one exists for this grid)
       INTEGER(LONG), INTENT(IN)       :: GRID_NUM          ! The actual grid number for internal grid ID INT_GRID_ID
       INTEGER(LONG)                   :: I,J,L             ! DO loop indices or counters   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGC_MASS_MATRIX_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: MGG_CONM2(6,6)    ! 6 X 6 mass matrix in global coords for one CONM2
 

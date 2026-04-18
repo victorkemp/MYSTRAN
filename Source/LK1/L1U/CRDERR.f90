@@ -43,7 +43,7 @@
       CHARACTER( 1*BYTE)              :: CARD_ERR          ! = 'Y' if IERRFL is 'Y' for any Bulk Data card field
  
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRDERR_BEGEND
+
  
 
 

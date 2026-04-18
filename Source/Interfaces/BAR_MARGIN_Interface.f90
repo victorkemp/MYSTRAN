@@ -47,7 +47,7 @@
       CHARACTER(LEN=*), INTENT(OUT)   :: MSP3              ! If '1',  print margins in F06 file. If '0', do not print.
  
       INTEGER(LONG), INTENT(IN)       :: ICOL              ! Column no. from ULT_STRE to get max allow. stresses
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BAR_MARGIN_BEGEND
+
  
       REAL(DOUBLE), INTENT(OUT)       :: MS1               ! Calculated margin of safety
       REAL(DOUBLE), INTENT(OUT)       :: MS2               ! Calculated margin of safety

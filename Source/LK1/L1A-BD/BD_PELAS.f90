@@ -48,7 +48,7 @@
  
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: PROP_ID   = 0     ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PELAS_BEGEND
+
  
 
 

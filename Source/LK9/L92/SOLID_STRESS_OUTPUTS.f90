@@ -52,7 +52,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: J                  ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLID_STRESS_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: MEAN               ! Mean stresses
       REAL(DOUBLE)                    :: PRINCIPAL_STRESS(3)! Principal stresses

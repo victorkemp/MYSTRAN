@@ -48,7 +48,7 @@
  
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: PMASS_PID         ! Prop number from field 2,4,6,8
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PMASS_BEGEND
+
  
 
 

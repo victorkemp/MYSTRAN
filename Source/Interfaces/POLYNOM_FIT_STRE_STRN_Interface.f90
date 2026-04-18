@@ -48,7 +48,7 @@
 
       INTEGER(LONG), INTENT(OUT)      :: STR_OUT_ERR_INDEX(MAX_STRESS_POINTS)
       INTEGER(LONG), PARAMETER        :: IORD = 2            ! Gaussian integration order
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = POLYNOM_FIT_STRE_STRN_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STR_IN(NROW,NCOL)   ! Input stress/strain vals. NROW are num of diff stress/strain vals and
       REAL(DOUBLE), INTENT(OUT)       :: STR_OUT(NROW,NCOL)  ! Output stress/strain vals. NROW are num of diff stress/strain vals

@@ -45,7 +45,7 @@
       CHARACTER(LEN=*),  INTENT(OUT)  :: CARD              ! Card with 10 fields of 16 cols each with the data from CARD1, CARD2
  
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! = 1 if a field  is longer than 8 chars on a free field card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FFIELD2_BEGEND
+
  
       END SUBROUTINE FFIELD2
 

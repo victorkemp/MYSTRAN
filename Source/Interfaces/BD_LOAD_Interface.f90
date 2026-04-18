@@ -44,7 +44,7 @@
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_LOAD_FND(LSUB,2) ! 'Y' if B.D load/temp card w/ same set ID (SID) as C.C. LOAD = SID
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_LOAD_BEGEND
+
  
       END SUBROUTINE BD_LOAD
 

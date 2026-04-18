@@ -77,7 +77,7 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! Pressure load set ID read from an elem pressure B.D. card
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRESSURE_DATA_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: SCALE             ! Scale factor from a LOAD Bulk Data card
       REAL(DOUBLE)                    :: RPDAT             ! Real pressure value read from file LINK1Q
@@ -384,7 +384,7 @@ k_do6:            DO K=EID1,EID2
       INTEGER(LONG), INTENT(OUT)      :: IELEM    ! Internal elem ID for actual elem ID EID
       INTEGER(LONG), INTENT(INOUT)    :: EL_REDUNDANT_PRES      ! Count of warning messages when elements have redundant pressures
       INTEGER(LONG), INTENT(INOUT)    :: EL_PRES_ERR       ! Count of errors where elem ID is wrong (*ERROR  1320)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRESSURE_DATA_PROC_BEGEND + 2
+
 
 
 

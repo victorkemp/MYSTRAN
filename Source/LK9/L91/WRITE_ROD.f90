@@ -80,7 +80,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ROD_BEGEND
+
  
       REAL(DOUBLE)                    :: ABS_ANS(4)        ! Max ABS for all grids output for each of the 6 disp components
       REAL(DOUBLE)                    :: MAX_ANS(4)        ! Max for all grids output for each of the 6 disp components

@@ -91,7 +91,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: NODES_4     = 4   ! Number of nodes for one type of element
       INTEGER(LONG)                   :: NODES_10    = 10  ! Number of nodes for one type of element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component 1
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component 2

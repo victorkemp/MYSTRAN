@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: I,J,K              ! DO loop indices
       INTEGER(LONG)                   :: NUM_LEFT           !
       INTEGER(LONG)                   :: PAD                ! Number of spaces to pad in HEADER to center MAT_DESCRIPTOR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_BY_COLS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATOUT(NROWS,NCOLS)! Matrix to write out
       REAL(DOUBLE)                    :: MAT_LINE(10)       ! Up to 10 terms from one col of MATOUT

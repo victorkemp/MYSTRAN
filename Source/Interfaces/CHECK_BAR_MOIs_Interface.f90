@@ -45,7 +45,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: ID                ! Character value of the bar's ID
 
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CHECK_BAR_MOIs_BEGEND
+
  
       REAL(DOUBLE), INTENT(INOUT)     :: I1                ! MOI of the bar or beam
       REAL(DOUBLE), INTENT(INOUT)     :: I2                ! MOI of the bar or beam

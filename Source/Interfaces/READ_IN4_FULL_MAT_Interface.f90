@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: NRI               ! Number of rows expected in MAT_FULL
       INTEGER(LONG), INTENT(IN)       :: NCI               ! Number of cols expected in MAT
       INTEGER(LONG), INTENT(OUT)      :: IERRT             ! IERR1+IERR2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_IN4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: MAT_FULL(NRI,NCI) ! Array of terms in matrix MAT
 

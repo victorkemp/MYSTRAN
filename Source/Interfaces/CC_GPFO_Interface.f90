@@ -42,7 +42,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_GPFO_BEGEND
+
  
       END SUBROUTINE CC_GPFO
 

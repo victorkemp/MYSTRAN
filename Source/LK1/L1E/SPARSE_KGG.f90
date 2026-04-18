@@ -81,7 +81,7 @@
       INTEGER(LONG)                   :: OUNT(2)            ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: ROW_NUM_START      ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: RJ(NDOFG)          ! Column numbers corresponding to the terms in RSTF(I).
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_KGG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1               ! A small number to compare real zero
       REAL(DOUBLE)                    :: KGG_II(6,6)        ! 6 x 6 diagonal stiffness matrices for 1 grid

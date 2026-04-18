@@ -50,7 +50,7 @@
       INTEGER(LONG), PARAMETER         :: NUM2        = 2     ! Used in subr's that partition matrices
       INTEGER(LONG)                    :: PL_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG)                    :: PR_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = REDUCE_PA_TO_PL_BEGEND
+
 
 
 

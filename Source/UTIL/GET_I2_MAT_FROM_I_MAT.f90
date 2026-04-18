@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(OUT)      :: I2_MAT(NTERMS)    ! Row numbers for terms in matrix MAT
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices or counters
       INTEGER(LONG)                   :: NUM_IN_ROW_I      ! Number of nonzero terms in row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_I2_MAT_FROM_I_MAT_BEGEND
+
 
 
 

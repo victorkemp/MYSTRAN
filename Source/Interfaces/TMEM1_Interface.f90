@@ -46,7 +46,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRT_BUG_THIS_TIME ! If 'Y' then write to BUG file if WRT_BUG array says to
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TMEM1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: X2E               ! x coord of elem node 2

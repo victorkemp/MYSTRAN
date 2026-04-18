@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: NUM_NULL            ! Number of sets that have been requested for output that are null
       INTEGER(LONG)                   :: OUTPUT_1(10)        ! Part of a line of output
       INTEGER(LONG)                   :: OUTPUT_2(10)        ! Part of a line of output
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_USETSTR_BEGEND
+
 
 
 

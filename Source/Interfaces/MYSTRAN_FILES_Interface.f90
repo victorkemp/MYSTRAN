@@ -73,7 +73,7 @@
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MYSTRAN_FILES_BEGEND
+
       INTEGER(LONG), INTENT(IN)       :: START_HOUR        ! The hour     when MYSTRAN started.
       INTEGER(LONG), INTENT(IN)       :: START_MINUTE      ! The minute   when MYSTRAN started.
       INTEGER(LONG), INTENT(IN)       :: START_SEC         ! The second   when MYSTRAN started.

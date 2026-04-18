@@ -43,7 +43,7 @@
 
       INTEGER(LONG), INTENT(OUT)      :: ICONT             ! =1 if next card is current card's continuation or =0 if not
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator from subr FFIELD, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NEXTC0_BEGEND
+
 
       END SUBROUTINE NEXTC0
 

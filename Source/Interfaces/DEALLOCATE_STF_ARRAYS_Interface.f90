@@ -44,7 +44,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_STF_ARRAYS_BEGEND
+
 
       END SUBROUTINE DEALLOCATE_STF_ARRAYS
 

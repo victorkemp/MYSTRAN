@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
 
       INTEGER(LONG), INTENT(OUT)      :: DELTA_LEDAT       ! Delta number of words to add to LEDAT for this element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CPENTA0_BEGEND
+
  
       END SUBROUTINE BD_CPENTA0
 

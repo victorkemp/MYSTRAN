@@ -78,7 +78,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: TOTAL_NUM         ! Total number of records read for a single rigid element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: DL_RAT            ! D/L ratio from the B.D. RSPLINE entry
 
@@ -424,7 +424,7 @@
       INTEGER(LONG)                   :: I3_IN(3)          ! Integer array used in sorting VX. 
       INTEGER(LONG)                   :: I3_OUT(3)         ! Integer array in sort order of VX_SORT. If VX is sorted sp that
 !                                                             comp 2 is smallest then comp 3 then comp 1 then I3_OUT is 2, 3, 1 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(IN)       :: V012(3)           ! Vector in basic coords from 1st to 2nd indep grids on the RSPLINE
 
@@ -562,7 +562,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'RSPLINE_FUNCTIONS'
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(IN)       :: L12               ! Length of RSPLINE between the 2 independent grids
       REAL(DOUBLE) , INTENT(IN)       :: Z                 ! Nondim distance to the RSPLINE dependent grid from the 1st indep grid

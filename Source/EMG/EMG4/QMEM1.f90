@@ -98,7 +98,7 @@
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 4     ! Quad has 4 nodes
                                                            ! Indicator of no output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QMEM1_BEGEND
+
       INTEGER(LONG)                   :: PLY_RPCOMP_INDEX  ! Index in array RPCOMP where data for ply K begins
 
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area

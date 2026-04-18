@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: JGAUS             ! J index of Gaus point (needed for some optional output)
       INTEGER(LONG), INTENT(IN)       :: KGAUS             ! K index of Gaus point (needed for some optional output)
       INTEGER(LONG), PARAMETER        :: NR      = 6       ! An input to subr BCHECK, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = B3D_ISOPARAMETRIC_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: DPSHX(3,ELGP)     ! Derivatives of the 4 node bilinear isopar interps wrt elem x and y
       REAL(DOUBLE) , INTENT(OUT)      :: BMAT(6,3*ELGP)    ! Output strain-displ matrix for this elem

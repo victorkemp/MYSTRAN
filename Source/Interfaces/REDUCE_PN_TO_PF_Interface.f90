@@ -58,7 +58,7 @@
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM_YS_COLS = 1     ! Variable for number of cols in array YSe 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_PN_TO_PF_BEGEND
+
 
       END SUBROUTINE REDUCE_PN_TO_PF
 

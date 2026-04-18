@@ -45,7 +45,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWB             ! Number of rows in the input B matrix
       INTEGER(LONG), INTENT(IN)       :: NUM_GRIDS         ! Number of grids that this solid element has.
       INTEGER(LONG), INTENT(IN)       :: ID(NCOLB)         ! List of elem DOF's for each of the elem grids (e.g 3,4,5 for each of
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BCHECK_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: B(NROWB,NCOLB)    ! Strain-displ matrix
       REAL(DOUBLE) , INTENT(OUT)      :: BW(NROWB,12)      ! Output from subr BCHECK_3D (matrix of NROWB elem strains for various

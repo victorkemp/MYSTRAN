@@ -65,7 +65,7 @@
       INTEGER(LONG)                   :: COMMA_COL(3)      ! Column where comma is found in CARD2
       INTEGER(LONG)                   :: I,J               ! DO loop index
       INTEGER(LONG)                   :: JBEG              ! Beg col in data
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_PARTN_BEGEND
+
  
 
 

@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
       INTEGER(LONG)                   :: SETID             ! Set ID for this LOAD Bulk Data card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPC_BEGEND
+
  
       REAL(DOUBLE)                    :: MPC_COEFF(MMPC)   ! Array of MPC coeff values found on this MPC logical card
 

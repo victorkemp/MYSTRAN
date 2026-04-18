@@ -69,7 +69,7 @@
       INTEGER(LONG)                   :: NTERM_PFYS1 = 0     ! No. of terms in matrix PFYS1
       INTEGER(LONG)                   :: PF_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG)                   :: PS_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_PN_TO_PF_BEGEND
+
 
       REAL(DOUBLE)                    :: ALPHA               ! Scalar multiplier for matrix
       REAL(DOUBLE)                    :: BETA                ! Scalar multiplier for matrix

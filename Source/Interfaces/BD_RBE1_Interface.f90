@@ -45,7 +45,7 @@
       CHARACTER( 8*BYTE), PARAMETER   :: RTYPE = 'RBE1    '! Rigid element type
  
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE1_BEGEND
+
  
       END SUBROUTINE BD_RBE1
 

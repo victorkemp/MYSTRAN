@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Nunber of rows in array NAME being allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_TEMPLATE_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -78,7 +78,6 @@
          MB_ALLOCATED = REAL(BYTE)*REAL(NDOFG)*REAL(NDOFG)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,NDOFG
                DO J=1,NDOFG
                   TEMPLATE(I,J) = .FALSE.
@@ -105,7 +104,6 @@
          MB_ALLOCATED = REAL(BYTE)*REAL(LEN(CROW))*REAL(NDOFG)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,NDOFG
                CROW(I) = ' '
             ENDDO

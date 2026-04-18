@@ -43,7 +43,7 @@
       CHARACTER(LEN=*),INTENT(IN)     :: CARD              ! A Bulk Data card
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_NLSID_FND(LSUB)! 'Y' if B.D NLPARM card w/ same set ID (SID) as C.C. NLPARM = SID
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_NLPARM_BEGEND
+
 
       END SUBROUTINE BD_NLPARM
 

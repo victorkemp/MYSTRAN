@@ -47,7 +47,7 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: IERR              ! Count of errors in RIGID_ELEM_PROC
       INTEGER(LONG), INTENT(INOUT)    :: REC_NO            ! Record number when reading file L1F
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND
+
 
       END SUBROUTINE RBE3_PROC
 

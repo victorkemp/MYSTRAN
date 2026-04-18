@@ -55,7 +55,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID        ! Internal element ID for which
       INTEGER(LONG)                   :: INT41,INT42        ! An integer used in getting MATANGLE
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMG_BEGEND
+
  
       END SUBROUTINE EMG
 

@@ -45,7 +45,7 @@
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_MPC_FND        ! ='Y' if this MPC is a set requested in Case Control
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPC_BEGEND
+
  
       END SUBROUTINE BD_MPC
 

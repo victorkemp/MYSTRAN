@@ -47,7 +47,7 @@
                                          USERIN_MAT_NAMES, VVEC
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELSAVE_BEGEND
+
  
       END SUBROUTINE ELSAVE
 

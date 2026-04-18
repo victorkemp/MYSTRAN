@@ -61,7 +61,7 @@
       INTEGER(LONG)                   :: BDY_DOF_NUM       ! DOF number for BDY_GRID/BDY_COMP
       INTEGER(LONG)                   :: I,J,K,M           ! DO loop indices
       INTEGER(LONG)                   :: L                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELEM_NODE_FORCE_BEGEND
+
   
       REAL(DOUBLE)                    :: ABS_ANS(6)        ! Max Abs for all grids output for each of the 6 disp components
       REAL(DOUBLE)                    :: MAX_ANS(6)        ! Max for all grids output for each of the 6 disp components

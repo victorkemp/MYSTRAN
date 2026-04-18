@@ -44,7 +44,7 @@
       CHARACTER(LEN=LEN(ELEM_ONAME)), INTENT(OUT) :: NAME              ! Name of an elem for output purposes in LINK9 WRTELi subr's
 
       INTEGER(LONG)                               :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER                    :: SUBR_BEGEND = GET_ELEM_ONAME_BEGEND
+
 
 
 

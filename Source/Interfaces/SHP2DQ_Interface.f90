@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: JGAUS             ! J index of Gauss point (needed for some optional output)
       INTEGER(LONG), INTENT(IN)       :: IORZZZ            ! Integration order (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: NUM_NODES         ! Number of element nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component

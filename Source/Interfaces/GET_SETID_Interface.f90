@@ -42,7 +42,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Case Control card (can be modified by subr CSHIFT, called herein)
  
       INTEGER(LONG), INTENT(OUT)      :: SETID             ! Set ID read from CARD after '=', if CARD contains an integer here.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SETID_BEGEND
+
  
       END SUBROUTINE GET_SETID
 

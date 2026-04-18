@@ -53,7 +53,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows for matrix NAME
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_COL_VEC_BEGEND
+
 
       END SUBROUTINE ALLOCATE_COL_VEC
 

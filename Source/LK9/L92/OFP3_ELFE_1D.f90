@@ -72,7 +72,7 @@
 !                                                            (this can be > NUM_ELEM since more than 1 row is written to OGEL
 !                                                            for ELFORCE(NODE) - elem nodal forces)
                                                            ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_ELFE_1D_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM0(6,12)        ! Intermediate matrix in a calc
       REAL(DOUBLE)                    :: DUM1(6)           ! Intermediate matrix in a calc

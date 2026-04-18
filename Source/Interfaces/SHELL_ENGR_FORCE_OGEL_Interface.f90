@@ -43,7 +43,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), INTENT(INOUT)    :: NUM1              ! Cum rows written to OGEL prior to running this subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHELL_ENGR_FORCE_OGEL_BEGEND
+
  
       END SUBROUTINE SHELL_ENGR_FORCE_OGEL
 

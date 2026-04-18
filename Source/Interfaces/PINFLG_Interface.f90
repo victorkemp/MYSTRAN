@@ -44,7 +44,7 @@
   
       INTEGER(LONG), INTENT(IN)       :: NUM_PFLAG_DOFS    ! The number of pin flagged DOF's for this element
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PINFLG_BEGEND
+
   
       END SUBROUTINE PINFLG
 

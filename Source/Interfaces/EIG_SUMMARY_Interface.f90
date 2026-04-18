@@ -48,7 +48,7 @@
   
       CHARACTER( 1*BYTE)              :: ASTERISK = '*'    ! Used for denoting negative eigenvalues
   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_SUMMARY_BEGEND
+
   
       END SUBROUTINE EIG_SUMMARY
 

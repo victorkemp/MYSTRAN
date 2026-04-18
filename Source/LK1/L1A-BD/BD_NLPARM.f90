@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! An integer value read from GRAV entry
       INTEGER(LONG)                   :: SETID             ! NLPARM set id
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_NLPARM_BEGEND
+
 
 
 

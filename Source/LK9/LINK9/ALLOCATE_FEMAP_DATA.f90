@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IERR              ! STAT from ALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_FEMAP_DATA_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -94,7 +94,6 @@
          MB_ALLOCATED = RLONG*REAL(NROWS)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,NROWS
                FEMAP_EL_NUMS(I,1) = 0
                FEMAP_EL_NUMS(I,2) = 0
@@ -118,7 +117,6 @@
          MB_ALLOCATED = RDOUBLE*REAL(NROWS)*REAL(NCOLS)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,NROWS
                DO J=1,NCOLS
                   FEMAP_EL_VECS(I,J) = ZERO

@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: NTERM_KMND           ! Number of nonzeros in sparse matrix KMND (should = NTERM_KNMD)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KGGD_TO_KNND_BEGEND
+
 
       INTRINSIC                       :: DABS
 

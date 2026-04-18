@@ -44,7 +44,7 @@
 !                                                            are satisfied, SORT_ORDER is returned as null
 
       INTEGER(LONG), INTENT(OUT)      :: SORT_INDICES(3)   ! Indices of VEC in the order from lowest value component to highest
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_VEC_SORT_ORDER_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: VEC(3)            ! A 3 component vector
 

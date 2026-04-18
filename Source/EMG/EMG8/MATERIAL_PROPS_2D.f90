@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: IERROR        = 0 ! Local error indicator meaning some calcs cannot be done
       INTEGER(LONG)                   :: PROG_ERR      = 0 ! Coding error indicator for invalid material type
       INTEGER(LONG)                   :: I,j               ! DO loop index   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATERIAL_PROPS_BEGEND
+
   
       REAL(DOUBLE)                    :: ALPHA             ! Isotropic coefficient of thermal expansion
       REAL(DOUBLE)                    :: ALPHA1            ! Orthotropic/Anisotropic coeff of thermal expansion in direction 1

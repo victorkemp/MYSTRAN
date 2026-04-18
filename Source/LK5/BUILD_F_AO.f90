@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: A_SET_COL         ! Col no. in TDOF for A  displ set definition
       INTEGER(LONG)                   :: O_SET_COL         ! Col no. in TDOF for O  displ set definition
       INTEGER(LONG), PARAMETER        :: NUMCOLS     = 1   ! Variable for number of cols of an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_F_AO_BEGEND
+
  
 
 

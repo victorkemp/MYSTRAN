@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
       INTEGER(LONG), INTENT(OUT)      :: IOR3D             ! Integration order for this PSOLID entry
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PSOLID_BEGEND
+
  
       END SUBROUTINE BD_PSOLID
 

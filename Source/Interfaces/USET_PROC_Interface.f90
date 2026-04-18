@@ -45,7 +45,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'USET_PROC'
  
       INTEGER(LONG)                   :: USET_ERR   = 0    ! Count of errors that result from setting displ sets in USET
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USET_PROC_BEGEND
+
  
       END SUBROUTINE USET_PROC
 

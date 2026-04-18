@@ -46,7 +46,7 @@
       CHARACTER(24*BYTE)              :: NAME              ! Array name (used for output error message)
  
       INTEGER(LONG), PARAMETER        :: NCOLS     = 1     ! Number of cols in array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_L2_GMN_2_BEGEND
+
 
       END SUBROUTINE ALLOCATE_L2_GMN_2
 

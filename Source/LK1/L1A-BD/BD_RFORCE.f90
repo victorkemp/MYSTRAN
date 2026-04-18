@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: GID        = 0     ! Grid ID (or 0) of the grid that the rotational grav accels refer to
       INTEGER(LONG)                   :: JERR       = 0     ! A local error count
       INTEGER(LONG)                   :: SETID      = 0     ! Set ID on the RFORCE card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RFORCE_BEGEND
+
   
       REAL(DOUBLE)                    :: R8INP              ! A real value read from RFORCE entry
       REAL(DOUBLE)                    :: SCALEF_AA  = ZERO  ! Scale factor for angular accel    on the RFORCE card

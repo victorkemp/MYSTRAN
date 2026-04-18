@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: IMPCADD           ! Count of number of MPC set ID's defined on the MPCADD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPCADD0_BEGEND
+
 
       END SUBROUTINE BD_MPCADD0
 

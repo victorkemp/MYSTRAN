@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP6CHK not used herein
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_USET_BEGEND
+
  
 
 

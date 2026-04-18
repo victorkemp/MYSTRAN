@@ -62,7 +62,7 @@
                
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_G_NM_BEGEND
+
 
       END SUBROUTINE REDUCE_G_NM
 

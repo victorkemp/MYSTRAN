@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: ILOAD             ! Count of no. real load factors on this card. Starts with 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_LOAD0_BEGEND
+
  
       END SUBROUTINE BD_LOAD0
 

@@ -41,7 +41,7 @@
  
       CHARACTER(LEN=JCARD_LEN), INTENT(INOUT):: CHR_FLD           ! Char field to left adjust and return
  
-      INTEGER(LONG), PARAMETER               :: SUBR_BEGEND = LEFT_ADJ_BDFLD_BEGEND
+
  
       END SUBROUTINE LEFT_ADJ_BDFLD
 

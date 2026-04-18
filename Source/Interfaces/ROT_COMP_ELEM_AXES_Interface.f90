@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
       CHARACTER(LEN=*), INTENT(IN)    :: DIRECTION         ! =1-2, rotate from ply to elem mat'l axes (when gen ABD matrices)
       INTEGER(LONG), INTENT(IN)       :: IPLY              ! Ply number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROT_COMP_ELEM_AXES_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: THETA             ! Orient angle of long dir of ply i wrt matl axis for the composite elem
  

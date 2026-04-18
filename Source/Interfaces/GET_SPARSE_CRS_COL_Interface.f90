@@ -49,7 +49,7 @@
       INTEGER(LONG), INTENT(IN )      :: J_MATIN(NTERM)    ! Col numbers for terms in MATIN
       INTEGER(LONG), INTENT(IN )      :: NCOLS             ! No. cols in MATIN
       INTEGER(LONG), INTENT(IN )      :: COL_NUM           ! Col number for the col to get in MATIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SPARSE_CRS_COL_BEGEND
+
                                  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM)      ! Nonzero terms in matrix MATIN
       REAL(DOUBLE) , INTENT(IN)       :: BETA              ! Scalar multiplier for row from MATIN

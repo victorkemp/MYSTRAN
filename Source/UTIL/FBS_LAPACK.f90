@@ -68,7 +68,7 @@
                                                            ! > 0:  if INFO = i, the leading minor of order i is not pos def
                                                            !       and the factorization (in DPBTRS) could not be completed.
       INTEGER(LONG), PARAMETER        :: NUM_COLS    = 1   ! Number of vectors to solve in this call
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FBS_LAPACK_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: EQUIL_SCALE_FACS(NROWS)
                                                            ! LAPACK_S values to return to calling subr

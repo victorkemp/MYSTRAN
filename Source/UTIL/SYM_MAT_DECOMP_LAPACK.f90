@@ -86,7 +86,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index             
       INTEGER(LONG)                   :: IIMAX             ! Row/Col in MATIN where max diagonal term occurs
       INTEGER(LONG)                   :: IIMIN             ! Row/Col in MATIN where min diagonal term occurs
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SYM_MAT_DECOMP_LAPACK_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! A small number to compare real zero
       REAL(DOUBLE) , INTENT(OUT)      :: RCOND             ! Recrip of cond no. of MATIN. Determined in  subr COND_NUM

@@ -41,7 +41,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRDERR_BEGEND
+
  
       END SUBROUTINE CRDERR
 

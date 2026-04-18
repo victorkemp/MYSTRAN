@@ -51,7 +51,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       INTEGER(LONG)                   :: IWORK(8*NDOFL)      ! Integer workspace used by LAPACK.
       INTEGER(LONG)                   :: NUM1                ! Number to use for max no. of eigens to find. Must be NUM1 <= NDOFL
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_GIV_MGIV_BEGEND
+
 
       REAL(DOUBLE)                    :: Q(NDOFL,NDOFL)      ! Matrix used in LAPACK reduction of eigen problem to standard form.
 

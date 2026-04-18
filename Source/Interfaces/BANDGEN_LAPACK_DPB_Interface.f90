@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_MATIN(N+1)         ! Array of row no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_MATIN) ! Array of col no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(IN)       :: KD                   ! Number of sub (or super) diagonals in matrix MATIN.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDGEN_BEGEND
+
      
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_MATIN)   ! Array of terms in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(INOUT)    :: MATOUT(KD+1,N)       ! Array of terms in band matrix MATOUT

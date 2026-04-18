@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: K                    ! Counter
       INTEGER(LONG)                   :: MATOUT_DIAG_ROW_NUM  ! Number of the row, in mATOUT, where the diagonal of MATIN goes
       INTEGER(LONG)                   :: NUM_TERMS_ROW_I      ! Number of terms in MATIN matrix in row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDGEN_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_MATIN)   ! Array of terms in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(INOUT)    :: MATOUT(3*KD+1,N)     ! Array of terms in band matrix MATOUT

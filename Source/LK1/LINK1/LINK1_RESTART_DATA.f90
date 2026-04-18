@@ -73,7 +73,7 @@
       INTEGER(LONG)                   :: PCOMP_PLIES       ! Number of plies in 1 PCOMP entry incl sym plies not explicitly defined
       INTEGER(LONG)                   :: REC_NO            ! Record number of a record read from a file
       INTEGER(LONG)                   :: UNT               ! Unit number of a file to be read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK1_RESTART_DATA_BEGEND
+
 
 
 

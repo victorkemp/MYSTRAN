@@ -46,7 +46,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'POLY_FAILURE_INDEX'
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = POLY_FAILURE_INDEX_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STRE_ALLOWABLES(9)! Allowable stresses (incl tension and compr for normal stresses)
       REAL(DOUBLE), INTENT(IN)        :: STREi(6)          ! 6 components of stress

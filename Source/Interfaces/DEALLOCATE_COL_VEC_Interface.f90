@@ -50,7 +50,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_COL_VEC_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_COL_VEC
 

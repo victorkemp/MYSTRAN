@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(OUT)      :: IPLIES            ! Count of number of plies defined by this PCOMP
       INTEGER(LONG)                   :: ICONT     = 0     ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PCOMP0_BEGEND
+
  
 
 

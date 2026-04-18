@@ -49,7 +49,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       CHARACTER(12*BYTE), INTENT(IN)  :: WHICH             ! Whether to get mass props for
       INTEGER(LONG)                   :: JDOF              ! Array index used in getting mass terms from the elem mass matrix, ME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_BEGEND
+
 
       REAL(DOUBLE)                    :: M0                ! An intermediate variable used in calc model mass props
  

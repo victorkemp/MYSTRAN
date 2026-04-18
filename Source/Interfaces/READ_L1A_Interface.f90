@@ -89,7 +89,7 @@
       CHARACTER(80*BYTE)              :: MESSAG            ! File description. Used for error messaging
  
       INTEGER(LONG), PARAMETER        :: NUMIO      = 304  ! Number of terms in IOCHKI array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1A_BEGEND
+
  
       END SUBROUTINE READ_L1A
 

@@ -52,7 +52,7 @@
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_PHIZL_BEGEND
+
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 

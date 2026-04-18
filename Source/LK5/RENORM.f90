@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: VEC_NUM           ! Number used to control an output message (only want this information
 !                                                            message written if tyhis is the first call to this subr).
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RENORM_BEGEND
+
   
       REAL(DOUBLE) , INTENT(INOUT)    :: GEN_MASS1         ! Generalized mass for 1 eigenvector
       REAL(DOUBLE) , INTENT(OUT)      :: PHI_SCALE_FAC     ! Scale factor for the eigenvector to renormalize it

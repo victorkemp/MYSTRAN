@@ -45,7 +45,7 @@
       INTEGER(LONG), INTENT(IN)       :: NTERMS            ! Number of matrix terms that should be in MAT
       INTEGER(LONG), INTENT(IN)       :: I2_MAT(NTERMS)    ! Row numbers for terms in matrix MAT
       INTEGER(LONG), INTENT(OUT)      :: I_MAT(NROWS+1)    ! Row numbers for terms in matrix MAT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_I_MAT_FROM_I2_MAT_BEGEND
+
 
       END SUBROUTINE GET_I_MAT_FROM_I2_MAT
 

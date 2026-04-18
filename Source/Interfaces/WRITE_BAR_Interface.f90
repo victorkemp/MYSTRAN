@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       INTEGER(LONG), INTENT(IN)       :: ISUBCASE          ! The subcase ID
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_BAR_BEGEND
+
 
       INTEGER(LONG), INTENT(IN)       :: ITABLE            ! the current op2 subtable, should be -3, -5, ...
       CHARACTER(LEN=128), INTENT(IN)  :: TITLE             ! the model TITLE

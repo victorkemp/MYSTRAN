@@ -80,7 +80,7 @@
       INTEGER(LONG)                   :: RMG_ROW_NUM       ! Row no. of a term in array RMG
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START_D   ! DOF number where TDOF data begins for the ref grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! Small number
       REAL(DOUBLE)                    :: DX_BAR            ! Wgt'd avg diff in x dist from indep pt i to ref pt A (in ref pt global)

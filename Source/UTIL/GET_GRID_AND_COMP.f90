@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(OUT)      :: GRIDV             ! Grid num corresponding to DOF_NUM in array TDOFI, col X_SET_COL_NUM
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: X_SET_COL_NUM     ! Col number, in TDOFI array, of the X-set DOF list
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_GRID_AND_COMP_BEGEND
+
 
 
 

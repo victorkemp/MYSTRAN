@@ -46,7 +46,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP       ! If 'Y', CARD is large field format
  
       INTEGER(LONG)                   :: CONT_CARD_NUM  = 0  ! Count of continuation cards (used for output error messages)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_TEMPRP_BEGEND
+
   
       END SUBROUTINE BD_TEMPRP
 

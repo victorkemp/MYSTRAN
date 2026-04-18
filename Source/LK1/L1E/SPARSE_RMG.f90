@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: NTERM_ROW_I       ! Number of nonzero terms in row I of RMG
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_RMG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: RRMG              ! Real value for RMG

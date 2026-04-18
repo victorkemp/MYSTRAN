@@ -71,7 +71,7 @@
 !                                                            for ELFORCE(NODE) - elem nodal forces)
                                                            ! Indicator for output of elem data to BUG file
       INTEGER(LONG)                   :: NUM_OTM_ENTRIES   ! Number of entries in OGEL for a particular element type
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_STRN_PCOMP_BEGEND
+
  
       INTEGER(LONG)                   :: ITABLE           ! the op2 subtable number
       CHARACTER(8*BYTE)               :: TABLE_NAME       ! the op2 table name

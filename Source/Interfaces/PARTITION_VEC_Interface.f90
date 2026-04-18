@@ -46,7 +46,7 @@
 
       INTEGER(LONG), INTENT(IN )      :: NDOF_X            ! No. DOF's in CSET_X displ set
       INTEGER(LONG), INTENT(OUT)      :: PART_VEC(NDOF_X)  ! The partitioning vector described above
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_VEC_BEGEND
+
 
       END SUBROUTINE PARTITION_VEC
 

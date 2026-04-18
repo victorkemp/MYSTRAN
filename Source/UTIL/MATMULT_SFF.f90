@@ -88,7 +88,7 @@
       INTEGER(LONG)                   :: NHITS             ! Number of "hits" of terms in a row of A existing where terms in
 !                                                            a col of B exist when a row of A is multiplied by a col of B
       INTEGER(LONG)                   :: NTERM_AROW        ! Number of nonzero terms in AROW (one row of A)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SFF_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)        ! Nonzero values in matrix A
       REAL(DOUBLE) , INTENT(IN )      :: B(NROWS_B,NCOLS_B)! Real values in matrix B

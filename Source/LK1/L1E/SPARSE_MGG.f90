@@ -70,7 +70,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: RJ(NDOFG)         ! Column numbers corresponding to the terms in REMS(I).
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_MGG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: GRID_MGG(6,6)     ! 6 x 6 mass matrix for a grid

@@ -43,7 +43,7 @@
       IMPLICIT NONE 
 
       INTEGER(LONG), INTENT(OUT)      :: IERROR            ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_PHI_SQ_BEGEND
+
 
       END SUBROUTINE CALC_PHI_SQ
 

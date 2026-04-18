@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: IROW_OLD          ! Previous value of IROW
       INTEGER(LONG)                   :: KTERM             ! Count of number of nonzero terms read from FILNAM
       INTEGER(LONG)                   :: MAT_ERR    = 0    ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_I_MAT_FROM_I2_MAT_BEGEND
+
 
 
 

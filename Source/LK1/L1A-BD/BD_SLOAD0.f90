@@ -46,7 +46,7 @@
  
       INTEGER(LONG), INTENT(OUT)      :: NUM_PAIRS           ! Number of pairs of SPOINT/force MAG on a SLOAD entry (can be up to 3)
       INTEGER(LONG)                   :: I                   ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SLOAD0_BEGEND
+
   
 
 

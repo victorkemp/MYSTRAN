@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)        :: PART_VEC_SUB(NSUB)  ! Partitioning vector (1's for all subcases) 
       INTEGER(LONG), PARAMETER         :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER         :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = REDUCE_PA_TO_PL_BEGEND
+
 
       END SUBROUTINE REDUCE_PA_TO_PL
 

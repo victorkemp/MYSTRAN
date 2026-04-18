@@ -49,7 +49,7 @@
  
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IDOF              ! Displ component (1,2,3,4,5 or 6) that one end of CELSA conn. to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CELAS_BEGEND
+
  
 
 

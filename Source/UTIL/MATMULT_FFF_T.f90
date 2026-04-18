@@ -49,7 +49,7 @@
       INTEGER(LONG)                   :: NROWB             ! No. rows in input matrix B 
       INTEGER(LONG)                   :: NROWA_T           ! No. rows in A' (ranspose)
       INTEGER(LONG)                   :: NCOLA_T           ! No. cols in A' (ranspose)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_FFF_T_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA,NCOLA)    ! Input  matrix A
       REAL(DOUBLE) , INTENT(IN)       :: B(NROWA,NCOLB)    ! Input  matrix B

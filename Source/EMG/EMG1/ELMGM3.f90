@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: SIDE_GRID2        ! Used for error output purposes
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: ID(3)             ! ID(i) is set to 1 if the i-th diagonal of TE is 1.0
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM3_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare to real zero
       REAL(DOUBLE)                    :: IVEC(3)           ! A vector in the elem x dir

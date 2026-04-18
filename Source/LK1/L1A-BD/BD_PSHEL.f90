@@ -58,7 +58,7 @@
       INTEGER(LONG)                   :: MATERIAL_ID   = 0 ! Material ID
       INTEGER(LONG)                   :: N             = 1 ! Counter
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this parent property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PSHEL_BEGEND
+
  
       INTRINSIC                       :: DABS
 

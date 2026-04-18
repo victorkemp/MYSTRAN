@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: RMN_ROW_I_NTERMS    ! No. terms in row I of matrix RMN
       INTEGER(LONG)                   :: RMN_ROW_MAX_TERMS   ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG)                   :: RMM_ROW_MAX_TERMS   ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_GMN_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: EPS1                ! A small number to compare real zero
  
@@ -306,7 +306,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening a file
       INTEGER(LONG)                   :: NRHS              ! No. of RHS's in solving (RMM)*(GMN) = -RMN
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_GMN_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: BETA              ! Multiple for rhs for use in subr FBS
       REAL(DOUBLE)                    :: DUM_COL(NDOFM)    ! Temp variable used in SuperLU

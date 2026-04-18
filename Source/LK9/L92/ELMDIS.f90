@@ -64,7 +64,7 @@
       INTEGER(LONG), PARAMETER        :: PCOL      = 1     ! An input to subr MATPUT, MATGET called herein 
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDIS_BEGEND
+
  
       REAL(DOUBLE)                    :: DXI               ! An offset distance in direction 1
       REAL(DOUBLE)                    :: DYI               ! An offset distance in direction 2

@@ -50,7 +50,7 @@
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Nunber of rows in array NAME being allocated
       INTEGER(LONG)                   :: NCOLS             ! Nunber of cols in array NAME being allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_LINK9_STUF_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -86,7 +86,6 @@
          MB_ALLOCATED = RLONG*REAL(MAXREQ)*REAL(MELGP)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, MELGP+1, SUBR_BEGEND )
             DO I=1,MAXREQ
                DO J=1,MELGP+1
                   GID_OUT_ARRAY(I,J) = 0
@@ -114,7 +113,6 @@
          MB_ALLOCATED = RLONG*TWO*REAL(MAXREQ)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 2, SUBR_BEGEND )
             DO I=1,MAXREQ
                EID_OUT_ARRAY(I,1) = 0
                EID_OUT_ARRAY(I,2) = 1                      ! Set number of plies to 1 so that we don't have to worry about it
@@ -140,7 +138,6 @@
          IF (IERR == 0) THEN
          MB_ALLOCATED =REAL(LEN(FTNAME)*MAXREQ)/ONEPP6
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,MAXREQ
                FTNAME(I) = 'none'
             ENDDO
@@ -166,7 +163,6 @@
          IF (IERR == 0) THEN
          MB_ALLOCATED =REAL(LEN(MSPRNT)*MAXREQ*MMSPRNT)/ONEPP6
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, MMSPRNT, SUBR_BEGEND )
             DO I=1,MAXREQ
                DO J=1,MMSPRNT
                   MSPRNT(I,J)(1:) = ' '
@@ -194,7 +190,6 @@
          MB_ALLOCATED = RDOUBLE*REAL(MAXREQ)*REAL(MOGEL)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, MOGEL, SUBR_BEGEND )
             DO I=1,MAXREQ
                DO J=1,MOGEL
                   OGEL(I,J) = ZERO
@@ -222,7 +217,6 @@
          MB_ALLOCATED = RDOUBLE*REAL(MAXREQ)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,MAXREQ
                POLY_FIT_ERR(I) = ZERO
             ENDDO
@@ -248,7 +242,6 @@
          MB_ALLOCATED = BYTE*REAL(MAXREQ)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             DO I=1,MAXREQ
                POLY_FIT_ERR_INDEX(I) = 0
             ENDDO

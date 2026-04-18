@@ -46,7 +46,7 @@
 
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y' write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROT_AXES_MATL_TO_LOC_BEGEND
+
 
       END SUBROUTINE ROT_AXES_MATL_TO_LOC
 

@@ -57,7 +57,7 @@
       INTEGER(LONG)                   :: JERR      = 0     ! Count of no. of errors when data fields are read from ASET/OMIT cards
       INTEGER(LONG)                   :: COMPJ     = 0     ! Displ component(s)  read from a B.D. ASET/OMIT card
       INTEGER(LONG)                   :: GRIDJ     = 0     ! A grid point number read from a B.D. ASET/OMIT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_ASET_BEGEND
+
  
 
 

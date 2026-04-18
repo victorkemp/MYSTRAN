@@ -56,7 +56,7 @@
 
       INTEGER(LONG)                   :: IERROR            ! Local error indicator from one of the subrs called
       INTEGER(LONG)                   :: K,L               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TREL1_BEGEND
+
 
       REAL(DOUBLE)                    :: AR                ! Elem aspect ratio
       REAL(DOUBLE)                    :: AREA              ! Elem area

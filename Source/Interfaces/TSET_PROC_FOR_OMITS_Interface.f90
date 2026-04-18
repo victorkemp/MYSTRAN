@@ -42,7 +42,7 @@
       IMPLICIT NONE
 
       INTEGER(LONG), INTENT(INOUT)    :: IERRT             ! Sum of all grid and DOF errors
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
       END SUBROUTINE TSET_PROC_FOR_OMITS
 

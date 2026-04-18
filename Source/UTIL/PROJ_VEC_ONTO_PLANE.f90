@@ -42,7 +42,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'PROJ_VEC_ONTO_PLANE'
 
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PROJ_VEC_ONTO_PLANE_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: VEC_A(3)           ! Vector to be projected
       REAL(DOUBLE) , INTENT(IN)       :: VEC_B(3)           ! Vector normal to the plane onto which VEC_A is to be projected

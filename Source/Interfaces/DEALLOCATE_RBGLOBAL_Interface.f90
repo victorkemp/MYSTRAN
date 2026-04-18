@@ -46,7 +46,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: SET               ! Set name of the displ matrix
       CHARACTER(13*BYTE)              :: NAME              ! Specific array name used for output error message
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_RBGLOBAL_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_RBGLOBAL
 

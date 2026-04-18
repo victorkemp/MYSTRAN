@@ -44,7 +44,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ELMDIS_PLY'
 
       INTEGER(LONG)                   :: I,j               ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDIS_PLY_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM(6*ELGP)       ! Intermediate variable in the calculation of UEL for the ply 
 

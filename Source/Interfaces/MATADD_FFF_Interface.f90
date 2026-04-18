@@ -45,7 +45,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROW              ! Number of rows in matrces A, B, C
       INTEGER(LONG), INTENT(IN)       :: NCOL              ! Number of cols in matrces A, B, C
       INTEGER(LONG), INTENT(IN)       :: ITRNSPB           ! Transpose indicator for matrix B
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATADD_FFF_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROW,NCOL)      ! Input  matrix A
       REAL(DOUBLE) , INTENT(IN)       :: B(NROW,NCOL)      ! Input  matrix B

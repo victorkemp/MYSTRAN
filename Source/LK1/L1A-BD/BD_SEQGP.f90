@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: JFLD1             ! A field number on the SEQGP card where grid ID's are located
       INTEGER(LONG)                   :: JFLD2             ! A field number on the SEQGP card where sequence numbers are located
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SEQGP_BEGEND
+
  
       REAL(DOUBLE)                    :: RSEQ              ! A real sequence number
 

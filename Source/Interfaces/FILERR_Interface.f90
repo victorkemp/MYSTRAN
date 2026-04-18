@@ -42,7 +42,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
 
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILERR_BEGEND
+
 
       END SUBROUTINE FILERR
 

@@ -45,7 +45,7 @@
  
       INTEGER(LONG)                   :: SETID             ! Set ID on this Case Control card
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SPC_BEGEND
+
  
 
 

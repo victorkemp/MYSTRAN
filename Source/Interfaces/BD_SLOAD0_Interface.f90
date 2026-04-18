@@ -42,7 +42,7 @@
       CHARACTER(LEN=*),INTENT(IN)     :: CARD                ! A Bulk Data card
  
       INTEGER(LONG), INTENT(OUT)      :: NUM_PAIRS           ! Number of pairs of SPOINT/force MAG on a SLOAD entry (can be up to 3)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SLOAD0_BEGEND
+
   
       END SUBROUTINE BD_SLOAD0
 

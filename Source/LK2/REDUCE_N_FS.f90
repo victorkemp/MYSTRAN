@@ -83,7 +83,7 @@
       INTEGER(LONG)                   :: PART_VEC_S_SzSe(NDOFS)! Partitioning vector (S set into SZ and SE sets) 
       INTEGER(LONG)                   :: PART_VEC_SUB(NSUB)    ! Partitioning vector (1's for all subcases) 
       INTEGER(LONG)                   :: REC_NO                ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_N_FS_BEGEND
+
 
       REAL(DOUBLE)                    :: KFF_DIAG(NDOFF)       ! Diagonal terms from KFF
       REAL(DOUBLE)                    :: KFF_MAX_DIAG          ! Max diag term from KFF

@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: I                   ! DO loop index
       INTEGER(LONG)                   :: JERR      = 0       ! A local error count
       INTEGER(LONG)                   :: SETID  = 0          ! Set ID on the FORCE/MOMENT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_FORMOM_BEGEND
+
   
       REAL(DOUBLE)                    :: EPS1                ! A small number to compare real zero
       REAL(DOUBLE)                    :: FORMON1   = ZERO    ! Force/moment magnitude for 1st dir in coord sys CID (= SCALEF*V1)

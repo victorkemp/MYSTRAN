@@ -44,7 +44,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: RGRID_ROW         ! Row number in array RGRID where the RGRID data is stored for the grid
       INTEGER(LONG), INTENT(IN)       :: ICORD             ! Internal coord ID for coord sys L
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GEN_T0L_BEGEND
+
  
       REAL(DOUBLE),  INTENT(OUT)      :: THETAD,PHID       ! Azimuth and elevation angles (deg) for cylindrical/spherical coord sys 
       REAL(DOUBLE),  INTENT(OUT)      :: T0L(3,3)          ! 3 x 3 coord transformation matrix described above

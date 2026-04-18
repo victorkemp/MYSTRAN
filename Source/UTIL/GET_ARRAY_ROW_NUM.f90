@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: HI, LO            ! Used to bound the range of N where EXT_ID is expected to be found
       INTEGER(LONG)                   :: LAST              ! Previous value of N in the search
       INTEGER(LONG)                   :: N                 ! When the search is completed, N is the ROW_NUM we ara looking for
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ARRAY_ROW_NUM_BEGEND
+
  
       INTEGER(LONG)                   :: TMP_N             ! Real value of (DBL_HI + DBL_LO + 1.D0)/2.D0
       INTEGER(LONG)                   :: TMP_HI            ! Real value of HI

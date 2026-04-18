@@ -46,7 +46,7 @@
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_LINK9_STUF_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -63,7 +63,6 @@
          DEALLOCATE (GID_OUT_ARRAY,STAT=IERR)
          NAME = 'GID_OUT_ARRAY'
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -77,7 +76,6 @@
          DEALLOCATE (EID_OUT_ARRAY,STAT=IERR)
          NAME = 'EID_OUT_ARRAY'
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -91,7 +89,6 @@
          DEALLOCATE (FTNAME,STAT=IERR)
          NAME = 'FTNAME                  '
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -105,7 +102,6 @@
          DEALLOCATE (MSPRNT,STAT=IERR)
          NAME = 'MSPRNT                  '
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -119,7 +115,6 @@
          DEALLOCATE (OGEL,STAT=IERR)
          NAME = 'OGEL                  '
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -133,7 +128,6 @@
          DEALLOCATE (POLY_FIT_ERR,STAT=IERR)
          NAME = 'POLY_FIT_ERR                  '
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME
@@ -147,7 +141,6 @@
          DEALLOCATE (POLY_FIT_ERR_INDEX,STAT=IERR)
          NAME = 'POLY_FIT_ERR_INDEX                  '
          CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-         CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
          IF (IERR /= 0) THEN
             WRITE(ERR,992) NAME,SUBR_NAME
             WRITE(F06,992) NAME,SUBR_NAME

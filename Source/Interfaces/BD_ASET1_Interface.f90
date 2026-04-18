@@ -44,7 +44,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_ASET1_BEGEND
+
  
       END SUBROUTINE BD_ASET1
 

@@ -51,7 +51,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IPPN              ! A pointer into array PPNT
       INTEGER(LONG)                   :: ITPN              ! A pointer into array TPNT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDAT_BEGEND
+
 
 
 

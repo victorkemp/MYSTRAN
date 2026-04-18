@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: ISTART            ! An input to subr STOKEN, called herein
       INTEGER(LONG)                   :: NTOKEN            ! An output from subr STOKEN, called herein
       INTEGER(LONG)                   :: TOKLEN            ! An input to subr STOKEN, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SETID_BEGEND
+
  
 
 

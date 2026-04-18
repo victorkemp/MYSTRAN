@@ -45,7 +45,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOFF_BEGEND
+
  
       END SUBROUTINE ELMOFF
 

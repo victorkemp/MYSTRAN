@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG), PARAMETER        :: N         = 3     ! Order of matrix MOI1
       INTEGER(LONG), PARAMETER        :: LWORK     = 3*N-1 ! Size of array WORK
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: MOI1(3,3)         ! On entry, the MOI's about c.g. in basic coords
 !                                                            On exit , the principal MOI's in basic coords (if INFO = 0)

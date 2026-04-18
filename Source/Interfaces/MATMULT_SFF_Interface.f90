@@ -58,7 +58,7 @@
       INTEGER(LONG), INTENT(IN )      :: NTERM_A           ! Number of nonzero terms in input  matrix A
       INTEGER(LONG), INTENT(IN )      :: I_A(NROWS_A+1)    ! I_A(I+1) - I_A(I) = num nonzeros in row I of matrix A (CRS)
       INTEGER(LONG), INTENT(IN )      :: J_A(NTERM_A)      ! Col no's for nonzero terms in matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SFF_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)        ! Nonzero values in matrix A
       REAL(DOUBLE) , INTENT(IN )      :: B(NROWS_B,NCOLS_B)! Real values in matrix B

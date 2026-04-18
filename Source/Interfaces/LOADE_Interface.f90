@@ -49,7 +49,7 @@
       CHARACTER(LEN=JCARD_LEN)        :: CHARFLD           ! Character field used when suvr I4FLD is called
       CHARACTER( 4*BYTE), PARAMETER   :: END_CARD  = 'CEND'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE_BEGEND
+
  
       END SUBROUTINE LOADE
 

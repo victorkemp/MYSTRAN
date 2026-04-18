@@ -60,7 +60,7 @@
 
       INTEGER(LONG), PARAMETER        :: IORD_STRESS_Q4 = 2! Gauss integration order for stress/strain recovery matrices
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 8     ! DKQ element has 8 nodes (4 are internal)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening or reading a file
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_DOF_TABLES_BEGEND
+
 
 
 

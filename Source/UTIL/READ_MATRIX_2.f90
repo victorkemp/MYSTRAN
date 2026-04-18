@@ -79,7 +79,7 @@
       INTEGER(LONG)                   :: OLD_ROW_NUM       ! A variable used to tell when a new row of MATOUT is being read
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading FILNAM
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_2_BEGEND
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERMS)    ! Real values for matrix MATOUT
 

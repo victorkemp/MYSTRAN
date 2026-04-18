@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_MATIN(NROWS+1)    ! I_MATIN(I+1) - I_MATIN(I) are the number of nonzeros in MATIN row I
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_IN)   ! Col numbers for nonzero terms in MATIN
       INTEGER(LONG), INTENT(OUT)      :: NTERM_OUT           ! Number of nonzero terms in output matrix, MATOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_TERM_COUNT_BEGEND
+
 
       END SUBROUTINE SPARSE_CRS_TERM_COUNT
 

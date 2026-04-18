@@ -54,7 +54,7 @@
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_KXX_BEGEND
+
 
 
 

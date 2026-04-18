@@ -44,7 +44,7 @@
       IMPLICIT NONE
 
       CHARACTER(LEN=*), INTENT(IN)    :: TDOF_MSG          ! Message to be printed out regarding at what point in the run the TDOF,I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TDOF_BEGEND
+
 
       END SUBROUTINE WRITE_TDOF
 

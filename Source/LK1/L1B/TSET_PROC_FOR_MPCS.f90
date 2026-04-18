@@ -68,7 +68,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RJUNK             ! An MPC coeff value read from file LINK1S that we do not need
  

@@ -48,7 +48,7 @@
       INTEGER(LONG), INTENT(IN )      :: J_A(NTERM)            ! Array of column numbers for matrix A
       INTEGER(LONG), INTENT(OUT)      :: ROW_AT_COLJ_BEG(NCOLS)! jth term is row number in MATIN where col j nonzeros begin 
       INTEGER(LONG), INTENT(OUT)      :: ROW_AT_COLJ_END(NCOLS)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROW_AT_COLJ_BEGEND_BEGEND
+
 
       END SUBROUTINE ROW_AT_COLJ_BEGEND
 

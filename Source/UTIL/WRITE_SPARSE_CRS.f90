@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: NULL_ROWS_A       ! Number of null rows in input matrix
       INTEGER(LONG)                   :: ROW_COMP    = 0   ! Component number returned from subr GET_GRID_AND_COMP
       INTEGER(LONG)                   :: ROW_GRID    = 0   ! Grid number returned from subr GET_GRID_AND_COMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_SPARSE_CRS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: AXX(NTERM_A)      ! Array of terms in matrix AXX
  

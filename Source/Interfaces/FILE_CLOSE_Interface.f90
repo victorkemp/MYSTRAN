@@ -45,7 +45,7 @@
       CHARACTER(LEN=*)   , INTENT(IN) :: WRITE_F04         ! If 'Y' write to F04, otherwise do not
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
+
 
       END SUBROUTINE FILE_CLOSE
 

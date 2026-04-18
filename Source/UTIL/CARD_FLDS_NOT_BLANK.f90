@@ -55,7 +55,7 @@
       INTEGER(LONG), INTENT(IN)           :: FLD9              ! Refers to field 9 of a B.D. card. If /= 0, then check this field
       INTEGER(LONG)                       :: ALL_FLDS(2:9)     ! Array of the FLDi (2 through 9)
       INTEGER(LONG)                       :: I,J               ! Do loop indices
-      INTEGER(LONG), PARAMETER            :: SUBR_BEGEND = CARD_FLDS_NOT_BLANK_BEGEND
+
  
 
 

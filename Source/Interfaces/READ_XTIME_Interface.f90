@@ -44,7 +44,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: UNT               ! File unit number
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_XTIME_BEGEND
+
  
       END SUBROUTINE READ_XTIME
 

@@ -58,7 +58,7 @@
       INTEGER(LONG), INTENT(IN )      :: I_B(NTERM_B)           ! Row no's for nonzero terms in matrix B
       INTEGER(LONG), INTENT(OUT)      :: AROW_MAX_TERMS         ! Max number of terms in any row of A
       INTEGER(LONG), INTENT(OUT)      :: NTERM_C                ! Number of nonzero terms in output matrix C
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SSS_NTERM_BEGEND
+
        
       END SUBROUTINE MATMULT_SSS_NTERM
 

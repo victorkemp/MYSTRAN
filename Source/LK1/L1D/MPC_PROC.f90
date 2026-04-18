@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MPC_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: COEFF             ! An MPC coeff value read from file LINK1S that we do not need
       REAL(DOUBLE)                    :: COEFF_JUNK        ! An MPC coeff value read from file LINK1S that we do not need

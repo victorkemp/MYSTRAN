@@ -43,7 +43,7 @@
 
       INTEGER(LONG)    , INTENT(OUT)  :: IEND              ! Col where CHAR_STRING stops having non blanks 
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_CHAR_STRING_END_BEGEND
+
 
 
 

@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: LARGE_FLD_INP     ! If 'Y', CARD is large field format
  
       INTEGER(LONG), INTENT(OUT)      :: IRSPLINE          ! Count of number of grid/comp doublets on this RSPLINE logical card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RSPLINE0_BEGEND
+
  
       END SUBROUTINE BD_RSPLINE0
 

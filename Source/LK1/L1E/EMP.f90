@@ -74,7 +74,7 @@
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: TDOF_ROW_NUM      ! Row number in array TDOF
                                                            ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP_BEGEND
+
  
       REAL(DOUBLE)                    :: DQE(MELDOF,NSUB)  ! Dummy array in call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero

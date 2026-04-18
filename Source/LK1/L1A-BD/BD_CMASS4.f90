@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: CMASS_ELID        ! Element ID
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: SPOINT1,SPOINT2   ! 2 scalar points (1 must be blank or zero)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CMASS_BEGEND
+
  
 
 

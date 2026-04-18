@@ -67,7 +67,7 @@
 !                                                              If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                              thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                              TCASE2(1-5) = 3, 5, 0, 0, 0 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOUT_BEGEND
+
 
       REAL(DOUBLE)                    :: OEL(6)              ! Temp array for holding elem displ, node loads
       REAL(DOUBLE)                    :: SHELL_T_avg         ! Average of the diag terms from transverse shear matrix SHELL_T

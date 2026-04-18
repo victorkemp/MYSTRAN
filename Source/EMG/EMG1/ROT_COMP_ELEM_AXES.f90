@@ -76,7 +76,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
       INTEGER(LONG), INTENT(IN)       :: IPLY              ! Ply number
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROT_COMP_ELEM_AXES_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: THETA             ! Orient angle of long dir of ply i wrt matl axis for the composite elem
       REAL(DOUBLE)                    :: ALP3(3,MEMATC)    ! The 3 rows of ALPVEC for membrane strains

@@ -46,7 +46,7 @@
       CHARACTER(LEN=*) , INTENT(IN)   :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUSH_BEGEND
+
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
 
       END SUBROUTINE BUSH

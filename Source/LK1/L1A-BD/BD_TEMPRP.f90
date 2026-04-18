@@ -63,7 +63,7 @@
       INTEGER(LONG)                   :: IERR                ! Error count
       INTEGER(LONG)                   :: NFLD                ! No. of fields of temperature data (depends on type of CARD)
       INTEGER(LONG)                   :: SID         = 0     ! Set ID read from CARD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_TEMPRP_BEGEND
+
   
       REAL(DOUBLE)                    :: RTEMP               ! Real value of a temperature
  

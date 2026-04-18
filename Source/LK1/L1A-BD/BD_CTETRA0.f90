@@ -47,7 +47,7 @@
       INTEGER(LONG), INTENT(OUT)      :: DELTA_LEDAT       ! Delta number of words to add to LEDAT for this element
       INTEGER(LONG)                   :: ICONT     = 0     ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CTETRA0_BEGEND
+
  
 
 

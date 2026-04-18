@@ -46,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), INTENT(IN)       :: REC_NO            ! Indicator of record number when error encountered reading file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READERR_BEGEND
+
  
       END SUBROUTINE READERR
 

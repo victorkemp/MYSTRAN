@@ -50,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)           :: FLD7              ! Refers to field 7 of a B.D. card. If /= 0, then check this field
       INTEGER(LONG), INTENT(IN)           :: FLD8              ! Refers to field 8 of a B.D. card. If /= 0, then check this field
       INTEGER(LONG), INTENT(IN)           :: FLD9              ! Refers to field 9 of a B.D. card. If /= 0, then check this field
-      INTEGER(LONG), PARAMETER            :: SUBR_BEGEND = CARD_FLDS_NOT_BLANK_BEGEND
+
  
       END SUBROUTINE CARD_FLDS_NOT_BLANK
 

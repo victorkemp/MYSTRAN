@@ -48,7 +48,7 @@
       INTEGER(LONG)                   :: INT_VEC_LINE(10)  ! 10 members of INT_VEC
       INTEGER(LONG)                   :: NUM_LEFT          ! Count of the number of rows of INT_VEC left to write out
       INTEGER(LONG)                   :: PAD               ! Number of spaces to pad in HEADER to center MAT_DESCRIPTOR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_BY_COLS_BEGEND
+
 
       INTRINSIC                       :: LEN
 

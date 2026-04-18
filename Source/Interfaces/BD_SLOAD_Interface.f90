@@ -45,7 +45,7 @@
       CHARACTER(LEN=*),INTENT(IN)     :: CARD                ! A Bulk Data card
       CHARACTER( 1*BYTE),INTENT(INOUT):: CC_LOAD_FND(LSUB,2) ! 'Y' if B.D SLOAD card w/ same set ID (SID) as C.C. LOAD = SID
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SLOAD_BEGEND
+
   
       END SUBROUTINE BD_SLOAD
 

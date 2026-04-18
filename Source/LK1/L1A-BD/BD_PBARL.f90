@@ -70,7 +70,7 @@
       INTEGER(LONG)                   :: NUM_D             ! Number of D(i) values to read from the continuation entries
       INTEGER(LONG)                   :: MATL_ID   = 0     ! Material ID (field 3 of this property card)
       INTEGER(LONG)                   :: PROP_ID   = 0     ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBARL_BEGEND
+
  
       REAL(DOUBLE)                    :: AREA      = ZERO  ! Cross-sectional area
       REAL(DOUBLE)                    :: D(NS)             ! Dimensions of cross-secion of the bar

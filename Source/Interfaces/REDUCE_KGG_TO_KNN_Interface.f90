@@ -51,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: PART_VEC_G_NM(NDOFG)! Partitioning vector (G set into N and M sets) 
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KGG_TO_KNN_BEGEND
+
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
  

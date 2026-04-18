@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: NUM_COMPS         ! 6 if GRID_NUM is an physical grid, 1 if an SPOINT
       INTEGER(LONG)                   :: VEC_ID_OFFSET     ! Offset in determining output vector ID
       INTEGER(LONG)                   :: VEC_ID            ! Vector ID for FEMAP output
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FEMAP_GRID_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: GRID_VEC(NDOFG)   ! G-set Vector to process
       REAL(DOUBLE)                    :: DIS(3)            ! Array of 3 translation components

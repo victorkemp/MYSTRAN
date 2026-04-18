@@ -83,7 +83,7 @@
                                                            ! Stress index (1 through 9) where poly fit err is max
       INTEGER(LONG)                   :: STRESS_OUT_ERR_INDEX(MAX_STRESS_POINTS)
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_STRE_NO_PCOMP_BEGEND
+
  
                                                            ! Array of %errs from subr POLYNOM_FIT_STRE_STRN (only NUM_PTS vals used)
       REAL(DOUBLE)                    :: STRESS_OUT_PCT_ERR(MAX_STRESS_POINTS)

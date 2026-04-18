@@ -59,7 +59,7 @@
       INTEGER(LONG), INTENT(IN)        :: NUM_WORDS         ! Number of words we need to check in CC_CMD_DESCRIBERS
       INTEGER(LONG)                    :: I,J               ! DO loop indices
       INTEGER(LONG)                    :: JCOL              ! Designator of a column in an array
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = CHK_CC_CMD_DESCRIBERS_BEGEND
+
       LOGICAL                          :: IS_PLOT, IS_PRINT, IS_PUNCH
  
 

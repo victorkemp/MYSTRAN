@@ -60,7 +60,7 @@
       INTEGER(LONG)                   :: NCOL_CRS1         ! Number of cols in scratch matrix CRS1
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of nonzero terms in scratch matrix CRS1
       INTEGER(LONG)                   :: NUM_KRRcb_DIAG_0  ! Number of zeros on the diagonal of matrix KRRcb
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INTERFACE_FORCE_LTM_BEGEND
+
 
 
 

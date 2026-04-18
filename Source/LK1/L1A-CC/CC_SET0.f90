@@ -54,7 +54,7 @@
       INTEGER(LONG)                   :: IOCHK     = 0     ! IOSTAT error number when reading a Case Control card from unit IN1
       INTEGER(LONG)                   :: K         = 0     ! Counter
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SET0_BEGEND
+
  
       INTRINSIC INDEX
  

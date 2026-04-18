@@ -102,7 +102,7 @@
       INTEGER(LONG)                   :: MAX_DOUBLINGS     ! Maximum number of doublings allowed
       INTEGER(LONG)                   :: INITIAL_NEV       ! Starting value for NEV
       INTEGER(LONG)                   :: MAX_NEV           ! Maximum NEV based on problem size and EIG_N2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_LANCZOS_ARPACK_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! Small number for comparisons
       REAL(DOUBLE)                    :: SIGMA             ! Shift value (center of frequency range in omega^2)

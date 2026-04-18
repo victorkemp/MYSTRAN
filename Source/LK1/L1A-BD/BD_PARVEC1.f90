@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator returned from subr NEXTC called herein
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: JERR      = 0     ! A local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARVEC1_BEGEND
+
 
 
 

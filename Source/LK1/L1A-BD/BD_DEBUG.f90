@@ -48,7 +48,7 @@
       INTEGER(LONG), PARAMETER        :: LOWER    = 1      ! Lower allowable value for an integer parameter
       INTEGER(LONG)                   :: UPPER    = NDEBUG ! Upper allowable value for an integer parameter
       INTEGER(LONG)                   :: VALUE             ! Value for DEBUG(INDEX) read on B.D. DEBUG card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_DEBUG_BEGEND
+
   
 
 

@@ -56,7 +56,7 @@
                                                            ! = 0:  successful exit
                                                            ! < 0:  if INFO = -i, the i-th arg had an illegal value
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = COND_NUM_BEGEND
+
 
       REAL(DOUBLE),  INTENT(IN)       :: K_INORM           ! The infinity-norm of the matrix whose name is MATIN_NAME     
       REAL(DOUBLE),  INTENT(IN)       :: MATIN_FAC(KD+1,N) ! The upper triangular factor of the matrix whose name is MATIN_NAME

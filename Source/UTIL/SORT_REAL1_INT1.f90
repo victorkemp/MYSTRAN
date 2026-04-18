@@ -55,7 +55,7 @@
       INTEGER(LONG)                   :: N                 ! An array index
       INTEGER(LONG)                   :: SORTPK            ! Intermediate variable used in setting a DO loop range.
       INTEGER(LONG)                   :: SORT_NUM          ! How many times the sort has to be performed in order for the data
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORT_REAL1_INT1_BEGEND
+
 
       REAL(DOUBLE),  INTENT(INOUT)    :: RARRAY(NSIZE)     ! Array of real values 
       REAL(DOUBLE)                    :: RDUM              ! Dummy values in RARRAY used when switching RARRAY rows during sort.

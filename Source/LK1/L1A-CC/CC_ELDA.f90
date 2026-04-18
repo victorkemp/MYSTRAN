@@ -67,7 +67,7 @@
       INTEGER(LONG)                   :: SETID       = 0   ! Set ID on this Case Control card
       INTEGER(LONG)                   :: STRNG_LEN   = 0   ! Length of character string between "()" in the ELDATA card
       INTEGER(LONG)                   :: TOKEN_BEG   = 0   ! An input to subr STOKEN, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_ELDA_BEGEND
+
  
       INTRINSIC INDEX
  

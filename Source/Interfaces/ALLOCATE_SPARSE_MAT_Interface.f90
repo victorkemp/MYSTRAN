@@ -96,7 +96,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows for matrix NAME
       INTEGER(LONG), INTENT(IN)       :: NTERMS            ! Number of nonzero terms that will be in matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SPARSE_MAT_BEGEND
+
 
       END SUBROUTINE ALLOCATE_SPARSE_MAT
 

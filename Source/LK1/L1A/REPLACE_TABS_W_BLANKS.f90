@@ -43,7 +43,7 @@
       CHARACTER(LEN=*), INTENT(INOUT) :: CARD              ! Input entry character line
       CHARACTER(LEN=LEN(CARD))        :: CARD0             ! Temporary CARD
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REPLACE_TABS_W_BLANKS_BEGEND
+
 		INTEGER(LONG)                   :: I                 ! DO loop index
  
 

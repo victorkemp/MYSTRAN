@@ -46,7 +46,7 @@
       INTEGER(LONG)                   :: MAX_JCT           ! Max practical value of JCT to use in sort by the calling procedure.
 !                                                            Values of JCT > MAX_JCT will not cause any error, but will introduce
 !                                                            inefficiency into the sort (a DO loop will run excessively). 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORTLEN_BEGEND
+
  
       INTRINSIC DLOG
  

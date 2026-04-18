@@ -41,7 +41,7 @@
  
       CHARACTER(LEN=*), INTENT(INOUT) :: CARD              ! Input entry character line
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REPLACE_TABS_W_BLANKS_BEGEND
+
  
       END SUBROUTINE REPLACE_TABS_W_BLANKS
 

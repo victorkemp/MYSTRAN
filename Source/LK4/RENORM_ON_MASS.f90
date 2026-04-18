@@ -47,7 +47,7 @@
         
       INTEGER(LONG), INTENT(IN)       :: NVC               ! Number of eigenvectors to be renormalized.
       INTEGER(LONG)                   :: I,J               ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RENORM_ON_MASS_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: EPS1              ! Small number to compare variables against zero
       REAL(DOUBLE)                    :: DEN               ! Normalizing factor in gen mass matrix normalization

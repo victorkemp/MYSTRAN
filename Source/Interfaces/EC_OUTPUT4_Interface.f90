@@ -48,7 +48,7 @@
       CHARACTER(LEN=*), INTENT(OUT)   :: ANY_OU4_NAME_BAD  ! 'Y'/'N' if requested OUTPUT4 matrix name is valid
  
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator. If CHAR not found, IERR set to 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_OUTPUT4_BEGEND
+
  
       END SUBROUTINE EC_OUTPUT4
 

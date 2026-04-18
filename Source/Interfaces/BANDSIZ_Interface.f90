@@ -44,7 +44,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_MATIN(N+1)         ! Array of row no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_MATIN) ! Array of col no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(OUT)      :: KD                   ! Number of sub (or super) diagonals in matrix MATIN.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDSIZ_BEGEND
+
 
       END SUBROUTINE BANDSIZ
 

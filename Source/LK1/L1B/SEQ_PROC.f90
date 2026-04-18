@@ -53,7 +53,7 @@
       INTEGER(LONG)                   :: TMP_GRID_ID(NGRID)! Set to array GRID_ID for aid in sorting GRID_SEQ
       INTEGER(LONG)                   :: TMP_GRD_SEQ(NGRID)! Set to array GRID_SEQ so we can sort it and get array INV_GRID_SEQ
 !                                                            without disturbing GRID_SEQ sequence
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SEQ_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: R_GSEQ(NGRID)     ! Real sequence numbers (since SEQGP cards can have real no's). In the
 !                                                            end, the sequence array that will be used is integer array GRID_SEQ
@@ -308,7 +308,7 @@
       INTEGER(LONG)                   :: OUNT(2)             ! File units to write messages to
       INTEGER(LONG)                   :: REC_NO      = 0     ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: XTIME               ! Time stamp read from a file 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SEQ_PROC_BEGEND + 1
+
 
       INTRINSIC                       :: DBLE, INT
 

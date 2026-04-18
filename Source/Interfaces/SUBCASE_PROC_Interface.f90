@@ -54,7 +54,7 @@
  
       CHARACTER(     1*BYTE)          :: PRNTOUT           ! Flag used in deciding what to output if B.D. PARAM PRTSCP = 1
       INTEGER(LONG)                   :: ELM_BIT(METYPE)   ! Array used for output warning purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND
+
   
       END SUBROUTINE SUBCASE_PROC
 

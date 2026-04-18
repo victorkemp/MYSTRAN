@@ -59,7 +59,7 @@
       INTEGER(LONG), INTENT(IN)       :: STR_PT_NUM        ! Which point (3rd index in SEi matrices) this call is for
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEM_STRE_STRN_ARRAYS_BEGEND
+
       INTEGER(LONG)                   :: STR_CID_SOLID
  
       REAL(DOUBLE)                    :: ALPT(6)           ! Col of ALPVEC times temperatures

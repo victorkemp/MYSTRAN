@@ -58,7 +58,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID         ! Internal element ID for which
       INTEGER(LONG), INTENT(IN)       :: CASE_NUM            ! Can be subcase number (e.g. for UEL, PEL output)
       INTEGER(LONG), INTENT(IN)       :: DUM_BUG(0:MBUG-1)   ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOUT_BEGEND
+
 
       END SUBROUTINE ELMOUT
 

@@ -56,7 +56,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row number in TDOF where data begins for IGRID
       INTEGER(LONG)                   :: SGRID(NCMASS)     ! Grid number for a scalar mass (from array CMASS)
       INTEGER(LONG)                   :: PMASS_ID(NCMASS)  ! Prop ID for the CMASS that is attached to SGRID(I) (from array PMASS)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGS_MASS_MATRIX_BEGEND
+
 
       REAL(DOUBLE)                    :: PMASS_VAL(NCMASS) ! Value for the mass attached to SGRID(I)
 

@@ -66,7 +66,7 @@
       INTEGER(LONG)                   :: BDY_DOF_NUM       ! DOF number for BDY_GRID/BDY_COMP
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: LINES_WRITTEN     ! Number of lines written for the grids
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_GRD_PRT_OUTPUTS_BEGEND
+
 
       REAL(DOUBLE)                    :: ABS_ANS(6)        ! Max Abs for all grids output for each of the 6 disp components
       REAL(DOUBLE)                    :: MAX_ANS(6)        ! Max for all grids output for each of the 6 disp components

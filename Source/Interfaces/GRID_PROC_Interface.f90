@@ -45,7 +45,7 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_PROC_BEGEND
+
  
       END SUBROUTINE GRID_PROC
 
