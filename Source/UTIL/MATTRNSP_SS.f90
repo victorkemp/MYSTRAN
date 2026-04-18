@@ -81,12 +81,7 @@
       
       INTEGER(LONG)                   :: TMP, COL          ! temp variables for storage in loops
       INTEGER(LONG)                   :: CUMSUM            ! cumulative sum 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -143,12 +138,7 @@
 
       IF ((DEBUG(85) == 1) .OR. (DEBUG(85) == 3)) CALL MATTRNSP_SS_DEB ( '2', '   ' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

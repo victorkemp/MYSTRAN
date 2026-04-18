@@ -56,12 +56,7 @@
       INTEGER(LONG)                   :: PGM_ERR   = 0     ! A  count of the number of coding errors
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_GRDSET_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! GRDSET Bulk Data Card routine. Values for GRDSET3, 7, 8 have already been
@@ -130,12 +125,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

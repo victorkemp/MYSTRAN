@@ -76,12 +76,7 @@
       REAL(DOUBLE)                    :: TJ(3,3)           ! Coord transform matrix from basic to global for an internal
       REAL(DOUBLE)                    :: TK(3,3)           ! Coord transform matrix from basic to global for an internal grid
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
@@ -278,12 +273,7 @@ k_cord2:       DO K=1,NCORD
          CALL GET_KE_OFFSET                                ! Now transform the global KE (with offsets) back to local
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

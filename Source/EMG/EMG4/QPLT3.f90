@@ -261,12 +261,7 @@
       REAL(DOUBLE)                    :: V12(2)            ! Components of a vector along side 1-2 of a sub-triangle
       REAL(DOUBLE)                    :: V13(2)            ! Components of a vector along side 1-3 of a sub-triangle
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -884,12 +879,7 @@ trias:DO K=1,NUM_TRIAS
          ENDDO
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -59,12 +59,7 @@
       LOGICAL                         :: IS_LOW_PRECISION  ! Print MPFACTOR, MEFFMASS values with 2 decimal places of accuracy rather than 6
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IS_LOW_PRECISION = (DEBUG(174) == 0)
@@ -230,12 +225,7 @@
 
       WRITE(F06,9118) (CHAR_PCT(I),I=1,6)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

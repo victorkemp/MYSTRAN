@@ -65,12 +65,7 @@
       REAL(DOUBLE)                    :: RB_DISP(6,6)      ! 6 x 6 RB matrix for one grid for this element
       REAL(DOUBLE)                    :: W(24,14)          ! Displs for the 14 modes of elem deformation (6 RB + 8 constant strain)
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -212,12 +207,7 @@
       ENDIF
       WRITE(BUG,*)        
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

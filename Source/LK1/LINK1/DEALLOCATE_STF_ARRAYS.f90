@@ -52,12 +52,7 @@
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
 !                                                            ALLOCATED_ARRAY_MEM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -150,12 +145,7 @@
       WRITE(SC1,12345,ADVANCE='NO') CUR_MB_ALLOCATED, NAME, CR13
       WRITE(F06,1702) CUR_MB_ALLOCATED, NAME
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

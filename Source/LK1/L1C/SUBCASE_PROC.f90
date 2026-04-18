@@ -133,12 +133,7 @@
   
       INTRINSIC                       :: IAND,IBCLR,IBSET
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -1261,12 +1256,7 @@ token_loop3:DO                                             ! Call STOKEN in a DO
       WRITE(L1D) ANY_STRE_OUTPUT
       WRITE(L1D) ANY_STRN_OUTPUT
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -1367,12 +1357,7 @@ token_loop3:DO                                             ! Call STOKEN in a DO
  
       INTRINSIC INDEX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -1488,12 +1473,7 @@ i_loop2: DO I=SID_BEG,SID_END
          ENDDO
       ENDIF 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

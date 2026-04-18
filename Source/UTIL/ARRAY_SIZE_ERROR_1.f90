@@ -45,12 +45,7 @@
       INTEGER(LONG), INTENT(IN)       :: NTERM_VAL         ! Size of the array that was exceeded
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ARRAY_SIZE_ERROR_1_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       WRITE(ERR,937) INP_SUBR_NAME, NTERM_VAL, MATIN_NAME
@@ -58,12 +53,7 @@
       FATAL_ERR = FATAL_ERR + 1
       CALL OUTA_HERE ( 'Y' )                               ! Coding error (attempt to exceed allocated array size), so quit
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

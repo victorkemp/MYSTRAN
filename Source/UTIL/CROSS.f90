@@ -46,24 +46,14 @@
       REAL(DOUBLE), INTENT(IN)        :: B(3)              ! Components of input  vector B
       REAL(DOUBLE), INTENT(OUT)       :: C(3)              ! Components of output vector C
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       C(1) = A(2)*B(3) - A(3)*B(2)
       C(2) = A(3)*B(1) - A(1)*B(3)
       C(3) = A(1)*B(2) - A(2)*B(1)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

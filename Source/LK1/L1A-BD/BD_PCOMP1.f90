@@ -77,12 +77,7 @@
       REAL(DOUBLE)                    :: Z0          = ZERO ! Dist (+/-) from ref plane to bottom surface
       REAL(DOUBLE)                    :: ZI          = ZERO ! Dist (+/-) from ref plane to middle of ply i
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PCOMP1 Bulk Data Card:
@@ -358,12 +353,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

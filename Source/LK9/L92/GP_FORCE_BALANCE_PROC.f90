@@ -124,21 +124,12 @@
       CHARACTER*8, ALLOCATABLE        :: GPFORCE_ETYPE(:)        ! currently unused
       REAL, ALLOCATABLE               :: GPFORCE_FXYZ_MXYZ(:,:)  ! currently unused
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
       ! GPFORCE is unsupported for buckling decks
       IF (SOL_NAME(1:8) == "BUCKLING") THEN
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            CALL OURTIM
-            WRITE(F04,9002) SUBR_NAME,TSEC
-         ENDIF
          RETURN
       ENDIF
 
@@ -748,12 +739,7 @@ i_do1:   DO I=1,NGRID                                      ! (2) Set initial val
       FLUSH(F06)
       FLUSH(ERR)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

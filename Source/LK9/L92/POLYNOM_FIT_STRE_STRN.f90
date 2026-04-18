@@ -91,12 +91,7 @@
       REAL(DOUBLE)                    :: XEP(NCOL-1,3)       ! Parametric coords of NCOL points
       REAL(DOUBLE)                    :: WO(NCOL-1)          ! Values of the function to fit at the output data points
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       MESSAGE(1:) = ' '
@@ -196,12 +191,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

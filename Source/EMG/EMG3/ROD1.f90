@@ -65,12 +65,7 @@
       REAL(DOUBLE)                    :: KD0               ! Intermediate variable used in calc KED
       REAL(DOUBLE)                    :: TBAR              ! Average elem temperature 
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Determine element thermal loads. 
@@ -135,12 +130,7 @@
          KED( 9, 9) =  KED( 3, 3)
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

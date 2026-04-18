@@ -78,12 +78,7 @@
       INTEGER(LONG)                   :: TOKLEN            ! Length of character string sent to subr STOKEN (= LEN(CARD))
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DOLLAR_WARN = 'N'
@@ -345,12 +340,7 @@
          WRITE(F06,998) EC_OUTPUT4_ERR
          CALL OUTA_HERE ( 'Y' )
       ENDIF
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

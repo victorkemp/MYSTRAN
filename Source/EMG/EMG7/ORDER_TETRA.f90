@@ -51,12 +51,7 @@
       REAL(DOUBLE) , PARAMETER        :: ALPHA = .58541020D0      ! Intermediate constant
       REAL(DOUBLE) , PARAMETER        :: BETA  = .13819660D0      ! Intermediate constant
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,MAX_ORDER_TETRA
@@ -86,12 +81,7 @@
 
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -48,12 +48,7 @@
       REAL(DOUBLE), INTENT(OUT)       :: STRE_ALLOWABLES(9)! Stress allowables for the material
       REAL(DOUBLE), INTENT(OUT)       :: STRN_ALLOWABLES(9)! Strain allowables for the material
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       STRE_ALLOWABLES(1) = ULT_STRE(1,1)                !   Axis   1 tension     stress allowable
@@ -76,12 +71,7 @@
       STRN_ALLOWABLES(8) = ULT_STRN(8,3)                !   Plane 13 shear       strain allowable (from transv shear matl props)
       STRN_ALLOWABLES(9) = ULT_STRN(7,1)                !   Plane 12 shear       strain allowable
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

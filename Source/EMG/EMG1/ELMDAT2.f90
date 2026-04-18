@@ -53,12 +53,7 @@
       INTEGER(LONG)                   :: ITPN              ! A pointer into array TPNT
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDAT_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       TYPE = ETYPE(INT_ELEM_ID)
@@ -189,12 +184,7 @@
 
       ENDIF 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

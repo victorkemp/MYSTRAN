@@ -58,12 +58,7 @@
       REAL(DOUBLE)                    :: PDUM1(3,NSUB)     ! An intermediate result when calculating transformed PTE, PPE
       REAL(DOUBLE)                    :: PDUM2(3,NSUB)     ! An intermediate result when calculating transformed PTE, PPE
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (OPT(1) == 'Y') THEN                              ! Transform ME to TE' x ME x TE
@@ -158,12 +153,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

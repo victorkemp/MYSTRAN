@@ -57,12 +57,7 @@
       INTEGER(LONG)                   :: NUMBER(2:9)       ! Number of imbedded blanks found in a Bulk Data card field
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_IMBEDDED_BLANK_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Load CF2 through CF9 into array CHK_FLD
@@ -150,12 +145,7 @@ j_do2:         DO J=JCARD_LEN,1,-1                         ! Find where data end
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

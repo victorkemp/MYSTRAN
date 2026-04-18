@@ -75,12 +75,7 @@
       INTEGER(LONG)                   :: IERROR            ! Error count
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELESORT_BEGEND
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! (1) Generate ESORT1 and ESORT2. Initially, set ESORT1(I) = elem ID's in order read in Bulk Data and ESORT2(I) = I.
@@ -152,12 +147,7 @@
 
       ELESORT_RUN = 'Y'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

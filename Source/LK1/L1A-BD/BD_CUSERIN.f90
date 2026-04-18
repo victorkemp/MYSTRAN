@@ -83,12 +83,7 @@
 
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CUSERIN_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CUSERIN element Bulk Data Card routine
@@ -418,12 +413,7 @@ do_i2:         DO WHILE (NS_FOUND < NS)
       EDAT(NEDAT) = NUM_BDY_DOF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

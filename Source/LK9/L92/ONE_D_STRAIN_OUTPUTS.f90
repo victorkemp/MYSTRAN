@@ -70,12 +70,7 @@
 
       INTRINSIC DMAX1,DMIN1
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 ! **********************************************************************************************************************************
 ! Calc engineering strains from array STRAIN and put into array OGEL
@@ -234,12 +229,7 @@
 
       ENDIF   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -51,12 +51,7 @@
       INTEGER(LONG)                   :: IGRID              ! Internal grid ID (row in array GRID_ID where an act grid num exists)
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_ELEM_CONN_TABLE_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,NGRID
@@ -107,12 +102,7 @@
          ENDDO
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

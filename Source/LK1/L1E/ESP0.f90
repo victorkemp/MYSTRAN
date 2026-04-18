@@ -66,12 +66,7 @@
       INTEGER(LONG)                   :: LTERM             ! Count of number of estimated terms in KGG or KGGD
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF      (SETLKTK == 0) THEN                          ! LTERM based on full elem stiffness matrices unconnected
@@ -112,12 +107,7 @@
          LTERM_KGG  = LTERM
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -151,12 +141,7 @@
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process the elements: Asume each is has a stiffness matrix that is completely full
@@ -190,12 +175,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -230,12 +210,7 @@
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Estimate number of nonzero terms as the number of rows in the stiff matrix times the stiff matrix bandwidth:
@@ -254,12 +229,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -298,12 +268,7 @@
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ESP0_BEGEND + 1
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Estimate number of nonzero terms as the number of rows in the stiff matrix times the stiff matrix bandwidth:
@@ -322,12 +287,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -376,12 +336,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages         
@@ -475,12 +430,7 @@ kgg_cols:   DO K=KSTART,ELDOF
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

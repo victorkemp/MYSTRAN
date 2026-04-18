@@ -101,12 +101,7 @@
       REAL(DOUBLE)                    :: PHID, THETAD      ! Outputs from subr GEN_T0L
       REAL(DOUBLE)                    :: T_0_G(3,3)        ! Transformation matrix from global to basic
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 outer:DO I = 1,NCONM2
@@ -263,12 +258,7 @@ j_loop1:    DO J=1,NCORD
          CALL OUTA_HERE ( 'Y' )                            ! Quit due to undefined grid and coord sys ID's
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

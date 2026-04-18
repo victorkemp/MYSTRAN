@@ -84,12 +84,7 @@
       REAL(DOUBLE)                    :: RPDAT1            ! Real pressure value read from file LINK1Q
       REAL(DOUBLE)                    :: RSID(LLOADC+1)    ! Array of load magnitudes (for LSID set ID's) needed for one S/C
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EL_REDUNDANT_PRES  =  0                              ! Initialize warn, err indicators for redundant elem press definition
@@ -336,12 +331,7 @@ k_do6:            DO K=EID1,EID2
          WRITE(L1Q) (PLOAD4_3D_DATA(I,J),J=1,MPLOAD4_3D_DATA)
       ENDDO
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -450,12 +440,7 @@ k_do6:            DO K=EID1,EID2
          ENDIF
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

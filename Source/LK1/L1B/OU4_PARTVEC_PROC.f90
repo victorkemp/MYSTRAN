@@ -141,12 +141,7 @@
       INTEGER(LONG), INTENT(OUT)      :: VAL_ROWS           ! Number to enter into PARTVEC_ROW for a row that is to be partitioned
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OU4_PARTVEC_PROC_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -404,12 +399,7 @@ j_do1:   DO J=1,NUM_PARTVEC_RECORDS
 
       CALL GET_OU4_PART_GRD_COMP
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -72,12 +72,7 @@
       REAL(DOUBLE)                    :: DUM1(NDOFL,NVEC)  ! Intermediate matrix
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Part 1: Calculate PHIZL1 = -KLL(-1)*(MLR + MLL*DLR). Use CRS3 to hold (MLR + MLL*DLR)
@@ -214,12 +209,7 @@
       CALL DEALLOCATE_SPARSE_MAT ( 'PHIZL1' )
       CALL DEALLOCATE_SPARSE_MAT ( 'PHIZL2' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

@@ -64,12 +64,7 @@
       REAL(DOUBLE)                    :: DEPS1             ! A small positive number to compare real zero
       REAL(DOUBLE)                    :: RSPCJ     = ZERO  ! Enforced displ value 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !  SPC Bulk Data Card routine
@@ -167,12 +162,7 @@
       CALL CARD_FLDS_NOT_BLANK ( JCARD,0,0,0,0,0,0,0,9 )
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

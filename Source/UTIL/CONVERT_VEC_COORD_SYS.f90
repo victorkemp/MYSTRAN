@@ -68,12 +68,7 @@
       REAL(DOUBLE)                    :: T_0_GCID(3,3)     ! Coord transformation matrix from basic to GCID system
       REAL(DOUBLE)                    :: T_0_NCID(3,3)     ! Coord transformation matrix from basic to NCID system
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Set OUTPUT_VEC = INPUT_VEC in case no transformation is done (e.g. all grids have basic global and transformed system is basic)
@@ -194,12 +189,7 @@ j_do_2:  DO J=1,NCORD
 
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

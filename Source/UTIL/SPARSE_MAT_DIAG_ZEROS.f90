@@ -55,12 +55,7 @@
       INTEGER(LONG)                   :: ZERO_DIAGS(NROWS_A)! Row numbers where there are zero diag terms
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_MAT_DIAG_ZEROS_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -104,12 +99,7 @@ k_do:       DO K=A_ROW_BEG,A_ROW_END
          WRITE(F06,101) (ZERO_DIAGS(I),I=1,NUM_A_DIAG_ZEROS)
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

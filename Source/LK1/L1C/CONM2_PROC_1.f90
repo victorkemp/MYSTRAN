@@ -101,12 +101,7 @@
       REAL(DOUBLE)                    :: T_0_CID(3,3)      ! Transformation matrix from coord ACID to basic
       REAL(DOUBLE)                    :: T_CID_0(3,3)      ! Transformation matrix from basic to coord ACID (transp of T_0_CID)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! For all SPOINT's reset all RCONM2 values back to zero (so that scalar points will not use offset and MOI terms)
@@ -329,12 +324,7 @@ j_loop1:    DO J=1,NCORD
          ENDDO
       ENDDO
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

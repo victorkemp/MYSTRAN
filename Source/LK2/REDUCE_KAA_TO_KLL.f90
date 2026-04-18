@@ -52,12 +52,7 @@
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KAA_TO_KLL_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition KLL from KAA (This is KLL before reduction, or KLL(bar) )
@@ -115,12 +110,7 @@
          CALL WRITE_MATRIX_1 ( LINK2L, L2L, 'Y', 'KEEP', L2L_MSG, 'KRR', NTERM_KRR, NDOFR, I_KRR, J_KRR, KRR )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

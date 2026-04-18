@@ -72,12 +72,7 @@
       REAL(DOUBLE)                    :: JTOR        = ZERO ! Torsional constantr at any location along beam
       REAL(DOUBLE)                    :: NSM         = ZERO ! Nonstructural mass at any location along beam
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PBEAM Bulk Data Card routine
@@ -384,12 +379,7 @@
          CALL CRDERR ( CARD )                              ! CRDERR prints errors found when reading fields
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

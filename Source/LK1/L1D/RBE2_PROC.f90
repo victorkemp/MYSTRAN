@@ -86,12 +86,7 @@
       REAL(DOUBLE)                    :: T0G_D(3,3)        ! Transforms a dep   DOF vector in basic coords to global coords
       REAL(DOUBLE)                    :: T0G_I(3,3)        ! Transforms a indep DOF vector in basic coords to global coords
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -316,12 +311,7 @@
          WRITE(F06,*)
       ENDIF 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

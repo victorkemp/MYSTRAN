@@ -71,12 +71,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CBUSH element Bulk Data Card routine
@@ -364,12 +359,7 @@ vec:  IF (JCARD(9)(1:) == ' ') THEN                        ! CID field is blank 
 
       NEDAT = NEDAT_START + MEDAT_CBUSH
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

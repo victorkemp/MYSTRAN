@@ -72,12 +72,7 @@
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
       REAL(DOUBLE)                    :: TR6_CGt(6,NDOFR)  ! TR6_CG'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
@@ -203,12 +198,7 @@
          CALL WRITE_SPARSE_CRS ( 'CG_LTM','  ','  ', NTERM_CG_LTM, NDOFR, I_CG_LTM, J_CG_LTM, CG_LTM   )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

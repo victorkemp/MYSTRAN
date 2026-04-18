@@ -51,12 +51,7 @@
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
 !                                                            ALLOCATED_ARRAY_MEM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -97,12 +92,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

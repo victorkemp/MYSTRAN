@@ -78,12 +78,7 @@
       REAL(DOUBLE)                    :: WTi(MRBE3)        ! Array of RBE3 weight values
       REAL(DOUBLE)                    :: WT_TOT            ! Total of all WTi(i)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! RBE3 Bulk Data Card:
@@ -357,12 +352,7 @@ do_j:       DO J=2,9
 
 !xx   NTERM_RMG = REFC_NUM_Ci*(NTERM_RMG + 1)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

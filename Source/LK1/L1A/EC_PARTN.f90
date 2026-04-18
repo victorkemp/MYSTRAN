@@ -67,12 +67,7 @@
       INTEGER(LONG)                   :: JBEG              ! Beg col in data
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_PARTN_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF ((DEBUG(197) == 2) .OR. (DEBUG(197) == 3)) THEN
@@ -224,12 +219,7 @@ nerr: IF (IERR == 0) THEN
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

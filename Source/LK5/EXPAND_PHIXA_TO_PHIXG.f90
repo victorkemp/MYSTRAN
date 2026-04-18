@@ -57,12 +57,7 @@
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Expand PHIXA (cols stored in UA_COL) to G-set columns (UG_COL). Each UG_COL is a column of matrix PHIXG
@@ -115,12 +110,7 @@
       CALL FULL_TO_SPARSE_CRS   ( 'PHIXG_FULL', NDOFG, NDOFR+NVEC, PHIXG_FULL, NTERM_PHIXG, SMALL, SUBR_NAME, 'N',                 &
                                    I_PHIXG, J_PHIXG, PHIXG )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

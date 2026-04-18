@@ -83,12 +83,7 @@
       REAL(DOUBLE)                    :: Z(4)      = ZERO  ! Z coords in cross-section for 4 points of data recovery
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this PBARL entry
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PBAR Bulk Data Card routine
@@ -360,12 +355,7 @@ D_do1:   DO J=2,9                                          ! --- Read cross-sect
 !        CALL WRITE_PBAR_EQUIV
 !     ENDIF
 !
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

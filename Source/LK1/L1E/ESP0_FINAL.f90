@@ -75,12 +75,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages         
@@ -219,12 +214,7 @@ stfpnt0:          DO                                       ! so, run this loop u
          WRITE(F06,4321) LTERM_KGG
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

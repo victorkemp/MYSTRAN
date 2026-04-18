@@ -51,12 +51,7 @@
       INTEGER(LONG), INTENT(OUT)            :: NUM_DIGITS        ! Number of digits in INT
       INTEGER(LONG)                         :: I,J,K             ! DO loop indices or counters
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -135,12 +130,7 @@
 !xx      ENDIF
 !xx   ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -48,12 +48,7 @@
       INTEGER(LONG)                   :: IERR              ! Output from subr CSHIFT indicating an error
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_ENFO_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process ENFORCED card 
@@ -70,12 +65,7 @@
       CALL GET_CHAR_STRING_END ( CARD1, IEND )
       ENFFIL = CARD1(1:IEND)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

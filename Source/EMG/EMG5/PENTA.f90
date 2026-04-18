@@ -128,12 +128,7 @@
       REAL(DOUBLE)                    :: SSI,SSJ,SSK             ! Isoparametric coordinates of a point.
       REAL(DOUBLE)                    :: M_1DOF(ELGP,ELGP)      ! Consistent mass matrix with 1 DOF per node.
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -605,12 +600,7 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
 
       ENDIF               
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -90,12 +90,7 @@
       INTEGER(LONG)                   :: NUM_QUADS          ! Number of quadrilateral elements
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Initialize
@@ -983,12 +978,7 @@ j_do2:            DO J=2,LMPCADDC
          WRITE(F06,1197) MELGP, MELDOF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

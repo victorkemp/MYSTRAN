@@ -48,12 +48,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CMASS_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CMASS2 scalar spring element Bulk Data Card routine
@@ -142,12 +137,7 @@
       CALL CARD_FLDS_NOT_BLANK ( JCARD,0,0,0,0,0,0,8,9 )   ! Issue warning if fields 8, 9 are not blank
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

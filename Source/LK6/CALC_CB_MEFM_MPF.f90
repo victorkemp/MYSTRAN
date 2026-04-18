@@ -69,12 +69,7 @@
       REAL(DOUBLE)                    :: MPFi(1,NDOFR)           ! i-th row of MPF
       REAL(DOUBLE)                    :: MPFit(NDOFR,1)          ! MPFi'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CALL ALLOCATE_EIGEN1_MAT ( 'MEFFMASS', NVEC, 6    , SUBR_NAME )
@@ -127,12 +122,7 @@
 
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

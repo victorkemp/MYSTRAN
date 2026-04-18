@@ -120,12 +120,7 @@
       REAL(DOUBLE)                    :: SUMB              ! An intermediate variable used in calc B matrix for reduced integration
       REAL(DOUBLE)                    :: SUMD              ! An intermediate variable used in calc B matrix for reduced integration
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Generate BM matrices. Dimensions 1 and 2 of BM store a element BM matrix for 1 Gauss point. The 3rd dimension has BM for all other
@@ -282,12 +277,7 @@
   
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

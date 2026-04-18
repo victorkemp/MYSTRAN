@@ -330,12 +330,7 @@ i_do: DO I=1,NROW_A                                        ! Matrix partition lo
       CALL DEALLOCATE_SPARSE_ALG ( 'ALG' )
       CALL DEALLOCATE_SPARSE_ALG ( 'J_AROW' )
       
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

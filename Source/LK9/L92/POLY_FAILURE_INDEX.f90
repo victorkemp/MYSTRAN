@@ -63,12 +63,7 @@
       REAL(DOUBLE)                    :: X,Y,Z             ! X = XT if sig1 > 0 or X = XC if sig1 < 0, etc
       REAL(DOUBLE)                    :: R,S,T             ! Allowable shear stresses in planes 23, 13, 12
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -215,12 +210,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -63,12 +63,7 @@
       INTEGER(LONG)                   :: STRING_LEN  = 0   ! Length of character string between "()" in the ELDATA card
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_OUTPUTS_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -112,12 +107,7 @@
          RETURN
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

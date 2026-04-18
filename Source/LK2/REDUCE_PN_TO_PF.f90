@@ -76,12 +76,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition PF from PN (This is PF before reduction, or PF(bar) )
@@ -330,12 +325,7 @@
          CALL WRITE_MATRIX_1 ( LINK2D, L2D, CLOSE_IT, CLOSE_STAT, L2D_MSG, 'PS ', NTERM_PS , NDOFS, I_PS , J_PS , PS  )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

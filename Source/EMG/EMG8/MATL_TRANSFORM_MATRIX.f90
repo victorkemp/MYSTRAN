@@ -124,12 +124,7 @@
       REAL(DOUBLE)                    :: A21,A22,A23       ! Coefficients from matrix TME
       REAL(DOUBLE)                    :: A31,A32,A33       ! Coefficients from matrix TME
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Formulate 6x6 matrix TS from terms in 3x3 matrix T12
@@ -170,12 +165,7 @@
       TS(6,1)= A13*A11           ;   TS(6,2)= A23*A21           ;   TS(6,3)= A33*A31; 
       TS(6,4)= A13*A21+A23*A11   ;   TS(6,5)= A23*A31+A33*A21   ;   TS(6,6)= A13*A31+A33*A11
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

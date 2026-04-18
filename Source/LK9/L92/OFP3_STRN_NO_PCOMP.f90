@@ -105,12 +105,7 @@
       INTRINSIC IAND
       ITABLE = 0
       TABLE_NAME = "OES ERR "
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 
 ! **********************************************************************************************************************************
@@ -709,12 +704,7 @@ do_strain_pts:    DO M=1,NUM_PTS(I)
          WRITE(F06,9201) TYPE, REQUEST, EID
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

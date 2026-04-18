@@ -54,12 +54,7 @@
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_MAA_TO_MLL_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition MLL from MAA
@@ -117,12 +112,7 @@
          CALL WRITE_MATRIX_1 ( LINK2N, L2N, 'Y', 'KEEP', L2N_MSG, 'MRR', NTERM_MRR, NDOFR, I_MRR, J_MRR, MRR )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

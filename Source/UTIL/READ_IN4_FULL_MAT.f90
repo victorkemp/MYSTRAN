@@ -74,12 +74,7 @@
       REAL(DOUBLE)                    :: RJUNK             ! Values read from file for matrix other than the one we want
 !xx   REAL(DOUBLE)                    :: Z0                ! Zero values read from matrix trailer
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       MAT_NUM = 0
@@ -215,12 +210,7 @@ do_1: DO                                                   ! Loop over unknown n
          CALL OUTA_HERE ( 'Y' )
        ENDIF         
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

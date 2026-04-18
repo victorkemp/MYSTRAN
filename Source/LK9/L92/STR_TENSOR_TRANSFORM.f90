@@ -85,12 +85,7 @@
       REAL(DOUBLE)                    :: TES(3,3)          ! Transform matrix from local elem coords to stress output coords
       REAL(DOUBLE)                    :: TSE(3,3)          ! TES'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Get transformation matrix T0S from stress coord sys to basic if it exists
@@ -146,12 +141,7 @@
       CALL MATMULT_FFF (TSE, DUM33, 3, 3, 3, STRESS_TENSOR )
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

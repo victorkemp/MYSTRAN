@@ -102,12 +102,7 @@
       REAL(DOUBLE)                    :: Y23               ! Diff in y coords of elem nodes 2 and 3
       REAL(DOUBLE)                    :: Y31               ! Diff in y coords of elem nodes 3 and 1
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Generate element parameters
@@ -472,12 +467,7 @@
  
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -526,12 +516,7 @@
       REAL(DOUBLE)                    :: W32               ! Intermediate variable used in calculating array D
       REAL(DOUBLE)                    :: W33               ! Intermediate variable used in calculating array D
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Wij are the values in ALPHA-mi (transpose) times R
@@ -562,12 +547,7 @@
       D(3,2) = W31*A2(1,2) + W32*A2(2,2) + W33*A2(3,2)
       D(3,3) = W31*A2(1,3) + W32*A2(2,3) + W33*A2(3,3)
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

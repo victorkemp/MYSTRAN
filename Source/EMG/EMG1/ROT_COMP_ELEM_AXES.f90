@@ -105,12 +105,7 @@
       INTEGER(LONG)                   :: EPNTK             ! Value from array EPNT at the row for this internal elem ID.
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Calc T1P matrix from eqn 3.3-7 in Ref 1. (with order 1,2,3,4,5,6 changed to 1,2,3,6,4,5 to account for the fact that Ref (1) has
@@ -355,12 +350,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

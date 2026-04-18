@@ -59,12 +59,7 @@
                                                            ! LAPACK_S values not used so null this vector
       REAL(DOUBLE)                    :: INOUT_COL(NDOFO)  ! Temp variable for one col of load matrix PO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the screen and output file
@@ -170,12 +165,7 @@
 
       CALL FILE_CLOSE ( L2F, LINK2F, 'KEEP', 'Y' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

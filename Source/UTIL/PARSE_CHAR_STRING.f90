@@ -181,12 +181,7 @@ j_do:                   DO J=1,MAX_LEN_BAD_WRD             ! Loop trying to get 
          WRITE(F06,*)
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
  9998 FORMAT('               THE WORDS FROM THE STRING ARE PRINTED BELOW:',/)

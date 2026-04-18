@@ -73,12 +73,7 @@
       REAL(DOUBLE)                    :: DUM1(3),DUM2(3)   ! Dummy arrays needed in transforming from global to basic coords
       REAL(DOUBLE)                    :: THETAD,PHID       ! Returns from subr GEN_T0L (not used here)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 ! **********************************************************************************************************************************
 ! Initialize
 
@@ -219,12 +214,7 @@
          CALL DEBUG_ELMDIS
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -56,12 +56,7 @@
       INTEGER(LONG)                   :: SETID             ! Set ID for this MPCADD Bulk Data card
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_MPCADD_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! MPCADD Bulk Data Card routine
@@ -197,12 +192,7 @@
          ENDIF
 
       ENDDO 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -45,12 +45,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TSET_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! *********************************************************************************************************************************
       WRITE(F06,56)
@@ -60,12 +55,7 @@
       ENDDO   
       WRITE(F06,59)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

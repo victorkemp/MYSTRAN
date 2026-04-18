@@ -97,12 +97,7 @@
 !                                                            TCASE2(1-5) = 3, 5, 0, 0, 0 
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -291,12 +286,7 @@
          ENDDO
       ENDDO   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -373,12 +363,7 @@
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,NTCARD
@@ -410,12 +395,7 @@
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -481,12 +461,7 @@
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       GID_ERR = 0
@@ -550,12 +525,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -654,12 +624,7 @@
       REAL(DOUBLE)                    :: TB2               ! Bulk temperature from TEMPRB card 
       REAL(DOUBLE)                    :: TE_BULK           ! Element bulk temperature 
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ELID_ERR = 0
@@ -810,12 +775,7 @@ cont_cards: DO                                             ! Top of loop for rea
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -868,12 +828,7 @@ cont_cards: DO                                             ! Top of loop for rea
       INTEGER(LONG), INTENT(IN)       :: JTCOL             ! Col in thermal array CGTEMP, CETEMP for internal subcase no. ISCNO
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 2
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -918,12 +873,7 @@ cont_cards: DO                                             ! Top of loop for rea
          TEMP_ELM = 'B'
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -972,12 +922,7 @@ cont_cards: DO                                             ! Top of loop for rea
  
       REAL(DOUBLE) , INTENT(IN)       :: TE_BULK           ! Bulk temperature from element temperature B.D. card
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -1020,12 +965,7 @@ cont_cards: DO                                             ! Top of loop for rea
          ENDIF
       ENDDO 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

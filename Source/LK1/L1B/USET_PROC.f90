@@ -76,12 +76,7 @@
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USET_PROC_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -198,12 +193,7 @@ i_do6:DO I=1,NUM_USET_RECORDS
 
       CALL WRITE_USET
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

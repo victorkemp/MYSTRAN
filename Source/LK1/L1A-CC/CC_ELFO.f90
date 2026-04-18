@@ -55,12 +55,7 @@
       INTEGER(LONG)                   :: SETID             ! Set ID on this Case Control card
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_ELFO_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! CC_OUTPUTS processes all output type Case Control entries (they all have some common code so it is put there)
@@ -133,12 +128,7 @@
  
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

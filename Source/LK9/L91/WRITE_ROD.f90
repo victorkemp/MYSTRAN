@@ -87,12 +87,7 @@
       REAL(DOUBLE)                    :: MIN_ANS(4)        ! Min for all grids output for each of the 6 disp components
 
       INTEGER(LONG)                   :: ELEM_TYPE         ! should be 1=CROD, 3=CTUBE, 10=CONROD
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ELEM_TYPE = 1  ! CROD
@@ -196,12 +191,7 @@
       CALL GET_MAX_MIN_ABS ( 1, 4 )
       WRITE(F06,9104) (MAX_ANS(J),J=1,4),(MIN_ANS(J),J=1,4),(ABS_ANS(J),J=1,4)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

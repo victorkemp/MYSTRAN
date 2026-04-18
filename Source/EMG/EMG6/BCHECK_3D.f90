@@ -63,12 +63,7 @@
       REAL(DOUBLE)                    :: TE6(6,6)          ! 6 x 6 transformation matrix with TE as 2 diagonal 3 x 3 matrices
       REAL(DOUBLE)                    :: W(6*NUM_GRIDS,12) ! Displs for the 14 modes of elem deformation (6 RB + 6 constant strain)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -203,12 +198,7 @@
       WRITE(BUG,*)
       WRITE(BUG,9901)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

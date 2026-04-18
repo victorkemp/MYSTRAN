@@ -607,12 +607,7 @@
  
 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -672,12 +667,7 @@
       REAL(DOUBLE) , INTENT(IN)       :: DZ                ! Offset distance in direction 3
       REAL(DOUBLE) , INTENT(INOUT)    :: B(3,NCOLA)        ! Result matrix of either A*E or E(transp)*A
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Do not initialize B. It is an output in one call and maybe is input back as A in next call
@@ -710,12 +700,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

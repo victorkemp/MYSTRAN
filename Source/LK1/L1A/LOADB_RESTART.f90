@@ -65,12 +65,7 @@
       INTEGER(LONG)                   :: IOCHK               ! IOSTAT error number when reading Bulk Data cards from unit IN1 
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB_RESTART_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,NUM_PARMS
@@ -295,12 +290,7 @@
  
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -155,12 +155,7 @@
  
       INTRINSIC                       :: DCOS, DSIN, DSQRT
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -1116,12 +1111,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
 
 ! Check IERROR and quit if > 0
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -1190,12 +1180,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
       INTEGER(LONG)                   :: DUMCORD(NCORD)    ! Dummy array of coord system ID's sorted
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CORD_PROC_BEGEND
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Create DUMCORD to be an array of the coordinate system ID's
@@ -1222,12 +1207,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
          ENDIF
       ENDDO 
     
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

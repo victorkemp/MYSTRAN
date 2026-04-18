@@ -61,12 +61,7 @@
       REAL(DOUBLE)                    :: TET_GA_GB(3,3)    ! Transpose of TE
       REAL(DOUBLE)                    :: TR(12,12)         ! Matrix with 4 TE matrices on the diagonal
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       NROWS = ELDOF
@@ -234,12 +229,7 @@
          WRITE(F06,5000)
       ENDIF
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

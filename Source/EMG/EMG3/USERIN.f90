@@ -112,12 +112,7 @@
                                                            ! Matrix to transform MRRcb to 6x6 RB mass rel to GRDPNT
       REAL(DOUBLE)                    :: TB6(USERIN_NUM_BDY_DOF,6)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
@@ -331,12 +326,7 @@
 
       IF (DEBUG(180) > 0) CALL DEB_USERIN ( 99 )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

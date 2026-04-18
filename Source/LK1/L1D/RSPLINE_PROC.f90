@@ -112,12 +112,7 @@
       REAL(DOUBLE)                    :: V01D(3)           ! Vector in basic coords from AGRID_I1 to AGRID_D
       REAL(DOUBLE)                    :: ZETA              ! Nondimensional distance from AGRID_I1 to AGRID_D
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! File LINK1F contains data from the logical RSPLINE cards in the input B.D. deck. For each logical RSPLINE card, LINK1F has:
@@ -359,12 +354,7 @@
 
       IF (DEBUG(111) > 0) CALL DEB_RSPLINE_PROC ( '99' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -448,12 +438,7 @@
       REAL(DOUBLE)                    :: VY(3)             ! A vector in the elem y dir
       REAL(DOUBLE)                    :: VZ(3)             ! A vector in the elem z dir
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -541,12 +526,7 @@
          TRSPLINE(3,I) = VZ(I)/MAGZ
       ENDDO 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -599,12 +579,7 @@
       REAL(DOUBLE)                    :: Z_2               ! Z squared
       REAL(DOUBLE)                    :: Z_3               ! Z cubed
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -651,12 +626,7 @@
       FR24(2,2) = THREE*Z_2 - TWO*Z
       FR24(3,3) = FR24(2,2)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

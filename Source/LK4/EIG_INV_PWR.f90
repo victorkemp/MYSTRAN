@@ -76,12 +76,7 @@
 
       INTRINSIC                       :: MIN
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Check that user did not ask for more than 1 eigen (currently Inverse Power can't be used to find more than 1 eigen).
@@ -340,12 +335,7 @@ iters:DO
          CALL DEALLOCATE_SPARSE_MAT ( 'KLL' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

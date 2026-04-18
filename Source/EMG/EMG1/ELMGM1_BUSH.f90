@@ -584,12 +584,7 @@ bcid: IF (BUSH_CID > 0) THEN                               ! Get transformation 
          CALL DEBUG_ELMGM1_FOR_BUSH
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

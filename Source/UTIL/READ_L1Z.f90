@@ -55,12 +55,7 @@
       INTEGER(LONG)                   :: SUBLOD2_OLD       ! Temp set ID (for 1 subcase) from original run that is being restarted
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1Z_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
@@ -127,12 +122,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF        
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

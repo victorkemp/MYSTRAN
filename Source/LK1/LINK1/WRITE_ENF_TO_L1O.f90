@@ -55,12 +55,7 @@
 
       REAL(DOUBLE)                    :: RSPC(6)           ! Enforced displ components read from file ENF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
@@ -123,12 +118,7 @@
       CALL FILE_CLOSE ( ENF, ENFFIL, 'KEEP', 'Y' )
       CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP', 'Y' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

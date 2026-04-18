@@ -82,12 +82,7 @@
       REAL(DOUBLE)                    :: KLLD_DIAG(NDOFL)      ! Diagonal terms from KLLD
       REAL(DOUBLE)                    :: KLLD_MAX_DIAG         ! Max diag term from  KLLD
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Determine if we need to keep any OUTPUT4 matrices allocated until after they are processed in LINK2
@@ -485,12 +480,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

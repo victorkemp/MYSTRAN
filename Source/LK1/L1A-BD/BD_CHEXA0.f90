@@ -51,12 +51,7 @@
       INTEGER(LONG), INTENT(OUT)      :: DELTA_LEDAT       ! Delta number of words to add to LEDAT for this element
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CHEXA0_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! This element must have at least 1 continuation card since there must be at leas 8 grids defined (all corner nodes). The parent

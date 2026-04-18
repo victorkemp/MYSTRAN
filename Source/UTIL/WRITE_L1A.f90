@@ -92,12 +92,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_L1A_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Units for writing open errors
@@ -539,12 +534,7 @@
 
       CALL FILE_CLOSE ( L1A, LINK1A, CLOSE_STAT, 'Y' )
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

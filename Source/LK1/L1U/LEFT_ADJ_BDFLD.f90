@@ -45,12 +45,7 @@
       INTEGER(LONG)                          :: I                 ! DO loop index
       INTEGER(LONG), PARAMETER               :: SUBR_BEGEND = LEFT_ADJ_BDFLD_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (CHR_FLD(1:1) == ' ') THEN                        ! We need to shift:
@@ -68,12 +63,7 @@
  
       ENDIF   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

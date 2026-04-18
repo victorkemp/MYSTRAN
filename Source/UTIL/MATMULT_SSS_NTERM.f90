@@ -108,12 +108,7 @@
        
       INTRINSIC                       :: MAX
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure B is stored as nonsym (all terms)
@@ -254,12 +249,7 @@ l_do:          DO L=B_COL_BEG,B_COL_END
             
       CALL DEALLOCATE_SPARSE_ALG ( 'J_AROW' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

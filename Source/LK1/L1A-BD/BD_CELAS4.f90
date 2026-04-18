@@ -54,12 +54,7 @@
  
       REAL(DOUBLE)                    :: R8INP             ! Real value read from a field on the PSHEAR entry
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CELAS4 scalar spring element Bulk Data Card routine
@@ -125,12 +120,7 @@
 
       EDAT(NEDAT-2) = -EDAT(NEDAT-2)      
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -58,12 +58,7 @@
       INTEGER(LONG)                   :: TOKLEN            ! An input to subr STOKEN, called herein
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_ANSID_BEGEND
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Get 'ALL', 'NONE' or SETID
@@ -115,12 +110,7 @@
          ENDIF
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

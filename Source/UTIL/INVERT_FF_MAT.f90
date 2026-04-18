@@ -54,12 +54,7 @@
 
       REAL(DOUBLE)    , INTENT(INOUT) :: A(NROWS,NROWS)    ! Matrix to invert. Inverted matrix returned in A
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! In DPOTRF A has the matrix to invert as input and the triangular factor of A coming out. In DPOTRI A has the tria factor of the
@@ -93,12 +88,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

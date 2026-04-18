@@ -54,12 +54,7 @@
       REAL(DOUBLE)                    :: K                 ! Spring stiffness
       REAL(DOUBLE)                    :: GE                ! Material damping coeff
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Set element property and material constants

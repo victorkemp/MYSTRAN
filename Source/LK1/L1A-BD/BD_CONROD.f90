@@ -55,12 +55,7 @@
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CONROD element Bulk Data Card routine
@@ -148,12 +143,7 @@
       CALL R8FLD ( JCARD(8), JF(8), RPROD(NPROD,3) )
       CALL R8FLD ( JCARD(9), JF(9), RPROD(NPROD,4) )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

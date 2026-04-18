@@ -107,12 +107,7 @@
       REAL(DOUBLE)                    :: SXY,SZX,SYZ       ! new Rdd terms according to victor
       REAL(DOUBLE)                    :: WTi6(MRBE3,6)     ! per-DoF grid weights
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! File LINK1F contains data from the logical RBE3 cards in the input B.D. deck. For each logical RBE3 card, LINK1F has:
@@ -498,12 +493,7 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
          RETURN
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

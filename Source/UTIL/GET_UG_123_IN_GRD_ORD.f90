@@ -113,12 +113,7 @@ j_do2:   DO J = 1,NUM_COMPS
 ! Sort GRDS_GLOBAL and UG_T123_MAT so that GRDS_GLOBAL is in numerical grid order
 
       CALL SORT_INT1_REAL3 ( SUBR_NAME, 'GRDS_GLOBAL and UG_T123_MAT', NGRID, GRDS_GLOBAL, UG_T123_MAT )
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

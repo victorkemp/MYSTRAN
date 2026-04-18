@@ -45,12 +45,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_CHAR_STRING_END_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IEND = LEN(CHAR_STRING)
@@ -61,12 +56,7 @@
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

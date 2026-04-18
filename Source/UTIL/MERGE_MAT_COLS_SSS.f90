@@ -80,12 +80,7 @@
       REAL(DOUBLE)    , INTENT(OUT)   :: C(NTERM_A+NTERM_B)      ! Nonzero terms in matrix C
       REAL(DOUBLE)                    :: C_ROW(NTERM_A+NTERM_B)  ! Real values of C in 1 row (can't be any more in 1 row than this)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure that input matrices A and B, and output matrix C, are stored in same format
@@ -160,12 +155,7 @@
 
       IF (DEBUG(102) > 0) CALL MERGE_MAT_COLS_SSS_DEB ( '9' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

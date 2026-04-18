@@ -72,12 +72,7 @@
  
       REAL(DOUBLE)                    :: RJUNK             ! An MPC coeff value read from file LINK1S that we do not need
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -206,12 +201,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
  
       IERRT = IERRT + GID_ERR + DOF_ERR
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

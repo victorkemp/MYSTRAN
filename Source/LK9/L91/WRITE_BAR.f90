@@ -93,12 +93,7 @@
       INTEGER(LONG)                   :: NVALUES           ! number of values in the op2 block
       STRESS_CODE = 1
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Routine for writing output to text file F06 for BAR element stresses. Up to 2 elements written per line of output.
@@ -211,12 +206,7 @@
                          (ABS_ANS_CHAR(J),J=1,7), ABS_ANS(8), (ABS_ANS_CHAR(J),J=9,15), ABS_ANS(16)
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
