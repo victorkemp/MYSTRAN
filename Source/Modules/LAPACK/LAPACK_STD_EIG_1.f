@@ -7,7 +7,6 @@
       USE SCONTR, ONLY                   :  LINKNO, BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE LAPACK_MISCEL                                    ! This contains DSTEQR, used in this module
 
@@ -15,8 +14,6 @@
       USE OUTA_HERE_Interface
 
       CHARACTER(44*BYTE), PRIVATE       :: MODNAM          ! Name to write to screen to describe module being run.
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND =LAPACK_BEGEND+10
 
 ! This is a set of LAPACK routines for solving for all of the eigenvalues
 ! and, possibly, all eigenvectors of:

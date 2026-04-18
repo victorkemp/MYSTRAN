@@ -76,7 +76,6 @@
 
       USE PARAMS, ONLY                :  PRTSCP, SUPWARN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SUBCASE_PROC_BEGEND
 
       USE MODEL_STUF, ONLY            :  CCELDT, ONE_SET_ARRAY, SC_ACCE, SC_DISP, SC_ELFN, SC_ELFE, SC_GPFO, SC_MPCF,              &
                                          SC_OLOA, SC_SPCF, SC_STRE, SC_STRN, ELDT, OELDT, ELOUT, OELOUT, GROUT, OGROUT, LABEL,     &
@@ -1327,7 +1326,6 @@ token_loop3:DO                                             ! Call STOKEN in a DO
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LSETLN, MAX_TOKEN_LEN, SETLEN, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SUBCASE_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  ALL_SETS_ARRAY, ONE_SET_ARRAY
  
       IMPLICIT NONE

@@ -7,14 +7,11 @@
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
 
       USE LAPACK_BLAS_AUX
       USE LAPACK_LIN_EQN_DPB
 
       USE OURTIM_Interface
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is a set of LAPACK routines that are used in several other modules but are not BLAS or auxiliary routines
 ! The routines included herein are:

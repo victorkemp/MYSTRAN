@@ -37,7 +37,6 @@
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  ELGP, ELDOF, UEL, ZPLY
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMDIS_PLY_BEGEND
  
       IMPLICIT NONE
  

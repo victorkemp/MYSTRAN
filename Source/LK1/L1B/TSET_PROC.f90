@@ -75,7 +75,6 @@
                                          NDOFL, NDOFM, NDOFO, NDOFR, NDOFS, NDOFSA, NDOFSG, NDOFSB, NDOFSE, NDOFSZ
       USE PARAMS, ONLY                :  PRTTSET
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DOF_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TSET
       USE MODEL_STUF, ONLY            :  GRID
  

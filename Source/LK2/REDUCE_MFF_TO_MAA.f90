@@ -40,7 +40,6 @@
                                          NTERM_GOA
       USE PARAMS, ONLY                :  EPSIL, MATSPARS, SPARSTOR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_MFF_TO_MAA_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE SPARSE_MATRICES, ONLY       :  I_MFF, J_MFF, MFF, I_MAA, J_MAA, MAA, I_MAO, J_MAO, MAO, I_MOO, J_MOO, MOO,               &
                                          I_GOA, J_GOA, GOA,  I_GOAt, J_GOAt, GOAt

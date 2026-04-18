@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, BUG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  JACOBIAN_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  EID, ELGP, NUM_EMG_FATAL_ERRS, TYPE, XEL

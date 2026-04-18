@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  TWO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SORTLEN_BEGEND
  
       IMPLICIT NONE
  

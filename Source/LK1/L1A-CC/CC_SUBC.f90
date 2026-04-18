@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, LSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_SUBC_BEGEND
       USE MODEL_STUF, ONLY            :  SCNUM
  
       USE CC_SUBC_USE_IFs

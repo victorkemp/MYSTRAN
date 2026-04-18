@@ -7,11 +7,8 @@
       USE SCONTR, ONLY                  :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                  :  TSEC
       USE LAPACK_BLAS_AUX
-      USE SUBR_BEGEND_LEVELS, ONLY      :  ARPACK_BEGEND
 
       USE OURTIM_Interface
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = ARPACK_BEGEND
 
 ! This is the set of LAPACK routines used by the Lanczos algorithm contained in module ARPACK_LANCZOS_EIG
 ! The following routines are contained:

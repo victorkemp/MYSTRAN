@@ -47,7 +47,6 @@
                                          USERIN_NUM_BDY_DOF, USERIN_NUM_ACT_GRDS, USERIN_NUM_SPOINTS,                              &
                                          USERIN_MASS_MAT_NAME, USERIN_LOAD_MAT_NAME, USERIN_RBM0_MAT_NAME, USERIN_STIF_MAT_NAME
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  USERIN_BEGEND
  
       IMPLICIT NONE 
   

@@ -41,7 +41,6 @@
       USE RIGID_BODY_DISP_MATS, ONLY  :  RBGLOBAL_GSET, RBGLOBAL_NSET, RBGLOBAL_FSET
       USE PARAMS, ONLY                :  EQCHK_OUTPUT, MATSPARS, PRTSTIFD, PRTSTIFF, PRTMASS, PRTFOR
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_N_FS_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KNN  , J_KNN  , KNN  , I_KFF  , J_KFF  , KFF  , I_KFS  , J_KFS  , KFS  ,                &
                                          I_KSS  , J_KSS  , KSS  , I_KSSe , J_KSSe , KSSe ,                                         &
                                          I_KNND , J_KNND , KNND , I_KFFD , J_KFFD , KFFD , I_KFSD , J_KFSD , KFSD ,                &

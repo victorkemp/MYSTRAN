@@ -38,7 +38,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FULL_TO_SPARSE_CRS_BEGEND
  
       IMPLICIT NONE
  

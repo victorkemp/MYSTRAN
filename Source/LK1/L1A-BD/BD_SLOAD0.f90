@@ -34,7 +34,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_SLOAD0_BEGEND
  
       USE BD_SLOAD0_USE_IFs
 

@@ -40,7 +40,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  MAX_TOKEN_LEN, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STOKEN_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       USE STOKEN_USE_IFs
@@ -256,7 +255,6 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STOKEN_BEGEND
 
       IMPLICIT NONE
 

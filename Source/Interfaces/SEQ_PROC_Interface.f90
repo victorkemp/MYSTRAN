@@ -39,7 +39,6 @@
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPINFO, SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SEQ_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  GRID_ID, GRID_SEQ, INV_GRID_SEQ, SEQ1, SEQ2
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  

@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  NTSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ROD1_BEGEND
       USE CONSTANTS_1, ONLY           :  TWO
       USE MODEL_STUF, ONLY            :  DT, KE, PTE, SE1, STE1
 

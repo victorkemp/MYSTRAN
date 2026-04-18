@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JCARD_LEN, JF, LPSHEL, NPSHEL, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PSHEL_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  PSHEL, RPSHEL

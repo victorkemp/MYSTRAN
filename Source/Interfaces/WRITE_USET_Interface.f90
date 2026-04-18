@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID, GRID_SEQ, INV_GRID_SEQ
       USE PARAMS, ONLY                :  PRTUSET
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_USET_BEGEND
       USE DOF_TABLES, ONLY            :  TDOF, USET, USETSTR_TABLE
 
       IMPLICIT NONE

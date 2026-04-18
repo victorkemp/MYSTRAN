@@ -47,7 +47,6 @@ c
      &                                   NTERM_KMSMn, NTERM_ALL
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EIG_MSGLVL, EIG_LAP_MAT_TYPE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ARPACK_BEGEND
       USE SuperLU_STUF, ONLY          :  SLU_FACTORS, SLU_INFO
       USE PARAMS, ONLY                :  SOLLIB
       USE SPARSE_MATRICES, ONLY       :  I_KLLDn, J_KLLDn, KLLDn,
@@ -67,7 +66,6 @@ c
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DSBAND_PREFAC'
 
-      INTEGER(LONG)                   :: SUBR_BEGEND = ARPACK_BEGEND
 c
 c     %------------------%
 c     | Scalar Arguments |

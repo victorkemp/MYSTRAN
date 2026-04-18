@@ -43,7 +43,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VEC
       USE SPARSE_MATRICES, ONLY       :  I_DLR , J_DLR , DLR , I_IRR , J_IRR , IRR , I_PHIXA, J_PHIXA, PHIXA
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_PHIXA_BEGEND
  
       USE MERGE_PHIXA_USE_IFs                                ! Added 2019/07/14
 

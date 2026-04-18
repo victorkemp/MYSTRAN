@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1N, L1N_MSG, LINK1N
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NAOCARD, NDOFO, NGRID
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DOF_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  GRID, GRID_ID
  

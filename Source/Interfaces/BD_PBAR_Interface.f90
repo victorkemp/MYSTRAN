@@ -37,7 +37,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BARTOR, IERRFL, FATAL_ERR, JCARD_LEN, JF, LPBAR, NPBAR
       USE CONSTANTS_1, ONLY           :  ZERO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBAR_BEGEND
       USE MODEL_STUF, ONLY            :  PBAR, RPBAR
  
       IMPLICIT NONE

@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELAS1_BEGEND
       USE MODEL_STUF, ONLY            :  AGRID, BGRID, ELAS_COMP, EID, EPROP, FCONV, KE, SE1, TYPE
  
       USE ELAS1_USE_IFs

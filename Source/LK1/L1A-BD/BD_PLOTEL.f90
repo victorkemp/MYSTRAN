@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF, MEDAT_PLOTEL, NELE, NPLOTEL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PLOTEL_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, ETYPE
  
       USE BD_PLOTEL_USE_IFs

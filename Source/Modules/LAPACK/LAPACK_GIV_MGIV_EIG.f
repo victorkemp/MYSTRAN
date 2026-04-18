@@ -6,7 +6,6 @@
       USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE LAPACK_MISCEL                                    ! This contains DSTEQR, used in this module
 
@@ -15,8 +14,6 @@
       USE LINK_MESSAGE_Interface
       
       character(1*byte), parameter      :: cr13_lge = char(13)
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is a set of LAPACK routines for solving for all, or some, eigenvalues and, possibly, some eigenvectors of:
 

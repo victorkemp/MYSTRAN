@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR, TINY
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_SPARSE_CRS_BEGEND
  
       IMPLICIT NONE
  

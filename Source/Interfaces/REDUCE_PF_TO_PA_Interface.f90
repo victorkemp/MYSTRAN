@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, KOO_SDIA, NDOFF, NDOFA, NDOFO, NSUB, NTERM_GOA, NTERM_PF,        &
                                          NTERM_PA, NTERM_PO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_PF_TO_PA_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE PARAMS, ONLY                :  EPSIL, MATSPARS
       USE SPARSE_MATRICES, ONLY       :  I_PF, J_PF, PF, I_PA, J_PA, PA, I_PO, J_PO, PO, I_GOA, J_GOA, GOA, I_GOAt, J_GOAt, GOAt 

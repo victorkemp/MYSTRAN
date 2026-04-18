@@ -7,7 +7,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EIG_MSGLVL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ARPACK_BEGEND
       USE SuperLU_STUF, ONLY          :  SLU_FACTORS, SLU_INFO
       USE PARAMS, ONLY                :  SOLLIB
       USE ARPACK_UTIL
@@ -26,7 +25,6 @@
       CHARACTER(44*BYTE)             :: MODNAM1            ! Name to write to screen to describe module being run.
       CHARACTER(44*BYTE)             :: MODNAM2            ! Name to write to screen to describe module being run.
 
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = ARPACK_BEGEND
 c
 c\SCCS Information: @(#)
 c FILE: debug.h   SID: 2.3   DATE OF SID: 11/16/95   RELEASE: 2
@@ -513,7 +511,6 @@ c
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DSBAND'
 
-      INTEGER(LONG)                   :: SUBR_BEGEND = ARPACK_BEGEND
 c
 c     %------------------%
 c     | Scalar Arguments |

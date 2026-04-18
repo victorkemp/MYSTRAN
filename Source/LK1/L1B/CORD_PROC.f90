@@ -56,7 +56,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MRCORD, NCORD, NCORD1, NCORD2, NGRID, FATAL_ERR
       USE PARAMS, ONLY                :  EPSIL, PRTCORD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CORD_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CORD, GRID, RCORD, RGRID, TN
 
       USE CORD_PROC_USE_IFs
@@ -1168,7 +1167,6 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  NCORD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CORD_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CORD
  
       IMPLICIT NONE

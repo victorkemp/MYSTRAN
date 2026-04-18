@@ -43,7 +43,6 @@
       USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_ORDER_GAUSS, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  QPLT2_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, ONE, FOUR
       USE PARAMS, ONLY                :  EPSIL, IORQ2B, IORQ2T
       USE MODEL_STUF, ONLY            :  ALPVEC, BE2, BE3, BENSUM, DT, EID, ELDOF, EB, ET,                                         &

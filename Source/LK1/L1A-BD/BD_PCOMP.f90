@@ -37,7 +37,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, TWO
       USE MODEL_STUF, ONLY            :  PCOMP, RPCOMP
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PCOMP_BEGEND
 
       USE BD_PCOMP_USE_IFs
 

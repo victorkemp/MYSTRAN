@@ -34,7 +34,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MGRID, MRGRID
       USE PARAMS, ONLY                :  SORT_MAX
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SORT_GRID_RGRID_BEGEND
  
       USE SORT_GRID_RGRID_USE_IFs
 

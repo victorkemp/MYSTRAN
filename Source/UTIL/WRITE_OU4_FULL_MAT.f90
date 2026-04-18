@@ -35,7 +35,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  PRTOU4
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_OU4_FULL_MAT_BEGEND
  
       USE WRITE_OU4_FULL_MAT_USE_IFs
 

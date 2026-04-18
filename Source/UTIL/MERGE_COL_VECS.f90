@@ -38,7 +38,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_COL_VECS_BEGEND
       USE DOF_TABLES, ONLY            :  TDOFI
       
       USE MERGE_COL_VECS_USE_IFs

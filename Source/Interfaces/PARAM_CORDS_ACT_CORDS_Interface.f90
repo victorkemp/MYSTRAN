@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  TYPE, XEL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARAM_CORDS_ACT_CORDS_BEGEND
 
       IMPLICIT NONE
 

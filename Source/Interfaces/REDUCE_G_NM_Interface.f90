@@ -46,7 +46,6 @@
       USE DOF_TABLES, ONLY            :  TDOF, TDOFI
       USE MODEL_STUF, ONLY            :  GRID_ID
       USE RIGID_BODY_DISP_MATS, ONLY  :  RBGLOBAL_GSET, RBGLOBAL_NSET
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_G_NM_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KGG , J_KGG , KGG , I_KGGD, J_KGGD, KGGD,                                               &
                                          I_KNN , J_KNN , KNN , I_KNM , J_KNM , KNM , I_KMM , J_KMM , KMM ,                         &
                                          I_KNND, J_KNND, KNND, I_KNMD, J_KNMD, KNMD, I_KMMD, J_KMMD, KMMD,                         &

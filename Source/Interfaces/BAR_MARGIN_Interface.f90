@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BAR_MARGIN_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, ONEPM6, ONEPM15, ONEPP10
       USE PARAMS, ONLY                :  EPSIL 
       USE MODEL_STUF, ONLY            :  ULT_STRE

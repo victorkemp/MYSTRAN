@@ -7,10 +7,7 @@
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  BANDIT_BEGEND
       USE PARAMS, ONLY                   :  DELBAN
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = BANDIT_BEGEND
 
 ! Notes:
 ! ------

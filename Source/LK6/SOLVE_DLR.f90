@@ -37,7 +37,6 @@
                                          NTERM_KRL
       USE PARAMS, ONLY                :  EPSIL, PRTDLR, SOLLIB, SPARSE_FLAVOR, SPARSTOR
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SOLVE_DLR_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE SPARSE_MATRICES, ONLY       :  I2_DLR, I_DLR, J_DLR, DLR, I_DLRt, I2_DLRt, J_DLRt, DLRt, I_KRL, J_KRL, KRL,              &
                                          I_KLL, I2_KLL, J_KLL, KLL 

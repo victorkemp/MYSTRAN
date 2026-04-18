@@ -34,7 +34,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADB_RESTART_BEGEND 
  
       USE LOADB_RESTART_USE_IFs
 

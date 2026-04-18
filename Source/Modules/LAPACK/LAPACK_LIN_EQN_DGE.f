@@ -8,15 +8,12 @@
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, STIME, TSEC
       USE PARAMS, ONLY                   :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
 
       USE OURTIM_Interface
       USE OUTA_HERE_Interface
 
       CHARACTER(44*BYTE), PRIVATE       :: MODNAM              ! Name to write to screen to describe module being run.
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is the set of LAPACK routines for solving equations
 

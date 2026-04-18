@@ -50,7 +50,6 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SFF_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

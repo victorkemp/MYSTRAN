@@ -33,7 +33,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ, PBARLDEC, PBARLSHR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PARAM0_BEGEND
  
       USE BD_PARAM0_USE_IFs
 

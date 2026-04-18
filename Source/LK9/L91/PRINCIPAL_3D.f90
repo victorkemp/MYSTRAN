@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, TWO, THREE
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRINCIPAL_3D_BEGEND
  
       USE PRINCIPAL_3D_USE_IFs
 
@@ -121,7 +120,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRINCIPAL_3D_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE LAPACK_STD_EIG_1
  

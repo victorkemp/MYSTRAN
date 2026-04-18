@@ -37,7 +37,6 @@
                                          RCORD, TE, THETAM, TYPE
       USE PARAMS, ONLY                :  EPSIL
       USE DEBUG_PARAMETERS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ROT_AXES_MATL_TO_LOC_BEGEND
 
       USE ROT_AXES_MATL_TO_LOC_USE_IFs
 

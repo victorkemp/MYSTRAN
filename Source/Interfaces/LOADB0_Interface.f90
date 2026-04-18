@@ -44,7 +44,6 @@
                                          MPDAT_PLOAD2, MPDAT_PLOAD4, MEDAT_PLOTEL, MRBE3, MRSPLINE, MTDAT_TEMPRB, MTDAT_TEMPP1,    &
                                          NPBARL, NSPOINT, PROG_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADB0_BEGEND
       USE MODEL_STUF, ONLY            :  GRDSET3, GRDSET7, GRDSET8
       USE PARAMS, ONLY                :  GRIDSEQ
  

@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  BUG, F04, F06, WRT_BUG, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MIN4SH_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, EIGHT
   
       IMPLICIT NONE

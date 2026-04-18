@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  TYPE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_ELEM_STRESSES_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
  
       IMPLICIT NONE

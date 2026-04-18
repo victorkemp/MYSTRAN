@@ -37,7 +37,6 @@
       USE DOF_TABLES, ONLY            :  TDOFI 
       USE COL_VECS, ONLY              :  UG_COL
       USE MISC_MATRICES, ONLY         :  UG_T123_MAT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_UG_123_IN_GRD_ORD_BEGEND
 
       USE GET_UG_123_IN_GRD_ORD_USE_IFs
 

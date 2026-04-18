@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  WARN_ERR, LSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_SUBT_BEGEND
       USE MODEL_STUF, ONLY            :  STITLE
  
       USE CC_SUBT_USE_IFs

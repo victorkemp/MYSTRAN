@@ -67,7 +67,6 @@
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, RESTART
       USE TIMDAT, ONLY                :  TSEC, stime
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MYSTRAN_FILES_BEGEND
 
       USE MYSTRAN_FILES_USE_IFs
 

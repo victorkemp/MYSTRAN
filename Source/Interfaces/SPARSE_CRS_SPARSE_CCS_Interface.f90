@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_CRS_SPARSE_CCS_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       IMPLICIT NONE

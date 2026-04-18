@@ -34,7 +34,6 @@
                                          NTERM_KNMD, NTERM_KMMD, NTERM_GMN
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KGGD_TO_KNND_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE
       USE SPARSE_MATRICES, ONLY       :  I_HMN, J_HMN, HMN, I_KGGD, J_KGGD, KGGD, I_KNND, J_KNND, KNND, I_KNMD, J_KNMD, KNMD,      &
                                          I_KMMD, J_KMMD, KMMD, I_KMND, J_KMND, KMND, I_GMN, J_GMN, GMN,  I_GMNt, J_GMNt, GMNt

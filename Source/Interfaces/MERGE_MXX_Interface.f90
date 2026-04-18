@@ -41,7 +41,6 @@
       USE SPARSE_MATRICES, ONLY       :  SYM_MRRcbn, SYM_MRN  , SYM_MXX  , SYM_MXXn
       USE SPARSE_MATRICES, ONLY       :  I_MRRcb, J_MRRcb, MRRcb, I_MRRcbn, J_MRRcbn, MRRcbn, I_MRN  , J_MRN  , MRN  ,             &
                                          I_MXX  , J_MXX  , MXX  , I_MXXn  , J_MXXn  , MXXn
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_MXX_BEGEND
 
       IMPLICIT NONE
  

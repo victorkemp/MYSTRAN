@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  FATAL_ERR, WARN_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_ELDA_BEGEND
       USE MODEL_STUF, ONLY            :  CCELDT
  
       USE CC_ELDA_USE_IFs

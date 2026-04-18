@@ -35,7 +35,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM  
       USE LINK9_STUFF, ONLY           :  OGEL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_MAX_MIN_ABS_STR_BEGEND
 
       USE GET_MAX_MIN_ABS_STR_USE_IFs                      ! Added 2019/07/14
 

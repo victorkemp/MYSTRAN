@@ -34,7 +34,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, JF, MEDAT_CUSER1, NCUSER1, NEDAT, NELE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CUSER1_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, ETYPE
  
       USE BD_CUSER1_USE_IFs

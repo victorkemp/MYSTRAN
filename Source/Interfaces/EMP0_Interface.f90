@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  LTERM_MGGE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  GRIDSEQ, SETLKTM, USR_LTERM_MGG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
 
       IMPLICIT NONE
 

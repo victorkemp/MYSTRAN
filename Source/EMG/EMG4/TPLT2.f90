@@ -43,7 +43,6 @@
       USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEMATC, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TPLT2_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, THREE, FOUR, SIX, EIGHT, TWELVE, CONV_RAD_DEG
       USE MODEL_STUF, ONLY            :  ALPVEC, BE2, BE3, BENSUM, DT, EB, EBM, EID, ET, ELDOF, FCONV, KE,                         &
                                          MTRL_TYPE, PCOMP_LAM, PCOMP_PROPS, PHI_SQ, PPE, PRESS, PTE, SE2, SE3, SHELL_B, SHELL_DALP,&

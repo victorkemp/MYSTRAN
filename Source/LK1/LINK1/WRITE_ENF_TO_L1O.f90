@@ -37,7 +37,6 @@
       USE PARAMS, ONLY                :  SUPWARN
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  SPCSET
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_ENF_TO_L1O_BEGEND
  
       USE WRITE_ENF_TO_L1O_USE_IFs
 

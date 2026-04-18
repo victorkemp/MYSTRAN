@@ -34,7 +34,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR, WTMASS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MGGC_MASS_MATRIX_BEGEND
       USE MODEL_STUF, ONLY            :  AGRID, GRID_ID, INV_GRID_SEQ
       USE SPARSE_MATRICES, ONLY       :  I_MGGC, J_MGGC, MGGC
  
@@ -142,7 +141,6 @@ i_do1:DO I=1,NGRID
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  NCONM2, NGRID, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MGGC_MASS_MATRIX_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  CONM2, RCONM2
       USE PARAMS, ONLY                :  ART_MASS, ART_ROT_MASS, ART_TRAN_MASS

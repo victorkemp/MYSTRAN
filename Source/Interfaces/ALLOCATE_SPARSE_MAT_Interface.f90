@@ -37,7 +37,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFM, NDOFO, NDOFS, NDOFR, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_SPARSE_MAT_BEGEND
 
       USE SPARSE_MATRICES , ONLY      :  I_KGG   , J_KGG   , KGG   , I_MGG   , J_MGG   , MGG   , I_PG    , J_PG    , PG    ,       &
                                          I_KGGD  , J_KGGD  , KGGD  ,                                                               &

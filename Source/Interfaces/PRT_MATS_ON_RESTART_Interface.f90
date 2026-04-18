@@ -74,7 +74,6 @@
                                          I_PA  , J_PA  , PA  ,I_PG  , J_PG  , PG  ,I_PL  , J_PL  , PL  ,I_PS  , J_PS  , PS  ,      &
                                          I_QSYS, J_QSYS, QSYS,I_RMG , J_RMG , RMG
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRT_MATS_ON_RESTART_BEGEND
 
       IMPLICIT NONE
  

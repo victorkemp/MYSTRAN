@@ -38,7 +38,6 @@
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
 
       IMPLICIT NONE
 

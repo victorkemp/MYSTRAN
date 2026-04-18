@@ -39,7 +39,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, IN1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, FATAL_ERR, LSETS, LSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADC0_BEGEND
  
       USE LOADC0_USE_IFs
 

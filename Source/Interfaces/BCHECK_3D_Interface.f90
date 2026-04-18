@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, BUG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BCHECK_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TWO
       USE MODEL_STUF, ONLY            :  AGRID, TE, XEB, XEL
  

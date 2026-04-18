@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFG, NDOFG, NGRID, WARN_ERR
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RENORM_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE COL_VECS, ONLY              :  UG_COL
   

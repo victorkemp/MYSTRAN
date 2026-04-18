@@ -34,7 +34,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BEAMTOR, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPBEAM, NPBEAM
       USE CONSTANTS_1, ONLY           :  ZERO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBEAM_BEGEND
       USE MODEL_STUF, ONLY            :  PBEAM, RPBEAM
       USE PARAMS, ONLY                :  SUPINFO
  

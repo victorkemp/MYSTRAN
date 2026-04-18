@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  WARN_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_METH_BEGEND
       USE MODEL_STUF, ONLY            :  CC_EIGR_SID
  
       USE CC_METH_USE_IFs

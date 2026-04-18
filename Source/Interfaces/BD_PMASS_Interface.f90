@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NPMASS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PMASS_BEGEND
       USE MODEL_STUF, ONLY            :  PMASS, RPMASS
  
       IMPLICIT NONE

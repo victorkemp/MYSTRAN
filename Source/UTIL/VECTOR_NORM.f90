@@ -37,7 +37,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  VECTOR_NORM_BEGEND
 
       USE VECTOR_NORM_USE_IFs
 
@@ -49,7 +48,6 @@
       INTEGER(LONG)   , INTENT(IN)    :: NSIZE             ! Extent of VEC
       INTEGER(LONG)   , INTENT(OUT)   :: IERR              ! Error indicator
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = VECTOR_NORM_BEGEND
  
       REAL(DOUBLE)    , INTENT(IN)    :: VEC(NSIZE)        ! The vector for which the norm will be calculated
       REAL(DOUBLE)    , INTENT(OUT)   :: VEC_NORM          ! The norm calculated for VEC

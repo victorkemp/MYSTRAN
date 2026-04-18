@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCMASS, NDOFG, NGRID, NTERM_MGG, NTERM_MGGC, NTERM_MGGE,         &
                                          NTERM_MGGS, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_MGG_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE DOF_TABLES,ONLY             :  TDOF_ROW_START

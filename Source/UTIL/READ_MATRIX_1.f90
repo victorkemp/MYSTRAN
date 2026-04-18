@@ -53,7 +53,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_1_BEGEND
 
       USE READ_MATRIX_1_USE_IFs
 

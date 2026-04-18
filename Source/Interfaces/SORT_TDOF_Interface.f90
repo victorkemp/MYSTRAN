@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MTDOF
       USE PARAMS, ONLY                :  SORT_MAX
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SORT_TDOF_BEGEND
  
       IMPLICIT NONE
  

@@ -34,7 +34,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFN, NDOFF, NDOFS, NDOFSE, NSUB, NTERM_KFSe, NTERM_PN,         &
                                          NTERM_PF, NTERM_PFYS, NTERM_PS
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_PN_TO_PF_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE PARAMS, ONLY                :  MATSPARS
       USE SPARSE_MATRICES, ONLY       :  I_KFSe, J_KFSe, KFSe, I_PN, J_PN, PN, I_PF, J_PF, PF, I_PS, J_PS, PS, I_PF_TMP, J_PF_TMP, &

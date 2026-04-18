@@ -31,7 +31,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_STRE_BEGEND
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRE_OUT
       USE MODEL_STUF, ONLY            :  SC_STRE
  

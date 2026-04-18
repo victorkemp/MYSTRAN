@@ -79,7 +79,6 @@
                                          MATSPARS, MIN4TRED, QUAD4TYP, QUADAXIS, SPARSTOR
 
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_L1A_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       IMPLICIT NONE

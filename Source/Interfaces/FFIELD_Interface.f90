@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BD_ENTRY_LEN, FATAL_ERR, IMB_BLANK, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FFIELD_BEGEND
 
       IMPLICIT NONE
  

@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  FATAL_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  NUM_EMG_FATAL_ERRS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BEAM_BEGEND
  
       IMPLICIT NONE 
  

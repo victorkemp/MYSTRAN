@@ -34,7 +34,6 @@
                                          ELDT_BUG_SE_BIT, ELDT_BUG_KE_BIT, ELDT_BUG_U_P_BIT, MBUG, MDT, MELGP, METYPE,             &
                                          MEMATR, MEMATC, MEPROP, MPRESS, NSUB, NTSUB, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMOUT_BEGEND
       USE CONSTANTS_1, ONLY           :  CONV_RAD_DEG, ZERO
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, ELFORCEN, QUADAXIS, QUAD4TYP
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP

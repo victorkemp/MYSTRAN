@@ -67,7 +67,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            L1K_MSG
       USE SCONTR, ONLY                :  DATA_NAM_LEN, NELE, NGRID, NTDAT, NTSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CETEMP, CETEMP_ERR, CGTEMP, CGTEMP_ERR, ETEMP, GTEMP, TDATA, TPNT, GRID_ID, ESORT1, ETYPE,&
                                          SCNUM, SUBLOD, eid
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -340,7 +339,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, JCARD_LEN, NGRID, NSUB, NTCARD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CGTEMP, GTEMP, SUBLOD
  
       IMPLICIT NONE
@@ -432,7 +430,6 @@
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, NGRID, NSUB, NTCARD, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CGTEMP, GTEMP, GRID_ID, SUBLOD
  
       IMPLICIT NONE
@@ -580,7 +577,6 @@
                                          NTCARD, NTDAT,  &
                                          NSUB, WARN_ERR  
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  TWO
       USE PARAMS, ONLY                :  SUPWARN
       USE MODEL_STUF, ONLY            :  TDATA
@@ -803,7 +799,6 @@ cont_cards: DO                                             ! Top of loop for rea
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MELGP, NGRID
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  ETEMP, CGTEMP, CETEMP_ERR, GTEMP, EDAT, EPNT, ETYPE, GRID_ID, SCNUM,                      &
                                          AGRID, ELGP, EID, TYPE
@@ -896,7 +891,6 @@ cont_cards: DO                                             ! Top of loop for rea
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NELE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  ETEMP, ESORT1, CETEMP, TPNT, TYPE, SUBLOD
       USE PARAMS, ONLY                :  SUPWARN
  

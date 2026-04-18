@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LBUSHOFF, LVVEC, MEDAT_CBUSH,&
                                          NBUSHOFF, NCBUSH, NEDAT, NELE, NVVEC, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CBUSH_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, HALF
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE MODEL_STUF, ONLY            :  BUSHOFF, EDAT, ETYPE, VVEC

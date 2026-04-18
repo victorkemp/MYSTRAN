@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  INVERT_FF_MAT_BEGEND
       USE LAPACK_SYM_MAT_INV
 
       USE INVERT_FF_MAT_USE_IFs
@@ -49,8 +48,6 @@
                                                            ! < 0:  if INFO = -i, the i-th argument had an illegal value
                                                            ! > 0:  if INFO =  i, the leading minor of order i is not pos definite
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = INVERT_FF_MAT_BEGEND
-
 
       REAL(DOUBLE)    , INTENT(INOUT) :: A(NROWS,NROWS)    ! Matrix to invert. Inverted matrix returned in A
 

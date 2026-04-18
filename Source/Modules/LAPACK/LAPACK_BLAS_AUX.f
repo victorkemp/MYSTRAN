@@ -9,15 +9,12 @@
       USE SCONTR, ONLY                  :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                  :  HOUR, MINUTE, SEC,
      &                                     SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY      :  LAPACK_BEGEND
       USE PARAMS, ONLY                  :  NOCOUNTS
 
       USE OUTA_HERE_Interface
 
       character(1*byte), parameter      :: cr13_lba = char(13)
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
-
+      
       CONTAINS
 
 ! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -73,7 +73,6 @@
                                          L3A_MSG, L4A_MSG, L4B_MSG, L4C_MSG, L4D_MSG, L5A_MSG, L5B_MSG, OP2_MSG, OU4_MSG
       USE SCONTR
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_L1A_BEGEND
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, ELFORCEN, HEXAXIS, IORQ1B, IORQ1M, IORQ1S, IORQ2B, IORQ2T,&
                                          MATSPARS, MIN4TRED, QUAD4TYP, QUADAXIS, SPARSTOR
 

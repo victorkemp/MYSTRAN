@@ -37,7 +37,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NTERM_MGG, NTERM_MGGC, NTERM_MGGE, NTERM_MGGS,            &
                                          TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_L1_MGG_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_MGG, I2_MGG, J_MGG, MGG, I_MGGC, J_MGGC, MGGC, I_MGGE, J_MGGE, MGGE, I_MGGS, J_MGGS, MGGS
  
       IMPLICIT NONE

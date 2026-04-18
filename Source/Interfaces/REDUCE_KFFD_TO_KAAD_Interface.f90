@@ -37,7 +37,6 @@
                                          NTERM_KAOD, NTERM_KOOD, NTERM_KOODs, NTERM_GOA
       USE PARAMS, ONLY                :  EPSIL, KOORAT, SPARSTOR, RCONDK
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KFFD_TO_KAAD_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE SPARSE_MATRICES, ONLY       :  I_KFFD, J_KFFD, KFFD, I_KAAD, J_KAAD, KAAD, I_KAOD, J_KAOD, KAOD, I_GOA, J_GOA, GOA,      &
                                          I_KOOD, I2_KOOD, J_KOOD, KOOD, I_KOODs, I2_KOODs, J_KOODs, KOODs

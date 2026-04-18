@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF, MEDAT_CSHEAR, NCSHEAR, NELE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CSHEAR_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, ETYPE
  
       USE BD_CSHEAR_USE_IFs

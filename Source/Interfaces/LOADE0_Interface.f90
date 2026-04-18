@@ -36,7 +36,6 @@
                                          LEN_RESTART_FNAME, LNUM_IN4_FILES, RESTART_FILNAM, SCR, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, FATAL_ERR, RESTART
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADE0_BEGEND
  
       IMPLICIT NONE
 

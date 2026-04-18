@@ -34,7 +34,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RIGID_BODY_DISP_MAT_BEGEND
 
       USE RIGID_BODY_DISP_MAT_USE_IFs
 

@@ -42,7 +42,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EDAT, EPNT, ETYPE
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_EDAT_BEGEND
 
       USE WRITE_EDAT_USE_IFs
 

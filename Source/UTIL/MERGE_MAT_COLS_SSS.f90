@@ -39,7 +39,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_MAT_COLS_SSS_BEGEND
 
       USE MERGE_MAT_COLS_SSS_USE_IFs
 
@@ -73,7 +72,6 @@
       INTEGER(LONG)                   :: NUM_IN_ROW_OF_A         ! Num terms in a row of A matrix
       INTEGER(LONG)                   :: NUM_IN_ROW_OF_B         ! Num terms in a row of B matrix
       INTEGER(LONG)                   :: NUM_IN_ROW_OF_C         ! Num terms in a row of C matrix
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = MERGE_MAT_COLS_SSS_BEGEND
 
       REAL(DOUBLE)    , INTENT(IN)    :: A(NTERM_A)              ! Nonzero terms in matrix A
       REAL(DOUBLE)    , INTENT(IN)    :: B(NTERM_B)              ! Nonzero terms in matrix B

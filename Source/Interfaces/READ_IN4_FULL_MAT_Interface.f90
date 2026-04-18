@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  NUM_EMG_FATAL_ERRS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_IN4_FULL_MAT_BEGEND
 
       IMPLICIT NONE
 

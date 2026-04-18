@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F04FIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, RESTART
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OPNERR_BEGEND
  
       IMPLICIT NONE
 

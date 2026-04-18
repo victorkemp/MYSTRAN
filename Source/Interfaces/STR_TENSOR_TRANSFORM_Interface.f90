@@ -37,7 +37,6 @@
       USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CORD, RCORD, TE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STR_TENSOR_TRANSFORM_BEGEND
 
       IMPLICIT NONE
 

@@ -38,7 +38,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  CRS_CCS
       USE SCRATCH_MATRICES, ONLY      :  I_CCS1, J_CCS1, CCS1
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FBS_SUPRLU_BEGEND
       USE SuperLU_STUF, ONLY          :  SLU_FACTORS
       IMPLICIT NONE
  

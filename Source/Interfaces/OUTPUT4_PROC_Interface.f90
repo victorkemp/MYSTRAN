@@ -95,7 +95,6 @@
                                           I_PA , J_PA , PA , I_PG , J_PG , PG , I_PL , J_PL , PL
 
       USE FULL_MATRICES, ONLY          :  PHIZG_FULL
-      USE SUBR_BEGEND_LEVELS, ONLY     :  OUTPUT4_PROC_BEGEND
  
       IMPLICIT NONE
  

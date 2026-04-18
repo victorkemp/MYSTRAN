@@ -41,7 +41,6 @@
 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  PBAR, RPBAR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBARL_BEGEND
  
       IMPLICIT NONE
  

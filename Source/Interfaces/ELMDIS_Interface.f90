@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMDIS_BEGEND
       USE MODEL_STUF, ONLY            :  AGRID, CAN_ELEM_TYPE_OFFSET, GRID, CORD, BGRID, ELGP, ELDOF, GRID_ID, OFFSET, OFFDIS,     &
                                          TE, TYPE, UEB, UEG, UEL, UGG
       USE COL_VECS, ONLY              :  UG_COL

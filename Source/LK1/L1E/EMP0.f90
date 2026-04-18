@@ -44,7 +44,6 @@
       USE SCONTR, ONLY                :  LTERM_MGGE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  GRIDSEQ, SETLKTM, USR_LTERM_MGG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
 
       USE EMP0_USE_IFs
 
@@ -91,7 +90,6 @@
       USE SCONTR, ONLY                :  LTERM_MGGE, NELE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SPARSTOR, SUPINFO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, EID, EPNT, ETYPE, ELGP, TYPE
  
       IMPLICIT NONE
@@ -154,7 +152,6 @@
       USE PARAMS, ONLY                :  EPSIL, SETLKTM, SPARSTOR, SUPINFO
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, NUM_EMG_FATAL_ERRS, ME, PLY_NUM, TYPE
  
       IMPLICIT NONE

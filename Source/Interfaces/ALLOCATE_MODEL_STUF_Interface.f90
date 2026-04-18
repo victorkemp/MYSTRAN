@@ -49,7 +49,6 @@
       USE SCONTR, ONLY                :  NDOFG, NGRID, NMPC, NPCOMP, NPLOAD4_3D, NRBAR, NRBE1, NRBE2, NSPC, NTSUB, NUM_MPCSIDS,    &
                                          NUM_SPCSIDS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_MODEL_STUF_BEGEND
 
       USE MODEL_STUF, ONLY            :  AGRID, BE1, BE2, BE3, BGRID, DOFPIN, DT, ME, OFFDIS, OFFDIS_B, OFFSET, KE, KED, KEM,      &
                                          PEB, PEG, PEL, PPE, PRESS, PTE, SE1, SE2, SE3, STE1, STE2, STE3, UEB, UEG, UEL, UGG,      &

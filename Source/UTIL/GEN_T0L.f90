@@ -72,7 +72,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE PARAMS, ONLY                :  EPSIL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GEN_T0L_BEGEND
       USE MODEL_STUF, ONLY            :  RGRID, CORD, RCORD
  
       USE GEN_T0L_USE_IFs

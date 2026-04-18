@@ -36,7 +36,6 @@
                                          NCUSERIN, NEDAT, NELE, WARN_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CUSERIN_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, ETYPE
  
       USE BD_CUSERIN_USE_IFs

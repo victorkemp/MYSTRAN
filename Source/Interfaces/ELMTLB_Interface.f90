@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  F04, f06, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MELDOF, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMTLB_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, ELGP, KE, KED, ME, PTE, PPE, TE
   
       IMPLICIT NONE

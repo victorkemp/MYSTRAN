@@ -49,7 +49,6 @@
                                          SYM_MRRcb
 
       USE SCRATCH_MATRICES
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_MRRcb_BEGEND
 
       USE CALC_MRRcb_USE_IFs
 

@@ -44,7 +44,6 @@
                                          I_KRRcb, J_KRRcb, KRRcb, I_KRRcbs, J_KRRcbs, KRRcbs
       USE SCRATCH_MATRICES
       USE LAPACK_DPB_MATRICES, ONLY   :  ABAND
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_KRRcb_BEGEND
 
       IMPLICIT NONE
  

@@ -35,7 +35,6 @@
                                          SOL_NAME
       USE PARAMS, ONLY                :  EPSIL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_MAA_TO_MLL_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_MAA, J_MAA, MAA, I_MLL, J_MLL, MLL, I_MRL, J_MRL, MRL, I_MRR, J_MRR, MRR,               &
                                          SYM_MAA, SYM_MLL, SYM_MRL, SYM_MRR
       USE SCRATCH_MATRICES

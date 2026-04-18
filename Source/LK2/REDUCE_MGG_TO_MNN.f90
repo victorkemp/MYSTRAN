@@ -40,7 +40,6 @@
                                          NTERM_GMN, NTERM_LMN
       USE PARAMS, ONLY                :  EPSIL, MATSPARS, SPARSTOR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_MGG_TO_MNN_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE SPARSE_MATRICES, ONLY       :  I_LMN, J_LMN, LMN, I_MGG, J_MGG, MGG, I_MNN, J_MNN, MNN, I_MNM , J_MNM , MNM ,            &
                                          I_MMN, J_MMN, MMN, I_MMM, J_MMM, MMM, I_GMN, J_GMN, GMN, I_GMNt, J_GMNt, GMNt

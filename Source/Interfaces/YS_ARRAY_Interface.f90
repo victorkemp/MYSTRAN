@@ -37,7 +37,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                           L1H_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFSE, NGRID
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  YS_ARRAY_BEGEND
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE MODEL_STUF, ONLY            :  GRID_ID
       USE COL_VECS, ONLY              :  YSe

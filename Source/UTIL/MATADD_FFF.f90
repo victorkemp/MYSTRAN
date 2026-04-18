@@ -37,7 +37,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATADD_FFF_BEGEND
  
       USE MATADD_FFF_USE_IFs
 

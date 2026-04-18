@@ -48,7 +48,6 @@
                                          I_MPF0, J_MPF0, MPF0  
                                          
       USE SCRATCH_MATRICES, ONLY      :  I_CCS1, J_CCS1, CCS1, I_CRS1, J_CRS1, CRS1, I_CRS2, J_CRS2, CRS2, I_CRS3, J_CRS3, CRS3
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_MRN_BEGEND
 
       IMPLICIT NONE
  

@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, LBUSHOFF, LVVEC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CBUSH0_BEGEND
  
       USE BD_CBUSH0_USE_IFs
 

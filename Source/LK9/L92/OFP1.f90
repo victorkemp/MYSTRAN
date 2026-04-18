@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, GROUT_ACCE_BIT, GROUT_DISP_BIT, GROUT_OLOA_BIT, IBIT, INT_SC_NUM,&
                                          MELGP, MOGEL, NGRID, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  OTMSKIP, PRTNEU
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START

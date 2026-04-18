@@ -40,7 +40,6 @@
                                          NTERM_KNM, NTERM_KMM, NTERM_GMN
       USE PARAMS, ONLY                :  EPSIL, MATSPARS, SPARSTOR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KGG_TO_KNN_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE SPARSE_MATRICES, ONLY       :  I_HMN, J_HMN, HMN, I_KGG, J_KGG, KGG, I_KNN, J_KNN, KNN, I_KNM, J_KNM, KNM,               &
                                          I_KMM, J_KMM, KMM,I_KMN, J_KMN, KMN, I_GMN, J_GMN, GMN,  I_GMNt, J_GMNt, GMNt

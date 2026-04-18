@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SOLID_STRAIN_OUTPUTS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  STRAIN, TYPE
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_OPT

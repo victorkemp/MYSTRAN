@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  FATAL_ERR, NDOFN, NDOFF, NDOFS, NDOFSE, NTERM_KNN, NTERM_KFF, NTERM_KFS, NTERM_KSS,       &
                                          NTERM_KFSe, NTERM_KSSe, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KNN_TO_KFF_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KNN, J_KNN, KNN, I_KFF, J_KFF, KFF, I_KFS, J_KFS, KFS, I_KFSe, J_KFSe, KFSe,            &
                                          I_KSF, J_KSF, KSF, I_KSS, J_KSS, KSS, I_KSSe, J_KSSe, KSSe
       USE SPARSE_MATRICES, ONLY       :  SYM_KNN, SYM_KFF, SYM_KFS, SYM_KFSe, SYM_KSS, SYM_KSS, SYM_KSSe

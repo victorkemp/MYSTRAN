@@ -31,7 +31,6 @@
       USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NVEC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_MEFFMASS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, ONE_HUNDRED, PI
       USE PARAMS, ONLY                :  PRTF06, PRTOP2
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

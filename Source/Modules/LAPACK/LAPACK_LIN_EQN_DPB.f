@@ -7,13 +7,10 @@
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE PARAMS, ONLY                   :  NOCOUNTS
 
       character(1*byte), parameter      :: cr13_dpb = char(13)
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is the set of LAPACK routines for solving equations
 

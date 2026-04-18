@@ -54,7 +54,6 @@
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FILE_INQUIRE_BEGEND
 
       USE FILE_INQUIRE_USE_IFs
 

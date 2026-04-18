@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  NDOFM, NTERM_RMG, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_RMG_BEGEND
       USE PARAMS, ONLY                :  EPSIL
       USE SPARSE_MATRICES, ONLY       :  I_RMG, J_RMG, RMG
  

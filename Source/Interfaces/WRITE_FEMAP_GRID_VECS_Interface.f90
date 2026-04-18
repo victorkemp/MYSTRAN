@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  CORD, GRID, GRID_ID, INV_GRID_SEQ
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_FEMAP_GRID_VECS_BEGEND
  
       IMPLICIT NONE
  

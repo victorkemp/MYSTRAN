@@ -51,7 +51,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_2_BEGEND
  
       USE READ_MATRIX_2_USE_IFs
 

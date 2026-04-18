@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STMERR_BEGEND
  
       USE STMERR_USE_IFs
 

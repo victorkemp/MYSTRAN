@@ -39,7 +39,6 @@
       USE PARAMS, ONLY                :  EPSIL
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EPTL_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, ELDT, GRID, GRID_ID, CORD, AGRID, ELGP, NUM_EMG_FATAL_ERRS, OELDT, PLY_NUM, PPE,   &
                                          PTE, SYS_LOAD, TYPE, SUBLOD
 

@@ -34,7 +34,6 @@
       USE DEBUG_PARAMETERS
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_STRESS_POINTS, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_FIJFIL_BEGEND
       USE MODEL_STUF, ONLY            :  EID, TYPE, ELGP, ELDOF, KE, ME, PEB, PEG, PEL, PPE, PTE,                                  &
                                          SE1, SE2, SE3, STE1, STE2, STE3, UEB, UEG, UEL 
       USE PARAMS, ONLY                :  ELFORCEN

@@ -49,7 +49,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  IP6CHK_BEGEND
  
       USE IP6CHK_USE_IFs
 

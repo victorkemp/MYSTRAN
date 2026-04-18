@@ -49,7 +49,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARTITION_FF_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       USE PARTITION_FF_USE_IFs
@@ -69,7 +68,6 @@
       INTEGER(LONG)   , INTENT(IN)    :: NROW_B                 ! No. rows in B
       INTEGER(LONG)                   :: I,J                    ! DO loop indices 
       INTEGER(LONG)                   :: IB,JB                  ! Counters
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = PARTITION_FF_BEGEND
        
       REAL(DOUBLE)    , INTENT(IN )   :: A(NROW_A,NCOL_A)       ! Input  matrix
 

@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DEALLOCATE_MODEL_STUF_BEGEND
 
       USE MODEL_STUF, ONLY            :  AGRID, BE1, BE2, BE3, BGRID, DOFPIN, DT, KE, KEG, KED, KEM, ME,                           &
                                          OFFDIS, OFFDIS_B, OFFDIS_G, OFFDIS_O, OFFSET, PEB, PEG, PEL, PPE, PRESS, PTE,             &

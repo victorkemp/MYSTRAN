@@ -35,7 +35,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  SUPWARN, WTMASS
       USE LAPACK_STD_EIG_1
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GPWG_BEGEND
  
       USE GPWG_PMOI_USE_IFs
 

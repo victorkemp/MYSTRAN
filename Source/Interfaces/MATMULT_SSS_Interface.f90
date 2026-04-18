@@ -38,7 +38,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SSS_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       IMPLICIT NONE

@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPLOAD, LSUB, NPCARD, NPLOAD,             &
                                          NPLOAD4_3D, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PLOAD4_BEGEND
       USE MODEL_STUF, ONLY            :  PRESS_SIDS, SUBLOD
 
       IMPLICIT NONE

@@ -35,7 +35,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SURFACE_FIT_BEGEND
       USE LSQ_MYSTRAN
 
       USE SURFACE_FIT_USE_IFs

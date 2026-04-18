@@ -37,7 +37,6 @@
       USE PARAMS, ONLY                :  EPSIL, GRDPNT, MEFMGRID, MEFMLOC, SUPWARN, WTMASS
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GPWG_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  AGRID, BGRID, CONM2, CORD, CAN_ELEM_TYPE_OFFSET, ELDT, ELGP, NUM_EMG_FATAL_ERRS,          &
                                          GRID, GRID_ID, MCG, ME, MEFFMASS_CALC, MEFM_RB_MASS,                                      &

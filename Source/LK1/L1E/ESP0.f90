@@ -54,7 +54,6 @@
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
 
       USE ESP0_USE_IFs
 
@@ -127,7 +126,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SPARSTOR
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, EPNT, ETYPE, ELGP, TYPE
       use model_stuf, only            :  eid
  
@@ -200,7 +198,6 @@
       USE IOUNT1, ONLY                :  WRT_LOG, F04, F06
       USE SCONTR, ONLY                :  KMAT_BW, KMAT_DEN, NDOFG, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
  
       IMPLICIT NONE
  
@@ -258,7 +255,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE_HUNDRED
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
  
       IMPLICIT NONE
  
@@ -317,7 +313,6 @@
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ESP0_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, NUM_EMG_FATAL_ERRS, PLY_NUM, KE, TYPE
  
       IMPLICIT NONE

@@ -34,7 +34,6 @@
       USE TIMDAT, ONLY                :  TSEC 
       USE PARAMS, ONLY                :  EPSIL, SUPINFO
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CHECK_BAR_MOIs_BEGEND
 
       USE CHECK_BAR_MOIs_USE_IFs
 

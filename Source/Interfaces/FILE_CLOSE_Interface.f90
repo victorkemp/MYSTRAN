@@ -35,7 +35,6 @@
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, F04, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FILE_OPEN_BEGEND
 
       IMPLICIT NONE
  

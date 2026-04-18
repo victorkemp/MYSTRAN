@@ -39,7 +39,6 @@
       USE DOF_TABLES, ONLY            :  TDOF, TDOFI
       USE PARAMS, ONLY                :  PRTDOF
       USE MODEL_STUF, ONLY            :  GRID_ID, INV_GRID_SEQ
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_TDOF_BEGEND
 
       IMPLICIT NONE
 

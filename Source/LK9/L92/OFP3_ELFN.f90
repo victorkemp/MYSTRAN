@@ -34,7 +34,6 @@
                                          INT_SC_NUM, MBUG, MOGEL, SOL_NAME                                           
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP3_ELFN_BEGEND
       USE PARAMS, ONLY                :  ELFORCEN, OTMSKIP
       USE MODEL_STUF, ONLY            :  EDAT, EPNT, ETYPE, AGRID, EID, ELDT, ELGP, ELMTYP, ELOUT, METYPE, NUM_EMG_FATAL_ERRS,     &
                                          PEB, PEG, PEL, PLY_NUM, TYPE, SCNUM, BGRID

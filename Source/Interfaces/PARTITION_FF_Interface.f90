@@ -37,7 +37,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARTITION_FF_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       IMPLICIT NONE
@@ -52,7 +51,6 @@
       INTEGER(LONG)   , INTENT(IN)    :: VAL_COLS               ! Value in COL_PART_VEC to look for for partitioning cols
       INTEGER(LONG)   , INTENT(IN)    :: NCOL_B                 ! No. cols in B
       INTEGER(LONG)   , INTENT(IN)    :: NROW_B                 ! No. rows in B
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = PARTITION_FF_BEGEND
        
       REAL(DOUBLE)    , INTENT(IN )   :: A(NROW_A,NCOL_A)       ! Input  matrix
 

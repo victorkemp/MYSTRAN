@@ -36,7 +36,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_MACHINE_PARAMS_BEGEND
       USE MACHINE_PARAMS, ONLY        :  MACH_BASE, MACH_EMAX, MACH_EMIN, MACH_EPS, MACH_PREC, MACH_RMAX, MACH_RMIN, MACH_RND,     &
                                          MACH_SFMIN, MACH_T, MACH_LARGE_NUM
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

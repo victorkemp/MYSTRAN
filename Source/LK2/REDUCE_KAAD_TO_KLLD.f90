@@ -33,7 +33,6 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFA, NDOFL, NDOFR, NTERM_KAAD, NTERM_KLLD, NTERM_KRLD,         &
                                          NTERM_KRRD,  SOL_NAME
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KAAD_TO_KLLD_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KAAD, J_KAAD, KAAD, I_KLLD, J_KLLD, KLLD, I_KRLD, J_KRLD, KRLD, I_KRRD, J_KRRD, KRRD,   &
                                          SYM_KAAD, SYM_KLLD, SYM_KRLD, SYM_KRRD
       USE SCRATCH_MATRICES

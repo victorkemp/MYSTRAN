@@ -35,7 +35,6 @@
       USE PARAMS, ONLY                :  PCMPTSTM 
       USE CONSTANTS_1, ONLY           :  ZERO, THIRD
       USE TIMDAT, ONLY                :  TSEC 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_PCOMP_SECT_PROPS_BEGEND
 
       USE GET_PCOMP_SECT_PROPS_USE_IFs
 

@@ -32,7 +32,6 @@
       USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATPUT_BEGEND
  
       USE MATPUT_USE_IFs
 

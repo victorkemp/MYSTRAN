@@ -37,7 +37,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BANDGEN_BEGEND
 
       IMPLICIT NONE
 
