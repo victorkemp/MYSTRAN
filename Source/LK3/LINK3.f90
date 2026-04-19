@@ -384,7 +384,7 @@ FreeS:IF (SOLLIB == 'SPARSE  ') THEN                       ! Last, free the stor
          ENDIF
       ENDIF
 
-! Write LINK3 end to F04, F06
+! Write LINK3 end to F06
 
       CALL OURTIM
       WRITE(F06,151) LINKNO

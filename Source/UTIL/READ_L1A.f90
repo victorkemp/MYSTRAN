@@ -33,7 +33,7 @@
 
       USE IOUNT1, ONLY                :  MOT4,    MOU4,    WRT_ERR
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     IN1,     INI,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     INI,                       &
                                          L1A,     NEU,     OT4,     PCH,     SEQ,     SPC,     SC1,                                &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &
@@ -175,7 +175,6 @@
       READ(L1A,151,IOSTAT=IOCHKI(  4)) EIN,EINSTAT,EIN_MSG,EINFIL
       READ(L1A,151,IOSTAT=IOCHKI(  5)) ENF,ENFSTAT,ENF_MSG,ENFFIL
       READ(L1A,151,IOSTAT=IOCHKI(  6)) ERR,ERRSTAT,ERR_MSG,ERRFIL
-      READ(L1A,151,IOSTAT=IOCHKI(  7)) F04,F04STAT,F04_MSG,F04FIL
       READ(L1A,151,IOSTAT=IOCHKI(  8)) F06,F06STAT,F06_MSG,F06FIL
       READ(L1A,151,IOSTAT=IOCHKI(  9)) IN0,IN0STAT,IN0_MSG,IN0FIL
       READ(L1A,151,IOSTAT=IOCHKI( 10)) L1A,L1ASTAT,L1A_MSG,LINK1A

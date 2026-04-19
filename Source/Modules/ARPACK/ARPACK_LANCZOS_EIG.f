@@ -1175,8 +1175,7 @@ c
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  PROG_NAME, FATAL_ERR, WARN_ERR
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR,
-     &                                   F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F06
 
       IMPLICIT NONE
 

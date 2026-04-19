@@ -31,7 +31,7 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN,  MOT4,    MOU4,    OU4_EXT, OT4_EXT
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     IN1,     NEU,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     NEU,                       &
                                          PCH,     SEQ,     SC1,     SPC,                                                           &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1A,     L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     &
@@ -81,7 +81,6 @@
       FIL(  4) = 'EIN'   ;   UNT(  4) =  EIN   ;   FILNAM(  4) = EINFIL
       FIL(  5) = 'ENF'   ;   UNT(  5) =  ENF   ;   FILNAM(  5) = ENFFIL
       FIL(  6) = 'ERR'   ;   UNT(  6) =  ERR   ;   FILNAM(  6) = ERRFIL
-      FIL(  7) = 'F04'   ;   UNT(  7) =  F04   ;   FILNAM(  7) = F04FIL
       FIL(  8) = 'F06'   ;   UNT(  8) =  F06   ;   FILNAM(  8) = F06FIL
       FIL(  9) = 'L1A'   ;   UNT(  9) =  L1A   ;   FILNAM(  9) = LINK1A
       FIL( 10) = 'IN0'   ;   UNT( 10) =  IN0   ;   FILNAM( 10) = IN0FIL

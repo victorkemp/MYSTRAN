@@ -35,7 +35,7 @@
 
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, DEFDIR, INIFIL, SC1, MOU4, WRT_ERR
 
-      USE IOUNT1, ONLY                :  BUG,     ERR,     F04,     F06,     IN0,     IN1,     INI,     L1A,     NEU,              &
+      USE IOUNT1, ONLY                :  BUG,     ERR,     F06,     IN0,     IN1,     INI,     L1A,     NEU,                       &
                                          SEQ,     SPC,                                                                             &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &

@@ -29,7 +29,7 @@
 ! Process enforced displacement data in file LINK1H and write the enforced displacement array, YSe, for use in subsequent LINK's.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F04,     F06,    L1H
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,    L1H
       USE IOUNT1, ONLY                :  WRT_ERR,                           LINK1H
       USE IOUNT1, ONLY                :  WRT_ERR,                           L1H_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFSE, NGRID

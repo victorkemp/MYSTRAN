@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F04,     F06,     L1J,     L1S, LINK1S, L1S_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     L1J,     L1S, LINK1S, L1S_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LMPCADDC, NGRID, NMPC, NMPCADD, NUM_MPCSIDS, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID_ID, MPCSET, MPCSIDS

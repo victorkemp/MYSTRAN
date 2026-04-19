@@ -35,7 +35,7 @@
 
       USE IOUNT1, ONLY                :  MOT4,    MOU4,    WRT_ERR
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     IN1,     INI,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     INI,                       &
                                          L1A,     NEU,     OT4,     PCH,     SEQ,     SPC,     SC1,                                &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &

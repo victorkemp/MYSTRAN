@@ -38,7 +38,7 @@
 
       USE IOUNT1, ONLY                :  OU4_EXT, OT4_EXT
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     PCH,     SC1,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     PCH,     SC1,                       &
                                          SEQ,     SPC,                                                                             &
                                          L1A,     L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     &
                                          L1K,     L1L,     L1M,     L1N,     L1O,     L1P,     L1Q,     L1R,     L1S,     L1T,     &

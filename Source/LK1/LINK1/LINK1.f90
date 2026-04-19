@@ -452,7 +452,7 @@ res20:IF (RESTART == 'N') THEN
          CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
       ENDIF res20
 
-! Write LINK1 end to F04, F06
+! Write LINK1 end to F06
 
       CALL OURTIM
       WRITE(F06,151) LINKNO

@@ -332,7 +332,6 @@
       INTEGER(LONG)                   :: EIN           = 1001 ! Unit no. for text file w/ eigenvec scale facs (if supplied)
       INTEGER(LONG)                   :: ENF           = 1002 ! Unit no. for text file w/ enforced displ for all grids/comps
       INTEGER(LONG)                   :: ERR           =    3 ! Unit no. for error file
-      INTEGER(LONG)                   :: F04           =    4 ! Unit no. for log file
       INTEGER(LONG)                   :: F06           =    7 ! Unit no. for output file
       INTEGER(LONG)                   :: IN0           = 1003 ! Unit no. for input file with all INCLUDE files
       INTEGER(LONG)                   :: IN1           =    8 ! Unit no. for input file 

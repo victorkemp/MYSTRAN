@@ -697,7 +697,7 @@ j_do: DO J = 1,NUM_SOLNS
          ENDIF
       ENDIF
 
-! Write LINK5 end to F04, F06
+! Write LINK5 end to F06
 
       CALL OURTIM
       WRITE(F06,151) LINKNO

@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F04,     F06,     L1G
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     L1G
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, MMATL, MPBAR, MPBEAM, MPBUSH, MPELAS, MPROD, MPSHEL,          &
                                          MPSOLID, MPUSER1,MPUSERIN, MRMATLC, MRPBAR, MRPBEAM, MRPBUSH, MRPELAS, MRPROD, MPSHEAR,   &
                                          MRPSHEAR, MRPSHEL, MRPUSER1, NBAROFF, NBUSHOFF, NEDAT, NELE, NMATANGLE, NMATL, MPCOMP0,   &

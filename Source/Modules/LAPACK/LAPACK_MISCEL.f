@@ -3,7 +3,6 @@
       MODULE LAPACK_MISCEL
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  F04
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      TSEC

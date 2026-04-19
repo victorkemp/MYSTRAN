@@ -29,7 +29,6 @@
 ! Converts an integer to a character value with comma format (e.g. 12345 becomes char value 12,345) and writes result to unit UNT
 
       USE PENTIUM_II_KIND, ONLY             :  BYTE, LONG
-      USE IOUNT1, ONLY                      :  F04
       USE SCONTR, ONLY                      :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                      :  TSEC 
 
