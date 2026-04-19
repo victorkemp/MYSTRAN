@@ -29,12 +29,11 @@
 ! Processes element node force output requests for one subcase, all element types
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_FIJ, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_FIJ, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELOUT_ELFN_BIT, ELDT_BUG_U_P_BIT, ELDT_F25_U_P_BIT, FATAL_ERR,NELE, IBIT,   &
                                          INT_SC_NUM, MBUG, MOGEL, SOL_NAME                                           
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP3_ELFN_BEGEND
       USE PARAMS, ONLY                :  ELFORCEN, OTMSKIP
       USE MODEL_STUF, ONLY            :  EDAT, EPNT, ETYPE, AGRID, EID, ELDT, ELGP, ELMTYP, ELOUT, METYPE, NUM_EMG_FATAL_ERRS,     &
                                          PEB, PEG, PEL, PLY_NUM, TYPE, SCNUM, BGRID
@@ -71,16 +70,11 @@
 !                                                            (this can be > NUM_ELEM since more than 1 row is written to OGEL
 !                                                            for ELFORCE(NODE) - elem nodal forces)
                                                            ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_ELFN_BEGEND
+
  
       INTRINSIC IAND
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process element node force requests for all elements
@@ -228,12 +222,7 @@ elems_1: DO J = 1,NELE
          WRITE(F06,9201) TYPE, REQUEST, EID
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

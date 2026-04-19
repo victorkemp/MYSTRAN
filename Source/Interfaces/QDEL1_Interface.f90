@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_GAUSS, MEFE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  QDEL1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, FOUR, TWELVE
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL, IORQ1B, IORQ1M, IORQ1S, IORQ2B, QUAD4TYP
@@ -52,7 +51,7 @@
 
       INTEGER(LONG)                   :: GAUSS_PT             ! Gauss point number (used for DEBUG output in subr SHP2DQ
       INTEGER(LONG), PARAMETER        :: IORD_PCOMP = 2       ! Int order for nonsym layup PCOMP must be 2 (checked in subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QDEL1_BEGEND
+
   
       REAL(DOUBLE)                    :: M0                   ! An intermediate variable used in calc elem mass, ME
 

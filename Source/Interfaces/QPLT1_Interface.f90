@@ -32,10 +32,8 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_ORDER_GAUSS, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  QPLT1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, FOUR
       USE PARAMS, ONLY                :  IORQ2B
       USE MODEL_STUF, ONLY            :  ALPVEC, BE2, DT, EB, EID, KE, PRESS, PPE, PTE, SE2, STE2, SHELL_D, SHELL_DALP
@@ -60,7 +58,7 @@
 
       INTEGER(LONG), PARAMETER        :: IORD_STRESS_Q4 = 2! Gauss integration order for stress/strain recovery matrices
       INTEGER(LONG), PARAMETER        :: NUM_NODES = 8     ! DKQ element has 8 nodes (4 are internal)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

@@ -34,11 +34,10 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_ELEM_DEGREE, NELE, NGRID
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  AGRID, ELGP, ETYPE, ESORT1, ESORT2, GRID_ID, GRID_ELEM_CONN_ARRAY 
       USE PARAMS, ONLY                :  PRTCONN 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GRID_ELEM_CONN_TABLE_BEGEND
 
       USE GRID_ELEM_CONN_TABLE_USE_IFs
 
@@ -49,14 +48,9 @@
       INTEGER(LONG)                   :: GRD_NUM_ELEM(NGRID)! Array that specifies the number of elements connected to each grid
       INTEGER(LONG)                   :: I,J,K              ! DO loop indices
       INTEGER(LONG)                   :: IGRID              ! Internal grid ID (row in array GRID_ID where an act grid num exists)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_ELEM_CONN_TABLE_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       DO I=1,NGRID
@@ -107,12 +101,7 @@
          ENDDO
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

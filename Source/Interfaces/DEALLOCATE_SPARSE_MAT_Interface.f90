@@ -32,12 +32,11 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC          
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DEALLOCATE_SPARSE_MAT_BEGEND
 
       USE SPARSE_MATRICES , ONLY      :  I_KGG   , J_KGG   , KGG   , I_MGG   , J_MGG   , MGG   , I_PG    , J_PG    , PG    ,       &
                                          I_KGGD  , J_KGGD  , KGGD  ,                                                               &
@@ -91,7 +90,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: NAME_IN           ! Array name (used for output error message)
       CHARACTER(6*BYTE)               :: NAME              ! Array name (used for output error message)
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_SPARSE_MAT_BEGEND
+
  
       END SUBROUTINE DEALLOCATE_SPARSE_MAT
 

@@ -35,7 +35,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_LOG, ERR, F04, F06, L1A, ERRSTAT, SC1
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F06, L1A, ERRSTAT, SC1
       USE IOUNT1, ONLY                :  L2G,     L2H    , L2I   ,  L2O    , L2P   ,  L2Q
       USE IOUNT1, ONLY                :  LINK2G,  LINK2H , LINK2I , LINK2O , LINK2P , LINK2Q 
       USE IOUNT1, ONLY                :  L2G_MSG, L2H_MSG, L2I_MSG, L2O_MSG, L2P_MSG, L2Q_MSG
@@ -109,14 +109,11 @@
 ! Write info to text files
   
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
 ! Read LINK1A file
  
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 ! Check COMM for successful completion of prior LINKs
 
       IF (COMM(P_LINKNO) /= 'C') THEN
@@ -373,7 +370,7 @@
 
 ! Write data to L1A
 
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
   
 ! Check allocation status of allocatable arrays, if requested
 
@@ -384,12 +381,9 @@
          ENDIF
       ENDIF
 
-! Write LINK2 end to F04, F06
+! Write LINK2 end to F06
 
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
 ! Close files

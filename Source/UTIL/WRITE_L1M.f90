@@ -31,7 +31,7 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
  
       USE SCONTR, ONLY                :  LINKNO, NUM_EIGENS
-      USE IOUNT1, ONLY                :  ERR, F06, L1M, L1M_MSG, L1MSTAT, LINK1M, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1M, L1M_MSG, L1MSTAT, LINK1M, SC1, WRT_ERR
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE EIGEN_MATRICES_1 , ONLY     :  EIGEN_VAL, GEN_MASS, MODE_NUM
 
@@ -55,7 +55,7 @@
 
 !xx   STATUS = 'OLD    '
 !xx   RW     = 'WRITE'
-      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
       CALL LINK_MESSAGE('WRITE EIGENVALUE DATA FROM PRIOR LINK')
 
@@ -84,7 +84,7 @@
          WRITE(L1M) MODE_NUM(I), EIGEN_VAL(I), GEN_MASS(I)
       ENDDO
 
-      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP' )
 
 
 ! **********************************************************************************************************************************

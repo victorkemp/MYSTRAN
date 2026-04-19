@@ -29,11 +29,10 @@
 ! Deallocates sparse CRS or sparse CCS scratch matrices
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC          
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DEALLOCATE_SCR_MAT_BEGEND
       USE SCRATCH_MATRICES , ONLY     :  I_CRS1, J_CRS1, CRS1, I_CRS2, J_CRS2, CRS2, I_CRS3, J_CRS3, CRS3,  &
                                          I_CCS1, J_CCS1, CCS1, I_CCS2, J_CCS2, CCS2, I_CCS3, J_CCS3, CCS3
 
@@ -47,18 +46,13 @@
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_SCR_MAT_BEGEND
+
  
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
 !                                                            ALLOCATED_ARRAY_MEM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -70,7 +64,6 @@
             DEALLOCATE (I_CRS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -83,7 +76,6 @@
             DEALLOCATE (J_CRS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -96,7 +88,6 @@
             DEALLOCATE (CRS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -111,7 +102,6 @@
             DEALLOCATE (I_CRS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -124,7 +114,6 @@
             DEALLOCATE (J_CRS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -137,7 +126,6 @@
             DEALLOCATE (CRS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -152,7 +140,6 @@
             DEALLOCATE (I_CRS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -165,7 +152,6 @@
             DEALLOCATE (J_CRS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -178,7 +164,6 @@
             DEALLOCATE (CRS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -193,7 +178,6 @@
             DEALLOCATE (I_CCS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -206,7 +190,6 @@
             DEALLOCATE (J_CCS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -219,7 +202,6 @@
             DEALLOCATE (CCS1,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -234,7 +216,6 @@
             DEALLOCATE (I_CCS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -247,7 +228,6 @@
             DEALLOCATE (J_CCS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -260,7 +240,6 @@
             DEALLOCATE (CCS2,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -275,7 +254,6 @@
             DEALLOCATE (I_CCS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -288,7 +266,6 @@
             DEALLOCATE (J_CCS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -301,7 +278,6 @@
             DEALLOCATE (CCS3,STAT=IERR)
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             ELSE
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -324,12 +300,6 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME, TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

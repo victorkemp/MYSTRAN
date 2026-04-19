@@ -32,10 +32,9 @@
 !  2) Mass value and enter into array RPMASS
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NPMASS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PMASS_BEGEND
       USE MODEL_STUF, ONLY            :  PMASS, RPMASS
  
       USE BD_PMASS_USE_IFs
@@ -48,14 +47,9 @@
  
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: PMASS_PID         ! Prop number from field 2,4,6,8
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PMASS_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PMASS Bulk Data Card routine
@@ -118,12 +112,7 @@
 
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

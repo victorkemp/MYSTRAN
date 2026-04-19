@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSPOINT, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
@@ -42,7 +42,6 @@
       USE LAPACK_DPB_MATRICES, ONLY   :  ABAND
       USE LAPACK_BLAS_AUX
       USE PARAMS, ONLY                :  EPSIL, EQCHK_NORM, SUPWARN, SUPINFO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STIFF_MAT_EQUIL_CHK_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       IMPLICIT NONE
@@ -55,7 +54,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_KIN(NROWS+1)      ! Row start indices for KIN 
       INTEGER(LONG), INTENT(IN)       :: J_KIN(NTERM_KIN)    ! Col numbers of terms in KIN 
       INTEGER(LONG), INTENT(IN)       :: OUTPUT              ! =1, output PRB, =2 output RB_STRN_ENRGY, =3 output both
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STIFF_MAT_EQUIL_CHK_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: KIN(NTERM_KIN)      ! Nonzero terms in KIN
       REAL(DOUBLE), INTENT(IN)        :: KIN_DIAG(NROWS)     ! Diagonal of KIN

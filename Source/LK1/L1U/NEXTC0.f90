@@ -30,10 +30,9 @@
       ! and is the same as NEXTC except that it does not write CARD to F06
       ! under any circumstances
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, IN1, INFILE
+      USE IOUNT1, ONLY                :  ERR, F06, IN1, INFILE
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  NEXTC0_BEGEND
 
       USE NEXTC0_USE_IFs
 
@@ -54,14 +53,9 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error value from READ
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr READERR  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file. Input to subr READERR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NEXTC0_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       ! Initialize error indicator and ICONT
@@ -133,17 +127,12 @@
       ELSE
          BACKSPACE(IN1)
          REC_NO = -99
-         CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT, 'Y')
+         CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT)
          FATAL_ERR = FATAL_ERR + 1
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

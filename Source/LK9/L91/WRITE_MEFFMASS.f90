@@ -28,10 +28,9 @@
  
       ! Writes output for modal effective mass
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NVEC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_MEFFMASS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, ONE_HUNDRED, PI
       USE PARAMS, ONLY                :  PRTF06, PRTOP2
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -48,7 +47,7 @@
       CHARACTER(1*BYTE)               :: IHDR   = 'Y'      ! Indicator of whether to write an output header
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MEFFMASS_BEGEND
+
 
       REAL(DOUBLE)                    :: CYCLES            ! Circular frequency of a mode
       REAL(DOUBLE)                    :: EPS1              ! Small number to compare against zero
@@ -59,12 +58,7 @@
       LOGICAL                         :: IS_LOW_PRECISION  ! Print MPFACTOR, MEFFMASS values with 2 decimal places of accuracy rather than 6
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IS_LOW_PRECISION = (DEBUG(174) == 0)
@@ -230,12 +224,7 @@
 
       WRITE(F06,9118) (CHAR_PCT(I),I=1,6)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

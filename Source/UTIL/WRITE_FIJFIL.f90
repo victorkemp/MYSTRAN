@@ -30,11 +30,10 @@
 ! User must have Case Control entries ELDATA in order to get these files written
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, F06, F21, F22, F23, F24, F25, F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG
+      USE IOUNT1, ONLY                :  F06, F21, F22, F23, F24, F25, F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG
       USE DEBUG_PARAMETERS
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_STRESS_POINTS, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_FIJFIL_BEGEND
       USE MODEL_STUF, ONLY            :  EID, TYPE, ELGP, ELDOF, KE, ME, PEB, PEG, PEL, PPE, PTE,                                  &
                                          SE1, SE2, SE3, STE1, STE2, STE3, UEB, UEG, UEL 
       USE PARAMS, ONLY                :  ELFORCEN
@@ -48,14 +47,9 @@
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Internal subcase or vector number for data to be written
       INTEGER(LONG), INTENT(IN)       :: WHICH             ! Which F2j file to write to
       INTEGER(LONG)                   :: I,J, K            ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FIJFIL_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
  
 ! **********************************************************************************************************************************
 
@@ -193,12 +187,7 @@
 !xx      WRITE(F25) 'FINISHED'
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

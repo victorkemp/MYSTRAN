@@ -29,13 +29,12 @@
 ! Reads matrices needed when a restart is made in LINK3 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE IOUNT1, ONLY                :  L2G, LINK2G, L2G_MSG, L2GSTAT
       USE IOUNT1, ONLY                :  L2H, LINK2H, L2H_MSG, L2HSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFL, NTERM_KLL, NTERM_PL
       USE TIMDAT, ONLY                :  TSEC 
       USE SPARSE_MATRICES, ONLY       :  I_KLL , J_KLL , KLL ,I_PL , J_PL , PL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RESTART_DATA_FOR_L3_BEGEND
 
       USE RESTART_DATA_FOR_L3_USE_IFs
 
@@ -51,14 +50,9 @@
 
       INTEGER(LONG)                   :: IERR              ! Local error count
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RESTART_DATA_FOR_L3_BEGEND
+
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IERR = 0
@@ -100,12 +94,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

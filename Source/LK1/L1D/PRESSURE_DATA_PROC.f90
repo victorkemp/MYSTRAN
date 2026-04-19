@@ -31,15 +31,14 @@
 ! PDATA (arrays used in the element generation routines)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     L1Q
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            LINK1Q
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            L1Q_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     L1Q
+      USE IOUNT1, ONLY                :  WRT_ERR,                            LINK1Q
+      USE IOUNT1, ONLY                :  WRT_ERR,                            L1Q_MSG
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, JCARD_LEN, LPDAT, LLOADC,            &
                                          MPDAT_PLOAD1, MPDAT_PLOAD2, MPDAT_PLOAD4, MPLOAD4_3D_DATA, NELE, NLOAD, NPCARD,           &
                                          NPLOAD4_3D, NPDAT, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRESSURE_DATA_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  LOAD_SIDS, LOAD_FACS, SUBLOD, PDATA, PPNT, PLOAD4_3D_DATA, PTYPE
  
@@ -77,19 +76,14 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! Pressure load set ID read from an elem pressure B.D. card
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRESSURE_DATA_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: SCALE             ! Scale factor from a LOAD Bulk Data card
       REAL(DOUBLE)                    :: RPDAT             ! Real pressure value read from file LINK1Q
       REAL(DOUBLE)                    :: RPDAT1            ! Real pressure value read from file LINK1Q
       REAL(DOUBLE)                    :: RSID(LLOADC+1)    ! Array of load magnitudes (for LSID set ID's) needed for one S/C
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EL_REDUNDANT_PRES  =  0                              ! Initialize warn, err indicators for redundant elem press definition
@@ -135,7 +129,7 @@ pcards:  DO J=1,NPCARD                                     ! Process elem pressu
             READ(L1Q,IOSTAT=IOCHK) CARD                    ! Read element pressure CARD from LINK1Q
             IF (IOCHK /= 0) THEN
                REC_NO = J + 1
-               CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT )
                IERROR = IERROR + 1
                CYCLE isubc
             ENDIF
@@ -282,7 +276,7 @@ k_do6:            DO K=EID1,EID2
          READ(L1Q,IOSTAT=IOCHK) XTIME
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Cannot read STIME from temperature data file, so quit
          ENDIF
  
@@ -299,11 +293,11 @@ k_do6:            DO K=EID1,EID2
  
 ! First close and delete L1Q file
  
-      CALL FILE_CLOSE ( L1Q, LINK1Q, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( L1Q, LINK1Q, 'DELETE' )
  
 ! Open L1Q for write:
  
-      CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
       DATA_SET_NAME = 'PPNT'
       WRITE(L1Q) DATA_SET_NAME
@@ -336,12 +330,7 @@ k_do6:            DO K=EID1,EID2
          WRITE(L1Q) (PLOAD4_3D_DATA(I,J),J=1,MPLOAD4_3D_DATA)
       ENDDO
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -375,10 +364,9 @@ k_do6:            DO K=EID1,EID2
 ! Element pressure routine - generates the PPNT(i,J) array and PTYPE(i) array
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NELE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRESSURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  ESORT1, ETYPE, SUBLOD, PPNT, PTYPE
  
       IMPLICIT NONE
@@ -394,13 +382,9 @@ k_do6:            DO K=EID1,EID2
       INTEGER(LONG), INTENT(OUT)      :: IELEM    ! Internal elem ID for actual elem ID EID
       INTEGER(LONG), INTENT(INOUT)    :: EL_REDUNDANT_PRES      ! Count of warning messages when elements have redundant pressures
       INTEGER(LONG), INTENT(INOUT)    :: EL_PRES_ERR       ! Count of errors where elem ID is wrong (*ERROR  1320)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRESSURE_DATA_PROC_BEGEND + 2
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -450,12 +434,7 @@ k_do6:            DO K=EID1,EID2
          ENDIF
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

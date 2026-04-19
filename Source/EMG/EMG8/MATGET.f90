@@ -29,11 +29,9 @@
 ! Gets a NROW x NCOL partition of a matrix starting at row BEG_ROW and column BEG_COL
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATGET_BEGEND
  
       USE MATGET_USE_IFs
 
@@ -51,17 +49,12 @@
       INTEGER(LONG)                   :: ICNT              ! A computed index into array A
       INTEGER(LONG)                   :: ICNT0             ! Part of ICNT
       INTEGER(LONG)                   :: II                ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATGET_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROWA*NCOLA)    ! Input matrix from which a partition will be extracted
       REAL(DOUBLE) , INTENT(OUT)      :: B(NROW*NCOL)      ! Output matrix, which is the partition extracted from A
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -81,12 +74,7 @@
          ENDDO 
       ENDDO 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

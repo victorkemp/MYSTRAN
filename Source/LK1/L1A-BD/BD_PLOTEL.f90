@@ -29,10 +29,9 @@
 ! Processes PLOTEL Bulk Data Cards
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF, MEDAT_PLOTEL, NELE, NPLOTEL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PLOTEL_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, ETYPE
  
       USE BD_PLOTEL_USE_IFs
@@ -47,14 +46,9 @@
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! An integer read
       INTEGER(LONG)                   :: IERR              ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PLOTEL_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! PLOTEL element Bulk Data Card routine
@@ -110,12 +104,7 @@
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

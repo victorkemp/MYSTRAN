@@ -29,12 +29,11 @@
 ! Call routines to reduce the KGGD differential stiffness matrix from the G-set to the N, M-sets
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, LINK2A, L2A, L2ASTAT, L2A_MSG, L2J, LINK2J, L2J_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, LINK2A, L2A, L2ASTAT, L2A_MSG, L2J, LINK2J, L2J_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NDOFN, NDOFM, NTERM_HMN, NTERM_KGGD, NTERM_KNND,          &
                                          NTERM_KNMD, NTERM_KMMD, NTERM_GMN
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KGGD_TO_KNND_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE
       USE SPARSE_MATRICES, ONLY       :  I_HMN, J_HMN, HMN, I_KGGD, J_KGGD, KGGD, I_KNND, J_KNND, KNND, I_KNMD, J_KNMD, KNMD,      &
                                          I_KMMD, J_KMMD, KMMD, I_KMND, J_KMND, KMND, I_GMN, J_GMN, GMN,  I_GMNt, J_GMNt, GMNt
@@ -67,16 +66,11 @@
       INTEGER(LONG)                   :: NTERM_KMND           ! Number of nonzeros in sparse matrix KMND (should = NTERM_KNMD)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KGGD_TO_KNND_BEGEND
+
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition KNND from KGGD (This is KNND before reduction, or KNND(bar) )
@@ -414,12 +408,7 @@
          CALL DEALLOCATE_SCR_MAT ( 'CCS1' )
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

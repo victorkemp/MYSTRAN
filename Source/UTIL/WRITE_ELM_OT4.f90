@@ -29,11 +29,9 @@
 ! Writes CB OTM text file that describes the rows of element related OTM matrices
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_LOC, STRE_LOC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_ELM_OT4_BEGEND
  
       USE WRITE_ELM_OT4_USE_IFs
 
@@ -49,14 +47,9 @@
       INTEGER(LONG), INTENT(IN)       :: NROWS_MAT         ! Number of rows in MAT
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number where to write matrix
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELM_OT4_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       WRITE(UNT,11) NROWS_MAT, NCOLS, MAT_NAME
@@ -84,12 +77,7 @@
 
       WRITE(UNT, *)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

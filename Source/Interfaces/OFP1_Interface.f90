@@ -32,11 +32,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, OT4
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OT4
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, GROUT_ACCE_BIT, GROUT_DISP_BIT, GROUT_OLOA_BIT, IBIT, INT_SC_NUM,&
                                          MELGP, MOGEL, NGRID, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  OTMSKIP, POST
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
@@ -59,7 +58,7 @@
       INTEGER(LONG), INTENT(INOUT)    :: ITABLE            ! 
       LOGICAL, INTENT(INOUT)          :: NEW_RESULT        ! is this the first result of a table
       INTEGER(LONG)                   :: NREQ              ! Number of user requested outputs of displ/force
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP1_BEGEND
+
 
       END SUBROUTINE OFP1
 

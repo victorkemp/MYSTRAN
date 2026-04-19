@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, F04, F06, ERRSTAT, MOU4, SC1,                             &
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F06, ERRSTAT, MOU4, SC1,                             &
                                          L2I    , L2K    , L2L    , L2M    , L2N    , L3A    ,OU4,                                 &
                                          LINK2I , LINK2K , LINK2L , LINK2M , LINK2N , LINK3A ,OU4FIL,                              &
                                          L2I_MSG, L2K_MSG, L2L_MSG, L2M_MSG, L2N_MSG, L3A_MSG,                                     &
@@ -116,14 +116,11 @@
 ! Write info to text files
   
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
 ! Read LINK1A file
  
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 ! Set NUM_CB_DOFS (since it was initialized as 0 in SCONTR and hasn't been calc'd yet, must do this AFTER we call READ_L1A)
 
       NUM_CB_DOFS = 2*NDOFR + NVEC
@@ -231,19 +228,19 @@
 
 ! Open file that has L-set eigenvectors and read them
 
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       CALL LINK_MESSAGE('READ EIGENVECTORS FROM FILE')
       CALL ALLOCATE_EIGEN1_MAT ( 'EIGEN_VEC', NDOFL, NVEC, SUBR_NAME )
       DO J=1,NVEC
          DO I=1,NDOFL
             READ(L3A,IOSTAT=IOCHK) EIGEN_VEC(I,J)
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT )
                IERROR = IERROR + 1
             ENDIF
          ENDDO
       ENDDO 
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )  
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )  
 
       IF (IERROR > 0) THEN
          CALL OUTA_HERE ( 'Y' )
@@ -338,7 +335,7 @@
 ! Rewind L3A and write PHIZL to it and then close L3A
 
       CALL LINK_MESSAGE('WRITE L-set PHIZL to FILE')
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       NUM_SOLNS = NUM_CB_DOFS
       DO I=1,NUM_SOLNS
          CALL GET_SPARSE_CRS_COL ( 'PHIZL', I, NTERM_PHIZL, NDOFL, NUM_SOLNS, I_PHIZL, J_PHIZL, PHIZL, ONE, PHIZL_COL, NULL_COL )
@@ -346,7 +343,7 @@
             WRITE(L3A) PHIZL_COL(J)
          ENDDO
       ENDDO
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )         
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )         
 
 ! Calc modal participation factors and modal mass
 
@@ -410,7 +407,7 @@
 
 ! Write data to L1A
 
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
 ! Check allocation status of allocatable arrays, if requested
 
       IF (DEBUG(100) > 0) THEN
@@ -420,12 +417,9 @@
          ENDIF
       ENDIF
 
-! Write LINK6 end to F04, F06
+! Write LINK6 end to F06
 
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
 ! Close files

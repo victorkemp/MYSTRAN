@@ -33,11 +33,10 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONEPP6
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFM, NDOFO, NDOFS, NDOFR, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_SPARSE_MAT_BEGEND
 
       USE SPARSE_MATRICES , ONLY      :  I_KGG   , J_KGG   , KGG   , I_MGG   , J_MGG   , MGG   , I_PG    , J_PG    , PG    ,       &
                                          I_KGGD  , J_KGGD  , KGGD  ,                                                               &
@@ -96,7 +95,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Number of rows for matrix NAME
       INTEGER(LONG), INTENT(IN)       :: NTERMS            ! Number of nonzero terms that will be in matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SPARSE_MAT_BEGEND
+
 
       END SUBROUTINE ALLOCATE_SPARSE_MAT
 

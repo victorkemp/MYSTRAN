@@ -33,10 +33,9 @@
 !   SETID, CID, ACCEL(1-6)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1P
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1P
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LGRAV, LSUB, NGRAV, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_GRAV_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  GRAV_SIDS, SUBLOD
  
@@ -61,7 +60,7 @@
       INTEGER(LONG)                   :: GID        = 0     ! Grid ID (or 0) of the grid that the rotational grav accels refer to
       INTEGER(LONG)                   :: JERR       = 0     ! A local error count
       INTEGER(LONG)                   :: SETID      = 0     ! Set ID on the GRAV card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_GRAV_BEGEND
+
   
       REAL(DOUBLE)                    :: ACCEL(6)           ! Gravity magnitudes in the 3 translational and 3 rotational dirs
       REAL(DOUBLE)                    :: SCALEF     = ZERO  ! Scale factor on the GRAV card
@@ -69,12 +68,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! GRAV Bulk Data Card routine
@@ -188,12 +182,7 @@
          WRITE(L1P) SETID, CID, GID, (ACCEL(I),I=1,6)
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

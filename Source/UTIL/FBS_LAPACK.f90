@@ -35,7 +35,7 @@
 ! (3) Scales the solution vector if requested
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, STIME, TSEC       
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -44,7 +44,6 @@
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG, NDEBUG
       USE MACHINE_PARAMS, ONLY        :  MACH_EPS, MACH_SFMIN
       USE LAPACK_LIN_EQN_DPB
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FBS_LAPACK_BEGEND
 
       USE SYM_MAT_DECOMP_LAPACK_USE_IFs
                       
@@ -68,19 +67,14 @@
                                                            ! > 0:  if INFO = i, the leading minor of order i is not pos def
                                                            !       and the factorization (in DPBTRS) could not be completed.
       INTEGER(LONG), PARAMETER        :: NUM_COLS    = 1   ! Number of vectors to solve in this call
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FBS_LAPACK_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: EQUIL_SCALE_FACS(NROWS)
                                                            ! LAPACK_S values to return to calling subr
 
       REAL(DOUBLE) , INTENT(INOUT)    :: INOUT_COL(NROWS)    ! INOUT input  vector
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Scale the INOUT vector if requested
@@ -117,12 +111,7 @@
                     ,/,14X,' LAPACK SUBR XERBLA SHOULD HAVE REPORTED AN ERROR ON AN ILLEGAL ARGUMENT IN A CALL TO LAPACK SUBR '    &
                     ,/,15X,A,' (OR A SUBR CALLED BY IT) AND THEN ABORTED')
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

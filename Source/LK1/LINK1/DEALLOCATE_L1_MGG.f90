@@ -29,11 +29,10 @@
 !  Deallocate some arrays used in LINK1
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC 
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DEALLOCATE_L1_MGG_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_MGG, I2_MGG, J_MGG, MGG, I_MGGC, J_MGGC, MGGC, I_MGGE, J_MGGE, MGGE, I_MGGS, J_MGGS, MGGS
  
       USE DEALLOCATE_L1_MGG_USE_IFs
@@ -46,18 +45,13 @@
  
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DEALLOCATE_L1_MGG_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
 !                                                            ALLOCATED_ARRAY_MEM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -68,7 +62,6 @@
             DEALLOCATE (I2_MGG,STAT=IERR)
             NAME = 'I2_MGG'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -83,7 +76,6 @@
             DEALLOCATE (I_MGGC,STAT=IERR)
             NAME = 'I_MGGC'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -96,7 +88,6 @@
             DEALLOCATE (J_MGGC,STAT=IERR)
             NAME = 'J_MGGC'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -109,7 +100,6 @@
             DEALLOCATE (MGGC,STAT=IERR)
             NAME = 'MGGC'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -124,7 +114,6 @@
             DEALLOCATE (I_MGGE,STAT=IERR)
             NAME = 'I_MGGE'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -137,7 +126,6 @@
             DEALLOCATE (J_MGGE,STAT=IERR)
             NAME = 'J_MGGE'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -150,7 +138,6 @@
             DEALLOCATE (MGGE,STAT=IERR)
             NAME = 'MGGE'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                JERR = JERR + 1
@@ -165,7 +152,6 @@
             DEALLOCATE (I_MGGS,STAT=IERR)
             NAME = 'I_MGGS'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -178,7 +164,6 @@
             DEALLOCATE (J_MGGS,STAT=IERR)
             NAME = 'J_MGGS'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                WRITE(F06,992) NAME, SUBR_NAME
@@ -191,7 +176,6 @@
             DEALLOCATE (MGGS,STAT=IERR)
             NAME = 'MGGS'
             CALL ALLOCATED_MEMORY ( NAME, ZERO, 'DEALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'DEALLOC', -CUR_MB_ALLOCATED, 0, 0, SUBR_BEGEND )
             IF (IERR /= 0) THEN
                WRITE(ERR,992) NAME, SUBR_NAME
                JERR = JERR + 1
@@ -215,12 +199,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME, TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

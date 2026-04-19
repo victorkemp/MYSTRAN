@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ONE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L5B, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L5B, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LINKNO, NDOFA, NDOFF, NDOFG, NDOFM, NDOFN, NDOFO, NDOFR, NDOFS, NTERM_PHIXA,&
                                          NTERM_PHIXG, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  YEAR, MONTH, DAY, HOUR, MINUTE, SEC, SFRAC, STIME, TSEC
@@ -41,10 +41,9 @@
       USE PARAMS, ONLY                :  EPSIL, TINY
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE SPARSE_MATRICES, ONLY       :  I_PHIXA, J_PHIXA, PHIXA, I_PHIXG, J_PHIXG, PHIXG  
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EXPAND_PHIXA_TO_PHIXG_BEGEND
       IMPLICIT NONE
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EXPAND_PHIXA_TO_PHIXG_BEGEND
+
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 

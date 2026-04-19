@@ -37,8 +37,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EC_OUTPUT4_BEGEND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE OUTPUT4_MATRICES, ONLY      :  NUM_OU4_VALID_NAMES, TAPE_ACTION_MAX_VAL, TAPE_ACTION_MIN_VAL, NUM_OU4_REQUESTS,          &
                                          OU4_FILE_UNITS, OU4_TAPE_ACTION, ACT_OU4_MYSTRAN_NAMES, ACT_OU4_OUTPUT_NAMES,             &
@@ -75,14 +74,9 @@
       INTEGER(LONG)                   :: ROW_NUM           ! 
       INTEGER(LONG)                   :: SLASH1_COL        ! Col in matrix name where character  "/"  is  found
       INTEGER(LONG)                   :: SLASH2_COL        ! Col in matrix name where characters "//" are found
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_OUTPUT4_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -320,12 +314,7 @@ nerr: IF (IERR == 0) THEN
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

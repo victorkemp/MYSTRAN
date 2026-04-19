@@ -30,10 +30,9 @@
 ! element stiffness matrix in the element system to the basic coordinate system. Calculates grid point coords in local coord system.
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MELGP, MOFFSET, NCORD, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMGM1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL
@@ -61,7 +60,7 @@
 
       INTEGER(LONG)                   :: ICID               ! Internal coord sys no. corresponding to an actual coord sys no. 
       INTEGER(LONG)                   :: ROWNUM             ! A row number in an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM1_BEGEND
+
   
       REAL(DOUBLE)                    :: DX1(3)             ! Array used in intermediate calc's
       REAL(DOUBLE)                    :: DX2(3)             ! Array used in intermediate calc's
@@ -78,12 +77,7 @@
       REAL(DOUBLE)                    :: VZ(3)              ! A vector in the elem z dir
       REAL(DOUBLE)                    :: V13(3)             ! A vector from grid 1 to grid 3 (for BAR, BEAM or USER1 it is V vector)
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME, TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -361,12 +355,7 @@ begn: IF (TYPE /= 'ROD     ') THEN
          ENDDO 
       ENDDO 
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

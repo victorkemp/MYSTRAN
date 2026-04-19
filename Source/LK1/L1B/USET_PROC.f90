@@ -46,10 +46,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1X, L1X_MSG, LINK1X
+      USE IOUNT1, ONLY                :  ERR, F06, L1X, L1X_MSG, LINK1X
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ENFORCED, FATAL_ERR, NGRID, NUM_USET_RECORDS, NUM_USET_U1, NUM_USET_U2
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  USET_PROC_BEGEND
       USE PARAMS, ONLY                :  EPSIL
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, USET
       USE MODEL_STUF, ONLY            :  GRID, GRID_ID
@@ -74,14 +73,9 @@
       INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components (1 for SPOINT, 6 for physical grid)
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USET_PROC_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -110,14 +104,14 @@
 
 ! Process USET data from file L1X (data written when USET and USET1 Bulk Data entries were read)
  
-      CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'OLD', L1X_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'OLD', L1X_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 i_do6:DO I=1,NUM_USET_RECORDS
  
          READ(L1X,IOSTAT=IOCHK) SNAME, ICOMP, GRID1, GRID2
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1X, L1X_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1X, L1X_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading SPC file . No sense continuing
          ENDIF
 
@@ -198,12 +192,7 @@ i_do6:DO I=1,NUM_USET_RECORDS
 
       CALL WRITE_USET
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -66,7 +66,7 @@
  
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1D
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1D
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, DATA_NAM_LEN, FATAL_ERR, IBIT, WARN_ERR, LSETLN,              &
                                          MELDTS, MELOUTS, METYPE, MGROUTS, NELE, NGRID, NSUB 
@@ -76,7 +76,6 @@
 
       USE PARAMS, ONLY                :  PRTSCP, SUPWARN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SUBCASE_PROC_BEGEND
 
       USE MODEL_STUF, ONLY            :  CCELDT, ONE_SET_ARRAY, SC_ACCE, SC_DISP, SC_ELFN, SC_ELFE, SC_GPFO, SC_MPCF,              &
                                          SC_OLOA, SC_SPCF, SC_STRE, SC_STRN, ELDT, OELDT, ELOUT, OELOUT, GROUT, OGROUT, LABEL,     &
@@ -129,16 +128,11 @@
       INTEGER(LONG)                   :: NULSET            ! Output from subr SETPRO. If 0, there were no SET's in ALL_SETS_ARRAY
       INTEGER(LONG)                   :: SETID             ! = 0, -1, or pos integer set ID read from array SC_xxxx
       INTEGER(LONG)                   :: TOKLEN        = 0 ! Length (bytes) of TOKSTR sent to subr STOKEN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND
+
   
       INTRINSIC                       :: IAND,IBCLR,IBSET
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -1261,12 +1255,7 @@ token_loop3:DO                                             ! Call STOKEN in a DO
       WRITE(L1D) ANY_STRE_OUTPUT
       WRITE(L1D) ANY_STRN_OUTPUT
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -1334,10 +1323,9 @@ token_loop3:DO                                             ! Call STOKEN in a DO
 
    
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LSETLN, MAX_TOKEN_LEN, SETLEN, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SUBCASE_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  ALL_SETS_ARRAY, ONE_SET_ARRAY
  
       IMPLICIT NONE
@@ -1363,16 +1351,11 @@ token_loop3:DO                                             ! Call STOKEN in a DO
       INTEGER(LONG)                   :: SET_2_BEG         ! Pos'n in SETCHR where next 'SET' begins (where the chars 'SET' begin)
       INTEGER(LONG)                   :: SID_BEG           ! Pos'n in SETCHR where a sets ID begins
       INTEGER(LONG)                   :: SID_END           ! Pos'n in SETCHR where a sets ID ends
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND + 1
+
  
       INTRINSIC INDEX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -1488,12 +1471,7 @@ i_loop2: DO I=SID_BEG,SID_END
          ENDDO
       ENDIF 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

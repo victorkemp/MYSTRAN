@@ -29,10 +29,9 @@
 ! Calculate BB bending strain/displacement matrix for MIN3 triangle. Called by subr TPLT2
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT, MIN4T_QUAD4_TRIA_NO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BBMIN3_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TWO
       USE MODEL_STUF, ONLY            :  EID, TYPE, XTB, XTL
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -50,7 +49,7 @@
       INTEGER(LONG)                   :: ID(9)             ! An input to subr BCHECK, called herein if
       INTEGER(LONG), PARAMETER        :: NR        = 3     ! An input to subr BCHECK, called herein if
       INTEGER(LONG), PARAMETER        :: NC        = 9     ! An input to subr BCHECK, called herein if
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BBMIN3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: A(3)              ! Diffs in x coords of elem
       REAL(DOUBLE) , INTENT(IN)       :: B(3)              ! Diffs in y coords of elem
@@ -59,12 +58,6 @@
       REAL(DOUBLE)                    :: BW(3,14)          ! Output from subr BCHECK (matrix of 3 elem strains for 14 various elem
 !                                                            rigid body motions/constant strain distortions)
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
 ! **********************************************************************************************************************************
 ! Initialize outputs
 
@@ -130,12 +123,7 @@
         ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

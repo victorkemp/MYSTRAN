@@ -34,7 +34,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFL, NDOFR, NTERM_DLR, NTERM_MLL, NTERM_MRL, NTERM_MRR,        &
                                          NTERM_MRRcb, NTERM_MRRcbn
       USE TIMDAT, ONLY                :  TSEC
@@ -49,7 +49,6 @@
                                          SYM_MRRcb
 
       USE SCRATCH_MATRICES
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_MRRcb_BEGEND
 
       USE CALC_MRRcb_USE_IFs
 
@@ -68,18 +67,13 @@
       INTEGER(LONG)                   :: NTERM_CRS2          ! Number of terms in matrix CRS2  
       INTEGER(LONG)                   :: NTERM_CRS3          ! Number of terms in matrix CRS3  
       INTEGER(LONG)                   :: NUM_MRRcb_DIAG_0    ! Number of zero diagonal terms in MRRcb
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_MRRcb_BEGEND
+
 
       REAL(DOUBLE)                    :: DUMR6(NDOFR,6)      ! Intermediate matrix
                                                              ! Full representation of MRRcb
       REAL(DOUBLE)                    :: MRRcb_FULL(NDOFR,NDOFR)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Calc MRRcb = MRR + MRL*DLR + (MRL*DLR)' + DLR'*MLL*DLR
@@ -314,12 +308,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

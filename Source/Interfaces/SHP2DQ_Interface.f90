@@ -32,10 +32,9 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_SHPJ_BIT, MEFE, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SHP_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, FOUR
       USE MODEL_STUF, ONLY            :  EID, EMG_IFE, ERR_SUB_NAM, NUM_EMG_FATAL_ERRS, TYPE
  
@@ -50,7 +49,7 @@
       INTEGER(LONG), INTENT(IN)       :: JGAUS             ! J index of Gauss point (needed for some optional output)
       INTEGER(LONG), INTENT(IN)       :: IORZZZ            ! Integration order (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: NUM_NODES         ! Number of element nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component

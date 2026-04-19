@@ -32,12 +32,11 @@
 ! ======================================
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_LOG, WRT_BUG, WRT_ERR
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_STRESS_POINTS, NSUB, NTSUB, MAX_ORDER_GAUSS, MEFE, NMATL,    &
                                          NPSHEL
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMOFF_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
       USE PARAMS, ONLY                :  K6ROT, EPSIL, QUAD4TYP
       USE MODEL_STUF, ONLY            :  CAN_ELEM_TYPE_OFFSET, ELDOF, ELGP, EID, KE, ME, NUM_EMG_FATAL_ERRS, RMATL,                &
@@ -60,7 +59,7 @@
       INTEGER(LONG)                   :: COL               ! A computed col number in the elem stiff matrix
       INTEGER(LONG)                   :: NCOL              ! An input to subr MULT_OFFSET, called herein
       INTEGER(LONG)                   :: METH              ! An input to subr MULT_OFFSET, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOFF_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM3(3,3)         ! An intermediate result when calculating offset SEi
       REAL(DOUBLE)                    :: DUM4(3,3)         ! An intermediate result when calculating offset SEi
@@ -99,12 +98,7 @@
       
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, (OPT(I),I=1,6)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X,6A1)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure we are not here for an element that does not support offsets
@@ -607,12 +601,7 @@
  
 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -650,10 +639,9 @@
 ! simplicity, A*E or E(transp)*A is calculated explicitly
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMOFF_BEGEND
       USE MODEL_STUF, ONLY            :  EMG_IFE, ERR_SUB_NAM, NUM_EMG_FATAL_ERRS 
 
       IMPLICIT NONE
@@ -664,7 +652,7 @@
       INTEGER(LONG), INTENT(IN)       :: METH              ! = 1 if A*E is to be calculated
                                                            ! = 2 if E(transp)*A is to be calculated
       INTEGER(LONG), INTENT(IN)       :: NCOLA             ! Number of cols in matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOFF_BEGEND + 1
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(3,NCOLA)        ! Matrix to either post-multiply E by or pre-multiply E(transp) by
       REAL(DOUBLE) , INTENT(IN)       :: DX                ! Offset distance in direction 1
@@ -672,12 +660,7 @@
       REAL(DOUBLE) , INTENT(IN)       :: DZ                ! Offset distance in direction 3
       REAL(DOUBLE) , INTENT(INOUT)    :: B(3,NCOLA)        ! Result matrix of either A*E or E(transp)*A
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Do not initialize B. It is an output in one call and maybe is input back as A in next call
@@ -710,12 +693,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -33,11 +33,10 @@
                                , I2_MATOUT, J_MATOUT, MATOUT )
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_2_BEGEND
  
       IMPLICIT NONE
  
@@ -56,7 +55,7 @@
       INTEGER(LONG), INTENT(OUT)      :: I2_MATOUT(NTERMS) ! Row numbers for terms in matrix MATOUT
       INTEGER(LONG), INTENT(OUT)      :: J_MATOUT(NTERMS)  ! Col numbers for terms in matrix MATOUT
       INTEGER(LONG)                   :: OLD_ROW_NUM       ! A variable used to tell when a new row of MATOUT is being read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_2_BEGEND
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERMS)    ! Real values for matrix MATOUT
 

@@ -53,7 +53,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, ERRSTAT, F04, F06, L1M, L3A, SC1
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, ERRSTAT, F06, L1M, L3A, SC1
       USE IOUNT1, ONLY                :  LINK1M,  LINK2I,  LINK3A, L1M_MSG, L3A_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, COMM, FATAL_ERR, LINKNO, MBUG, NDOFL,                                       &
                                          NTERM_KLL, NTERM_KLLD, NTERM_KLLDn,                                                       &
@@ -118,13 +118,10 @@
 
       ! Write info to text files
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
       ! Read LINK1A file
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 
       ! Check COMM for successful completion of prior LINKs
       IF (COMM(P_LINKNO) /= 'C') THEN
@@ -341,7 +338,7 @@
       ENDIF
 
       ! Open and set up file L3A (used to hold eigenvectors)
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
       ! Write out computed eigenvectors to L3A
       CALL LINK_MESSAGE('WRITE EIGENVECTORS TO DISK FILE')
@@ -350,7 +347,7 @@
            WRITE(L3A) EIGEN_VEC(I,J)
          ENDDO
       ENDDO
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )
 
       ! Optional eigenvector debug output
       IF (DEBUG(43) == 1) THEN
@@ -386,7 +383,7 @@
       COMM(LINKNO) = 'C'
 
       ! Write data to L1A
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
 
       ! Check allocation status of allocatable arrays, if requested
       IF (DEBUG(100) > 0) THEN
@@ -396,11 +393,8 @@
          ENDIF
       ENDIF
 
-      ! Write LINK4 end to F04, F06
+      ! Write LINK4 end to F06
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
       ! Close files

@@ -29,10 +29,9 @@
 ! Processes MPC equations to get terms for the RMG constraint matrix
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     L1J,     L1S, LINK1S, L1S_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     L1J,     L1S, LINK1S, L1S_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LMPCADDC, NGRID, NMPC, NMPCADD, NUM_MPCSIDS, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MPC_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  GRID_ID, MPCSET, MPCSIDS
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -63,17 +62,12 @@
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MPC_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: COEFF             ! An MPC coeff value read from file LINK1S that we do not need
       REAL(DOUBLE)                    :: COEFF_JUNK        ! An MPC coeff value read from file LINK1S that we do not need
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -103,14 +97,14 @@ i_do3:DO I=1,NMPC                                          ! Process data from f
          READ(L1S,IOSTAT=IOCHK) SETID                      ! Read the SETID for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
          READ(L1S,IOSTAT=IOCHK) NUM_TRIPLES                ! Read the number of triplets of grid/comp/coeff for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
@@ -125,7 +119,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
                READ(L1S,IOSTAT=IOCHK) GID,COMP,COEFF       ! Read dependent grid/comp/coeff
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
                                                            ! Get row num (in GRID_ID) corresponding to grid GID (we know GID exists)
@@ -156,7 +150,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
 
                   REC_NO = REC_NO + 1
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
 
@@ -201,7 +195,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
                READ(L1S,IOSTAT=IOCHK) GID_JUNK,COMP_JUNK,COEFF_JUNK
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
             ENDDO
@@ -214,12 +208,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
          CALL DEALLOCATE_MODEL_STUF ( 'MPCSIDS' )
       END IF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

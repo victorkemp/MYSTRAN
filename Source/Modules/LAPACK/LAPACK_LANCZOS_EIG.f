@@ -3,15 +3,11 @@
       MODULE LAPACK_LANCZOS_EIG
 
       USE PENTIUM_II_KIND, ONLY         :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                  :  F04, WRT_LOG
       USE SCONTR, ONLY                  :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                  :  TSEC
       USE LAPACK_BLAS_AUX
-      USE SUBR_BEGEND_LEVELS, ONLY      :  ARPACK_BEGEND
 
       USE OURTIM_Interface
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = ARPACK_BEGEND
 
 ! This is the set of LAPACK routines used by the Lanczos algorithm contained in module ARPACK_LANCZOS_EIG
 ! The following routines are contained:
@@ -122,14 +118,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+2) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input arguments
 *
@@ -166,14 +154,6 @@
          END IF
    10 CONTINUE
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+2) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DGEQR2
@@ -299,14 +279,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+2) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input arguments
 *
@@ -389,14 +361,6 @@
          A( I, I ) = AII
    10 CONTINUE
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+2) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DORM2R

@@ -52,11 +52,10 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONE80, PI, CONV_DEG_RAD
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MRCORD, NCORD, NCORD1, NCORD2, NGRID, FATAL_ERR
       USE PARAMS, ONLY                :  EPSIL, PRTCORD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CORD_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CORD, GRID, RCORD, RGRID, TN
 
       USE CORD_PROC_USE_IFs
@@ -116,7 +115,7 @@
 !                                                            CORD1R each of the 3 cols will have the same coord sys value in row 1.
 
       INTEGER(LONG)                   :: RID_ARRAY_COL     ! Col number in RID_ARRAY
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CORD_PROC_BEGEND
+
   
       REAL(DOUBLE)                    :: EMTN(3,3)         ! A coord transf matrix from some coord system to basic
       REAL(DOUBLE)                    :: EPS1              ! A small number
@@ -155,12 +154,7 @@
  
       INTRINSIC                       :: DCOS, DSIN, DSQRT
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -1116,12 +1110,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
 
 ! Check IERROR and quit if > 0
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -1175,10 +1164,9 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
 ! sorting the coord system ID's and then checking the sorted dummy array for uniqueness
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  NCORD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CORD_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CORD
  
       IMPLICIT NONE
@@ -1188,14 +1176,9 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
       INTEGER(LONG), INTENT(OUT)      :: IERROR            ! Count of the number of duplicate coord system ID's
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: DUMCORD(NCORD)    ! Dummy array of coord system ID's sorted
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CORD_PROC_BEGEND
+
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Create DUMCORD to be an array of the coordinate system ID's
@@ -1222,12 +1205,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
          ENDIF
       ENDDO 
     
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

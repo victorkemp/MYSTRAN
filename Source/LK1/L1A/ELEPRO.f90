@@ -41,10 +41,9 @@
 !  4) Resets pointer array, EPNT.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JF, LEDAT, LELE, NEDAT, NELE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELEPRO_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, EPNT
  
       USE ELEPRO_USE_IFs
@@ -75,14 +74,9 @@
 !                                                            additional data will fit into EDAT can be made here.
       INTEGER(LONG)                   :: I4INP             ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELEPRO_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CHK_FLD_ARRAY(2) = CHK_FLD2
@@ -165,12 +159,7 @@ jdo:  DO J=1,NFIELD                                        ! Load element data i
 
       ENDDO jdo
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

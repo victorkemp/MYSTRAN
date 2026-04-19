@@ -34,12 +34,11 @@
                                       MAT_C_NAME,          I_C, J_C, C, SYM_C )
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_MAT_COLS_SSS_BEGEND
 
       IMPLICIT NONE
 
@@ -59,7 +58,6 @@
       INTEGER(LONG)   , INTENT(IN)    :: J_B(NTERM_B)            ! Col no's for nonzero terms in matrix B
       INTEGER(LONG)   , INTENT(OUT)   :: I_C(NROWS+1)            ! I_C(I+1) - I_C(I) = no. terms in row I of matrix C
       INTEGER(LONG)   , INTENT(OUT)   :: J_C(NTERM_A+NTERM_B)    ! Col no's for nonzero terms in matrix C
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = MERGE_MAT_COLS_SSS_BEGEND
 
       REAL(DOUBLE)    , INTENT(IN)    :: A(NTERM_A)              ! Nonzero terms in matrix A
       REAL(DOUBLE)    , INTENT(IN)    :: B(NTERM_B)              ! Nonzero terms in matrix B

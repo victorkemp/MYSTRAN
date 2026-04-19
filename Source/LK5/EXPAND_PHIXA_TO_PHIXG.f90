@@ -31,7 +31,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ONE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L5B, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L5B, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LINKNO, NDOFA, NDOFF, NDOFG, NDOFM, NDOFN, NDOFO, NDOFR, NDOFS, NTERM_PHIXA,&
                                          NTERM_PHIXG, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
@@ -39,7 +39,6 @@
       USE PARAMS, ONLY                :  EPSIL, TINY
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE SPARSE_MATRICES, ONLY       :  I_PHIXA, J_PHIXA, PHIXA, I_PHIXG, J_PHIXG, PHIXG  
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EXPAND_PHIXA_TO_PHIXG_BEGEND
       USE EXPAND_PHIXA_TO_PHIXG_USE_IFs
 
       USE LINK_MESSAGE_Interface
@@ -50,19 +49,14 @@
       CHARACTER( 1*BYTE)              :: NULL_COL          ! = 'Y' if col of PHIXA is null
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EXPAND_PHIXA_TO_PHIXG_BEGEND
+
 
       REAL(DOUBLE)                    :: PHIXG_FULL(NDOFG,NDOFR+NVEC)
 !                                                          ! Full representation of matrix PHIXG before converting to sparse matrix
 
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Expand PHIXA (cols stored in UA_COL) to G-set columns (UG_COL). Each UG_COL is a column of matrix PHIXG
@@ -115,12 +109,7 @@
       CALL FULL_TO_SPARSE_CRS   ( 'PHIXG_FULL', NDOFG, NDOFR+NVEC, PHIXG_FULL, NTERM_PHIXG, SMALL, SUBR_NAME, 'N',                 &
                                    I_PHIXG, J_PHIXG, PHIXG )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

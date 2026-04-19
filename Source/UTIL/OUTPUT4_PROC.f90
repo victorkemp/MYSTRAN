@@ -35,7 +35,7 @@
 ! This subr does not process the grid and/or element related Output Transformation Matrices (OTM's). That is done in LINK9  
 
       USE PENTIUM_II_KIND, ONLY        :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                 :  ERR, F04, F06, MOU4, OU4, OU4_MSG, OU4FIL, WRT_LOG
+      USE IOUNT1, ONLY                 :  ERR, F06, MOU4, OU4, OU4_MSG, OU4FIL
 
       USE SCONTR, ONLY                 :  BLNK_SUB_NAM, FATAL_ERR   ,                                                              &
                                           NTERM_CG_LTM, NTERM_DLR   , NTERM_IF_LTM, NTERM_KLL   ,                                  &
@@ -98,7 +98,6 @@
                                           I_PA , J_PA , PA , I_PG , J_PG , PG , I_PL , J_PL , PL
 
       USE FULL_MATRICES, ONLY          :  PHIZG_FULL
-      USE SUBR_BEGEND_LEVELS, ONLY     :  OUTPUT4_PROC_BEGEND
  
       USE OUTPUT4_PROC_USE_IFs
 
@@ -125,14 +124,9 @@
       INTEGER(LONG)                   :: VAL_C             ! Non-zero vals in OU4_PARTVEC_ROWS
       INTEGER(LONG)                   :: VAL_R             ! Non-zero vals in OU4_PARTVEC_COLS
       INTEGER(LONG)                   :: UNT               ! 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTPUT4_PROC_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       DO I=1,NUM_OU4_REQUESTS
@@ -1327,12 +1321,7 @@
 
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

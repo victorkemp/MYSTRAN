@@ -33,8 +33,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EC_OUTPUT4_BEGEND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE OUTPUT4_MATRICES, ONLY      :  NUM_OU4_VALID_NAMES, TAPE_ACTION_MAX_VAL, TAPE_ACTION_MIN_VAL, NUM_OU4_REQUESTS,          &
                                          OU4_FILE_UNITS, OU4_TAPE_ACTION, ACT_OU4_MYSTRAN_NAMES, ACT_OU4_OUTPUT_NAMES,             &
@@ -48,7 +47,7 @@
       CHARACTER(LEN=*), INTENT(OUT)   :: ANY_OU4_NAME_BAD  ! 'Y'/'N' if requested OUTPUT4 matrix name is valid
  
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator. If CHAR not found, IERR set to 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_OUTPUT4_BEGEND
+
  
       END SUBROUTINE EC_OUTPUT4
 

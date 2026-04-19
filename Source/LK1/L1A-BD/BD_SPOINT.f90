@@ -29,11 +29,10 @@
 ! Read Bulk Data SPOINT entries. Enter the SPOINT number into array GRID (in col 1) and set GRID(ngrid,6) to 1 to indicate SPOINT
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_SPOINT_BEGEND
  
       USE BD_SPOINT_USE_IFs
 
@@ -49,14 +48,9 @@
       INTEGER(LONG)                   :: JERR      = 0     ! Error indicator for several types of error in format #2 of input
       INTEGER(LONG)                   :: SPOINT1   = 0     ! An SPOINT number
       INTEGER(LONG)                   :: SPOINT2   = 0     ! An SPOINT number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SPOINT_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! SPOINT Bulk Data Card routine
@@ -160,12 +154,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -29,10 +29,9 @@
 ! Processes RBAR, RBE1, RBE2 rigid elements to get terms for the RMG constraint matrix
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1F, LINK1F, L1F_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1F, LINK1F, L1F_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NRECARD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RIGID_ELEM_PROC_BEGEND
 
       USE RIGID_ELEM_PROC_USE_IFs
 
@@ -46,14 +45,9 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: IERR  = 0         ! Count of read errors when rigid elem data file is read
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -70,7 +64,7 @@
          READ(L1F,IOSTAT=IOCHK) RTYPE
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Error reading RTYPE from rigid elem file. Can't continue
          ENDIF
 
@@ -111,12 +105,7 @@
          CALL OUTA_HERE ( 'Y' )                                    ! Errors reading rigid element data file, so quit
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

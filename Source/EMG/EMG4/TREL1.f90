@@ -36,10 +36,9 @@
 !  6) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEWE, NSUB, NTSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TREL1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TENTH, ONE, TWO, THREE, TWELVE
       USE PARAMS, ONLY                :  SUPWARN
       USE MODEL_STUF, ONLY            :  EID, ELDOF, EMG_IWE, EMG_RWE, INTL_MID, KE, MASS_PER_UNIT_AREA, ME,                       &
@@ -56,7 +55,7 @@
 
       INTEGER(LONG)                   :: IERROR            ! Local error indicator from one of the subrs called
       INTEGER(LONG)                   :: K,L               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TREL1_BEGEND
+
 
       REAL(DOUBLE)                    :: AR                ! Elem aspect ratio
       REAL(DOUBLE)                    :: AREA              ! Elem area
@@ -95,12 +94,7 @@
       INTEGER(LONG)   , PARAMETER     :: TRIA_NUM  = 1
       REAL(DOUBLE)    , PARAMETER     :: PSI       = 0.0D0
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -237,12 +231,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

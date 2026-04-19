@@ -52,11 +52,10 @@
 ! a square input matrix. The relationship is not checked herein. In addition, symmetry of the input matrix is assumed.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CRS_SYM_TO_CRS_NONSYM_BEGEND
  
       USE CRS_SYM_TO_CRS_NONSYM_USE_IFs
 
@@ -81,19 +80,14 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: I2_A(NTERM_A)     ! Row numbers of the terms in A
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRS_SYM_TO_CRS_NONSYM_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERM_A)        ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)        ! Real nonzero values in output matrix B
 
       CHARACTER(LEN=LEN(NAME_A)+7+LEN("Calculating : row")) :: COUNTER_TEMPLATE
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -157,12 +151,7 @@ i_do: DO I=1,NROW_A                                        ! Matrix multiply loo
       ENDDO i_do
       WRITE(SC1,*) CR13
          
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

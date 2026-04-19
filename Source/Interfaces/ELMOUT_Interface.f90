@@ -32,12 +32,11 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, BUG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_DAT1_BIT, ELDT_BUG_DAT2_BIT, ELDT_BUG_ME_BIT, ELDT_BUG_P_T_BIT,  &
                                          ELDT_BUG_SE_BIT, ELDT_BUG_KE_BIT, ELDT_BUG_U_P_BIT, MBUG, MDT, MELGP, METYPE,             &
                                          MEMATR, MEMATC, MEPROP, MPRESS, NSUB, NTSUB, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMOUT_BEGEND
       USE CONSTANTS_1, ONLY           :  CONV_RAD_DEG, ZERO
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, ELFORCEN, QUADAXIS, QUAD4TYP
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -58,7 +57,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID         ! Internal element ID for which
       INTEGER(LONG), INTENT(IN)       :: CASE_NUM            ! Can be subcase number (e.g. for UEL, PEL output)
       INTEGER(LONG), INTENT(IN)       :: DUM_BUG(0:MBUG-1)   ! Indicator for output of elem data to BUG file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOUT_BEGEND
+
 
       END SUBROUTINE ELMOUT
 

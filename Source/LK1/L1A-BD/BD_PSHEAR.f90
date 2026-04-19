@@ -29,10 +29,9 @@
 ! Processes PSHEAR Bulk Data Cards
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, MPSHEAR, MRPSHEAR, NPSHEAR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PSHEAR_BEGEND
       USE MODEL_STUF, ONLY            :  PSHEAR, RPSHEAR
  
       USE BD_PSHEAR_USE_IFs
@@ -46,16 +45,11 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: MATERIAL_ID   = 0 ! Material ID
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this parent property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PSHEAR_BEGEND
+
 
       REAL(DOUBLE)                    :: R8INP             ! Real value read from a field on the PSHEAR entry
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PSHEAR element Bulk Data Card routine
@@ -119,12 +113,7 @@
       CALL CARD_FLDS_NOT_BLANK ( JCARD,0,0,0,0,6,7,8,9 )
       CALL CRDERR ( CARD )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -24,15 +24,12 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE OPNERR ( IOCHK, FILNAM, OUNT, WRITE_F04 )
+      SUBROUTINE OPNERR ( IOCHK, FILNAM, OUNT )
  
 ! Prints error messages when IOSTAT is not zero on a file OPEN. 
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F04FIL
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, RESTART
-      USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OPNERR_BEGEND
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE SCONTR, ONLY                :  FATAL_ERR, RESTART
  
       USE OPNERR_USE_IFs
 
@@ -41,24 +38,14 @@
       LOGICAL                         :: FILE_EXIST        ! True if FILNAM exists
       LOGICAL                         :: FILE_OPENED       ! True if FILNAM is open
 
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OPNERR'
       CHARACTER(LEN=*), INTENT(IN)    :: FILNAM            ! File name
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
  
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG), INTENT(IN)       :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OPNERR_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         INQUIRE (FILE=F04FIL,OPENED=FILE_OPENED)
-         IF (.NOT.FILE_OPENED) THEN
-            WRITE(F04,9001) SUBR_NAME,TSEC
-         ENDIF
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! IOCHK < 0 is due to EOF/EOR during open. IOCHK > 0 is due to error during open.
@@ -114,15 +101,6 @@
          CALL OUTA_HERE ( 'N' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         INQUIRE (FILE=F04FIL,OPENED=FILE_OPENED)
-         IF (.NOT.FILE_OPENED) THEN
-            WRITE(F04,9002) SUBR_NAME,TSEC
-         ENDIF
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

@@ -29,14 +29,13 @@
 ! Decomposes a symmetric band matrix into triangular factors. The input matrix, MATIN, is stored in CRS sparse format
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC       
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  CRS_CCS, SPARSTOR, BAILOUT
       USE SCRATCH_MATRICES, ONLY      :  I_CCS1, J_CCS1, CCS1
       USE SuperLU_STUF, ONLY          :  SLU_FACTORS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SYM_MAT_DECOMP_SUPRLU_BEGEND
 
       USE SYM_MAT_DECOMP_SUPRLU_USE_IFs
                       
@@ -59,19 +58,14 @@
 
       INTEGER(LONG), INTENT(INOUT)    :: INFO              ! Output from SuperLU routine
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SYM_MAT_DECOMP_SUPRLU_BEGEND
+
       INTEGER(LONG)                   :: COMPV             ! Component number (1-6) of a grid DOF
       INTEGER(LONG)                   :: GRIDV             ! Grid number
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)
       REAL(DOUBLE)                    :: DUM_COL(NROWS)    ! Temp variable for solving equations
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
@@ -166,12 +160,7 @@
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -35,11 +35,10 @@
 ! (3) Call TDOF_PROC to regenerate TDOF, TDOFI tables if KGG_SINGULARITY_PROC found singularities
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1L, L1L_MSG, LINK1L, SC1, SPCFIL, SPC, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1L, L1L_MSG, LINK1L, SC1, SPCFIL, SPC, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NGRID, NIND_GRDS_MPCS,                                    &
                                          NTERM_KGG, NUM_PCHD_SPC1, SOL_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_KGG_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  AUTOSPC, AUTOSPC_RAT, EPSIL, PRTTSET, PRTSTIFF, SPC1QUIT, SUPINFO, SUPWARN
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -81,7 +80,7 @@
       INTEGER(LONG)                   :: OUNT(2)            ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: ROW_NUM_START      ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: RJ(NDOFG)          ! Column numbers corresponding to the terms in RSTF(I).
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_KGG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1               ! A small number to compare real zero
       REAL(DOUBLE)                    :: KGG_II(6,6)        ! 6 x 6 diagonal stiffness matrices for 1 grid
@@ -93,12 +92,7 @@
 
       INTRINSIC                       :: DABS
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -160,15 +154,15 @@
   
       OUNT(1) = ERR
       OUNT(2) = F06
-      CALL FILE_OPEN ( L1L, LINK1L, OUNT, 'REPLACE', L1L_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1L, LINK1L, OUNT, 'REPLACE', L1L_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       WRITE(L1L) NTERM_KGG
 
 ! Open SPC to write SPC1 records if KGG_SINGULARITY_PROC finds singularities
 
       OPEN (SPC,FILE=SPCFIL,STATUS='REPLACE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SPCFIL, OUNT, 'Y')
-         CALL FILERR ( OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SPCFIL, OUNT )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  
@@ -319,14 +313,14 @@ j_do4:   DO J=1,NIND_GRDS_MPCS                           ! on MPC's since they m
       ENDIF
 
       IF (NUM_PCHD_SPC1 > 0) THEN                       ! Close SPC file and, if any records were written to it, save it
-         CALL FILE_CLOSE ( SPC, SPCFIL, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL, 'KEEP' )
          IF (SPC1QUIT == 'Y') THEN
             WRITE(ERR,9991) SUBR_NAME, SPC1QUIT
             WRITE(F06,9991) SUBR_NAME, SPC1QUIT
             CALL OUTA_HERE ( 'Y' )
          ENDIF
       ELSE
-         CALL FILE_CLOSE ( SPC, SPCFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL, 'DELETE' )
       ENDIF
 
       IF (KTERM_KGG /= NTERM_KGG) THEN                      ! Check KTERM_KGG = NTERM_KGG
@@ -336,18 +330,13 @@ j_do4:   DO J=1,NIND_GRDS_MPCS                           ! on MPC's since they m
          CALL OUTA_HERE ( 'Y' )                             ! Coding error, so quit
       ENDIF
 
-      CALL FILE_CLOSE ( L1L, LINK1L, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1L, LINK1L, 'KEEP' )
       WRITE(ERR,101) NUM_MAX
       IF (SUPINFO == 'N') THEN
          WRITE(F06,101) NUM_MAX
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

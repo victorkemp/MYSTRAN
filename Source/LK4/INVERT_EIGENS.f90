@@ -30,10 +30,9 @@
 ! 1/eigenvalue
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NVEC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  INVERT_EIGENS_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE
       USE MACHINE_PARAMS, ONLY        :  MACH_SFMIN, MACH_LARGE_NUM
       USE MODEL_STUF, ONLY            :  EIG_SIGMA
@@ -51,19 +50,14 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices.
       INTEGER(LONG)                   :: M1                ! One eigenvector number
       INTEGER(LONG)                   :: PM,QM             ! Indices used in reording the W and Z
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INVERT_EIGENS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: W(MLAM)           ! Eigenvalues
       REAL(DOUBLE) , INTENT(INOUT)    :: Z(N,NVEC)         ! Eigenvectors
       REAL(DOUBLE)                    :: W1                ! One eigenvalue
       REAL(DOUBLE)                    :: Z1(N)             ! One eigenvector
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,MLAM                                          ! Invert eigenvalues
@@ -113,12 +107,7 @@
          ENDDO
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

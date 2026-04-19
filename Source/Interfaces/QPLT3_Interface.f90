@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE, MIN4T_QUAD4_TRIA_NO, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  QPLT3_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, QUARTER, HALF, ONE, TWO, FOUR, CONV_RAD_DEG, PI
       USE PARAMS, ONLY                :  MIN4TRED
       USE MACHINE_PARAMS, ONLY        :  MACH_SFMIN
@@ -73,7 +72,7 @@
                                                      23 /) ! IDM(12) = 23 means quad elem DOF 12 is MYSTRAN elem DOF 23
 
       INTEGER(LONG), PARAMETER        :: NUM_TRIAS = 4     ! DO NOT CHANGE THIS. Num of triangles that subdivide the QUAD4
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA_QUAD         ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords

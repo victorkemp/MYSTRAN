@@ -41,13 +41,12 @@ c
      &           lworkl, iwork, info, info_lapack, dtbsv_msg, piters)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, SOL_NAME,
      &                                   NTERM_KLLDn, NTERM_MLLn,
      &                                   NTERM_KMSMn, NTERM_ALL
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EIG_MSGLVL, EIG_LAP_MAT_TYPE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ARPACK_BEGEND
       USE SuperLU_STUF, ONLY          :  SLU_FACTORS, SLU_INFO
       USE PARAMS, ONLY                :  SOLLIB
       USE SPARSE_MATRICES, ONLY       :  I_KLLDn, J_KLLDn, KLLDn,
@@ -67,7 +66,6 @@ c
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DSBAND_PREFAC'
 
-      INTEGER(LONG)                   :: SUBR_BEGEND = ARPACK_BEGEND
 c
 c     %------------------%
 c     | Scalar Arguments |
@@ -126,12 +124,7 @@ c     %-----------------------%
 c     | Executable Statements |
 c     %-----------------------%
 c
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       ierr = 0
 ! **********************************************************************************************************************************
 
@@ -253,7 +246,6 @@ c
          dsaupd_loop_count = dsaupd_loop_count + 1
       endif
       write(sc1,12345,advance='no') iter+1,dsaupd_loop_count,ido,cr13_a
-      Write(f04, 9876) iter+1, dsaupd_loop_count, ido
 
 ! **********************************************************************
       if (ido .eq. -1) then
@@ -597,8 +589,6 @@ c
 ! **********************************************************************************************************************************
 12345 format(5X,'Iteration',i4,' Rev comm loop',i4,' with IDO =',i3,a)
 
- 9876 format(7X,'Iteration',i4,' Rev comm loop',i4,' with IDO =',i3)
-
  4907 FORMAT(/,22X,A
      &      ,/,7X,'1',12X,'2',12X,'3',12X,'4',12X,'5',12X,'6',12X,
      &        '7',12X,'8',12X,'9',12X,'10')
@@ -610,12 +600,6 @@ c
 
 99990 FORMAT('**********************************************************
      &***************************')
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -633,8 +617,7 @@ c
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  PROG_NAME, FATAL_ERR, WARN_ERR
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR,
-     &                                   F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F06
 
       IMPLICIT NONE
 

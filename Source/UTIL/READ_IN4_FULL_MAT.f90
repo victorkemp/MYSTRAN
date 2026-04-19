@@ -29,12 +29,11 @@
 ! Reads a matrix that is in full NASTRAN OUTPUT4 format from file FILNAM attached to unit UNT
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  NUM_EMG_FATAL_ERRS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_IN4_FULL_MAT_BEGEND
 
       USE READ_IN4_FULL_MAT_USE_IFs
 
@@ -67,19 +66,14 @@
       INTEGER(LONG)                   :: NC                ! From matrix trailer. Should be NCOLS+1
       INTEGER(LONG)                   :: PREC              ! Matrix precision (2 indicates double precision)
       INTEGER(LONG)                   :: REC_NUM           ! 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_IN4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE), ALLOCATABLE       :: CCS1_COL(:)       ! One column of MAT
       REAL(DOUBLE), INTENT(OUT)       :: MAT_FULL(NRI,NCI) ! Array of terms in matrix MAT
       REAL(DOUBLE)                    :: RJUNK             ! Values read from file for matrix other than the one we want
 !xx   REAL(DOUBLE)                    :: Z0                ! Zero values read from matrix trailer
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       MAT_NUM = 0
@@ -215,12 +209,7 @@ do_1: DO                                                   ! Loop over unknown n
          CALL OUTA_HERE ( 'Y' )
        ENDIF         
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

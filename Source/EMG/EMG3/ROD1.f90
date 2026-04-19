@@ -34,10 +34,9 @@
 !  4) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  NTSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ROD1_BEGEND
       USE CONSTANTS_1, ONLY           :  TWO
       USE MODEL_STUF, ONLY            :  DT, KE, KED, PEL, PTE, SE1, STE1, UEL
 
@@ -48,7 +47,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ROD1'
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
       INTEGER(LONG)                   :: J                 ! Do loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROD1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: ALPHA             ! Coefficient of thermal expansion
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Cross-sectional area
@@ -65,12 +64,7 @@
       REAL(DOUBLE)                    :: KD0               ! Intermediate variable used in calc KED
       REAL(DOUBLE)                    :: TBAR              ! Average elem temperature 
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Determine element thermal loads. 
@@ -135,12 +129,7 @@
          KED( 9, 9) =  KED( 3, 3)
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

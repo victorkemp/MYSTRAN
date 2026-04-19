@@ -29,10 +29,9 @@
 ! Invert symmetric matrix A which is stored in full format. The return has the inverse of the matrix in array A
 
       USE PENTIUM_II_KIND, ONLY       :  DOUBLE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  INVERT_FF_MAT_BEGEND
       USE LAPACK_SYM_MAT_INV
 
       USE INVERT_FF_MAT_USE_IFs
@@ -49,17 +48,10 @@
                                                            ! < 0:  if INFO = -i, the i-th argument had an illegal value
                                                            ! > 0:  if INFO =  i, the leading minor of order i is not pos definite
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = INVERT_FF_MAT_BEGEND
-
 
       REAL(DOUBLE)    , INTENT(INOUT) :: A(NROWS,NROWS)    ! Matrix to invert. Inverted matrix returned in A
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! In DPOTRF A has the matrix to invert as input and the triangular factor of A coming out. In DPOTRI A has the tria factor of the
@@ -93,12 +85,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

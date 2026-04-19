@@ -30,14 +30,13 @@
 ! NGRID x 3 array where T1 is col1, T2 is col 2 and T3 is col3
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID_ID
       USE DOF_TABLES, ONLY            :  TDOFI 
       USE COL_VECS, ONLY              :  UG_COL
       USE MISC_MATRICES, ONLY         :  UG_T123_MAT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_UG_123_IN_GRD_ORD_BEGEND
 
       USE GET_UG_123_IN_GRD_ORD_USE_IFs
 
@@ -45,7 +44,7 @@
  
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'GET_UG_123_IN_GRD_ORD'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_UG_123_IN_GRD_ORD_BEGEND
+
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Local error indicator
       INTEGER(LONG)                   :: GRDS_GLOBAL(NGRID)! 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
@@ -53,12 +52,6 @@
       INTEGER(LONG)                   :: IDOFG             ! Count of G-set DOF's  (1 to NDOFG)
       INTEGER(LONG)                   :: NUM_COMPS         ! 6 if GRID_NUM is an physical grid, 1 if an SPOINT
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       IERR = 0
@@ -113,12 +106,7 @@ j_do2:   DO J = 1,NUM_COMPS
 ! Sort GRDS_GLOBAL and UG_T123_MAT so that GRDS_GLOBAL is in numerical grid order
 
       CALL SORT_INT1_REAL3 ( SUBR_NAME, 'GRDS_GLOBAL and UG_T123_MAT', NGRID, GRDS_GLOBAL, UG_T123_MAT )
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

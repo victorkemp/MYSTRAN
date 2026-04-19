@@ -29,9 +29,9 @@
 ! Inquires about whether files are opened. Writes results to file F06
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN,  MOT4,    MOU4,    OU4_EXT, OT4_EXT, WRT_LOG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN,  MOT4,    MOU4,    OU4_EXT, OT4_EXT
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     IN1,     NEU,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     NEU,                       &
                                          PCH,     SEQ,     SC1,     SPC,                                                           &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1A,     L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     &
@@ -42,7 +42,7 @@
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OT4,     OU4,     &
                                          MAX_FIL
 
-      USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F04FIL,  F06FIL,  IN0FIL,  INFILE,  NEUFIL,           &
+      USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F06FIL,  IN0FIL,  INFILE,  NEUFIL,                    &
                                          PCHFIL,  SEQFIL,  SPCFIL,                                                                 &
                                          F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,                                               &
                                          LINK1A,  LINK1B,  LINK1C,  LINK1D,  LINK1E,  LINK1F,  LINK1G,  LINK1H,  LINK1I,  LINK1J,  &
@@ -54,7 +54,6 @@
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FILE_INQUIRE_BEGEND
 
       USE FILE_INQUIRE_USE_IFs
 
@@ -72,14 +71,9 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: UNT(100)          ! Unit number of a MYSTRAN file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_INQUIRE_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       FIL(  1) = 'SC1'   ;   UNT(  1) =  SC1               ! SC1 - don't need to do INQUIRE on it
@@ -87,7 +81,6 @@
       FIL(  4) = 'EIN'   ;   UNT(  4) =  EIN   ;   FILNAM(  4) = EINFIL
       FIL(  5) = 'ENF'   ;   UNT(  5) =  ENF   ;   FILNAM(  5) = ENFFIL
       FIL(  6) = 'ERR'   ;   UNT(  6) =  ERR   ;   FILNAM(  6) = ERRFIL
-      FIL(  7) = 'F04'   ;   UNT(  7) =  F04   ;   FILNAM(  7) = F04FIL
       FIL(  8) = 'F06'   ;   UNT(  8) =  F06   ;   FILNAM(  8) = F06FIL
       FIL(  9) = 'L1A'   ;   UNT(  9) =  L1A   ;   FILNAM(  9) = LINK1A
       FIL( 10) = 'IN0'   ;   UNT( 10) =  IN0   ;   FILNAM( 10) = IN0FIL
@@ -192,12 +185,7 @@
          ENDIF
       ENDDO 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

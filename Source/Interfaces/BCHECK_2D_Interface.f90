@@ -32,10 +32,9 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BCHECK_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TWO
       USE MODEL_STUF, ONLY            :  ELDOF, NELGP, TE
       USE MODEL_STUF, ONLY            :  AGRID, ELGP
@@ -48,7 +47,7 @@
       INTEGER(LONG), INTENT(IN)       :: NCOLB             ! Number of cols in the input B matrix
       INTEGER(LONG), INTENT(IN)       :: NUM_GRIDS         ! Number of grids for the input B matrix
       INTEGER(LONG), INTENT(IN)       :: ID(NCOLB)         ! List of elem DOF's for each of the elem grids (e.g 3,4,5 for each of
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BCHECK_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: B(NROWB,NCOLB)    ! Strain-displ matrix
       REAL(DOUBLE) , INTENT(IN)       :: XB(NUM_GRIDS,3)   ! Basic coords of elem grids (diff than XEB for TPLT2's in a MIN4T QUAD4)

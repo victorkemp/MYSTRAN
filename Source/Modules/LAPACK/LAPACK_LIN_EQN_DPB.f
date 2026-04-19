@@ -3,17 +3,14 @@
       MODULE LAPACK_LIN_EQN_DPB
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                   :  ERR, F06
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE PARAMS, ONLY                   :  NOCOUNTS
 
       character(1*byte), parameter      :: cr13_dpb = char(13)
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is the set of LAPACK routines for solving equations
 
@@ -141,14 +138,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -224,11 +213,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -366,14 +350,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -638,11 +614,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -768,14 +739,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -871,11 +834,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -974,14 +932,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -1065,11 +1015,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -1187,14 +1132,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -1291,11 +1228,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -1393,14 +1325,6 @@
       INTRINSIC          MAX
 *     ..
 *     .. Executable Statements ..
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -1470,11 +1394,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -1563,14 +1482,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -1660,11 +1571,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 
@@ -1826,14 +1732,6 @@
 *     ..
 *     .. Executable Statements ..
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *     Test the input parameters.
 *
       INFO = 0
@@ -2204,11 +2102,6 @@
 *
 ! **********************************************************************************************************************************
  9000 continue            ! My lines
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

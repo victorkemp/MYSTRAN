@@ -30,11 +30,10 @@
 ! Reference Manual for the derivation of the reduction equations.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L2D, LINK2D, L2D_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L2D, LINK2D, L2D_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFN, NDOFF, NDOFS, NDOFSE, NSUB, NTERM_KFSe, NTERM_PN,         &
                                          NTERM_PF, NTERM_PFYS, NTERM_PS
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_PN_TO_PF_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE 
       USE PARAMS, ONLY                :  MATSPARS
       USE SPARSE_MATRICES, ONLY       :  I_KFSe, J_KFSe, KFSe, I_PN, J_PN, PN, I_PF, J_PF, PF, I_PS, J_PS, PS, I_PF_TMP, J_PF_TMP, &
@@ -69,19 +68,14 @@
       INTEGER(LONG)                   :: NTERM_PFYS1 = 0     ! No. of terms in matrix PFYS1
       INTEGER(LONG)                   :: PF_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG)                   :: PS_ROW_MAX_TERMS    ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_PN_TO_PF_BEGEND
+
 
       REAL(DOUBLE)                    :: ALPHA               ! Scalar multiplier for matrix
       REAL(DOUBLE)                    :: BETA                ! Scalar multiplier for matrix
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition PF from PN (This is PF before reduction, or PF(bar) )
@@ -330,12 +324,7 @@
          CALL WRITE_MATRIX_1 ( LINK2D, L2D, CLOSE_IT, CLOSE_STAT, L2D_MSG, 'PS ', NTERM_PS , NDOFS, I_PS , J_PS , PS  )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

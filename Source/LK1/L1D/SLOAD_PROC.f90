@@ -73,10 +73,9 @@
  
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06, L1W, LINK1W, L1W_MSG, L1WSTAT
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06, L1W, LINK1W, L1W_MSG, L1WSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LLOADC, NGRID, NLOAD, NSLOAD, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SLOAD_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
@@ -103,7 +102,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: SPOINT            ! Scalra point read from a record of L1W (point where force acts)
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SLOAD_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: FMAG              ! Force magnitude read from a L1W record (force on the SPOINT)
@@ -112,12 +111,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -163,8 +157,8 @@ j_do22:  DO J=1,NSLOAD                                     ! Process SLOAD card 
             READ(L1W,IOSTAT=IOCHK) SETID, SPOINT, FMAG
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT, 'Y' )
-               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT, 'Y' )
+               CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT )
+               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF
  
@@ -204,19 +198,14 @@ k_do221:    DO K = 1,NSID                                  ! There is a match; w
          READ(L1W,IOSTAT=IOCHK) XTIME
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT, 'Y' )
-            CALL FILERR ( OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT )
+            CALL FILERR ( OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
  
       ENDDO i_do2
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

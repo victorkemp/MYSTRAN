@@ -30,11 +30,10 @@
 ! Checks are made to ensure that nothing has changed that would violate the restart rules
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1Z, LINK1Z, L1Z_MSG
+      USE IOUNT1, ONLY                :  ERR, F06, L1Z, LINK1Z, L1Z_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NSUB, SOL_NAME
       USE TIMDAT, ONLY                :  STIME, TSEC
       USE MODEL_STUF, ONLY            :  CC_EIGR_SID, MPCSET, SPCSET, SUBLOD
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_L1Z_BEGEND
  
       USE READ_L1Z_USE_IFs
 
@@ -53,20 +52,15 @@
       INTEGER(LONG)                   :: SPCSET_OLD        ! SPC set ID from original run that is being restarted
       INTEGER(LONG)                   :: SUBLOD1_OLD       ! Load set ID (for 1 subcase) from original run that is being restarted
       INTEGER(LONG)                   :: SUBLOD2_OLD       ! Temp set ID (for 1 subcase) from original run that is being restarted
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1Z_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
       OUNT(2) = F06
 
-      CALL FILE_OPEN ( L1Z, LINK1Z, OUNT, 'OLD', L1Z_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1Z, LINK1Z, OUNT, 'OLD', L1Z_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
       IERROR = 0
 
@@ -127,12 +121,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF        
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

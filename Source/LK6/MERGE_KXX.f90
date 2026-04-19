@@ -38,13 +38,12 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFR, NTERM_KRRcb, NTERM_KXX  , NVEC
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  PRTKXX
       USE EIGEN_MATRICES_1, ONLY      :  GEN_MASS, EIGEN_VAL
       USE SPARSE_MATRICES , ONLY      :  I_KRRcb, J_KRRcb, KRRcb, I_KXX  , J_KXX  , KXX  
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_KXX_BEGEND
 
       USE MERGE_KXX_USE_IFs
 
@@ -54,14 +53,9 @@
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_KXX_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       NTERM_KXX   = NTERM_KRRcb + NVEC
@@ -89,12 +83,7 @@
          CALL WRITE_SPARSE_CRS ( 'KXX  ','  ','  ', NTERM_KXX  , NDOFR+NVEC, I_KXX  , J_KXX  , KXX   )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

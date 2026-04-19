@@ -29,12 +29,11 @@
 ! Process enforced displacement data in file LINK1H and write the enforced displacement array, YSe, for use in subsequent LINK's.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,    L1H
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                           LINK1H
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                           L1H_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,    L1H
+      USE IOUNT1, ONLY                :  WRT_ERR,                           LINK1H
+      USE IOUNT1, ONLY                :  WRT_ERR,                           L1H_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFSE, NGRID
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  YS_ARRAY_BEGEND
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE MODEL_STUF, ONLY            :  GRID_ID
       USE COL_VECS, ONLY              :  YSe
@@ -57,16 +56,11 @@
       INTEGER(LONG)                   :: SE_SET_COL_NUM    ! Col no., in TDOF array, of the SE-set DOF list
       INTEGER(LONG)                   :: TDOF_ROW_NUM      ! Row num in array TDOF for DOF corresponding to GRID_ID_ROW_NUM, COMP
       INTEGER(LONG)                   :: YSDOF             ! SE-set DOF number for the DOF corresponding to GRID_ID_ROW_NUM, COMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = YS_ARRAY_BEGEND
+
  
       REAL(DOUBLE)                    :: YSV               ! Enforced displ value read from file LINK1H
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -81,7 +75,7 @@
          READ(L1H,IOSTAT=IOCHK) GRID_ID_ROW_NUM,COMP,YSV
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
             IERR1H = IERR1H + 1
          ELSE
             CALL TDOF_COL_NUM ( 'SE', SE_SET_COL_NUM )
@@ -96,7 +90,7 @@
 ! If there were any errors based on reading above file, quit.
  
       IF (IERR1H > 0) THEN
-         CALL FILERR ( OUNT, 'Y' )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )                                    ! Errors reading YSe file, so quit
       ENDIF
  
@@ -108,12 +102,7 @@
          WRITE(L1H) YSe(I)
       ENDDO   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

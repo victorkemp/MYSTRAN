@@ -39,11 +39,10 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1B, OP2, SC1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1B, OP2, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, MCORD, MRCORD, MGRID, MRGRID, NCORD, NGRID
       USE PARAMS, ONLY                :  PRTBASIC
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GRID_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  GRID, RGRID, GRID_ID, GRID_SEQ, CORD, RCORD, TN
  
       USE GRID_PROC_USE_IFs
@@ -59,7 +58,7 @@
       INTEGER(LONG)                   :: IERROR            ! Error count
       INTEGER(LONG)                   :: JCORD             ! Internal coord sys ID
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRID_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: ANG1              ! An angle in a cyl or sph coord sys from the RGRID array
       REAL(DOUBLE)                    :: ANG2              ! An angle in a cyl or sph coord sys from the RGRID array
@@ -71,12 +70,7 @@
  
       INTRINSIC                       :: DCOS, DSIN
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages
@@ -310,12 +304,7 @@ grid_do: DO I=1,NGRID
          CALL WRITE_GRID_COORDS
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

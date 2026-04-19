@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY        :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                 :  ERR, F04, F06, MOU4, OU4, OU4_MSG, OU4FIL, WRT_LOG
+      USE IOUNT1, ONLY                 :  ERR, F06, MOU4, OU4, OU4_MSG, OU4FIL
 
       USE SCONTR, ONLY                 :  BLNK_SUB_NAM, FATAL_ERR   ,                                                              &
                                           NTERM_CG_LTM, NTERM_DLR   , NTERM_IF_LTM, NTERM_KLL   ,                                  &
@@ -95,13 +95,12 @@
                                           I_PA , J_PA , PA , I_PG , J_PG , PG , I_PL , J_PL , PL
 
       USE FULL_MATRICES, ONLY          :  PHIZG_FULL
-      USE SUBR_BEGEND_LEVELS, ONLY     :  OUTPUT4_PROC_BEGEND
  
       IMPLICIT NONE
  
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Subr that called this one
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTPUT4_PROC_BEGEND
+
 
       END SUBROUTINE OUTPUT4_PROC
 

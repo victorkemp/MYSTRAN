@@ -45,7 +45,7 @@
 ! entry was read
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4, IN4_MSG, IN4FIL, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, IN4, IN4_MSG, IN4FIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEDAT0_CUSERIN, MELDOF, NDOFG, NGRID, NSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -60,7 +60,6 @@
                                          USERIN_NUM_BDY_DOF, USERIN_NUM_ACT_GRDS, USERIN_NUM_SPOINTS,                              &
                                          USERIN_MASS_MAT_NAME, USERIN_LOAD_MAT_NAME, USERIN_RBM0_MAT_NAME, USERIN_STIF_MAT_NAME
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  USERIN_BEGEND
  
       USE USERIN_USE_IFs
 
@@ -88,7 +87,7 @@
                                                            ! Array that has USERIN grid num in col 1 and comp number in remaining 7
                                                            ! cols (1 col has all comps, others each indiv comp) for USERIN bdy DOF's
       INTEGER(LONG)                   :: USERIN_CID0_ICID  ! Internal coordinate system ID for USERIN_CID0
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USERIN_BEGEND
+
   
       REAL(DOUBLE)                    :: DX                ! X offset of USERIN elem CG from overall model basic sys origin
       REAL(DOUBLE)                    :: DY                ! Y offset of USERIN elem CG from overall model basic sys origin
@@ -112,12 +111,7 @@
                                                            ! Matrix to transform MRRcb to 6x6 RB mass rel to GRDPNT
       REAL(DOUBLE)                    :: TB6(USERIN_NUM_BDY_DOF,6)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
@@ -196,7 +190,7 @@
 ! Open the IN4 file containing the mass and stiff matrices for this elem
 
       CALL FILE_OPEN ( IN4, IN4FIL(USERIN_IN4_INDEX), OUNT, 'OLD', IN4_MSG, 'NEITHER', 'UNFORMATTED', 'READ', 'REWIND',            &
-                       'Y', 'N', 'Y' )
+                       'Y', 'N' )
 
 ! If OPT(1) is 'Y', get the elem mass matrix from the IN4 file and expand it from boundary DOF size to ELDOF size (6 comps/grid).
 
@@ -327,16 +321,11 @@
       CALL DEALLOCATE_IN4_FILES ( 'IN4_COL_MAP' )
       CALL DEALLOCATE_IN4_FILES ( 'IN4_MAT' )
 
-      CALL FILE_CLOSE ( IN4, IN4FIL(USERIN_IN4_INDEX), 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( IN4, IN4FIL(USERIN_IN4_INDEX), 'KEEP' )
 
       IF (DEBUG(180) > 0) CALL DEB_USERIN ( 99 )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -359,7 +348,7 @@
 
       USE PENTIUM_II_KIND
       USE SCONTR, ONLY                :  FATAL_ERR, NCORD
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  CORD, NUM_EMG_FATAL_ERRS, RCORD, USERIN_CID0
 
@@ -419,7 +408,7 @@ j_do12:     DO J=1,NCORD
 !  (2) Translate from USERIN basic coord sys origin to overall model basic coord sys origin. Final result is USERIN_RBM0
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      use iount1, only                :  err, f04, f06
+      use iount1, only                :  err, f06
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  RCORD, USERIN_RBM0
 

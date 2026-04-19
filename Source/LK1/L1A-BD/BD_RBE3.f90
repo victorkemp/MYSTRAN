@@ -29,10 +29,9 @@
 ! Processes RBE3 Bulk Data Cards. Writes RBE3 card data to file L1F
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1F
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LRIGEL, MRBE3, NRECARD, NRIGEL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_RBE3_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  RIGID_ELEM_IDS
  
@@ -71,19 +70,14 @@
       INTEGER(LONG)                   :: REFC      = 0     ! REFC value in field 5 of parent entry
       INTEGER(LONG)                   :: REFGRID   = 0     ! REFGRID value in field 4 of parent entry
       INTEGER(LONG)                   :: RELID     = 0     ! This elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE3_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this RBE3 entry
       REAL(DOUBLE)                    :: WGT               ! A weight read from a field on this RBE3 entry
       REAL(DOUBLE)                    :: WTi(MRBE3)        ! Array of RBE3 weight values
       REAL(DOUBLE)                    :: WT_TOT            ! Total of all WTi(i)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! RBE3 Bulk Data Card:
@@ -357,12 +351,7 @@ do_j:       DO J=2,9
 
 !xx   NTERM_RMG = REFC_NUM_Ci*(NTERM_RMG + 1)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

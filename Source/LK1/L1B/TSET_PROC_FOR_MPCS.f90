@@ -29,11 +29,10 @@
 ! DOF Processor for MPC's 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1S, L1S_MSG, LINK1S
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1S, L1S_MSG, LINK1S
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LIND_GRDS_MPCS, LMPCADDC, NDOFM, NGRID, NIND_GRDS_MPCS, NMPC,    &
                                          NMPCADD, NTERM_RMG, NUM_MPCSIDS 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DOF_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  GRID_ID, MPC_IND_GRIDS, MPCSET, MPCSIDS
  
@@ -68,16 +67,11 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RJUNK             ! An MPC coeff value read from file LINK1S that we do not need
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -107,14 +101,14 @@ i_do3:DO I=1,NMPC                                          ! Process data from f
          READ(L1S,IOSTAT=IOCHK) SETID                      ! Read the SETID for the i-th logical MPC    
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
          READ(L1S,IOSTAT=IOCHK) NUM_TRIPLES                ! Read the number of triplets of grid/comp/coeff for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
@@ -138,7 +132,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
 
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
                                                            ! Get the row number, in array GRID_ID, for dependent grid, AGRID_D
@@ -154,7 +148,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
                   READ(L1S,IOSTAT=IOCHK) AGRID_I, IJUNK, RJUNK
                   REC_NO = REC_NO + 1
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
                   IF (AGRID_I /= AGRID_I_PREV) THEN
@@ -196,7 +190,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
                READ(L1S,IOSTAT=IOCHK) IJUNK, IJUNK, RJUNK
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
             ENDDO 
@@ -206,12 +200,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
  
       IERRT = IERRT + GID_ERR + DOF_ERR
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

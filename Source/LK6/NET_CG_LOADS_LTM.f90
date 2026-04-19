@@ -34,7 +34,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFR, NTERM_MRRcbn, NTERM_MRN, NTERM_CG_LTM, NUM_CB_DOFS
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE
@@ -48,7 +48,6 @@
 
       USE SCRATCH_MATRICES, ONLY      :  I_CRS1, J_CRS1, CRS1, I_CRS2, J_CRS2, CRS2, I_CCS1, J_CCS1, CCS1
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  NET_CG_LOADS_LTM_BEGEND
 
       USE NET_CG_LOADS_LTM_USE_IFs
 
@@ -62,7 +61,7 @@
       INTEGER(LONG)                   :: NTERM_CCS1        ! Number of nonzero terms in scratch matrix CCS1
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of nonzero terms in scratch matrix CRS1
       INTEGER(LONG)                   :: NTERM_CRS2        ! Number of nonzero terms in scratch matrix CRS2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NET_CG_LOADS_LTM_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM1(NDOFR,6)     ! MRRcbn*TR6_CG
       REAL(DOUBLE)                    :: DUM2(6,NDOFR)     ! 
@@ -72,12 +71,7 @@
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
       REAL(DOUBLE)                    :: TR6_CGt(6,NDOFR)  ! TR6_CG'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
@@ -203,12 +197,7 @@
          CALL WRITE_SPARSE_CRS ( 'CG_LTM','  ','  ', NTERM_CG_LTM, NDOFR, I_CG_LTM, J_CG_LTM, CG_LTM   )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

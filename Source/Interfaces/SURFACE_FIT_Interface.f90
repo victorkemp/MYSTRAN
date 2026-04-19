@@ -32,11 +32,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SURFACE_FIT_BEGEND
       USE LSQ_MYSTRAN
 
       IMPLICIT NONE
@@ -49,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)               ! Output units for SURFACE_FIT
       INTEGER(LONG), INTENT(OUT)      :: IERR                  ! Error indicator
       INTEGER(LONG), PARAMETER        :: MAX_COEFFS = 6        ! Maximum number of coefficients coded for ther polynomial fit
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SURFACE_FIT_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: WI(NUM_FITS)          ! Values of the function to fit at the input data points
       REAL(DOUBLE), INTENT(IN)        :: XI(NUM_FITS)          ! X coords of the input  data points

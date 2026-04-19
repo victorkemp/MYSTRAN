@@ -44,7 +44,7 @@
 !              NOTE: may need to calc KE to get this 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MBUG, MEDAT0_CUSERIN, MELDOF, MEMATC, MOFFSET, NSUB, NTSUB
       USE SCONTR, ONLY                :  DEDAT_Q4_MATANG_KEY, DEDAT_Q4_POFFS_KEY, DEDAT_Q4_SHELL_KEY, DEDAT_Q4_THICK_KEY,          &
                                          DEDAT_T3_MATANG_KEY, DEDAT_T3_POFFS_KEY, DEDAT_T3_SHELL_KEY, DEDAT_T3_THICK_KEY,          &
@@ -52,7 +52,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  SUPINFO, SUPWARN, QUAD4TYP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMG_BEGEND
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD, CONV_RAD_DEG, ZERO, ONE
       USE MODEL_STUF, ONLY            :  CAN_ELEM_TYPE_OFFSET, EDAT, EID, EPNT, ETYPE, ISOLID, MATANGLE, NUM_EMG_FATAL_ERRS,       &
                                          PCOMP_PROPS, PLY_NUM, TE_IDENT, THETAM, TYPE, XEL, TE
@@ -81,7 +80,7 @@
       INTEGER(LONG)                   :: IORD_IJ            ! Integration order in the triangular plane for PENTA elements
       INTEGER(LONG)                   :: IORD_K             ! Integration order in Z direction for PENTA elements
       INTEGER(LONG)                   :: INT41,INT42        ! An integer used in getting MATANGLE
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMG_BEGEND
+
  
 ! **********************************************************************************************************************************
       EPNTK = EPNT(INT_ELEM_ID)
@@ -89,12 +88,6 @@
       TYPE  = ETYPE(INT_ELEM_ID)
       CALL IS_ELEM_PCOMP_PROPS ( INT_ELEM_ID )
  
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC,EID,TYPE, OPT
- 9001    FORMAT(1X,A,' BEGN ',F10.3,5X,'Element No. ',I8,' ,Type ',A, ' OPT = ', 6A2)
-      ENDIF
-! **********************************************************************************************************************************
       NUM_EMG_FATAL_ERRS = 0
 
 
@@ -313,8 +306,6 @@
 
       IF ((OPT(1) == 'N') .AND. (OPT(2) == 'N') .AND. (OPT(3) == 'N') .AND. (OPT(4) == 'N') .AND. (OPT(5) == 'N') .AND.            &
           (OPT(6) == 'N')) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
          RETURN
       ENDIF 
 
@@ -431,12 +422,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

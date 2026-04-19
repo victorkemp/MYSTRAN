@@ -32,14 +32,13 @@
 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, BARTOR, INT_SC_NUM, LPCOMP_PLIES, NDOFR, NUM_CB_DOFS,            &
                                          NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_PLY_STRAINS_BEGEND
       USE LINK9_STUFF, ONLY           :  EID_OUT_ARRAY, FTNAME, OGEL
       USE MODEL_STUF, ONLY            :  ANY_FAILURE_THEORY, ELEM_ONAME, LABEL, PCOMP, SCNUM, STITLE, TITLE
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_OPT
@@ -53,7 +52,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM               ! The number of rows of OGEL to write out
       CHARACTER(8*BYTE), INTENT(IN)   :: ETYPE             ! the name of the element
       INTEGER(LONG), INTENT(INOUT)    :: ITABLE            ! the op2 subtable name
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PLY_STRAINS_BEGEND
+
       INTEGER(LONG)                   :: STRESS_CODE       ! flag for op2
   
       END SUBROUTINE WRITE_PLY_STRAINS

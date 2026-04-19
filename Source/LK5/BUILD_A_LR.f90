@@ -31,10 +31,9 @@
 !   1) Merge UL and UR to get UA where UL was read into subr LINK5
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFL, NDOFA, NDOFR, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BUILD_A_LR_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  PRTDISP
       USE COL_VECS, ONLY              :  UL_COL, UA_COL, UR_COL
@@ -50,14 +49,9 @@
       INTEGER(LONG)                   :: A_SET_COL         ! Col no. in TDOF for A  displ set definition
       INTEGER(LONG)                   :: L_SET_COL         ! Col no. in TDOF for L  displ set definition
       INTEGER(LONG)                   :: R_SET_COL         ! Col no. in TDOF for R  displ set definition
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_A_LR_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Get column numbers for various DOF sets
@@ -100,12 +94,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -40,11 +40,11 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, SHORT, LONG, SINGLE, DOUBLE, QUAD
 
-      USE IOUNT1, ONLY                :  MOU4, SC1, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  MOU4, SC1, WRT_BUG
       USE IOUNT1, ONLY                :  BUG, ERR, F06, F21, F22, F23, F24, F25, IN1, L1B, L1C, L1D, L1F, L1G, L1H, L1I, L1K, &
                                          L1L, L1N, L1O, L1P, L1Q, L1S, L1T, L1U, L1V, L1W, L1X, L1Y, OP2, OU4, SEQ
 
-      USE IOUNT1, ONLY                :  F04, F21FIL, F22FIL, F23FIL, F24FIL, F25FIL, INFILE, LINK1B, LINK1C, LINK1D,              &
+      USE IOUNT1, ONLY                :  F21FIL, F22FIL, F23FIL, F24FIL, F25FIL, INFILE, LINK1B, LINK1C, LINK1D,              &
                                          LINK1F, LINK1H, LINK1I, LINK1K, LINK1L, LINK1N, LINK1O, LINK1P, LINK1Q, LINK1S, LINK1T,   &
                                          LINK1U, LINK1V, LINK1W, LINK1X, LINK1Y, OP2FIL, OU4FIL, SEQFIL
 
@@ -149,9 +149,6 @@
 
       ! Write logo, date and copyright info to text files
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
       ! Reset units for error output (were set to SC1 in MAIN1)
@@ -287,21 +284,21 @@ res13:IF (RESTART == 'N') THEN
 ! L1U: Data from B.D. RFORCE cards
 ! L1W: Data from B.D. SLOAD  cards 
 
-         CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'REPLACE', L1F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1I, LINK1I, OUNT, 'REPLACE', L1I_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1N, LINK1N, OUNT, 'REPLACE', L1N_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1O, LINK1O, OUNT, 'REPLACE', L1O_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1P, LINK1P, OUNT, 'REPLACE', L1P_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'REPLACE', L1S_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1T, LINK1T, OUNT, 'REPLACE', L1T_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1U, LINK1U, OUNT, 'REPLACE', L1U_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'REPLACE', L1V_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1W, LINK1W, OUNT, 'REPLACE', L1W_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
-         CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'REPLACE', L1X_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'REPLACE', L1F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1I, LINK1I, OUNT, 'REPLACE', L1I_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1N, LINK1N, OUNT, 'REPLACE', L1N_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1O, LINK1O, OUNT, 'REPLACE', L1O_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1P, LINK1P, OUNT, 'REPLACE', L1P_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'REPLACE', L1S_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1T, LINK1T, OUNT, 'REPLACE', L1T_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1U, LINK1U, OUNT, 'REPLACE', L1U_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'REPLACE', L1V_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1W, LINK1W, OUNT, 'REPLACE', L1W_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
+         CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'REPLACE', L1X_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 !xx      IF ((SOL_NAME(1:5) == 'MODES') .OR. (SOL_NAME(1:12) == 'GEN CB MODEL')) THEN
-!xx         CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+!xx         CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 !xx      ENDIF
   
          ! Get machine parameters and set EPSIL(1).
@@ -411,81 +408,81 @@ res13:IF (RESTART == 'N') THEN
 
          ! Close files opened for writing Bulk data info to
          IF (NRIGEL > 0) THEN 
-            CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1F, LINK1F, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1F, LINK1F, 'DELETE' )
          ENDIF
 
          IF (NFORCE > 0) THEN
-            CALL FILE_CLOSE ( L1I, LINK1I, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1I, LINK1I, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1I, LINK1I, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1I, LINK1I, 'DELETE' )
          ENDIF
 
          IF (NTCARD > 0) THEN
-            CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE' )
          ENDIF
 
          IF (NAOCARD > 0) THEN
-            CALL FILE_CLOSE ( L1N, LINK1N, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1N, LINK1N, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1N, LINK1N, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1N, LINK1N, 'DELETE' )
          ENDIF
 
          IF ((NSPC > 0) .OR. (NSPC1 > 0)) THEN
-            CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1O, LINK1O, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1O, LINK1O, 'DELETE' )
          ENDIF
   
          IF (NGRAV > 0) THEN
-            CALL FILE_CLOSE ( L1P, LINK1P, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1P, LINK1P, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1P, LINK1P, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1P, LINK1P, 'DELETE' )
          ENDIF
   
          IF (NPCARD > 0) THEN
-            CALL FILE_CLOSE ( L1Q, LINK1O, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1Q, LINK1O, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1Q, LINK1O, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1Q, LINK1O, 'DELETE' )
          ENDIF
   
          IF (NMPC > 0) THEN
-            CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1S, LINK1S, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1S, LINK1S, 'DELETE' )
          ENDIF
 
          IF (NUM_SUPT_CARDS > 0) THEN
-            CALL FILE_CLOSE ( L1T, LINK1T, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1T, LINK1T, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1T, LINK1T, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1T, LINK1T, 'DELETE' )
          ENDIF
 
          IF (NRFORCE > 0) THEN
-            CALL FILE_CLOSE ( L1U, LINK1U, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1U, LINK1U, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1U, LINK1U, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1U, LINK1U, 'DELETE' )
          ENDIF
   
          IF (NSLOAD > 0) THEN
-            CALL FILE_CLOSE ( L1W, LINK1W, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1W, LINK1W, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1W, LINK1W, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1W, LINK1W, 'DELETE' )
          ENDIF
   
          IF (NUM_PARTVEC_RECORDS > 0) THEN
-            CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1V, LINK1V, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1V, LINK1V, 'DELETE' )
          ENDIF
 
          IF (NUM_USET_RECORDS > 0) THEN
-            CALL FILE_CLOSE ( L1X, LINK1X, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1X, LINK1X, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( L1X, LINK1X, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( L1X, LINK1X, 'DELETE' )
          ENDIF
  
          CALL SET_SPARSE_MAT_SYM                           ! Set sparse matrix sym
@@ -512,9 +509,9 @@ res14:IF (RESTART == 'N') THEN
          CALL DEALLOCATE_MODEL_STUF ( 'RIGID_ELEM_IDS' )
   
          ! Open L1B, OP2 for writing grid and coord data to.
-         CALL FILE_OPEN ( L1B, LINK1B, OUNT, 'REPLACE', L1B_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1B, LINK1B, OUNT, 'REPLACE', L1B_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
-         CALL FILE_OPEN ( OP2, OP2FIL, OUNT, 'REPLACE', OP2_MSG, 'NEITHER', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( OP2, OP2FIL, OUNT, 'REPLACE', OP2_MSG, 'NEITHER', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          OP2STAT = 'KEEP    '
          CALL WRITE_OP2_HEADER(POST)
          
@@ -553,11 +550,11 @@ res14:IF (RESTART == 'N') THEN
          REWIND (IN1)
          IF (GRIDSEQ(1:6) == 'BANDIT') THEN
             CALL LINK_MESSAGE('BANDIT - RESEQUENCE GRIDS                   ')
-            CALL FILE_OPEN ( SEQ, SEQFIL, OUNT, 'REPLACE', SEQ_MSG, 'WRITE_STIME', 'FORMATTED', 'READWRITE', 'REWIND','Y','N','Y' )
+            CALL FILE_OPEN ( SEQ, SEQFIL, OUNT, 'REPLACE', SEQ_MSG, 'WRITE_STIME', 'FORMATTED', 'READWRITE', 'REWIND','Y','N' )
             CALL BANDIT ( NGRID, BANDIT_BW, KMAT_DEN, BANDIT_ERR )
             INQUIRE ( FILE=SEQFIL, OPENED=FILE_OPND )
             IF (FILE_OPND) THEN
-               CALL FILE_CLOSE ( SEQ, SEQFIL, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( SEQ, SEQFIL, 'KEEP' )
             ENDIF
             WRITE(ERR,1030) BANDIT_ERR
             IF (SUPINFO == 'N') THEN
@@ -576,12 +573,12 @@ res14:IF (RESTART == 'N') THEN
                ENDIF
             ENDIF
          ENDIF
-         CALL FILE_CLOSE ( IN1, INFILE, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( IN1, INFILE, 'KEEP' )
 
          ! Grid point sequencing
          CALL LINK_MESSAGE('GRID SEQUENCE PROCESSOR                     ')
          CALL SEQ_PROC
-         CALL FILE_CLOSE ( L1B, LINK1B, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1B, LINK1B, 'KEEP' )
          CALL DEALLOCATE_MODEL_STUF ( 'SEQ1,2' )
 
          ! Surface normal processing
@@ -616,33 +613,33 @@ res14:IF (RESTART == 'N') THEN
       ! Subcase processing
       CALL ALLOCATE_MODEL_STUF ( 'GROUT, ELOUT', SUBR_NAME )
       CALL ALLOCATE_MODEL_STUF ( 'ELDT', SUBR_NAME )
-      CALL FILE_OPEN ( L1D, LINK1D, OUNT, 'REPLACE', L1D_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1D, LINK1D, OUNT, 'REPLACE', L1D_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       CALL LINK_MESSAGE('SUBCASE PROCESSOR                           ')
       CALL SUBCASE_PROC
       CALL DEALLOCATE_MODEL_STUF ( 'GROUT, ELOUT' )
       CALL DEALLOCATE_MODEL_STUF ( 'SETS ARRAYS' )
       CALL DEALLOCATE_MODEL_STUF ( 'TITLES' )
       CALL DEALLOCATE_MODEL_STUF ( 'SC_xxxx' )
-      CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP' )
                                                            ! If we will be writing data to the F2i disk files open them now
       IF ( IAND(OELDT,IBIT(ELDT_F21_P_T_BIT) ) > 0) THEN
-         CALL FILE_OPEN ( F21, F21FIL, OUNT, 'REPLACE', F21_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( F21, F21FIL, OUNT, 'REPLACE', F21_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       ENDIF
 
       IF ( IAND(OELDT,IBIT(ELDT_F22_ME_BIT)  ) > 0) THEN
-         CALL FILE_OPEN ( F22, F22FIL, OUNT, 'REPLACE', F22_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( F22, F22FIL, OUNT, 'REPLACE', F22_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       ENDIF
          
       IF ( IAND(OELDT,IBIT(ELDT_F23_KE_BIT)  ) > 0) THEN
-         CALL FILE_OPEN ( F23, F23FIL, OUNT, 'REPLACE', F23_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( F23, F23FIL, OUNT, 'REPLACE', F23_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       ENDIF
 
       IF ( IAND(OELDT,IBIT(ELDT_F24_SE_BIT)  ) > 0) THEN
-         CALL FILE_OPEN ( F24, F24FIL, OUNT, 'REPLACE', F24_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( F24, F24FIL, OUNT, 'REPLACE', F24_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       ENDIF
 
       IF ( IAND(OELDT,IBIT(ELDT_F25_U_P_BIT) ) > 0) THEN
-         CALL FILE_OPEN ( F25, F25FIL, OUNT, 'REPLACE', F25_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( F25, F25FIL, OUNT, 'REPLACE', F25_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       ENDIF
 
       ! Print table showing the elements connected to each grid if requested
@@ -767,28 +764,28 @@ res16:IF (RESTART == 'N') THEN
 !   Open L1H for writing enforced displ SPC's. Keep L1H for later processing in YS_ARRAY if SOL = STATICS
   
          IF (NRIGEL > 0) THEN
-            CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'OLD', L1F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'OLD', L1F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
   
          IF (NMPC > 0) THEN
-            CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'OLD', L1S_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'OLD', L1S_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
 
          IF ((NSPC > 0) .OR. (NSPC1 > 0)) THEN
-            CALL FILE_OPEN ( L1O, LINK1O, OUNT, 'OLD', L1O_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1O, LINK1O, OUNT, 'OLD', L1O_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
 
          IF (NAOCARD > 0) THEN
-            CALL FILE_OPEN ( L1N, LINK1N, OUNT, 'OLD', L1N_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1N, LINK1N, OUNT, 'OLD', L1N_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
 
          IF (NUM_SUPT_CARDS > 0) THEN
-            CALL FILE_OPEN ( L1T, LINK1T, OUNT, 'OLD', L1T_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1T, LINK1T, OUNT, 'OLD', L1T_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
 
-         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
-         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'REPLACE', L1H_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'REPLACE', L1H_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
   
 !         CALL LINK_MESSAGE('ALLOCATE MEMORY FOR SOME MODEL DATA ARRAYS  ')
          CALL ALLOCATE_DOF_TABLES ( 'TSET', SUBR_NAME )
@@ -808,35 +805,35 @@ res16:IF (RESTART == 'N') THEN
          CALL DEALLOCATE_MODEL_STUF ( 'SPCADD_SIDS' )
 
          IF (NMPC > 0) THEN
-            CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP' )
          ENDIF
 
          IF (NRIGEL > 0) THEN
-            CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP' )
          ENDIF
 
          IF ((NSPC > 0) .OR. (NSPC1 > 0)) THEN
-            CALL FILE_CLOSE ( L1O, LINK1O, L1OSTAT, 'Y' )
+            CALL FILE_CLOSE ( L1O, LINK1O, L1OSTAT )
          ENDIF
 
          IF (NDOFSE > 0) THEN
             IF ((SOL_NAME(1:7) == 'STATICS') .OR. (SOL_NAME(1:8) == 'NLSTATIC') .OR.                                               &
                ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1))) THEN
-               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP' )
             ELSE
-               CALL FILE_CLOSE ( L1H, LINK1H, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( L1H, LINK1H, 'DELETE' )
             ENDIF
          ENDIF
 
          IF (NAOCARD > 0) THEN
-            CALL FILE_CLOSE ( L1N, LINK1N, L1NSTAT, 'Y' )
+            CALL FILE_CLOSE ( L1N, LINK1N, L1NSTAT )
          ENDIF
 
          ! CONM2 processing to get CONM2 data in basic coords at the mass
-         CALL FILE_OPEN ( L1Y, LINK1Y, OUNT, 'REPLACE', L1Y_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1Y, LINK1Y, OUNT, 'REPLACE', L1Y_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          CALL LINK_MESSAGE('CONM2 PROCESSOR #1                          ')
          CALL CONM2_PROC_1
-         CALL FILE_CLOSE ( L1Y, LINK1Y, L1YSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1Y, LINK1Y, L1YSTAT )
   
          ! Grid point weight generator (model weight, c.g., etc.)
          CALL LINK_MESSAGE('ALLOCATE MEMORY FOR RBGLOBAL ARRAY          ')
@@ -925,12 +922,12 @@ res18:IF (RESTART == 'N') THEN
             IF (NTCARD > 0) THEN
                OUNT(1) = ERR
                OUNT(2) = F06
-               CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'OLD', L1K_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'OLD', L1K_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('GRID & ELEM TEMPERATURE DATA PROCESSOR      ')
                CALL TEMPERATURE_DATA_PROC
-               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP' )
             ELSE
-               CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE' )
             ENDIF
          ENDIF
          CALL DEALLOCATE_MODEL_STUF ( 'ETEMP' )
@@ -947,12 +944,12 @@ res18:IF (RESTART == 'N') THEN
 
             IF (NPCARD > 0) THEN
   
-               CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'OLD', L1Q_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'OLD', L1Q_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
   
                CALL LINK_MESSAGE('ELEMENT PRESSURE DATA PROCESSOR             ')
                CALL PRESSURE_DATA_PROC
   
-               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP' )
             ENDIF
          ENDIF
          CALL DEALLOCATE_MODEL_STUF ( 'PRESS_SIDS' )
@@ -1038,11 +1035,11 @@ res18:IF (RESTART == 'N') THEN
                OUNT(1) = ERR
                OUNT(2) = F06
                CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READWRITE', 'REWIND',             &
-                               'Y', 'N', 'Y' )
+                               'Y', 'N' )
                CALL LINK_MESSAGE('CALCULATE YS ENFORCED DISPL ARRAY           ')
                CALL YS_ARRAY
                CALL DEALLOCATE_COL_VEC ( 'YSe' )
-               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP' )
 
             ENDIF
 
@@ -1093,7 +1090,7 @@ res18:IF (RESTART == 'N') THEN
 
          DO I=1,MOU4                                       ! Open the OU4 units
             IF (OPEN_UNT(I) == 'Y') THEN
-               CALL FILE_OPEN (OU4(I), OU4FIL(I), OUNT, 'REPLACE', OU4_MSG(I),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N','Y')
+               CALL FILE_OPEN (OU4(I), OU4FIL(I), OUNT, 'REPLACE', OU4_MSG(I),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N')
             ENDIF
          ENDDO
 
@@ -1104,7 +1101,7 @@ res18:IF (RESTART == 'N') THEN
       ! rewrites L1A if this a restart - needed to tell LINK9 that this is a restart
       COMM(LINKNO) = 'C'
 res20:IF (RESTART == 'N') THEN
-         CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+         CALL WRITE_L1A ( 'KEEP', 'Y' )
       ENDIF res20
 
       ! Check allocation status of allocatable arrays, if requested
@@ -1115,11 +1112,8 @@ res20:IF (RESTART == 'N') THEN
          ENDIF
       ENDIF
 
-      ! Write LINK0 end to F04, F06
+      ! Write LINK0 end to F06
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
       IF (( DEBUG(193) == 1) .OR. (DEBUG(193) == 999)) THEN

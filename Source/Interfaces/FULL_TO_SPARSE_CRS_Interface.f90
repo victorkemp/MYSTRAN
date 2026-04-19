@@ -33,12 +33,11 @@
                                       I_MATOUT, J_MATOUT, MATOUT )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FULL_TO_SPARSE_CRS_BEGEND
  
       IMPLICIT NONE
  
@@ -51,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: NTERM_ALLOC          ! Number of nonzero terms allocated to MATOUT in calling subr
       INTEGER(LONG), INTENT(OUT)      :: I_MATOUT(N+1)        ! I_MATOUT(I+1) - I_MATOUT(I) = number of nonzeros in MATOUT row I
       INTEGER(LONG), INTENT(OUT)      :: J_MATOUT(NTERM_ALLOC)! Col numbers for nonzero terms in MATOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FULL_TO_SPARSE_CRS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN_FULL(N,M)      ! Real nonzero values in input matrix MATIN
       REAL(DOUBLE) , INTENT(IN)       :: SMALL                ! Terms < SMALL are filtered out (both here and in calling subr)

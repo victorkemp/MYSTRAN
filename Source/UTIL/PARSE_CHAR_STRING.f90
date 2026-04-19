@@ -37,11 +37,10 @@
 !                            WORDS(5) = VONMISES
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARSE_CHAR_STRING_BEGEND
 
       USE PARSE_CHAR_STRING_USE_IFs
 
@@ -64,14 +63,8 @@
       INTEGER(LONG)                    :: CHAR_COUNT         ! Index into CHAR_STRING to a character in that string (not ' ' or ',')
       INTEGER(LONG)                    :: I,J                ! DO loop indices
       INTEGER(LONG)                    :: WORD_LEN           ! Length of one of the words in CHAR_STRING (must be <= MWLEN)
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = PARSE_CHAR_STRING_BEGEND
+
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -181,12 +174,7 @@ j_do:                   DO J=1,MAX_LEN_BAD_WRD             ! Loop trying to get 
          WRITE(F06,*)
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
  9998 FORMAT('               THE WORDS FROM THE STRING ARE PRINTED BELOW:',/)

@@ -31,7 +31,7 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
  
       USE SCONTR, ONLY                :  LINKNO, NUM_EIGENS
-      USE IOUNT1, ONLY                :  ERR, F06, L1M, L1M_MSG, L1MSTAT, LINK1M, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1M, L1M_MSG, L1MSTAT, LINK1M, SC1, WRT_ERR
       USE EIGEN_MATRICES_1 , ONLY     :  EIGEN_VAL, GEN_MASS, MODE_NUM
 
       USE MODEL_STUF, ONLY            :  EIG_COMP, EIG_CRIT, EIG_FRQ1, EIG_FRQ2, EIG_GRID, EIG_METH, EIG_MSGLVL, EIG_LAP_MAT_TYPE, &
@@ -61,7 +61,7 @@
       OUNT(1) = ERR
       OUNT(2) = F06
 
-      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'OLD', L1M_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'OLD', L1M_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
       CALL LINK_MESSAGE('READ EIGENVALUE DATA FROM PRIOR LINK')
 
@@ -113,7 +113,7 @@
          REC_NO = REC_NO + 1
          IF (IOCHK(I) /= 0) THEN
             IERROR = IERROR + 1
-            CALL READERR ( IOCHK(I), LINK1M, ENAME(I), REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK(I), LINK1M, ENAME(I), REC_NO, OUNT )
          ENDIF
       ENDDO
 
@@ -122,11 +122,11 @@
          READ(L1M,IOSTAT=IOCHK(1)) MODE_NUM(I), EIGEN_VAL(I), GEN_MASS(I)
          IF (IOCHK(1) /= 0) THEN
             IERROR = IERROR + 1
-            CALL READERR ( IOCHK(1), LINK1M, L1M_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK(1), LINK1M, L1M_MSG, REC_NO, OUNT )
          ENDIF
       ENDDO
 
-      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP' )
 
 ! **********************************************************************************************************************************
  

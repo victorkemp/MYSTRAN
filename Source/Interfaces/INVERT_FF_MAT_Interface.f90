@@ -32,10 +32,9 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  DOUBLE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  INVERT_FF_MAT_BEGEND
       USE LAPACK_SYM_MAT_INV
 
       IMPLICIT NONE
@@ -45,7 +44,6 @@
 
       INTEGER(LONG)   , INTENT(IN)    :: NROWS             ! Row/col size of input matrix A
       INTEGER(LONG)   , INTENT(OUT)   :: INFO              ! Output from LAPACK routines to do factorization of Lapack band matrix
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = INVERT_FF_MAT_BEGEND
 
       REAL(DOUBLE)    , INTENT(INOUT) :: A(NROWS,NROWS)    ! Matrix to invert. Inverted matrix returned in A
 

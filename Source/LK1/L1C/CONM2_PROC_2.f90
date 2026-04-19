@@ -35,10 +35,9 @@
 ! RCONM2 in global coords at the grid is needed for the mass matrix generation subr, MGG_MASS_MATRIX.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCONM2, NCORD, NGRID
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CONM2_PROC_2_BEGEND
       USE MODEL_STUF, ONLY            :  CONM2, RCONM2, GRID, GRID_ID, CORD
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
@@ -60,7 +59,7 @@
       INTEGER(LONG)                   :: NCOLA             ! No. cols in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG)                   :: NCOLB             ! No. cols in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG)                   :: NROWA             ! No. rows in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONM2_PROC_2_BEGEND
+
  
       REAL(DOUBLE)                    :: DX_0              ! Offset of mass from grid in basic coord sys X direction
       REAL(DOUBLE)                    :: DY_0              ! Offset of mass from grid in basic coord sys Y direction
@@ -101,12 +100,7 @@
       REAL(DOUBLE)                    :: PHID, THETAD      ! Outputs from subr GEN_T0L
       REAL(DOUBLE)                    :: T_0_G(3,3)        ! Transformation matrix from global to basic
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 outer:DO I = 1,NCONM2
@@ -263,12 +257,7 @@ j_loop1:    DO J=1,NCORD
          CALL OUTA_HERE ( 'Y' )                            ! Quit due to undefined grid and coord sys ID's
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

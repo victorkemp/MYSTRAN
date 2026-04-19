@@ -29,14 +29,13 @@
       ! Processes SPC and MPC force output requests for 1 subcase.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, OT4
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OT4
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, GROUT_SPCF_BIT, GROUT_MPCF_BIT, GROUT_GPFO_BIT, IBIT, INT_SC_NUM,&
                                          MELGP, MOGEL, NGRID, NDOFF, NDOFG, NDOFM, NDOFN, NDOFS, NDOFSA, NTERM_GMN,                &
                                          NTERM_HMN, NTERM_KFS, NTERM_KFSD, NTERM_LMN, NTERM_MFS, NTERM_QS, SOL_NAME
 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP2_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START, TDOFI
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL, GEN_MASS, MEFFMASS, MPFACTOR_N6
@@ -104,7 +103,7 @@
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SDOF              ! S-set DOF number
       INTEGER(LONG)                   :: SADOF             ! SA-set DOF number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP2_BEGEND
+
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
 
       REAL(DOUBLE)                    :: DEN               ! Intermediate variable
@@ -124,12 +123,7 @@
  9000 FORMAT(' *DEBUG:    RUNNING=', A)
  9003 FORMAT(' *DEBUG:    ITABLE BAD=', i4)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 
 ! **********************************************************************************************************************************
@@ -633,12 +627,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

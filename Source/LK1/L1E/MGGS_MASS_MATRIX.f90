@@ -29,7 +29,7 @@
 ! Forms the sparse scalar mass matrix, MGGS, (for masses defined on Bulk Data CMASS)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  FATAL_ERR, NCMASS, NDOFG, NGRID, NPMASS, NTERM_MGGS, BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -38,7 +38,6 @@
       USE DOF_TABLES, ONLY            :  TDOF
       USE MODEL_STUF, ONLY            :  CMASS, GRID_ID, PMASS, RPMASS
       USE SPARSE_MATRICES, ONLY       :  I_MGGS, J_MGGS, MGGS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MGGS_MASS_MATRIX_BEGEND
  
       USE MGGS_MASS_MATRIX_USE_IFs
 
@@ -56,18 +55,13 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row number in TDOF where data begins for IGRID
       INTEGER(LONG)                   :: SGRID(NCMASS)     ! Grid number for a scalar mass (from array CMASS)
       INTEGER(LONG)                   :: PMASS_ID(NCMASS)  ! Prop ID for the CMASS that is attached to SGRID(I) (from array PMASS)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGS_MASS_MATRIX_BEGEND
+
 
       REAL(DOUBLE)                    :: PMASS_VAL(NCMASS) ! Value for the mass attached to SGRID(I)
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -167,12 +161,7 @@ j_do2:   DO J=1,NCMASS
 
       NTERM_MGGS = KTERM_MGGS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

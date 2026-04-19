@@ -28,7 +28,7 @@
 
       ! LOADB reads in the Bulk Data deck.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, IMB_BLANK, JF, LIND_GRDS_MPCS,               &
                                          LSUB, LLOADC, LMPCADDC, LSPCADDC, MDT, MTDAT_TEMPP1, MTDAT_TEMPRB,                        &
                                          MAX_GAUSS_POINTS, MAX_STRESS_POINTS,                                                      &
@@ -41,7 +41,6 @@
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  GRIDSEQ, IORQ1M, IORQ1S, IORQ1B, IORQ2B, IORQ2T, QUADAXIS, SUPINFO, SUPWARN
       USE OUTPUT4_MATRICES, ONLY      :  NUM_PARTN_REQUESTS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADB_BEGEND
       USE MODEL_STUF, ONLY            :  FORMOM_SIDS, GRAV_SIDS, IOR3D_MAX, LOAD_SIDS,                                             &
                                          MPCSET, MPC_SIDS, MPCSIDS, MPCADD_SIDS, PBAR, RPCOMP, PRESS_SIDS, RFORCE_SIDS,            &
                                          RPBAR, SLOAD_SIDS, SPC_SIDS, SPC1_SIDS, SPCADD_SIDS, SPCSET, CC_EIGR_SID, SCNUM, SUBLOD
@@ -88,14 +87,9 @@
       INTEGER(LONG)                   :: NG                 ! Actual num grids on CUSERIN (not incl SPOINT's)
       INTEGER(LONG)                   :: NS                 ! Actual num SPOINT'ss on CUSERIN
       INTEGER(LONG)                   :: NUM_QUADS          ! Number of quadrilateral elements
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       ! Initialize
@@ -983,12 +977,7 @@ j_do2:            DO J=2,LMPCADDC
          WRITE(F06,1197) MELGP, MELDOF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -1152,7 +1141,7 @@ j_do2:            DO J=2,LMPCADDC
 
       ! it seems like there should be a better way to write an upper function...
       ! https://en.wikibooks.org/wiki/Fortran/strings
-      USE IOUNT1, ONLY                :  ERR, INFILE, F06 !, F04
+      USE IOUNT1, ONLY                :  ERR, INFILE, F06 !
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       implicit none
       CHARACTER(256), intent (inout) :: LINE
@@ -1178,7 +1167,7 @@ j_do2:            DO J=2,LMPCADDC
       DO WHILE(TRIM_LINE(1:1) == '$')
          IF (IOCHK /= 0) THEN
            REC_NO = -99
-           CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT, 'Y')
+           CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT )
            FATAL_ERR = FATAL_ERR + 1
          ENDIF
          READ(IN1,101,IOSTAT=IOCHK) LINE

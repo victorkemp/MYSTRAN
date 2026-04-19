@@ -32,10 +32,9 @@
 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG, f06
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TPLT1_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, THREE, FOUR, SIX, TWELVE
       USE MODEL_STUF, ONLY            :  ALPVEC, BE2, DT, EB, KE, PRESS, PPE, PTE, SHELL_DALP, SHELL_D, SHELL_PROP_ALP, SE2, STE2
  
@@ -43,7 +42,7 @@
   
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TPLT1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: AREA              ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: X2E               ! x coord of elem node 2

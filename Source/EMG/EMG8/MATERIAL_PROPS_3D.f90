@@ -29,10 +29,9 @@
 ! Calculates material stress/strain matrices for isotropic or anisotropic 3-D solid elements
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATERIAL_PROPS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  ALPVEC, EID, ES, EMAT, NUM_EMG_FATAL_ERRS, MTRL_TYPE, RHO, ULT_STRE, ULT_STRN, TREF, TYPE
@@ -47,7 +46,7 @@
       INTEGER(LONG)                   :: IERROR       = 0  ! Local error indicator
       INTEGER(LONG)                   :: I,J               ! DO loop indices 
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATERIAL_PROPS_BEGEND
+
   
       REAL(DOUBLE)                    :: ALPHA             ! Isotropic coefficient of thermal expansion
       REAL(DOUBLE)                    :: DEN1              ! An intermaediate variable in calculating outputs
@@ -61,12 +60,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1   = EPSIL(1)
@@ -211,12 +205,7 @@
 
       IF (IERROR > 0) RETURN
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

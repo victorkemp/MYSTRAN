@@ -32,10 +32,9 @@
 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  FATAL_ERR, BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_IMBEDDED_BLANK_BEGEND
  
       IMPLICIT NONE
  
@@ -49,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: CF7               ! = 7 if field 7 is to be checked, or 0 otherwise
       INTEGER(LONG), INTENT(IN)       :: CF8               ! = 8 if field 8 is to be checked, or 0 otherwise
       INTEGER(LONG), INTENT(IN)       :: CF9               ! = 9 if field 9 is to be checked, or 0 otherwise
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_IMBEDDED_BLANK_BEGEND
+
  
       END SUBROUTINE BD_IMBEDDED_BLANK
 

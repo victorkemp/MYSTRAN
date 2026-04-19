@@ -29,7 +29,7 @@
       ! Preliminary reading of the Bulk Data to count several data sizes so
       ! that arrays may be allocated prior to the final reading of the Bulk Data.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1                
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1                
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, LCMASS, LDOFG, LELE,                               &
                                          LEDAT, LFORCE, LCONM2, LCORD, LGRAV, LGRID, LGUSERIN, LLOADC, LLOADR,                     &
                                          LMATL, LMPC, LMPCADDC, LMPCADDR, LPBAR, LPBEAM, LPBUSH, LPCOMP, LPCOMP_PLIES, LPDAT,      &
@@ -42,7 +42,6 @@
                                          MPDAT_PLOAD2, MPDAT_PLOAD4, MEDAT_PLOTEL, MRBE3, MRSPLINE, MTDAT_TEMPRB, MTDAT_TEMPP1,    &
                                          NPBARL, NSPOINT, PROG_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADB0_BEGEND
       USE MODEL_STUF, ONLY            :  GRDSET3, GRDSET7, GRDSET8
       USE PARAMS, ONLY                :  GRIDSEQ
  
@@ -80,14 +79,9 @@
       INTEGER(LONG)                   :: IPLIES            ! Number of composite layers on 1 B.D. PCOMP card
       INTEGER(LONG)                   :: NG_USERIN         ! Number of grids found on USERIN elems (not incl SPOINT's)
       INTEGER(LONG)                   :: NS_USERIN         ! Number of SPOINT's found on USERIN elems
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADB0_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CARD(1:) = ' '
@@ -518,12 +512,7 @@
 ! ! reported when LOADB runs.
 ! ! 
 ! !   FATAL_ERR = 0 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -29,13 +29,12 @@
 ! Calcs THETAM for plate elements that have the material angle specified via a coord sys ID (ACID here) 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCORD
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD, ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  CORD, EID, NUM_EMG_FATAL_ERRS, NUM_EMG_FATAL_ERRS, RCORD, TE, THETAM, TYPE, QUAD_DELTA
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_MATANGLE_FROM_CID_BEGEND
  
       USE GET_MATANGLE_FROM_CID_USE_IFs
 
@@ -47,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: ACID              ! Actual coord system ID for the sys that defines the material axes
       INTEGER(LONG)                   :: I                 ! DO loop indices
       INTEGER(LONG)                   :: ICID              ! Internal coord sys ID for ACID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MATANGLE_FROM_CID_BEGEND
+
  
       REAL(DOUBLE)                    :: DOT_XM            ! Dot product of VEC_XE and VEC_ME
       REAL(DOUBLE)                    :: CROSS_XM(3)       ! Cross product of VEC_XE and VEC_ME
@@ -60,12 +59,7 @@
       REAL(DOUBLE)                    :: VEC_ZE(3)         ! Vector in z direction in element coord sys
       REAL(DOUBLE)                    :: VEC_ME(3)         ! Vector proj of VEC_XM onto elem plane
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -133,12 +127,7 @@ i_do1:   DO I=1,NCORD
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -30,11 +30,10 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, ONEPP6
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO, LTERM_MGGE, NDOFG, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  YEAR, MONTH, DAY, HOUR, MINUTE, SEC, SFRAC, STIME, TSEC
       USE EMS_ARRAYS, ONLY            :  EMS, EMSCOL, EMSKEY, EMSPNT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_EMS_ARRAYS_BEGEND
  
       USE ALLOCATE_EMS_ARRAYS_USE_IFs
 
@@ -49,7 +48,7 @@
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
       INTEGER(LONG)                   :: NROWS             ! Number of rows for matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_EMS_ARRAYS_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -61,12 +60,7 @@
 
       INTRINSIC                       :: REAL
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages
@@ -91,7 +85,6 @@
          MB_ALLOCATED = RLONG*REAL(NDOFG)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, NDOFG, CR13
             DO I=1,NDOFG
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, NDOFG, CR13
@@ -120,7 +113,6 @@
          MB_ALLOCATED = RLONG*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13
@@ -149,7 +141,6 @@
          MB_ALLOCATED = RLONG*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13
@@ -178,7 +169,6 @@
          MB_ALLOCATED = RDOUBLE*REAL(LTERM_MGGE)/ONEPP6
          IF (IERR == 0) THEN
             CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-            CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
             WRITE(SC1,22345,ADVANCE='NO') NAME, LTERM_MGGE, CR13
             DO I=1,LTERM_MGGE
 !!             WRITE(SC1,12345,ADVANCE='NO') NAME, I, LTERM_MGGE, CR13
@@ -203,12 +193,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

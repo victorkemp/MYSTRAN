@@ -29,13 +29,12 @@
 ! Jacobi solution for 3x3 eigenvalue problem used in finding principal moments of inertia for the Grid Point Weight Generator (GPWG)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  SUPWARN, WTMASS
       USE LAPACK_STD_EIG_1
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GPWG_BEGEND
  
       USE GPWG_PMOI_USE_IFs
 
@@ -55,7 +54,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG), PARAMETER        :: N         = 3     ! Order of matrix MOI1
       INTEGER(LONG), PARAMETER        :: LWORK     = 3*N-1 ! Size of array WORK
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GPWG_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(INOUT)    :: MOI1(3,3)         ! On entry, the MOI's about c.g. in basic coords
 !                                                            On exit , the principal MOI's in basic coords (if INFO = 0)
@@ -72,12 +71,7 @@
  
       EXTERNAL                        :: DGEMM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Initialize outputs
@@ -141,12 +135,7 @@
       ENDIF  
       
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

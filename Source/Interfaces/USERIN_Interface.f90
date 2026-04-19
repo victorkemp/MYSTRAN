@@ -32,7 +32,7 @@
 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4, IN4_MSG, IN4FIL, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, IN4, IN4_MSG, IN4FIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEDAT0_CUSERIN, MELDOF, NDOFG, NGRID, NSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -47,7 +47,6 @@
                                          USERIN_NUM_BDY_DOF, USERIN_NUM_ACT_GRDS, USERIN_NUM_SPOINTS,                              &
                                          USERIN_MASS_MAT_NAME, USERIN_LOAD_MAT_NAME, USERIN_RBM0_MAT_NAME, USERIN_STIF_MAT_NAME
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  USERIN_BEGEND
  
       IMPLICIT NONE 
   
@@ -60,7 +59,7 @@
                                                            ! Array that has USERIN grid num in col 1 and comp number in remaining 7
                                                            ! cols (1 col has all comps, others each indiv comp) for USERIN bdy DOF's
       INTEGER(LONG)                   :: USERIN_CID0_ICID  ! Internal coordinate system ID for USERIN_CID0
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = USERIN_BEGEND
+
   
       REAL(DOUBLE)                    :: DX                ! X offset of USERIN elem CG from overall model basic sys origin
       REAL(DOUBLE)                    :: DY                ! Y offset of USERIN elem CG from overall model basic sys origin

@@ -29,10 +29,8 @@
 ! Processes CUSERIN Bulk Data Cards to determine how many grids and SPOINT's are defined (so arrays can be allocated)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CUSERIN0_BEGEND
  
       USE BD_CUSERIN0_USE_IFs
 
@@ -45,14 +43,9 @@
       INTEGER(LONG), INTENT(OUT)      :: NG                ! Number of GRID's
       INTEGER(LONG), INTENT(OUT)      :: NS                ! Number of SPOINT's
       INTEGER(LONG)                   :: I4INP     = 0     ! A value read from input file that should be an integer value
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CUSERIN0_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CUSERIN parent entry
@@ -84,12 +77,7 @@
          IERRFL(5) = 'N'
       ENDIF
  
-!**********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

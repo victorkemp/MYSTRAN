@@ -30,7 +30,7 @@
 ! PCOMP1 will be put into the same PCOMP, RPCOMP arrays.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPCOMP_PLIES, LPCOMP, MPCOMP0, MRPCOMP0,  &
                                          MPCOMP_PLIES, MRPCOMP_PLIES, NPCOMP
       USE TIMDAT, ONLY                :  TSEC
@@ -38,7 +38,6 @@
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, TWO
       USE MODEL_STUF, ONLY            :  PCOMP, RPCOMP
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PCOMP1_BEGEND
 
       USE BD_PCOMP1_USE_IFs
 
@@ -65,7 +64,7 @@
       INTEGER(LONG)                   :: PCOMP_PLIES        ! No. of plies in 1 PCOMP1 entry incl sym plies not explicitly defined
       INTEGER(LONG)                   :: PROPERTY_ID = 0    ! Property ID (field 2 of this parent property card)
       INTEGER(LONG)                   :: SOUT_INT    = 0    ! Entry in array PCOMP (not defined on PCOMP1)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PCOMP1_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1               ! A small number
       REAL(DOUBLE)                    :: NSM                ! Non structural mass
@@ -77,12 +76,7 @@
       REAL(DOUBLE)                    :: Z0          = ZERO ! Dist (+/-) from ref plane to bottom surface
       REAL(DOUBLE)                    :: ZI          = ZERO ! Dist (+/-) from ref plane to middle of ply i
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PCOMP1 Bulk Data Card:
@@ -358,12 +352,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

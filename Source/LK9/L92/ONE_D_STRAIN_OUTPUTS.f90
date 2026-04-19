@@ -31,7 +31,7 @@
 ! BAR, BUSH) and puts results into array OGEL for later output to F06 file.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -39,7 +39,6 @@
       USE LINK9_STUFF, ONLY           :  MSPRNT, OGEL
       USE FEMAP_ARRAYS, ONLY          :  FEMAP_EL_VECS
       USE PARAMS, ONLY                :  PRTNEU
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ONE_D_STRAIN_OUTPUTS_BEGEND
 
       USE ONE_D_STRAIN_OUTPUTS_USE_IFs
 
@@ -54,7 +53,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: ICOL               ! An input to subr MARGIN, called by this subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ONE_D_STRAIN_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: C1,C2              ! Coords of point "C" on cross-section of a CBAR where strain is calc'd
       REAL(DOUBLE)                    :: D1,D2              ! Coords of point "D" on cross-section of a CBAR where strain is calc'd
@@ -70,12 +69,7 @@
 
       INTRINSIC DMAX1,DMIN1
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 ! **********************************************************************************************************************************
 ! Calc engineering strains from array STRAIN and put into array OGEL
@@ -234,12 +228,7 @@
 
       ENDIF   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

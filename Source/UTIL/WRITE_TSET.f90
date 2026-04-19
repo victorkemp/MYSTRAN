@@ -29,12 +29,11 @@
 ! Writes the NGRID x 6 TSET degree of freedom table to the F06 file based on user supplied Bulk Data Param PRTTSET
 
       USE PENTIUM_II_KIND, ONLY       :  LONG
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MTSET, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID, GRID_SEQ, INV_GRID_SEQ
       USE DOF_TABLES, ONLY            :  TSET
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_TSET_BEGEND
 
       USE WRITE_TSET_USE_IFs
 
@@ -43,14 +42,9 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'WRITE_TSET'
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TSET_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! *********************************************************************************************************************************
       WRITE(F06,56)
@@ -60,12 +54,7 @@
       ENDDO   
       WRITE(F06,59)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

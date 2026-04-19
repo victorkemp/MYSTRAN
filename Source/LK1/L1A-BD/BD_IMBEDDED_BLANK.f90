@@ -29,10 +29,9 @@
 ! Prepares message when some fields of a B.D card have imbedded blanks when they should not (but field can be completely blank)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  FATAL_ERR, BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_IMBEDDED_BLANK_BEGEND
  
       USE BD_IMBEDDED_BLANK_USE_IFs
 
@@ -55,14 +54,9 @@
       INTEGER(LONG)                   :: JCARDI_BEG        ! Position where data begins in one JCARD
       INTEGER(LONG)                   :: JCARDI_END        ! Position where data ends   in one JCARD
       INTEGER(LONG)                   :: NUMBER(2:9)       ! Number of imbedded blanks found in a Bulk Data card field
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_IMBEDDED_BLANK_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Load CF2 through CF9 into array CHK_FLD
@@ -150,12 +144,7 @@ j_do2:         DO J=JCARD_LEN,1,-1                         ! Find where data end
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

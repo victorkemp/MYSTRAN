@@ -32,11 +32,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, SHORT, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, GROUT_GPFO_BIT, IBIT, INT_SC_NUM, JTSUB, NDOFG, NDOFM, MELDOF, NDOFO, NDOFR,&
                                          NELE, NGRID, NUM_CB_DOFS, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GP_FORCE_BALANCE_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE_HUNDRED
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -54,7 +53,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: JVEC              ! Solution vector number
       INTEGER(LONG)                   :: IB                ! Intermediate value used in determining NREQ
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GP_FORCE_BALANCE_PROC_BEGEND
+
 
       END SUBROUTINE GP_FORCE_BALANCE_PROC
 

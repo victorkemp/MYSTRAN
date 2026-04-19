@@ -3,14 +3,10 @@
       MODULE BANDIT_MODULE
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  F04
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  BANDIT_BEGEND
       USE PARAMS, ONLY                   :  DELBAN
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = BANDIT_BEGEND
 
 ! Notes:
 ! ------
@@ -245,7 +241,7 @@
 ! ##################################################################################################################################
 ! B////////////////////////////////////////////////////////////////////B
       SUBROUTINE BANDIT ( MYSTRAN_NGRID, NEW_BW, DEN, IER )
-      USE IOUNT1, ONLY :  WRT_LOG, IN1
+      USE IOUNT1, ONLY :  IN1
 ! E////////////////////////////////////////////////////////////////////E
 c
 c     Gordon C. Everstine, Gaithersburg, MD, geversti@comcast.net
@@ -388,11 +384,6 @@ C
       integer KOM(MEM)
 
 ! B////////////////////////////////////////////////////////////////////B
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
 
 ! E////////////////////////////////////////////////////////////////////E
 C
@@ -591,11 +582,6 @@ c     IF(IPARAM(8).EQ.4) STOP 5
 
 
  9000 continue
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 ! E////////////////////////////////////////////////////////////////////E
@@ -1755,7 +1741,7 @@ C     THE DEFAULT NUMBER OF NODES FOR CDUMI IS 0.
       SUBROUTINE FINISH(KUMP,IER)
 C
 ! B////////////////////////////////////////////////////////////////////B
-      USE IOUNT1, ONLY   :  WRT_LOG, SEQ
+      USE IOUNT1, ONLY   :  SEQ
 ! E////////////////////////////////////////////////////////////////////B
 C     TERMINATE JOB AFTER FATAL ERROR.
 C     THE SUBSEQUENT EXECUTION OF NASTRAN IS PREVENTED BY ERASING UNIT 8.
@@ -4772,7 +4758,7 @@ C
       SUBROUTINE SEQGP(NORIG,ILD,NEW,JUMP)
 C
 ! B////////////////////////////////////////////////////////////////////B
-      USE IOUNT1, ONLY                :  WRT_LOG, SEQ
+      USE IOUNT1, ONLY                :  SEQ
 ! E////////////////////////////////////////////////////////////////////E
 C     WRITE SEQGP BULK DATA CARDS ON 7 and 8.
 C

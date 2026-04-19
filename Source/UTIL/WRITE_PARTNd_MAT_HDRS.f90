@@ -29,13 +29,12 @@
 ! Writes the grid/comp pairs corresponding to the cols and rows of a partitioned matrix. Used for OUTPUT4 matrices
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MTDOF, NDOFA, NDOFF, NDOFG, NDOFL, NDOFM, NDOFN, NDOFO, NDOFR,   &
                                          NDOFS, NDOFSA, NDOFSB, NDOFSE, NDOFSG, NDOFSZ, NUM_USET_U1, NUM_USET_U2, TSET_CHR_LEN
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI
       USE OUTPUT4_MATRICES, ONLY      :  OU4_MAT_COL_GRD_COMP, OU4_MAT_ROW_GRD_COMP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_PARTNd_MAT_HDRS_BEGEND
 
       USE WRITE_PARTNd_MAT_HDRS_USE_IFs
 
@@ -52,14 +51,9 @@
       INTEGER(LONG)                   :: OUTPUT_1(10)        ! Part of a line of output
       INTEGER(LONG)                   :: OUTPUT_2(10)        ! Part of a line of output
       INTEGER(LONG)                   :: NUM_LEFT            ! Used when printing a line of 10 values in the set
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_PARTNd_MAT_HDRS_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Write the matrix col headers out to F06
@@ -136,12 +130,6 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-     IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

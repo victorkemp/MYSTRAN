@@ -31,11 +31,10 @@
 ! system.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NCORD, NDOFG, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CORD, RCORD, GRID, GRID_ID, INV_GRID_SEQ
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CONVERT_VEC_COORD_SYS_BEGEND
 
       USE CONVERT_VEC_COORD_SYS_USE_IFs
 
@@ -53,7 +52,7 @@
       INTEGER(LONG)                   :: JCORD             ! Internal coord system number for either GCID or NCID
       INTEGER(LONG)                   :: JFLD              ! Used in error message to indicate a coord sys ID undefined
       INTEGER(LONG)                   :: NUM_COMPS         ! No. displ components (1 for SPOINT, 6 for actual grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONVERT_VEC_COORD_SYS_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: INPUT_VEC(NDOFG)  ! G-set input vector to be transformed from global to NCID
       REAL(DOUBLE), INTENT(OUT)       :: OUTPUT_VEC(NDOFG) ! Transformed output vector
@@ -68,12 +67,7 @@
       REAL(DOUBLE)                    :: T_0_GCID(3,3)     ! Coord transformation matrix from basic to GCID system
       REAL(DOUBLE)                    :: T_0_NCID(3,3)     ! Coord transformation matrix from basic to NCID system
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Set OUTPUT_VEC = INPUT_VEC in case no transformation is done (e.g. all grids have basic global and transformed system is basic)
@@ -194,12 +188,7 @@ j_do_2:  DO J=1,NCORD
 
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

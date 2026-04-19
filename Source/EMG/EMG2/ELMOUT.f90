@@ -29,12 +29,11 @@
 ! Prints elem related data (controlled by Case Control ELDATA requests and situational variable WRT_BUG(i) ).
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, BUG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_DAT1_BIT, ELDT_BUG_DAT2_BIT, ELDT_BUG_ME_BIT, ELDT_BUG_P_T_BIT,    &
                                          ELDT_BUG_SE_BIT, ELDT_BUG_KE_BIT, ELDT_BUG_U_P_BIT, MBUG, MDT, MELGP, METYPE,             &
                                          MEMATR, MEMATC, MEPROP, MPRESS, NSUB, NTSUB, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMOUT_BEGEND
       USE CONSTANTS_1, ONLY           :  CONV_RAD_DEG, ZERO
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, ELFORCEN, QUADAXIS, QUAD4TYP
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -67,19 +66,13 @@
 !                                                              If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                              thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                              TCASE2(1-5) = 3, 5, 0, 0, 0 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMOUT_BEGEND
+
 
       REAL(DOUBLE)                    :: OEL(6)              ! Temp array for holding elem displ, node loads
       REAL(DOUBLE)                    :: SHELL_T_avg         ! Average of the diag terms from transverse shear matrix SHELL_T
 
       INTRINSIC                       :: ABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, DUM_BUG
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 5X, 10I4)
-      ENDIF
 
 ! **********************************************************************************************************************************
 ! Set GRID_TYPE
@@ -756,12 +749,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

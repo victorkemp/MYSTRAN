@@ -29,7 +29,7 @@
 ! Call routines to reduce stiffness, mass, loads from N-set to F, S-sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1H, LINK1H, L1H_MSG, L2C, LINK2C, L2C_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1H, LINK1H, L1H_MSG, L2C, LINK2C, L2C_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  LINKNO    , NDOFF, NDOFG, NDOFN, NDOFS, NDOFSE, NSUB,                                     &
                                          NTERM_KNN , NTERM_KFF , NTERM_KFS , NTERM_KSS , NTERM_KSSe ,                              &
                                          NTERM_KNND, NTERM_KFFD, NTERM_KFSD, NTERM_KSSD, NTERM_KSSDe,                              &
@@ -41,7 +41,6 @@
       USE RIGID_BODY_DISP_MATS, ONLY  :  RBGLOBAL_GSET, RBGLOBAL_NSET, RBGLOBAL_FSET
       USE PARAMS, ONLY                :  EQCHK_OUTPUT, MATSPARS, PRTSTIFD, PRTSTIFF, PRTMASS, PRTFOR
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_N_FS_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KNN  , J_KNN  , KNN  , I_KFF  , J_KFF  , KFF  , I_KFS  , J_KFS  , KFS  ,                &
                                          I_KSS  , J_KSS  , KSS  , I_KSSe , J_KSSe , KSSe ,                                         &
                                          I_KNND , J_KNND , KNND , I_KFFD , J_KFFD , KFFD , I_KFSD , J_KFSD , KFSD ,                &
@@ -83,7 +82,7 @@
       INTEGER(LONG)                   :: PART_VEC_S_SzSe(NDOFS)! Partitioning vector (S set into SZ and SE sets) 
       INTEGER(LONG)                   :: PART_VEC_SUB(NSUB)    ! Partitioning vector (1's for all subcases) 
       INTEGER(LONG)                   :: REC_NO                ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_N_FS_BEGEND
+
 
       REAL(DOUBLE)                    :: KFF_DIAG(NDOFF)       ! Diagonal terms from KFF
       REAL(DOUBLE)                    :: KFF_MAX_DIAG          ! Max diag term from KFF
@@ -93,12 +92,7 @@
       OUNT(1) = ERR
       OUNT(2) = F06
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Set partitioning vectors
@@ -124,7 +118,7 @@
       CALL ALLOCATE_COL_VEC ( 'YSe', NDOFSE, SUBR_NAME )
       IF (NDOFSE > 0) THEN
 
-         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
          IERROR = 0
          DO I=1,NDOFSE
@@ -132,7 +126,7 @@
             IF (IOCHK /= 0) THEN
                IERROR = IERROR + 1
                REC_NO = I
-               CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
             ENDIF
          ENDDO
          IF (IERROR /= 0) THEN
@@ -141,7 +135,7 @@
             CALL OUTA_HERE ( 'Y' )                                 ! Quit due to read errors in YSe array file
          ENDIF
   
-         CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP' )
 
          IF (DEBUG(26) == 1) THEN
             CALL WRITE_VECTOR ( 'SE-SET YS ENFORCED DISPLS','DISPL', NDOFSE, YSe )
@@ -527,12 +521,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

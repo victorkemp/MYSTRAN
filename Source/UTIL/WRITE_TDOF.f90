@@ -27,14 +27,13 @@
       SUBROUTINE WRITE_TDOF ( TDOF_MSG )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MTDOF, NDOFG, NDOFM, NDOFN, NDOFSA, NDOFSB, NDOFSG, NDOFSZ, NDOFSE, NDOFS,  &
                                          NDOFF, NDOFO, NDOFA, NDOFR, NDOFL, NGRID, NUM_USET_U1, NUM_USET_U2
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOF, TDOFI
       USE PARAMS, ONLY                :  PRTDOF
       USE MODEL_STUF, ONLY            :  GRID_ID, INV_GRID_SEQ
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_TDOF_BEGEND
 
       USE WRITE_TDOF_USE_IFs
 
@@ -49,14 +48,9 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IROW              ! Row number in array TDOF or TDOFI
       INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components (1 for SPOINT, 6 for physical grid)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_TDOF_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Table TDOF is printed in the F06 file if B.D. PARAM PRTDOF = 1 or 3
@@ -139,12 +133,7 @@
          WRITE(F06,'(//)')
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

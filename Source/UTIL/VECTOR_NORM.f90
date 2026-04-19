@@ -33,11 +33,10 @@
 !    (2) If WHICH = 'INFINITY' , calculate the infinity  norm (maximum absolute value in the vector)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  VECTOR_NORM_BEGEND
 
       USE VECTOR_NORM_USE_IFs
 
@@ -49,7 +48,6 @@
       INTEGER(LONG)   , INTENT(IN)    :: NSIZE             ! Extent of VEC
       INTEGER(LONG)   , INTENT(OUT)   :: IERR              ! Error indicator
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG)   , PARAMETER     :: SUBR_BEGEND = VECTOR_NORM_BEGEND
  
       REAL(DOUBLE)    , INTENT(IN)    :: VEC(NSIZE)        ! The vector for which the norm will be calculated
       REAL(DOUBLE)    , INTENT(OUT)   :: VEC_NORM          ! The norm calculated for VEC
@@ -57,12 +55,7 @@
 
       INTRINSIC                       :: DSQRT
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IERR     = 0
@@ -92,12 +85,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

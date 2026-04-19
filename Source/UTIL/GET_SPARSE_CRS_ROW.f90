@@ -30,11 +30,10 @@
 ! arrays, multiplies it by BETA, and puts result into array OUT_VEC. Sets NULL_ROW to 'Y' if result is null.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_SPARSE_CRS_ROW_BEGEND
       
       USE GET_SPARSE_CRS_ROW_USE_IFs
 
@@ -52,18 +51,13 @@
       INTEGER(LONG), INTENT(IN )      :: ROW_NUM           ! Row number for the row to get in MATIN
       INTEGER(LONG)                   :: J,K               ! DO loop indices or counters
       INTEGER(LONG)                   :: NUM_TERMS_IN_ROW  ! No. terms in row ROW_NUM of MATIN
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SPARSE_CRS_ROW_BEGEND
+
                                  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM)      ! Nonzero terms in matrix MATIN
       REAL(DOUBLE) , INTENT(IN)       :: BETA              ! Scalar multiplier for row from MATIN
       REAL(DOUBLE) , INTENT(OUT)      :: OUT_VEC(NCOLS)    ! Output vector containing the terms from row ROW_NUM of MATIN
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -95,12 +89,7 @@
          ENDDO
       ENDIF
             
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

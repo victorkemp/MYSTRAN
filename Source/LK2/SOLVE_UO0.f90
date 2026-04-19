@@ -29,10 +29,9 @@
 ! Solves KOO*UO0 = PO for matrix UO0 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L2F, LINK2F, L2F_MSG
+      USE IOUNT1, ONLY                :  ERR, F06, L2F, LINK2F, L2F_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FACTORED_MATRIX, FATAL_ERR, KOO_SDIA, NDOFO, NSUB, NTERM_KOO, NTERM_PO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SOLVE_UO0_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  PRTUO0, SOLLIB, SPARSE_FLAVOR
       USE SPARSE_MATRICES, ONLY       :  I_PO, J_PO, PO, I_KOO, J_KOO, KOO
@@ -53,18 +52,13 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices or counters
       INTEGER(LONG)                   :: INFO              ! Info on success of SuperLU solve
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLVE_UO0_BEGEND
+
 
       REAL(DOUBLE)                    :: NULL_SCALE_FACS(NDOFO)
                                                            ! LAPACK_S values not used so null this vector
       REAL(DOUBLE)                    :: INOUT_COL(NDOFO)  ! Temp variable for one col of load matrix PO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the screen and output file
@@ -86,7 +80,7 @@
 
 ! Open file for writing UO0
                                                            ! Write GOA matrix to file L2F
-      CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'REPLACE', L2F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'REPLACE', L2F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! **********************************************************************************************************************************
 ! Solve for UO0 by looping on columns of PO ("loads") to get columns of UO0 ("displs")
@@ -168,14 +162,9 @@
 
       CALL DEALLOCATE_COL_VEC ( 'UO0_COL' )
 
-      CALL FILE_CLOSE ( L2F, LINK2F, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L2F, LINK2F, 'KEEP' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

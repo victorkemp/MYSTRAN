@@ -34,11 +34,9 @@
 !                             | W2 |   |      0           0       1 | | W1 |
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE, ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PLANE_COORD_TRANS_21_BEGEND
       
       USE PLANE_COORD_TRANS_21_USE_IFs
 
@@ -47,7 +45,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'PLANE_COORD_TRANS_21'
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Subr that called this one
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PLANE_COORD_TRANS_21_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: THETA             ! Angle from x axis of system 1 to x axis of system 2
       REAL(DOUBLE), INTENT(OUT)       :: T21(3,3)          ! Transformation matrix which will transform a vector, U1, in coord sys
@@ -55,12 +53,7 @@
 
       INTRINSIC                       :: DSIN, DCOS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
  
 ! **********************************************************************************************************************************
 ! Row 1
@@ -82,12 +75,7 @@
       T21(3,3) =  ONE
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

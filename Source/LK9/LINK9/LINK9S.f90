@@ -30,7 +30,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06,                                         &
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06,                                         &
                                          L1D    , L1G    , L1K    , L1Q    ,                                                       &
                                          LINK1D , LINK1G , LINK1K , LINK1Q ,                                                       &
                                          L1D_MSG, L1G_MSG, L1K_MSG, L1Q_MSG,                                                       &
@@ -46,7 +46,6 @@
 
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, IORQ1M, IORQ1S, IORQ1B, IORQ2B, IORQ2T
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LINK9S_BEGEND
 
       USE MODEL_STUF, ONLY            :  BAROFF, BUSHOFF, EDAT, EOFF, EPNT, ESORT1, ESORT2, ETYPE, PLATEOFF, PLATETHICK, VVEC
       USE MODEL_STUF, ONLY            :  MATANGLE, MATL, RMATL, PBAR, RPBAR, PBEAM, RPBEAM, PBUSH, RPBUSH, PCOMP, RPCOMP, PELAS,   &
@@ -74,14 +73,9 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number of a record read from a file
       INTEGER(LONG)                   :: UNT               ! Unit number of a file to be read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9S_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -96,7 +90,7 @@
       UNT    = L1D
       MESSAG = L1D_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read subcase numbers, titling, load request data
 
@@ -293,9 +287,9 @@
       IF (INT2 /= ANY_STRE_OUTPUT)      CALL DATA_SET_SIZE_ERROR ( LINK1D, NAME_Is, 'NSUB', NSUB, INT2 )
 
       IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-         CALL FILE_CLOSE ( L1D, LINK1D, L1DSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1D, LINK1D, L1DSTAT )
       ELSE
-         CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP' )
       ENDIF
  
 ! **********************************************************************************************************************************
@@ -305,7 +299,7 @@
       UNT    = L1G
       MESSAG = L1G_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read ETYPE, EPNT, ESORT1 ESORT,2, EOFF
 
@@ -899,9 +893,9 @@
       ENDDO 
  
       IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-         CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT )
       ELSE
-         CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP' )
       ENDIF
  
 ! **********************************************************************************************************************************
@@ -915,7 +909,7 @@
 
          IF (NTCARD > 0) THEN
  
-            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read TPNT
 
@@ -984,9 +978,9 @@
             ENDDO 
 
             IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-               CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT )
             ELSE
-               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP' )
             ENDIF
 
          ENDIF
@@ -1004,7 +998,7 @@
 
          IF (NPCARD > 0) THEN
  
-            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read PPNT
 
@@ -1085,21 +1079,16 @@
             ENDDO 
 
             IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-               CALL FILE_CLOSE ( L1Q, LINK1Q, L1QSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1Q, LINK1Q, L1QSTAT )
             ELSE
-               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP' )
             ENDIF
 
          ENDIF
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

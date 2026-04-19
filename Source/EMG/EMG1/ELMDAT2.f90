@@ -32,10 +32,9 @@
 !   DT (1 elem temperatures) and PRESS (1 element pressure load)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LPDAT, MPRESS, MDT, MTDAT_TEMPRB, NSUB, NTSUB 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMDAT_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, QUARTER, THIRD
       USE MODEL_STUF, ONLY            :  BGRID, DT, ELGP, ETYPE, GTEMP, PDATA, PPNT, PTYPE, PRESS, TDATA, TPNT, TYPE
 
@@ -51,14 +50,9 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IPPN              ! A pointer into array PPNT
       INTEGER(LONG)                   :: ITPN              ! A pointer into array TPNT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMDAT_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       TYPE = ETYPE(INT_ELEM_ID)
@@ -189,12 +183,7 @@
 
       ENDIF 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

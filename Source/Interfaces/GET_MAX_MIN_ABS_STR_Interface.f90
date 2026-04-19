@@ -33,12 +33,10 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM  
       USE LINK9_STUFF, ONLY           :  OGEL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_MAX_MIN_ABS_STR_BEGEND
 
       IMPLICIT NONE
 
@@ -46,7 +44,7 @@
 
       INTEGER(LONG) , INTENT(IN)      :: NUM_ROWS          ! Number of stress or strain rows in OGEL
       INTEGER(LONG) , INTENT(IN)      :: NUM_COLS          ! Number of MAX, MIN, ABS to calc (number of cols in OGEL)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MAX_MIN_ABS_STR_BEGEND
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: ABS_ANS(NUM_COLS) ! Max ABS for all grids output for each of the 6 disp components
       REAL(DOUBLE) , INTENT(OUT)      :: MAX_ANS(NUM_COLS) ! Max for all grids output for each of the 6 disp components

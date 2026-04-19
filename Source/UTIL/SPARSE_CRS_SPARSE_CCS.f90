@@ -29,11 +29,10 @@
 ! Converts matrices in sparse compressed row storage (CRS) format to sparse compressed column storage (CCS) format
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_CRS_SPARSE_CCS_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       USE SPARSE_CRS_SPARSE_CCS_USE_IFs
@@ -57,19 +56,14 @@
       INTEGER(LONG)                   :: I2_A(NTERMS_A)    ! Array of row numbers for each term in A
       INTEGER(LONG)                   :: COL_J_NUM_TERMS   ! Number of terms in col J of output matrix B
       INTEGER(LONG)                   :: ROW_I_NUM_TERMS   ! Number of terms in row I of input  matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_CRS_SPARSE_CCS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERMS_A)       ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERMS_A)       ! Real nonzero values in output matrix B
 
       CHARACTER(LEN=LEN(MAT_A_NAME)+LEN(MAT_B_NAME)+7+LEN("Extracting -> col")) :: COUNTER_TEMPLATE
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -127,12 +121,7 @@
 
       IF ((DEBUG(87) == 1) .OR. (DEBUG(87) == 3)) CALL CRS_CCS_DEB ( '2' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

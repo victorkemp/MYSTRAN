@@ -33,10 +33,9 @@
 !   SETID, GRID_NO, CID, FORMON1, FORMON2, FORMON3, FOR_OR_MOM
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1I
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1I
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ECHO, FATAL_ERR, IERRFL, JCARD_LEN, JF, LFORCE, LSUB, NFORCE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_FORMOM_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE MODEL_STUF, ONLY            :  FORMOM_SIDS, SUBLOD
@@ -56,7 +55,7 @@
       INTEGER(LONG)                   :: I                   ! DO loop index
       INTEGER(LONG)                   :: JERR      = 0       ! A local error count
       INTEGER(LONG)                   :: SETID  = 0          ! Set ID on the FORCE/MOMENT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_FORMOM_BEGEND
+
   
       REAL(DOUBLE)                    :: EPS1                ! A small number to compare real zero
       REAL(DOUBLE)                    :: FORMON1   = ZERO    ! Force/moment magnitude for 1st dir in coord sys CID (= SCALEF*V1)
@@ -70,12 +69,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! FORCE / MOMENT Bulk Data Card routine
@@ -169,12 +163,7 @@
          WRITE(L1I) SETID, GRID_NO, CID, FORMON1, FORMON2, FORMON3, FOR_OR_MOM
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

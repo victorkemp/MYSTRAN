@@ -30,10 +30,9 @@
 ! for the derivation of the reduction equations.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L2S, LINK2S, L2S_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L2S, LINK2S, L2S_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFN, NDOFF, NDOFS, NTERM_MNN, NTERM_MFF, NTERM_MFS, NTERM_MSS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_MNN_TO_MFF_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_MNN, J_MNN, MNN, I_MFF, J_MFF, MFF, I_MFS, J_MFS, MFS, I_MSF, J_MSF, MSF,               &
                                          I_MSS, J_MSS, MSS
       USE SPARSE_MATRICES, ONLY       :  SYM_MNN, SYM_MFF, SYM_MFS, SYM_MSS
@@ -55,16 +54,11 @@
       INTEGER(LONG), PARAMETER        :: NUM1        = 1        ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2        ! Used in subr's that partition matrices
       INTEGER(LONG)                   :: NTERM_MSF              ! Number of nonzeros in sparse matrix MSF (should = NTERM_MFS)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_MNN_TO_MFF_BEGEND
+
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Partition MFF from MNN. This is final MFF.
@@ -155,12 +149,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

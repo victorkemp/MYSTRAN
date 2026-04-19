@@ -30,11 +30,10 @@
 ! DOF Processor for SPC's 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1H, L1O, L1O_MSG, LINK1O
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1H, L1O, L1O_MSG, LINK1O
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ENFORCED, FATAL_ERR, LSPCADDC, NDOFSB, NDOFSE, NDOFSG, NGRID, NSPCADD,      &
                                          NUM_SPC_RECORDS, NUM_SPC1_RECORDS, NUM_SPCSIDS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DOF_PROC_BEGEND
       USE PARAMS, ONLY                :  EPSIL
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  GRID, GRID_ID, SPCADD_SIDS, SPCSET, SPCSIDS
@@ -60,17 +59,12 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to.   
       INTEGER(LONG)                   :: REC_NO    = 0     ! Record number when reading a file
       INTEGER(LONG)                   :: SETID             ! An SPC set ID read from file LINK1O
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: RSPC              ! SPC displ value (nonzero's are enforced displ's)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -159,7 +153,7 @@ i_do6:DO I=1,NUM_SPC_RECORDS + NUM_SPC1_RECORDS
          READ(L1O,IOSTAT=IOCHK) SETID, ICOMP, GRID1, GRID2, RSPC, DOFSET  
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1O, L1O_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1O, L1O_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading SPC file . No sense continuing
          ENDIF
 
@@ -257,12 +251,7 @@ j_do6:   DO J=1,NUM_SPCSIDS
 
       IERRT = IERRT + GID_ERR + DOF_ERR
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -32,10 +32,9 @@
 
                               
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARTITION_VEC_BEGEND
       USE DOF_TABLES, ONLY            :  TDOFI
  
       IMPLICIT NONE
@@ -46,7 +45,7 @@
 
       INTEGER(LONG), INTENT(IN )      :: NDOF_X            ! No. DOF's in CSET_X displ set
       INTEGER(LONG), INTENT(OUT)      :: PART_VEC(NDOF_X)  ! The partitioning vector described above
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_VEC_BEGEND
+
 
       END SUBROUTINE PARTITION_VEC
 

@@ -69,15 +69,15 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, IN0, IN1, L1A, NEU, SC1 
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, IN0, IN1, L1A, NEU, SC1 
 
       USE IOUNT1, ONLY                :  F06FIL, IN0FIL, INFILE, NEUFIL 
 
       USE IOUNT1, ONLY                :  IN0_MSG, IN1_MSG, L1A_MSG 
 
-      USE IOUNT1, ONLY                :  BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, F04STAT, F04STAT_OLD, PCHSTAT, OP2STAT
+      USE IOUNT1, ONLY                :  BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, PCHSTAT, OP2STAT
 
-      USE IOUNT1, ONLY                :  LEN_INPUT_FNAME, LEN_RESTART_FNAME,LINK1A, WRT_LOG, BUGOUT, RESTART_FILNAM
+      USE IOUNT1, ONLY                :  LEN_INPUT_FNAME, LEN_RESTART_FNAME,LINK1A, BUGOUT, RESTART_FILNAM
 
       USE SCONTR, ONLY                :  COMM, FATAL_ERR, LINKNO_START, LSETLN, LSETS, LSUB, NDOFL, NSETS, NSUB, NTSUB,            &
                                          PROG_NAME, RESTART, SETLEN, SOL_NAME, WARN_ERR
@@ -173,7 +173,7 @@
 
       IF (LINKNO_START == 0) THEN
                                                            ! Open input data file (FEM model) for reading
-         CALL FILE_OPEN ( IN1, INFILE, OUNT, 'OLD', IN1_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N', 'N' )
+         CALL FILE_OPEN ( IN1, INFILE, OUNT, 'OLD', IN1_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N' )
 
          CALL IS_THIS_A_RESTART                            ! Only check if RESTART entry is in E.C. (need for subr MYSTRAN_FILES)
          REWIND (IN1)
@@ -181,12 +181,12 @@
                                                            ! Process INCLUDE entries in whole DAT file here to create the IN0 file
          CALL PROCESS_INCLUDE_FILES ( NUM_INCL_FILES )
          IF (NUM_INCL_FILES > 0) THEN
-            CALL FILE_CLOSE ( IN1, INFILE, 'KEEP', 'Y' )
-            CALL FILE_CLOSE ( IN0, INFILE, 'KEEP', 'Y' )
-            CALL FILE_OPEN ( IN1, IN0FIL, OUNT, 'OLD', IN0_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N', 'N' )
+            CALL FILE_CLOSE ( IN1, INFILE, 'KEEP' )
+            CALL FILE_CLOSE ( IN0, INFILE, 'KEEP' )
+            CALL FILE_OPEN ( IN1, IN0FIL, OUNT, 'OLD', IN0_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N' )
             INFILE(1:) = IN0FIL(1:)
          ELSE
-            CALL FILE_CLOSE ( IN0, INFILE, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( IN0, INFILE, 'DELETE' )
             REWIND (IN1)
          ENDIF
 
@@ -197,18 +197,16 @@
 
             BUGSTAT_OLD = BUGSTAT                          ! Default value from module IOUNT1
             ERRSTAT_OLD = ERRSTAT                          ! Default value from module IOUNT1
-            F04STAT_OLD = F04STAT                          ! Default value from module IOUNT1
 
          ELSE                                              ! This is a RESTART
 
             I1 = LEN_RESTART_FNAME
             LINK1A(1:I1)  = RESTART_FILNAM(1:I1)
             LINK1A(I1+1:) = 'L1A'
-            CALL READ_L1A ( 'KEEP', 'N' )
+            CALL READ_L1A ( 'KEEP' )
 
             BUGSTAT_OLD = BUGSTAT                          ! Old value from LINK1A
             ERRSTAT_OLD = ERRSTAT                          ! Old value from LINK1A
-            F04STAT_OLD = F04STAT                          ! Old value from LINK1A
 
             NSUB  = 0                                      ! Initialize items read from L1A that could be changed in the RESTART
             NTSUB = 0
@@ -378,21 +376,12 @@ iters:      DO
          ENDIF
       ENDIF
 
-      IF (WRT_LOG > 0) THEN
-         F04STAT = 'KEEP'
-      ELSE
-         IF (F04STAT_OLD == 'KEEP    ') THEN
-            F04STAT = 'KEEP'
-         ELSE
-            F04STAT = 'DELETE'
-         ENDIF
-      ENDIF
 
 !xx   IF (WRITE_NEU) THEN
-!xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP', 'Y' )
+!xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP' )
 !xx   ENDIF
 
-! Write MYSTRAN END to BUG, ERR, F04, F06 and then close those files
+! Write MYSTRAN END to BUG, ERR, F06 and then close those files
 
       WRITE(F06,*)
       CALL CPU_TIME ( TIME_END )
@@ -403,14 +392,13 @@ iters:      DO
       CALL OURDAT
       WRITE(BUG,152) MONTH,DAY,YEAR,HOUR,MINUTE,SEC,SFRAC
       WRITE(ERR,152) MONTH,DAY,YEAR,HOUR,MINUTE,SEC,SFRAC
-      WRITE(F04,152) MONTH,DAY,YEAR,HOUR,MINUTE,SEC,SFRAC
       WRITE(F06,152) MONTH,DAY,YEAR,HOUR,MINUTE,SEC,SFRAC
 
       IF (( DEBUG(193) == 100) .OR. (DEBUG(193) == 999)) THEN
          CALL FILE_INQUIRE ( 'near end of MAIN' )
       ENDIF
 
-      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, F04STAT, OP2STAT, PCHSTAT )
+      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, OP2STAT, PCHSTAT )
 
 ! Close LIJ files
 

@@ -33,10 +33,9 @@
                           WRT_BUG_THIS_TIME, PSH, DPSHG )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, BUG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUG, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_SHPJ_BIT, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SHP_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, HALF
       USE MODEL_STUF, ONLY            :  EID, TYPE
  
@@ -53,7 +52,7 @@
       INTEGER(LONG), INTENT(IN)       :: INT_ORD_IJ        ! Integration order in triangle (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: INT_ORD_K         ! Integration order along z (used for debug output)
       INTEGER(LONG), INTENT(IN)       :: NUM_NODES         ! Number of element nodes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHP_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point location component 1
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point location component 2

@@ -30,12 +30,10 @@
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MPCOMP_PLIES, MPCOMP0, MRPCOMP_PLIES, MRPCOMP0
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE MODEL_STUF, ONLY            :  EPROP, INTL_PID, NUM_PLIES, RPCOMP, TPLY
       USE PARAMS, ONLY                :  PCMPTSTM 
       USE CONSTANTS_1, ONLY           :  ZERO, THIRD
       USE TIMDAT, ONLY                :  TSEC 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_PCOMP_SECT_PROPS_BEGEND
 
       USE GET_PCOMP_SECT_PROPS_USE_IFs
 
@@ -45,7 +43,7 @@
 
       INTEGER(LONG)                   :: K                  ! DO loop index
       INTEGER(LONG)                   :: PLY_RPCOMP_INDEX   ! Index in array RPCOMP where data for ply K begins
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_PCOMP_SECT_PROPS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: PCOMP_TM           ! Membrane thickness of PCOMP for equivalent PSHELL
       REAL(DOUBLE), INTENT(OUT)       :: PCOMP_IB           ! Bending MOI of PCOMP for equivalent PSHELL
@@ -54,12 +52,6 @@
       REAL(DOUBLE)                    :: ZBK2,ZTK2          ! ZBK^2, ZTK^2
       REAL(DOUBLE)                    :: ZBK3,ZTK3          ! ZBK^3, ZTK^3
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       ZBK      = EPROP(4)
@@ -84,12 +76,7 @@
       ENDDO
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

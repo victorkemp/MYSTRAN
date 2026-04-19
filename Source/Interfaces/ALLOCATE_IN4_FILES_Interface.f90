@@ -32,12 +32,11 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4FIL, IN4FIL_NUM, LNUM_IN4_FILES, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, IN4FIL, IN4FIL_NUM, LNUM_IN4_FILES, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC 
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONEPP6
       USE INPUTT4_MATRICES, ONLY      :  IN4_COL_MAP, IN4_MAT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_IN4_FILES_BEGEND
  
       IMPLICIT NONE
  
@@ -47,7 +46,7 @@
  
       INTEGER(LONG), INTENT(IN)       :: NROWS             ! Nunber of rows in array NAME_IN being allocated
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Nunber of cols in array NAME_IN being allocated
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_IN4_FILES_BEGEND
+
 
       END SUBROUTINE ALLOCATE_IN4_FILES
 

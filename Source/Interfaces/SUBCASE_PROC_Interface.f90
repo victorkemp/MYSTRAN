@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1D
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1D
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, DATA_NAM_LEN, FATAL_ERR, IBIT, WARN_ERR, LSETLN,              &
                                          MELDTS, MELOUTS, METYPE, MGROUTS, NELE, NGRID, NSUB 
@@ -42,7 +42,6 @@
 
       USE PARAMS, ONLY                :  PRTSCP, SUPWARN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SUBCASE_PROC_BEGEND
 
       USE MODEL_STUF, ONLY            :  CCELDT, ONE_SET_ARRAY, SC_ACCE, SC_DISP, SC_ELFN, SC_ELFE, SC_GPFO, SC_MPCF,              &
                                          SC_OLOA, SC_SPCF, SC_STRE, SC_STRN, ELDT, OELDT, ELOUT, OELOUT, GROUT, OGROUT, LABEL,     &
@@ -54,7 +53,7 @@
  
       CHARACTER(     1*BYTE)          :: PRNTOUT           ! Flag used in deciding what to output if B.D. PARAM PRTSCP = 1
       INTEGER(LONG)                   :: ELM_BIT(METYPE)   ! Array used for output warning purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SUBCASE_PROC_BEGEND
+
   
       END SUBROUTINE SUBCASE_PROC
 

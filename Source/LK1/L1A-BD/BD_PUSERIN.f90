@@ -29,10 +29,9 @@
 !  Processes PUSERIN Bulk Data Cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, NUM_IN4_FILES
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, NUM_IN4_FILES
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPUSERIN, NPUSERIN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PUSERIN_BEGEND
       USE MODEL_STUF, ONLY            :  PUSERIN, USERIN_MAT_NAMES
  
       USE BD_PUSERIN_USE_IFs
@@ -48,14 +47,9 @@
       INTEGER(LONG)                   :: J                 ! DO loop indices
 !xx   INTEGER(LONG)                   :: ISTART            ! Start col in CARD for matrix names
       INTEGER(LONG)                   :: PROPERTY_ID   = 0 ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PUSERIN_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 !  PUSERIN Bulk Data Card routine
@@ -117,12 +111,7 @@
       CALL CARD_FLDS_NOT_BLANK ( JCARD,0,0,0,0,0,0,8,9 )   ! Issue warning if fields 8, 9 not blank
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

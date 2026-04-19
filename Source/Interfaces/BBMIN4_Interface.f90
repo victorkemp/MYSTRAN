@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BBMIN4_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  EID, TYPE, XEB, XEL
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -49,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: JGAUS             ! J index of Gaus point (needed for some optional output)
       INTEGER(LONG), PARAMETER        :: NR        = 3     ! An input to subr BCHECK, called herein
       INTEGER(LONG), PARAMETER        :: NC        = 8     ! An input to subr BCHECK, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BBMIN4_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: DPSHX(2,4)        ! Derivatives of the 4 node bilinear isopar interps wrt elem x and y
       REAL(DOUBLE) , INTENT(OUT)      :: BB(3,8)           ! Output strain-displ matrix for this elem

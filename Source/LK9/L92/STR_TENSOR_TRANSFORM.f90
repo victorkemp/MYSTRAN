@@ -61,10 +61,9 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NCORD
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CORD, RCORD, TE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STR_TENSOR_TRANSFORM_BEGEND
 
       USE STR_TENSOR_TRANSFORM_USE_IFs
 
@@ -76,7 +75,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: ICORD             ! Internal coord system ID for STRESS_CORD_SYS
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STR_TENSOR_TRANSFORM_BEGEND
+
 
       REAL(DOUBLE), INTENT(INOUT)     :: STRESS_TENSOR(3,3)! 2D stress tensor (eqn 6 above)
       REAL(DOUBLE)                    :: DUM33(3,3)        ! Intermediate array used in calc outputs
@@ -85,12 +84,7 @@
       REAL(DOUBLE)                    :: TES(3,3)          ! Transform matrix from local elem coords to stress output coords
       REAL(DOUBLE)                    :: TSE(3,3)          ! TES'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Get transformation matrix T0S from stress coord sys to basic if it exists
@@ -146,12 +140,7 @@
       CALL MATMULT_FFF (TSE, DUM33, 3, 3, 3, STRESS_TENSOR )
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

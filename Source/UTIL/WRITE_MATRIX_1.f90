@@ -33,10 +33,9 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_MATRIX_1_BEGEND
 
       USE WRITE_MATRIX_1_USE_IFs
 
@@ -58,7 +57,7 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices or counters
       INTEGER(LONG)                   :: NTERM_ROW_I       ! Number of terms in row I of MATIN
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_1_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM)      ! Real values for matrix MATIN
       
@@ -66,18 +65,13 @@
 
       INTRINSIC DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
       OUNT(2) = F06
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'REPLACE', MESSAG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'REPLACE', MESSAG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! Write sparse (compressed row storage) matrix to file in i, j, val format:
 
@@ -97,15 +91,10 @@
       ENDDO
 
       IF (CLOSE_IT == 'Y') THEN
-         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT, 'Y' )
+         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

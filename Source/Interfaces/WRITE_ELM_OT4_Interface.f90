@@ -32,11 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_LOC, STRE_LOC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_ELM_OT4_BEGEND
  
       IMPLICIT NONE
  
@@ -48,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols in MAT
       INTEGER(LONG), INTENT(IN)       :: NROWS_MAT         ! Number of rows in MAT
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number where to write matrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ELM_OT4_BEGEND
+
  
       END SUBROUTINE WRITE_ELM_OT4
 

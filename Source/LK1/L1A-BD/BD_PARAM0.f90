@@ -30,10 +30,9 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EPSIL1_SET, IERRFL, JCARD_LEN, JF, MEPSIL, MPBARLU
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ, PBARLDEC, PBARLSHR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PARAM0_BEGEND
  
       USE BD_PARAM0_USE_IFs
 
@@ -46,17 +45,12 @@
       CHARACTER(LEN=JCARD_LEN)        :: JCARD(10)         ! The 10 fields of characters making up CARD
       CHARACTER(LEN(JCARD))           :: CHARINP           ! A character field from CARD
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PARAM0_BEGEND
+
       INTEGER(LONG)                   :: I4INP             ! An integer value read
 
       REAL(DOUBLE)                    :: R8INP             ! A real value read
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make JCARD from CARD
@@ -103,12 +97,7 @@
 
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

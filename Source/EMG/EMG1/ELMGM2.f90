@@ -34,10 +34,9 @@
 ! splits the angle between the diagonals.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEFE, MEWE, MELGP, FATAL_ERR, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMGM2_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, ONE, TWO
       USE PARAMS, ONLY                :  EPSIL, QUADAXIS, SUPWARN, QUAD4TYP
       USE MODEL_STUF, ONLY            :  AGRID, BMEANT, EID, ELGP, EMG_IFE, EMG_IWE, EMG_RWE, ERR_SUB_NAM, NUM_EMG_FATAL_ERRS,     &
@@ -60,7 +59,7 @@
       INTEGER(LONG)                   :: IPNT              ! An internal grid (1,2,3 or 4) of an elem
       INTEGER(LONG)                   :: SIDE_GRID1        ! Used for error output purposes
       INTEGER(LONG)                   :: SIDE_GRID2        ! Used for error output purposes
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMGM2_BEGEND
+
 
       REAL(DOUBLE)                    :: V12B(3)           ! Vector from G.P. 1 to G.P. 2 in basic coords
       REAL(DOUBLE)                    :: V13B(3)           ! Vector from G.P. 1 to G.P. 3 in basic coords (a diagonal)
@@ -98,12 +97,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -421,12 +415,7 @@
          CALL CALC_BMEANT
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

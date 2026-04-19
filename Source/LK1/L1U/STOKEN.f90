@@ -37,10 +37,9 @@
 !  2) a triad of char tokens of the form I1 THRU I2 where I1, I2 are integers
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  MAX_TOKEN_LEN, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STOKEN_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       USE STOKEN_USE_IFs
@@ -67,14 +66,9 @@
       INTEGER(LONG)                            :: TOKEN_END   ! Where, in TOKSTR, the end of the current token is located
       INTEGER(LONG)                            :: NUM_TOK_EXP ! No. of tokens we expect (if we find "THRU", we should find 3 tokens)
       INTEGER(LONG)                            :: PRINT_ITEM  ! An item number to print when DEBUG(19) is turned on
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = STOKEN_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -246,12 +240,7 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
          CALL DEB_STOKEN ( PRINT_ITEM )
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -263,24 +252,18 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
 
       SUBROUTINE DEB_STOKEN ( PRINT_ITEM )
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STOKEN_BEGEND
 
       IMPLICIT NONE
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'DEB_STOKEN'
 
       INTEGER(LONG), INTENT(IN)       :: PRINT_ITEM        ! What item to print
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STOKEN_BEGEND + 1
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 
@@ -325,12 +308,7 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
 99999 FORMAT(' \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\' &
             ,'\\\\\\\\\\\\\\\\\\\\\\\\', //)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 ! **********************************************************************************************************************************

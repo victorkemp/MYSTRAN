@@ -181,8 +181,6 @@
 !        DEBUG 106  > 0 write info on all files in subr WRITE_ALLOC_MEM_TABLE (if 0 only write for those arrays that have memory
 !                       allocated to them
 
-!        DEBUG 107  > 0 write allocated memory in F04 file with 6 decimal points (3 if DEBUG(107) = 0)
-
 !        DEBUG 108  > 0 write EDAT table
 
 !        DEBUG 109  > 0 write debug info in subr ELMDIS

@@ -3,11 +3,10 @@
       MODULE LAPACK_STD_EIG_1
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                   :  ERR, F06
       USE SCONTR, ONLY                   :  LINKNO, BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE LAPACK_MISCEL                                    ! This contains DSTEQR, used in this module
 
@@ -15,8 +14,6 @@
       USE OUTA_HERE_Interface
 
       CHARACTER(44*BYTE), PRIVATE       :: MODNAM          ! Name to write to screen to describe module being run.
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND =LAPACK_BEGEND+10
 
 ! This is a set of LAPACK routines for solving for all of the eigenvalues
 ! and, possibly, all eigenvectors of:
@@ -150,14 +147,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -258,14 +247,6 @@
       WORK( 1 ) = MAX( 3*N-1, LOPT )
 *
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DSYEV
@@ -425,14 +406,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters
 *
@@ -564,14 +537,6 @@
 *
       WORK( 1 ) = IWS
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DSYTRD
@@ -668,14 +633,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input arguments
 *
@@ -752,14 +709,6 @@
          END IF
       END IF
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DORGTR

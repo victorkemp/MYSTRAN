@@ -31,13 +31,12 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ENF, ENFFIL, ENFSTAT, ENF_MSG, ERR, F04, F06, L1O, LINK1O, L1OSTAT, L1O_MSG, WRT_LOG
+      USE IOUNT1, ONLY                :  ENF, ENFFIL, ENFSTAT, ENF_MSG, ERR, F06, L1O, LINK1O, L1OSTAT, L1O_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFSG, NGRID, NSPC, NUM_SPC_RECORDS, NUM_SPC1_RECORDS, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  SPCSET
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_ENF_TO_L1O_BEGEND
  
       USE WRITE_ENF_TO_L1O_USE_IFs
 
@@ -51,16 +50,11 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr FILE_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Number of the record read from ENF file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_ENF_TO_L1O_BEGEND
+
 
       REAL(DOUBLE)                    :: RSPC(6)           ! Enforced displ components read from file ENF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       OUNT(1) = ERR
@@ -90,7 +84,7 @@
          ENDIF
       ENDIF
 
-      CALL FILE_OPEN ( ENF, ENFFIL, OUNT, 'OLD'    , ENF_MSG, 'NEITHER'    , 'FORMATTED'  , 'READ' , 'REWIND', 'N', 'N', 'N' )
+      CALL FILE_OPEN ( ENF, ENFFIL, OUNT, 'OLD'    , ENF_MSG, 'NEITHER'    , 'FORMATTED'  , 'READ' , 'REWIND', 'N', 'N' )
 
       REC_NO          = 0
       NUM_SPC_RECORDS = 0
@@ -120,15 +114,10 @@
 
       ENDDO
 
-      CALL FILE_CLOSE ( ENF, ENFFIL, 'KEEP', 'Y' )
-      CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( ENF, ENFFIL, 'KEEP' )
+      CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -3,18 +3,14 @@
       MODULE LAPACK_MISCEL
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  F04, WRT_LOG
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
 
       USE LAPACK_BLAS_AUX
       USE LAPACK_LIN_EQN_DPB
 
       USE OURTIM_Interface
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is a set of LAPACK routines that are used in several other modules but are not BLAS or auxiliary routines
 ! The routines included herein are:
@@ -125,14 +121,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -208,14 +196,6 @@
          CALL DSCAL( IMAX, ONE / SIGMA, D, 1 )
       END IF
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DSTEV
@@ -326,14 +306,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -380,14 +352,6 @@
       CALL DTRSM( 'Left', UPLO, TRANS, DIAG, N, NRHS, ONE, A, LDA, B,
      $            LDB )
 *
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DTRTRS

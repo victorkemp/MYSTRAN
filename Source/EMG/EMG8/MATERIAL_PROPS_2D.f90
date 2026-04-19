@@ -30,10 +30,9 @@
 ! properties (membrane, bending, transverse shear, bending/membrane coupling)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEFE, MEMATC 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATERIAL_PROPS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, QUAD4TYP
       USE MODEL_STUF, ONLY            :  ALPVEC, EID, EMG_IFE, EMG_RFE, ERR_SUB_NAM, EB, EBM, EM, ET, NUM_EMG_FATAL_ERRS, EMAT,    &
@@ -51,7 +50,7 @@
       INTEGER(LONG)                   :: IERROR        = 0 ! Local error indicator meaning some calcs cannot be done
       INTEGER(LONG)                   :: PROG_ERR      = 0 ! Coding error indicator for invalid material type
       INTEGER(LONG)                   :: I,j               ! DO loop index   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATERIAL_PROPS_BEGEND
+
   
       REAL(DOUBLE)                    :: ALPHA             ! Isotropic coefficient of thermal expansion
       REAL(DOUBLE)                    :: ALPHA1            ! Orthotropic/Anisotropic coeff of thermal expansion in direction 1
@@ -72,12 +71,7 @@
       REAL(DOUBLE)                    :: NU21              ! Orthotropic Poisson's ratio 21
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1   = EPSIL(1)
@@ -948,12 +942,7 @@ coup: IF (MTRL_TYPE(4) /= 0) THEN
 
       IF (IERROR > 0) RETURN
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

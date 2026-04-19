@@ -29,10 +29,9 @@
 ! Processes Case Control SUBCASE cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, LSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_SUBC_BEGEND
       USE MODEL_STUF, ONLY            :  SCNUM
  
       USE CC_SUBC_USE_IFs
@@ -49,14 +48,9 @@
       INTEGER(LONG)                   :: IERR              ! Output from subr CSHIFT indicating an error
       INTEGER(LONG)                   :: JERR              ! Error indicator if this subcase number is the same as a previous one
       INTEGER(LONG)                   :: SUBCASE_NUM       ! Subcase number from the SUBCASE card being read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SUBC_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process SUBCASE cards 
@@ -105,12 +99,7 @@
          ENDIF 
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

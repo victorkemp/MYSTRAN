@@ -24,38 +24,29 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE READERR (IOCHK, FILNAM, MESSAG, REC_NO, OUNT, WRITE_F04 )
+      SUBROUTINE READERR (IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
  
 ! Writes message about errors encountered when reading files 
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, SC1
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READERR_BEGEND
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE IOUNT1, ONLY                :  SC1
+      USE SCONTR, ONLY                :  FATAL_ERR
  
       USE READERR_USE_IFs
 
       IMPLICIT NONE
  
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'READERR'
       CHARACTER(LEN=*), INTENT(IN)    :: MESSAG            ! File description. Used for error messaging
       CHARACTER(LEN=*), INTENT(IN)    :: FILNAM            ! File name
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
  
       INTEGER(LONG), INTENT(IN)       :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), INTENT(IN)       :: REC_NO            ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IEND              ! End col for MESSAG
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READERR_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! First, truncate trailing blanks in MESSAG
@@ -123,12 +114,7 @@
 
       FATAL_ERR = FATAL_ERR + 1 
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

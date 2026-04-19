@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
 
       USE IOUNT1, ONLY                :  L1E    , L1H    , L1J    , L1L    , L1R    , L2A    , L2B    , L2C    , L2D    , L2E    , &
                                          L2F    , L2G    , L2H    , L2I    , L2J    , L2K    , L2L    , L2M    , L2N    , L2O    , &
@@ -74,13 +74,12 @@
                                          I_PA  , J_PA  , PA  ,I_PG  , J_PG  , PG  ,I_PL  , J_PL  , PL  ,I_PS  , J_PS  , PS  ,      &
                                          I_QSYS, J_QSYS, QSYS,I_RMG , J_RMG , RMG
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRT_MATS_ON_RESTART_BEGEND
 
       IMPLICIT NONE
  
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRT_MATS_ON_RESTART_BEGEND
+
 
       END SUBROUTINE PRT_MATS_ON_RESTART
 

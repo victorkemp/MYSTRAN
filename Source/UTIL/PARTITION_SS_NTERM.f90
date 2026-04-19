@@ -54,12 +54,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
       USE SPARSE_ALG_ARRAYS, ONLY     :  ALG, J_AROW
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PARTITION_SS_NTERM_BEGEND
  
       USE PARTITION_SS_NTERM_USE_IFs
 
@@ -105,18 +104,13 @@
       INTEGER(LONG)                   :: NROW_B                 ! No. rows in B
       INTEGER(LONG)                   :: ROW_AT_COLJ_BEG(NCOL_A)! jth term is row number in MATIN where col j nonzeros begin 
       INTEGER(LONG)                   :: ROW_AT_COLJ_END(NCOL_A)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PARTITION_SS_NTERM_BEGEND
+
 
       CHARACTER(LEN=LEN("       Det. part. size of BBBB, row")) :: COUNTER_TEMPLATE
 
       INTRINSIC                       :: DABS
        
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC,MAT_A_NAME,MAT_B_NAME
- 9001    FORMAT(1X,A,' BEGN ',F10.3,' Input matrix is ',A,'. Determine memory to allocate to sparse arrays for partition ',A)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -330,12 +324,7 @@ i_do: DO I=1,NROW_A                                        ! Matrix partition lo
       CALL DEALLOCATE_SPARSE_ALG ( 'ALG' )
       CALL DEALLOCATE_SPARSE_ALG ( 'J_AROW' )
       
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

@@ -29,9 +29,9 @@
 ! Main driver for calculating outputs requested in Case Control once the G-set unknowns have been solved for in prior LINK's
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
+      USE IOUNT1, ONLY                :  ERR, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
                                          L5A, L5B, NEU, OT4, OU4, PCH, SC1
 
       USE IOUNT1, ONLY                :  F06FIL, F25FIL, LINK1B, LINK1E, LINK1M, LINK1R, LINK2A, LINK2B, LINK2C, LINK2D,           &
@@ -62,7 +62,6 @@
 
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT, ACCE_OUT, OLOA_OUT, SPCF_OUT, MPCF_OUT, FORC_OUT, GPFO_OUT, STRE_OUT, STRN_OUT
       USE TIMDAT, ONLY                :  STIME
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LINK9_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, MPFOUT, SUPINFO, SUPWARN, WTMASS, PRTF06, PRTOP2, PRTNEU
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -158,7 +157,7 @@
       INTEGER(LONG)                   :: SC_STRE_OUTPUT    ! = 1 if requests for output of elem stresses in a particular S/C
       INTEGER(LONG)                   :: SC_STRN_OUTPUT    ! = 1 if requests for output of elem strains  in a particular S/C
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from an unformatted file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: EPS1              ! Small number to compare against zero
       REAL(DOUBLE)                    :: UGV               ! A G-set vector read from file L5A
@@ -233,19 +232,16 @@
       IF (WRITE_PCH) THEN
          INQUIRE (FILE=PCHFIL, OPENED=LOPEN)
          IF (.NOT.LOPEN) THEN                          ! Otherwise we assume it is positioned at its end and ready for write
-            CALL FILE_OPEN ( PCH, PCHFIL, OUNT, 'OLD', PCH_MSG, 'WRITE_STIME', 'FORMATTED', 'READWRITE', 'REWIND', 'Y', 'Y', 'Y' )
+            CALL FILE_OPEN ( PCH, PCHFIL, OUNT, 'OLD', PCH_MSG, 'WRITE_STIME', 'FORMATTED', 'READWRITE', 'REWIND', 'Y', 'Y' )
          ENDIF
       ENDIF
 
       ! Write info to text files
       WRITE(ERR,150) LINKNO
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
 
       ! Read LINK1A file
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 
       ! Check COMM for successful completion of prior LINKs
       IF (RESTART == 'Y') THEN
@@ -512,11 +508,11 @@
 
 !xx   ANY_U_P_OUTPUT = IAND(OELDT,IBIT(ELDT_F25_U_P_BIT))
 !xx   IF (ANY_U_P_OUTPUT > 0) THEN
-!xx      CALL FILE_OPEN ( F25, F25FIL, OUNT, 'REPLACE', F25_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+!xx      CALL FILE_OPEN ( F25, F25FIL, OUNT, 'REPLACE', F25_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 !xx   ENDIF
 
       ! Open data files for reading displacements (will be read below in loop over number of subcases/vectors)
-      CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
       ! If this is an eigenvalue problem, determine if there are modes with zero gen stiffness. If so, cannot calc modal masses
       ! or modal participation factors (but only do this if not a CB soln since MPFACTOR and MEFFMASS were calc'd in LINK6 for CB)
@@ -574,7 +570,7 @@
       ! Open FEMAP neutral file for writing, if WRITE_NEU, and write FEMAP data block 100
       IF (WRITE_NEU) THEN
          WRITE(CTIME,9000) STIME
-         CALL FILE_OPEN ( NEU, NEUFIL, OUNT, 'REPLACE', NEU_MSG, 'WRITE_STIME', 'FORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( NEU, NEUFIL, OUNT, 'REPLACE', NEU_MSG, 'WRITE_STIME', 'FORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          FEMAP_BLK = '   100'
          WRITE(NEU,9001)
          WRITE(NEU,9011) FEMAP_BLK
@@ -637,8 +633,8 @@
             FATAL_ERR = FATAL_ERR + 1
             CALL OUTA_HERE ( 'Y' )
          ELSE
-            CALL FILE_OPEN (OU4(IUE),OU4FIL(IUE),OUNT,'REPLACE', OU4_MSG(IUE),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N', 'Y')
-            CALL FILE_OPEN (OU4(IUG),OU4FIL(IUG),OUNT,'REPLACE', OU4_MSG(IUG),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N', 'Y')
+            CALL FILE_OPEN (OU4(IUE),OU4FIL(IUE),OUNT,'REPLACE', OU4_MSG(IUE),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N')
+            CALL FILE_OPEN (OU4(IUG),OU4FIL(IUG),OUNT,'REPLACE', OU4_MSG(IUG),'NEITHER','UNFORMATTED','WRITE','REWIND','Y','N')
          ENDIF
 
          ! Get index for file unit nos for elem/grid related OTM text files
@@ -657,12 +653,12 @@
             FATAL_ERR = FATAL_ERR + 1
             CALL OUTA_HERE ( 'Y' )
          ELSE
-            CALL FILE_OPEN (OT4(ITE), OT4FIL(ITE), OUNT,'REPLACE', OT4_MSG(ITE),'NEITHER','FORMATTED','WRITE','REWIND','Y','N', 'Y')
-            CALL FILE_OPEN (OT4(ITG), OT4FIL(ITG), OUNT,'REPLACE', OT4_MSG(ITG),'NEITHER','FORMATTED','WRITE','REWIND','Y','N', 'Y')
+            CALL FILE_OPEN (OT4(ITE), OT4FIL(ITE), OUNT,'REPLACE', OT4_MSG(ITE),'NEITHER','FORMATTED','WRITE','REWIND','Y','N')
+            CALL FILE_OPEN (OT4(ITG), OT4FIL(ITG), OUNT,'REPLACE', OT4_MSG(ITG),'NEITHER','FORMATTED','WRITE','REWIND','Y','N')
          ENDIF
 
          IF (SOL_NAME(1:12) == 'GEN CB MODEL') THEN        ! We need cols of PHIXG to process NDOFR+NVEC cols of GPFO
-            CALL FILE_OPEN ( L5B, LINK5B, OUNT, 'OLD', L5B_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L5B, LINK5B, OUNT, 'OLD', L5B_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
          ENDIF
 
       ENDIF
@@ -706,16 +702,6 @@ j_do: DO JVEC=1,NUM_SOLNS
             WRITE(NEU,9011) FEMAP_BLK
          ENDIF
 
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            IF      ((SOL_NAME(1: 7) == 'STATICS') .OR. (SOL_NAME(1:8) == 'NLSTATIC') .OR.                                         &
-                    ((SOL_NAME(1: 8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1))) THEN
-               WRITE(F04,9095) JVEC
-            ELSE IF ((SOL_NAME(1: 5) == 'MODES') .OR. ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 2))) THEN
-               WRITE(F04,9096) JVEC
-            ELSE IF  (SOL_NAME(1:12) == 'GEN CB MODEL') THEN
-               WRITE(F04,9097) JVEC
-            ENDIF
-         ENDIF
 
          IF ((SOL_NAME(1:8) == 'BUCKLING') .OR. (SOL_NAME(1:8) == 'DIFFEREN')) THEN
             JTSUB = 1
@@ -754,7 +740,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             READ(L5A,IOSTAT=IOCHK) UGV
             IF (IOCHK /=0) THEN
                REC_NO = I - 1
-               CALL READERR (IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR (IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )
             ENDIF
             UG_COL(I) = UGV
@@ -768,7 +754,7 @@ j_do: DO JVEC=1,NUM_SOLNS
                   READ(L5B,IOSTAT=IOCHK) PHIXGV
                   IF (IOCHK /=0) THEN
                      REC_NO = I - 1
-                     CALL READERR (IOCHK, LINK5B, L5B_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR (IOCHK, LINK5B, L5B_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
                   PHIXG_COL(I) = PHIXGV
@@ -988,7 +974,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             MESSAG = 'STIME                   '
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, LINK1E, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1E, MESSAG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Can't read STIME from PG loads file
             ENDIF
          ENDIF
@@ -1000,7 +986,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             MESSAG = 'STIME                   '
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, LINK2D, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK2D, MESSAG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Can't read STIME from PS loads file
             ENDIF
          ENDIF
@@ -1017,7 +1003,7 @@ j_do: DO JVEC=1,NUM_SOLNS
       !ENDIF
       IF (WRITE_NEU) THEN
          WRITE(NEU,9001)                                   ! End of FEMAP block 451 indicator
-         CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP' )
       ENDIF
 
       CALL DEALLOCATE_COL_VEC ( 'PG_COL' )
@@ -1144,7 +1130,7 @@ j_do: DO JVEC=1,NUM_SOLNS
       ! Close OTM text files (unformatted OU4 files closed in subr CLOSE_LIJFILES)
       IF (SOL_NAME(1:12) == 'GEN CB MODEL') THEN
          DO I=1,MOT4
-            CALL FILE_CLOSE ( OT4(I), OT4FIL(I), OT4STAT(I), 'Y' )
+            CALL FILE_CLOSE ( OT4(I), OT4FIL(I), OT4STAT(I) )
          ENDDO
       ENDIF
 
@@ -1290,7 +1276,7 @@ j_do: DO JVEC=1,NUM_SOLNS
 
 ! Write data to L1A
 
-      CALL WRITE_L1A ( L1ASTAT, 'Y', 'Y' )
+      CALL WRITE_L1A ( L1ASTAT, 'Y' )
 
 ! Do file inquire, if requested
 
@@ -1302,9 +1288,9 @@ j_do: DO JVEC=1,NUM_SOLNS
 
       INQUIRE ( FILE=F25FIL, EXIST=LEXIST, OPENED=LOPEN )
       IF (LOPEN) THEN
-         CALL FILE_CLOSE ( F25, F25FIL, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( F25, F25FIL, 'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( F25, F25FIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( F25, F25FIL, 'DELETE' )
       ENDIF
 
       ! Check allocation status of allocatable arrays, if requested
@@ -1315,20 +1301,17 @@ j_do: DO JVEC=1,NUM_SOLNS
          ENDIF
       ENDIF
 
-      ! Write LINK9 end to F04, F06
+      ! Write LINK9 end to F06
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
-      ! Leave the closing of BUG, ERR, F04, F06 files until after LINK9 returns to MYSTRAN.for
+      ! Leave the closing of BUG, ERR, F06 files until after LINK9 returns to MYSTRAN.for
 
       ! Close some files
       IF ((SOL_NAME(1:8) == 'BUCKLING') .OR. (SOL_NAME(1:8) == 'DIFFEREN') .OR. (SOL_NAME(1:8) == 'NLSTATIC')) THEN
-         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT, 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT )
       ENDIF
 
 ! Write LINK9 end to screen
@@ -1622,7 +1605,7 @@ j_do: DO JVEC=1,NUM_SOLNS
       SUBROUTINE GET_FG_INERTIA_FORCES
 
       USE PENTIUM_II_KIND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, LINK2I, L2I, L2I_MSG, L2ISTAT
+      USE IOUNT1, ONLY                :  ERR, F06, LINK2I, L2I, L2I_MSG, L2ISTAT
       USE SCONTR, ONLY                :  NDOFA, NDOFF, NDOFG, NDOFL, NDOFM, NDOFN, NDOFO, NDOFS, NDOFR, NTERM_MLL
       USE SPARSE_MATRICES, ONLY       :  I_MLL, J_MLL, MLL, SYM_MLL
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL

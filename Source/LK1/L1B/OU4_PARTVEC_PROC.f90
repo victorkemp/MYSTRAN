@@ -46,12 +46,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1V, L1V_MSG, LINK1V
+      USE IOUNT1, ONLY                :  ERR, F06, L1V, L1V_MSG, LINK1V
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MTSET, NDOFG, NGRID, NUM_PARTVEC_RECORDS, WARN_ERR
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OU4_PARTVEC_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TDOF, TDOFI, TDOF_ROW_START
       USE OUTPUT4_MATRICES, ONLY      :  ACT_OU4_MYSTRAN_NAMES, OU4_PART_VEC_NAMES, OU4_PARTVEC_COL, OU4_PARTVEC_ROW,              &
                                          OU4_MAT_ROW_GRD_COMP, OU4_MAT_COL_GRD_COMP
@@ -139,14 +138,9 @@
       INTEGER(LONG)                   :: TDOF_COL(2)        ! Col number in TDOF/TDOFI where CHAR_SET set data exists
       INTEGER(LONG), INTENT(OUT)      :: VAL_COLS           ! Number to enter into PARTVEC_COL for a col that is to be partitioned
       INTEGER(LONG), INTENT(OUT)      :: VAL_ROWS           ! Number to enter into PARTVEC_ROW for a row that is to be partitioned
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OU4_PARTVEC_PROC_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -255,13 +249,13 @@ i_do1:DO I=1,2                                             ! J=1 is for the col 
 
          FOUND_PART_VEC(I) = 'N'
 
-         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'OLD', L1V_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'OLD', L1V_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 j_do1:   DO J=1,NUM_PARTVEC_RECORDS
  
             READ(L1V,IOSTAT=IOCHK) VNAME, ICOMP, GRID1, GRID2
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1V, L1V_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1V, L1V_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading PARTVEC file . No sense continuing
             ENDIF
 
@@ -318,7 +312,7 @@ j_do1:   DO J=1,NUM_PARTVEC_RECORDS
             ENDIF
 
          ENDDO j_do1
-         CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP' )
 
          IF (FOUND_PART_VEC(I) == 'N') THEN
 
@@ -404,12 +398,7 @@ j_do1:   DO J=1,NUM_PARTVEC_RECORDS
 
       CALL GET_OU4_PART_GRD_COMP
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

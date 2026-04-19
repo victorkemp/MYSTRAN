@@ -29,10 +29,9 @@
 ! Generates strain/displ matrix BMAT for solid 3D elements. Called by HEXA, PENTA and TETRA subroutines
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, BUG, F04
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  B3D_ISOPARAMETRIC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  EID, ELGP, TYPE
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -53,18 +52,13 @@
       INTEGER(LONG)                   :: II,JJ             ! Counters
       INTEGER(LONG)                   :: ID(3*ELGP)        ! An input to subr BCHECK, called herein
       INTEGER(LONG), PARAMETER        :: NR      = 6       ! An input to subr BCHECK, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = B3D_ISOPARAMETRIC_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: DPSHX(3,ELGP)     ! Derivatives of the 4 node bilinear isopar interps wrt elem x and y
       REAL(DOUBLE) , INTENT(OUT)      :: BMAT(6,3*ELGP)    ! Output strain-displ matrix for this elem
       REAL(DOUBLE)                    :: BW(6,12)          ! Output from subr BCHECK (matrix of 3 elem strains for 14 various elem
                                                            ! rigid body motions/constant strain distortions)
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
+
 ! **********************************************************************************************************************************
 ! Initialize outputs
 
@@ -139,12 +133,7 @@
         ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

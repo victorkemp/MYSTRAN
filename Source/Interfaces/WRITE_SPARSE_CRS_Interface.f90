@@ -32,12 +32,11 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR, TINY
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_SPARSE_CRS_BEGEND
  
       IMPLICIT NONE
  
@@ -49,7 +48,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWS_A           ! No. of rows  in sparse matrix    
       INTEGER(LONG), INTENT(IN)       :: I_AXX(NROWS_A+1)  ! Array of starting indices for the 1-st term in rows of AXX
       INTEGER(LONG), INTENT(IN)       :: J_AXX(NTERM_A)    ! Array of col no's for terms in matrix AXX
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_SPARSE_CRS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: AXX(NTERM_A)      ! Array of terms in matrix AXX
  

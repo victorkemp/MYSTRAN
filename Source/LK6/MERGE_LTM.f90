@@ -37,11 +37,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFR, NTERM_CG_LTM, NTERM_IF_LTM, NTERM_LTM, NUM_CB_DOFS
       USE TIMDAT, ONLY                :  TSEC
       USE SPARSE_MATRICES, ONLY       :  I_CG_LTM, J_CG_LTM, CG_LTM, I_IF_LTM, J_IF_LTM, IF_LTM, I_LTM, J_LTM, LTM
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_LTM_BEGEND
 
       USE MERGE_LTM_USE_IFs
 
@@ -51,14 +50,9 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: LTM_MERGE_VEC(6+NDOFR) 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_LTM_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Merge CG_LTM rows with rows ofIF_LTM into LTM
@@ -77,12 +71,7 @@
       CALL MERGE_MAT_ROWS_SSS ( 'CG_LTM', 6    , NTERM_CG_LTM, I_CG_LTM, J_CG_LTM, CG_LTM, 1,                                      &
                                 'IF_LTM', NDOFR, NTERM_IF_LTM, I_IF_LTM, J_IF_LTM, IF_LTM, 2, LTM_MERGE_VEC,                       &
                                 'LTM'                        , I_LTM   , J_LTM   , LTM )
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

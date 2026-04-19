@@ -32,11 +32,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_MAT_DIAG_ZEROS_BEGEND
 
       IMPLICIT NONE
 
@@ -47,7 +46,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_A(NROWS_A+1)     ! Array of row no's for terms in input matrix A
       INTEGER(LONG), INTENT(IN)       :: J_A(NTERM_A)       ! Array of col no's for terms in input matrix A
       INTEGER(LONG), INTENT(OUT)      :: NUM_A_DIAG_ZEROS   ! Number of zero diagonal terms in input matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_MAT_DIAG_ZEROS_BEGEND
+
 
       END SUBROUTINE SPARSE_MAT_DIAG_ZEROS
 

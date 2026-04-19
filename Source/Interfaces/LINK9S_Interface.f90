@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06,                                         &
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06,                                         &
                                          L1D    , L1G    , L1K    , L1Q    ,                                                       &
                                          LINK1D , LINK1G , LINK1K , LINK1Q ,                                                       &
                                          L1D_MSG, L1G_MSG, L1K_MSG, L1Q_MSG,                                                       &
@@ -49,7 +49,6 @@
 
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, IORQ1M, IORQ1S, IORQ1B, IORQ2B, IORQ2T
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LINK9S_BEGEND
 
       USE MODEL_STUF, ONLY            :  BAROFF, BUSHOFF, EDAT, EOFF, EPNT, ESORT1, ESORT2, ETYPE, PLATEOFF, PLATETHICK, VVEC
       USE MODEL_STUF, ONLY            :  MATANGLE, MATL, RMATL, PBAR, RPBAR, PBEAM, RPBEAM, PBUSH, RPBUSH, PCOMP, RPCOMP, PELAS,   &
@@ -62,7 +61,7 @@
                                          ANY_GPFO_OUTPUT, ANY_ELFE_OUTPUT, ANY_ELFN_OUTPUT, ANY_STRE_OUTPUT
       IMPLICIT NONE
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9S_BEGEND
+
 
       END SUBROUTINE LINK9S
 

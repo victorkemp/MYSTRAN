@@ -52,11 +52,10 @@
 ! terms on, and above, the diagonal of A are stored in B.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CRS_NONSYM_TO_CRS_SYM_BEGEND
  
       USE CRS_NONSYM_TO_CRS_SYM_USE_IFs
 
@@ -78,17 +77,12 @@
       INTEGER(LONG)                   :: KEND_A            ! Index into array I_A where a row of matrix A ends
       INTEGER(LONG)                   :: KTERM_B           ! Count of number of nonzero terms put into output matrix B
       INTEGER(LONG)                   :: A_NTERM_ROW_I     ! Number of terms in a row of input matrix A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CRS_NONSYM_TO_CRS_SYM_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: A(NTERM_A)        ! Real nonzero values in input  matrix A
       REAL(DOUBLE) , INTENT(OUT)      :: B(NTERM_B)        ! Real nonzero values in output matrix B
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -121,12 +115,7 @@
          KBEG_A = KEND_A + 1
       ENDDO 
          
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

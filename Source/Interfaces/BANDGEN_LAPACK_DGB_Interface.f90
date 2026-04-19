@@ -32,12 +32,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BANDGEN_BEGEND
 
       IMPLICIT NONE
 
@@ -50,7 +49,7 @@
       INTEGER(LONG), INTENT(IN)       :: I_MATIN(N+1)         ! Array of row no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(IN)       :: J_MATIN(NTERM_MATIN) ! Array of col no's for terms in matrix MATIN
       INTEGER(LONG), INTENT(IN)       :: KD                   ! Number of sub (or super) diagonals in matrix MATIN.
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDGEN_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_MATIN)   ! Array of terms in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(INOUT)    :: MATOUT(3*KD+1,N)     ! Array of terms in band matrix MATOUT

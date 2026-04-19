@@ -30,11 +30,10 @@
 ! (in column 1 of IARRAY) is in numerically increasing order
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MGRID, MRGRID
       USE PARAMS, ONLY                :  SORT_MAX
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SORT_GRID_RGRID_BEGEND
  
       USE SORT_GRID_RGRID_USE_IFs
 
@@ -56,17 +55,12 @@
       INTEGER(LONG)                   :: SORTPK              ! Intermediate variable used in setting a DO loop range.
       INTEGER(LONG)                   :: SORT_NUM            ! How many times the sort has to be performed in order for the data
 !                                                              to be in sort order. SORT_MAX is max value
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORT_GRID_RGRID_BEGEND
+
  
       REAL(DOUBLE),  INTENT(INOUT)    :: RARRAY(NSIZE,MRGRID)! Array RGRID 
       REAL(DOUBLE)                    :: RDUM1               ! Dummy values in RARRAY used when switching RARRAY rows during sort
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Call SORTLEN to calculate the shell sort parameter JCT
@@ -131,12 +125,7 @@ chk_sort:DO I=1,NSIZE-1
 
       ENDDO outer
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

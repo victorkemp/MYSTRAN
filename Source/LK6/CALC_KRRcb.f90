@@ -34,7 +34,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FACTORED_MATRIX, FATAL_ERR, KRRcb_SDIA,                                     &
                                          NDOFL, NDOFR, NTERM_DLR, NTERM_KRL, NTERM_KRR, NTERM_KRRcb, NTERM_KRRcbs
       USE TIMDAT, ONLY                :  TSEC
@@ -46,7 +46,6 @@
                                          I_KRRcb, J_KRRcb, KRRcb, I_KRRcbs, J_KRRcbs, KRRcbs
       USE SCRATCH_MATRICES
       USE LAPACK_DPB_MATRICES, ONLY   :  ABAND
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_KRRcb_BEGEND
 
       USE CALC_KRRcb_USE_IFs
 
@@ -65,19 +64,14 @@
 
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of terms in matrix CRS1  
       INTEGER(LONG)                   :: NTERM_CRS3        ! Number of terms in matrix CRS3
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_KRRcb_BEGEND
+
 
       REAL(DOUBLE)                    :: EQUIL_SCALE_FACS(NDOFR)
                                                            ! LAPACK_S values returned from subr SYM_MAT_DECOMP_LAPACK
       REAL(DOUBLE)                    :: K_INORM           ! Inf norm of KRRcb matrix (det in  subr COND_NUM)
       REAL(DOUBLE)                    :: RCOND             ! Recrip of cond no. of the KLL. Det in  subr COND_NUM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Calc KRRcb = KRR + KRL*DLR
@@ -188,12 +182,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

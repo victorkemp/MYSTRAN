@@ -29,10 +29,9 @@
 ! Processes TEMP Bulk Data Cards and writes CARD to file LINK1K for later processing
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1K
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1K
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LSUB, NSUB, NTCARD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_TEMP_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  SUBLOD
  
@@ -51,16 +50,11 @@
       INTEGER(LONG)                   :: JERR      = 0       ! Error count
       INTEGER(LONG)                   :: I,J                 ! DO loop indices
       INTEGER(LONG)                   :: SID       = 0       ! Set ID read from CARD
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_TEMP_BEGEND
+
   
       REAL(DOUBLE)                    :: RTEMP     = ZERO  ! Real value of a temperature
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !  TEMP Bulk Data card check (for format checking only)
@@ -143,12 +137,7 @@
          NTCARD = NTCARD+1
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -29,12 +29,11 @@
 ! Solves for eigenvalues and eigenvectors when method is GIV (Givens) or MGIV (modified Givens)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, KLL_SDIA, KLLD_SDIA, MLL_SDIA, NDOFL, NTERM_KLL, NTERM_KLLD,     &
                                          NTERM_MLL, NUM_EIGENS, NUM_KLLD_DIAG_ZEROS, NUM_MLL_DIAG_ZEROS, NVEC, SOL_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  BAILOUT, EPSIL, SUPINFO, SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EIG_GIV_MGIV_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, PI
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL, EIGEN_VEC, MODE_NUM
       USE MODEL_STUF, ONLY            :  EIG_FRQ1, EIG_FRQ2, EIG_METH, EIG_N1, EIG_N2, EIG_VECS
@@ -84,7 +83,7 @@
       INTEGER(LONG)                   :: MLL_NULL_ROWS       ! Number of null rows in the MLL mass matrix.
       INTEGER(LONG)                   :: NUM_FAIL            ! Number of eigenvalues/vectors that failed to converge.
       INTEGER(LONG)                   :: NUM1                ! Number to use for max no. of eigens to find. Must be NUM1 <= NDOFL
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EIG_GIV_MGIV_BEGEND
+
 
       REAL(DOUBLE)                    :: ABSTOL              ! Tolerance number for LAPACK routines.
       REAL(DOUBLE)                    :: EPS1                ! Small number to compare variables against zero.
@@ -100,12 +99,7 @@
 
       INTRINSIC                       :: DSQRT, MIN
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1   = EPSIL(1)
@@ -415,12 +409,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

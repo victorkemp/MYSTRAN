@@ -62,12 +62,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     L1K
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            LINK1K
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            L1K_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     L1K
+      USE IOUNT1, ONLY                :  WRT_ERR,                            LINK1K
+      USE IOUNT1, ONLY                :  WRT_ERR,                            L1K_MSG
       USE SCONTR, ONLY                :  DATA_NAM_LEN, NELE, NGRID, NTDAT, NTSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CETEMP, CETEMP_ERR, CGTEMP, CGTEMP_ERR, ETEMP, GTEMP, TDATA, TPNT, GRID_ID, ESORT1, ETYPE,&
                                          SCNUM, SUBLOD, eid
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -95,14 +94,9 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE2(1-5) = 3, 5, 0, 0, 0 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -238,11 +232,11 @@
  
 ! First close and delete L1K file
  
-      CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE' )
  
 ! Open L1K for write:
  
-      CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
       DATA_SET_NAME = 'TPNT'
       WRITE(L1K) DATA_SET_NAME
@@ -291,12 +285,7 @@
          ENDDO
       ENDDO   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -347,10 +336,9 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, JCARD_LEN, NGRID, NSUB, NTCARD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CGTEMP, GTEMP, SUBLOD
  
       IMPLICIT NONE
@@ -369,23 +357,18 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening a file
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: SID               ! Thermal load set ID read from an elem temperature B.D. card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,NTCARD
          READ(L1K,IOSTAT=IOCHK) CARD
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
             IERR = IERR + 1
             CYCLE
          ENDIF
@@ -410,12 +393,7 @@
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -448,11 +426,10 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, NGRID, NSUB, NTCARD, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  CGTEMP, GTEMP, GRID_ID, SUBLOD
  
       IMPLICIT NONE
@@ -477,16 +454,11 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: RTEMP             ! Real value of a temperature on a TEMPD or TEMP B.D. card
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       GID_ERR = 0
@@ -496,7 +468,7 @@
       READ(L1K,IOSTAT=IOCHK) XTIME
       IF (IOCHK /= 0) THEN
          REC_NO = 1
-         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
          CALL OUTA_HERE ( 'Y' )                            ! Cannot read STIME from temperature data file, so quit
       ENDIF
  
@@ -504,7 +476,7 @@
          READ(L1K,IOSTAT=IOCHK) CARD
          IF (IOCHK /= 0) THEN
             REC_NO = I+1
-            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1
             CYCLE
          ENDIF
@@ -550,12 +522,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -605,12 +572,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, LTDAT, MTDAT_TEMPRB, MTDAT_TEMPP1,      &
                                          NTCARD, NTDAT,  &
                                          NSUB, WARN_ERR  
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  TWO
       USE PARAMS, ONLY                :  SUPWARN
       USE MODEL_STUF, ONLY            :  TDATA
@@ -648,18 +614,13 @@
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 1
+
  
       REAL(DOUBLE)                    :: TB1               ! Bulk temperature from TEMPRB card 
       REAL(DOUBLE)                    :: TB2               ! Bulk temperature from TEMPRB card 
       REAL(DOUBLE)                    :: TE_BULK           ! Element bulk temperature 
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ELID_ERR = 0
@@ -669,7 +630,7 @@
       READ(L1K,IOSTAT=IOCHK) XTIME 
       IF (IOCHK /= 0) THEN
          REC_NO = 1
-         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
          CALL OUTA_HERE ( 'Y' )                            ! Cannot read STIME from temperature data file, so quit
       ENDIF
  
@@ -683,7 +644,7 @@ ntcrd:DO                                                   ! Top of loop for rea
             CARD_NAME = CARD(1:8)
             IF (IOCHK /= 0) THEN
                REC_NO = ICRD
-               CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
                READ_ERR = READ_ERR + 1
                CYCLE ntcrd
             ENDIF
@@ -735,7 +696,7 @@ cont_cards: DO                                             ! Top of loop for rea
                CALL MKJCARD ( SUBR_NAME, CARD, JCARD )
                IF (IOCHK /= 0) THEN                        ! Error reading temp. data file, so set error & cycle to read another
                   REC_NO = ICRD
-                  CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
                   READ_ERR = READ_ERR + 1
                   CYCLE ntcrd
                ENDIF
@@ -810,12 +771,7 @@ cont_cards: DO                                             ! Top of loop for rea
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -840,10 +796,9 @@ cont_cards: DO                                             ! Top of loop for rea
 ! which gives info about how the elem temp was arrived at.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE   
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MELGP, NGRID
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  ETEMP, CGTEMP, CETEMP_ERR, GTEMP, EDAT, EPNT, ETYPE, GRID_ID, SCNUM,                      &
                                          AGRID, ELGP, EID, TYPE
@@ -866,14 +821,9 @@ cont_cards: DO                                             ! Top of loop for rea
       INTEGER(LONG), INTENT(IN)       :: IELEM             ! Internal element number for a specific actual element ID
       INTEGER(LONG), INTENT(IN)       :: ISCNO             ! Internal subcase number
       INTEGER(LONG), INTENT(IN)       :: JTCOL             ! Col in thermal array CGTEMP, CETEMP for internal subcase no. ISCNO
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 2
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -918,12 +868,7 @@ cont_cards: DO                                             ! Top of loop for rea
          TEMP_ELM = 'B'
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -943,10 +888,9 @@ cont_cards: DO                                             ! Top of loop for rea
 ! array CETEMP to state that this elem temp was specified on an elem temp card
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NELE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TEMPERATURE_DATA_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  ETEMP, ESORT1, CETEMP, TPNT, TYPE, SUBLOD
       USE PARAMS, ONLY                :  SUPWARN
  
@@ -968,16 +912,11 @@ cont_cards: DO                                             ! Top of loop for rea
 !                                                            If there are 5 subcases and internal S/C 3 is the 1-st S/C to have
 !                                                            thermal load and internal S/C 5 is the 2-nd to have thermal load:
 !                                                            TCASE1(1-5) = 0, 0, 1, 0, 2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TEMPERATURE_DATA_PROC_BEGEND + 2
+
  
       REAL(DOUBLE) , INTENT(IN)       :: TE_BULK           ! Bulk temperature from element temperature B.D. card
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -1020,12 +959,7 @@ cont_cards: DO                                             ! Top of loop for rea
          ENDIF
       ENDDO 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

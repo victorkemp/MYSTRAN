@@ -29,11 +29,11 @@
 ! Reads data from files LINK1B, LINK1G, LINK1K, LINK1Q, LINK1Y (created in LINK1) needed in LINK1 restart
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06   , FILE_NAM_MAXLEN,                                                        &
+      USE IOUNT1, ONLY                :  ERR, F06   , FILE_NAM_MAXLEN,                                                        &
                                          L1B    , L1G    , L1K    , L1Q   , L1Y     ,                                              &
                                          LINK1B , LINK1G , LINK1K , LINK1Q, LINK1Y  ,                                              &
                                          L1B_MSG, L1G_MSG, L1K_MSG, L1Q_MSG, L1Y_MSG,                                              &
-                                         L1BSTAT, L1GSTAT, L1KSTAT, L1YSTAT, WRT_LOG
+                                         L1BSTAT, L1GSTAT, L1KSTAT, L1YSTAT
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, MCORD, MRCORD, MGRID, MRGRID, NBAROFF, NCORD,                 &
                                          NCONM2, NEDAT, NELE, NGRID, NMATANGLE, NMATL, NPBAR, NPBEAM, NPDAT, NPELAS,NPROD, NPSHEL, &
@@ -45,7 +45,6 @@
                                          MPCOMP_PLIES, MRPCOMP0, MRPCOMP_PLIES, MPUSERIN, MUSERIN_MAT_NAMES
 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LINK1_RESTART_DATA_BEGEND
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, IORQ1M, IORQ1S, IORQ1B, IORQ2B, IORQ2T
       USE MODEL_STUF, ONLY            :  CORD, RCORD
       USE MODEL_STUF, ONLY            :  CONM2, RCONM2
@@ -73,14 +72,9 @@
       INTEGER(LONG)                   :: PCOMP_PLIES       ! Number of plies in 1 PCOMP entry incl sym plies not explicitly defined
       INTEGER(LONG)                   :: REC_NO            ! Record number of a record read from a file
       INTEGER(LONG)                   :: UNT               ! Unit number of a file to be read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK1_RESTART_DATA_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -94,7 +88,7 @@
       UNT    = L1B
       MESSAG = L1B_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read GRID, RGRID data
 
@@ -165,7 +159,7 @@
          CALL READ_CHK ( IOCHK, FILNAM, NAME_ShouldBe, REC_NO, OUNT )
       ENDDO 
    
-      CALL FILE_CLOSE ( L1B, LINK1B, L1BSTAT, 'Y' )
+      CALL FILE_CLOSE ( L1B, LINK1B, L1BSTAT )
    
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! Open L1G
@@ -174,7 +168,7 @@
       UNT    = L1G
       MESSAG = L1G_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read ETYPE, EPNT, ESORT1 ESORT,2, EOFF
 
@@ -748,7 +742,7 @@
          CALL READ_CHK ( IOCHK, FILNAM, NAME_ShouldBe, REC_NO, OUNT )
       ENDDO 
  
-      CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT, 'Y' )
+      CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT )
  
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! Open L1K and read data
@@ -759,7 +753,7 @@
 
       IF (NTCARD > 0) THEN
  
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read TPNT
 
@@ -827,7 +821,7 @@
             ENDDO 
          ENDDO 
 
-         CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT )
 
       ENDIF
 
@@ -840,7 +834,7 @@
 
       IF (NTCARD > 0) THEN
  
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read PPNT
 
@@ -929,7 +923,7 @@
       UNT    = L1Y
       MESSAG = L1Y_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read CONM2, RCONM2 data
 
@@ -955,12 +949,7 @@
          ENDDO 
       ENDDO 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

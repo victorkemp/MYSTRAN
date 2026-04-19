@@ -47,11 +47,10 @@
 !               MATOUT(1 - NTERMS) : k-th value is the k-th nonzero value in the matrix 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_2_BEGEND
  
       USE READ_MATRIX_2_USE_IFs
 
@@ -79,7 +78,7 @@
       INTEGER(LONG)                   :: OLD_ROW_NUM       ! A variable used to tell when a new row of MATOUT is being read
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading FILNAM
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_2_BEGEND
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERMS)    ! Real values for matrix MATOUT
 
@@ -87,12 +86,7 @@
 
       INTRINSIC DABS
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -109,7 +103,7 @@
       OUNT(2) = F06
 
       IF (OPND == 'N') THEN
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       ENDIF
 
 ! Should we read NTERMS from file before reading matrix?
@@ -118,7 +112,7 @@
          READ(UNT,IOSTAT=IOCHK) NUM_TERMS
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Can't read NUM_TERMS fro file, so quit
          ENDIF
          IF (NUM_TERMS /= NTERMS) THEN
@@ -144,7 +138,7 @@
             ELSE
                REC_NO = K
             ENDIF
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             IERROR = IERROR + 1
          ENDIF
          IF (I2_MATOUT(K) > OLD_ROW_NUM) THEN
@@ -160,15 +154,10 @@
       ENDIF
 
       IF (CLOSE_IT == 'Y') THEN
-         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT, 'Y' )
+         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

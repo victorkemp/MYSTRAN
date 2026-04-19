@@ -29,10 +29,8 @@
 ! Converts an integer to a character value with comma format (e.g. 12345 becomes char value 12,345) and writes result to unit UNT
 
       USE PENTIUM_II_KIND, ONLY             :  BYTE, LONG
-      USE IOUNT1, ONLY                      :  WRT_LOG, F04
       USE SCONTR, ONLY                      :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                      :  TSEC 
-      USE SUBR_BEGEND_LEVELS, ONLY          :  GET_FORMATTED_INTEGER_BEGEND
 
       USE GET_FORMATTED_INTEGER_USE_IFs
 
@@ -45,18 +43,13 @@
       CHARACTER(WORD_LEN*BYTE), INTENT(OUT) :: CHAR_INT          ! Integer formatted to have comma's (36879 becomes 36,879)
       CHARACTER(WORD_LEN*BYTE)              :: TEMP_CHAR_INT     ! Temporary value of CHAR_INT
 
-      INTEGER(LONG), PARAMETER              :: SUBR_BEGEND = GET_FORMATTED_INTEGER_BEGEND
+
       INTEGER(LONG), INTENT(IN)             :: INT               ! Integer to be converted to formated value in CHAR_INT
       INTEGER(LONG), INTENT(OUT)            :: NUM_CHARS         ! Num of non blank chars in CHAR_INT after formatting w/ commas
       INTEGER(LONG), INTENT(OUT)            :: NUM_DIGITS        ! Number of digits in INT
       INTEGER(LONG)                         :: I,J,K             ! DO loop indices or counters
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -135,12 +128,7 @@
 !xx      ENDIF
 !xx   ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

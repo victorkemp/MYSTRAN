@@ -3,18 +3,12 @@
       SUBROUTINE DSTEQR( COMPZ, N, D, E, Z, LDZ, WORK, INFO )
 
       USE PENTIUM_II_KIND, ONLY         :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                  :  ERR, F04, F06, SC1, WRT_LOG
-      USE SCONTR, ONLY                  :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                  :  HOUR, MINUTE, SEC,
-     &                                     SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY      :  LAPACK_BEGEND
+      USE IOUNT1, ONLY                  :  ERR, F06, SC1
+      USE SCONTR, ONLY                  :  FATAL_ERR
       USE LAPACK_BLAS_AUX
 
       USE OUTA_HERE_Interface
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LAPACK_BEGEND
-
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: subr_name = 'DSTEQR'
 *
 *  -- LAPACK routine (version 2.0) --
 *     Univ. of Tennessee, Univ. of California Berkeley, NAG Ltd.,
@@ -121,14 +115,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -522,14 +508,6 @@
 *
   190 CONTINUE
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DSTEQR

@@ -34,7 +34,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE DERIVED_DATA_TYPES, ONLY    :  CHAR1_INT1
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ECHO, IERRFL, FATAL_ERR, JCARD_LEN, JF, LPBAR, NPBAR, NPBARL
       USE PARAMS, ONLY                :  EPSIL, PBARLSHR, SUPINFO
       USE CONSTANTS_1, ONLY           :  PI, ZERO, QUARTER, THIRD, HALF, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE,     &
@@ -42,7 +42,6 @@
 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  PBAR, RPBAR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBARL_BEGEND
  
       USE BD_PBARL_USE_IFs
 
@@ -70,7 +69,7 @@
       INTEGER(LONG)                   :: NUM_D             ! Number of D(i) values to read from the continuation entries
       INTEGER(LONG)                   :: MATL_ID   = 0     ! Material ID (field 3 of this property card)
       INTEGER(LONG)                   :: PROP_ID   = 0     ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBARL_BEGEND
+
  
       REAL(DOUBLE)                    :: AREA      = ZERO  ! Cross-sectional area
       REAL(DOUBLE)                    :: D(NS)             ! Dimensions of cross-secion of the bar
@@ -83,12 +82,7 @@
       REAL(DOUBLE)                    :: Z(4)      = ZERO  ! Z coords in cross-section for 4 points of data recovery
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this PBARL entry
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PBAR Bulk Data Card routine
@@ -360,12 +354,7 @@ D_do1:   DO J=2,9                                          ! --- Read cross-sect
 !        CALL WRITE_PBAR_EQUIV
 !     ENDIF
 !
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

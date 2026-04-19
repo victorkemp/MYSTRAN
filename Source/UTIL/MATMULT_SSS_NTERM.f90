@@ -58,10 +58,9 @@
 ! matrix multiply
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SSS_NTERM_BEGEND
       USE SPARSE_ALG_ARRAYS, ONLY     :  J_AROW
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
@@ -104,16 +103,11 @@
       INTEGER(LONG)                   :: NHITS_TOT_FOR_ROW_OF_A ! Num of "hits" of terms in a col of A existing where terms in any
 !                                                                 row of B exist when a row of A is multiplied by al cols of B
       INTEGER(LONG)                   :: NTERM_AROW             ! Max number of nonzero terms in one row of A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SSS_NTERM_BEGEND
+
        
       INTRINSIC                       :: MAX
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure B is stored as nonsym (all terms)
@@ -254,12 +248,7 @@ l_do:          DO L=B_COL_BEG,B_COL_END
             
       CALL DEALLOCATE_SPARSE_ALG ( 'J_AROW' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

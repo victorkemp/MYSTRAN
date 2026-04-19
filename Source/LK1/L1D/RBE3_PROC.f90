@@ -34,13 +34,12 @@
 ! The derivation of the equations for the RBE3 are shown in Appendix E to the MYSTRAN User's Reference Manual
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1F, LINK1F, L1F_MSG, L1J
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, LINK1F, L1F_MSG, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MRBE3, NCORD, NGRID, NTERM_RMG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  CORD, GRID_ID, GRID, RCORD, RGRID
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RIGID_ELEM_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
 
       USE RBE3_PROC_USE_IFs
@@ -80,7 +79,7 @@
       INTEGER(LONG)                   :: RMG_ROW_NUM       ! Row no. of a term in array RMG
       INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
       INTEGER(LONG)                   :: ROW_NUM_START_D   ! DOF number where TDOF data begins for the ref grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RIGID_ELEM_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! Small number
       REAL(DOUBLE)                    :: DX_BAR            ! Wgt'd avg diff in x dist from indep pt i to ref pt A (in ref pt global)
@@ -107,12 +106,7 @@
       REAL(DOUBLE)                    :: SXY,SZX,SYZ       ! new Rdd terms according to victor
       REAL(DOUBLE)                    :: WTi6(MRBE3,6)     ! per-DoF grid weights
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! File LINK1F contains data from the logical RBE3 cards in the input B.D. deck. For each logical RBE3 card, LINK1F has:
@@ -167,7 +161,7 @@
             WRITE(F06,1951) 'RBE3', REID, NUM_COMPS
          ENDIF
       ELSE
-         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
          IERR = IERR + 1
          JERR = JERR + 1
       ENDIF
@@ -176,7 +170,7 @@
          READ(L1F,IOSTAT=IOCHK) AGRID_I(I), COMPS_I(I), WTi(I)
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
             IERR = IERR + 1
             JERR = JERR + 1
          ENDIF
@@ -498,12 +492,7 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
          RETURN
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

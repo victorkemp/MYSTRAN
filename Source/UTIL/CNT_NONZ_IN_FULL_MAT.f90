@@ -31,12 +31,11 @@
 !  If SYM = 'Y' then only terms in MATIN upper triangle are used in the count
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, SUPINFO, TINY
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CNT_NONZ_IN_FULL_MAT_BEGEND
 
       USE CNT_NONZ_IN_FULL_MAT_USE_IFs
 
@@ -51,17 +50,12 @@
       INTEGER(LONG), INTENT(OUT)      :: NTERM_NONZERO     ! Number of nonzero (or significant) values in the matrix
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: JSTART            ! A computed DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CNT_NONZ_IN_FULL_MAT_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NROWS,NCOLS)! Input full matrix
       REAL(DOUBLE) , INTENT(OUT)      :: SMALL             ! Filter for small terms
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (DEBUG(196) == 0) THEN
@@ -93,12 +87,7 @@
          ENDDO
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

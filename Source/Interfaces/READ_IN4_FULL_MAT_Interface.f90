@@ -32,12 +32,11 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  NUM_EMG_FATAL_ERRS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_IN4_FULL_MAT_BEGEND
 
       IMPLICIT NONE
 
@@ -51,7 +50,7 @@
       INTEGER(LONG), INTENT(IN)       :: NRI               ! Number of rows expected in MAT_FULL
       INTEGER(LONG), INTENT(IN)       :: NCI               ! Number of cols expected in MAT
       INTEGER(LONG), INTENT(OUT)      :: IERRT             ! IERR1+IERR2
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_IN4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: MAT_FULL(NRI,NCI) ! Array of terms in matrix MAT
 

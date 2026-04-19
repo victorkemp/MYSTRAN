@@ -45,11 +45,10 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  IP6CHK_BEGEND
  
       USE IP6CHK_USE_IFs
 
@@ -65,14 +64,9 @@
       INTEGER(LONG)                       :: I                 ! DO loop index
       INTEGER(LONG)                       :: NUM_DIGITS(6)     ! NUM_DIGITS(I) is a count of the num of digits found in JCARDI
       INTEGER(LONG)                       :: POSN              ! An position in JCARDO
-      INTEGER(LONG), PARAMETER            :: SUBR_BEGEND = IP6CHK_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -177,12 +171,7 @@ i_loop:  DO I = 1,JCARD_LEN
          ENDDO
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

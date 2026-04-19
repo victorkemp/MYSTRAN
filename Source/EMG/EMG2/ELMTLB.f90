@@ -30,10 +30,9 @@
 ! transformation matrix TE 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, f06, WRT_LOG
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MELDOF, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELMTLB_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, ELGP, KE, KED, ME, PTE, PPE, TE
   
       USE ELMTLB_USE_IFs
@@ -51,19 +50,14 @@
       INTEGER(LONG)                   :: NCOLB             ! No. cols in a matrix for subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG), PARAMETER        :: NROW      = 3     ! No. rows to get/put for subrs MATGET/MATPUT, called herein
       INTEGER(LONG), PARAMETER        :: NROWA     = 3     ! No. rows in a matrix for subr MATMULT_FFF/MATMULT_FFF_T, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELMTLB_BEGEND
+
   
       REAL(DOUBLE)                    :: DUM11(3,3)        ! An intermediate result when calculating transformed KE
       REAL(DOUBLE)                    :: DUM12(3,3)        ! An intermediate result when calculating transformed KE
       REAL(DOUBLE)                    :: PDUM1(3,NSUB)     ! An intermediate result when calculating transformed PTE, PPE
       REAL(DOUBLE)                    :: PDUM2(3,NSUB)     ! An intermediate result when calculating transformed PTE, PPE
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (OPT(1) == 'Y') THEN                              ! Transform ME to TE' x ME x TE
@@ -158,12 +152,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

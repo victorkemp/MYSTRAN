@@ -29,10 +29,9 @@
 ! Shifts a character string so that it is left adjusted
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LEFT_ADJ_BDFLD_BEGEND
  
       USE LEFT_ADJ_BDFLD_USE_IFs
 
@@ -43,14 +42,9 @@
       CHARACTER(LEN=JCARD_LEN)               :: TCHR_FLD          ! Temporary char field 
  
       INTEGER(LONG)                          :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER               :: SUBR_BEGEND = LEFT_ADJ_BDFLD_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (CHR_FLD(1:1) == ' ') THEN                        ! We need to shift:
@@ -68,12 +62,7 @@
  
       ENDIF   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

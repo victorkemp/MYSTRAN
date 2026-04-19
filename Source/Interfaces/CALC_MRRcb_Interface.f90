@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFL, NDOFR, NTERM_DLR, NTERM_MLL, NTERM_MRL, NTERM_MRR,        &
                                          NTERM_MRRcb, NTERM_MRRcbn
       USE TIMDAT, ONLY                :  TSEC
@@ -47,11 +47,10 @@
                                          SYM_MRRcb
 
       USE SCRATCH_MATRICES
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_MRRcb_BEGEND
 
       IMPLICIT NONE
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_MRRcb_BEGEND
+
 
       END SUBROUTINE CALC_MRRcb
 

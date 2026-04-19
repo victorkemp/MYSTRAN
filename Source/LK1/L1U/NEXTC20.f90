@@ -29,10 +29,9 @@
       ! Looks for 2 physical Bulk Data large field format continuation
       ! entries belonging to a large field parent.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, IN1, INFILE
+      USE IOUNT1, ONLY                :  ERR, F06, IN1, INFILE
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  NEXTC20_BEGEND
  
       USE NEXTC20_USE_IFs
 
@@ -56,7 +55,7 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error value from READ
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr READERR  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file. Input to subr READERR
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = NEXTC20_BEGEND
+
  
 ! **********************************************************************************************************************************
       ! Initialize
@@ -79,7 +78,7 @@
       CALL READ_BDF_LINE(IN1, IOCHK, CHILD1)
       IF (IOCHK /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHK, INFILE, 'BULK DATA CARD', REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, INFILE, 'BULK DATA CARD', REC_NO, OUNT )
          FATAL_ERR = FATAL_ERR + 1
          RETURN
       ENDIF
@@ -112,7 +111,7 @@
       CALL READ_BDF_LINE(IN1, IOCHK, CHILD2)
       IF (IOCHK /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHK, INFILE, 'BULK DATA CARD', REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, INFILE, 'BULK DATA CARD', REC_NO, OUNT )
          FATAL_ERR = FATAL_ERR + 1
          RETURN
       ENDIF

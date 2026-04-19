@@ -48,12 +48,11 @@
  
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_1_BEGEND
 
       USE READ_MATRIX_1_USE_IFs
 
@@ -84,7 +83,7 @@
       INTEGER(LONG)                   :: NUM_TERMS         ! Head rec read from files that denotes how many records in FILNAM
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading FILNAM
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERM)     ! Real values for matrix MATOUT
       REAL(DOUBLE)                    :: RVAL              ! Real values read from FILNAM
@@ -93,12 +92,7 @@
  
       INTRINSIC                       :: DABS
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Quick return if there are no terms in the matrix
@@ -120,7 +114,7 @@
       OUNT(2) = F06
 
       IF (OPND == 'N') THEN
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       ENDIF
 
 ! Should we read NTERM from file before reading matrix?
@@ -129,7 +123,7 @@
          READ(UNT,IOSTAT=IOCHK) NUM_TERMS
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Can't read NUM_TERMS from file, so quit
          ENDIF
          IF (NUM_TERMS /= NTERM) THEN
@@ -157,7 +151,7 @@ k_do1:DO K = 1,NTERM
             ELSE
                REC_NO = K
             ENDIF
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Error reading IROW, JCOL, RVAL record from unit UNT
             CYCLE k_do1
          ELSE
@@ -195,7 +189,7 @@ k_do1:DO K = 1,NTERM
       ENDIF
 
       IF (CLOSE_IT == 'Y') THEN
-         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT, 'Y' )
+         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT )
       ENDIF
 
 ! Check sensibility of I_MATOUT
@@ -213,12 +207,7 @@ k_do1:DO K = 1,NTERM
          WRITE(F06,103) NAME, NAME, NAME, NROWS
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -255,7 +244,7 @@ k_do1:DO K = 1,NTERM
       SUBROUTINE CHECK_SPARSE_CRS_I ( MAT_A_NAME, CALLING_SUBR, NROWS_A, NTERM_A, I_A, DEBUG_NUM )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       IMPLICIT NONE

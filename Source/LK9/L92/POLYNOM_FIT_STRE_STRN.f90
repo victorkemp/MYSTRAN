@@ -31,14 +31,13 @@
 ! fit returned from subr SURFACE_FIT, called herein.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_GAUSS, MAX_STRESS_POINTS
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, THREE
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE MODEL_STUF, ONLY            :  EID, ELGP, TYPE, XEL
       USE PARAMS, ONLY                :  Q4SURFIT, QUAD4TYP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  POLYNOM_FIT_STRE_STRN_BEGEND
 
       USE POLYNOM_FIT_STRE_STRN_USE_IFs
 
@@ -58,7 +57,7 @@
       INTEGER(LONG)                   :: I,J                 ! DO loop indices
       INTEGER(LONG)                   :: OUNT(2)             ! Output units for SURFACE_FIT
       INTEGER(LONG)                   :: SF_IERR             ! Output error indicator from subr SURFACE_FIT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = POLYNOM_FIT_STRE_STRN_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STR_IN(NROW,NCOL)   ! Input stress/strain vals. NROW are num of diff stress/strain vals and
 !                                                              NCOL are number of points to use in the poly fit for one value
@@ -91,12 +90,7 @@
       REAL(DOUBLE)                    :: XEP(NCOL-1,3)       ! Parametric coords of NCOL points
       REAL(DOUBLE)                    :: WO(NCOL-1)          ! Values of the function to fit at the output data points
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       MESSAGE(1:) = ' '
@@ -196,12 +190,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

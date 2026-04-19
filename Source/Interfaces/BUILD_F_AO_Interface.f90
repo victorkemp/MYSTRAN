@@ -32,10 +32,8 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFA, NDOFF, NDOFO, NTERM_GOA, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BUILD_F_AO_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE
       USE PARAMS, ONLY                :  PRTDISP
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -45,7 +43,7 @@
       IMPLICIT NONE
  
       INTEGER(LONG), PARAMETER        :: NUMCOLS     = 1   ! Variable for number of cols of an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_F_AO_BEGEND
+
  
       END SUBROUTINE BUILD_F_AO
 

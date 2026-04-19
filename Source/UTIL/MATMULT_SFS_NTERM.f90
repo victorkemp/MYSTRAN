@@ -48,10 +48,9 @@
 ! used to allocate memory for arrays J_C and C prior to calling subr MATMULT_SFS so that it can it can do the sparse matrix multiply
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SFS_NTERM_BEGEND
       USE PARAMS, ONLY                :  EPSIL
       USE SPARSE_ALG_ARRAYS, ONLY     :  J_AROW
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -88,19 +87,14 @@
       INTEGER(LONG)                   :: NTERM_AROW             ! Number of nonzero terms in AROW (one row of A)
       INTEGER(LONG)                   :: ROW_AT_COLJ_BEG(NROW_A)! jth term is row number in MATIN where col j nonzeros begin 
       INTEGER(LONG)                   :: ROW_AT_COLJ_END(NROW_A)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SFS_NTERM_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: B(NROW_B,NCOL_B)       ! Real values in matrix B
 
 
       INTRINSIC                       :: MAX
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -230,12 +224,7 @@ l_do:          DO L=1,NROW_B
 
       CALL DEALLOCATE_SPARSE_ALG ( 'J_AROW' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

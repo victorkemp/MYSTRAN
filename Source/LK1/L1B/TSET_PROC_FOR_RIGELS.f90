@@ -29,10 +29,9 @@
 ! DOF Processor for rigid elements (incl RBE3 and RSPLINE)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1F, L1F_MSG, LINK1F
+      USE IOUNT1, ONLY                :  ERR, F06, L1F, L1F_MSG, LINK1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LIND_GRDS_MPCS, NDOFM, NGRID, NIND_GRDS_MPCS, NRECARD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  DOF_PROC_BEGEND
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET
       USE MODEL_STUF, ONLY            :  GRID, GRID_ID, MPC_IND_GRIDS
  
@@ -80,16 +79,11 @@
       INTEGER(LONG)                   :: REFC              ! Dependent components on RBE3
       INTEGER(LONG)                   :: REFGRID           ! Dependent grid on RBE3
       INTEGER(LONG)                   :: REID              ! Rigid elem ID read from file LINK1F
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = DOF_PROC_BEGEND + 1
+
 
       REAL(DOUBLE)                    :: RDUM              ! Real value read that is not used
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -109,7 +103,7 @@
          READ(L1F,IOSTAT=IOCHK) RTYPE      
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading rigid elem file. No sense continuing
          ENDIF
 
@@ -120,7 +114,7 @@
             READ(L1F,IOSTAT=IOCHK) REID,GID1,IDUM(1),DDOF1,GID2,IDUM(2),DDOF2      
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading rigid elem file. No sense continuing
             ENDIF
                                                            ! Check for existence of grid pt. GID1
@@ -206,7 +200,7 @@
             READ(L1F,IOSTAT=IOCHK) REID,AGRID_D,COMPS_D,NUMI,(AGRIDI_I(J),IDUM(J),J=1,NUMI)     
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading rigid elem file. No sense continuing
             ENDIF
 
@@ -264,7 +258,7 @@
             ENDIF   
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading rigid elem file. No sense continuing
             ENDIF
                                                            ! Check for existence of dependent grid, AGRID_D
@@ -314,7 +308,7 @@
             READ(L1F,IOSTAT=IOCHK) REID, REFGRID, REFC, IRBE3, RDUM
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading rigid elem file. No sense continuing
             ENDIF
                                                            ! Check for existence of dependent grid, REFGRID
@@ -330,7 +324,7 @@
                READ(L1F) AGRID_I, IDUM(1), RDUM
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )                   ! Error reading rigid elem file. No sense continuing
                ENDIF
                CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I, GRID_ID_ROW_NUM_I )
@@ -388,7 +382,7 @@
 
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading rigid elem file. No sense continuing
             ENDIF
                                                            ! Check for existence of dependent grid, AGRID_D
@@ -453,12 +447,7 @@
  
       IERRT = IERRT + GID_ERR + DOF_ERR
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

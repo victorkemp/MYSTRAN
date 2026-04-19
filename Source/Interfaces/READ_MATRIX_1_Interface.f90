@@ -33,12 +33,11 @@
                                , I_MATOUT, J_MATOUT, MATOUT )
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_MATRIX_1_BEGEND
 
       IMPLICIT NONE
  
@@ -56,7 +55,7 @@
       INTEGER(LONG), INTENT(IN)       :: UNT               ! Unit number of FILNAM
       INTEGER(LONG), INTENT(OUT)      :: I_MATOUT(NROWS+1) ! Row numbers for terms in matrix MATOUT
       INTEGER(LONG), INTENT(OUT)      :: J_MATOUT(NTERM)   ! Col numbers for terms in matrix MATOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_MATRIX_1_BEGEND
+
  
       REAL(DOUBLE) , INTENT(OUT)      :: MATOUT(NTERM)     ! Real values for matrix MATOUT
  

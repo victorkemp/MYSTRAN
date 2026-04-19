@@ -29,10 +29,9 @@
 ! Calculates abscissa and weight coefficients for Gaussian integration of order KORDER = 1 to 10.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_GAUSS, MEFE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ORDER_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TWO
       USE CONSTANTS_GAUSS, ONLY       :  HHV, SSV
       USE MODEL_STUF, ONLY            :  EMG_IFE, ERR_SUB_NAM, NUM_EMG_FATAL_ERRS
@@ -52,19 +51,14 @@
       INTEGER(LONG)                   :: MM                   ! A computed index into SSS, HHH arrays
       INTEGER(LONG)                   :: NN                   ! A term in a computed index into SSS, HHH arrays
       INTEGER(LONG)                   :: IBEGIN(11) = (/0, 1, 2, 4, 6, 9,12,16,20,25,30/)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) ,INTENT(OUT)       :: SSS(MAX_ORDER_GAUSS) ! Gauss abscissa's
       REAL(DOUBLE) ,INTENT(OUT)       :: HHH(MAX_ORDER_GAUSS) ! Gauss weight coeffs
   
       INTRINSIC MOD
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -121,12 +115,7 @@
          CALL OUTA_HERE ( 'Y' )                            ! Coding error, so quit
  
       ENDIF
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

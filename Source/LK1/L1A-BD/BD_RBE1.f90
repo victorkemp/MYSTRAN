@@ -36,10 +36,9 @@
 !             DGID, DDOF      : One pair of dependent Grid/DOF              
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1F
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LRIGEL, NRBE1, NRIGEL, NRECARD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_RBE1_BEGEND
       USE MODEL_STUF, ONLY            :  RIGID_ELEM_IDS
  
       USE BD_RBE1_USE_IFs
@@ -77,14 +76,9 @@
       INTEGER(LONG)                   :: JFLD2             ! A computed field number on the card
       INTEGER(LONG)                   :: NUM_IDOF_FLDS = 0 ! Number of fields that have independent DOF's specified
       INTEGER(LONG)                   :: RELID     = 0     ! This rigid elements' ID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RBE1_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN 
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! RBE1 Bulk Data Card routine
@@ -376,12 +370,7 @@
 
       CALL CRDERR ( CARD )         
  
-! **********************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

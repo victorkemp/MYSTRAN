@@ -32,13 +32,12 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, LEN_INPUT_FNAME, OU4, OU4FIL, mou4, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, LEN_INPUT_FNAME, OU4, OU4FIL, mou4
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  PRTOU4, SPARSTOR
       USE SCRATCH_MATRICES, ONLY      :  I_CRS1, J_CRS1, CRS1, I_CCS1, J_CCS1, CCS1
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_OU4_SPARSE_MAT_BEGEND
  
       IMPLICIT NONE
  
@@ -55,7 +54,7 @@
       INTEGER(LONG), PARAMETER        :: IROW        = 1   ! 
       INTEGER(LONG), PARAMETER        :: PREC        = 2   ! Matrix precision (2 indicates double precision)
       INTEGER(LONG), PARAMETER        :: ROW_BEG     = 1   ! 1st row of matrix output to UNT is row 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_OU4_SPARSE_MAT_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MAT(NTERM_MAT)    ! Array of terms in matrix MAT
  

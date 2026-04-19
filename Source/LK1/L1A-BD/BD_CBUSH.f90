@@ -29,11 +29,10 @@
 ! Processes CBUSH Bulk Data card:
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LBUSHOFF, LVVEC, MEDAT_CBUSH,&
                                          NBUSHOFF, NCBUSH, NEDAT, NELE, NVVEC, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_CBUSH_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, HALF
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE MODEL_STUF, ONLY            :  BUSHOFF, EDAT, ETYPE, VVEC
@@ -63,7 +62,7 @@
       INTEGER(LONG)                   :: NEDAT_START       ! Value of NEDAT at start of this subr
       INTEGER(LONG)                   :: OCID              ! Coord sys ID for offsets
       INTEGER(LONG)                   :: VVEC_NUM  = 0     ! V vector number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_CBUSH_BEGEND
+
 
       REAL(DOUBLE)                    :: VV(3)             ! The 3 components of the V vector for this CBUSH elem
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
@@ -71,12 +70,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! CBUSH element Bulk Data Card routine
@@ -364,12 +358,7 @@ vec:  IF (JCARD(9)(1:) == ' ') THEN                        ! CID field is blank 
 
       NEDAT = NEDAT_START + MEDAT_CBUSH
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

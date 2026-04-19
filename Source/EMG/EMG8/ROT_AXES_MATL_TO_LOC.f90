@@ -29,7 +29,7 @@
 ! Rotates material and CTE matrices from the material axes (specified on connection entry) to element local axes
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEMATC, NCORD
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
@@ -37,7 +37,6 @@
                                          RCORD, TE, THETAM, TYPE
       USE PARAMS, ONLY                :  EPSIL
       USE DEBUG_PARAMETERS
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ROT_AXES_MATL_TO_LOC_BEGEND
 
       USE ROT_AXES_MATL_TO_LOC_USE_IFs
 
@@ -47,7 +46,7 @@
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y' write warning messages, otherwise do not
       CHARACTER( 1*BYTE)              :: FOUND             ! If 'Y' we found something we were looking for
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROT_AXES_MATL_TO_LOC_BEGEND
+
       INTEGER(LONG)                   :: CORDM             ! Actual coord system ID (CORDM on PSOLID Bulk Data entry)
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: ICORD             ! Internal coord system ID for CORDM
@@ -74,12 +73,7 @@
       REAL(DOUBLE)                    :: ES0(6,6)          ! 3D stress matl matrix before coord transformation
       REAL(DOUBLE)                    :: ET0(2,2)          ! 2D transverse shear matl matrix before coord transformation
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -223,12 +217,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

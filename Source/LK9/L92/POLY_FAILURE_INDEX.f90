@@ -29,7 +29,7 @@
 ! Calculates failure index based on polynomial failure criteria (HILL, HOFF, TSAI), STRESS array and ultimate stresses
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, HALF, ONE, TWO
@@ -37,7 +37,6 @@
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  FAILURE_THEORY
-      USE SUBR_BEGEND_LEVELS, ONLY    :  POLY_FAILURE_INDEX_BEGEND
 
       USE POLY_FAILURE_INDEX_USE_IFs
 
@@ -46,7 +45,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'POLY_FAILURE_INDEX'
 
       INTEGER(LONG)                   :: I,J               ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = POLY_FAILURE_INDEX_BEGEND
+
 
       REAL(DOUBLE), INTENT(IN)        :: STRE_ALLOWABLES(9)! Allowable stresses (incl tension and compr for normal stresses)
       REAL(DOUBLE), INTENT(IN)        :: STREi(6)          ! 6 components of stress
@@ -63,12 +62,7 @@
       REAL(DOUBLE)                    :: X,Y,Z             ! X = XT if sig1 > 0 or X = XC if sig1 < 0, etc
       REAL(DOUBLE)                    :: R,S,T             ! Allowable shear stresses in planes 23, 13, 12
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -215,12 +209,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -35,10 +35,9 @@
 !  2) Left justify fields 2 - 9 of cards that are fixed field
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BD_ENTRY_LEN, FATAL_ERR, IMB_BLANK, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FFIELD_BEGEND
 
       USE FFIELD_USE_IFs
 
@@ -60,14 +59,9 @@
       INTEGER(LONG)                   :: IFD               ! Counter for the 10 fields of a Bulk Data CARD
       INTEGER(LONG)                   :: JCT               ! Column counter in free-field CARD
       INTEGER(LONG)                   :: K1S,K2S,K1L       ! Indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FFIELD_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CARD_LEN = LEN(CARD)
@@ -188,12 +182,7 @@ loop1:   DO
          ENDDO
       ENDDO
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

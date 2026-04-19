@@ -31,12 +31,11 @@
      ! Write warning messages if a descriptor is not valid for MYSTRAN
 
       USE PENTIUM_II_KIND, ONLY        :  BYTE, LONG
-      USE IOUNT1, ONLY                 :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                 :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                 :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, ECHO, FATAL_ERR, WARN_ERR
       USE TIMDAT, ONLY                 :  TSEC
       USE CC_OUTPUT_DESCRIBERS, ONLY   :  STRN_LOC, STRN_OPT, STRE_LOC, STRE_OPT, FORC_LOC
       USE PARAMS, ONLY                 :  SUPWARN 
-      USE SUBR_BEGEND_LEVELS, ONLY     :  CHK_CC_CMD_DESCRIBERS_BEGEND
 
       USE CHK_CC_CMD_DESCRIBERS_USE_IFs
 
@@ -59,15 +58,9 @@
       INTEGER(LONG), INTENT(IN)        :: NUM_WORDS         ! Number of words we need to check in CC_CMD_DESCRIBERS
       INTEGER(LONG)                    :: I,J               ! DO loop indices
       INTEGER(LONG)                    :: JCOL              ! Designator of a column in an array
-      INTEGER(LONG), PARAMETER         :: SUBR_BEGEND = CHK_CC_CMD_DESCRIBERS_BEGEND
+
       LOGICAL                          :: IS_PLOT, IS_PRINT, IS_PUNCH
  
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       IF      (WHAT == 'ACCE') THEN;   OUTPUT_TYPE( 1) = 'ACCE';   JCOL =  1;
@@ -364,12 +357,7 @@ jdo_1:   DO J=1,NUM_POSS_CCD
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

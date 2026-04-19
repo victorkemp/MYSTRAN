@@ -30,12 +30,10 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
-      USE IOUNT1, ONLY                :  F04, WRT_LOG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM  
       USE LINK9_STUFF, ONLY           :  OGEL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_MAX_MIN_ABS_STR_BEGEND
 
       USE GET_MAX_MIN_ABS_STR_USE_IFs                      ! Added 2019/07/14
 
@@ -47,7 +45,7 @@
       INTEGER(LONG) , INTENT(IN)      :: NUM_ROWS          ! Number of stress or strain rows in OGEL
       INTEGER(LONG) , INTENT(IN)      :: NUM_COLS          ! Number of MAX, MIN, ABS to calc (number of cols in OGEL)
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices or counters
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_MAX_MIN_ABS_STR_BEGEND
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: ABS_ANS(NUM_COLS) ! Max ABS for all grids output for each of the 6 disp components
       REAL(DOUBLE) , INTENT(OUT)      :: MAX_ANS(NUM_COLS) ! Max for all grids output for each of the 6 disp components
@@ -55,12 +53,7 @@
 
       INTRINSIC                       :: MAX, MIN, DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO J=1,NUM_COLS
@@ -119,12 +112,7 @@
          ABS_ANS(J) = MAX( DABS(MAX_ANS(J)), DABS(MIN_ANS(J)) )
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

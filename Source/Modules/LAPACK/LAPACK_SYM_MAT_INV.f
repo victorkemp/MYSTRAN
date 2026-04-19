@@ -3,18 +3,14 @@
       MODULE LAPACK_SYM_MAT_INV
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  F04, WRT_LOG
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
 
       USE LAPACK_BLAS_AUX
       USE LAPACK_LIN_EQN_DPB                               ! Subr DPOTF2
 
       USE OURTIM_Interface
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is a set of LAPACK routines that are used in inverting symmetric matrices (not band matrices)
 

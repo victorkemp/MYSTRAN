@@ -29,12 +29,11 @@
 ! Forms the mass matrix, MGGC, for concentrated masses by calling subr MGG_CONM2_PROC to process the concentrated masses
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  NGRID, NTERM_MGGC, BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR, WTMASS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MGGC_MASS_MATRIX_BEGEND
       USE MODEL_STUF, ONLY            :  AGRID, GRID_ID, INV_GRID_SEQ
       USE SPARSE_MATRICES, ONLY       :  I_MGGC, J_MGGC, MGGC
  
@@ -57,19 +56,14 @@
       INTEGER(LONG)                   :: KSTART            ! Used in deciding whether to process all elem mass terms or only
 !                                                            the ones on and above the diagonal (controlled by param SPARSTOR)
       INTEGER(LONG)                   :: MGGC_COL_NUM      ! A calculated col number for a nonzero term in MGG arrays
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGC_MASS_MATRIX_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: MGG_CONM2(6,6)    ! 6 X 6 mass matrix in global coords for one CONM2
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -129,12 +123,7 @@ i_do1:DO I=1,NGRID
 
 ! Do not deallocate MGGC arrays - they are needed later in subr SPARSE_MGG
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -149,10 +138,9 @@ i_do1:DO I=1,NGRID
 ! Generates 6 x 6 mass matrix, MGG_CONM2, for one CONM2 for grid GRID_NUM (if there is any CONM2 connected to this grid)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  NCONM2, NGRID, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MGGC_MASS_MATRIX_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  CONM2, RCONM2
       USE PARAMS, ONLY                :  ART_MASS, ART_ROT_MASS, ART_TRAN_MASS
@@ -166,16 +154,11 @@ i_do1:DO I=1,NGRID
 !                                                            one CONM2 (if one exists for this grid)
       INTEGER(LONG), INTENT(IN)       :: GRID_NUM          ! The actual grid number for internal grid ID INT_GRID_ID
       INTEGER(LONG)                   :: I,J,L             ! DO loop indices or counters   
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MGGC_MASS_MATRIX_BEGEND + 1
+
 
       REAL(DOUBLE) , INTENT(OUT)      :: MGG_CONM2(6,6)    ! 6 X 6 mass matrix in global coords for one CONM2
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -247,12 +230,7 @@ i_do1:DO I=1,NGRID
 
       ENDDO 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

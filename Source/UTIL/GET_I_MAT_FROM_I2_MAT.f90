@@ -32,10 +32,9 @@
 ! This subr creates I_MAT from a given I2_MAT
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_I_MAT_FROM_I2_MAT_BEGEND
 
       USE GET_I_MAT_FROM_I2_MAT_USE_IFs
 
@@ -53,14 +52,9 @@
       INTEGER(LONG)                   :: IROW_OLD          ! Previous value of IROW
       INTEGER(LONG)                   :: KTERM             ! Count of number of nonzero terms read from FILNAM
       INTEGER(LONG)                   :: MAT_ERR    = 0    ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_I_MAT_FROM_I2_MAT_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       IF (NTERMS > 0) THEN
@@ -107,12 +101,7 @@ k_do1:   DO K = 1,NTERMS
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

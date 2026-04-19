@@ -29,10 +29,9 @@
 ! Calculate BM strain/displ matrix for 4 node membrane isoparametric element (quadratic). Called by subrs QMEM1, QSHEAR
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BMQMEM_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE MODEL_STUF, ONLY            :  BMEANT, EID, HBAR, MXWARP, TYPE, XEB, XEL
@@ -70,7 +69,7 @@
                                                      19, & ! ID2(10)= 19
                                                      20, & ! ID2(11)= 20
                                                      21 /) ! ID2(12)= 21
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BMQMEM_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: DPSHX(2,4)        ! Derivatives of the 4 node bilinear isopar interps wrt elem x and y
       REAL(DOUBLE) , INTENT(OUT)      :: BM(3,8)           ! Output strain-displ matrix for this elem
@@ -81,12 +80,7 @@
       REAL(DOUBLE)                    :: XB(4,3)           ! First 4 rows of XEB
       REAL(DOUBLE)                    :: XL(4,3)           ! First 4 rows of XEL
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC, WRT_BUG_THIS_TIME, WRT_BUG(7), WRT_BUG(8), WRT_BUG(9)
- 9001    FORMAT(1X,A,' BEGN ',F10.3, 3X, A1, 3(I3))
-      ENDIF
+
 ! **********************************************************************************************************************************
 ! Initialize outputs
 
@@ -149,12 +143,7 @@
         ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

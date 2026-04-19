@@ -48,10 +48,8 @@
 ! This subr determines real array C
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SFF_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -89,23 +87,15 @@
       INTEGER(LONG)                   :: NHITS             ! Number of "hits" of terms in a row of A existing where terms in
 !                                                            a col of B exist when a row of A is multiplied by a col of B
       INTEGER(LONG)                   :: NTERM_AROW        ! Number of nonzero terms in AROW (one row of A)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SFF_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)        ! Nonzero values in matrix A
       REAL(DOUBLE) , INTENT(IN )      :: B(NROWS_B,NCOLS_B)! Real values in matrix B
       REAL(DOUBLE) , INTENT(OUT)      :: C(NROWS_A,NCOLS_B)! Real values in matrix c
       REAL(DOUBLE) , INTENT(IN )      :: CONS              ! Constant multiplier in cons*A*B to get C
       REAL(DOUBLE)                    :: EPS1              ! A small value to compare to zero
-      real(double)                    :: tsec_beg          !
-      real(double)                    :: tsec_end          !
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-      tsec_beg = tsec
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -242,13 +232,6 @@ k_do:       DO K=1,NTERM_AROW                              ! The following 2 loo
       IF (DEBUG(82) == 1) CALL MATMULT_SFF_DEB ( '9', '   ' )
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         tsec_end = tsec
-         WRITE(F04,9003) SUBR_NAME,TSEC,tsec_end-tsec_beg
- 9003    FORMAT(1X,A,' END  ',F10.3,' (',f6.3,' sec elapsed time for subr MATMULT_SFF)')
-      ENDIF
       RETURN
 
 ! **********************************************************************************************************************************

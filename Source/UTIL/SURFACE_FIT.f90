@@ -31,11 +31,10 @@
 !              WF(X,Y) = B(0) + B(1)*X + B(2)*Y + B(3)*XY + B(4)*X^2 + B(5)*Y^2
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SURFACE_FIT_BEGEND
       USE LSQ_MYSTRAN
 
       USE SURFACE_FIT_USE_IFs
@@ -53,7 +52,7 @@
       INTEGER(LONG)                   :: I,J                   ! DO loop indices
       INTEGER(LONG)                   :: IFAULT                ! Return code from subr REGCF
       INTEGER(LONG), PARAMETER        :: MAX_COEFFS = 6        ! Maximum number of coefficients coded for ther polynomial fit
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SURFACE_FIT_BEGEND
+
 
       LOGICAL                         :: LINDEP(MAX_COEFFS)
 
@@ -83,12 +82,7 @@
 
       REAL(DOUBLE), PARAMETER         :: WT = ONE            ! Parameter
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IERR = 0
@@ -207,12 +201,7 @@
 
       IF (DEB > 0) CALL DEB_SURFACE_FIT
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

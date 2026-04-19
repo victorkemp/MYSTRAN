@@ -101,10 +101,9 @@
 !          ( vi) Load the RFORCE forces into the SYS_LOAD (systems load) array
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, FILE_NAM_MAXLEN, L1U, LINK1U, L1U_MSG, SC1, SCR, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, FILE_NAM_MAXLEN, L1U, LINK1U, L1U_MSG, SC1, SCR, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LLOADC, NCORD, NRFORCE, NGRID, NLOAD, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RFORCE_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  SUPWARN
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
@@ -148,7 +147,7 @@
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: SETID             ! Load set ID read from record in file LINK1U
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RFORCE_PROC_BEGEND
+
       
       REAL(DOUBLE)                    :: ACCEL_I(6)        ! 6 components of accel due to gravity at a grid
       REAL(DOUBLE)                    :: ACCEL_I_T1(3)     ! 3 transl components of accel due to RFORCE at a grid in basic  coords
@@ -174,12 +173,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       NAME = 'RFORCE  '
@@ -195,8 +189,8 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -210,7 +204,7 @@ i_do1:DO I=1,NRFORCE
          READ(L1U,IOSTAT=IOCHK) SETID, ACID_L, RFORCE_GRD, SCALEF_AV, SCALEF_AA, (VEC(J),J=1,3)
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1U, L1U_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1U, L1U_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Increment READ_ERR and go back to read another RFORCE card
             CYCLE i_do1                                    
          ENDIF
@@ -331,8 +325,8 @@ j_do_22: DO J = 1,NRFORCE                                  ! Process RFORCE card
 
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading scratch file, so quit
             ENDIF
 
@@ -451,14 +445,9 @@ l_do_2214:     DO L = 1,6
  
       WRITE(SC1,*) CR13 
 
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -29,12 +29,11 @@
 ! Allocate arrays for IN4 files (USERIN elements)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4FIL, IN4FIL_NUM, LNUM_IN4_FILES, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, IN4FIL, IN4FIL_NUM, LNUM_IN4_FILES, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC 
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONEPP6
       USE INPUTT4_MATRICES, ONLY      :  IN4_COL_MAP, IN4_MAT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_IN4_FILES_BEGEND
  
       USE ALLOCATE_IN4_FILES_USE_IFs
 
@@ -50,7 +49,7 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IERR      = 0     ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR      = 0     ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_IN4_FILES_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -61,12 +60,7 @@
       REAL(DOUBLE)                    :: RNCOLS            ! Real value of NCOLS
       REAL(DOUBLE)                    :: RNROWS            ! Real value of NROWS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       RNROWS = REAL(NROWS)
@@ -90,7 +84,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*REAL(LNUM_IN4_FILES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LNUM_IN4_FILES, 1, SUBR_BEGEND )
                DO I=1,LNUM_IN4_FILES
                   IN4FIL(I)(1:) = ' '
                ENDDO
@@ -113,7 +106,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*REAL(LNUM_IN4_FILES)/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, LNUM_IN4_FILES, 1, SUBR_BEGEND )
                DO I=1,LNUM_IN4_FILES
                   IN4FIL_NUM(I) = 0
                ENDDO
@@ -137,7 +129,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*RNROWS*RNCOLS/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS
                   DO J=1,NCOLS
                      IN4_MAT(I,J) = ZERO
@@ -164,7 +155,6 @@
             MB_ALLOCATED = REAL(DOUBLE)*RNROWS/ONEPP6
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                DO I=1,NROWS
                   IN4_COL_MAP(I) = 0
                ENDDO
@@ -193,12 +183,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

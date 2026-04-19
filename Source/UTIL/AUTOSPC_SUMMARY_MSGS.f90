@@ -29,7 +29,7 @@
 ! Write summary of AUTOSPC action at several times in an execution
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE PARAMS, ONLY                :  AUTOSPC_RAT
 
       USE AUTOSPC_SUMMARY_MSGS_USE_IFs                      ! Added 2019/07/14

@@ -29,10 +29,9 @@
 ! Processes Executive Control IN4 entries that define IN4 files to be read
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, FILE_NAM_MAXLEN, IN4FIL, IN4FIL_NUM, NUM_IN4_FILES
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, FILE_NAM_MAXLEN, IN4FIL, IN4FIL_NUM, NUM_IN4_FILES
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_TOKEN_LEN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EC_IN4FIL_BEGEND
  
       USE EC_IN4FIL_USE_IFs
 
@@ -53,16 +52,11 @@
       INTEGER(LONG)                   :: JEND      = 0     ! 
       INTEGER(LONG)                   :: K         = 0     ! Counter
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_IN4FIL_BEGEND
+
  
       INTRINSIC INDEX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process SET cards 
@@ -137,12 +131,7 @@
 
       IN4FIL(NUM_IN4_FILES)(1:) = CARD2(ISTART:IEND)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

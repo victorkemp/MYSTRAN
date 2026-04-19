@@ -38,7 +38,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFL, NDOFR,                                                    &
                                          NTERM_DLR, NTERM_PHIZL, NTERM_PHIZL1, NTERM_PHIZL2 , NTERM_MLL, NTERM_MLR, NTERM_MRL,     &
                                          NUM_CB_DOFS, NVEC
@@ -54,7 +54,6 @@
 
       USE SCRATCH_MATRICES, ONLY      :  I_CRS1, J_CRS1, CRS1, I_CRS2, J_CRS2, CRS2, I_CRS3, J_CRS3, CRS3, I_CCS1, J_CCS1, CCS1 
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_PHIZL_BEGEND
 
       USE CALC_PHIZL_USE_IFs
 
@@ -67,17 +66,12 @@
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of terms in matrix CRS1  
       INTEGER(LONG)                   :: NTERM_CRS2        ! Number of terms in matrix CRS2  
       INTEGER(LONG)                   :: NTERM_CRS3        ! Number of terms in matrix CRS3  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_PHIZL_BEGEND
+
 
       REAL(DOUBLE)                    :: DUM1(NDOFL,NVEC)  ! Intermediate matrix
       REAL(DOUBLE)                    :: SMALL             ! A number used in filtering out small numbers from a full matrix
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Part 1: Calculate PHIZL1 = -KLL(-1)*(MLR + MLL*DLR). Use CRS3 to hold (MLR + MLL*DLR)
@@ -214,12 +208,7 @@
       CALL DEALLOCATE_SPARSE_MAT ( 'PHIZL1' )
       CALL DEALLOCATE_SPARSE_MAT ( 'PHIZL2' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

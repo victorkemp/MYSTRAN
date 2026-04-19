@@ -38,7 +38,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  SUPINFO

@@ -32,10 +32,9 @@
 !  2) Scale factors (overall for this LOAD card and individual for each set ID) are entered into array LOAD_FACS
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LLOADR, LSUB, NLOAD, LLOADC, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_LOAD_BEGEND
       USE MODEL_STUF, ONLY            :  LOAD_SIDS, LOAD_FACS, SUBLOD
  
       USE BD_LOAD_USE_IFs
@@ -55,14 +54,9 @@
       INTEGER(LONG)                   :: ICONT     = 0       ! Indicator of whether a cont card exists. Output from subr NEXTC
       INTEGER(LONG)                   :: IERR      = 0       ! Error indicator returned from subr NEXTC called herein
       INTEGER(LONG)                   :: SETID               ! Set ID for this LOAD Bulk Data card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_LOAD_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! LOAD Bulk Data Card routine
@@ -208,12 +202,7 @@
 
       ENDDO 
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -67,10 +67,9 @@
 !  5) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE, MIN4T_QUAD4_TRIA_NO, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  QPLT3_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, QUARTER, HALF, ONE, TWO, FOUR, CONV_RAD_DEG, PI
       USE PARAMS, ONLY                :  MIN4TRED
       USE MACHINE_PARAMS, ONLY        :  MACH_SFMIN
@@ -123,7 +122,7 @@
 
       INTEGER(LONG)                   :: PROG_ERR  = 0     ! Local error indicator
       INTEGER(LONG)                   :: TRIA_NUM          ! 1, 2, 3, or 4 designator of a subtriangle of the quad
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = QPLT3_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: AREA_QUAD         ! Element area
       REAL(DOUBLE) , INTENT(IN)       :: XSD(4)            ! Diffs in x coords of quad sides in local coords
@@ -261,12 +260,7 @@
       REAL(DOUBLE)                    :: V12(2)            ! Components of a vector along side 1-2 of a sub-triangle
       REAL(DOUBLE)                    :: V13(2)            ! Components of a vector along side 1-3 of a sub-triangle
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -884,12 +878,7 @@ trias:DO K=1,NUM_TRIAS
          ENDDO
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

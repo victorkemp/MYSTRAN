@@ -30,11 +30,10 @@
 !     INCLUDE 'filename' with or without the ' marks
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, FILE_NAM_MAXLEN, INC, INCFIL
+      USE IOUNT1, ONLY                :  ERR, F06, FILE_NAM_MAXLEN, INC, INCFIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_INCLUDE_FILNAM_BEGEND
 
       USE READ_INCLUDE_FILNAM_USE_IFs
 
@@ -50,7 +49,7 @@
       CHARACTER( 1*BYTE)              :: DONE              ! Indicator of having found start and end of file name
 
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_INCLUDE_FILNAM_BEGEND
+
       INTEGER(LONG)                   :: CHAR_COL          ! Column number on CARD where character CHAR is found
       INTEGER(LONG)                   :: DELTA_END_COL     ! Delta from START_ COL to END_COL
       INTEGER(LONG)                   :: END_COL           ! Col from CARD1 where the 2nd ' exists, if it does exist
@@ -60,12 +59,7 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to 
 
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -141,7 +135,7 @@
          INQUIRE(FILE=INCFIL,EXIST=LEXIST)
          IF (LEXIST) THEN
             OPEN(INC,FILE=INCFIL,STATUS='OLD',ACTION='READ',IOSTAT=IOCHK)
-            IF (IOCHK /= 0) CALL OPNERR ( IOCHK, INCFIL, OUNT, 'Y' )
+            IF (IOCHK /= 0) CALL OPNERR ( IOCHK, INCFIL, OUNT )
          ELSE
             WRITE(ERR,1042) INCFIL
             WRITE(F06,1042) INCFIL
@@ -162,12 +156,7 @@
          CALL DEB_READ_INCL_FILNAM
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

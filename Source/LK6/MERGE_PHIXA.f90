@@ -37,13 +37,12 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFA, NDOFR, NVEC
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VEC
       USE SPARSE_MATRICES, ONLY       :  I_DLR , J_DLR , DLR , I_IRR , J_IRR , IRR , I_PHIXA, J_PHIXA, PHIXA
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_PHIXA_BEGEND
  
       USE MERGE_PHIXA_USE_IFs                                ! Added 2019/07/14
 
@@ -63,14 +62,9 @@
       INTEGER(LONG)                   :: ROW_NUM_DLR         ! Row number in matrix DLR
       INTEGER(LONG)                   :: ROW_NUM_EV          ! Row number in matrix EIGEN_VEC (L-set eigenvectors)
       INTEGER(LONG)                   :: ROW_NUM_IRR         ! Row number in matrix IRR (R-set identity matrix)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_PHIXA_BEGEND
+
        
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ROW_NUM_DLR        = 0
@@ -118,12 +112,7 @@
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE PARAMS, ONLY                :  AUTOSPC_RAT
 
       IMPLICIT NONE

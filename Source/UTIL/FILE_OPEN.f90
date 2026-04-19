@@ -24,7 +24,7 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE FILE_OPEN (UNIT, FILNAM, OUNT, STATUS, MESSAG, RW_STIME, FORMAT, ACTION, POSITION, WRITE_L1A, WRITE_VER, WRITE_F04)
+      SUBROUTINE FILE_OPEN (UNIT, FILNAM, OUNT, STATUS, MESSAG, RW_STIME, FORMAT, ACTION, POSITION, WRITE_L1A, WRITE_VER)
 
       ! Opens formatted files that have STIME for read or write. If open for read, check STIME. If open for write, write STIME
       ! If file needs to be opened for READWRITE, this subr needs to be called twice:
@@ -75,8 +75,6 @@
       !    Y/N : write to L1A???
       ! WRITE_VER : str1
       !    Y/N : write to VER???
-      ! WRITE_F04 : str1
-      !    Y/N : write to F04
       !
       ! Unused
       ! -------
@@ -92,23 +90,19 @@
       !
       ! Examples
       ! --------
-      ! FILE_OPEN ( OP2, OP2FIL, OUNT,'OLD    ', OP2_MSG,'NEITHER','UNFORMATTED','WRITE','REWIND','N','N','Y')
+      ! FILE_OPEN ( OP2, OP2FIL, OUNT,'OLD    ', OP2_MSG,'NEITHER','UNFORMATTED','WRITE','REWIND','N','N')
       !
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, IN1, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  F06, IN1, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, PROG_NAME
       USE TIMDAT, ONLY                :  STIME, TSEC
       USE DEBUG_PARAMETERS
       USE MYSTRAN_Version, ONLY       :  MYSTRAN_VER_NUM, MYSTRAN_VER_MONTH, MYSTRAN_VER_DAY, MYSTRAN_VER_YEAR, MYSTRAN_AUTHOR,  &
                                          MYSTRAN_COMMENT
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FILE_OPEN_BEGEND
  
       USE FILE_OPEN_USE_IFs
 
       IMPLICIT NONE
- 
-      LOGICAL                         :: FILE_EXIST
-      LOGICAL                         :: FILE_OPND
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'FILE_OPEN'
       CHARACTER(LEN=*), INTENT(IN)    :: ACTION            ! File description
@@ -118,7 +112,6 @@
       CHARACTER(LEN=*), INTENT(IN)    :: POSITION          ! File error message
       CHARACTER(LEN=*), INTENT(IN)    :: STATUS            ! File status indicator (NEW, OLD, REPLACE)
       CHARACTER(LEN=*), INTENT(IN)    :: RW_STIME          ! Indicator of whether to read or write STIME
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_L1A         ! 'Y'/'N' Arg passed to subr OUTA_HERE
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_VER         ! 'Y'/'N' Arg to tell whether to write MYSTRAN version info
       CHARACTER( 9*BYTE)              :: NAM_ACT 
@@ -126,37 +119,17 @@
       CHARACTER( 6*BYTE)              :: NAM_POS 
       CHARACTER( 7*BYTE)              :: NAM_STA 
       CHARACTER(11*BYTE)              :: NAM_RWS 
-      CHARACTER( 3*BYTE)              :: UNIT_NAME = '???' ! Extension of FILNAM (e.g. F06, etc)
  
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! Unit number file is attached to
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to. Input to subr FILE_OPEN
-      INTEGER(LONG)                   :: DEC_PT            ! Position in FILNAM where '.' exists
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IERR              ! Error count
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FILE_OPEN_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         INQUIRE(FILE=FILNAM, OPENED=FILE_OPND)
-         IF ((UNIT /= F04) .AND. (UNIT /= IN1)) THEN
-            DEC_PT = INDEX(FILNAM,'.',.TRUE.)
-            IF (DEC_PT > 0) THEN
-               UNIT_NAME = FILNAM(DEC_PT+1:DEC_PT+4)
-            ENDIF
-            INQUIRE(FILE=FILNAM, EXIST=FILE_EXIST)
-            NAM_STA(1:) = STATUS
-            NAM_FOR(1:) = FORMAT
-            NAM_ACT(1:) = ACTION
-            NAM_POS(1:) = POSITION
-            NAM_RWS(1:) = RW_STIME
-            WRITE(F04,9001) SUBR_NAME, TSEC, FILE_EXIST, FILE_OPND, NAM_STA, NAM_FOR, NAM_ACT, NAM_POS, NAM_RWS, UNIT_NAME
-         ENDIF
- 9001    FORMAT(1X,A,' BEGN ',F10.3,2L2,',',1X,A7,',',1X,A11,',',1X,A9,',',1X,A6,',',1X,A11,',  Opening file unit: ',A)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       ! Check inputs for sensibility (coding errors if wrong)
@@ -278,11 +251,11 @@
             ENDIF
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, WRITE_F04 )
+               CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
                IERR = IERR + 1
             ELSE
                IF (XTIME /= STIME) THEN
-                  CALL STMERR ( XTIME, FILNAM, OUNT, 'Y' )
+                  CALL STMERR ( XTIME, FILNAM, OUNT )
                   IERR = IERR +1
                ENDIF
             ENDIF
@@ -298,25 +271,15 @@
             ENDIF
          ENDIF
       ELSE
-         CALL OPNERR ( IOCHK, FILNAM, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, FILNAM, OUNT )
          IERR = IERR +1
       ENDIF
 
       IF (IERR > 0) THEN
-         CALL FILERR ( OUNT, WRITE_F04 )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         IF ((UNIT /= F04) .AND. (UNIT /= IN1)) THEN
-            INQUIRE(FILE=FILNAM,EXIST=FILE_EXIST)
-            INQUIRE(FILE=FILNAM,OPENED=FILE_OPND)
-            WRITE(F04,9002) SUBR_NAME,TSEC,FILE_EXIST,FILE_OPND
-         ENDIF
- 9002    FORMAT(1X,A,' END  ',F10.3,2L2)
-      ENDIF
 
       RETURN
 

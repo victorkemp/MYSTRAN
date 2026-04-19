@@ -29,11 +29,10 @@
 ! Call routines to reduce the KAA linear stiffness matrix from the A-set to the L, R-sets
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L2K, L2L, LINK2K, LINK2L, L2K_MSG, L2L_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L2K, L2L, LINK2K, LINK2L, L2K_MSG, L2L_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFA, NDOFL, NDOFR, NTERM_KAA, NTERM_KLL, NTERM_KRL, NTERM_KRR, &
                                          SOL_NAME
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  REDUCE_KAA_TO_KLL_BEGEND
       USE SPARSE_MATRICES, ONLY       :  I_KAA, J_KAA, KAA, I_KLL, J_KLL, KLL, I_KRL, J_KRL, KRL, I_KRR, J_KRR, KRR,               &
                                          SYM_KAA, SYM_KLL, SYM_KRL, SYM_KRR
       USE SCRATCH_MATRICES
@@ -50,14 +49,9 @@
       INTEGER(LONG)                   :: KRR_ROW_MAX_TERMS   ! Output from subr PARTITION_SIZE (max terms in any row of matrix)
       INTEGER(LONG), PARAMETER        :: NUM1        = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2        = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = REDUCE_KAA_TO_KLL_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Partition KLL from KAA (This is KLL before reduction, or KLL(bar) )
@@ -115,12 +109,7 @@
          CALL WRITE_MATRIX_1 ( LINK2L, L2L, 'Y', 'KEEP', L2L_MSG, 'KRR', NTERM_KRR, NDOFR, I_KRR, J_KRR, KRR )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

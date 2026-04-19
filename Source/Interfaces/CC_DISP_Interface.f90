@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, PCHSTAT
+      USE IOUNT1, ONLY                :  PCHSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_DISP_BEGEND
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT
       USE MODEL_STUF, ONLY            :  SC_DISP
  
@@ -43,7 +42,7 @@
  
       CHARACTER(LEN=*), INTENT(IN)    :: CARD              ! A Bulk Data card
  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_DISP_BEGEND
+
  
       END SUBROUTINE CC_DISP
 

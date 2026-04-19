@@ -31,10 +31,9 @@
 ! Each record contains:   GRIDJ1, COMPJ
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1T
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1T
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NUM_SUPT_CARDS
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_SUPORT_BEGEND
  
       USE BD_SUPORT_USE_IFs
 
@@ -53,14 +52,9 @@
       INTEGER(LONG)                   :: IDUM              ! Dummy arg in subr IP^CHK not used herein
       INTEGER(LONG)                   :: JERR      = 0     ! Error indicator for several types of error
       INTEGER(LONG)                   :: NUM_PAIRS         ! Number of pairs of grid/comp found on this SUPORT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SUPORT_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! SUPORT Bulk Data Card routine
@@ -127,12 +121,7 @@
          ENDDO
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

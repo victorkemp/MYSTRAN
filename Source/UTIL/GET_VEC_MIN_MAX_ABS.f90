@@ -29,10 +29,9 @@
 ! Gets the MIN, MAX and ABS values from a column vector and the grids associated with the MIN and MAX
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_VEC_MIN_MAX_ABS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM
   
@@ -47,7 +46,7 @@
       INTEGER(LONG), INTENT(OUT)      :: ID_MAX            ! ID where vector is max
       INTEGER(LONG), INTENT(OUT)      :: ID_MIN            ! ID where vector is min
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_VEC_MIN_MAX_ABS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: VECTOR(NROWS)     ! Values to scan for MIN, MAX, ABS
       REAL(DOUBLE) , INTENT(OUT)      :: VEC_ABS           ! Abs value in vector
@@ -56,12 +55,7 @@
 
       INTRINSIC                       :: MAX, MIN, DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -95,12 +89,7 @@
 
       VEC_ABS = MAX( DABS(VEC_MAX), DABS(VEC_MIN) )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

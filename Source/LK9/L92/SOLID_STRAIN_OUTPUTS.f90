@@ -29,10 +29,9 @@
 ! Calculates element specific strain outputs from array STRESS (generated in subr ELEM_STRE_STRN_ARRAYS) for solid elements
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SOLID_STRAIN_OUTPUTS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  STRAIN, TYPE
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_OPT
@@ -52,7 +51,7 @@
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS     ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1               ! Cum rows written to OGEL prior to running this subr
       INTEGER(LONG)                   :: J                  ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SOLID_STRAIN_OUTPUTS_BEGEND
+
  
       REAL(DOUBLE)                    :: MEAN               ! Mean strains
       REAL(DOUBLE)                    :: PRINCIPAL_STRAIN(3)! Principal strains
@@ -63,12 +62,7 @@
 
       INTRINSIC DMAX1,DMIN1
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
       WRITE_NEU = (PRTNEU == 'Y')
 
 ! **********************************************************************************************************************************
@@ -125,12 +119,7 @@
 
       ENDIF   
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

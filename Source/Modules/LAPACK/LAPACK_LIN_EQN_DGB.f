@@ -3,11 +3,10 @@
       MODULE LAPACK_LIN_EQN_DGB
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                   :  ERR, F06, SC1
       USE SCONTR, ONLY                   :  LINKNO, BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
 
       USE OURTIM_Interface
@@ -15,8 +14,6 @@
 
       character(1*byte), parameter      :: cr13_dgb = char(13)
       CHARACTER(44*BYTE), PRIVATE       :: MODNAM              ! Name to write to screen to describe module being run.
-
-      INTEGER(LONG), PARAMETER, PRIVATE :: SUBR_BEGEND = LAPACK_BEGEND
 
 ! This is a set of LAPACK routines for factorization and solution of linear eqns for general band matrices
  
@@ -157,14 +154,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     KV is the number of superdiagonals in the factor U, allowing for
 *     fill-in
@@ -495,14 +484,6 @@
 *
 12345 format(5X,'Block ',i8,' of ',i8,'. Factoring rows 1 thru: ',i8,a)
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DGBTRF
@@ -613,14 +594,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     Test the input parameters.
 *
@@ -712,14 +685,6 @@
          END IF
       END IF
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DGBTRS
@@ -838,14 +803,6 @@
 *     ..
 *     .. Executable Statements ..
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
 *
 *     KV is the number of superdiagonals in the factor U, allowing for
 *     fill-in.
@@ -939,14 +896,6 @@
          END IF
    40 CONTINUE
 
-! **********************************************************************************************************************************
- 9000 IF (WRT_LOG >= SUBR_BEGEND+1) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
-
-! **********************************************************************************************************************************
       RETURN
 *
 *     End of DGBTF2

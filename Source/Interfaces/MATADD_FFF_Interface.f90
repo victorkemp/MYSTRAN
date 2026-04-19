@@ -32,20 +32,19 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATADD_FFF_BEGEND
  
       IMPLICIT NONE
  
       INTEGER(LONG), INTENT(IN)       :: NROW              ! Number of rows in matrces A, B, C
       INTEGER(LONG), INTENT(IN)       :: NCOL              ! Number of cols in matrces A, B, C
       INTEGER(LONG), INTENT(IN)       :: ITRNSPB           ! Transpose indicator for matrix B
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATADD_FFF_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: A(NROW,NCOL)      ! Input  matrix A
       REAL(DOUBLE) , INTENT(IN)       :: B(NROW,NCOL)      ! Input  matrix B

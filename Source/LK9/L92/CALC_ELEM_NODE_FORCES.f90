@@ -29,10 +29,9 @@
 ! Calculates elem nodal forces in local elem coord system for one elem and one subcase for all element types.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, INT_SC_NUM, JTSUB, NCORD, NGRID, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_ELEM_NODE_FORCES_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS
       USE MODEL_STUF, ONLY            :  AGRID, BGRID, CORD, EID, ELAS_COMP, ELDOF, ELGP, GRID, KE, KEG, KEO_BUSH,                &
@@ -52,7 +51,7 @@
       INTEGER(LONG)                   :: NCOLS             ! Number of rows in element stiffness matrix
       INTEGER(LONG)                   :: NROWS             ! Number of cols in element stiffness matrix
       INTEGER(LONG)                   :: NUM_COMPS_GRID_1  ! No. displ components for 1st grid on ELAS elems
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_ELEM_NODE_FORCES_BEGEND
+
  
       REAL(DOUBLE)                    :: DUM1(3),DUM2(3)   ! Intermediate variables
       REAL(DOUBLE)                    :: PHID, THETAD      ! Outputs from subr GEN_T0L
@@ -61,12 +60,7 @@
       REAL(DOUBLE)                    :: TET_GA_GB(3,3)    ! Transpose of TE
       REAL(DOUBLE)                    :: TR(12,12)         ! Matrix with 4 TE matrices on the diagonal
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       NROWS = ELDOF
@@ -234,12 +228,7 @@
          WRITE(F06,5000)
       ENDIF
    
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

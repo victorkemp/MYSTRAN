@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM  , LGUSERIN      , LSUSERIN      , NELE          , NCUSERIN      , WARN_ERR, &
                                          MEDAT_CBAR    , MEDAT_CBEAM   , MEDAT_CBUSH   , MEDAT_CELAS1  , MEDAT_CELAS2  ,           &
@@ -44,7 +44,6 @@
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EDAT, EPNT, ETYPE
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_EDAT_BEGEND
 
       IMPLICIT NONE
 
@@ -52,7 +51,7 @@
 
       INTEGER(LONG)                   :: NG                ! Number of grids defined on a CUSERIN entry
       INTEGER(LONG)                   :: NS                ! Number of scalar points defined on a CUSERIN entry
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_EDAT_BEGEND
+
 
       END SUBROUTINE WRITE_EDAT
 

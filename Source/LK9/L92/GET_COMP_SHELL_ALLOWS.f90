@@ -30,12 +30,10 @@
 ! data on the MATi Bulk Data entries in material processing subrs called by subr EMG.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE TIMDAT, ONLY                :  TSEC
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM
       USE MODEL_STUF, ONLY            :  ULT_STRE, ULT_STRN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_COMP_SHELL_ALLOWS_BEGEND
 
       USE GET_COMP_SHELL_ALLOWS_USE_IFs
 
@@ -43,17 +41,12 @@
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'GET_COMP_SHELL_ALLOWS'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_COMP_SHELL_ALLOWS_BEGEND
+
 
       REAL(DOUBLE), INTENT(OUT)       :: STRE_ALLOWABLES(9)! Stress allowables for the material
       REAL(DOUBLE), INTENT(OUT)       :: STRN_ALLOWABLES(9)! Strain allowables for the material
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       STRE_ALLOWABLES(1) = ULT_STRE(1,1)                !   Axis   1 tension     stress allowable
@@ -76,12 +69,7 @@
       STRN_ALLOWABLES(8) = ULT_STRN(8,3)                !   Plane 13 shear       strain allowable (from transv shear matl props)
       STRN_ALLOWABLES(9) = ULT_STRN(7,1)                !   Plane 12 shear       strain allowable
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

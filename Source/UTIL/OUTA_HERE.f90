@@ -30,35 +30,26 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  BUGOUT, F04, F06FIL, SC1, WRT_LOG,                                                        &
-                                         BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, F04STAT, F04STAT_OLD,                         &
+      USE IOUNT1, ONLY                :  BUGOUT, F06FIL, SC1,                                                 &
+                                         BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD,                          &
                                          OP2STAT, PCHSTAT, L1ASTAT 
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO, WARN_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OUTA_HERE_BEGEND
  
       USE OUTA_HERE_USE_IFs
 
       IMPLICIT NONE
- 
-      LOGICAL                         :: FILE_OPND         ! Output from INQUIRE intrinsic function         
+
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OUTA_HERE'
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRITE_TO_L1A      ! Y/N indicator of whether to call subr WRITE_L1A
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OUTA_HERE_BEGEND
+
 
 ! **********************************************************************************************************************************
-      INQUIRE(UNIT=F04,OPENED=FILE_OPND)
-      IF (FILE_OPND) THEN
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            CALL OURTIM
-!xx         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001       FORMAT(1X,A,' BEGN ',F10.3)
-         ENDIF
-      ENDIF
+
 
 ! Write data to LINK1A, if we are in LINK1
 
@@ -79,7 +70,7 @@
          WRITE(SC1,9999)
          CALL WRITE_FILNAM ( F06FIL, SC1, 1 )
 
-         CALL WRITE_L1A ( L1ASTAT, 'N', 'N' )
+         CALL WRITE_L1A ( L1ASTAT, 'N' )
 
 ! Set close status for output files
 
@@ -103,15 +94,6 @@
             ENDIF
          ENDIF
 
-         IF (WRT_LOG > 0) THEN
-            F04STAT = 'KEEP'
-         ELSE
-            IF (F04STAT_OLD == 'KEEP    ') THEN
-               F04STAT = 'KEEP'
-            ELSE
-               F04STAT = 'DELETE'
-            ENDIF
-         ENDIF
 
       ELSE
 
@@ -120,7 +102,7 @@
 
       ENDIF
 
-      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, F04STAT, OP2STAT, PCHSTAT )
+      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, OP2STAT, PCHSTAT )
 
       STOP
 

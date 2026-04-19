@@ -29,14 +29,13 @@
 ! Generates the grid point sequence order.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     SEQ,     L1B
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, SEQFIL
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, SEQSTAT
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F06,     SEQ,     L1B
+      USE IOUNT1, ONLY                :  WRT_ERR, SEQFIL
+      USE IOUNT1, ONLY                :  WRT_ERR, SEQSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, NGRID, NSEQ, PROG_NAME, WARN_ERR
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPINFO, SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SEQ_PROC_BEGEND
       USE MODEL_STUF, ONLY            :  GRID_ID, GRID_SEQ, INV_GRID_SEQ, SEQ1, SEQ2
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
@@ -53,19 +52,14 @@
       INTEGER(LONG)                   :: TMP_GRID_ID(NGRID)! Set to array GRID_ID for aid in sorting GRID_SEQ
       INTEGER(LONG)                   :: TMP_GRD_SEQ(NGRID)! Set to array GRID_SEQ so we can sort it and get array INV_GRID_SEQ
 !                                                            without disturbing GRID_SEQ sequence
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SEQ_PROC_BEGEND
+
  
       REAL(DOUBLE)                    :: R_GSEQ(NGRID)     ! Real sequence numbers (since SEQGP cards can have real no's). In the
 !                                                            end, the sequence array that will be used is integer array GRID_SEQ
 
       INTRINSIC                       :: DBLE
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Coming in to this subr, GRID_SEQ is in the order of the grids as read in the input data deck.
@@ -240,12 +234,7 @@
          WRITE(L1B) SEQ1(I),SEQ2(I)        
       ENDDO   
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -284,13 +273,12 @@
 ! Reads SEQGP card images from bandit output file (filename.SEQ) using subr BD_SEQGP which creates SEQ1, SEQ2 arrays from SEQGP info
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, sc1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, sc1
       USE SCONTR, ONLY                :  BANDIT_ERR, BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, LSEQ, NGRID, NSEQ,          &
                                          PROG_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  STIME, TSEC
       USE MODEL_STUF, ONLY            :  GRID_ID
       USE PARAMS, ONLY                :  GRIDSEQ, SEQPRT, SEQQUIT, SUPINFO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SEQ_PROC_BEGEND
 
       IMPLICIT NONE
 
@@ -318,16 +306,11 @@
       INTEGER(LONG)                   :: OUNT(2)             ! File units to write messages to
       INTEGER(LONG)                   :: REC_NO      = 0     ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: XTIME               ! Time stamp read from a file 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SEQ_PROC_BEGEND + 1
+
 
       INTRINSIC                       :: DBLE, INT
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (BANDIT_ERR /= 0) THEN
@@ -352,7 +335,7 @@ exist:IF (LEXIST) THEN                                     ! SEQFIL does exist, 
          IERR0 = 0                                         ! Open SEQ file, read and check STIME
          OPEN (SEQ,FILE=SEQFIL,STATUS='OLD',IOSTAT=IOCHK)
          IF (IOCHK /= 0) THEN
-            CALL OPNERR ( IOCHK, SEQFIL, OUNT, 'Y' )
+            CALL OPNERR ( IOCHK, SEQFIL, OUNT )
             IERR0 = IERR0 +1
             IF (IOCHK < 0) THEN                            ! File cannot be opened
                WRITE(ERR,9991) SEQFIL, GRIDSEQ
@@ -373,11 +356,11 @@ exist:IF (LEXIST) THEN                                     ! SEQFIL does exist, 
             READ(SEQ,'(1X,I11)',IOSTAT=IOCHK) XTIME
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT )
                IERR0 = IERR0 + 1
             ELSE                                           ! No error reading XTIME, so check XTIME = STIME
                IF (XTIME /= STIME) THEN
-                  CALL STMERR ( XTIME, SEQFIL, OUNT, 'Y' )
+                  CALL STMERR ( XTIME, SEQFIL, OUNT )
                   IERR0 = IERR0 + 1
                ENDIF
             ENDIF
@@ -397,7 +380,7 @@ i_do1:      DO                                             ! Loop reading SEQGP 
                IF      (IOCHK <  0) THEN                   ! EOF/EOR so exit
                   EXIT
                ELSE IF (IOCHK >  0) THEN                   ! Error reading a SEQGP card
-                  CALL READERR ( IOCHK, SEQFIL, 'SEQGP cards', REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, SEQFIL, 'SEQGP cards', REC_NO, OUNT )
                   IERR1 = IERR1 + 1
                ELSE                                        ! READ was OK so process record
                   IF (CARD(1:5) == 'SEQGP   ') THEN        ! If SEQGP image, call BD_SEQGP to read it and to add to SEQ1,2 arrays
@@ -545,11 +528,11 @@ i_do1:      DO                                             ! Loop reading SEQGP 
                READ(SEQ,'(1X,I11)',IOSTAT=IOCHK) XTIME
                IF (IOCHK /= 0) THEN
                   REC_NO = 1
-                  CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT )
                   IERR1 = IERR1 + 1
                ELSE                                        ! No error reading XTIME, so check XTIME = STIME
                   IF (XTIME /= STIME) THEN
-                     CALL STMERR ( XTIME, SEQFIL, OUNT, 'Y' )
+                     CALL STMERR ( XTIME, SEQFIL, OUNT )
                      IERR1 = IERR1 + 1
                   ENDIF
                ENDIF
@@ -571,7 +554,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
 
             ENDIF
 
-            CALL FILE_CLOSE ( SEQ, SEQFIL, SEQSTAT, 'Y' )
+            CALL FILE_CLOSE ( SEQ, SEQFIL, SEQSTAT )
 
          ELSE
 
@@ -595,12 +578,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
 
       ENDIF exist
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -670,7 +648,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
 
 ! Writes message for subr AUTO_SEQ_PROC
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE PARAMS, ONLY                :  SEQQUIT
 
       IMPLICIT NONE
@@ -679,7 +657,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
       CHARACTER(LEN=*), INTENT(IN)    :: CLOSE_STAT        ! Status for closing SEQFIL
 
 ! **********************************************************************************************************************************
-      CALL FILE_CLOSE ( SEQ, SEQFIL, CLOSE_STAT, 'Y' )
+      CALL FILE_CLOSE ( SEQ, SEQFIL, CLOSE_STAT )
 
       IF (SEQQUIT == 'Y') THEN
          WRITE(ERR,8881) SUBR_NAME, SEQQUIT

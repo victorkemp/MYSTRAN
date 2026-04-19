@@ -28,10 +28,9 @@
 
       ! Processes Case Control ELFO (elforce) entries
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, err
+      USE IOUNT1, ONLY                :  err
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_ELFO_BEGEND
       USE MODEL_STUF, ONLY            :  SC_ELFE, SC_ELFN
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  FORC_OUT
 
@@ -53,14 +52,9 @@
  
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: SETID             ! Set ID on this Case Control card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_ELFO_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! CC_OUTPUTS processes all output type Case Control entries (they all have some common code so it is put there)
@@ -133,12 +127,7 @@
  
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

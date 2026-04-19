@@ -36,10 +36,8 @@
 !   2) Merge UO and UA to get UF
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFA, NDOFF, NDOFO, NTERM_GOA, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BUILD_F_AO_BEGEND
       USE CONSTANTS_1, ONLY           :  ONE
       USE PARAMS, ONLY                :  PRTDISP
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -57,14 +55,9 @@
       INTEGER(LONG)                   :: A_SET_COL         ! Col no. in TDOF for A  displ set definition
       INTEGER(LONG)                   :: O_SET_COL         ! Col no. in TDOF for O  displ set definition
       INTEGER(LONG), PARAMETER        :: NUMCOLS     = 1   ! Variable for number of cols of an array
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUILD_F_AO_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Multiply GOA x UA to recover part of UO
@@ -113,12 +106,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

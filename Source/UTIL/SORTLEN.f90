@@ -29,11 +29,10 @@
 ! Calculates shell sort length parameter, JCT
  
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  TWO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SORTLEN_BEGEND
  
       USE SORTLEN_USE_IFs
 
@@ -46,16 +45,11 @@
       INTEGER(LONG)                   :: MAX_JCT           ! Max practical value of JCT to use in sort by the calling procedure.
 !                                                            Values of JCT > MAX_JCT will not cause any error, but will introduce
 !                                                            inefficiency into the sort (a DO loop will run excessively). 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SORTLEN_BEGEND
+
  
       INTRINSIC DLOG
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -109,12 +103,7 @@
          JCT = MAX_JCT
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

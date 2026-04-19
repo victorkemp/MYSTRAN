@@ -35,7 +35,7 @@
 !   2) To get the individual matrices for a single ply of the element used for stress/strain calcs for that ply
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEMATC, MRMATLC, MPCOMP_PLIES, MPCOMP0, MRPCOMP_PLIES, MRPCOMP0, &
                                          WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
@@ -49,7 +49,6 @@
                                          RPSHEL, RHO, RMATL, SHELL_A, SHELL_B, SHELL_D, SHELL_T, SHELL_AALP, SHELL_BALP,           &
                                          SHELL_DALP, SHELL_TALP, SHELL_T_MOD, THETA_PLY, TPLY, TYPE, ULT_STRE, ULT_STRN, ZPLY, ZS
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SHELL_ABD_MATRICES_BEGEND
 
       USE SHELL_ABD_MATRICES_USE_IFs
 
@@ -62,7 +61,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID        ! Internal element ID for which
       INTEGER(LONG)                   :: I,J,K              ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SHELL_ABD_MATRICES_BEGEND
+
 
       REAL(DOUBLE)                    :: DET_SHELL_T        ! Determinant of SHELL_T
       REAL(DOUBLE)                    :: EPS1               ! Small number with which to comapre zero
@@ -107,12 +106,7 @@
       REAL(DOUBLE)                    :: ZBK2,ZTK2          ! ZBK^2, ZTK^2
       REAL(DOUBLE)                    :: ZBK3,ZTK3          ! ZBK^3, ZTK^3
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -504,12 +498,7 @@ ply_do:  DO K=1,NUM_PLIES_TO_PROC
          SHELL_T_MOD = 'Y' 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -77,11 +77,10 @@
 ! J_AROW is needed to give the column numbers, from matrix A (for one row), that the terms in array AROW are for.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MATMULT_SSS_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
       USE MATMULT_SSS_USE_IFs
@@ -125,7 +124,7 @@
       INTEGER(LONG)                   :: NTERM_AROW            ! Number of nonzero terms in AROW (one row of A)
       INTEGER(LONG)                   :: A_ROW_COLJ_BEG(NROW_A)! jth term is row number in array A where col j nonzeros begin 
       INTEGER(LONG)                   :: A_ROW_COLJ_END(NROW_A)! jth term is row number in MATIN where col j nonzeros end
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MATMULT_SSS_BEGEND
+
        
       REAL(DOUBLE) , INTENT(IN )      :: CONS                  ! Constant multiplier in cons*A*B to get C
       REAL(DOUBLE) , INTENT(IN )      :: A(NTERM_A)            ! Nonzero values in matrix A
@@ -137,12 +136,7 @@
 
       INTRINSIC                       :: MAX
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Make sure B is stored as nonsym (all terms)
@@ -269,12 +263,7 @@ l_do:          DO L=B_COL_BEG,B_COL_END
 
       IF ((DEBUG(84) == 2) .OR. (DEBUG(84) == 3)) CALL MATMULT_SSS_DEB ( '9', '   ' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

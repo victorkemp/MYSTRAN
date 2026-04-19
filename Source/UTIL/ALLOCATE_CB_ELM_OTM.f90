@@ -30,7 +30,7 @@
 ! model generation runs and allocates memory to the arrays
 
       USE PENTIUM_II_KIND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR,                                                                  &
                                          ELOUT_ELFE_BIT, ELOUT_ELFN_BIT, ELOUT_STRE_BIT, ELOUT_STRN_BIT,                           &
@@ -45,7 +45,6 @@
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  STRN_LOC, STRE_LOC
       USE OUTPUT4_MATRICES, ONLY      :  OTM_ELFE, OTM_ELFN, OTM_STRE, OTM_STRN, TXT_ELFE, TXT_ELFN, TXT_STRE, TXT_STRN
       USE PARAMS, ONLY                :  OTMSKIP
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_CB_ELM_OTM_BEGEND
 
       USE ALLOCATE_CB_ELM_OTM_USE_IFs
 
@@ -65,7 +64,7 @@
       INTEGER(LONG)                   :: NCOLS             ! Number of cols in OTM matrix
       INTEGER(LONG)                   :: NROWS_MAT         ! Number of rows in OTM matrix
       INTEGER(LONG)                   :: NROWS_TXT         ! Number of rows in TXT mmatrix
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_CB_ELM_OTM_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -75,12 +74,7 @@
 
       INTRINSIC                       :: IAND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       JERR = 0
@@ -173,7 +167,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_ELFE(I,J) = ZERO
@@ -198,7 +191,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_ELFE(I)(1:) = ' '
                ENDDO
@@ -242,7 +234,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_ELFN(I,J) = ZERO
@@ -267,7 +258,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_ELFN(I)(1:) = ' '
                ENDDO
@@ -336,7 +326,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_STRE(I,J) = ZERO
@@ -361,7 +350,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_STRE(I)(1:) = ' '
                ENDDO
@@ -421,7 +409,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(DOUBLE)*REAL(NROWS_MAT)*REAL(NCOLS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_MAT, NCOLS, SUBR_BEGEND )
                DO I=1,NROWS_MAT
                   DO J=1,NCOLS
                      OTM_STRN(I,J) = ZERO
@@ -446,7 +433,6 @@
             IF (IERR == 0) THEN
                MB_ALLOCATED = REAL(NROWS_TXT)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS_TXT, 1, SUBR_BEGEND )
                DO I=1,NROWS_TXT
                   TXT_STRN(I)(1:) = ' '
                ENDDO
@@ -475,12 +461,6 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME, TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
 
       RETURN
 

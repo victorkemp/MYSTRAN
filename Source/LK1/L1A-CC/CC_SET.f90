@@ -29,11 +29,10 @@
 ! Processes Case Control SET cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, LSETS, LSETLN, MAX_TOKEN_LEN, NSETS, SETLEN, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_SET_BEGEND
       USE MODEL_STUF, ONLY            :  ALL_SETS_ARRAY, SETS_IDS
  
       USE CC_SET_USE_IFs
@@ -72,16 +71,11 @@
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
       INTEGER(LONG)                   :: SETID     = 0     ! Set ID on this Case Control card
       INTEGER(LONG)                   :: TOKLEN    = 0     ! DATA_END - DATA_BEG + 1 (an input to subr STOKEN, called herein)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SET_BEGEND
+
  
       INTRINSIC INDEX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process SET cards 
@@ -547,12 +541,7 @@ i_do5:DO I=SETLEN,1,-1
  
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

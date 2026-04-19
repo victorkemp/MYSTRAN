@@ -29,11 +29,10 @@
 ! Renormalizes eigenvectors to unit generalized mass 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  NDOFL, BLNK_SUB_NAM, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, SUPINFO, SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  RENORM_ON_MASS_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE EIGEN_MATRICES_1 , ONLY     :  GEN_MASS, EIGEN_VEC
       USE MODEL_STUF, ONLY            :  EIG_NORM, MAXMIJ, MIJ_COL, MIJ_ROW
@@ -47,19 +46,14 @@
         
       INTEGER(LONG), INTENT(IN)       :: NVC               ! Number of eigenvectors to be renormalized.
       INTEGER(LONG)                   :: I,J               ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = RENORM_ON_MASS_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: EPS1              ! Small number to compare variables against zero
       REAL(DOUBLE)                    :: DEN               ! Normalizing factor in gen mass matrix normalization
 
       INTRINSIC DSQRT,DABS
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF (EIG_NORM /= 'MASS    ') THEN
@@ -95,12 +89,7 @@
          GEN_MASS(J) = ONE                                 ! Now reset generalized masses to unity 
       ENDDO 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

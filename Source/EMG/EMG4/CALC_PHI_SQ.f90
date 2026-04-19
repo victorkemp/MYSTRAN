@@ -53,9 +53,8 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_PHI_SQ_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWELVE
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, CBMIN4T, EPSIL, PCMPTSTM, QUAD4TYP
       USE MODEL_STUF, ONLY            :  BENSUM, EID, EMG_IFE, EMG_RFE, ERR_SUB_NAM, NUM_EMG_FATAL_ERRS, INTL_MID, PHI_SQ,  &
@@ -67,7 +66,7 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'CALC_PHI_SQ'
 
       INTEGER(LONG), INTENT(OUT)      :: IERROR            ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_PHI_SQ_BEGEND
+
 
       REAL(DOUBLE)                    :: CBMIN  = ZERO     ! Either CBMIN3 or CBMIN4
       REAL(DOUBLE)                    :: DEN               ! Denominator term in calculating PHI_SQ
@@ -78,12 +77,7 @@
       REAL(DOUBLE)                    :: PLY_IB            ! Bending MOI of a ply
       REAL(DOUBLE)                    :: PLY_TS            ! Transv shear thick of a ply
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IERROR = 0
@@ -166,12 +160,7 @@
          ENDIF
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

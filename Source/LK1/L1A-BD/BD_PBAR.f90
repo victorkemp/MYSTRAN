@@ -33,12 +33,11 @@
       !  4) From 2nd continuation card (if present): area factors for transverse shear and I12 and enter into array RPBAR
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE PARAMS, ONLY                :  EPSIL, SUPINFO
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BARTOR, IERRFL, FATAL_ERR, JCARD_LEN, JF, LPBAR, NPBAR
       USE CONSTANTS_1, ONLY           :  ZERO
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBAR_BEGEND
       USE MODEL_STUF, ONLY            :  PBAR, RPBAR
  
       USE BD_PBAR_USE_IFs
@@ -57,19 +56,14 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: MATERIAL_ID = 0   ! Material ID (field 3 of this property card)
       INTEGER(LONG)                   :: PROPERTY_ID = 0   ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBAR_BEGEND
+
  
       REAL(DOUBLE)                    :: I1          = ZERO! Moment of inertia
       REAL(DOUBLE)                    :: I2          = ZERO! Moment of inertia
       REAL(DOUBLE)                    :: I12         = ZERO! Product of inertia
       REAL(DOUBLE)                    :: EPS1              ! A small number
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! PBAR Bulk Data Card routine
@@ -204,12 +198,7 @@
          FATAL_ERR = FATAL_ERR + 1
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

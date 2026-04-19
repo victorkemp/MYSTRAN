@@ -40,11 +40,10 @@
 ! If field 3 of PARAM SETLKTK is 2: then the estimate of LTERM_MGGE is based on actual elem ME matrices unconnected.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  LTERM_MGGE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  GRIDSEQ, SETLKTM, USR_LTERM_MGG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
 
       USE EMP0_USE_IFs
 
@@ -53,14 +52,9 @@
       CHARACTER, PARAMETER            :: CR13 = CHAR(13)   ! This causes a carriage return simulating the "+" action in a FORMAT
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'EMP0'
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
       IF      (SETLKTM == 0) THEN                          ! LTERM_MGG based on full elem mass matrices not connected
@@ -77,12 +71,7 @@
 
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -97,11 +86,10 @@
 ! Estimates LTERM_MGGE based on full elem mass matrices in an unassembled state (not connected)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  LTERM_MGGE, NELE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SPARSTOR, SUPINFO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, EID, EPNT, ETYPE, ELGP, TYPE
  
       IMPLICIT NONE
@@ -110,15 +98,10 @@
 
       INTEGER(LONG)                   :: DELTA_LTERM_MGGE  ! Increment of LTERM_MGGE for one element
       INTEGER(LONG)                   :: I                 ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND + 1
+
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Process the elements: Assume mass has no coupling from one grid to another
@@ -145,12 +128,7 @@
          WRITE(F06,4321) LTERM_MGGE, SETLKTM
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -169,12 +147,11 @@
 ! Estimates LTERM_MGG based on actual element mass matrices unconnected.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LTERM_MGGE, MELDOF, NELE, NSUB
       USE PARAMS, ONLY                :  EPSIL, SETLKTM, SPARSTOR, SUPINFO
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EMP0_BEGEND
       USE MODEL_STUF, ONLY            :  ELDOF, NUM_EMG_FATAL_ERRS, ME, PLY_NUM, TYPE
  
       IMPLICIT NONE
@@ -185,19 +162,14 @@
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
       INTEGER(LONG)                   :: IERROR            ! Local error indicator
       INTEGER(LONG)                   :: KSTART            ! Index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EMP0_BEGEND
+
 
       REAL(DOUBLE)                    :: DQE(MELDOF,NSUB)  ! Dummy array in call to ELEM_TRANSFORM_LBG
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages         
@@ -276,12 +248,7 @@ elems:DO I=1,NELE
          WRITE(F06,4321) LTERM_MGGE, SETLKTM
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

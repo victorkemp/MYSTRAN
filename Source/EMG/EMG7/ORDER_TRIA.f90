@@ -29,10 +29,9 @@
 ! Calculates abscissa and weight coefficients for triangular integration for the PENTA element
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_TRIA
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ORDER_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, SIXTH, THIRD, HALF, TWO
   
       USE ORDER_TRIA_USE_IFs
@@ -42,7 +41,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: KORDER                ! Triangular integration order to use
       INTEGER(LONG)                   :: I                     ! DO loop index
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ORDER_BEGEND
+
   
       REAL(DOUBLE) ,INTENT(OUT)       :: SS_I(MAX_ORDER_TRIA)  ! Triangular integration abscissa's
       REAL(DOUBLE) ,INTENT(OUT)       :: SS_J(MAX_ORDER_TRIA)  ! Triangular integration abscissa's
@@ -55,12 +54,7 @@
       REAL(DOUBLE) , PARAMETER        :: W2 = .0661970763D0    ! Intermediate constant
       REAL(DOUBLE) , PARAMETER        :: W3 = .0629695902D0    ! Intermediate constant
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DO I=1,MAX_ORDER_TRIA
@@ -98,12 +92,7 @@
  
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

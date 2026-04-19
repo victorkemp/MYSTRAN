@@ -30,11 +30,10 @@
 ! that will be written to the F06 file
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  TYPE
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CALC_ELEM_STRESSES_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
  
       USE CALC_ELEM_STRESSES_USE_IFs
@@ -49,14 +48,9 @@
 !                                                            called here so we can check that we don't try to write more rows
       INTEGER(LONG), INTENT(IN)       :: NUM_FEMAP_ROWS    ! Number of rows that will be written to FEMAP arrays
       INTEGER(LONG), INTENT(INOUT)    :: NUM1              ! Cum rows written to OGEL prior to running this subr
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CALC_ELEM_STRESSES_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Calculate STRESS(4-6) for elements that have nonzero STRESS(4-6)
@@ -80,12 +74,7 @@
 
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

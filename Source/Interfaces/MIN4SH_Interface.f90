@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, F06, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, F06, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MIN4SH_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, EIGHT
   
       IMPLICIT NONE
@@ -43,7 +42,7 @@
       CHARACTER(17*BYTE)              :: NAME(2)           ! Used for BUG output annotation
       CHARACTER( 1*BYTE), INTENT(IN)  :: WRT_BUG_THIS_TIME ! If 'Y' then write to BUG file if WRT_BUG array says to
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MIN4SH_BEGEND
+
   
       REAL(DOUBLE) , INTENT(IN)       :: SSI               ! Gauss point coordinate
       REAL(DOUBLE) , INTENT(IN)       :: SSJ               ! Gauss point coordinate

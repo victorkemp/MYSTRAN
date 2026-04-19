@@ -30,10 +30,9 @@
 ! written (for nonzero loads) is: G-set DOF number, internal subcase number, non-zero load value  
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1E, L1E_MSG, L1ESTAT, LINK1E, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, L1E, L1E_MSG, L1ESTAT, LINK1E, SC1, WRT_ERR
       USE SCONTR, ONLY                :  FATAL_ERR, NDOFG, NSUB, NTERM_PG, BLNK_SUB_NAM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_PG_BEGEND
       USE PARAMS, ONLY                :  EPSIL, PRTFOR
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP, NL_NUM_LOAD_STEPS
       USE MODEL_STUF, ONLY            :  SYS_LOAD
@@ -49,18 +48,13 @@
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: KTERM_PG          ! Count of the number of terms written to file L1E for PG loads
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_PG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -69,7 +63,7 @@
   
       OUNT(1) = ERR
       OUNT(2) = F06
-      CALL FILE_OPEN ( L1E, LINK1E, OUNT, 'REPLACE', L1E_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1E, LINK1E, OUNT, 'REPLACE', L1E_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! Count the nonzero's in SYS_LOAD
 
@@ -139,9 +133,9 @@
 
    
       IF (NTERM_PG > 0) THEN
-         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT, 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT )
       ENDIF
   
       IF (PRTFOR(1) == 1) THEN                             ! Print PG if requested
@@ -159,12 +153,7 @@
                     ,/,15X,A                                                                                                       &
                     ,/,14X,' WAS KTERM_PG = ',I12,'. IT SHOULD HAVE BEEN NTERM_PG = ',I12)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

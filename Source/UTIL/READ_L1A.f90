@@ -24,16 +24,16 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE READ_L1A ( CLOSE_STAT, WRITE_F04 )
+      SUBROUTINE READ_L1A ( CLOSE_STAT )
  
 ! Reads in data that is in formatted file LINK1A, which is read by all LINK's after LINK1, as they begin. This text file contains
 ! the names of files opened for a run, the "counter" info (e.g. NGRID, number of grids, etc), solution number, PARAM's
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  MOT4,    MOU4,    WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  MOT4,    MOU4,    WRT_ERR
 
-      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F04,     F06,     IN0,     IN1,     INI,              &
+      USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     INI,                       &
                                          L1A,     NEU,     OT4,     PCH,     SEQ,     SPC,     SC1,                                &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &
@@ -43,7 +43,7 @@
                                          L2K,     L2L,     L2M,     L2N,     L2O,     L2P,     L2Q,     L2R,     L2S,     L2T,     &
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OU4
 
-      USE IOUNT1, ONLY                :  BUGSTAT, EINSTAT, ENFSTAT, ERRSTAT, F04STAT, F06STAT, IN0STAT, IN1STAT, INISTAT,          &
+      USE IOUNT1, ONLY                :  BUGSTAT, EINSTAT, ENFSTAT, ERRSTAT, F06STAT, IN0STAT, IN1STAT, INISTAT,                   &
                                          L1ASTAT, NEUSTAT, OT4STAT, PCHSTAT, SEQSTAT, SPCSTAT,                                     &
                                          F21STAT, F22STAT, F23STAT, F24STAT, F25STAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &
@@ -53,7 +53,7 @@
                                          L2KSTAT, L2LSTAT, L2MSTAT, L2NSTAT, L2OSTAT, L2PSTAT, L2QSTAT, L2RSTAT, L2SSTAT, L2TSTAT, &
                                          L3ASTAT, L4ASTAT, L4BSTAT, L4CSTAT, L4DSTAT, L5ASTAT, L5BSTAT, OP2STAT, OU4STAT
 
-      USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F04FIL,  F06FIL,  IN0FIL,  INIFIL,  LINK1A,           &
+      USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F06FIL,  IN0FIL,  INIFIL,  LINK1A,                    &
                                          NEUFIL,  OT4FIL,  PCHFIL,  SEQFIL,  SPCFIL,  F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,  &
                                          LINK1A,  LINK1B,  LINK1C,  LINK1D,  LINK1E,  LINK1F,  LINK1G,  LINK1H,  LINK1I,  LINK1J,  &
                                          LINK1K,  LINK1L,  LINK1M,  LINK1N,  LINK1O,  LINK1P,  LINK1Q,  LINK1R,  LINK1S,  LINK1T,  &
@@ -62,7 +62,7 @@
                                          LINK2K,  LINK2L,  LINK2M,  LINK2N,  LINK2O,  LINK2P,  LINK2Q,  LINK2R,  LINK2S,  LINK2T,  &
                                          LINK3A,  LINK4A,  LINK4B,  LINK4C,  LINK4D,  LINK5A,  LINK5B,  OP2FIL,  OU4FIL
 
-      USE IOUNT1, ONLY                :  BUG_MSG, EIN_MSG, ENF_MSG, ERR_MSG, F04_MSG, F06_MSG, IN0_MSG, IN1_MSG, INI_MSG,          &
+      USE IOUNT1, ONLY                :  BUG_MSG, EIN_MSG, ENF_MSG, ERR_MSG, F06_MSG, IN0_MSG, IN1_MSG, INI_MSG,                   &
                                          L1A_MSG, NEU_MSG, OT4_MSG, PCH_MSG, SEQ_MSG, SPC_MSG,                                     &
                                          F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG,                                              &
                                          L1B_MSG, L1C_MSG, L1D_MSG, L1E_MSG, L1F_MSG, L1G_MSG, L1H_MSG, L1I_MSG, L1J_MSG, L1K_MSG, &
@@ -78,7 +78,6 @@
 
 
       USE TIMDAT, ONLY                :  STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_L1A_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       USE READ_L1A_USE_IFs
@@ -88,7 +87,6 @@
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'READ_L1A'
       CHARACTER(LEN=*), INTENT(IN)    :: CLOSE_STAT        ! STATUS when closing file LINK1A
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
       CHARACTER(80*BYTE)              :: MESSAG            ! File description. Used for error messaging
  
       INTEGER(LONG), PARAMETER        :: NUMIO      = 304  ! Number of terms in IOCHKI array
@@ -98,14 +96,9 @@
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG)                   :: REC_NO            ! Indicator of record number when error encountered reading file
       INTEGER(LONG)                   :: XTIME             ! Time stamp read from file LINK1A
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_L1A_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Default units for writing errors the screen (until LINK1A is read)
@@ -122,8 +115,8 @@
 
       OPEN (L1A,FILE=LINK1A,STATUS='OLD',IOSTAT=IOCHKI(1),ACTION='READWRITE')
       IF (IOCHKI(1) /= 0) THEN
-         CALL OPNERR ( IOCHKI(1), LINK1A, OUNT, WRITE_F04 )
-         CALL FILERR ( OUNT, WRITE_F04 )
+         CALL OPNERR ( IOCHKI(1), LINK1A, OUNT )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )                                    ! Can't open file LINK1A, so quit
       ENDIF
  
@@ -134,12 +127,12 @@
       READ(L1A,110,IOSTAT=IOCHKI(1)) XTIME
       IF (IOCHKI(1) /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT )
          JERR = JERR + 1
       ELSE
          IF (RESTART == 'N') THEN
             IF (XTIME /= STIME) THEN
-               CALL STMERR ( XTIME, LINK1A, OUNT, WRITE_F04 )
+               CALL STMERR ( XTIME, LINK1A, OUNT )
                JERR = JERR +1
             ENDIF
          ELSE
@@ -153,7 +146,7 @@
       READ(L1A,110,IOSTAT=IOCHKI(1)) LINKNO_L1A
       IF (IOCHKI(1) /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT )
          JERR = JERR + 1
       ENDIF
 
@@ -163,7 +156,7 @@
       READ(L1A,120,IOSTAT=IOCHKI(1)) SOL_NAME
       IF (IOCHKI(1) /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT )
          JERR = JERR + 1
       ENDIF
 
@@ -181,7 +174,6 @@
       READ(L1A,151,IOSTAT=IOCHKI(  4)) EIN,EINSTAT,EIN_MSG,EINFIL
       READ(L1A,151,IOSTAT=IOCHKI(  5)) ENF,ENFSTAT,ENF_MSG,ENFFIL
       READ(L1A,151,IOSTAT=IOCHKI(  6)) ERR,ERRSTAT,ERR_MSG,ERRFIL
-      READ(L1A,151,IOSTAT=IOCHKI(  7)) F04,F04STAT,F04_MSG,F04FIL
       READ(L1A,151,IOSTAT=IOCHKI(  8)) F06,F06STAT,F06_MSG,F06FIL
       READ(L1A,151,IOSTAT=IOCHKI(  9)) IN0,IN0STAT,IN0_MSG,IN0FIL
       READ(L1A,151,IOSTAT=IOCHKI( 10)) L1A,L1ASTAT,L1A_MSG,LINK1A
@@ -265,7 +257,7 @@
       DO I=1,71+MOT4+MOU4
          IF (IOCHKI(I) /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+            CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT )
             JERR = JERR + 1
          ENDIF
       ENDDO 
@@ -585,7 +577,7 @@
       DO I=1,NUMIO
          IF (IOCHKI(I) /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHKI(I), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+            CALL READERR ( IOCHKI(I), LINK1A, MESSAG, REC_NO, OUNT )
             JERR = JERR + 1
          ENDIF
       ENDDO 
@@ -616,7 +608,7 @@
       DO I=1,14
          IF (IOCHKI(I) /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHKI(I), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+            CALL READERR ( IOCHKI(I), LINK1A, MESSAG, REC_NO, OUNT )
             JERR = JERR + 1
          ENDIF
       ENDDO 
@@ -627,13 +619,13 @@
       READ(L1A,103,IOSTAT=IOCHKI(1)) (COMM(I),I=0,49)
       IF (IOCHKI(1) /= 0) THEN
          REC_NO = -99
-         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT, WRITE_F04 )
+         CALL READERR ( IOCHKI(1), LINK1A, MESSAG, REC_NO, OUNT )
          JERR = JERR + 1
       ENDIF
 
 ! Finished reading L1A, so close:
  
-      CALL FILE_CLOSE ( L1A, LINK1A, CLOSE_STAT, WRITE_F04 )
+      CALL FILE_CLOSE ( L1A, LINK1A, CLOSE_STAT )
  
 ! Check JERR and stop if > 0
  
@@ -642,12 +634,7 @@
          CALL OUTA_HERE ( 'Y' )                                    ! Errors reading file LINK1A, so quit
       ENDIF
  
-! **********************************************************************************************************************************
-      IF ((WRT_LOG >= SUBR_BEGEND) .AND. (WRITE_F04 == 'Y')) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

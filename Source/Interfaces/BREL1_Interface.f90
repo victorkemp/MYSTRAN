@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BREL1_BEGEND
       USE CONSTANTS_1, ONLY           :  TWO
       USE PARAMS, ONLY                :  EPSIL
       USE DEBUG_PARAMETERS
@@ -47,7 +46,7 @@
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BREL1_BEGEND
+
 
       REAL(DOUBLE)                    :: K1                ! Shear constant for plane 1 (used in K1*AREA*G)
       REAL(DOUBLE)                    :: K2                ! Shear constant for plane 2 (used in K1*AREA*G)

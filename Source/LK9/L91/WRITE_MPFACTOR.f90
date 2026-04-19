@@ -28,10 +28,9 @@
  
       ! Writes output for modal participation factors
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFG, NDOFR, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_MPFACTOR_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, PI
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL, MPFACTOR_NR, MPFACTOR_N6
@@ -52,19 +51,14 @@
       INTEGER(LONG)                   :: R_SET_GRIDS(NDOFR)! Array of grids for the R-set
       INTEGER(LONG)                   :: R_SET_COMPS(NDOFR)! Array of displ components for the R-set
       INTEGER(LONG)                   :: R_SET_COL         ! Col in TDOFI array where R-set exists
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MPFACTOR_BEGEND
+
 
       REAL(DOUBLE)                    :: CYCLES            ! Circular frequency of a mode
       !LOGICAL                        :: WRITE_F06  ! flag
       !LOGICAL                        :: WRITE_OP2  ! flag
       LOGICAL                         :: IS_LOW_PRECISION  ! Print MPFACTOR, MEFFMASS values with 2 decimal places of accuracy rather than 6
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IS_LOW_PRECISION = (DEBUG(174) == 0)
@@ -154,12 +148,7 @@
 
       WRITE(F06,*)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

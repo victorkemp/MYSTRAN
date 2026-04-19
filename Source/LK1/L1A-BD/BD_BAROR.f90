@@ -30,11 +30,10 @@
 ! if present. The BAROR V vector type (BAROR_VVEC_TYPE) was determined in subr BAROR0
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LVVEC, NBAROR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_BAROR_BEGEND
       USE MODEL_STUF, ONLY            :  BAROR_VVEC_TYPE, BAROR_G0, BAROR_VV, BAROR_PID
  
       USE BD_BAROR_USE_IFs
@@ -48,17 +47,12 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: I4INP             ! A value read from input file that should be an integer value
       INTEGER(LONG)                   :: PGM_ERR   = 0     ! A  count of the number of coding errors
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_BAROR_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small value to compare zero to
       REAL(DOUBLE)                    :: R8INP             ! A value read from input file that should be a real value
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! BAROR Bulk Data Card routine
@@ -134,12 +128,7 @@
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

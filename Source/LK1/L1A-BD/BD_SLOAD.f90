@@ -33,10 +33,9 @@
 !   SETID, scalar point, load mag
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1W
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1W
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ECHO, FATAL_ERR, IERRFL, JCARD_LEN, JF, LFORCE, LSUB, NFORCE, NSLOAD, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_SLOAD_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE MODEL_STUF, ONLY            :  SLOAD_SIDS, SUBLOD
@@ -55,16 +54,11 @@
       INTEGER(LONG)                   :: JERR      = 0       ! A local error count
       INTEGER(LONG)                   :: NUM_PAIRS = 0       ! Bumber of pairs of SPOINT/FMAG on a SLOAD entry (can be up to 3)
       INTEGER(LONG)                   :: SETID     = 0       ! Set ID on the FORCE/MOMENT card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SLOAD_BEGEND
+
   
       REAL(DOUBLE)                    :: FMAG(3)             ! Force magnitude
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! SLOAD Bulk Data Card routine
@@ -134,12 +128,7 @@
          ENDDO
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

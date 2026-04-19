@@ -32,10 +32,9 @@
 ! to write characters to ALL_SETS_ARRAY
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, LSETLN
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CC_SET0_BEGEND
  
       USE CC_SET0_USE_IFs
 
@@ -54,16 +53,11 @@
       INTEGER(LONG)                   :: IOCHK     = 0     ! IOSTAT error number when reading a Case Control card from unit IN1
       INTEGER(LONG)                   :: K         = 0     ! Counter
       INTEGER(LONG)                   :: SETERR    = 0     ! Error indicator as set ID is read
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CC_SET0_BEGEND
+
  
       INTRINSIC INDEX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       CARD1 = CARD
@@ -145,12 +139,7 @@
          ENDIF
       ENDDO 
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

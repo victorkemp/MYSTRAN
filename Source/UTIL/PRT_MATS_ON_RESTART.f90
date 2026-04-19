@@ -30,7 +30,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
 
       USE IOUNT1, ONLY                :  L1E    , L1H    , L1J    , L1L    , L1R    , L2A    , L2B    , L2C    , L2D    , L2E    , &
                                          L2F    , L2G    , L2H    , L2I    , L2J    , L2K    , L2L    , L2M    , L2N    , L2O    , &
@@ -71,7 +71,6 @@
                                          I_PA  , J_PA  , PA  ,I_PG  , J_PG  , PG  ,I_PL  , J_PL  , PL  ,I_PS  , J_PS  , PS  ,      &
                                          I_QSYS, J_QSYS, QSYS,I_RMG , J_RMG , RMG
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PRT_MATS_ON_RESTART_BEGEND
 
  
       USE PRT_MATS_ON_RESTART_USE_IFs
@@ -93,7 +92,7 @@
       INTEGER(LONG)                   :: NUM_SOLNS         ! NSUB for statics, NVEC for eigenvalues, etc
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PRT_MATS_ON_RESTART_BEGEND
+
 
       REAL(DOUBLE)                    :: KAA_DIAG(NDOFA)   ! Diagonal of KAA
       REAL(DOUBLE)                    :: KGG_DIAG(NDOFG)   ! Diagonal of KGG
@@ -105,12 +104,7 @@
       REAL(DOUBLE)                    :: KLL_MAX_DIAG      ! Max diag term from KLL
       REAL(DOUBLE)                    :: KRR_MAX_DIAG      ! Max diag term from KRR
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF      ((SOL_NAME(1:7) == 'STATICS') .OR. (SOL_NAME(1:8) == 'NLSTATIC')) THEN
@@ -158,7 +152,7 @@
          INQUIRE ( FILE=LINK1H, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
 
-            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             CALL ALLOCATE_COL_VEC ( 'YSe', NDOFS, SUBR_NAME )
 
             REC_NO = 0
@@ -167,7 +161,7 @@
                REC_NO = REC_NO + 1
                READ(L1H,IOSTAT=IOCHK) YSe(I)
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
                   IERROR = IERROR + 1
                ENDIF
             ENDDO
@@ -179,7 +173,7 @@
             ENDIF
 
             CALL WRITE_VECTOR ( 'S-SET ENFORCED DISPL VECTOR', 'DISPL', NDOFS, YSe)
-            CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT, 'Y' )
+            CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT )
             CALL DEALLOCATE_COL_VEC ( 'YSe' )
 
          ELSE
@@ -381,7 +375,7 @@
 
          INQUIRE ( FILE=LINK2F, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UO0_COL', NDOFO, SUBR_NAME )
@@ -392,7 +386,7 @@
                   REC_NO = REC_NO + 1
                   READ(L2F,IOSTAT=IOCHK) UO0_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO
@@ -407,7 +401,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UO0_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L2F, LINK2F, L2FSTAT, 'Y' )
+            CALL FILE_CLOSE ( L2F, LINK2F, L2FSTAT )
 
          ELSE
 
@@ -674,7 +668,7 @@
 
          INQUIRE ( FILE=LINK3A, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UL_COL', NDOFL, SUBR_NAME )
@@ -685,7 +679,7 @@
                   REC_NO = REC_NO + 1
                   READ(L3A,IOSTAT=IOCHK) UL_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO
@@ -700,7 +694,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UL_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT, 'Y' )
+            CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT )
 
          ELSE
 
@@ -721,7 +715,7 @@
 
          INQUIRE ( FILE=LINK5A, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UG_COL', NDOFG, SUBR_NAME )
@@ -732,7 +726,7 @@
                   REC_NO = REC_NO + 1
                   READ(L5A,IOSTAT=IOCHK) UG_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO
@@ -747,7 +741,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UG_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L5A, LINK5A, L5ASTAT, 'Y' )
+            CALL FILE_CLOSE ( L5A, LINK5A, L5ASTAT )
 
          ELSE
 
@@ -761,12 +755,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

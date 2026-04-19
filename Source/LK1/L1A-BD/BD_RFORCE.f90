@@ -33,10 +33,9 @@
 !   SETID, CID, ACCEL(1-6)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1U
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1U
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LRFORCE, LSUB, NRFORCE, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_RFORCE_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  RFORCE_SIDS, SUBLOD
  
@@ -60,7 +59,7 @@
       INTEGER(LONG)                   :: GID        = 0     ! Grid ID (or 0) of the grid that the rotational grav accels refer to
       INTEGER(LONG)                   :: JERR       = 0     ! A local error count
       INTEGER(LONG)                   :: SETID      = 0     ! Set ID on the RFORCE card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_RFORCE_BEGEND
+
   
       REAL(DOUBLE)                    :: R8INP              ! A real value read from RFORCE entry
       REAL(DOUBLE)                    :: SCALEF_AA  = ZERO  ! Scale factor for angular accel    on the RFORCE card
@@ -69,12 +68,7 @@
  
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! RFORCE Bulk Data Card routine
@@ -179,12 +173,7 @@
          WRITE(L1U) SETID, CID, GID, SCALEF_AV, SCALEF_AA, (VEC(I),I=1,3)
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

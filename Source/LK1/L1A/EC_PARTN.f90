@@ -39,8 +39,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  EC_PARTN_BEGEND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE OUTPUT4_MATRICES, ONLY      :  NUM_OU4_REQUESTS, NUM_PARTN_REQUESTS, OU4_PART_VEC_NAMES, OU4_PART_MAT_NAMES,             &
                                          ACT_OU4_MYSTRAN_NAMES, ACT_OU4_OUTPUT_NAMES,                                              &
@@ -65,14 +64,9 @@
       INTEGER(LONG)                   :: COMMA_COL(3)      ! Column where comma is found in CARD2
       INTEGER(LONG)                   :: I,J               ! DO loop index
       INTEGER(LONG)                   :: JBEG              ! Beg col in data
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = EC_PARTN_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       IF ((DEBUG(197) == 2) .OR. (DEBUG(197) == 3)) THEN
@@ -224,12 +218,7 @@ nerr: IF (IERR == 0) THEN
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

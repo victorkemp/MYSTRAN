@@ -34,13 +34,12 @@
 ! overwritten with the values in basic coords at the mass point at the close of this subr.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1Y
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1Y
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, MCMASS, MCONM2, MPMASS, MRCONM2, MRPMASS, NCMASS,  &
                                          NCONM2, NCORD, NGRID, NPMASS, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SUPWARN
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CONM2_PROC_1_BEGEND
       USE MODEL_STUF, ONLY            :  CMASS, CONM2, PMASS, RCONM2, RPMASS, GRID, GRID_ID, CORD
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
@@ -65,7 +64,7 @@
       INTEGER(LONG)                   :: NROWA             ! No. rows in a matrix. For subr MATMULT_FFF/MATMULT_FFF_T, called herein
       INTEGER(LONG)                   :: NUM_COMPS         ! No. displ components (1 for SPOINT, 6 for actual grid)
       INTEGER(LONG)                   :: NUM_RCONM2_RESET  ! No. RCONM2's reset to zero because they are connected to SPOINT's
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CONM2_PROC_1_BEGEND
+
  
       REAL(DOUBLE)                    :: DX_0              ! Offset of mass from grid in basic coord sys X direction
       REAL(DOUBLE)                    :: DY_0              ! Offset of mass from grid in basic coord sys Y direction
@@ -101,12 +100,7 @@
       REAL(DOUBLE)                    :: T_0_CID(3,3)      ! Transformation matrix from coord ACID to basic
       REAL(DOUBLE)                    :: T_CID_0(3,3)      ! Transformation matrix from basic to coord ACID (transp of T_0_CID)
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! For all SPOINT's reset all RCONM2 values back to zero (so that scalar points will not use offset and MOI terms)
@@ -329,12 +323,7 @@ j_loop1:    DO J=1,NCORD
          ENDDO
       ENDDO
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -34,7 +34,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFR, NTERM_KRRcb, NTERM_KRRcbn, NTERM_MRRcbn, NTERM_MRN  ,     &
                                          NTERM_IF_LTM  , NVEC
       USE PARAMS, ONLY                :  PRTIFLTM, SPARSTOR
@@ -48,7 +48,6 @@
 
       USE SCRATCH_MATRICES, ONLY      :  I_CRS1, J_CRS1, CRS1
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  INTERFACE_FORCE_LTM_BEGEND
 
       USE INTERFACE_FORCE_LTM_USE_IFs
 
@@ -60,15 +59,10 @@
       INTEGER(LONG)                   :: NCOL_CRS1         ! Number of cols in scratch matrix CRS1
       INTEGER(LONG)                   :: NTERM_CRS1        ! Number of nonzero terms in scratch matrix CRS1
       INTEGER(LONG)                   :: NUM_KRRcb_DIAG_0  ! Number of zeros on the diagonal of matrix KRRcb
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = INTERFACE_FORCE_LTM_BEGEND
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Set KRRcbn based on SPARSTOR (we need KRRcb in nonsym format since IF_LTM   will be nonsym
@@ -129,12 +123,7 @@
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

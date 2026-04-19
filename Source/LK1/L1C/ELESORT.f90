@@ -58,10 +58,9 @@
 !       51     6 |     51      6   30    B1 |     61      5   24    Q2
      
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, ELESORT_RUN, NELE, NRIGEL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ELESORT_BEGEND
       USE MODEL_STUF, ONLY            :  EDAT, EOFF, EPNT, ESORT1, ESORT2, ETYPE, RIGID_ELEM_IDS
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
  
@@ -73,14 +72,9 @@
 
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG)                   :: IERROR            ! Error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ELESORT_BEGEND
+
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! (1) Generate ESORT1 and ESORT2. Initially, set ESORT1(I) = elem ID's in order read in Bulk Data and ESORT2(I) = I.
@@ -152,12 +146,7 @@
 
       ELESORT_RUN = 'Y'
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

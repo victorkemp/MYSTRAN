@@ -31,11 +31,10 @@
 ! input to this subr indicates we want to shift the card to begin in column 1
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, F04FIL
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CSHIFT_BEGEND
-
+ 
       USE CSHIFT_USE_IFs
 
       IMPLICIT NONE
@@ -50,18 +49,11 @@
       INTEGER(LONG)                            :: CARD_IN_LEN       ! Length of CARD
       INTEGER(LONG)                            :: I                 ! DO loop index
       INTEGER(LONG)                            :: ISTART            ! The col on CARD where nonblank data begins after CHAR_COL
-      INTEGER(LONG), PARAMETER                 :: SUBR_BEGEND = CSHIFT_BEGEND
-      LOGICAL                                  :: FILE_OPND
+
 
       INTRINSIC INDEX
+ 
 
-! **********************************************************************************************************************************
-      INQUIRE ( FILE=F04FIL, OPENED=FILE_OPND )
-      IF (WRT_LOG >= SUBR_BEGEND .AND. FILE_OPND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
       CARD_IN_LEN = LEN(CARD_IN)
@@ -94,12 +86,7 @@
       ENDDO
       CARD_SHIFTED(1:) = CARD_IN(ISTART:CARD_IN_LEN)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND .AND. FILE_OPND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -30,11 +30,10 @@
 ! constraint matrix is written to file LINK1J in format: i, j, RMG(i,j)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1J, LINK1J, L1J_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1J, LINK1J, L1J_MSG
       USE SCONTR, ONLY                :  NDOFM, NTERM_RMG, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  SPARSE_RMG_BEGEND
       USE PARAMS, ONLY                :  EPSIL
       USE SPARSE_MATRICES, ONLY       :  I_RMG, J_RMG, RMG
  
@@ -58,19 +57,14 @@
       INTEGER(LONG)                   :: NTERM_ROW_I       ! Number of nonzero terms in row I of RMG
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = SPARSE_RMG_BEGEND
+
  
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: RRMG              ! Real value for RMG
  
       INTRINSIC DABS
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -84,7 +78,7 @@
 
       IF (NDOFM > 0) THEN
 
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
          NTERM_RMG = 0                                     ! First, calc NTERM_RMG
          REC_NO = 0
@@ -100,17 +94,17 @@ nterm:   DO
                   CYCLE nterm
                ENDIF
             ELSE IF (IOCHK > 0) THEN
-               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading RMG file, so quit
             ELSE
                EXIT nterm
             ENDIF
          ENDDO nterm
-         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'N' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )
                                                            ! Allocate memory for RMG sparse arrays
          CALL ALLOCATE_SPARSE_MAT ( 'RMG', NDOFM, NTERM_RMG, SUBR_NAME )
 
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
          KTERM_RMG = 0
          REC_NO    = 0
@@ -130,7 +124,7 @@ read_l1j:DO                                                ! Now calc sparse arr
                   CYCLE read_l1j
                ENDIF
             ELSE IF (IOCHK > 0) THEN
-               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading RMG file, so quit
             ELSE
                EXIT read_l1j
@@ -145,7 +139,7 @@ read_l1j:DO                                                ! Now calc sparse arr
             ENDIF
          ENDDO
 
-         CALL FILE_CLOSE ( L1J, LINK1J, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'DELETE' )
 
 ! Sort RMG so that the rows (M-set DOF's) are in numerically increasing order
 
@@ -153,12 +147,12 @@ read_l1j:DO                                                ! Now calc sparse arr
 
 ! Rewrite RMG matrix in the format i, j, RMG(i,j) to L1J 
  
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          WRITE(L1J) NTERM_RMG
          DO I=1,NTERM_RMG
             WRITE(L1J) I2_RMG(I),J_RMG(I),RMG(I) 
          ENDDO      
-         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )
 
       ENDIF
 
@@ -173,12 +167,7 @@ read_l1j:DO                                                ! Now calc sparse arr
          I_RMG(IRMG+1) = I_RMG(IRMG+1) + 1
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

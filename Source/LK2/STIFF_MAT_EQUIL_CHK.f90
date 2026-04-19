@@ -32,7 +32,7 @@
 ! example would be the case if it were grounded - e.g. a cantilevered beam has rigid body modes restrained)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSPOINT, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
@@ -42,7 +42,6 @@
       USE LAPACK_DPB_MATRICES, ONLY   :  ABAND
       USE LAPACK_BLAS_AUX
       USE PARAMS, ONLY                :  EPSIL, EQCHK_NORM, SUPWARN, SUPINFO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  STIFF_MAT_EQUIL_CHK_BEGEND
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       USE STIFF_MAT_EQUIL_CHK_USE_IFs
@@ -67,7 +66,7 @@
       INTEGER(LONG)                   :: KIN_SDIA            ! No. of superdiags in KIN upper triangle
       INTEGER(LONG)                   :: ROW,COL             ! Row/col where max term in RB_STRAIN_ENERGY exists
       INTEGER(LONG)                   :: SA_SET_COL          ! Col no. in array TDOF where the  SA-set is (from subr TDOF_COL_NUM)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = STIFF_MAT_EQUIL_CHK_BEGEND
+
 
       CHARACTER( 1*BYTE)              :: FLAG(NROWS)         ! Character to designate whether PRBN was normalized to diag KIN or not
 
@@ -86,12 +85,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! If NSPOINT > 0 MYSTRAN code, as of 05/05/07, will not accomodate equil check on models with any SPOINT's
@@ -252,12 +246,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
@@ -302,7 +291,7 @@
 ! Write rigid body matrices (RB displ, forces due to RB disp)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  NDOFG
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DOF_TABLES, ONLY            :  TDOFI

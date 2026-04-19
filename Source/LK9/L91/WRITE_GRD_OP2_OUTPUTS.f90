@@ -34,10 +34,9 @@
 !        - velocity????
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  ERR, F06, OP2
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, INT_SC_NUM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-!      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_GRD_PCH_OUTPUTS_BEGEND
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE LINK9_STUFF, ONLY           :  GID_OUT_ARRAY, OGEL
       USE MODEL_STUF, ONLY            :  GRID, LABEL, SCNUM, SUBLOD, STITLE, TITLE
@@ -79,12 +78,7 @@
 ! **********************************************************************************************************************************
       ! TODO: assuming PLOT
       DEVICE_CODE = 1
-! **********************************************************************************************************************************
-!      IF (WRT_LOG >= SUBR_BEGEND) THEN
-!         CALL OURTIM
-!         WRITE(F04,9001) SUBR_NAME,TSEC
-! 9001    FORMAT(1X,A,' BEGN ',F10.3)
-!      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Make sure that WHAT is a valid value
@@ -165,12 +159,7 @@
       !
       WRITE(OP2) (GID_OUT_ARRAY(I,1)*10+DEVICE_CODE, G_OR_S(I), (REAL(OGEL(I,J),4), J=1,6), I=1,NUM)
       CALL END_OP2_TABLE(ITABLE)
-! **********************************************************************************************************************************
-!      IF (WRT_LOG >= SUBR_BEGEND) THEN
-!         CALL OURTIM
-!         WRITE(F04,9002) SUBR_NAME,TSEC
-! 9002    FORMAT(1X,A,' END  ',F10.3)
-!      ENDIF
+
 
       RETURN
 

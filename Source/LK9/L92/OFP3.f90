@@ -29,13 +29,12 @@
 ! Main driver routine for all element node (or engineering force) and stress and strain output requests for one subcase
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_FIJ, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_FIJ
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MFIJ, MOGEL
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  ANY_ELFE_OUTPUT, ANY_ELFN_OUTPUT, ANY_STRE_OUTPUT, ANY_STRN_OUTPUT
       USE LINK9_STUFF, ONLY           :  MAXREQ, OGEL
-      USE SUBR_BEGEND_LEVELS, ONLY    :  OFP3_BEGEND
   
       USE OFP3_USE_IFs
 
@@ -50,14 +49,9 @@
       INTEGER(LONG), PARAMETER        :: MERROR = 6        ! Number of error indicators used
       INTEGER(LONG)                   :: I,J               ! DO loop indices
       INTEGER(LONG)                   :: IERROR(MERROR)    ! Local error count
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = OFP3_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -111,12 +105,7 @@
          ENDIF
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

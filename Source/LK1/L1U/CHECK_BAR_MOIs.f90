@@ -29,12 +29,11 @@
 ! Checks sensibility of the 3 MOI's of a BAR or BEAM element and replaces zero values with small finite ones 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC 
       USE PARAMS, ONLY                :  EPSIL, SUPINFO
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  CHECK_BAR_MOIs_BEGEND
 
       USE CHECK_BAR_MOIs_USE_IFs
 
@@ -45,19 +44,13 @@
       CHARACTER(LEN=*), INTENT(IN)    :: ID                ! Character value of the bar's ID
 
       INTEGER(LONG), INTENT(OUT)      :: IERR              ! Error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = CHECK_BAR_MOIs_BEGEND
+
  
       REAL(DOUBLE), INTENT(INOUT)     :: I1                ! MOI of the bar or beam
       REAL(DOUBLE), INTENT(INOUT)     :: I2                ! MOI of the bar or beam
       REAL(DOUBLE), INTENT(INOUT)     :: I12               ! MOI of the bar or beam
       REAL(DOUBLE)                    :: EPS1              ! A small number
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -96,12 +89,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

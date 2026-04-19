@@ -85,10 +85,9 @@
  
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06, SCR, L1I, LINK1I, L1I_MSG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06, SCR, L1I, LINK1I, L1I_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LLOADC, NCORD, NFORCE, NGRID, NLOAD, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  FORCE_MOM_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, SUPWARN
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
@@ -127,7 +126,7 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! Row no. in array TDOF where data begins for AGRID
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = FORCE_MOM_PROC_BEGEND
+
 
       REAL(DOUBLE)                    :: EPS1              ! A small number to compare real zero
       REAL(DOUBLE)                    :: F1(3), F2(3)      ! 3 force or moment components in intermediate calcs
@@ -140,12 +139,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       EPS1 = EPSIL(1)
@@ -164,8 +158,8 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -185,7 +179,7 @@ i_do1:DO I=1,NFORCE
          READ(L1I,IOSTAT=IOCHK) SETID,AGRID,ACID_L,(FORMON(J),J=1,3),NAME
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1I, L1I_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1I, L1I_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1
             CYCLE i_do1
          ENDIF
@@ -320,8 +314,8 @@ j_do22:  DO J=1,NFORCE                                     ! Process FORCE / MOM
             READ(SCR(1),IOSTAT=IOCHK) SETID,AGRID,ACID_G,(FORMON(K),K=1,3),NAME
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF
  
@@ -347,7 +341,7 @@ k_do221:    DO K = 1,NSID                                  ! There is a match; w
             ELSE
                WRITE(ERR,1516) SUBR_NAME,NAME
                WRITE(F06,1516) SUBR_NAME,NAME
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                FATAL_ERR = FATAL_ERR + 1
                CALL OUTA_HERE ( 'Y' )                      ! Coding error (not FORCE or MOMENT), so quit
             ENDIF
@@ -372,7 +366,7 @@ k_do222:    DO K = COMP1,COMP2
                   WRITE(ERR,1514) SUBR_NAME
                   WRITE(F06,1514) SUBR_NAME
                   FATAL_ERR = FATAL_ERR + 1
-                  CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+                  CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                   CALL OUTA_HERE ( 'Y' )                   ! Coding error (dim on array FORMON out of bounds), so quit
                ELSE
                   FORCEI = SCALE*FORMON(K1)
@@ -393,14 +387,9 @@ k_do222:    DO K = COMP1,COMP2
  
       ENDDO i_do2
  
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

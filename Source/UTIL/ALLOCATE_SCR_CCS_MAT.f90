@@ -30,11 +30,10 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONEPP6
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_SCR_CCS_MAT_BEGEND
       USE SCRATCH_MATRICES , ONLY     :  I_CCS1, J_CCS1, CCS1, I_CCS2, J_CCS2, CCS2, I_CCS3, J_CCS3, CCS3
 
       USE ALLOCATE_SCR_CCS_MAT_USE_IFs
@@ -44,7 +43,6 @@
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'ALLOCATE_SCR_CCS_MAT'
       CHARACTER(LEN=*), INTENT(IN)    :: NAME              ! Array name (used for output error message)
       CHARACTER(LEN=*), INTENT(IN)    :: CALLING_SUBR      ! Array name of the matrix to be allocated in sparse format
-      CHARACTER(14*BYTE)              :: NAMEL             ! First 14 bytes of NAME
       CHARACTER(6*BYTE)               :: NAMEO             ! Array name (used for output error message)
  
       INTEGER(LONG), INTENT(IN)       :: NCOLS             ! Number of cols for matrix CCSi
@@ -52,7 +50,7 @@
       INTEGER(LONG)                   :: I                 ! DO loop index   
       INTEGER(LONG)                   :: IERR              ! STAT from DEALLOCATE
       INTEGER(LONG)                   :: JERR              ! Local error indicator
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_SCR_CCS_MAT_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -62,12 +60,7 @@
 
       INTRINSIC                       :: REAL
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       MB_ALLOCATED = ZERO
@@ -283,16 +276,6 @@
       MB_ALLOCATED = (REAL(LONG)*REAL(NCOLS + 1 + NTERMS) + REAL(DOUBLE)*REAL(NTERMS))/ONEPP6
       CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
 
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         NAMEL(1:LEN(NAMEL)) = ' '
-         NAMEL(1:) = NAME(1:)
-         IF (DEBUG(107) == 0) THEN
-            WRITE(F04,9002) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NCOLS, NTERMS, TOT_MB_MEM_ALLOC
-         ELSE
-            WRITE(F04,9004) SUBR_NAME, TSEC, MB_ALLOCATED, NAMEL, NCOLS, NTERMS, TOT_MB_MEM_ALLOC
-         ENDIF
-      ENDIF
 
       RETURN
 
@@ -308,9 +291,6 @@
 
  1699 FORMAT('               THE SUBR IN WHICH THESE ERRORS WERE FOUND (',A,') WAS CALLED BY SUBR ',A)
 
- 9002 FORMAT(1X,A,' END  ',F10.3,F13.3,' MB ',A15,':',I12,' col,',I12,' nonzero, T:',F10.3)
-
- 9004 FORMAT(1X,A,' END  ',F10.3,F13.6,' MB ',A15,':',I12,' col,',I12,' nonzero, T:',F13.6)
 
 ! **********************************************************************************************************************************
  

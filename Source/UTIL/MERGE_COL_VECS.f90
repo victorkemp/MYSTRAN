@@ -34,11 +34,10 @@
 ! and processing is stopped.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE SUBR_BEGEND_LEVELS, ONLY    :  MERGE_COL_VECS_BEGEND
       USE DOF_TABLES, ONLY            :  TDOFI
       
       USE MERGE_COL_VECS_USE_IFs
@@ -57,19 +56,14 @@
       INTEGER(LONG)                   :: IN1_DOF           ! IN1_COL DOF number in array TDOFI of a term in UIN1
       INTEGER(LONG)                   :: IN2_DOF           ! IN2_COL DOF number in array TDOFI of a term in UIN2
       INTEGER(LONG)                   :: OUT_DOF           ! OUT_COL DOF number in array TDOFI of a term in UOUT
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = MERGE_COL_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN )      :: UIN1(IN1_NDOF)    ! Input  vector for IN1_COL displ set
       REAL(DOUBLE) , INTENT(IN )      :: UIN2(IN2_NDOF)    ! Input  vector for IN2_COL displ set
       REAL(DOUBLE) , INTENT(OUT)      :: UOUT(OUT_NDOF)    ! Output vector for OUT_COL displ set
  
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -108,12 +102,7 @@
 
       ENDDO 
             
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

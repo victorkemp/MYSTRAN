@@ -30,14 +30,13 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, ONEPP6
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO, LTERM_KGG, LTERM_KGGD, NDOFG, SOL_NAME,      &
                                          TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  YEAR, MONTH, DAY, HOUR, MINUTE, SEC, SFRAC, STIME, TSEC
       USE PARAMS, ONLY                :  MEMAFAC, MXALLOCA, SUPINFO, WINAMEM
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE STF_ARRAYS, ONLY            :  STF, STFCOL, STFKEY, STFPNT, STF3
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ALLOCATE_STF_ARRAYS_BEGEND
  
       USE ALLOCATE_STF_ARRAYS_USE_IFs
 
@@ -56,7 +55,7 @@
       INTEGER(LONG)                   :: LTERM             ! Count of number of estimated terms in KGG or KGGD
       INTEGER(LONG)                   :: NROWS             ! Number of rows  for matrix NAME
       INTEGER(LONG)                   :: NTERMS            ! Number of terms for matrix NAME
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ALLOCATE_STF_ARRAYS_BEGEND
+
 
       REAL(DOUBLE)                    :: CUR_MB_ALLOCATED  ! MB of memory that is currently allocated to ARRAY_NAME when subr
 !                                                            ALLOCATED_MEMORY is called (before entering MB_ALLOCATED into array
@@ -70,12 +69,7 @@
 
       INTRINSIC                       :: REAL
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Set LTERM, which will be the size allocated to the G-set stiffness matrix, to the appropriate value
@@ -111,7 +105,6 @@
             MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                WRITE(SC1,12345,ADVANCE='NO') NAME, NDOFG, ' rows', CR13
                DO I=1,NDOFG
                   STFKEY(I) = 0
@@ -139,7 +132,6 @@
             MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                WRITE(SC1,12345,ADVANCE='NO') NAME, LTERM, ' terms', CR13
                DO I=1,LTERM
                   STFCOL(I) = 0
@@ -167,7 +159,6 @@
             MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                WRITE(SC1,12345,ADVANCE='NO') NAME, LTERM, ' terms', CR13
                DO I=1,LTERM
                   STFPNT(I) = 0
@@ -195,7 +186,6 @@
             IF (IERR == 0) THEN
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
                MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NROWS, 1, SUBR_BEGEND )
                WRITE(SC1,12345,ADVANCE='NO') NAME, LTERM, ' terms', CR13
                DO I=1,LTERM
                   STF(I) = ZERO
@@ -230,7 +220,6 @@
                MB_ALLOCATED = RDOUBLE*REAL(NTERMS)/ONEPP6 + TWO*RLONG*REAL(NTERMS)/ONEPP6
                CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
                MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
-               CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NTERMS, 1, SUBR_BEGEND )
                WRITE(SC1,12345,ADVANCE='NO') NAME, NTERMS, ' terms', CR13
                WRITE(SC1,*) CR13
             ELSE
@@ -246,7 +235,6 @@ i_do:          DO
                         WRITE(SC1,*) CR13
                         CALL ALLOCATED_MEMORY ( NAME, MB_ALLOCATED, 'ALLOC', 'Y', CUR_MB_ALLOCATED, SUBR_NAME )
                         MB_ALLOC_THIS_TIME = MB_ALLOC_THIS_TIME + MB_ALLOCATED
-                        CALL WRITE_MEM_SUM_TO_F04 ( NAME, 'ALLOC', MB_ALLOCATED, NTERMS, 1, SUBR_BEGEND )
                         EXIT i_do
                      ELSE
                         WRITE(SC1,32345,ADVANCE='NO') ALLOC_ATTEMPT_NUM, MB_ALLOCATED, NAME,' failed        ', CR13
@@ -304,12 +292,7 @@ i_do:          DO
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

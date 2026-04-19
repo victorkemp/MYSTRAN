@@ -29,11 +29,10 @@
 ! Given a row/col index, gets the real value from a sparse CRS matrix 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_SPARSE_MAT_TERM_BEGEND
 
       USE GET_SPARSE_MAT_TERM_USE_IFs
 
@@ -51,17 +50,12 @@
       INTEGER(LONG)                   :: NUM_TERMS_IN_ROW  ! No. terms in row IROW of MATIN
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: K                 ! Counter
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SPARSE_MAT_TERM_BEGEND
+
  
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERMS)     ! Real vals in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(OUT)      :: MATIN_VAL
 
-! *********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGIN',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize output value
@@ -94,12 +88,7 @@
          K = K + 1
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

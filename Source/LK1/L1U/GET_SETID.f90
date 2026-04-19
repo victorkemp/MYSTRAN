@@ -29,10 +29,9 @@
 ! Gets SET ID from CASE CONTROL cards:  LOAD, METHOD, MPC, NLPARM, SPC, TEMP 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GET_SETID_BEGEND
 
       USE GET_SETID_USE_IFs
 
@@ -56,14 +55,9 @@
       INTEGER(LONG)                   :: ISTART            ! An input to subr STOKEN, called herein
       INTEGER(LONG)                   :: NTOKEN            ! An output from subr STOKEN, called herein
       INTEGER(LONG)                   :: TOKLEN            ! An input to subr STOKEN, called herein
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GET_SETID_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Get SETID
@@ -111,12 +105,7 @@
          ENDIF
       ENDIF
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

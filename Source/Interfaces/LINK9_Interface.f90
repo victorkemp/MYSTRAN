@@ -32,9 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,           &
+      USE IOUNT1, ONLY                :  ERR, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,           &
                                          L5A, L5B, NEU, OT4, OU4, PCH, SC1
 
       USE IOUNT1, ONLY                :  F06FIL, F25FIL, LINK1B, LINK1E, LINK1M, LINK1R, LINK2A, LINK2B, LINK2C, LINK2D,   &
@@ -65,7 +65,6 @@
 
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT
       USE TIMDAT, ONLY                :  YEAR, MONTH, DAY, HOUR, MINUTE, SEC, SFRAC, STIME, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LINK9_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, MPFOUT, POST, SUPINFO, SUPWARN, WTMASS
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -101,7 +100,7 @@
       INTEGER(LONG), INTENT(IN)       :: LK9_PROC_NUM      ! 2 if this is the LINK9 call for the linear buckling step of 
       INTEGER(LONG), PARAMETER        :: NUM1      = 1     ! Used in subr's that partition matrices
       INTEGER(LONG), PARAMETER        :: NUM2      = 2     ! Used in subr's that partition matrices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LINK9_BEGEND + 1
+
  
       END SUBROUTINE LINK9
 

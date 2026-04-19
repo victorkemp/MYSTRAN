@@ -33,10 +33,9 @@
 !     to real before entering them into array SEQ2.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, JF, LSEQ, NSEQ
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_SEQGP_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  SEQ1, SEQ2
 
@@ -53,18 +52,13 @@
       INTEGER(LONG)                   :: J                 ! DO loop index
       INTEGER(LONG)                   :: JFLD1             ! A field number on the SEQGP card where grid ID's are located
       INTEGER(LONG)                   :: JFLD2             ! A field number on the SEQGP card where sequence numbers are located
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_SEQGP_BEGEND
+
  
       REAL(DOUBLE)                    :: RSEQ              ! A real sequence number
 
       INTRINSIC INDEX,DBLE
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !  SEQGP Bulk Data Card routine
@@ -113,12 +107,7 @@
       CALL BD_IMBEDDED_BLANK ( JCARD,2,3,4,5,6,7,8,9 )     ! Make sure that there are no imbedded blanks in fields 2-9
       CALL CRDERR ( CARD )                                 ! CRDERR prints errors found when reading fields
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

@@ -88,10 +88,9 @@
 !          ( vi) Load the grav forces into the SYS_LOAD (systems load) array
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, ERR, F04, F06, SCR, L1P, LINK1P, L1P_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, ERR, F06, SCR, L1P, LINK1P, L1P_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LLOADC, NCORD, NGRAV, NGRID, NLOAD, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GRAV_PROC_BEGEND
       USE PARAMS, ONLY                :  SUPWARN
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
@@ -135,7 +134,7 @@
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
       INTEGER(LONG)                   :: ROW_NUM           ! Row no. in array TDOF corresponding to GDOF 
       INTEGER(LONG)                   :: ROW_NUM_START     ! Row no. in array TDOF where data begins for a grid
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GRAV_PROC_BEGEND
+
       
       REAL(DOUBLE)                    :: ACCEL_I(6)        ! 6 components of accel due to gravity at a grid
       REAL(DOUBLE)                    :: ACCEL_I_T1(3)     ! 3 translational components of accel due to gravity at a grid
@@ -162,12 +161,7 @@
 
       INTRINSIC                       :: DABS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       NAME = 'GRAV    '
@@ -183,8 +177,8 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -199,7 +193,7 @@ i_do1:DO I=1,NGRAV
 
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1P, L1P_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1P, L1P_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Increment READ_ERR and go back to read another grav card
             CYCLE i_do1                                    
          ENDIF
@@ -317,8 +311,8 @@ j_do_22: DO J = 1,NGRAV                                    ! Process GRAV card i
             READ(SCR(1),IOSTAT=IOCHK) SETID,ACID,GRAV_GRID,(ACCEL_RB(K),K=1,6)
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading scratch file, so quit
             ENDIF
 
@@ -452,14 +446,9 @@ l_do_2214:     DO L = 1,6
  
       WRITE(SC1,*) CR13 
 
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

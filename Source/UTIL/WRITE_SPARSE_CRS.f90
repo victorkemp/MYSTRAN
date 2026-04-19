@@ -29,12 +29,11 @@
 ! Writes a matrix that is in sparse CRS format to the F06 output file based on user request via Bulk Data PARAM PRTijk entries
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR, TINY
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_SPARSE_CRS_BEGEND
  
       USE WRITE_SPARSE_CRS_USE_IFs
 
@@ -63,16 +62,11 @@
       INTEGER(LONG)                   :: NULL_ROWS_A       ! Number of null rows in input matrix
       INTEGER(LONG)                   :: ROW_COMP    = 0   ! Component number returned from subr GET_GRID_AND_COMP
       INTEGER(LONG)                   :: ROW_GRID    = 0   ! Grid number returned from subr GET_GRID_AND_COMP
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_SPARSE_CRS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: AXX(NTERM_A)      ! Array of terms in matrix AXX
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Strip out trailing blanks from MAT_NAME and put remainder centered in array LINE_OUT
@@ -215,12 +209,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

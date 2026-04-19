@@ -34,12 +34,11 @@
 !  4) From 2nd continuation card (if present): area factors for transverse shear and I12 and enter into array RPBUSH
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE PARAMS, ONLY                :  EPSIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPBUSH, NPBUSH, WARN_ERR
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PBUSH_BEGEND
       USE MODEL_STUF, ONLY            :  PBUSH, RPBUSH
  
       USE BD_PBUSH_USE_IFs
@@ -60,16 +59,11 @@
       INTEGER(LONG)                   :: NUM_ENTRIES       ! Num of quantities to read depending on field 3 of parent or cont entry
       INTEGER(LONG)                   :: OFFSET            ! Array index offset
       INTEGER(LONG)                   :: PROPERTY_ID = 0   ! Property ID (field 2 of this property card)
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PBUSH_BEGEND
+
  
       REAL(DOUBLE)                    :: R8INP             ! A real value read from a field on this BD entry
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PBUSH Bulk Data Card routine
@@ -219,12 +213,7 @@ pcont:DO I=1,4
       ENDIF
 
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

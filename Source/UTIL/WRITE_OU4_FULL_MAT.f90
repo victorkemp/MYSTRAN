@@ -30,12 +30,11 @@
 ! Used for OUTPUT4 matrices
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, LEN_INPUT_FNAME, OU4, OU4FIL, MOU4, WRT_LOG
+      USE IOUNT1, ONLY                :  F06, LEN_INPUT_FNAME, OU4, OU4FIL, MOU4
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  PRTOU4
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_OU4_FULL_MAT_BEGEND
  
       USE WRITE_OU4_FULL_MAT_USE_IFs
 
@@ -56,16 +55,11 @@
       INTEGER(LONG), PARAMETER        :: IROW        = 1   ! A term written to UNT for the trailer record (just to be like NASTRAN)
       INTEGER(LONG), PARAMETER        :: PREC        = 2   ! Matrix precision (2 indicates double precision)
       INTEGER(LONG), PARAMETER        :: ROW_BEG     = 1   ! 1st row of matrix output to UNT is row 1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_OU4_FULL_MAT_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MAT(NROWS,NCOLS)  ! Array of terms in matrix MAT
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Get file name for unit UNT
@@ -114,12 +108,7 @@
 
       WRITE(F06,1001) MAT_NAME, NROWS, NCOLS, FILNAM
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

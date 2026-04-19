@@ -29,11 +29,10 @@
       ! LOADE0 does a preliminary read of the EXEC CONTROL DECK to find
       ! if there is a RESTART entry
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, FILE_NAM_MAXLEN, IN0, IN1, INC, LEN_INPUT_FNAME, INFILE,           &
-                                         LEN_RESTART_FNAME, LNUM_IN4_FILES, RESTART_FILNAM, SCR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, FILE_NAM_MAXLEN, IN0, IN1, INC, LEN_INPUT_FNAME, INFILE,           &
+                                         LEN_RESTART_FNAME, LNUM_IN4_FILES, RESTART_FILNAM, SCR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, FATAL_ERR, RESTART
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADE0_BEGEND
  
       USE LOADE0_USE_IFs
 
@@ -52,14 +51,9 @@
       INTEGER(LONG)                   :: IEND              ! Col where FILNAM ends after trailing blanks
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator.
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading a Case Control card from unit IN1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE0_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       ! Initialize
@@ -131,12 +125,7 @@ i_do3:      DO I=FILE_NAM_MAXLEN,1,-1
 
       ENDDO main
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

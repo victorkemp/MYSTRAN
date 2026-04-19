@@ -68,11 +68,10 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, ONE80, PI
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, f06
+      USE IOUNT1, ONLY                :  WRT_ERR, f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE PARAMS, ONLY                :  EPSIL
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GEN_T0L_BEGEND
       USE MODEL_STUF, ONLY            :  RGRID, CORD, RCORD
  
       USE GEN_T0L_USE_IFs
@@ -88,7 +87,7 @@
 !                                                            the grid whose transformation we seek.
       INTEGER(LONG), INTENT(IN)       :: ICORD             ! Internal coord ID for coord sys L
       INTEGER(LONG)                   :: I,J,K             ! DO loop indices
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GEN_T0L_BEGEND
+
  
       REAL(DOUBLE),  INTENT(OUT)      :: THETAD,PHID       ! Azimuth and elevation angles (deg) for cylindrical/spherical coord sys 
       REAL(DOUBLE),  INTENT(OUT)      :: T0L(3,3)          ! 3 x 3 coord transformation matrix described above
@@ -107,12 +106,7 @@
 
       INTRINSIC                       :: DASIN, DATAN2, DSIN, DCOS
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -241,12 +235,7 @@
  
       ENDIF
   
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

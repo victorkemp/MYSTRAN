@@ -29,10 +29,9 @@
 ! Processes PLOAD2 Bulk Data Cards. Reads and checks data and then writes CARD to file LINK1Q for later processing
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1Q
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1Q
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPLOAD, LSUB, NPCARD, NPLOAD, NSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BD_PLOAD2_BEGEND
       USE MODEL_STUF, ONLY            :  PRESS_SIDS, SUBLOD
 
       USE BD_PLOAD2_USE_IFs
@@ -51,16 +50,11 @@
       INTEGER(LONG)                   :: J                  ! DO loop index
       INTEGER(LONG)                   :: JERR               ! Error count
       INTEGER(LONG)                   :: SETID              ! Load set ID on PLOADi card
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BD_PLOAD2_BEGEND
+
   
       REAL(DOUBLE)  :: RPRESS
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! PLOAD2 Bulk Data card check
@@ -167,12 +161,7 @@
 
       NPCARD = NPCARD + 1
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

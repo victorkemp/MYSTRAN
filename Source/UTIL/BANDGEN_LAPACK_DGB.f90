@@ -31,12 +31,11 @@
 ! rows of MATOUT are not used in storing MATIN terms (they must be needed in the ARPACK algorithm for other purposes?)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  SPARSTOR
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BANDGEN_BEGEND
 
       USE BANDGEN_LAPACK_DGB_USE_IFs
 
@@ -60,17 +59,12 @@
       INTEGER(LONG)                   :: K                    ! Counter
       INTEGER(LONG)                   :: MATOUT_DIAG_ROW_NUM  ! Number of the row, in mATOUT, where the diagonal of MATIN goes
       INTEGER(LONG)                   :: NUM_TERMS_ROW_I      ! Number of terms in MATIN matrix in row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BANDGEN_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATIN(NTERM_MATIN)   ! Array of terms in sparse matrix MATIN
       REAL(DOUBLE) , INTENT(INOUT)    :: MATOUT(3*KD+1,N)     ! Array of terms in band matrix MATOUT
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 !xx   WRITE(SC1, * )                                       ! Advance 1 line for screen messages
@@ -121,12 +115,7 @@
          WRITE(SC1,*) CR13
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

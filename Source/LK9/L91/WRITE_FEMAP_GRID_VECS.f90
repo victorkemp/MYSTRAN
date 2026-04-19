@@ -29,12 +29,11 @@
 ! Writes grid related vectors to FEMAP neutral file (displ, applied load, SPC and MPC forces)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, NEU
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, NEU
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCORD, NDOFG, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  CORD, GRID, GRID_ID, INV_GRID_SEQ
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_FEMAP_GRID_VECS_BEGEND
  
       USE WRITE_FEMAP_GRID_VECS_USE_IFs
 
@@ -60,7 +59,7 @@
       INTEGER(LONG)                   :: NUM_COMPS         ! 6 if GRID_NUM is an physical grid, 1 if an SPOINT
       INTEGER(LONG)                   :: VEC_ID_OFFSET     ! Offset in determining output vector ID
       INTEGER(LONG)                   :: VEC_ID            ! Vector ID for FEMAP output
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_FEMAP_GRID_VECS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: GRID_VEC(NDOFG)   ! G-set Vector to process
       REAL(DOUBLE)                    :: DIS(3)            ! Array of 3 translation components
@@ -79,12 +78,7 @@
       REAL(DOUBLE)                    :: VEC_MAX           ! Max value in vector
       REAL(DOUBLE)                    :: VEC_MIN           ! Min value in vector
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       TITLE1(1,1) = 'RSS'
@@ -391,12 +385,7 @@
       ENDDO
       WRITE(NEU,1007)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

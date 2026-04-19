@@ -29,10 +29,9 @@
 ! Reads DOF table data (TSET, TDOF, TDOFI) from file LINK1C
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06, L1C, LINK1C, L1C_MSG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06, L1C, LINK1C, L1C_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, MTDOF, NDOFG, NGRID
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  READ_DOF_TABLES_BEGEND
       USE DOF_TABLES, ONLY            :  TDOFI, TDOF, TSET
 
       USE READ_DOF_TABLES_USE_IFs
@@ -48,14 +47,9 @@
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening or reading a file
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN  
       INTEGER(LONG)                   :: REC_NO            ! Record number when reading a file
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = READ_DOF_TABLES_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Make units for writing errors the error file and output file
@@ -65,7 +59,7 @@
 
 ! Open L1C and read data. Skip data sets we don't need by reading them but not saving them
 
-      CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'OLD', L1C_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'OLD', L1C_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read TSET array
 
@@ -135,14 +129,9 @@
          ENDDO 
       ENDDO 
 
-      CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP' )
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

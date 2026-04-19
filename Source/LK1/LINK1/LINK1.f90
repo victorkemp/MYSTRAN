@@ -35,9 +35,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
 
-      USE IOUNT1, ONLY                :  WRT_LOG
-
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F21, F22, F23, F24, L1C, L1F, L1I, L1G, L1J, L1P, L1S, L1U, L1W, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, F21, F22, F23, F24, L1C, L1F, L1I, L1G, L1J, L1P, L1S, L1U, L1W, SC1
                                          
 
       USE IOUNT1, ONLY                :  F21FIL, F22FIL, F23FIL, F24FIL, LINK1C, LINK1F, LINK1I, LINK1G, LINK1J, LINK1P, LINK1S,   &
@@ -104,14 +102,11 @@
 ! Write info to text files
   
       WRITE(F06,150) LINKNO
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,150) LINKNO
-      ENDIF
       WRITE(ERR,150) LINKNO
 
 ! Read LINK1A file
  
-!xx   CALL READ_L1A ( 'KEEP', 'Y' )
+!xx   CALL READ_L1A ( 'KEEP' )
       CALL INIT_COUNTERS
 
 ! Check COMM for successful completion of prior LINKs
@@ -147,30 +142,30 @@ res19:IF (RESTART == 'N') THEN
 
          IF ((NMPC > 0) .OR. (NRIGEL > 0)) THEN
 
-            CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
             IF (NMPC > 0) THEN 
-               CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'OLD', L1S_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1S, LINK1S, OUNT, 'OLD', L1S_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('MPC PROCESSOR                               ')
                CALL MPC_PROC
-               CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1S, LINK1S, 'KEEP' )
             ENDIF
 
             IF (NRIGEL > 0) THEN                           ! Process rigid elements.
-               CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'OLD', L1F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1F, LINK1F, OUNT, 'OLD', L1F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('RIGID ELEMENT PROCESSOR                     ')
                CALL RIGID_ELEM_PROC
-               CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1F, LINK1F, 'KEEP' )
             ENDIF
 
-            CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'Y' )   ! Subr SPARSE_RMG will reopen LINK1S
+            CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )   ! Subr SPARSE_RMG will reopen LINK1S
 
             CALL LINK_MESSAGE('ALLOCATE MEMORY FOR RMG ARRAY               ')
 
                                                            ! Generate sparse RMG (constraint) matrix.
             CALL LINK_MESSAGE('SPARSE RMG PROCESSOR                        ')
             CALL SPARSE_RMG
-            CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )
 
          ENDIF
 
@@ -180,10 +175,10 @@ res19:IF (RESTART == 'N') THEN
                ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1))) THEN
             CALL LINK_MESSAGE('ALLOCATE MEMORY FOR SYS_LOAD ARRAY          ')
             IF (NFORCE > 0) THEN
-               CALL FILE_OPEN ( L1I, LINK1I, OUNT, 'OLD', L1I_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1I, LINK1I, OUNT, 'OLD', L1I_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('FORCE/MOMENT PROCESSOR                      ')
                CALL FORCE_MOM_PROC
-               CALL FILE_CLOSE ( L1I, LINK1I, L1ISTAT, 'Y' )
+               CALL FILE_CLOSE ( L1I, LINK1I, L1ISTAT )
             ENDIF
          ENDIF
      
@@ -199,9 +194,9 @@ res19:IF (RESTART == 'N') THEN
          ENDIF
          INQUIRE ( FILE=F21FIL, EXIST=LEXIST, OPENED=LOPEN )
          IF (LOPEN) THEN
-            CALL FILE_CLOSE ( F21, F21FIL, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( F21, F21FIL, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( F21, F21FIL, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( F21, F21FIL, 'DELETE' )
          ENDIF
 ! Generate G-set mass matrix, MGG
          IF (SKIPMGG == 'N') THEN
@@ -227,9 +222,9 @@ res19:IF (RESTART == 'N') THEN
             CALL EMP
             INQUIRE ( FILE=F22FIL, EXIST=LEXIST, OPENED=LOPEN )
             IF (LOPEN) THEN
-               CALL FILE_CLOSE ( F22, F22FIL, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( F22, F22FIL, 'KEEP' )
             ELSE
-               CALL FILE_CLOSE ( F22, F22FIL, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( F22, F22FIL, 'DELETE' )
             ENDIF
 
 ! Formulate MGGC mass matrix for concentrated masses
@@ -269,10 +264,10 @@ res19:IF (RESTART == 'N') THEN
             IF (NGRAV > 0) THEN
                OUNT(1) = ERR
                OUNT(2) = F06
-               CALL FILE_OPEN ( L1P, LINK1P, OUNT, 'OLD', L1P_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1P, LINK1P, OUNT, 'OLD', L1P_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('GRAV LOAD PROCESSOR                         ')
                CALL GRAV_PROC
-               CALL FILE_CLOSE ( L1P, LINK1P, L1PSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1P, LINK1P, L1PSTAT )
             ENDIF
          ENDIF
   
@@ -283,10 +278,10 @@ res19:IF (RESTART == 'N') THEN
             IF (NRFORCE > 0) THEN
                OUNT(1) = ERR
                OUNT(2) = F06
-               CALL FILE_OPEN ( L1U, LINK1U, OUNT, 'OLD', L1U_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1U, LINK1U, OUNT, 'OLD', L1U_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('RFORCE LOAD PROCESSOR                       ')
                CALL RFORCE_PROC
-               CALL FILE_CLOSE ( L1U, LINK1U, L1USTAT, 'Y' )
+               CALL FILE_CLOSE ( L1U, LINK1U, L1USTAT )
             ENDIF
          ENDIF
          CALL DEALLOCATE_L1_MGG ( 'I2_MGG' )
@@ -298,10 +293,10 @@ res19:IF (RESTART == 'N') THEN
             IF (NSLOAD > 0) THEN
                OUNT(1) = ERR
                OUNT(2) = F06
-               CALL FILE_OPEN ( L1W, LINK1W, OUNT, 'OLD', L1W_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+               CALL FILE_OPEN ( L1W, LINK1W, OUNT, 'OLD', L1W_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
                CALL LINK_MESSAGE('SLOAD LOAD PROCESSOR                        ')
                CALL SLOAD_PROC
-               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT )
             ENDIF
          ENDIF
   
@@ -373,18 +368,18 @@ res19:IF (RESTART == 'N') THEN
 
          INQUIRE ( FILE=F23FIL, EXIST=LEXIST, OPENED=LOPEN )
          IF (LOPEN) THEN
-            CALL FILE_CLOSE ( F23, F23FIL, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( F23, F23FIL, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( F23, F23FIL, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( F23, F23FIL, 'DELETE' )
          ENDIF
 
          CALL DEALLOCATE_IN4_FILES ( 'IN4FIL' )
 
          INQUIRE ( FILE=F24FIL, EXIST=LEXIST, OPENED=LOPEN )
          IF (LOPEN) THEN
-            CALL FILE_CLOSE ( F24, F24FIL, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( F24, F24FIL, 'KEEP' )
          ELSE
-            CALL FILE_CLOSE ( F24, F24FIL, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( F24, F24FIL, 'DELETE' )
          ENDIF
 
 ! Convert system stiff matrix from linked list format to sparse format (SPARSE_KGG calls grid singularity check subr)
@@ -408,12 +403,12 @@ res19:IF (RESTART == 'N') THEN
          WRITE(SC1,*) CR13
          CALL LINK_MESSAGE('WRITE DOF TABLES TO FILE AND DEALLOCATE     ')
          CALL WRITE_DOF_TABLES
-         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP' )
 
 ! Write element data to L1G. Save L1G for use in LINK9.
          IF (LOAD_ISTEP == 1) THEN
 
-            CALL FILE_OPEN ( L1G, LINK1G, OUNT, 'REPLACE', L1G_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1G, LINK1G, OUNT, 'REPLACE', L1G_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
             CALL LINK_MESSAGE('WRITE ELEMENT DATA TO FILE                  ')
 
@@ -428,7 +423,7 @@ res19:IF (RESTART == 'N') THEN
                CALL DEALLOCATE_MODEL_STUF ( 'ESORT2' )
             ENDIF
 
-            CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP', 'Y' )
+            CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP' )
   
          ENDIF
 
@@ -454,15 +449,12 @@ res19:IF (RESTART == 'N') THEN
 
       COMM(LINKNO) = 'C'
 res20:IF (RESTART == 'N') THEN
-         CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+         CALL WRITE_L1A ( 'KEEP', 'Y' )
       ENDIF res20
 
-! Write LINK1 end to F04, F06
+! Write LINK1 end to F06
 
       CALL OURTIM
-      IF (WRT_LOG > 0) THEN
-         WRITE(F04,151) LINKNO
-      ENDIF
       WRITE(F06,151) LINKNO
 
       IF (( DEBUG(193) == 1) .OR. (DEBUG(193) == 999)) THEN

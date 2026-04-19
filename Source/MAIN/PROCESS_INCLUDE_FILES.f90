@@ -31,10 +31,9 @@
 ! the INCLUDE files. This file then becomes the input file by re-opening it as INFILE (the normal input file)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN0, IN1, INC, INFILE, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, IN0, IN1, INC, INFILE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  PROCESS_INCLUDE_FILES_BEGEND
 
       USE PROCESS_INCLUDE_FILES_USE_IFs
 
@@ -48,14 +47,9 @@
       INTEGER(LONG)                   :: CHAR_COL          ! Column number on CARD where character CHAR is found
       INTEGER(LONG)                   :: IERR      = 0     ! Error indicator.
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when reading a Case Control card from unit IN1
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = PROCESS_INCLUDE_FILES_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Initialize
@@ -93,12 +87,7 @@ main: DO
 
       ENDDO main
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

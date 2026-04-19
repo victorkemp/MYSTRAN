@@ -32,12 +32,11 @@
 !  2) SE1, STE1 = element stress data recovery matrices if OPT(3) = 'Y'
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
       USE MODEL_STUF, ONLY            :  BE1, BE2, BUSH_DXA, BUSH_DXB, BUSH_DY, BUSH_DZ, EPROP, KE, OFFDIS_GA_GB, SE1, SE2
-      USE SUBR_BEGEND_LEVELS, ONLY    :  BUSH_BEGEND
 
       USE BUSH_USE_IFs
 
@@ -47,7 +46,7 @@
       CHARACTER(LEN=*) , INTENT(IN)   :: WRITE_WARN        ! If 'Y" write warning messages, otherwise do not
       CHARACTER(1*BYTE), INTENT(IN)   :: OPT(6)            ! 'Y'/'N' flags for whether to calc certain elem matrices
 
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = BUSH_BEGEND
+
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
       INTEGER(LONG)                   :: I,J               ! DO loop indices
 
@@ -57,12 +56,7 @@
       REAL(DOUBLE)                    :: STRE_RCV(2)       ! Two stress recovery values
       REAL(DOUBLE)                    :: STRN_RCV(2)       ! Two strain recovery values
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 ! Initialize:
@@ -182,12 +176,7 @@
 
       ENDIF
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

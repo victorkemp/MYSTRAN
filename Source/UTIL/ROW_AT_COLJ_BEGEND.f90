@@ -32,10 +32,9 @@
 ! ROW_AT_COLJ_END is an array that gives, for each col of sparse CRS input matrix A, the last  row no. of nonzero terms in that col.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  ROW_AT_COLJ_BEGEND_BEGEND
 
       USE ROW_AT_COLJ_BEGEND_USE_IFs
 
@@ -54,14 +53,9 @@
       INTEGER(LONG)                   :: COL_NUM               ! A column number from J_MATIN
       INTEGER(LONG)                   :: I,J,K                 ! DO loop indices or counters 
       INTEGER(LONG)                   :: NTERM_ROW_I           ! Number of terms in matrix A row I
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = ROW_AT_COLJ_BEGEND_BEGEND
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
+
 
 ! **********************************************************************************************************************************
 ! Initialize outputs
@@ -102,12 +96,7 @@
          ENDDO
       ENDDO
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
  
       RETURN
 

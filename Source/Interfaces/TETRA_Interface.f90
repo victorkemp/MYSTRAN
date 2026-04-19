@@ -32,12 +32,11 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_TETRA, NTSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  HALF, QUARTER, ZERO, FOUR
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
-      USE SUBR_BEGEND_LEVELS, ONLY    :  TETRA_BEGEND
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, DT, EID, ELGP, NUM_EMG_FATAL_ERRS, ES, KE, KED, ME, PTE, RHO,           &
@@ -53,7 +52,7 @@
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID             ! Internal element ID
       INTEGER(LONG), INTENT(IN)       :: IORD                    ! Gaussian integ order for element
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = TETRA_BEGEND
+
   
       REAL(DOUBLE)                    :: CBAR(3,3*ELGP)          ! Derivatives of shape fcns wrt x,y,z used in diff stiff matrix
       REAL(DOUBLE)                    :: DUM0(3*ELGP)            ! Intermediate matrix used in solving for elem matrices

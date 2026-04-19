@@ -32,10 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  WRITE_MATRIX_BY_ROWS_BEGEND
  
       IMPLICIT NONE
  
@@ -44,7 +43,7 @@
       INTEGER(LONG), INTENT(IN)       :: NROWS              ! Number of rows in matrix MATOUT
       INTEGER(LONG), INTENT(IN)       :: NCOLS              ! Number of cols in matrix MATOUT
       INTEGER(LONG), INTENT(IN)       :: OUT_UNT            ! Output unit number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = WRITE_MATRIX_BY_ROWS_BEGEND
+
 
       REAL(DOUBLE) , INTENT(IN)       :: MATOUT(NROWS,NCOLS)! Matrix to write out
  

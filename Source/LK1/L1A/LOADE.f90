@@ -28,7 +28,7 @@
  
       ! LOADE reads in the EXEC CONTROL DECK
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, CHKPNT, FATAL_ERR, WARN_ERR, JCARD_LEN, JF,     &
                                          PROG_NAME, SOL_NAME, RESTART
       USE TIMDAT, ONLY                :  TSEC
@@ -38,7 +38,6 @@
       USE OUTPUT4_MATRICES, ONLY      :  ACT_OU4_MYSTRAN_NAMES, ACT_OU4_OUTPUT_NAMES, ALLOW_OU4_MYSTRAN_NAMES,                     &
                                          ALLOW_OU4_OUTPUT_NAMES, OU4_PART_MAT_NAMES, OU4_PART_VEC_NAMES, NUM_OU4_VALID_NAMES
 
-      USE SUBR_BEGEND_LEVELS, ONLY    :  LOADE_BEGEND
  
       USE LOADE_USE_IFs
 
@@ -76,14 +75,9 @@
       INTEGER(LONG)                   :: NTOKEN            ! An output from subr STOKEN (how many tokens were read)
       INTEGER(LONG)                   :: SOL_INT           ! Integer value read from an Exec Control SOL entry
       INTEGER(LONG)                   :: TOKLEN            ! Length of character string sent to subr STOKEN (= LEN(CARD))
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = LOADE_BEGEND
+
  
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
       DOLLAR_WARN = 'N'
@@ -345,12 +339,7 @@
          WRITE(F06,998) EC_OUTPUT4_ERR
          CALL OUTA_HERE ( 'Y' )
       ENDIF
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 

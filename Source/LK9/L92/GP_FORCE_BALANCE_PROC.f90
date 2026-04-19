@@ -31,11 +31,10 @@
       ! should be zero
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, SHORT, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, OP2, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F06, OP2, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, GROUT_GPFO_BIT, IBIT, INT_SC_NUM, JTSUB, NDOFG, NDOFM, MELDOF, NDOFO, NDOFR,&
                                          NELE, NGRID, NUM_CB_DOFS, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY    :  GP_FORCE_BALANCE_PROC_BEGEND
       USE CONSTANTS_1, ONLY           :  ZERO, ONE_HUNDRED
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -76,7 +75,7 @@
       INTEGER(LONG)                   :: NUM_CONN_ELEMS    ! The number of elements that are connected to a specific grid
       INTEGER(LONG)                   :: ROW_NUM_START     ! DOF number where TDOF data begins for a grid
       INTEGER(LONG)                   :: TDOF_ROW          ! Row no. in array TDOF to find GDOF DOF number
-      INTEGER(LONG), PARAMETER        :: SUBR_BEGEND = GP_FORCE_BALANCE_PROC_BEGEND
+
 
       INTEGER(SHORT), DIMENSION(1)    :: Udd = (/0220/)    ! 0220 is the 4 digit ASCII code for a capital U double-dot
 
@@ -124,21 +123,12 @@
       CHARACTER*8, ALLOCATABLE        :: GPFORCE_ETYPE(:)        ! currently unused
       REAL, ALLOCATABLE               :: GPFORCE_FXYZ_MXYZ(:,:)  ! currently unused
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9001) SUBR_NAME,TSEC
- 9001    FORMAT(1X,A,' BEGN ',F10.3)
-      ENDIF
+
 
 ! **********************************************************************************************************************************
 
       ! GPFORCE is unsupported for buckling decks
       IF (SOL_NAME(1:8) == "BUCKLING") THEN
-         IF (WRT_LOG >= SUBR_BEGEND) THEN
-            CALL OURTIM
-            WRITE(F04,9002) SUBR_NAME,TSEC
-         ENDIF
          RETURN
       ENDIF
 
@@ -748,12 +738,7 @@ i_do1:   DO I=1,NGRID                                      ! (2) Set initial val
       FLUSH(F06)
       FLUSH(ERR)
 
-! **********************************************************************************************************************************
-      IF (WRT_LOG >= SUBR_BEGEND) THEN
-         CALL OURTIM
-         WRITE(F04,9002) SUBR_NAME,TSEC
- 9002    FORMAT(1X,A,' END  ',F10.3)
-      ENDIF
+
 
       RETURN
 
