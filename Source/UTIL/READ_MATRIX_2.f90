@@ -112,7 +112,7 @@
          READ(UNT,IOSTAT=IOCHK) NUM_TERMS
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Can't read NUM_TERMS fro file, so quit
          ENDIF
          IF (NUM_TERMS /= NTERMS) THEN
@@ -138,7 +138,7 @@
             ELSE
                REC_NO = K
             ENDIF
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             IERROR = IERROR + 1
          ENDIF
          IF (I2_MATOUT(K) > OLD_ROW_NUM) THEN

@@ -56,7 +56,7 @@
                                          LINK3A,  LINK4A,  LINK4B,  LINK4C,  LINK4D,  LINK5A,  LINK5B,                             &
                                          NEUFIL,  F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,  OP2FIL,  OT4FIL,  OU4FIL
 
-      USE IOUNT1, ONLY                :  BUG_MSG, EIN_MSG, ENF_MSG, ERR_MSG, F04_MSG, F06_MSG, IN0_MSG, OT4_MSG, PCH_MSG,          &
+      USE IOUNT1, ONLY                :  BUG_MSG, EIN_MSG, ENF_MSG, ERR_MSG, F06_MSG, IN0_MSG, OT4_MSG, PCH_MSG,                   &
                                          SEQ_MSG, L1A_MSG, L1B_MSG, L1C_MSG, L1D_MSG, L1E_MSG, L1F_MSG, L1G_MSG, L1H_MSG, L1I_MSG, &
                                          L1J_MSG, L1K_MSG, L1L_MSG, L1M_MSG, L1N_MSG, L1O_MSG, L1P_MSG, L1Q_MSG, L1R_MSG, L1S_MSG, &
                                          L1T_MSG, L1U_MSG, L1V_MSG, L1W_MSG, L1X_MSG, L1Y_MSG, L1Z_MSG,                            &

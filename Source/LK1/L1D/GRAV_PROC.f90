@@ -177,7 +177,7 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
          CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
@@ -193,7 +193,7 @@ i_do1:DO I=1,NGRAV
 
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1P, L1P_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1P, L1P_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Increment READ_ERR and go back to read another grav card
             CYCLE i_do1                                    
          ENDIF
@@ -311,7 +311,7 @@ j_do_22: DO J = 1,NGRAV                                    ! Process GRAV card i
             READ(SCR(1),IOSTAT=IOCHK) SETID,ACID,GRAV_GRID,(ACCEL_RB(K),K=1,6)
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
                CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading scratch file, so quit
             ENDIF

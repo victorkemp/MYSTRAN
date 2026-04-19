@@ -106,7 +106,7 @@
 
 ! Read LINK1A file
  
-!xx   CALL READ_L1A ( 'KEEP', 'Y' )
+!xx   CALL READ_L1A ( 'KEEP' )
       CALL INIT_COUNTERS
 
 ! Check COMM for successful completion of prior LINKs
@@ -449,7 +449,7 @@ res19:IF (RESTART == 'N') THEN
 
       COMM(LINKNO) = 'C'
 res20:IF (RESTART == 'N') THEN
-         CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+         CALL WRITE_L1A ( 'KEEP', 'Y' )
       ENDIF res20
 
 ! Write LINK1 end to F06

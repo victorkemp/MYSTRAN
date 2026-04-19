@@ -70,7 +70,7 @@
 
       DO I=1,4
          IF (IERR(I) > 0) THEN 
-            CALL FILERR ( OUNT, 'Y' )
+            CALL FILERR ( OUNT )
             QUIT = 'Y'
          ENDIF
       ENDDO

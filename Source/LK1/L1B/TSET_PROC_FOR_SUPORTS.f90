@@ -77,7 +77,7 @@ i_do6:DO I=1,NUM_SUPT_CARDS
          READ(L1T,IOSTAT=IOCHK) GRID_NUM, ICOMP
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1T, L1T_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1T, L1T_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading SUPORT data file . No sense continuing
          ENDIF
 

@@ -161,7 +161,7 @@
                REC_NO = REC_NO + 1
                READ(L1H,IOSTAT=IOCHK) YSe(I)
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
                   IERROR = IERROR + 1
                ENDIF
             ENDDO
@@ -386,7 +386,7 @@
                   REC_NO = REC_NO + 1
                   READ(L2F,IOSTAT=IOCHK) UO0_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO
@@ -679,7 +679,7 @@
                   REC_NO = REC_NO + 1
                   READ(L3A,IOSTAT=IOCHK) UL_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO
@@ -726,7 +726,7 @@
                   REC_NO = REC_NO + 1
                   READ(L5A,IOSTAT=IOCHK) UG_COL(I)
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT )
                      IERROR = IERROR + 1
                   ENDIF
                ENDDO

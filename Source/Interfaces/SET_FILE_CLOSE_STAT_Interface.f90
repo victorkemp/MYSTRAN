@@ -33,7 +33,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
  
-      USE IOUNT1, ONLY                :  WRT_ERR, ERRSTAT, F04STAT, SEQSTAT, SPCSTAT, L1ASTAT,                   &
+      USE IOUNT1, ONLY                :  WRT_ERR, ERRSTAT, SEQSTAT, SPCSTAT, L1ASTAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1TSTAT, L1JSTAT, &
                                          L1KSTAT, L1LSTAT, L1MSTAT, L1NSTAT, L1OSTAT, L1PSTAT, L1QSTAT, L1RSTAT, L1SSTAT, L1USTAT, &
                                          L1VSTAT, L1WSTAT, L1XSTAT, L1YSTAT, L1ZSTAT,                                              &

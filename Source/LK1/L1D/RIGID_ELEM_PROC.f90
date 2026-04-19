@@ -64,7 +64,7 @@
          READ(L1F,IOSTAT=IOCHK) RTYPE
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Error reading RTYPE from rigid elem file. Can't continue
          ENDIF
 

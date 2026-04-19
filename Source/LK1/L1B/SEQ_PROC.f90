@@ -335,7 +335,7 @@ exist:IF (LEXIST) THEN                                     ! SEQFIL does exist, 
          IERR0 = 0                                         ! Open SEQ file, read and check STIME
          OPEN (SEQ,FILE=SEQFIL,STATUS='OLD',IOSTAT=IOCHK)
          IF (IOCHK /= 0) THEN
-            CALL OPNERR ( IOCHK, SEQFIL, OUNT, 'Y' )
+            CALL OPNERR ( IOCHK, SEQFIL, OUNT )
             IERR0 = IERR0 +1
             IF (IOCHK < 0) THEN                            ! File cannot be opened
                WRITE(ERR,9991) SEQFIL, GRIDSEQ
@@ -356,11 +356,11 @@ exist:IF (LEXIST) THEN                                     ! SEQFIL does exist, 
             READ(SEQ,'(1X,I11)',IOSTAT=IOCHK) XTIME
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT )
                IERR0 = IERR0 + 1
             ELSE                                           ! No error reading XTIME, so check XTIME = STIME
                IF (XTIME /= STIME) THEN
-                  CALL STMERR ( XTIME, SEQFIL, OUNT, 'Y' )
+                  CALL STMERR ( XTIME, SEQFIL, OUNT )
                   IERR0 = IERR0 + 1
                ENDIF
             ENDIF
@@ -380,7 +380,7 @@ i_do1:      DO                                             ! Loop reading SEQGP 
                IF      (IOCHK <  0) THEN                   ! EOF/EOR so exit
                   EXIT
                ELSE IF (IOCHK >  0) THEN                   ! Error reading a SEQGP card
-                  CALL READERR ( IOCHK, SEQFIL, 'SEQGP cards', REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, SEQFIL, 'SEQGP cards', REC_NO, OUNT )
                   IERR1 = IERR1 + 1
                ELSE                                        ! READ was OK so process record
                   IF (CARD(1:5) == 'SEQGP   ') THEN        ! If SEQGP image, call BD_SEQGP to read it and to add to SEQ1,2 arrays
@@ -528,11 +528,11 @@ i_do1:      DO                                             ! Loop reading SEQGP 
                READ(SEQ,'(1X,I11)',IOSTAT=IOCHK) XTIME
                IF (IOCHK /= 0) THEN
                   REC_NO = 1
-                  CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, SEQFIL, 'STIME', REC_NO, OUNT )
                   IERR1 = IERR1 + 1
                ELSE                                        ! No error reading XTIME, so check XTIME = STIME
                   IF (XTIME /= STIME) THEN
-                     CALL STMERR ( XTIME, SEQFIL, OUNT, 'Y' )
+                     CALL STMERR ( XTIME, SEQFIL, OUNT )
                      IERR1 = IERR1 + 1
                   ENDIF
                ENDIF

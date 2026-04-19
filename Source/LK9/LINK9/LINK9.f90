@@ -241,7 +241,7 @@
       WRITE(F06,150) LINKNO
 
       ! Read LINK1A file
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 
       ! Check COMM for successful completion of prior LINKs
       IF (RESTART == 'Y') THEN
@@ -740,7 +740,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             READ(L5A,IOSTAT=IOCHK) UGV
             IF (IOCHK /=0) THEN
                REC_NO = I - 1
-               CALL READERR (IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR (IOCHK, LINK5A, L5A_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )
             ENDIF
             UG_COL(I) = UGV
@@ -754,7 +754,7 @@ j_do: DO JVEC=1,NUM_SOLNS
                   READ(L5B,IOSTAT=IOCHK) PHIXGV
                   IF (IOCHK /=0) THEN
                      REC_NO = I - 1
-                     CALL READERR (IOCHK, LINK5B, L5B_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR (IOCHK, LINK5B, L5B_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
                   PHIXG_COL(I) = PHIXGV
@@ -974,7 +974,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             MESSAG = 'STIME                   '
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, LINK1E, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1E, MESSAG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Can't read STIME from PG loads file
             ENDIF
          ENDIF
@@ -986,7 +986,7 @@ j_do: DO JVEC=1,NUM_SOLNS
             MESSAG = 'STIME                   '
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, LINK2D, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK2D, MESSAG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Can't read STIME from PS loads file
             ENDIF
          ENDIF
@@ -1276,7 +1276,7 @@ j_do: DO JVEC=1,NUM_SOLNS
 
 ! Write data to L1A
 
-      CALL WRITE_L1A ( L1ASTAT, 'Y', 'Y' )
+      CALL WRITE_L1A ( L1ASTAT, 'Y' )
 
 ! Do file inquire, if requested
 

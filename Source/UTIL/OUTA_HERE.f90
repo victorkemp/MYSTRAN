@@ -70,7 +70,7 @@
          WRITE(SC1,9999)
          CALL WRITE_FILNAM ( F06FIL, SC1, 1 )
 
-         CALL WRITE_L1A ( L1ASTAT, 'N', 'N' )
+         CALL WRITE_L1A ( L1ASTAT, 'N' )
 
 ! Set close status for output files
 

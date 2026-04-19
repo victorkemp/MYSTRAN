@@ -1167,7 +1167,7 @@ j_do2:            DO J=2,LMPCADDC
       DO WHILE(TRIM_LINE(1:1) == '$')
          IF (IOCHK /= 0) THEN
            REC_NO = -99
-           CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT, 'Y')
+           CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT )
            FATAL_ERR = FATAL_ERR + 1
          ENDIF
          READ(IN1,101,IOSTAT=IOCHK) LINE

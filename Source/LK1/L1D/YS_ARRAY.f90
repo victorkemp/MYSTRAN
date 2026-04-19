@@ -75,7 +75,7 @@
          READ(L1H,IOSTAT=IOCHK) GRID_ID_ROW_NUM,COMP,YSV
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
             IERR1H = IERR1H + 1
          ELSE
             CALL TDOF_COL_NUM ( 'SE', SE_SET_COL_NUM )
@@ -90,7 +90,7 @@
 ! If there were any errors based on reading above file, quit.
  
       IF (IERR1H > 0) THEN
-         CALL FILERR ( OUNT, 'Y' )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )                                    ! Errors reading YSe file, so quit
       ENDIF
  

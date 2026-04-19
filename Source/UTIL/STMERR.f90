@@ -24,22 +24,20 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE STMERR ( XTIME, FILNAM, OUNT, WRITE_F04 )
+      SUBROUTINE STMERR ( XTIME, FILNAM, OUNT )
  
 ! Prints error messages when the wrong time stamp, STIME, is read as the first record in a file that has been opened
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  STIME, TSEC
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN
+      USE SCONTR, ONLY                :  FATAL_ERR
+      USE TIMDAT, ONLY                :  STIME
  
       USE STMERR_USE_IFs
 
       IMPLICIT NONE
  
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'STMERR'
       CHARACTER(LEN=*), INTENT(IN)    :: FILNAM            ! File name
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
  
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to
       INTEGER(LONG), INTENT(IN)       :: XTIME             ! Time stamp read from file LINK1A

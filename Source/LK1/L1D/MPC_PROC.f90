@@ -97,14 +97,14 @@ i_do3:DO I=1,NMPC                                          ! Process data from f
          READ(L1S,IOSTAT=IOCHK) SETID                      ! Read the SETID for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
          READ(L1S,IOSTAT=IOCHK) NUM_TRIPLES                ! Read the number of triplets of grid/comp/coeff for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
@@ -119,7 +119,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
                READ(L1S,IOSTAT=IOCHK) GID,COMP,COEFF       ! Read dependent grid/comp/coeff
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
                                                            ! Get row num (in GRID_ID) corresponding to grid GID (we know GID exists)
@@ -150,7 +150,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
 
                   REC_NO = REC_NO + 1
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
 
@@ -195,7 +195,7 @@ j_do3:   DO J=1,NUM_MPCSIDS
                READ(L1S,IOSTAT=IOCHK) GID_JUNK,COMP_JUNK,COEFF_JUNK
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
             ENDDO

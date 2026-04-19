@@ -43,7 +43,7 @@
  
 ! **********************************************************************************************************************************
       IF (IOCHK /= 0) THEN
-         CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 

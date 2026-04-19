@@ -160,7 +160,7 @@
             WRITE(F06,1951) 'RSPLINE', REID, NUM_COMPS_D
          ENDIF
       ELSE
-         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
          IERR = IERR + 1
          JERR = JERR + 1
       ENDIF

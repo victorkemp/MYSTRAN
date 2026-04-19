@@ -53,7 +53,7 @@
       REWIND (UNT)
       READ(UNT,IOSTAT=IOCHK) XTIME
       IF (IOCHK /= 0) THEN
-         CALL READERR ( IOCHK, FILNAM, MESSAG, 1, OUNT, 'Y' )
+         CALL READERR ( IOCHK, FILNAM, MESSAG, 1, OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
 

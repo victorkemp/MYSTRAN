@@ -161,7 +161,7 @@
             WRITE(F06,1951) 'RBE3', REID, NUM_COMPS
          ENDIF
       ELSE
-         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
          IERR = IERR + 1
          JERR = JERR + 1
       ENDIF
@@ -170,7 +170,7 @@
          READ(L1F,IOSTAT=IOCHK) AGRID_I(I), COMPS_I(I), WTi(I)
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
             IERR = IERR + 1
             JERR = JERR + 1
          ENDIF

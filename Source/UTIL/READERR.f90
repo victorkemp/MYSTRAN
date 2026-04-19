@@ -24,23 +24,20 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE READERR (IOCHK, FILNAM, MESSAG, REC_NO, OUNT, WRITE_F04 )
+      SUBROUTINE READERR (IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
  
 ! Writes message about errors encountered when reading files 
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, SC1
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  TSEC
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE IOUNT1, ONLY                :  SC1
+      USE SCONTR, ONLY                :  FATAL_ERR
  
       USE READERR_USE_IFs
 
       IMPLICIT NONE
  
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'READERR'
       CHARACTER(LEN=*), INTENT(IN)    :: MESSAG            ! File description. Used for error messaging
       CHARACTER(LEN=*), INTENT(IN)    :: FILNAM            ! File name
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
  
       INTEGER(LONG), INTENT(IN)       :: IOCHK             ! IOSTAT error number when opening/reading a file
       INTEGER(LONG), INTENT(IN)       :: OUNT(2)           ! File units to write messages to

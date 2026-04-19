@@ -113,7 +113,7 @@
          REC_NO = REC_NO + 1
          IF (IOCHK(I) /= 0) THEN
             IERROR = IERROR + 1
-            CALL READERR ( IOCHK(I), LINK1M, ENAME(I), REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK(I), LINK1M, ENAME(I), REC_NO, OUNT )
          ENDIF
       ENDDO
 
@@ -122,7 +122,7 @@
          READ(L1M,IOSTAT=IOCHK(1)) MODE_NUM(I), EIGEN_VAL(I), GEN_MASS(I)
          IF (IOCHK(1) /= 0) THEN
             IERROR = IERROR + 1
-            CALL READERR ( IOCHK(1), LINK1M, L1M_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK(1), LINK1M, L1M_MSG, REC_NO, OUNT )
          ENDIF
       ENDDO
 

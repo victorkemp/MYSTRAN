@@ -153,7 +153,7 @@ i_do6:DO I=1,NUM_SPC_RECORDS + NUM_SPC1_RECORDS
          READ(L1O,IOSTAT=IOCHK) SETID, ICOMP, GRID1, GRID2, RSPC, DOFSET  
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1O, L1O_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1O, L1O_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading SPC file . No sense continuing
          ENDIF
 

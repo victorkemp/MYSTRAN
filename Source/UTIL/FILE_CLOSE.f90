@@ -28,24 +28,17 @@
  
 ! Closes files and writes message if the close fails
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, SC1
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM
-      USE TIMDAT, ONLY                :  STIME, TSEC
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE IOUNT1, ONLY                :  SC1
 
       USE FILE_CLOSE_USE_IFs
 
       IMPLICIT NONE
 
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'FILE_CLOSE'
-
-!xx   CHARACTER(FILE_NAM_MAXLEN*BYTE), INTENT(IN) :: FILNAM            ! File name
       CHARACTER(LEN=*)   , INTENT(IN) :: FILNAM            ! File name
 
       CHARACTER(LEN=*)   , INTENT(IN) :: CLOSE_STAT        ! Status for close
       CHARACTER(LEN=*)   , INTENT(IN) :: WRITE_F04         ! If 'Y' write to F04, otherwise do not
-
-
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when closing a file

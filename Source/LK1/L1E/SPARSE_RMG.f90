@@ -94,7 +94,7 @@ nterm:   DO
                   CYCLE nterm
                ENDIF
             ELSE IF (IOCHK > 0) THEN
-               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading RMG file, so quit
             ELSE
                EXIT nterm
@@ -124,7 +124,7 @@ read_l1j:DO                                                ! Now calc sparse arr
                   CYCLE read_l1j
                ENDIF
             ELSE IF (IOCHK > 0) THEN
-               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1J, L1J_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading RMG file, so quit
             ELSE
                EXIT read_l1j

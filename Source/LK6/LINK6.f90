@@ -120,7 +120,7 @@
 
 ! Read LINK1A file
  
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 ! Set NUM_CB_DOFS (since it was initialized as 0 in SCONTR and hasn't been calc'd yet, must do this AFTER we call READ_L1A)
 
       NUM_CB_DOFS = 2*NDOFR + NVEC
@@ -235,7 +235,7 @@
          DO I=1,NDOFL
             READ(L3A,IOSTAT=IOCHK) EIGEN_VEC(I,J)
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT )
                IERROR = IERROR + 1
             ENDIF
          ENDDO
@@ -407,7 +407,7 @@
 
 ! Write data to L1A
 
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
 ! Check allocation status of allocatable arrays, if requested
 
       IF (DEBUG(100) > 0) THEN

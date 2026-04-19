@@ -123,7 +123,7 @@
          READ(UNT,IOSTAT=IOCHK) NUM_TERMS
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                                 ! Can't read NUM_TERMS from file, so quit
          ENDIF
          IF (NUM_TERMS /= NTERM) THEN
@@ -151,7 +151,7 @@ k_do1:DO K = 1,NTERM
             ELSE
                REC_NO = K
             ENDIF
-            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Error reading IROW, JCOL, RVAL record from unit UNT
             CYCLE k_do1
          ELSE

@@ -126,7 +126,7 @@
             IF (IOCHK /= 0) THEN
                IERROR = IERROR + 1
                REC_NO = I
-               CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
             ENDIF
          ENDDO
          IF (IERROR /= 0) THEN

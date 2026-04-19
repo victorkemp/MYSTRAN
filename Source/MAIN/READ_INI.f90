@@ -132,7 +132,7 @@
       ELSE
          OPEN (INI,FILE=INIFIL,STATUS='OLD',IOSTAT=IOCHK)
          IF (IOCHK /= 0) THEN
-            CALL OPNERR ( IOCHK, INIFIL, OUNT, 'N' )
+            CALL OPNERR ( IOCHK, INIFIL, OUNT )
             DO
                WRITE(SC1,* ) ' Cannot open MYSTRAN.INI file. Continue? (Y/N)'
                WRITE(SC1,* ) ' If Y, Then default values will be used'

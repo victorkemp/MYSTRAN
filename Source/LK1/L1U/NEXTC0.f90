@@ -127,7 +127,7 @@
       ELSE
          BACKSPACE(IN1)
          REC_NO = -99
-         CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT, 'Y')
+         CALL READERR (IOCHK, INFILE, MESSAG, REC_NO, OUNT)
          FATAL_ERR = FATAL_ERR + 1
       ENDIF
 

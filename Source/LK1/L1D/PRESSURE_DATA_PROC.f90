@@ -129,7 +129,7 @@ pcards:  DO J=1,NPCARD                                     ! Process elem pressu
             READ(L1Q,IOSTAT=IOCHK) CARD                    ! Read element pressure CARD from LINK1Q
             IF (IOCHK /= 0) THEN
                REC_NO = J + 1
-               CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT )
                IERROR = IERROR + 1
                CYCLE isubc
             ENDIF
@@ -276,7 +276,7 @@ k_do6:            DO K=EID1,EID2
          READ(L1Q,IOSTAT=IOCHK) XTIME
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1Q, L1Q_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )                         ! Cannot read STIME from temperature data file, so quit
          ENDIF
  

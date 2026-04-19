@@ -121,7 +121,7 @@
       WRITE(ERR,150) LINKNO
 
       ! Read LINK1A file
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 
       ! Check COMM for successful completion of prior LINKs
       IF (COMM(P_LINKNO) /= 'C') THEN
@@ -383,7 +383,7 @@
       COMM(LINKNO) = 'C'
 
       ! Write data to L1A
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
 
       ! Check allocation status of allocatable arrays, if requested
       IF (DEBUG(100) > 0) THEN

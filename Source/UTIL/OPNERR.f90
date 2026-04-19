@@ -24,14 +24,12 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE OPNERR ( IOCHK, FILNAM, OUNT, WRITE_F04 )
+      SUBROUTINE OPNERR ( IOCHK, FILNAM, OUNT )
  
 ! Prints error messages when IOSTAT is not zero on a file OPEN. 
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, F04FIL
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, RESTART
-      USE TIMDAT, ONLY                :  TSEC
+      USE PENTIUM_II_KIND, ONLY       :  LONG
+      USE SCONTR, ONLY                :  FATAL_ERR, RESTART
  
       USE OPNERR_USE_IFs
 
@@ -40,9 +38,7 @@
       LOGICAL                         :: FILE_EXIST        ! True if FILNAM exists
       LOGICAL                         :: FILE_OPENED       ! True if FILNAM is open
 
-      CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OPNERR'
       CHARACTER(LEN=*), INTENT(IN)    :: FILNAM            ! File name
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
  
       INTEGER(LONG)                   :: I                 ! DO loop index
       INTEGER(LONG), INTENT(IN)       :: IOCHK             ! IOSTAT error number when opening/reading a file

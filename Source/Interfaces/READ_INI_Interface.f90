@@ -45,7 +45,7 @@
                                          L2K,     L2L,     L2M,     L2N,     L2O,     L2P,     L2Q,     L2R,     L2S,     L2T,     &
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OU4
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUGSTAT, ERRSTAT, F04STAT, F06STAT, IN0STAT, IN1STAT,          &
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUGSTAT, ERRSTAT, F06STAT, IN0STAT, IN1STAT,                            &
                                          L1ASTAT, NEUSTAT, SEQSTAT, SPCSTAT,                                                       &
                                          F21STAT, F22STAT, F23STAT, F24STAT, F25STAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &

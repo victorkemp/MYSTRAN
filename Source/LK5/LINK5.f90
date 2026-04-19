@@ -124,7 +124,7 @@
 
 ! Read LINK1A file
  
-      CALL READ_L1A ( 'KEEP', 'Y' )
+      CALL READ_L1A ( 'KEEP' )
 ! Check COMM for successful completion of prior LINKs
 
       IF (SOL_NAME(1:7) == 'STATICS') THEN
@@ -250,7 +250,7 @@
                IF (IOCHK /= 0) THEN
                   IERROR = IERROR + 1
                   REC_NO = I
-                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1H, L1H_MSG, REC_NO, OUNT )
                ENDIF
             ENDDO
             IF (IERROR /= 0) THEN
@@ -434,7 +434,7 @@ j_do: DO J = 1,NUM_SOLNS
             REC_NO = REC_NO + 1
             READ(L3A,IOSTAT=IOCHK) UL_COL(I)               ! For CB, a col of PHIZL. So UG_COL, calc'd in this subr, is a PHIZG col
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK3A, L3A_MSG, REC_NO, OUNT )
                IERROR = IERROR + 1
             ENDIF
          ENDDO
@@ -473,7 +473,7 @@ j_do: DO J = 1,NUM_SOLNS
                      READ(L2F,IOSTAT=IOCHK) UO0_COL(I)
                      IF (IOCHK /= 0) THEN
                         REC_NO = I+1
-                        CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT, 'Y' )
+                        CALL READERR ( IOCHK, LINK2F, L2F_MSG, REC_NO, OUNT )
                         IERROR = IERROR + 1
                      ENDIF
                   ENDDO
@@ -686,7 +686,7 @@ j_do: DO J = 1,NUM_SOLNS
       COMM(LINKNO) = 'C'
 
 ! Write data to L1A
-      CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+      CALL WRITE_L1A ( 'KEEP', 'Y' )
   
 ! Check allocation status of allocatable arrays, if requested
 

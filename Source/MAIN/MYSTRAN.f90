@@ -203,7 +203,7 @@
             I1 = LEN_RESTART_FNAME
             LINK1A(1:I1)  = RESTART_FILNAM(1:I1)
             LINK1A(I1+1:) = 'L1A'
-            CALL READ_L1A ( 'KEEP', 'N' )
+            CALL READ_L1A ( 'KEEP' )
 
             BUGSTAT_OLD = BUGSTAT                          ! Old value from LINK1A
             ERRSTAT_OLD = ERRSTAT                          ! Old value from LINK1A

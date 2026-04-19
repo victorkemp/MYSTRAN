@@ -101,14 +101,14 @@ i_do3:DO I=1,NMPC                                          ! Process data from f
          READ(L1S,IOSTAT=IOCHK) SETID                      ! Read the SETID for the i-th logical MPC    
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
          READ(L1S,IOSTAT=IOCHK) NUM_TRIPLES                ! Read the number of triplets of grid/comp/coeff for the i-th logical MPC
          REC_NO = REC_NO + 1
          IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
 
@@ -132,7 +132,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
 
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
                                                            ! Get the row number, in array GRID_ID, for dependent grid, AGRID_D
@@ -148,7 +148,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
                   READ(L1S,IOSTAT=IOCHK) AGRID_I, IJUNK, RJUNK
                   REC_NO = REC_NO + 1
                   IF (IOCHK /= 0) THEN
-                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                     CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                      CALL OUTA_HERE ( 'Y' )
                   ENDIF
                   IF (AGRID_I /= AGRID_I_PREV) THEN
@@ -190,7 +190,7 @@ j_do3:   DO J=1,NUM_MPCSIDS                                ! NUM_MPCSIDS will be
                READ(L1S,IOSTAT=IOCHK) IJUNK, IJUNK, RJUNK
                REC_NO = REC_NO + 1
                IF (IOCHK /= 0) THEN
-                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1S, L1S_MSG, REC_NO, OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ENDIF
             ENDDO 

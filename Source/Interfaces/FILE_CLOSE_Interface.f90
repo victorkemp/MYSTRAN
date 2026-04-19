@@ -31,10 +31,8 @@
       SUBROUTINE FILE_CLOSE ( UNIT, FILNAM, CLOSE_STAT, WRITE_F04 )
 
  
-      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, SC1
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM
-      USE TIMDAT, ONLY                :  STIME, TSEC
+      USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
+      USE IOUNT1, ONLY                :  SC1
 
       IMPLICIT NONE
  

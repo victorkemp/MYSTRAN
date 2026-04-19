@@ -254,11 +254,11 @@
             ENDIF
             IF (IOCHK /= 0) THEN
                REC_NO = 1
-               CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT, WRITE_F04 )
+               CALL READERR ( IOCHK, FILNAM, MESSAG, REC_NO, OUNT )
                IERR = IERR + 1
             ELSE
                IF (XTIME /= STIME) THEN
-                  CALL STMERR ( XTIME, FILNAM, OUNT, 'Y' )
+                  CALL STMERR ( XTIME, FILNAM, OUNT )
                   IERR = IERR +1
                ENDIF
             ENDIF
@@ -274,12 +274,12 @@
             ENDIF
          ENDIF
       ELSE
-         CALL OPNERR ( IOCHK, FILNAM, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, FILNAM, OUNT )
          IERR = IERR +1
       ENDIF
 
       IF (IERR > 0) THEN
-         CALL FILERR ( OUNT, WRITE_F04 )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  

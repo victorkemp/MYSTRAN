@@ -157,7 +157,7 @@ j_do22:  DO J=1,NSLOAD                                     ! Process SLOAD card 
             READ(L1W,IOSTAT=IOCHK) SETID, SPOINT, FMAG
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT )
                CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT, 'Y' )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF
@@ -198,8 +198,8 @@ k_do221:    DO K = 1,NSID                                  ! There is a match; w
          READ(L1W,IOSTAT=IOCHK) XTIME
          IF (IOCHK /= 0) THEN
             REC_NO = 1
-            CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT, 'Y' )
-            CALL FILERR ( OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT )
+            CALL FILERR ( OUNT )
             CALL OUTA_HERE ( 'Y' )
          ENDIF
  

@@ -145,7 +145,7 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
          CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
          CALL OUTA_HERE ( 'Y' )                            ! Can't open scratch file, so quit
       ENDIF

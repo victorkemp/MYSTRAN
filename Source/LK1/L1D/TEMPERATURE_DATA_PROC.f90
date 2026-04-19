@@ -368,7 +368,7 @@
          READ(L1K,IOSTAT=IOCHK) CARD
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
             IERR = IERR + 1
             CYCLE
          ENDIF
@@ -468,7 +468,7 @@
       READ(L1K,IOSTAT=IOCHK) XTIME
       IF (IOCHK /= 0) THEN
          REC_NO = 1
-         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
          CALL OUTA_HERE ( 'Y' )                            ! Cannot read STIME from temperature data file, so quit
       ENDIF
  
@@ -476,7 +476,7 @@
          READ(L1K,IOSTAT=IOCHK) CARD
          IF (IOCHK /= 0) THEN
             REC_NO = I+1
-            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1
             CYCLE
          ENDIF
@@ -630,7 +630,7 @@
       READ(L1K,IOSTAT=IOCHK) XTIME 
       IF (IOCHK /= 0) THEN
          REC_NO = 1
-         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+         CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
          CALL OUTA_HERE ( 'Y' )                            ! Cannot read STIME from temperature data file, so quit
       ENDIF
  
@@ -644,7 +644,7 @@ ntcrd:DO                                                   ! Top of loop for rea
             CARD_NAME = CARD(1:8)
             IF (IOCHK /= 0) THEN
                REC_NO = ICRD
-               CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
                READ_ERR = READ_ERR + 1
                CYCLE ntcrd
             ENDIF
@@ -696,7 +696,7 @@ cont_cards: DO                                             ! Top of loop for rea
                CALL MKJCARD ( SUBR_NAME, CARD, JCARD )
                IF (IOCHK /= 0) THEN                        ! Error reading temp. data file, so set error & cycle to read another
                   REC_NO = ICRD
-                  CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT, 'Y' )
+                  CALL READERR ( IOCHK, LINK1K, L1K_MSG, REC_NO, OUNT )
                   READ_ERR = READ_ERR + 1
                   CYCLE ntcrd
                ENDIF

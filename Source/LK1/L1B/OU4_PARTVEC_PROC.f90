@@ -255,7 +255,7 @@ j_do1:   DO J=1,NUM_PARTVEC_RECORDS
             READ(L1V,IOSTAT=IOCHK) VNAME, ICOMP, GRID1, GRID2
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1V, L1V_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1V, L1V_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading PARTVEC file . No sense continuing
             ENDIF
 

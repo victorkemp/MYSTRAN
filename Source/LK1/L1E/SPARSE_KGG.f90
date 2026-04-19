@@ -161,8 +161,8 @@
 
       OPEN (SPC,FILE=SPCFIL,STATUS='REPLACE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SPCFIL, OUNT, 'Y')
-         CALL FILERR ( OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SPCFIL, OUNT )
+         CALL FILERR ( OUNT )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
  

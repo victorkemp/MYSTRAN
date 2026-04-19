@@ -1101,7 +1101,7 @@ res18:IF (RESTART == 'N') THEN
       ! rewrites L1A if this a restart - needed to tell LINK9 that this is a restart
       COMM(LINKNO) = 'C'
 res20:IF (RESTART == 'N') THEN
-         CALL WRITE_L1A ( 'KEEP', 'Y', 'Y' )
+         CALL WRITE_L1A ( 'KEEP', 'Y' )
       ENDIF res20
 
       ! Check allocation status of allocatable arrays, if requested

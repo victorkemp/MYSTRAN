@@ -87,7 +87,7 @@
             READ(L1N,IOSTAT=IOCHK) ICOMP,GID1,GID2,DOFSET  ! Read a record from L1N
             REC_NO = REC_NO + 1
             IF (IOCHK /= 0) THEN
-               CALL READERR ( IOCHK, LINK1N, L1N_MSG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, LINK1N, L1N_MSG, REC_NO, OUNT )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading ASET/OMIT file. No sense continuing
             ENDIF
 

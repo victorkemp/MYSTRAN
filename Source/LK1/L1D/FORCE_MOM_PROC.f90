@@ -158,7 +158,7 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
          CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
@@ -179,7 +179,7 @@ i_do1:DO I=1,NFORCE
          READ(L1I,IOSTAT=IOCHK) SETID,AGRID,ACID_L,(FORMON(J),J=1,3),NAME
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1I, L1I_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1I, L1I_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1
             CYCLE i_do1
          ENDIF
@@ -314,7 +314,7 @@ j_do22:  DO J=1,NFORCE                                     ! Process FORCE / MOM
             READ(SCR(1),IOSTAT=IOCHK) SETID,AGRID,ACID_G,(FORMON(K),K=1,3),NAME
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
                CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF

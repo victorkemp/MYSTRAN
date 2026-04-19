@@ -189,7 +189,7 @@
       SCRFIL(1:9) = 'SCRATCH-991'
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
-         CALL OPNERR ( IOCHK, SCRFIL, OUNT, 'Y' )
+         CALL OPNERR ( IOCHK, SCRFIL, OUNT )
          CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
@@ -204,7 +204,7 @@ i_do1:DO I=1,NRFORCE
          READ(L1U,IOSTAT=IOCHK) SETID, ACID_L, RFORCE_GRD, SCALEF_AV, SCALEF_AA, (VEC(J),J=1,3)
          IF (IOCHK /= 0) THEN
             REC_NO = I
-            CALL READERR ( IOCHK, LINK1U, L1U_MSG, REC_NO, OUNT, 'Y' )
+            CALL READERR ( IOCHK, LINK1U, L1U_MSG, REC_NO, OUNT )
             READ_ERR = READ_ERR + 1                        ! Increment READ_ERR and go back to read another RFORCE card
             CYCLE i_do1                                    
          ENDIF
@@ -325,7 +325,7 @@ j_do_22: DO J = 1,NRFORCE                                  ! Process RFORCE card
 
             IF (IOCHK /= 0) THEN
                REC_NO = J
-               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT, 'Y' )
+               CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
                CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading scratch file, so quit
             ENDIF
