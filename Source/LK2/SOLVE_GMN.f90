@@ -397,7 +397,7 @@
       OPEN (SCR(1),STATUS='SCRATCH',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                            ! Can't open scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -545,7 +545,7 @@ FreeS:IF (SOLLIB == 'SPARSE  ') THEN                       ! Last, free the stor
       CALL READ_MATRIX_1 ( SCRFIL, SCR(1), OPND, CLOSE_IT, CLOSE_STAT, MESSAG, 'GMN', NTERM_GMN, READ_NTERM, NDOFM,                &
                            I_GMN, J_GMN, GMN)
  
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
 
 
 

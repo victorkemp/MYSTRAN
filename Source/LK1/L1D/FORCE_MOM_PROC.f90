@@ -159,7 +159,7 @@
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -315,7 +315,7 @@ j_do22:  DO J=1,NFORCE                                     ! Process FORCE / MOM
             IF (IOCHK /= 0) THEN
                REC_NO = J
                CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF
  
@@ -341,7 +341,7 @@ k_do221:    DO K = 1,NSID                                  ! There is a match; w
             ELSE
                WRITE(ERR,1516) SUBR_NAME,NAME
                WRITE(F06,1516) SUBR_NAME,NAME
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                FATAL_ERR = FATAL_ERR + 1
                CALL OUTA_HERE ( 'Y' )                      ! Coding error (not FORCE or MOMENT), so quit
             ENDIF
@@ -366,7 +366,7 @@ k_do222:    DO K = COMP1,COMP2
                   WRITE(ERR,1514) SUBR_NAME
                   WRITE(F06,1514) SUBR_NAME
                   FATAL_ERR = FATAL_ERR + 1
-                  CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+                  CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                   CALL OUTA_HERE ( 'Y' )                   ! Coding error (dim on array FORMON out of bounds), so quit
                ELSE
                   FORCEI = SCALE*FORMON(K1)
@@ -387,7 +387,7 @@ k_do222:    DO K = COMP1,COMP2
  
       ENDDO i_do2
  
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
  
 
 

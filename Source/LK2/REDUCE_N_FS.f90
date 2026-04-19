@@ -118,7 +118,7 @@
       CALL ALLOCATE_COL_VEC ( 'YSe', NDOFSE, SUBR_NAME )
       IF (NDOFSE > 0) THEN
 
-         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
          IERROR = 0
          DO I=1,NDOFSE
@@ -135,7 +135,7 @@
             CALL OUTA_HERE ( 'Y' )                                 ! Quit due to read errors in YSe array file
          ENDIF
   
-         CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP' )
 
          IF (DEBUG(26) == 1) THEN
             CALL WRITE_VECTOR ( 'SE-SET YS ENFORCED DISPLS','DISPL', NDOFSE, YSe )

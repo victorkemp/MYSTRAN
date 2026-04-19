@@ -71,7 +71,7 @@
       OUNT(1) = ERR
       OUNT(2) = F06
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'REPLACE', MESSAG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'REPLACE', MESSAG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! Write sparse (compressed row storage) matrix to file in i, j, val format:
 
@@ -91,7 +91,7 @@
       ENDDO
 
       IF (CLOSE_IT == 'Y') THEN
-         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT, 'Y' )
+         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT )
       ENDIF
 
 

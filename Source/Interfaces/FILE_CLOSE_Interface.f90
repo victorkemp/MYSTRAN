@@ -28,7 +28,7 @@
 
    INTERFACE
 
-      SUBROUTINE FILE_CLOSE ( UNIT, FILNAM, CLOSE_STAT, WRITE_F04 )
+      SUBROUTINE FILE_CLOSE ( UNIT, FILNAM, CLOSE_STAT )
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
@@ -39,7 +39,6 @@
       CHARACTER(LEN=*)   , INTENT(IN) :: FILNAM            ! File name
 
       CHARACTER(LEN=*)   , INTENT(IN) :: CLOSE_STAT        ! Status for close
-      CHARACTER(LEN=*)   , INTENT(IN) :: WRITE_F04         ! If 'Y' write to F04, otherwise do not
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
 

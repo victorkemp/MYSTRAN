@@ -90,7 +90,7 @@
       UNT    = L1D
       MESSAG = L1D_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read subcase numbers, titling, load request data
 
@@ -287,9 +287,9 @@
       IF (INT2 /= ANY_STRE_OUTPUT)      CALL DATA_SET_SIZE_ERROR ( LINK1D, NAME_Is, 'NSUB', NSUB, INT2 )
 
       IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-         CALL FILE_CLOSE ( L1D, LINK1D, L1DSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1D, LINK1D, L1DSTAT )
       ELSE
-         CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1D, LINK1D, 'KEEP' )
       ENDIF
  
 ! **********************************************************************************************************************************
@@ -299,7 +299,7 @@
       UNT    = L1G
       MESSAG = L1G_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read ETYPE, EPNT, ESORT1 ESORT,2, EOFF
 
@@ -893,9 +893,9 @@
       ENDDO 
  
       IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-         CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT )
       ELSE
-         CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1G, LINK1G, 'KEEP' )
       ENDIF
  
 ! **********************************************************************************************************************************
@@ -909,7 +909,7 @@
 
          IF (NTCARD > 0) THEN
  
-            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read TPNT
 
@@ -978,9 +978,9 @@
             ENDDO 
 
             IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-               CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT )
             ELSE
-               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1K, LINK1K, 'KEEP' )
             ENDIF
 
          ENDIF
@@ -998,7 +998,7 @@
 
          IF (NPCARD > 0) THEN
  
-            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read PPNT
 
@@ -1079,9 +1079,9 @@
             ENDDO 
 
             IF ((SOL_NAME(1:8) /= 'BUCKLING') .AND. (SOL_NAME(1:8) /= 'NLSTATIC')) THEN
-               CALL FILE_CLOSE ( L1Q, LINK1Q, L1QSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1Q, LINK1Q, L1QSTAT )
             ELSE
-               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1Q, LINK1Q, 'KEEP' )
             ENDIF
 
          ENDIF

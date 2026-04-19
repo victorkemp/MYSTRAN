@@ -24,7 +24,7 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE FILE_OPEN (UNIT, FILNAM, OUNT, STATUS, MESSAG, RW_STIME, FORMAT, ACTION, POSITION, WRITE_L1A, WRITE_VER, WRITE_F04)
+      SUBROUTINE FILE_OPEN (UNIT, FILNAM, OUNT, STATUS, MESSAG, RW_STIME, FORMAT, ACTION, POSITION, WRITE_L1A, WRITE_VER)
 
       ! Opens formatted files that have STIME for read or write. If open for read, check STIME. If open for write, write STIME
       ! If file needs to be opened for READWRITE, this subr needs to be called twice:
@@ -75,8 +75,6 @@
       !    Y/N : write to L1A???
       ! WRITE_VER : str1
       !    Y/N : write to VER???
-      ! WRITE_F04 : str1
-      !    Y/N : write to F04
       !
       ! Unused
       ! -------
@@ -92,7 +90,7 @@
       !
       ! Examples
       ! --------
-      ! FILE_OPEN ( OP2, OP2FIL, OUNT,'OLD    ', OP2_MSG,'NEITHER','UNFORMATTED','WRITE','REWIND','N','N','Y')
+      ! FILE_OPEN ( OP2, OP2FIL, OUNT,'OLD    ', OP2_MSG,'NEITHER','UNFORMATTED','WRITE','REWIND','N','N')
       !
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  F06, IN1, SC1, WRT_ERR
@@ -114,7 +112,6 @@
       CHARACTER(LEN=*), INTENT(IN)    :: POSITION          ! File error message
       CHARACTER(LEN=*), INTENT(IN)    :: STATUS            ! File status indicator (NEW, OLD, REPLACE)
       CHARACTER(LEN=*), INTENT(IN)    :: RW_STIME          ! Indicator of whether to read or write STIME
-      CHARACTER(LEN=*), INTENT(IN)    :: WRITE_F04         ! If 'Y' write subr begin/end times to F04 (if WRT_LOG >= SUBR_BEGEND)
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_L1A         ! 'Y'/'N' Arg passed to subr OUTA_HERE
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_VER         ! 'Y'/'N' Arg to tell whether to write MYSTRAN version info
       CHARACTER( 9*BYTE)              :: NAM_ACT 

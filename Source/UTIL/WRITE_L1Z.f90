@@ -48,7 +48,7 @@
 
 
 ! **********************************************************************************************************************************
-      CALL FILE_OPEN ( L1Z, LINK1Z, OUNT, 'REPLACE', L1Z_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1Z, LINK1Z, OUNT, 'REPLACE', L1Z_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       WRITE(L1Z) SOL_NAME
       WRITE(L1Z) NSUB
       WRITE(L1Z) MPCSET
@@ -57,7 +57,7 @@
          WRITE(L1Z) SUBLOD(I,1), SUBLOD(I,2)
       ENDDO
       WRITE(L1Z) CC_EIGR_SID
-      CALL FILE_CLOSE ( L1Z, LINK1Z, L1ZSTAT, 'Y' )
+      CALL FILE_CLOSE ( L1Z, LINK1Z, L1ZSTAT )
 
 ! **********************************************************************************************************************************
  

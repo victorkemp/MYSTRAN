@@ -88,7 +88,7 @@
       UNT    = L1B
       MESSAG = L1B_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read GRID, RGRID data
 
@@ -159,7 +159,7 @@
          CALL READ_CHK ( IOCHK, FILNAM, NAME_ShouldBe, REC_NO, OUNT )
       ENDDO 
    
-      CALL FILE_CLOSE ( L1B, LINK1B, L1BSTAT, 'Y' )
+      CALL FILE_CLOSE ( L1B, LINK1B, L1BSTAT )
    
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! Open L1G
@@ -168,7 +168,7 @@
       UNT    = L1G
       MESSAG = L1G_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read ETYPE, EPNT, ESORT1 ESORT,2, EOFF
 
@@ -742,7 +742,7 @@
          CALL READ_CHK ( IOCHK, FILNAM, NAME_ShouldBe, REC_NO, OUNT )
       ENDDO 
  
-      CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT, 'Y' )
+      CALL FILE_CLOSE ( L1G, LINK1G, L1GSTAT )
  
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! Open L1K and read data
@@ -753,7 +753,7 @@
 
       IF (NTCARD > 0) THEN
  
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read TPNT
 
@@ -821,7 +821,7 @@
             ENDDO 
          ENDDO 
 
-         CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT, 'Y' )
+         CALL FILE_CLOSE ( L1K, LINK1K, L1KSTAT )
 
       ENDIF
 
@@ -834,7 +834,7 @@
 
       IF (NTCARD > 0) THEN
  
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
 ! Read PPNT
 
@@ -923,7 +923,7 @@
       UNT    = L1Y
       MESSAG = L1Y_MSG
 
-      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read CONM2, RCONM2 data
 

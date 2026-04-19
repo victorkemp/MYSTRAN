@@ -293,11 +293,11 @@ k_do6:            DO K=EID1,EID2
  
 ! First close and delete L1Q file
  
-      CALL FILE_CLOSE ( L1Q, LINK1Q, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( L1Q, LINK1Q, 'DELETE' )
  
 ! Open L1Q for write:
  
-      CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1Q, LINK1Q, OUNT, 'REPLACE', L1Q_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
       DATA_SET_NAME = 'PPNT'
       WRITE(L1Q) DATA_SET_NAME

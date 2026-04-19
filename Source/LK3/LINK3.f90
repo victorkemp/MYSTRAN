@@ -214,7 +214,7 @@ Factr:IF (SOLLIB == 'BANDED  ') THEN                       ! Use LAPACK
 
 ! Open file for writing displs to.
  
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
 ! Loop on subcases
 
@@ -365,7 +365,7 @@ FreeS:IF (SOLLIB == 'SPARSE  ') THEN                       ! Last, free the stor
 !xx   WRITE(SC1,12345,ADVANCE='NO') '       Deallocate PL_COL', CR13   ;   CALL DEALLOCATE_COL_VEC  ( 'PL_COL' )
 !xx   WRITE(SC1,12345,ADVANCE='NO') '       Deallocate PL    ', CR13   ;   CALL DEALLOCATE_SPARSE_MAT ( 'PL' )
 
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )
 
 ! Process is now complete so set COMM(LINKNO)
   

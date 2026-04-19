@@ -178,7 +178,7 @@
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                                    ! Error opening scratch file, so quit
       ENDIF
       REWIND (SCR(1))
@@ -312,7 +312,7 @@ j_do_22: DO J = 1,NGRAV                                    ! Process GRAV card i
             IF (IOCHK /= 0) THEN
                REC_NO = J
                CALL READERR ( IOCHK, SCRFIL, MESSAG, REC_NO, OUNT )
-               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+               CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
                CALL OUTA_HERE ( 'Y' )                      ! Error reading scratch file, so quit
             ENDIF
 
@@ -446,7 +446,7 @@ l_do_2214:     DO L = 1,6
  
       WRITE(SC1,*) CR13 
 
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
  
 
 

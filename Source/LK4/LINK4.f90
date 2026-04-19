@@ -338,7 +338,7 @@
       ENDIF
 
       ! Open and set up file L3A (used to hold eigenvectors)
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'REPLACE', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
       ! Write out computed eigenvectors to L3A
       CALL LINK_MESSAGE('WRITE EIGENVECTORS TO DISK FILE')
@@ -347,7 +347,7 @@
            WRITE(L3A) EIGEN_VEC(I,J)
          ENDDO
       ENDDO
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )
 
       ! Optional eigenvector debug output
       IF (DEBUG(43) == 1) THEN

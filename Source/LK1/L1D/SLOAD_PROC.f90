@@ -158,7 +158,7 @@ j_do22:  DO J=1,NSLOAD                                     ! Process SLOAD card 
             IF (IOCHK /= 0) THEN
                REC_NO = J
                CALL READERR ( IOCHK, LINK1W, 'SLOAD FILE', REC_NO, OUNT )
-               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1W, LINK1W, L1WSTAT )
                CALL OUTA_HERE ( 'Y' )                              ! Error reading scratch file, so quit
             ENDIF
  

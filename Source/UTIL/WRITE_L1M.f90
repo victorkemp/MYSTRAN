@@ -55,7 +55,7 @@
 
 !xx   STATUS = 'OLD    '
 !xx   RW     = 'WRITE'
-      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'REPLACE', L1M_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
       CALL LINK_MESSAGE('WRITE EIGENVALUE DATA FROM PRIOR LINK')
 
@@ -84,7 +84,7 @@
          WRITE(L1M) MODE_NUM(I), EIGEN_VAL(I), GEN_MASS(I)
       ENDDO
 
-      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP' )
 
 
 ! **********************************************************************************************************************************

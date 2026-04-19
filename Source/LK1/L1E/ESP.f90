@@ -486,7 +486,7 @@ stfpnt0:          DO                                       ! so, run this loop u
       OPEN (SCR(1),STATUS='SCRATCH',POSITION='REWIND',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )
       ENDIF
       REWIND (SCR(1))
@@ -504,11 +504,11 @@ stfpnt0:          DO                                       ! so, run this loop u
          IF (IOCHK /= 0) THEN
             REC_NO = J
             CALL READERR ( IOCHK, SCRFIL, 'SCR FILE WITH STF3', REC_NO, OUNT )
-            CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
             CALL OUTA_HERE ( 'Y' )                         ! Error reading scratch file, so quit
          ENDIF
       ENDDO
-      CALL FILE_CLOSE (SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE (SCR(1), SCRFIL, 'DELETE' )
 
 ! Reset LTERM and NTERM to appropriate values
 

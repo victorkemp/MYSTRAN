@@ -146,7 +146,7 @@
       OPEN (SCR(1),STATUS='SCRATCH',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                            ! Can't open scratch file, so quit
       ENDIF
  
@@ -239,7 +239,7 @@
 
       CALL MATTRNSP_SS ( NDOFR, NDOFL, NTERM_DLR, 'DLRt', I_DLRt, J_DLRt, DLRt, 'DLR', I_DLR, J_DLR, DLR )
 
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
 
 ! Print out constraint matrix DLR, if requested
 

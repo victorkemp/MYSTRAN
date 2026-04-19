@@ -228,7 +228,7 @@
 
 ! Open file that has L-set eigenvectors and read them
 
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       CALL LINK_MESSAGE('READ EIGENVECTORS FROM FILE')
       CALL ALLOCATE_EIGEN1_MAT ( 'EIGEN_VEC', NDOFL, NVEC, SUBR_NAME )
       DO J=1,NVEC
@@ -240,7 +240,7 @@
             ENDIF
          ENDDO
       ENDDO 
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )  
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )  
 
       IF (IERROR > 0) THEN
          CALL OUTA_HERE ( 'Y' )
@@ -335,7 +335,7 @@
 ! Rewind L3A and write PHIZL to it and then close L3A
 
       CALL LINK_MESSAGE('WRITE L-set PHIZL to FILE')
-      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       NUM_SOLNS = NUM_CB_DOFS
       DO I=1,NUM_SOLNS
          CALL GET_SPARSE_CRS_COL ( 'PHIZL', I, NTERM_PHIZL, NDOFL, NUM_SOLNS, I_PHIZL, J_PHIZL, PHIZL, ONE, PHIZL_COL, NULL_COL )
@@ -343,7 +343,7 @@
             WRITE(L3A) PHIZL_COL(J)
          ENDDO
       ENDDO
-      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )         
+      CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )         
 
 ! Calc modal participation factors and modal mass
 

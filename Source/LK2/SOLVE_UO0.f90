@@ -80,7 +80,7 @@
 
 ! Open file for writing UO0
                                                            ! Write GOA matrix to file L2F
-      CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'REPLACE', L2F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'REPLACE', L2F_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! **********************************************************************************************************************************
 ! Solve for UO0 by looping on columns of PO ("loads") to get columns of UO0 ("displs")
@@ -162,7 +162,7 @@
 
       CALL DEALLOCATE_COL_VEC ( 'UO0_COL' )
 
-      CALL FILE_CLOSE ( L2F, LINK2F, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L2F, LINK2F, 'KEEP' )
 
 
 

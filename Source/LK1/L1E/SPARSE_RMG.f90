@@ -78,7 +78,7 @@
 
       IF (NDOFM > 0) THEN
 
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
  
          NTERM_RMG = 0                                     ! First, calc NTERM_RMG
          REC_NO = 0
@@ -100,11 +100,11 @@ nterm:   DO
                EXIT nterm
             ENDIF
          ENDDO nterm
-         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'N' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )
                                                            ! Allocate memory for RMG sparse arrays
          CALL ALLOCATE_SPARSE_MAT ( 'RMG', NDOFM, NTERM_RMG, SUBR_NAME )
 
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'OLD', L1J_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
          KTERM_RMG = 0
          REC_NO    = 0
@@ -139,7 +139,7 @@ read_l1j:DO                                                ! Now calc sparse arr
             ENDIF
          ENDDO
 
-         CALL FILE_CLOSE ( L1J, LINK1J, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'DELETE' )
 
 ! Sort RMG so that the rows (M-set DOF's) are in numerically increasing order
 
@@ -147,12 +147,12 @@ read_l1j:DO                                                ! Now calc sparse arr
 
 ! Rewrite RMG matrix in the format i, j, RMG(i,j) to L1J 
  
-         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1J, LINK1J, OUNT, 'REPLACE', L1J_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          WRITE(L1J) NTERM_RMG
          DO I=1,NTERM_RMG
             WRITE(L1J) I2_RMG(I),J_RMG(I),RMG(I) 
          ENDDO      
-         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1J, LINK1J, 'KEEP' )
 
       ENDIF
 

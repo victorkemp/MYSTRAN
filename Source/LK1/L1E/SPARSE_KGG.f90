@@ -154,7 +154,7 @@
   
       OUNT(1) = ERR
       OUNT(2) = F06
-      CALL FILE_OPEN ( L1L, LINK1L, OUNT, 'REPLACE', L1L_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1L, LINK1L, OUNT, 'REPLACE', L1L_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
       WRITE(L1L) NTERM_KGG
 
 ! Open SPC to write SPC1 records if KGG_SINGULARITY_PROC finds singularities
@@ -313,14 +313,14 @@ j_do4:   DO J=1,NIND_GRDS_MPCS                           ! on MPC's since they m
       ENDIF
 
       IF (NUM_PCHD_SPC1 > 0) THEN                       ! Close SPC file and, if any records were written to it, save it
-         CALL FILE_CLOSE ( SPC, SPCFIL, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL, 'KEEP' )
          IF (SPC1QUIT == 'Y') THEN
             WRITE(ERR,9991) SUBR_NAME, SPC1QUIT
             WRITE(F06,9991) SUBR_NAME, SPC1QUIT
             CALL OUTA_HERE ( 'Y' )
          ENDIF
       ELSE
-         CALL FILE_CLOSE ( SPC, SPCFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL, 'DELETE' )
       ENDIF
 
       IF (KTERM_KGG /= NTERM_KGG) THEN                      ! Check KTERM_KGG = NTERM_KGG
@@ -330,7 +330,7 @@ j_do4:   DO J=1,NIND_GRDS_MPCS                           ! on MPC's since they m
          CALL OUTA_HERE ( 'Y' )                             ! Coding error, so quit
       ENDIF
 
-      CALL FILE_CLOSE ( L1L, LINK1L, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1L, LINK1L, 'KEEP' )
       WRITE(ERR,101) NUM_MAX
       IF (SUPINFO == 'N') THEN
          WRITE(F06,101) NUM_MAX

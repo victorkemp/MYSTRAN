@@ -127,7 +127,7 @@ j_do0:   DO J = 1,NDOFG
   
       OUNT(1) = ERR
       OUNT(2) = F06
-      CALL FILE_OPEN ( L1R, LINK1R, OUNT, 'REPLACE', L1R_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1R, LINK1R, OUNT, 'REPLACE', L1R_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
       KTERM_MGGE = 0
       I_MGGE(1) = 1
@@ -285,7 +285,7 @@ j_do3:      DO J = 1,NUM
          ENDDO
       ENDIF
 
-      CALL FILE_CLOSE ( L1R, LINK1R, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1R, LINK1R, 'KEEP' )
 
 ! Get stats on MGG to write to F06
 

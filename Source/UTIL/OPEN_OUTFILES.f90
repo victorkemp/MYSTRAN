@@ -122,9 +122,9 @@
          INQUIRE (FILE=FILNAM,OPENED=FILE_OPND)             ! If it is opened we assume it is already positioned at the end
          IF (.NOT.FILE_OPND) THEN
             IF (UNIT /= SC1) THEN                           ! Open file, check STIME, close file and then reopen as APPEND
-               CALL FILE_OPEN ( UNIT, FILNAM, OUNT, 'OLD', FILE_MSG, 'READ_STIME', 'FORMATTED', 'READ'     , 'REWIND','Y','N', 'Y')
-               CALL FILE_CLOSE ( UNIT, FILNAM, 'KEEP', 'Y' )
-               CALL FILE_OPEN ( UNIT, FILNAM, OUNT, 'OLD', FILE_MSG, 'NEITHER'   , 'FORMATTED', 'READWRITE', 'APPEND','Y','N', 'Y')
+               CALL FILE_OPEN ( UNIT, FILNAM, OUNT, 'OLD', FILE_MSG, 'READ_STIME', 'FORMATTED', 'READ'     , 'REWIND','Y','N')
+               CALL FILE_CLOSE ( UNIT, FILNAM, 'KEEP' )
+               CALL FILE_OPEN ( UNIT, FILNAM, OUNT, 'OLD', FILE_MSG, 'NEITHER'   , 'FORMATTED', 'READWRITE', 'APPEND','Y','N')
             ENDIF
          ENDIF
       ELSE

@@ -101,7 +101,7 @@
       OPEN (SCR(1),STATUS='SCRATCH',FORM='UNFORMATTED',ACTION='READWRITE',IOSTAT=IOCHK)
       IF (IOCHK /= 0) THEN
          CALL OPNERR ( IOCHK, SCRFIL, OUNT )
-         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
          CALL OUTA_HERE ( 'Y' )                            ! Can't open scratch file, so quit
       ENDIF
  
@@ -195,7 +195,7 @@
 
       CALL MATTRNSP_SS ( NDOFR, NDOFL, NTERM_PHIZL1, 'PHIZL1t', I_PHIZL1t, J_PHIZL1t, PHIZL1t, 'PHIZL1', I_PHIZL1, J_PHIZL1, PHIZL1)
 
-      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( SCR(1), SCRFIL, 'DELETE' )
 
 
 

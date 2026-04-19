@@ -63,7 +63,7 @@
   
       OUNT(1) = ERR
       OUNT(2) = F06
-      CALL FILE_OPEN ( L1E, LINK1E, OUNT, 'REPLACE', L1E_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1E, LINK1E, OUNT, 'REPLACE', L1E_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
 ! Count the nonzero's in SYS_LOAD
 
@@ -133,9 +133,9 @@
 
    
       IF (NTERM_PG > 0) THEN
-         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, 'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT, 'Y' )
+         CALL FILE_CLOSE ( L1E, LINK1E, L1ESTAT )
       ENDIF
   
       IF (PRTFOR(1) == 1) THEN                             ! Print PG if requested

@@ -625,7 +625,7 @@
 
 ! Finished reading L1A, so close:
  
-      CALL FILE_CLOSE ( L1A, LINK1A, CLOSE_STAT, 'N' )
+      CALL FILE_CLOSE ( L1A, LINK1A, CLOSE_STAT )
  
 ! Check JERR and stop if > 0
  

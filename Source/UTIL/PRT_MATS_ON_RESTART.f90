@@ -152,7 +152,7 @@
          INQUIRE ( FILE=LINK1H, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
 
-            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             CALL ALLOCATE_COL_VEC ( 'YSe', NDOFS, SUBR_NAME )
 
             REC_NO = 0
@@ -173,7 +173,7 @@
             ENDIF
 
             CALL WRITE_VECTOR ( 'S-SET ENFORCED DISPL VECTOR', 'DISPL', NDOFS, YSe)
-            CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT, 'Y' )
+            CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT )
             CALL DEALLOCATE_COL_VEC ( 'YSe' )
 
          ELSE
@@ -375,7 +375,7 @@
 
          INQUIRE ( FILE=LINK2F, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UO0_COL', NDOFO, SUBR_NAME )
@@ -401,7 +401,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UO0_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L2F, LINK2F, L2FSTAT, 'Y' )
+            CALL FILE_CLOSE ( L2F, LINK2F, L2FSTAT )
 
          ELSE
 
@@ -668,7 +668,7 @@
 
          INQUIRE ( FILE=LINK3A, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UL_COL', NDOFL, SUBR_NAME )
@@ -694,7 +694,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UL_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT, 'Y' )
+            CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT )
 
          ELSE
 
@@ -715,7 +715,7 @@
 
          INQUIRE ( FILE=LINK5A, EXIST=FILE_EXIST )
          IF (FILE_EXIST) THEN
-            CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L5A, LINK5A, OUNT, 'OLD', L5A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
             DO J=1,NUM_SOLNS
 
                CALL ALLOCATE_COL_VEC ( 'UG_COL', NDOFG, SUBR_NAME )
@@ -741,7 +741,7 @@
                CALL DEALLOCATE_COL_VEC ( 'UG_COL' )
 
             ENDDO
-            CALL FILE_CLOSE ( L5A, LINK5A, L5ASTAT, 'Y' )
+            CALL FILE_CLOSE ( L5A, LINK5A, L5ASTAT )
 
          ELSE
 

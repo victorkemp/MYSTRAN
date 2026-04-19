@@ -240,7 +240,7 @@
          IF ((SOL_NAME(1:7) == 'STATICS') .OR. (SOL_NAME(1:8) == 'NLSTATIC') .OR.                                                  &
             ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1))) THEN
 
-            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+            CALL FILE_OPEN ( L1H, LINK1H, OUNT, 'OLD', L1H_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
             CALL LINK_MESSAGE('READ YSe ENFORCED DISPLACEMENTS')
 
@@ -261,9 +261,9 @@
 
             IF ((SOL_NAME(1:8) == 'BUCKLING') .AND. (LOAD_ISTEP == 1)) THEN
                ! ensure L1H survives for the second round
-               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP', 'Y' )
+               CALL FILE_CLOSE ( L1H, LINK1H, 'KEEP' )
             ELSE
-               CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT, 'Y' )
+               CALL FILE_CLOSE ( L1H, LINK1H, L1HSTAT )
             END IF
 
          ENDIF
@@ -299,18 +299,18 @@
 ! Open file that has L-set displs, or eigenvectors ('MODES') or PHIZL ('GEN CB MODEL')
 
       IF (NDOFL > 0) THEN
-         CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L3A, LINK3A, OUNT, 'OLD', L3A_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       ENDIF
 
 ! Open file for writing displs to.
  
-      CALL FILE_CLOSE ( L5A, LINK5A, 'KEEP', 'Y' )
-      CALL FILE_OPEN  ( L5A, LINK5A, OUNT, 'REPLACE', L5A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_CLOSE ( L5A, LINK5A, 'KEEP' )
+      CALL FILE_OPEN  ( L5A, LINK5A, OUNT, 'REPLACE', L5A_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
 ! Open file that has UO0
 
       IF (NTERM_PO > 0) THEN
-         CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L2F, LINK2F, OUNT, 'OLD', L2F_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       ENDIF
 
 ! Set NUM_SOLNS for use in loop (below) to get outputs for each subcase/solution vector
@@ -581,7 +581,7 @@ j_do: DO J = 1,NUM_SOLNS
 
      IF (SOL_NAME(1:12) == 'GEN CB MODEL') THEN
                                                            ! Open file for writing cols of PHIXG
-         CALL FILE_OPEN ( L5B, LINK5B, OUNT, 'REPLACE', L5B_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L5B, LINK5B, OUNT, 'REPLACE', L5B_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
          CALL DEALLOCATE_COL_VEC ( 'UG_COL' )
          CALL EXPAND_PHIXA_TO_PHIXG                        ! Expand PHIXA to PHIXG and write cols to file L5B
@@ -650,16 +650,16 @@ j_do: DO J = 1,NUM_SOLNS
 !xx      CLOSE_STAT = L2FSTAT
          CLOSE_STAT = 'KEEP'
       ENDIF
-      CALL FILE_CLOSE ( L2F, LINK2F, CLOSE_STAT, 'Y' )
+      CALL FILE_CLOSE ( L2F, LINK2F, CLOSE_STAT )
 
       IF (SOL_NAME(1:12) == 'GEN CB MODEL') THEN
-         CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L3A, LINK3A, 'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT, 'Y' )
+         CALL FILE_CLOSE ( L3A, LINK3A, L3ASTAT )
       ENDIF
 
-      CALL FILE_CLOSE ( L5A, LINK5A, 'KEEP', 'Y' )
-      CALL FILE_CLOSE ( L5B, LINK5B, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L5A, LINK5A, 'KEEP' )
+      CALL FILE_CLOSE ( L5B, LINK5B, 'KEEP' )
 
 ! Call OUTPUT4 processor to process output requests for OUTPUT4 matrices generated in this link
 

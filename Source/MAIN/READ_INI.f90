@@ -434,7 +434,7 @@
 
          ENDDO 
 
-         CALL FILE_CLOSE ( INI, INIFIL, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( INI, INIFIL, 'KEEP' )
 
       ENDIF
 

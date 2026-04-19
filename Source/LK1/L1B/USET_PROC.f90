@@ -104,7 +104,7 @@
 
 ! Process USET data from file L1X (data written when USET and USET1 Bulk Data entries were read)
  
-      CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'OLD', L1X_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1X, LINK1X, OUNT, 'OLD', L1X_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 i_do6:DO I=1,NUM_USET_RECORDS
  

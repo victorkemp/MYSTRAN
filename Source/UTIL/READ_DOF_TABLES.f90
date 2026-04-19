@@ -59,7 +59,7 @@
 
 ! Open L1C and read data. Skip data sets we don't need by reading them but not saving them
 
-      CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'OLD', L1C_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'OLD', L1C_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
 ! Read TSET array
 
@@ -129,7 +129,7 @@
          ENDDO 
       ENDDO 
 
-      CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP' )
 
 
 

@@ -173,7 +173,7 @@
 
       IF (LINKNO_START == 0) THEN
                                                            ! Open input data file (FEM model) for reading
-         CALL FILE_OPEN ( IN1, INFILE, OUNT, 'OLD', IN1_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N', 'N' )
+         CALL FILE_OPEN ( IN1, INFILE, OUNT, 'OLD', IN1_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N' )
 
          CALL IS_THIS_A_RESTART                            ! Only check if RESTART entry is in E.C. (need for subr MYSTRAN_FILES)
          REWIND (IN1)
@@ -181,12 +181,12 @@
                                                            ! Process INCLUDE entries in whole DAT file here to create the IN0 file
          CALL PROCESS_INCLUDE_FILES ( NUM_INCL_FILES )
          IF (NUM_INCL_FILES > 0) THEN
-            CALL FILE_CLOSE ( IN1, INFILE, 'KEEP', 'Y' )
-            CALL FILE_CLOSE ( IN0, INFILE, 'KEEP', 'Y' )
-            CALL FILE_OPEN ( IN1, IN0FIL, OUNT, 'OLD', IN0_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N', 'N' )
+            CALL FILE_CLOSE ( IN1, INFILE, 'KEEP' )
+            CALL FILE_CLOSE ( IN0, INFILE, 'KEEP' )
+            CALL FILE_OPEN ( IN1, IN0FIL, OUNT, 'OLD', IN0_MSG, 'NEITHER', 'FORMATTED', 'READ', 'REWIND', 'N', 'N' )
             INFILE(1:) = IN0FIL(1:)
          ELSE
-            CALL FILE_CLOSE ( IN0, INFILE, 'DELETE', 'Y' )
+            CALL FILE_CLOSE ( IN0, INFILE, 'DELETE' )
             REWIND (IN1)
          ENDIF
 
@@ -378,7 +378,7 @@ iters:      DO
 
 
 !xx   IF (WRITE_NEU) THEN
-!xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP', 'Y' )
+!xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP' )
 !xx   ENDIF
 
 ! Write MYSTRAN END to BUG, ERR, F06 and then close those files

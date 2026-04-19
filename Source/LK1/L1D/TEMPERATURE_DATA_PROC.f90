@@ -232,11 +232,11 @@
  
 ! First close and delete L1K file
  
-      CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE', 'Y' )
+      CALL FILE_CLOSE ( L1K, LINK1K, 'DELETE' )
  
 ! Open L1K for write:
  
-      CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1K, LINK1K, OUNT, 'REPLACE', L1K_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
  
       DATA_SET_NAME = 'TPNT'
       WRITE(L1K) DATA_SET_NAME

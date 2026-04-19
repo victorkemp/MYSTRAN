@@ -249,7 +249,7 @@ i_do1:DO I=1,2                                             ! J=1 is for the col 
 
          FOUND_PART_VEC(I) = 'N'
 
-         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'OLD', L1V_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1V, LINK1V, OUNT, 'OLD', L1V_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 j_do1:   DO J=1,NUM_PARTVEC_RECORDS
  
             READ(L1V,IOSTAT=IOCHK) VNAME, ICOMP, GRID1, GRID2
@@ -312,7 +312,7 @@ j_do1:   DO J=1,NUM_PARTVEC_RECORDS
             ENDIF
 
          ENDDO j_do1
-         CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1V, LINK1V, 'KEEP' )
 
          IF (FOUND_PART_VEC(I) == 'N') THEN
 

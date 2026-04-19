@@ -61,7 +61,7 @@
       OUNT(1) = ERR
       OUNT(2) = F06
 
-      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'OLD', L1M_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+      CALL FILE_OPEN ( L1M, LINK1M, OUNT, 'OLD', L1M_MSG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
 
       CALL LINK_MESSAGE('READ EIGENVALUE DATA FROM PRIOR LINK')
 
@@ -126,7 +126,7 @@
          ENDIF
       ENDDO
 
-      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( L1M, LINK1M, 'KEEP' )
 
 ! **********************************************************************************************************************************
  

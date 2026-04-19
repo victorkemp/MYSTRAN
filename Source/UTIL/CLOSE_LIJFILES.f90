@@ -405,14 +405,14 @@
          INQUIRE(FILE=OU4FIL(I),EXIST=LEXIST,OPENED=LOPND)
          IF (LEXIST) THEN
             IF (LOPND) THEN
-               CALL FILE_CLOSE ( OU4(I), OU4FIL(I), OU4STAT(I), 'Y' )
+               CALL FILE_CLOSE ( OU4(I), OU4FIL(I), OU4STAT(I) )
             ELSE
                OPEN (OU4(I),FILE=OU4FIL(I),STATUS='OLD',IOSTAT=IOCHK)
                IF (IOCHK /= 0) THEN
                   CALL OPNERR ( IOCHK, OU4FIL(I), OUNT )
                   CALL OUTA_HERE ( 'Y' )
                ELSE
-                  CALL FILE_CLOSE ( OU4(I), OU4FIL(I), OU4STAT(I), 'Y' )
+                  CALL FILE_CLOSE ( OU4(I), OU4FIL(I), OU4STAT(I) )
                ENDIF
             ENDIF
          ENDIF
@@ -444,14 +444,14 @@
       INQUIRE(FILE=FILNAM,EXIST=LEXIST,OPENED=LOPND)
       IF (LEXIST) THEN
          IF (LOPND) THEN
-            CALL FILE_CLOSE ( UNT, FILNAM, STATUS, 'Y' )
+            CALL FILE_CLOSE ( UNT, FILNAM, STATUS )
          ELSE
             OPEN (UNT,FILE=FILNAM,STATUS='OLD',IOSTAT=IOCHK)
             IF (IOCHK /= 0) THEN
                CALL OPNERR ( IOCHK, FILNAM, OUNT )
                CALL OUTA_HERE ( 'Y' )
             ELSE
-               CALL FILE_CLOSE ( UNT, FILNAM, STATUS, 'Y' )
+               CALL FILE_CLOSE ( UNT, FILNAM, STATUS )
             ENDIF
          ENDIF
       ENDIF

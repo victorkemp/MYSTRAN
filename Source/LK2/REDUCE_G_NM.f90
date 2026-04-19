@@ -682,9 +682,9 @@ i_do: DO I=1,NDOFN
 ! Close SPC file
 
       IF (NUM_PCHD_SPC1 > 0) THEN
-         CALL FILE_CLOSE ( SPC, SPCFIL,  'KEEP', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL,  'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( SPC, SPCFIL,  'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL,  'DELETE' )
       ENDIF
 
 ! IF we changed some DOF's from the N-set to the SA-set regenerate TDOF, TDOFI tables and write them to L1C
@@ -717,9 +717,9 @@ i_do: DO I=1,NDOFN
 
          OUNT(1) = ERR
          OUNT(2) = F06
-         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
          CALL WRITE_DOF_TABLES
-         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP' )
 
       ELSE
 
@@ -859,9 +859,9 @@ j_do:       DO J=JSTART,NDOFG                               ! Loop over rows of 
 ! Close SPC file
 
       IF (NUM_PCHD_SPC1 > 0) THEN
-         CALL FILE_CLOSE ( SPC, SPCFIL,  'KEEP', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL,  'KEEP' )
       ELSE
-         CALL FILE_CLOSE ( SPC, SPCFIL,  'DELETE', 'Y' )
+         CALL FILE_CLOSE ( SPC, SPCFIL,  'DELETE' )
       ENDIF
 
 ! IF we changed some DOF's from the N-set to the SA-set regenerate TDOF, TDOFI tables and write them to L1C
@@ -894,11 +894,11 @@ j_do:       DO J=JSTART,NDOFG                               ! Loop over rows of 
 
          OUNT(1) = ERR
          OUNT(2) = F06
-         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( L1C, LINK1C, OUNT, 'REPLACE', L1C_MSG, 'WRITE_STIME', 'UNFORMATTED', 'WRITE', 'REWIND', 'Y', 'N' )
 
          CALL WRITE_DOF_TABLES
 
-         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP', 'Y' )
+         CALL FILE_CLOSE ( L1C, LINK1C, 'KEEP' )
 
       ELSE
 

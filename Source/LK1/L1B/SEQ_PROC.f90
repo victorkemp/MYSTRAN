@@ -554,7 +554,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
 
             ENDIF
 
-            CALL FILE_CLOSE ( SEQ, SEQFIL, SEQSTAT, 'Y' )
+            CALL FILE_CLOSE ( SEQ, SEQFIL, SEQSTAT )
 
          ELSE
 
@@ -657,7 +657,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
       CHARACTER(LEN=*), INTENT(IN)    :: CLOSE_STAT        ! Status for closing SEQFIL
 
 ! **********************************************************************************************************************************
-      CALL FILE_CLOSE ( SEQ, SEQFIL, CLOSE_STAT, 'Y' )
+      CALL FILE_CLOSE ( SEQ, SEQFIL, CLOSE_STAT )
 
       IF (SEQQUIT == 'Y') THEN
          WRITE(ERR,8881) SUBR_NAME, SEQQUIT

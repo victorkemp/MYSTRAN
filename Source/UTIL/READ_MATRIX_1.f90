@@ -114,7 +114,7 @@
       OUNT(2) = F06
 
       IF (OPND == 'N') THEN
-         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N', 'Y' )
+         CALL FILE_OPEN ( UNT, FILNAM, OUNT, 'OLD', MESSAG, 'READ_STIME', 'UNFORMATTED', 'READ', 'REWIND', 'Y', 'N' )
       ENDIF
 
 ! Should we read NTERM from file before reading matrix?
@@ -189,7 +189,7 @@ k_do1:DO K = 1,NTERM
       ENDIF
 
       IF (CLOSE_IT == 'Y') THEN
-         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT, 'Y' )
+         CALL FILE_CLOSE ( UNT, FILNAM, CLOSE_STAT )
       ENDIF
 
 ! Check sensibility of I_MATOUT

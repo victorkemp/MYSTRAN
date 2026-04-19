@@ -190,7 +190,7 @@
 ! Open the IN4 file containing the mass and stiff matrices for this elem
 
       CALL FILE_OPEN ( IN4, IN4FIL(USERIN_IN4_INDEX), OUNT, 'OLD', IN4_MSG, 'NEITHER', 'UNFORMATTED', 'READ', 'REWIND',            &
-                       'Y', 'N', 'Y' )
+                       'Y', 'N' )
 
 ! If OPT(1) is 'Y', get the elem mass matrix from the IN4 file and expand it from boundary DOF size to ELDOF size (6 comps/grid).
 
@@ -321,7 +321,7 @@
       CALL DEALLOCATE_IN4_FILES ( 'IN4_COL_MAP' )
       CALL DEALLOCATE_IN4_FILES ( 'IN4_MAT' )
 
-      CALL FILE_CLOSE ( IN4, IN4FIL(USERIN_IN4_INDEX), 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( IN4, IN4FIL(USERIN_IN4_INDEX), 'KEEP' )
 
       IF (DEBUG(180) > 0) CALL DEB_USERIN ( 99 )
 

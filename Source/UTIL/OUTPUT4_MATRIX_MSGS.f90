@@ -100,8 +100,8 @@
                ENDDO
                WRITE(F06,*)
                CALL FILE_OPEN  ( OU4(I), OU4FIL(I), OUNT, 'REPLACE', OU4_MSG(I), 'NEITHER', 'UNFORMATTED', 'WRITE', 'REWIND',      &
-                                 'Y', 'N', 'Y')
-               CALL FILE_CLOSE ( OU4(I), OU4FIL(I), 'KEEP', 'Y' )
+                                 'Y', 'N')
+               CALL FILE_CLOSE ( OU4(I), OU4FIL(I), 'KEEP' )
             ENDIF
          ENDDO
          WRITE(F06,*)

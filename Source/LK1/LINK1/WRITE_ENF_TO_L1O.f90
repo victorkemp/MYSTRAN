@@ -84,7 +84,7 @@
          ENDIF
       ENDIF
 
-      CALL FILE_OPEN ( ENF, ENFFIL, OUNT, 'OLD'    , ENF_MSG, 'NEITHER'    , 'FORMATTED'  , 'READ' , 'REWIND', 'N', 'N', 'N' )
+      CALL FILE_OPEN ( ENF, ENFFIL, OUNT, 'OLD'    , ENF_MSG, 'NEITHER'    , 'FORMATTED'  , 'READ' , 'REWIND', 'N', 'N' )
 
       REC_NO          = 0
       NUM_SPC_RECORDS = 0
@@ -114,8 +114,8 @@
 
       ENDDO
 
-      CALL FILE_CLOSE ( ENF, ENFFIL, 'KEEP', 'Y' )
-      CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP', 'Y' )
+      CALL FILE_CLOSE ( ENF, ENFFIL, 'KEEP' )
+      CALL FILE_CLOSE ( L1O, LINK1O, 'KEEP' )
 
 
 

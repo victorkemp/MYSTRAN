@@ -24,7 +24,7 @@
                                                                                                         
 ! End MIT license text.                                                                                      
  
-      SUBROUTINE FILE_CLOSE ( UNIT, FILNAM, CLOSE_STAT, WRITE_F04 )
+      SUBROUTINE FILE_CLOSE ( UNIT, FILNAM, CLOSE_STAT )
  
 ! Closes files and writes message if the close fails
  
@@ -38,7 +38,6 @@
       CHARACTER(LEN=*)   , INTENT(IN) :: FILNAM            ! File name
 
       CHARACTER(LEN=*)   , INTENT(IN) :: CLOSE_STAT        ! Status for close
-      CHARACTER(LEN=*)   , INTENT(IN) :: WRITE_F04         ! If 'Y' write to F04, otherwise do not
 
       INTEGER(LONG), INTENT(IN)       :: UNIT              ! File unit number
       INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when closing a file
