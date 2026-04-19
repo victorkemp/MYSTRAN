@@ -32,7 +32,7 @@
 !  3) Reads coord data into array RCORD
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  FATAL_ERR, IERRFL, JCARD_LEN, JF, LCORD, NCORD, NCORD1, NCORD2, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CORD, RCORD

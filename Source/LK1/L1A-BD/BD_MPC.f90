@@ -29,7 +29,7 @@
 ! Processes MPC Bulk Data Cards. Writes MPC card data to file L1S
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1S
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1S
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LMPC, LSUB, MMPC, NMPC
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

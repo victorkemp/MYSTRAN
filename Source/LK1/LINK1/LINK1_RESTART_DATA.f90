@@ -33,7 +33,7 @@
                                          L1B    , L1G    , L1K    , L1Q   , L1Y     ,                                              &
                                          LINK1B , LINK1G , LINK1K , LINK1Q, LINK1Y  ,                                              &
                                          L1B_MSG, L1G_MSG, L1K_MSG, L1Q_MSG, L1Y_MSG,                                              &
-                                         L1BSTAT, L1GSTAT, L1KSTAT, L1YSTAT, WRT_LOG
+                                         L1BSTAT, L1GSTAT, L1KSTAT, L1YSTAT
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, MCORD, MRCORD, MGRID, MRGRID, NBAROFF, NCORD,                 &
                                          NCONM2, NEDAT, NELE, NGRID, NMATANGLE, NMATL, NPBAR, NPBEAM, NPDAT, NPELAS,NPROD, NPSHEL, &

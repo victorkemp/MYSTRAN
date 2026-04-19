@@ -430,7 +430,6 @@
 
       INTEGER(LONG)                   :: WRT_ERR = 1           ! WRT_ERR says whether to write ERR file or not
 
-      INTEGER(LONG)                   :: WRT_LOG = 0           ! WRT_LOG specifies the level of detail to be written to the LOG file
 
 ! Description of files:
 ! ---------------------

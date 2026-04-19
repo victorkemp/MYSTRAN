@@ -31,7 +31,7 @@
 !   EPSILON = UL(t)*[ PL - KLL*UL ]/[ UL(t)*PL ],  UL: displ's, PL: loads, KLL: stiff matrix for the L-set
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFL, NTERM_KLl, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE

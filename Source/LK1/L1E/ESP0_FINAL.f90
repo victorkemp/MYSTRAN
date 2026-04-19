@@ -32,7 +32,7 @@
 ! the exact LTERM_KGG and then calculate them in subr ESP.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IBIT, LTERM_KGG, MELDOF, NELE, NGRID, NTERM_KGG, NSUB
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR, SUPINFO
       USE TIMDAT, ONLY                :  TSEC

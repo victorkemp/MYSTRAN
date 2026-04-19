@@ -67,7 +67,7 @@
 !  5) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE, MIN4T_QUAD4_TRIA_NO, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, QUARTER, HALF, ONE, TWO, FOUR, CONV_RAD_DEG, PI

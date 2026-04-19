@@ -28,7 +28,7 @@
  
       ! Writes output for modal participation factors
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NDOFG, NDOFR, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, PI

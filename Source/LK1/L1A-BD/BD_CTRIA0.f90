@@ -29,7 +29,7 @@
 ! Processes CTRIA Bulk Data Cards to increment LMATANGLE if the elem has a material property angle
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, LMATANGLE, LPLATEOFF, LPLATETHICK
       USE TIMDAT, ONLY                :  TSEC
  

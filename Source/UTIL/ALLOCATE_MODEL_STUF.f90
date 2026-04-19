@@ -30,7 +30,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, THREE, SIX, ONEPP6
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC 
       USE SCONTR, ONLY                :  LBAROFF, LBUSHOFF, LCMASS, LCONM2, LCORD, LEDAT, LELE, LFORCE, LGRAV, LGRID,              &
                                          LIND_GRDS_MPCS, LLOADC, LLOADR, LMATANGLE, LMATL, LMPC, LMPCADDC, LMPCADDR, LPBAR, LPBEAM,&

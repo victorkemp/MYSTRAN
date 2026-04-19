@@ -29,7 +29,7 @@
 ! Checks strain-displacement matrices for rigid body motion and constant strain for 3-D solid elements
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, BUG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, BUG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO

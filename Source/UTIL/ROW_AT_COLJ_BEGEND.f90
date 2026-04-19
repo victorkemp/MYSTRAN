@@ -32,7 +32,7 @@
 ! ROW_AT_COLJ_END is an array that gives, for each col of sparse CRS input matrix A, the last  row no. of nonzero terms in that col.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
 

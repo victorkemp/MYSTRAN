@@ -29,7 +29,7 @@
 ! Checks sensibility of the 3 MOI's of a BAR or BEAM element and replaces zero values with small finite ones 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC 
       USE PARAMS, ONLY                :  EPSIL, SUPINFO

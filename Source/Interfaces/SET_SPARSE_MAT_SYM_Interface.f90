@@ -31,7 +31,7 @@
       SUBROUTINE SET_SPARSE_MAT_SYM
 
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
 
       USE PARAMS, ONLY                :  SPARSTOR, SUPINFO
 

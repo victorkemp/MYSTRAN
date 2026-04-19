@@ -3,7 +3,7 @@
       MODULE LAPACK_LANCZOS_EIG
 
       USE PENTIUM_II_KIND, ONLY         :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                  :  F04, WRT_LOG
+      USE IOUNT1, ONLY                  :  F04
       USE SCONTR, ONLY                  :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                  :  TSEC
       USE LAPACK_BLAS_AUX

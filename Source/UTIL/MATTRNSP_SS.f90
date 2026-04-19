@@ -50,7 +50,7 @@
 !        AT is a real array of the nonzero terms in matrix AT (same values as in A but arranged differently).
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

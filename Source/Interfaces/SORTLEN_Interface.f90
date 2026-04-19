@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  TWO
       USE TIMDAT, ONLY                :  TSEC

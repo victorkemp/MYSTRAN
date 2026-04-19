@@ -33,7 +33,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, SHORT, LONG, SINGLE, DOUBLE, QUAD
 
-      USE IOUNT1, ONLY                :  MOU4, SC1, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  MOU4, SC1, WRT_BUG
       USE IOUNT1, ONLY                :  BUG, ERR, F06, F21, F22, F23, F24, F25, IN1, L1B, L1C, L1D, L1F, L1G, L1H, L1I, L1K, &
                                          L1L, L1N, L1O, L1P, L1Q, L1S, L1T, L1U, L1V, L1W, L1X, L1Y, OP2, OU4, SEQ
 

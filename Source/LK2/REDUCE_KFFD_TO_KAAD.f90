@@ -29,7 +29,7 @@
 ! Call routines to reduce the KFFD differential stiffness matrix from the F-set to the A, O-sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L2E, LINK2E, L2E_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L2E, LINK2E, L2E_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FACTORED_MATRIX, FATAL_ERR, NDOFF, NDOFA, NDOFO, NTERM_KFFD, NTERM_KAAD,    &
                                          NTERM_KAOD, NTERM_KOOD, NTERM_KOODs, NTERM_GOA
       USE PARAMS, ONLY                :  EPSIL, KOORAT, SPARSTOR, RCONDK

@@ -29,7 +29,7 @@
 ! Searches integer array ARRAY to find column where data ends (IEND)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
+      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  

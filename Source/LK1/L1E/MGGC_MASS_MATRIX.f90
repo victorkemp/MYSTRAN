@@ -29,7 +29,7 @@
 ! Forms the mass matrix, MGGC, for concentrated masses by calling subr MGG_CONM2_PROC to process the concentrated masses
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  NGRID, NTERM_MGGC, BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  ZERO
       USE PARAMS, ONLY                :  EPSIL, SPARSTOR, WTMASS
@@ -138,7 +138,7 @@ i_do1:DO I=1,NGRID
 ! Generates 6 x 6 mass matrix, MGG_CONM2, for one CONM2 for grid GRID_NUM (if there is any CONM2 connected to this grid)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  NCONM2, NGRID, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

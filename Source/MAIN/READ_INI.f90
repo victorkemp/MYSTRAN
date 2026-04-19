@@ -28,13 +28,11 @@
 
 ! Processes MYSTRAN.INI file, which contains default values for things such as the default drive, directory that the input file
 ! (and all output) will go. Also can change where some output files will go (to screen or printer rather than disk). This later
-! feature is useful for debugging. For example, the F04 file unit could be changed from its default value to 6 (console) and then
-! all output that goes to the F04 file will be printed on the console. This could locate the subr where a job is crashing if
-! INI variable WRT_LOG is set to a high number (like 99)
+! feature is useful for debugging.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, DEFDIR, INIFIL, SC1, MOU4, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, DEFDIR, INIFIL, SC1, MOU4, WRT_ERR
 
       USE IOUNT1, ONLY                :  BUG,     ERR,     F04,     F06,     IN0,     IN1,     INI,     L1A,     NEU,              &
                                          SEQ,     SPC,                                                                             &
@@ -46,7 +44,7 @@
                                          L2K,     L2L,     L2M,     L2N,     L2O,     L2P,     L2Q,     L2R,     L2S,     L2T,     &
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OU4
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, BUGSTAT, ERRSTAT, F04STAT, F06STAT, IN0STAT, IN1STAT,          &
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUGSTAT, ERRSTAT, F04STAT, F06STAT, IN0STAT, IN1STAT,                   &
                                          L1ASTAT, NEUSTAT, SEQSTAT, SPCSTAT,                                                       &
                                          F21STAT, F22STAT, F23STAT, F24STAT, F25STAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &
@@ -88,7 +86,6 @@
       INTEGER(LONG)                   :: LINE_NUMBER       ! Line number in the INI file
       INTEGER(LONG)                   :: MYSTRAN_DIR_LEN   ! Length of MYSTRAN_DIR (not including trailing blanks)
       INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to 
-      INTEGER(LONG)                   :: WRT_LOG_NEW       ! Value of WRT_LOG read from MYSTRAN.INI file
 
 ! **********************************************************************************************************************************
 ! Default units for writing errors the screen (until LINK1A is read)
@@ -109,12 +106,6 @@
 
       PERM_ECHO = ECHO
       ECHO = 'NONE    '
-
-! Use WRT_LOG_NEW name to read WRT_LOG until we are through reading INI file. This is done since F04FIL not opened
-! yet and subr begin/end times cannot be written to that file until after files are opened.
-
-      WRT_LOG     = 0
-      WRT_LOG_NEW = 0
 
 ! Initialize array that will say whether an error message has been written for a card field
 
@@ -209,11 +200,6 @@
                ELSE IF (CARD(1:8) == 'PRT ENV ') THEN
                   CALL C8FLD0 ( JCARD_08(2), JF(2), CHAR8)
                   PRINTENV = CHAR8(1:1)
-                  CALL CARD_FLDS_NOT_BLANK0 ( JCARD_08, 0,3,4,5,6,7,8,9, WRT_HDR, WRT_CARD )
-                  CALL CRDERR0 ( CARD, FLD_ERR_MSG )
-
-               ELSE IF (CARD(1:8) == 'WRT_LOG ') THEN
-                  CALL I4FLD0 ( JCARD_08(2), JF(2), WRT_LOG_NEW, WRT_HDR, WRT_CARD, FLD_ERR_MSG )
                   CALL CARD_FLDS_NOT_BLANK0 ( JCARD_08, 0,3,4,5,6,7,8,9, WRT_HDR, WRT_CARD )
                   CALL CRDERR0 ( CARD, FLD_ERR_MSG )
 
@@ -455,10 +441,9 @@
 
       ENDIF
 
-! Reset ECHO and WRT_LOG
+! Reset ECHO
 
       ECHO = PERM_ECHO
-      WRT_LOG = WRT_LOG_NEW
 
 ! Reset close status of files, if ALL_CLOSE_STAT is KEEP
 
@@ -939,7 +924,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Prints Bulk Data card errors and warnings
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, F04
       USE SCONTR, ONLY                :  IERRFL
  
       IMPLICIT NONE
@@ -985,7 +970,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Shifts an 8 character string so that it is left adjusted
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, F04
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  
@@ -1023,7 +1008,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Reads a field of CHARACTER data that can be 1 to 8 chars in length
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR
  
       IMPLICIT NONE

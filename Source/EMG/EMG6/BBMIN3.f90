@@ -29,7 +29,7 @@
 ! Calculate BB bending strain/displacement matrix for MIN3 triangle. Called by subr TPLT2
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT, MIN4T_QUAD4_TRIA_NO
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO

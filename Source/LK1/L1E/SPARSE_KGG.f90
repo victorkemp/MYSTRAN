@@ -35,7 +35,7 @@
 ! (3) Call TDOF_PROC to regenerate TDOF, TDOFI tables if KGG_SINGULARITY_PROC found singularities
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1L, L1L_MSG, LINK1L, SC1, SPCFIL, SPC, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L1L, L1L_MSG, LINK1L, SC1, SPCFIL, SPC, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NGRID, NIND_GRDS_MPCS,                                    &
                                          NTERM_KGG, NUM_PCHD_SPC1, SOL_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

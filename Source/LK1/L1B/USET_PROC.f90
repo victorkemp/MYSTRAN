@@ -46,7 +46,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1X, L1X_MSG, LINK1X
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L1X, L1X_MSG, LINK1X
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ENFORCED, FATAL_ERR, NGRID, NUM_USET_RECORDS, NUM_USET_U1, NUM_USET_U2
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL

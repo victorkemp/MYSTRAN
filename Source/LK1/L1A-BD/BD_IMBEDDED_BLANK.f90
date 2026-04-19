@@ -29,7 +29,7 @@
 ! Prepares message when some fields of a B.D card have imbedded blanks when they should not (but field can be completely blank)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  FATAL_ERR, BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
  

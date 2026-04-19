@@ -29,7 +29,7 @@
 ! Call routines to reduce the KNND differential stiffness matrix from the N-set to the F, S-sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L2B, LINK2B, L2B_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L2B, LINK2B, L2B_MSG
       USE SCONTR, ONLY                :  FATAL_ERR, NDOFN, NDOFF, NDOFS, NDOFSE, NTERM_KNND, NTERM_KFFD, NTERM_KFSD, NTERM_KSSD,   &
                                          NTERM_KFSDe, NTERM_KSSDe, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC

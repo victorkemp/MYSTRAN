@@ -32,9 +32,9 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     L1K
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            LINK1K
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                            L1K_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F04,     F06,     L1K
+      USE IOUNT1, ONLY                :  WRT_ERR,                            LINK1K
+      USE IOUNT1, ONLY                :  WRT_ERR,                            L1K_MSG
       USE SCONTR, ONLY                :  DATA_NAM_LEN, NELE, NGRID, NTDAT, NTSUB, NSUB, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CETEMP, CETEMP_ERR, CGTEMP, CGTEMP_ERR, ETEMP, GTEMP, TDATA, TPNT, GRID_ID, ESORT1, ETYPE,&

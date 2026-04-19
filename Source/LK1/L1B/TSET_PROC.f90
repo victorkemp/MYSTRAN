@@ -70,7 +70,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NGRID, NAOCARD, NUM_SUPT_CARDS,                                  &
                                          NDOFL, NDOFM, NDOFO, NDOFR, NDOFS, NDOFSA, NDOFSG, NDOFSB, NDOFSE, NDOFSZ
       USE PARAMS, ONLY                :  PRTTSET

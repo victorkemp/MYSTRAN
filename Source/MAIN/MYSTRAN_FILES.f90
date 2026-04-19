@@ -31,7 +31,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, MOT4, MOU4, WRT_BUG, WRT_ERR, WRT_LOG, LEN_INPUT_FNAME,                  &
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, MOT4, MOU4, WRT_BUG, WRT_ERR, LEN_INPUT_FNAME,                  &
                                          LEN_RESTART_FNAME, RESTART_FILNAM
 
       USE IOUNT1, ONLY                :  OU4_EXT, OT4_EXT

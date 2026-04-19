@@ -33,7 +33,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_LOG, ERR, F04, F06, L1A, ERRSTAT, SC1
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F04, F06, L1A, ERRSTAT, SC1
       USE IOUNT1, ONLY                :  L2G,     L2H    , L2I   ,  L2O    , L2P   ,  L2Q
       USE IOUNT1, ONLY                :  LINK2G,  LINK2H , LINK2I , LINK2O , LINK2P , LINK2Q 
       USE IOUNT1, ONLY                :  L2G_MSG, L2H_MSG, L2I_MSG, L2O_MSG, L2P_MSG, L2Q_MSG

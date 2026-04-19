@@ -29,7 +29,7 @@
 ! DOF Processor for SUPORT's 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1T, L1T_MSG, LINK1T
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1T, L1T_MSG, LINK1T
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFR, NGRID, NUM_SUPT_CARDS
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL

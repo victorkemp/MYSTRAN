@@ -32,7 +32,7 @@
 ! In addition, for Craig-Bampton model generation (SOL = GEN CB MODEL or 31), array PHIXA is expanded to G-set size
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, F04, F06, L1H, L2A, L2E, L2F, L3A, L5A, L5B, SC1
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F04, F06, L1H, L2A, L2E, L2F, L3A, L5A, L5B, SC1
       USE IOUNT1, ONLY                :  LINK1H, LINK2A, LINK2E, LINK2F, LINK3A, LINK5A, LINK5B
       USE IOUNT1, ONLY                :  L1H_MSG, L2A_MSG, L2E_MSG, L2F_MSG, L3A_MSG, L5A_MSG, L5B_MSG
       USE IOUNT1, ONLY                :  ERRSTAT, L1HSTAT, L2ESTAT, L2FSTAT, L3ASTAT

@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, WRT_LOG, ERR, F04, F06,                                         &
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F04, F06,                                         &
                                          L1D    , L1G    , L1K    , L1Q    ,                                                       &
                                          LINK1D , LINK1G , LINK1K , LINK1Q ,                                                       &
                                          L1D_MSG, L1G_MSG, L1K_MSG, L1Q_MSG,                                                       &

@@ -30,7 +30,7 @@
 ! determines the max number od set ID's over all SPCADD cards in the data deck
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  SPCADD_SIDS

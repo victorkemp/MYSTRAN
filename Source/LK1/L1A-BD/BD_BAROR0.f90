@@ -36,7 +36,7 @@
 !         d) 'ERROR    ' means anything but (a), (b), or (c). Subr BD_BAROR will print error
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF, LVVEC, NBAROR
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  BAROR_PID, BAROR_G0, BAROR_VV, BAROR_VVEC_TYPE, JBAROR

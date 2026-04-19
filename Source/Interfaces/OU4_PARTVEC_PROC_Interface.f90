@@ -33,7 +33,7 @@
                                     VAL_ROWS, VAL_COLS )
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1V, L1V_MSG, LINK1V
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L1V, L1V_MSG, LINK1V
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MTSET, NDOFG, NGRID, NUM_PARTVEC_RECORDS, WARN_ERR
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO
       USE TIMDAT, ONLY                :  TSEC

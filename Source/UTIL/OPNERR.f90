@@ -29,7 +29,7 @@
 ! Prints error messages when IOSTAT is not zero on a file OPEN. 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F04FIL
+      USE IOUNT1, ONLY                :  WRT_ERR, F04, F04FIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, RESTART
       USE TIMDAT, ONLY                :  TSEC
  

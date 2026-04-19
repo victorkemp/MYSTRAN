@@ -29,7 +29,7 @@
       ! LOADB_RESTART reads in some entries in the Bulk Data deck
       ! (e.g., DEBUG, PARAM) for a RESTART run
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, IN1
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, JCARD_LEN, JF, PROG_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN

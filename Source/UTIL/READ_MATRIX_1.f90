@@ -48,7 +48,7 @@
  
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -244,7 +244,7 @@ k_do1:DO K = 1,NTERM
       SUBROUTINE CHECK_SPARSE_CRS_I ( MAT_A_NAME, CALLING_SUBR, NROWS_A, NTERM_A, I_A, DEBUG_NUM )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       IMPLICIT NONE

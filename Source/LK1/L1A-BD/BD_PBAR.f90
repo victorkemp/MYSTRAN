@@ -33,7 +33,7 @@
       !  4) From 2nd continuation card (if present): area factors for transverse shear and I12 and enter into array RPBAR
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE PARAMS, ONLY                :  EPSIL, SUPINFO
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BARTOR, IERRFL, FATAL_ERR, JCARD_LEN, JF, LPBAR, NPBAR
       USE CONSTANTS_1, ONLY           :  ZERO

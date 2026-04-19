@@ -29,7 +29,7 @@
 ! Processes CBUSH Bulk Data Cards to increment LVVEC and LBUSHOFF if the CBUSH entry has a V vector or offsets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
+      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, LBUSHOFF, LVVEC
       USE TIMDAT, ONLY                :  TSEC
  

@@ -29,7 +29,7 @@
 ! Processes PCOMP Bulk Data Cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPCOMP, MPCOMP0, MRPCOMP0, MPCOMP_PLIES,  &
                                          MRPCOMP_PLIES, NPCOMP
       USE TIMDAT, ONLY                :  TSEC

@@ -56,7 +56,7 @@
 ! material to local via basic system since we can't go directly from material to local in that case)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEMATC, DEDAT_Q4_MATANG_KEY, DEDAT_T3_MATANG_KEY
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD, ZERO, HALF, ONE, TWO, FOUR

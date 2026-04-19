@@ -242,7 +242,7 @@
 ! ##################################################################################################################################
 ! B////////////////////////////////////////////////////////////////////B
       SUBROUTINE BANDIT ( MYSTRAN_NGRID, NEW_BW, DEN, IER )
-      USE IOUNT1, ONLY :  WRT_LOG, IN1
+      USE IOUNT1, ONLY :  IN1
 ! E////////////////////////////////////////////////////////////////////E
 c
 c     Gordon C. Everstine, Gaithersburg, MD, geversti@comcast.net
@@ -1742,7 +1742,7 @@ C     THE DEFAULT NUMBER OF NODES FOR CDUMI IS 0.
       SUBROUTINE FINISH(KUMP,IER)
 C
 ! B////////////////////////////////////////////////////////////////////B
-      USE IOUNT1, ONLY   :  WRT_LOG, SEQ
+      USE IOUNT1, ONLY   :  SEQ
 ! E////////////////////////////////////////////////////////////////////B
 C     TERMINATE JOB AFTER FATAL ERROR.
 C     THE SUBSEQUENT EXECUTION OF NASTRAN IS PREVENTED BY ERASING UNIT 8.
@@ -4759,7 +4759,7 @@ C
       SUBROUTINE SEQGP(NORIG,ILD,NEW,JUMP)
 C
 ! B////////////////////////////////////////////////////////////////////B
-      USE IOUNT1, ONLY                :  WRT_LOG, SEQ
+      USE IOUNT1, ONLY                :  SEQ
 ! E////////////////////////////////////////////////////////////////////E
 C     WRITE SEQGP BULK DATA CARDS ON 7 and 8.
 C

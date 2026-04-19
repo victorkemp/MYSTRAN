@@ -33,7 +33,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN
-      USE IOUNT1, ONLY                :  ERR, F04, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, MOU4, OU4, OU4_ELM_OTM, OU4_GRD_OTM, SC1
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE OUTPUT4_MATRICES, ONLY      :  NUM_OU4_REQUESTS, NUM_PARTN_REQUESTS, OU4_PART_VEC_NAMES, OU4_PART_MAT_NAMES,             &
                                          ACT_OU4_MYSTRAN_NAMES, ACT_OU4_OUTPUT_NAMES,                                              &

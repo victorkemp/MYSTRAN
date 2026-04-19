@@ -29,7 +29,7 @@
 ! Call routines to reduce the KAAD differential stiffness matrix from the A-set to the L, R-sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L2K, L2L, LINK2K, LINK2L, L2K_MSG, L2L_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L2K, L2L, LINK2K, LINK2L, L2K_MSG, L2L_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFA, NDOFL, NDOFR, NTERM_KAAD, NTERM_KLLD, NTERM_KRLD,         &
                                          NTERM_KRRD,  SOL_NAME
       USE TIMDAT, ONLY                :  HOUR, MINUTE, SEC, SFRAC, TSEC

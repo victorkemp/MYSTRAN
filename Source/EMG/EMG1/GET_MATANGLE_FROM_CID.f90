@@ -29,7 +29,7 @@
 ! Calcs THETAM for plate elements that have the material angle specified via a coord sys ID (ACID here) 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCORD
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD, ZERO, ONE

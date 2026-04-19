@@ -66,7 +66,7 @@
  
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1D
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1D
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, DATA_NAM_LEN, FATAL_ERR, IBIT, WARN_ERR, LSETLN,              &
                                          MELDTS, MELOUTS, METYPE, MGROUTS, NELE, NGRID, NSUB 
@@ -1323,7 +1323,7 @@ token_loop3:DO                                             ! Call STOKEN in a DO
 
    
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LSETLN, MAX_TOKEN_LEN, SETLEN, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  ALL_SETS_ARRAY, ONE_SET_ARRAY

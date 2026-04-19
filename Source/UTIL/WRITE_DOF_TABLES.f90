@@ -29,7 +29,7 @@
 ! Writess DOF table data to file LINK1C
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, L1C, LINK1C, L1C_MSG, ERR, F06
+      USE IOUNT1, ONLY                :  F04, L1C, LINK1C, L1C_MSG, ERR, F06
       USE SCONTR, ONLY                :  DATA_NAM_LEN, MTDOF, NDOFG, NGRID, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI, TDOF, TSET

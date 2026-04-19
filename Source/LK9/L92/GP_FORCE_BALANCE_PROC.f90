@@ -31,7 +31,7 @@
       ! should be zero
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, SHORT, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, OP2, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, OP2, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, GROUT_GPFO_BIT, IBIT, INT_SC_NUM, JTSUB, NDOFG, NDOFM, MELDOF, NDOFO, NDOFR,&
                                          NELE, NGRID, NUM_CB_DOFS, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

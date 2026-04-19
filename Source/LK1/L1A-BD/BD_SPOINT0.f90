@@ -29,7 +29,7 @@
 ! Processes SPOINT Bulk Data Cards to count the number of SPOINT's on one entry
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_LOG, F04
+      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF
       USE TIMDAT, ONLY                :  TSEC
  

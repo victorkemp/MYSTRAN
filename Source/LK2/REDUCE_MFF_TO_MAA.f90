@@ -35,7 +35,7 @@
 ! MYSTRAN since that approx time does not have full matrix code.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFF, NDOFA, NDOFO, NTERM_MFF, NTERM_MAA, NTERM_MAO, NTERM_MOO, &
                                          NTERM_GOA
       USE PARAMS, ONLY                :  EPSIL, MATSPARS, SPARSTOR

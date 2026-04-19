@@ -30,7 +30,7 @@
 ! and then aborts
 
       USE PENTIUM_II_KIND, ONLY       :  LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F06, LINK1A
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, LINK1A
       USE SCONTR, ONLY                :  FATAL_ERR
 
       USE DATA_SET_SIZE_ERROR_USE_IFs

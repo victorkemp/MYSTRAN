@@ -35,7 +35,7 @@
 !      memory than sparse storage for large stiffness matrices.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_LOG, ERR, F04, F06, L3A, SC1, LINK3A, L3A_MSG
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F04, F06, L3A, SC1, LINK3A, L3A_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, COMM, FATAL_ERR, KLL_SDIA, LINKNO, MBUG, NDOFL, NSUB,                       &
                                          NTERM_KLL, NTERM_PL, RESTART,  SOL_NAME, WARN_ERR
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, TEN

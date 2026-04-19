@@ -30,7 +30,7 @@
 ! (in column 1 of IARRAY) is in numerically increasing order
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MGRID, MRGRID
       USE PARAMS, ONLY                :  SORT_MAX
       USE TIMDAT, ONLY                :  TSEC

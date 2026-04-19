@@ -29,7 +29,7 @@
 ! Prints elem related data (controlled by Case Control ELDATA requests and situational variable WRT_BUG(i) ).
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, BUG, F04
+      USE IOUNT1, ONLY                :  WRT_ERR, BUG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_DAT1_BIT, ELDT_BUG_DAT2_BIT, ELDT_BUG_ME_BIT, ELDT_BUG_P_T_BIT,    &
                                          ELDT_BUG_SE_BIT, ELDT_BUG_KE_BIT, ELDT_BUG_U_P_BIT, MBUG, MDT, MELGP, METYPE,             &
                                          MEMATR, MEMATC, MEPROP, MPRESS, NSUB, NTSUB, SOL_NAME

@@ -30,7 +30,7 @@
 ! (6 DOF per grid point and up to 4 grid points)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO

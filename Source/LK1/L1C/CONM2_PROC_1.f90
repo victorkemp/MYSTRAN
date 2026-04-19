@@ -34,7 +34,7 @@
 ! overwritten with the values in basic coords at the mass point at the close of this subr.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, L1Y
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1Y
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, MCMASS, MCONM2, MPMASS, MRCONM2, MRPMASS, NCMASS,  &
                                          NCONM2, NCORD, NGRID, NPMASS, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

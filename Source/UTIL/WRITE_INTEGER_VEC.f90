@@ -29,7 +29,7 @@
 ! Writes an integer vector to F06 in a format that has 10 terms across the page (repeated until vector is completely written)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  

@@ -29,7 +29,7 @@
 ! Main driver for calculating outputs requested in Case Control once the G-set unknowns have been solved for in prior LINK's
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
 
       USE IOUNT1, ONLY                :  ERR, F04, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
                                          L5A, L5B, NEU, OT4, OU4, PCH, SC1

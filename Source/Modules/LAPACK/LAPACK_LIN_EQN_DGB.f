@@ -3,7 +3,7 @@
       MODULE LAPACK_LIN_EQN_DGB
 
       USE PENTIUM_II_KIND, ONLY          :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                   :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                   :  ERR, F04, F06, SC1
       USE SCONTR, ONLY                   :  LINKNO, BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      SFRAC, STIME, TSEC

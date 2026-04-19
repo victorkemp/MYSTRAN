@@ -53,7 +53,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, ERRSTAT, F04, F06, L1M, L3A, SC1
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, ERRSTAT, F04, F06, L1M, L3A, SC1
       USE IOUNT1, ONLY                :  LINK1M,  LINK2I,  LINK3A, L1M_MSG, L3A_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, COMM, FATAL_ERR, LINKNO, MBUG, NDOFL,                                       &
                                          NTERM_KLL, NTERM_KLLD, NTERM_KLLDn,                                                       &

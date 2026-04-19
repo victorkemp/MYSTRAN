@@ -38,7 +38,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFL, NDOFR,                                                    &
                                          NTERM_DLR, NTERM_PHIZL, NTERM_PHIZL1, NTERM_PHIZL2 , NTERM_MLL, NTERM_MLR, NTERM_MRL,     &
                                          NUM_CB_DOFS, NVEC

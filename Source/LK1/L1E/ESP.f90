@@ -38,7 +38,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  ERR, F04, F06, F23, F23FIL, F23_MSG, F24, F24FIL, F24_MSG, FILE_NAM_MAXLEN, SC1, SCR,     &
-                                         WRT_BUG, WRT_ERR, WRT_LOG
+                                         WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_KE_BIT, ELDT_BUG_SE_BIT,                                           &
                                          ELDT_F23_KE_BIT, ELDT_F24_SE_BIT, ELDT_BUG_BCHK_BIT, ELDT_BUG_BMAT_BIT, ELDT_BUG_SHPJ_BIT,&
                                          FATAL_ERR, IBIT, LINKNO, LTERM_KGG, LTERM_KGGD, MBUG, MELDOF, NDOFG, NELE, NGRID,         &
@@ -595,7 +595,7 @@ stfpnt0:          DO                                       ! so, run this loop u
 ! Prints out info on the formulation of stiffness arrays for subr ESP, which generates the arrays
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F04, F06
       USE MODEL_STUF, ONLY            :  EID
       USE STF_ARRAYS, ONLY            :  STF3
 

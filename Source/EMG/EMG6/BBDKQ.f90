@@ -29,7 +29,7 @@
 ! Calculate BB strain/displacement matrix for DKQ bending quadrilateral element. Called by subr QPLT1
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG, WRT_LOG
+      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, TWO, THREE, FOUR

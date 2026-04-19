@@ -32,7 +32,7 @@
 ! example would be the case if it were grounded - e.g. a cantilevered beam has rigid body modes restrained)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSPOINT, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
@@ -291,7 +291,7 @@
 ! Write rigid body matrices (RB displ, forces due to RB disp)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  NDOFG
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DOF_TABLES, ONLY            :  TDOFI

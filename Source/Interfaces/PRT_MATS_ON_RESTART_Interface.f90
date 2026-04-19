@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1
 
       USE IOUNT1, ONLY                :  L1E    , L1H    , L1J    , L1L    , L1R    , L2A    , L2B    , L2C    , L2D    , L2E    , &
                                          L2F    , L2G    , L2H    , L2I    , L2J    , L2K    , L2L    , L2M    , L2N    , L2O    , &

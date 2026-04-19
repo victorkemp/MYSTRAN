@@ -29,7 +29,7 @@
 ! Determines the number of zero diagonal terms in an input matrix that is stored in compressed row storage format (CRS format)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

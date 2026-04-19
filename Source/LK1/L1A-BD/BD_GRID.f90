@@ -35,7 +35,7 @@
 !  5) Grid coordinates (fields 4, 5 and 6) and enters tham into array RGRID   
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LGRID, NGRID, NGRDSET
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID, RGRID, GRDSET3, GRDSET7, GRDSET8

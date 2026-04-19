@@ -32,7 +32,7 @@
 ! ======================================
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_LOG, WRT_BUG, WRT_ERR
+      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_STRESS_POINTS, NSUB, NTSUB, MAX_ORDER_GAUSS, MEFE, NMATL,    &
                                          NPSHEL
       USE TIMDAT, ONLY                :  TSEC

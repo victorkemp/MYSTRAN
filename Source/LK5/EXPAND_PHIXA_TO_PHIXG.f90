@@ -31,7 +31,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ONE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L5B, SC1, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L5B, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LINKNO, NDOFA, NDOFF, NDOFG, NDOFM, NDOFN, NDOFO, NDOFR, NDOFS, NTERM_PHIXA,&
                                          NTERM_PHIXG, NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

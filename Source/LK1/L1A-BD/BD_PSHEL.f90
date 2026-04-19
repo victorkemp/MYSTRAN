@@ -34,7 +34,7 @@
 !  4) From 1st cont card (if present): locations for stress recovery and offset and enter into array RPSHEL
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JCARD_LEN, JF, LPSHEL, NPSHEL, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO

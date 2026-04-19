@@ -30,7 +30,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, RESTART
-      USE IOUNT1, ONLY                :  MOU4,    WRT_ERR, WRT_LOG, ERR, F06,                                                      &
+      USE IOUNT1, ONLY                :  MOU4,    WRT_ERR, ERR, F06,                                                      &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &
                                          L1L,     L1M,     L1N,     L1O,     L1P,     L1Q,     L1R,     L1S,     L1T,     L1U,     &
                                          L1V,     L1W,     L1X,     L1Y,     L1Z,                                                  &
@@ -38,7 +38,7 @@
                                          L2K,     L2L,     L2M,     L2N,     L2O,     L2P,     L2Q,     L2R,     L2S,     L2T,     &
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OU4
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                                                                &
+      USE IOUNT1, ONLY                :  WRT_ERR,                                                                &
                                          LINK1B,  LINK1C,  LINK1D,  LINK1E,  LINK1F,  LINK1G,  LINK1H,  LINK1I,  LINK1J,  LINK1K,  &
                                          LINK1L,  LINK1M,  LINK1N,  LINK1O,  LINK1P,  LINK1Q,  LINK1R,  LINK1S,  LINK1T,  LINK1U,  &
                                          LINK1V,  LINK1W,  LINK1X,  LINK1Y,  LINK1Z,                                               &
@@ -46,7 +46,7 @@
                                          LINK2K,  LINK2L,  LINK2M,  LINK2N,  LINK2O,  LINK2P,  LINK2Q,  LINK2R,  LINK2S,  LINK2T,  &
                                          LINK3A,  LINK4A,  LINK4B,  LINK4C,  LINK4D,  LINK5A,  LINK5B,  OU4FIL
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG,                                                                &
+      USE IOUNT1, ONLY                :  WRT_ERR,                                                                &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &
                                          L1LSTAT, L1MSTAT, L1NSTAT, L1OSTAT, L1PSTAT, L1QSTAT, L1RSTAT, L1SSTAT, L1TSTAT, L1USTAT, &
                                          L1VSTAT, L1WSTAT, L1XSTAT, L1YSTAT, L1ZSTAT,                                              &

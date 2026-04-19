@@ -30,7 +30,7 @@
 ! model generation runs and allocates memory to the arrays
 
       USE PENTIUM_II_KIND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, TOT_MB_MEM_ALLOC,                                                &
                                          GROUT_ACCE_BIT, GROUT_DISP_BIT, GROUT_SPCF_BIT, GROUT_MPCF_BIT,                           &
                                          IBIT, NDOFR, NGRID, NUM_CB_DOFS, NVEC,                                                    &

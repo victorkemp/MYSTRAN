@@ -31,7 +31,7 @@
 ! load matrices from the F-set to the A, O_sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_LOG, ERR, F04, F06, SCR
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, ERR, F04, F06, SCR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FACTORED_MATRIX, FATAL_ERR, KOO_SDIA, NDOFA, NDOFO, NTERM_GOA, NTERM_KOO,   &
                                          NTERM_KAO
       USE PARAMS, ONLY                :  EPSIL, PRTGOA

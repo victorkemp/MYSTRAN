@@ -29,7 +29,7 @@
       ! Writes blocks of element stresses for one subcase and one element type for elements that do not have PCOMP properties, including
       ! all 1-D, 2-D, 3-D elements.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, OP2
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, BARTOR, INT_SC_NUM, MAX_NUM_STR, NDOFR, NUM_CB_DOFS,             &
                                          NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

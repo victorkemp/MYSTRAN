@@ -31,7 +31,7 @@
 ! can be accessed sequentially. This subr performs that function. 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4FIL_NUM, NUM_IN4_FILES, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4FIL_NUM, NUM_IN4_FILES
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DEDAT_Q4_SHELL_KEY, DEDAT_T3_SHELL_KEY, DEDAT_Q8_SHELL_KEY, FATAL_ERR,      &
                                          MPCOMP0, MPCOMP_PLIES, NCMASS, NELE, NMATL, NPBAR, NPBEAM,                                &
                                          NPBUSH, NPCOMP, NPELAS, NPMASS, NPROD, npshear, NPSHEL, NPSOLID, NPUSER1, NPUSERIN

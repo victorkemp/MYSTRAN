@@ -30,7 +30,7 @@
 ! User must have Case Control entries ELDATA in order to get these files written
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, F06, F21, F22, F23, F24, F25, F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG
+      USE IOUNT1, ONLY                :  F04, F06, F21, F22, F23, F24, F25, F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG
       USE DEBUG_PARAMETERS
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_STRESS_POINTS, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC

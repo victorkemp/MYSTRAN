@@ -33,7 +33,7 @@
  
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F22, F22FIL, F22_MSG, SC1, WRT_BUG, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, F22, F22FIL, F22_MSG, SC1, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_ME_BIT, ELDT_F22_ME_BIT, FATAL_ERR, IBIT, LINKNO, LTERM_MGGE,   &
                                          MBUG, MELDOF, NDOFG, NELE, NGRID, NTERM_MGGE, NSUB
       USE TIMDAT, ONLY                :  TSEC
@@ -345,7 +345,7 @@ emspnt0:          DO                                       ! so, run this loop u
 ! Prints out info on the formulation of stiffness arrays for subr ESP, which generates the arrays
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  NTERM_MGGE
       USE MODEL_STUF, ONLY            :  EID
       USE EMS_ARRAYS, ONLY            :  EMS, EMSCOL, EMSKEY, EMSPNT

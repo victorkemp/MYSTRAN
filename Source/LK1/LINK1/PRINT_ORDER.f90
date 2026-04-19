@@ -29,7 +29,7 @@
 ! Writes abcissa's and weights from subroutines ORDER_GAUSS and ORDER_TRIA used in isoparametric element matrix generation subr's
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_ORDER_GAUSS, MAX_ORDER_TRIA, NUM_TRIA_ORDERS, TRIA_ORDER_NUMS
 
       USE PRINT_ORDER_USE_IFs

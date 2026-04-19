@@ -32,7 +32,7 @@
 !  2) SE1, STE1 = element stress data recovery matrices if OPT(3) = 'Y'
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, WRT_LOG
+      USE IOUNT1, ONLY                :  F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

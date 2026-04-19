@@ -29,7 +29,7 @@
 ! Processes RBAR, RBE1, RBE2 rigid elements to get terms for the RMG constraint matrix
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1F, LINK1F, L1F_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L1F, LINK1F, L1F_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NRECARD
       USE TIMDAT, ONLY                :  TSEC
 

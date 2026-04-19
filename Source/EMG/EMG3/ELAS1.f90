@@ -32,7 +32,7 @@
 !  2) KE   = Element stiffness matrix in element coord's if OPT(4) = 'Y'
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  AGRID, BGRID, ELAS_COMP, EID, EPROP, FCONV, KE, SE1, TYPE

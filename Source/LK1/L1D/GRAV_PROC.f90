@@ -88,7 +88,7 @@
 !          ( vi) Load the grav forces into the SYS_LOAD (systems load) array
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, ERR, F04, F06, SCR, L1P, LINK1P, L1P_MSG, SC1, WRT_ERR, WRT_LOG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, ERR, F04, F06, SCR, L1P, LINK1P, L1P_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LLOADC, NCORD, NGRAV, NGRID, NLOAD, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN

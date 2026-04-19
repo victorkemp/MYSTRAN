@@ -29,7 +29,7 @@
 ! Gets element output name (used in LINK9 subr's which write elem and/or ply outputs) for a given element type
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, METYPE 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  ELEM_ONAME, ELMTYP, TYPE

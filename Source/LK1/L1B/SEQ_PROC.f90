@@ -29,9 +29,9 @@
 ! Generates the grid point sequence order.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR,     F04,     F06,     SEQ,     L1B
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, SEQFIL
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, SEQSTAT
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR,     F04,     F06,     SEQ,     L1B
+      USE IOUNT1, ONLY                :  WRT_ERR, SEQFIL
+      USE IOUNT1, ONLY                :  WRT_ERR, SEQSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, FATAL_ERR, NGRID, NSEQ, PROG_NAME, WARN_ERR
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ
       USE TIMDAT, ONLY                :  TSEC
@@ -273,7 +273,7 @@
 ! Reads SEQGP card images from bandit output file (filename.SEQ) using subr BD_SEQGP which creates SEQ1, SEQ2 arrays from SEQGP info
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06, sc1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, sc1
       USE SCONTR, ONLY                :  BANDIT_ERR, BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, LSEQ, NGRID, NSEQ,          &
                                          PROG_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  STIME, TSEC
@@ -648,7 +648,7 @@ i_do2:            DO I=1,NUM_SEQ_FILE_LINES
 
 ! Writes message for subr AUTO_SEQ_PROC
 
-      USE IOUNT1, ONLY                :  WRT_ERR, WRT_LOG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
       USE PARAMS, ONLY                :  SEQQUIT
 
       IMPLICIT NONE

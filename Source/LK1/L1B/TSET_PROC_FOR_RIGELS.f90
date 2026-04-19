@@ -29,7 +29,7 @@
 ! DOF Processor for rigid elements (incl RBE3 and RSPLINE)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, ERR, F04, F06, L1F, L1F_MSG, LINK1F
+      USE IOUNT1, ONLY                :  ERR, F04, F06, L1F, L1F_MSG, LINK1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LIND_GRDS_MPCS, NDOFM, NGRID, NIND_GRDS_MPCS, NRECARD
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET

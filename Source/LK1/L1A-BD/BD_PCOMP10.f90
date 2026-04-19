@@ -29,7 +29,7 @@
 ! Processes PCOMP1 Bulk Data Cards to determine the number of plies for a B.D. PCOMP1 entry
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_LOG, F04, f06
+      USE IOUNT1, ONLY                :  F04, f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
 
