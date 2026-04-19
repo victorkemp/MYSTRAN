@@ -8,7 +8,6 @@
       USE SCONTR, ONLY                  :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                  :  HOUR, MINUTE, SEC,
      &                                     SFRAC, TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY      :  LAPACK_BEGEND
 
       USE OUTA_HERE_Interface
 
