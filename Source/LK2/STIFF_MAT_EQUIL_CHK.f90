@@ -32,7 +32,7 @@
 ! example would be the case if it were grounded - e.g. a cantilevered beam has rigid body modes restrained)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSPOINT, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

@@ -34,7 +34,7 @@
 !        - velocity????
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  ERR, F06, OP2
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, INT_SC_NUM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP

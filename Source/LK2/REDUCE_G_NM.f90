@@ -29,7 +29,7 @@
 ! Call routines to reduce stiffness, mass, loads and constraint matrices from G-set to N, M-sets
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1C, LINK1C, L1C_MSG, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, L1C, LINK1C, L1C_MSG, SC1, WRT_ERR
 
       USE SCONTR, ONLY                :  LINKNO    , NDOFG, NDOFN, NDOFM, NGRID, NSUB,                                             &
                                          NTERM_KGG , NTERM_KNN , NTERM_KNM , NTERM_KMM ,                                           &
@@ -563,7 +563,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  DATA_NAM_LEN, FATAL_ERR, NDOFG, NDOFSA, NGRID, NUM_PCHD_SPC1
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1C, L1C_MSG, LINK1C, SPC, SPCFIL
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1C, L1C_MSG, LINK1C, SPC, SPCFIL
       USE PARAMS, ONLY                :  AUTOSPC, AUTOSPC_INFO, AUTOSPC_NSET, PCHSPC1, PRTTSET, SPC1SID
       USE DOF_TABLES, ONLY            :  TDOF, TDOFI, TSET
       USE MODEL_STUF, ONLY            :  GRID, GRID_ID, GRID_SEQ
@@ -761,7 +761,7 @@ i_do: DO I=1,NDOFN
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  DATA_NAM_LEN, NDOFN, NDOFG, NDOFSA, NGRID, NUM_PCHD_SPC1, PROG_NAME
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1C, L1C_MSG, LINK1C, SPC, SPCFIL
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1C, L1C_MSG, LINK1C, SPC, SPCFIL
       USE PARAMS, ONLY                :  AUTOSPC, AUTOSPC_INFO, AUTOSPC_NSET, AUTOSPC_RAT, PCHSPC1, PRTTSET, SPC1SID
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DOF_TABLES, ONLY            :  TDOF, TDOFI, TSET

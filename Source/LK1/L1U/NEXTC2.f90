@@ -29,7 +29,7 @@
       ! Looks for 2 physical Bulk Data large field format continuation
       ! entries belonging to a large field parent.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN1, INFILE
+      USE IOUNT1, ONLY                :  ERR, F06, IN1, INFILE
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
 

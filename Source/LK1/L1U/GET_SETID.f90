@@ -29,7 +29,7 @@
 ! Gets SET ID from CASE CONTROL cards:  LOAD, METHOD, MPC, NLPARM, SPC, TEMP 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
 

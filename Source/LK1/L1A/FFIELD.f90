@@ -35,7 +35,7 @@
 !  2) Left justify fields 2 - 9 of cards that are fixed field
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, BD_ENTRY_LEN, FATAL_ERR, IMB_BLANK, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
 

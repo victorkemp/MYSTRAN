@@ -52,7 +52,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONE80, PI, CONV_DEG_RAD
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MRCORD, NCORD, NCORD1, NCORD2, NGRID, FATAL_ERR
       USE PARAMS, ONLY                :  EPSIL, PRTCORD
       USE TIMDAT, ONLY                :  TSEC
@@ -1164,7 +1164,7 @@ big_loop:   DO J=1,NCORD                                   ! Find a CORD1 with a
 ! sorting the coord system ID's and then checking the sorted dummy array for uniqueness
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  NCORD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CORD

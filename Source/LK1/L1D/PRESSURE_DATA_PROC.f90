@@ -364,7 +364,7 @@ k_do6:            DO K=EID1,EID2
 ! Element pressure routine - generates the PPNT(i,J) array and PTYPE(i) array
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NELE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  ESORT1, ETYPE, SUBLOD, PPNT, PTYPE

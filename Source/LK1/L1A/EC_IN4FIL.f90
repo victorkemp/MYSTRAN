@@ -29,7 +29,7 @@
 ! Processes Executive Control IN4 entries that define IN4 files to be read
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, FILE_NAM_MAXLEN, IN4FIL, IN4FIL_NUM, NUM_IN4_FILES
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, FILE_NAM_MAXLEN, IN4FIL, IN4FIL_NUM, NUM_IN4_FILES
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_TOKEN_LEN
       USE TIMDAT, ONLY                :  TSEC
  

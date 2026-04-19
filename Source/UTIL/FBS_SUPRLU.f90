@@ -35,7 +35,7 @@
 ! (3) Scales the solution vector if requested
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC       
       USE CONSTANTS_1, ONLY           :  ZERO

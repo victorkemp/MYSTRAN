@@ -29,7 +29,7 @@
 ! Gets the grid and displ component (1-6) numbers for a DOF listed in array TDOFI.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI

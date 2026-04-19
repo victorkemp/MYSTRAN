@@ -52,7 +52,7 @@
 ! a square input matrix. The relationship is not checked herein. In addition, symmetry of the input matrix is assumed.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

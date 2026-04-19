@@ -29,7 +29,7 @@
 ! Writes a matrix that is in sparse CRS format to the F06 output file based on user request via Bulk Data PARAM PRTijk entries
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

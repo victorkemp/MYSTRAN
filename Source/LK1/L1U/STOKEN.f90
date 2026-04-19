@@ -37,7 +37,7 @@
 !  2) a triad of char tokens of the form I1 THRU I2 where I1, I2 are integers
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  MAX_TOKEN_LEN, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
@@ -252,7 +252,7 @@ i_loop2:    DO I = TOKEN_END+1,STRNG_END                   ! just in case we are
 
       SUBROUTINE DEB_STOKEN ( PRINT_ITEM )
 
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
 

@@ -3,7 +3,7 @@
       MODULE ARPACK_LANCZOS_EIG
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EIG_MSGLVL

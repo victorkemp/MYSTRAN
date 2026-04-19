@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, PCHSTAT
+      USE IOUNT1, ONLY                :  PCHSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD 
       USE TIMDAT, ONLY                :  TSEC
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT

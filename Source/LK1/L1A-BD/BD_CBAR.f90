@@ -28,7 +28,7 @@
  
       ! Processes CBAR and CBEAM Bulk Data Cards:
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LBAROFF, LVVEC, MEDAT_CBAR, &
                                          MEDAT_CBEAM, NBAROFF, NBAROR, NBEAMOR, NCBAR, NCBEAM, NEDAT, NELE, NVVEC
       USE TIMDAT, ONLY                :  TSEC

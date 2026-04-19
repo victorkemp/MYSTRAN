@@ -107,7 +107,7 @@
 ! ----------------------------------------------------------------------------------------------------------------------------------
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
 

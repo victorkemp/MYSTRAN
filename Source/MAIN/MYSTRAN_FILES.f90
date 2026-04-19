@@ -27,7 +27,7 @@
       SUBROUTINE MYSTRAN_FILES ( START_MONTH, START_DAY, START_YEAR, START_HOUR, START_MINUTE, START_SEC, START_SFRAC)
  
 ! Sets all MYSTRAN file names. Opens all files and closes and deletes them so that no confusion about files if MYSTRAN aborts
-! Reopen BUG, ERR, F04, F06
+! Reopen BUG, ERR, F06
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 

@@ -420,7 +420,7 @@
                                                               ! Unit no's. for  scratch files
       INTEGER(LONG)                   :: SCR(9)        = (/991,992,993,994,995,996,997,998,999/)
 
-! The following are indicators of whether to write to BUG, ERR, F04
+! The following are indicators of whether to write to BUG, ERR
 
       INTEGER(LONG)                   :: WRT_BUG(0:MBUG-1)  = (/(0, I=0,MBUG-1)/)
                                                                ! WRT_BUG specifies what to write to the BUG file. Set by C.C. ELDATA

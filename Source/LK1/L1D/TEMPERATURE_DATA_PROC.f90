@@ -336,7 +336,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, JCARD_LEN, NGRID, NSUB, NTCARD, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  CGTEMP, GTEMP, SUBLOD
@@ -426,7 +426,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, NGRID, NSUB, NTCARD, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN
@@ -572,7 +572,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, JCARD_LEN, LTDAT, MTDAT_TEMPRB, MTDAT_TEMPP1,      &
                                          NTCARD, NTDAT,  &
                                          NSUB, WARN_ERR  
@@ -796,7 +796,7 @@ cont_cards: DO                                             ! Top of loop for rea
 ! which gives info about how the elem temp was arrived at.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE   
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MELGP, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -888,7 +888,7 @@ cont_cards: DO                                             ! Top of loop for rea
 ! array CETEMP to state that this elem temp was specified on an elem temp card
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NELE, NSUB, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  ETEMP, ESORT1, CETEMP, TPNT, TYPE, SUBLOD

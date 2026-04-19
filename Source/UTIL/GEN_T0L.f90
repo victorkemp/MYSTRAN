@@ -68,7 +68,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, ONE80, PI
-      USE IOUNT1, ONLY                :  WRT_ERR, F04, f06
+      USE IOUNT1, ONLY                :  WRT_ERR, f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE PARAMS, ONLY                :  EPSIL
       USE TIMDAT, ONLY                :  TSEC

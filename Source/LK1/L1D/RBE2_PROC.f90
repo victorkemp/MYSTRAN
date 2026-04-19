@@ -32,7 +32,7 @@
 ! MPC coefficients) which will be used in LINK2 to reduce the G-set mass, stiffness and load matrices to the N-set. 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1F, LINK1F, L1F_MSG, L1J
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, LINK1F, L1F_MSG, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NCORD, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE

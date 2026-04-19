@@ -29,7 +29,6 @@
 ! Processes CBAR or CBEAM Bulk Data Cards to increment LVVEC and LBAROFF if the CBAR or CBEAM entry has a V vector or offsets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN, LBAROFF, LVVEC
       USE TIMDAT, ONLY                :  TSEC
  

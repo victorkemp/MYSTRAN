@@ -33,7 +33,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EPSIL1_SET, IERRFL, JCARD_LEN, JF, MEPSIL, MPBARLU
-      USE IOUNT1, ONLY                :  WRT_ERR, F04
+      USE IOUNT1, ONLY                :  WRT_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, GRIDSEQ, PBARLDEC, PBARLSHR
  

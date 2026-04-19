@@ -34,7 +34,7 @@
 !  4) From 2nd continuation card (if present): area factors for transverse shear and I12 and enter into array RPBUSH
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE PARAMS, ONLY                :  EPSIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPBUSH, NPBUSH, WARN_ERR
       USE CONSTANTS_1, ONLY           :  ZERO, ONE

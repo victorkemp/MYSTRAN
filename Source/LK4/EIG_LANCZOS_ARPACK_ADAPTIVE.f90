@@ -40,7 +40,7 @@
 ! NOTE: This routine only supports normal modes (not BUCKLING or GEN CB MODEL)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, SC1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, KMSM_SDIA, LINKNO, NDOFL, NTERM_KLL, NTERM_KMSM,                 &
                                          NTERM_KMSMn, NTERM_MLL, NUM_EIGENS, NUM_MLL_DIAG_ZEROS, NVEC, SOL_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

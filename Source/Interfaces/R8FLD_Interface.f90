@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JCARD_LEN
       USE CONSTANTS_1, ONLY           :  ZERO
  

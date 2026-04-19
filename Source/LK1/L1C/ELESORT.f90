@@ -58,7 +58,7 @@
 !       51     6 |     51      6   30    B1 |     61      5   24    Q2
      
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, ELESORT_RUN, NELE, NRIGEL
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EDAT, EOFF, EPNT, ESORT1, ESORT2, ETYPE, RIGID_ELEM_IDS

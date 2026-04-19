@@ -29,7 +29,7 @@
 ! Writes "punch" output for grid point related quantities (accels, displacements, eigenvectors, applied loads and SPC, MPC forces)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, PCH
+      USE IOUNT1, ONLY                :  ERR, F06, PCH
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, INT_SC_NUM, PCH_LINE_NUM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP

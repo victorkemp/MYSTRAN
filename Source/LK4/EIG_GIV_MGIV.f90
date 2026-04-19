@@ -29,7 +29,7 @@
 ! Solves for eigenvalues and eigenvectors when method is GIV (Givens) or MGIV (modified Givens)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, KLL_SDIA, KLLD_SDIA, MLL_SDIA, NDOFL, NTERM_KLL, NTERM_KLLD,     &
                                          NTERM_MLL, NUM_EIGENS, NUM_KLLD_DIAG_ZEROS, NUM_MLL_DIAG_ZEROS, NVEC, SOL_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

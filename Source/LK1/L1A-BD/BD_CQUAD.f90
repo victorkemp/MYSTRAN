@@ -31,7 +31,7 @@
 !  2) Calls subr ELEPRO to read element ID, property ID and connection data into array EDAT
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, FATAL_ERR, JCARD_LEN, JF, LMATANGLE, LPLATEOFF, LPLATETHICK,        &
                                          MEDAT_CQUAD, NCQUAD4K, NCQUAD4, NEDAT, NELE, NMATANGLE, NPLATEOFF, NPLATETHICK
       USE TIMDAT, ONLY                :  TSEC

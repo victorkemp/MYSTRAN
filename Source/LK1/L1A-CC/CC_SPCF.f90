@@ -29,7 +29,7 @@
 ! Processes Case Control SPCF cards for SPC force output requests
       ! - SPCF: SPC force
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, PCHSTAT
+      USE IOUNT1, ONLY                :  PCHSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  SPCF_OUT

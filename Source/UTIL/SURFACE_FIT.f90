@@ -31,7 +31,7 @@
 !              WF(X,Y) = B(0) + B(1)*X + B(2)*Y + B(3)*XY + B(4)*X^2 + B(5)*Y^2
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE

@@ -26,13 +26,13 @@
 
       SUBROUTINE OPEN_OUTFILES
 
-! Opens BUGFIL, ERRFIL, F04FIL, F06FIL and, after checking STIME, closes the file so it can be reopened with APPEND.
+! Opens BUGFIL, ERRFIL, F06FIL and, after checking STIME, closes the file so it can be reopened with APPEND.
 ! This subr is intended for opening these files 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG    , ERR    , F04    , F06    , SC1, BUGOUT, FILE_NAM_MAXLEN,                         &
-                                         BUGFIL , ERRFIL , F04FIL , F06FIL ,                                                       &
-                                         BUG_MSG, ERR_MSG, F04_MSG, F06_MSG
+      USE IOUNT1, ONLY                :  BUG    , ERR    , F06    , SC1, BUGOUT, FILE_NAM_MAXLEN,                                  &
+                                         BUGFIL , ERRFIL , F06FIL ,                                                                &
+                                         BUG_MSG, ERR_MSG, F06_MSG
       USE TIMDAT, ONLY                :  STIME, TSEC
 
       USE OPEN_OUTFILES_USE_IFs
@@ -58,9 +58,7 @@
          IERR(I) = 0
       ENDDO
 
-! Open BUG, ERR, F04, F06 files, check STIME, and position file at end
-
-      CALL OPENIT ( F04FIL, F04, 'F04', F04_MSG, IERR(1) )
+! Open BUG, ERR, F06 files, check STIME, and position file at end
 
       CALL OPENIT ( BUGFIL, BUG, 'BUG', BUG_MSG, IERR(2) )
 
@@ -91,7 +89,7 @@
 
 ! Opens formatted files
 
-      USE IOUNT1, ONLY                        :  F04, FILE_NAM_MAXLEN
+      USE IOUNT1, ONLY                        :  FILE_NAM_MAXLEN
       USE SCONTR, ONLY                        :  LINKNO, FATAL_ERR
       USE TIMDAT, ONLY                        :  MONTH,DAY,YEAR,HOUR,MINUTE,SEC,SFRAC
 

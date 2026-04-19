@@ -30,7 +30,7 @@
 ! properties (membrane, bending, transverse shear, bending/membrane coupling)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEFE, MEMATC 
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE

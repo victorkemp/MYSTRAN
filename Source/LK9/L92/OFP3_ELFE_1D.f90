@@ -30,7 +30,7 @@
 ! for later output in LINK9
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELOUT_ELFE_BIT, FATAL_ERR, IBIT, INT_SC_NUM, MBUG, MOGEL,&
                                          NELE, NCBAR, NCBUSH, NCELAS1, NCELAS2, NCELAS3, NCELAS4, NCROD, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

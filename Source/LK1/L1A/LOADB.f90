@@ -28,7 +28,7 @@
 
       ! LOADB reads in the Bulk Data deck.
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, IMB_BLANK, JF, LIND_GRDS_MPCS,               &
                                          LSUB, LLOADC, LMPCADDC, LSPCADDC, MDT, MTDAT_TEMPP1, MTDAT_TEMPRB,                        &
                                          MAX_GAUSS_POINTS, MAX_STRESS_POINTS,                                                      &
@@ -1141,7 +1141,7 @@ j_do2:            DO J=2,LMPCADDC
 
       ! it seems like there should be a better way to write an upper function...
       ! https://en.wikibooks.org/wiki/Fortran/strings
-      USE IOUNT1, ONLY                :  ERR, INFILE, F06 !, F04
+      USE IOUNT1, ONLY                :  ERR, INFILE, F06 !
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       implicit none
       CHARACTER(256), intent (inout) :: LINE

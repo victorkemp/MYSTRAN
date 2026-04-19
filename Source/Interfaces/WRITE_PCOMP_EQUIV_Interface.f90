@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  TWELVE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MEMATC, MID1_PCOMP_EQ, MID2_PCOMP_EQ, MID3_PCOMP_EQ,                        &
                                          MID4_PCOMP_EQ, MID1_PCOMP_EQ, MID2_PCOMP_EQ, MID3_PCOMP_EQ, MID4_PCOMP_EQ
       USE PARAMS, ONLY                :  EPSIL, PCOMPEQ, SUPINFO

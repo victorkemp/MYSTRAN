@@ -29,7 +29,7 @@
 ! Read Bulk Data SPOINT entries. Enter the SPOINT number into array GRID (in col 1) and set GRID(ngrid,6) to 1 to indicate SPOINT
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID

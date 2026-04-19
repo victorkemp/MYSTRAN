@@ -29,7 +29,7 @@
 ! Forms the sparse scalar mass matrix, MGGS, (for masses defined on Bulk Data CMASS)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  FATAL_ERR, NCMASS, NDOFG, NGRID, NPMASS, NTERM_MGGS, BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

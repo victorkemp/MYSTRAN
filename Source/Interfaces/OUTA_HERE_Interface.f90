@@ -33,7 +33,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  BUGOUT, F04, F06FIL, SC1,                                                        &
+      USE IOUNT1, ONLY                :  BUGOUT, F06FIL, SC1,                                                        &
                                          BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD, F04STAT, F04STAT_OLD,                         &
                                          OP2STAT, PCHSTAT, L1ASTAT 
 

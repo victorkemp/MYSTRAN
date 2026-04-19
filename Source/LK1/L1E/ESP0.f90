@@ -48,7 +48,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, KMAT_BW, KMAT_DEN, LTERM_KGG, LTERM_KGGD, SOL_NAME
       USE PARAMS, ONLY                :  GRIDSEQ, SETLKTK, SUPINFO, USR_LTERM_KGG
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -121,7 +121,7 @@
 ! Estimates LTERM based on full elem stiffness matrices in an unassembled state (not connected)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NELE, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SPARSTOR
@@ -195,7 +195,7 @@
 ! Estimates LTERM based on number of rows in the stiff matrix times the stiffness matrix bandwidth from BANDIT.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  KMAT_BW, KMAT_DEN, NDOFG, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  
@@ -250,7 +250,7 @@
 ! Estimates LTERM based on the full size of the stiffness matrix times the density returned from subr BANDIT
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, KMAT_BW, KMAT_DEN, NDOFG, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ONE_HUNDRED
@@ -307,7 +307,7 @@
 ! Estimates LTERM based on actual element stiffness matrices unconnected.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MELDOF, NELE, NSUB, SOL_NAME
       USE PARAMS, ONLY                :  EPSIL, SETLKTK, SPARSTOR
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
@@ -449,7 +449,7 @@ kgg_cols:   DO K=KSTART,ELDOF
 ! Prints out info on the formulation of stiffness arrays for subr ESP0_3 which estimates LTERM for subr ESP
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE MODEL_STUF, ONLY            :  EID
 
       IMPLICIT NONE

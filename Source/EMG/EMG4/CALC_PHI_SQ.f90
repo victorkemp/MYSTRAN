@@ -53,7 +53,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEFE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWELVE
       USE PARAMS, ONLY                :  CBMIN3, CBMIN4, CBMIN4T, EPSIL, PCMPTSTM, QUAD4TYP

@@ -33,7 +33,7 @@
                           PSH, DPSHG )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUG, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_SHPJ_BIT, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, FOUR, EIGHT

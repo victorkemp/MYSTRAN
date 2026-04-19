@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELOUT_ELFE_BIT, FATAL_ERR, IBIT, INT_SC_NUM, MBUG, MOGEL,                   &
                                          WARN_ERR, NELE, NCQUAD4, NCQUAD4K, NCSHEAR, NCTRIA3, NCTRIA3K, SOL_NAME                   
       USE TIMDAT, ONLY                :  TSEC

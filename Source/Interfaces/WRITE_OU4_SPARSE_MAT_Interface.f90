@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, LEN_INPUT_FNAME, OU4, OU4FIL, mou4
+      USE IOUNT1, ONLY                :  ERR, F06, LEN_INPUT_FNAME, OU4, OU4FIL, mou4
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

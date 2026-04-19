@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, IN1                
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1                
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, FATAL_ERR, LCMASS, LDOFG, LELE,                               &
                                          LEDAT, LFORCE, LCONM2, LCORD, LGRAV, LGRID, LGUSERIN, LLOADC, LLOADR,                     &
                                          LMATL, LMPC, LMPCADDC, LMPCADDR, LPBAR, LPBEAM, LPBUSH, LPCOMP, LPCOMP_PLIES, LPDAT,      &

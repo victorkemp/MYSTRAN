@@ -40,7 +40,7 @@
 !            DDOF2: Dependent   DOF's at GID2
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1F
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LRIGEL, NRBAR, NRIGEL, NRECARD
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  RIGID_ELEM_IDS

@@ -29,7 +29,7 @@
 ! Processes RBE3 Bulk Data Cards. Writes RBE3 card data to file L1F
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1F
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LRIGEL, MRBE3, NRECARD, NRIGEL
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

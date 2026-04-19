@@ -29,7 +29,7 @@
 ! Processes element node force output requests for one subcase, all element types
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_FIJ, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_FIJ, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELOUT_ELFN_BIT, ELDT_BUG_U_P_BIT, ELDT_F25_U_P_BIT, FATAL_ERR,NELE, IBIT,   &
                                          INT_SC_NUM, MBUG, MOGEL, SOL_NAME                                           
       USE TIMDAT, ONLY                :  TSEC

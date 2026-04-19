@@ -29,7 +29,7 @@
 ! Processes Case Control SET cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE IOUNT1, ONLY                :  WRT_ERR
       USE SCONTR, ONLY                :  CC_ENTRY_LEN, FATAL_ERR, LSETS, LSETLN, MAX_TOKEN_LEN, NSETS, SETLEN, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC

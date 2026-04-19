@@ -29,7 +29,7 @@
                             FIELD5_INT_MODE, FIELD6_EIGENVALUE, WRITE_F06 )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OP2
       USE SCONTR, ONLY                :  BARTOR, BLNK_SUB_NAM, MOGEL
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

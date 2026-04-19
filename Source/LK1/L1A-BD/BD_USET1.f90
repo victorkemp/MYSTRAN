@@ -32,7 +32,7 @@
 !          USET_NAME, COMPJ, GRIDJ, DOFSET 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1X
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1X
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, NUM_USET_RECORDS
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

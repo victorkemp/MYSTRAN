@@ -29,7 +29,7 @@
 ! Main driver routine for all element node (or engineering force) and stress and strain output requests for one subcase
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06, WRT_FIJ
+      USE IOUNT1, ONLY                :  ERR, F06, WRT_FIJ
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MFIJ, MOGEL
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

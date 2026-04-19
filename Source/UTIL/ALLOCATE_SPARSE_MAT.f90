@@ -30,7 +30,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE CONSTANTS_1, ONLY           :  ZERO, ONEPP6
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFM, NDOFO, NDOFS, NDOFR, TOT_MB_MEM_ALLOC
       USE TIMDAT, ONLY                :  TSEC
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

@@ -33,7 +33,7 @@
 !        the 3 eigenvales to the max value (among the 3) and, if the ratio is less than AUTOSPC_RAT, mark the DOF for AUTOSPC.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, SPC
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, SPC
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFSA, NGRID, NUM_PCHD_SPC1
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  AUTOSPC, AUTOSPC_INFO, AUTOSPC_RAT, EPSIL, PCHSPC1, SPC1SID, SUPINFO
@@ -285,7 +285,7 @@ deb_17:        IF (DEBUG(17) > 0) THEN
 ! Jacobi solution for 3x3 eigenvalue problem used in finding the eigenvalues of a 3x3 diag partition of a 6x6 grid stiffness matrix
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE CONSTANTS_1, ONLY           :  ZERO
       USE LAPACK_STD_EIG_1

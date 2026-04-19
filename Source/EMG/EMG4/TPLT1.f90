@@ -40,7 +40,7 @@
 !  5) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, f06
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSUB, NTSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, THREE, FOUR, SIX, TWELVE
@@ -489,7 +489,6 @@
 ! other terms are 1.0
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04
       USE TIMDAT, ONLY                :  TSEC
   
       IMPLICIT NONE 

@@ -33,7 +33,7 @@
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F21, F22, F23, F24, L1C, L1F, L1I, L1G, L1J, L1P, L1S, L1U, L1W, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, F21, F22, F23, F24, L1C, L1F, L1I, L1G, L1J, L1P, L1S, L1U, L1W, SC1
                                          
       USE IOUNT1, ONLY                :  F21FIL, F22FIL, F23FIL, F24FIL, LINK1C, LINK1F, LINK1I, LINK1G, LINK1J, LINK1P, LINK1S,   &
                                          LINK1U, LINK1W

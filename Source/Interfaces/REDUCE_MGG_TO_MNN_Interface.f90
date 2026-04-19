@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L2R, LINK2R, L2R_MSG, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, L2R, LINK2R, L2R_MSG, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG, NDOFN, NDOFM, NTERM_MGG, NTERM_MNN, NTERM_MNM, NTERM_MMM, &
                                          NTERM_GMN, NTERM_LMN
       USE PARAMS, ONLY                :  EPSIL, MATSPARS, SPARSTOR

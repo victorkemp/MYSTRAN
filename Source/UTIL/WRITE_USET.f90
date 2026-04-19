@@ -29,7 +29,7 @@
 ! Writes the NGRID x 6 USET table to the F06 file based on user supplied Bulk Data Param PRTUSET
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MTSET, NDOFG, NGRID, NUM_USET_U1, NUM_USET_U2
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID, GRID_SEQ, INV_GRID_SEQ

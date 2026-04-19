@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, L1C, LINK1C, L1C_MSG
+      USE IOUNT1, ONLY                :  L1C, LINK1C, L1C_MSG
       USE SCONTR, ONLY                :  DATA_NAM_LEN, MTDOF, NDOFG, NGRID, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI, TDOF, TSET

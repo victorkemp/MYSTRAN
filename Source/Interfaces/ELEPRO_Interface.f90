@@ -33,7 +33,7 @@
                           CHK_FLD2, CHK_FLD3, CHK_FLD4, CHK_FLD5, CHK_FLD6, CHK_FLD7, CHK_FLD8, CHK_FLD9 )
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JF, LEDAT, LELE, NEDAT, NELE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EDAT, EPNT

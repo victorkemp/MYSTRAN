@@ -29,7 +29,7 @@
 ! Writes blocks of element ply strains for one subcase one element type for elements with PCOMP properties.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OP2
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, BARTOR, INT_SC_NUM, LPCOMP_PLIES, NDOFR, NUM_CB_DOFS,            &
                                          NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

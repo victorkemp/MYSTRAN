@@ -30,7 +30,7 @@
 ! the laminate). Result goes back into UEL
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, f06
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  CONV_DEG_RAD
       USE TIMDAT, ONLY                :  TSEC

@@ -29,7 +29,7 @@
 ! Processes Case Control eigenvalue METHOD cards
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  WARN_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN

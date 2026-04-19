@@ -29,7 +29,7 @@
 ! Processes TEMP Bulk Data Cards and writes CARD to file LINK1K for later processing
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1K
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1K
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LSUB, MTDAT_TEMPRB, MTDAT_TEMPP1, NSUB,   &
                                          NTCARD
       USE TIMDAT, ONLY                :  TSEC

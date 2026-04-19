@@ -34,7 +34,7 @@
 ! The derivation of the equations for the RBE3 are shown in Appendix E to the MYSTRAN User's Reference Manual
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1F, LINK1F, L1F_MSG, L1J
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, LINK1F, L1F_MSG, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MRBE3, NCORD, NGRID, NTERM_RMG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE

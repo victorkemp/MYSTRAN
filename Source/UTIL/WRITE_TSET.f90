@@ -29,7 +29,7 @@
 ! Writes the NGRID x 6 TSET degree of freedom table to the F06 file based on user supplied Bulk Data Param PRTTSET
 
       USE PENTIUM_II_KIND, ONLY       :  LONG
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MTSET, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  GRID, GRID_SEQ, INV_GRID_SEQ

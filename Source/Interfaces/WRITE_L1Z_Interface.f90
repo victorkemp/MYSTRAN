@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, F06, L1Z, LINK1Z, L1Z_MSG, L1ZSTAT
+      USE IOUNT1, ONLY                :  F06, L1Z, LINK1Z, L1Z_MSG, L1ZSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NSUB, SOL_NAME
       USE TIMDAT, ONLY                :  STIME, TSEC
       USE MODEL_STUF, ONLY            :  CC_EIGR_SID, MPCSET, SPCSET, SUBLOD

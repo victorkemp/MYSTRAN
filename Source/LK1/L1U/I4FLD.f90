@@ -29,7 +29,7 @@
 ! Reads 8 column field of INTEGER*4 data
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR, JCARD_LEN, MAX_INTEGER_LEN
 
       USE I4FLD_USE_IFs

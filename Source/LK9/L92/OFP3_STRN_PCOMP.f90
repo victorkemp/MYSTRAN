@@ -29,7 +29,7 @@
 ! Processes element ply strain output requests for PCOMP elements (TRIA3, QUAD4) for one subcase
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELOUT_STRN_BIT, FATAL_ERR, IBIT, INT_SC_NUM, MBUG, MOGEL,                   &
                                          NELE, NCQUAD4, NCSHEAR, NCTRIA3, SOL_NAME, WARN_ERR, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

@@ -28,7 +28,7 @@
 
       ! LOADC reads in the CASE CONTROL DECK
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUGOUT, ERR, F04, F06, IN1, WRT_ERR
+      USE IOUNT1, ONLY                :  BUGOUT, ERR, F06, IN1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, ENFORCED, FATAL_ERR, WARN_ERR, NSUB, NTSUB, PROG_NAME,        &
                                          RESTART, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

@@ -32,7 +32,6 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LSUB, NSUB 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  SC_STRE

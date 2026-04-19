@@ -31,7 +31,7 @@
 !   The 2's are for the DOF's belonging to displ set CSET_2 (the compliment of CSET_1 in CSET_X)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFG
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI

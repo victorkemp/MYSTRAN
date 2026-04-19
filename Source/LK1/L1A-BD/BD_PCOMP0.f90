@@ -29,7 +29,7 @@
 ! Processes PCOMP Bulk Data Cards to determine the number of plies there are defined for this PCOMP entry
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, f06
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, JCARD_LEN
       USE TIMDAT, ONLY                :  TSEC
 

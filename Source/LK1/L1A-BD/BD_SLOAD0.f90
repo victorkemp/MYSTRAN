@@ -31,7 +31,6 @@
 !   SETID, scalar point, load mag
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF
       USE TIMDAT, ONLY                :  TSEC
  

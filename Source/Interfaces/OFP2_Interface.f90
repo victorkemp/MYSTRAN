@@ -32,7 +32,7 @@
 
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, OT4
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OT4
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, GROUT_SPCF_BIT, GROUT_MPCF_BIT, GROUT_GPFO_BIT, IBIT, INT_SC_NUM,&
                                          MELGP, MOGEL, NGRID, NDOFF, NDOFG, NDOFM, NDOFN, NDOFS, NDOFSA, NTERM_GMN,                &

@@ -29,7 +29,7 @@
 ! Processes a single RSPLINE rigid element, per call, to get terms for the RMG constraint matrix
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1F, L1F_MSG, LINK1F, L1J
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, L1F_MSG, LINK1F, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MRSPLINE, NCORD, NGRID, NTERM_RMG
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
@@ -404,7 +404,7 @@
 ! the line between the 2 RSPLINE indep grids)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -549,7 +549,7 @@
 ! Calculate thespline functions for an RSPLINE element in element coords (x axis along the line between the 2 indep grids)
 
       USE PENTIUM_II_KIND
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE CONSTANTS_1, ONLY           :  ONE, TWO, THREE, FOUR, SIX
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

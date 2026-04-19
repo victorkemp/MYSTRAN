@@ -29,7 +29,7 @@
 ! Processes Case Control ENFO (ENFORCED) entries
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ENFFIL, ERR, F04, F06
+      USE IOUNT1, ONLY                :  ENFFIL, ERR, F06
       USE SCONTR, ONLY                :  WARN_ERR, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN

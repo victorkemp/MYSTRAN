@@ -31,7 +31,7 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
 
-      USE IOUNT1, ONLY                :  ERR, F04, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
+      USE IOUNT1, ONLY                :  ERR, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
                                          L5A, L5B, NEU, OT4, OU4, PCH, SC1
 
       USE IOUNT1, ONLY                :  F06FIL, F25FIL, LINK1B, LINK1E, LINK1M, LINK1R, LINK2A, LINK2B, LINK2C, LINK2D,           &
@@ -1305,7 +1305,7 @@ j_do: DO JVEC=1,NUM_SOLNS
       CALL OURTIM
       WRITE(F06,151) LINKNO
 
-      ! Leave the closing of BUG, ERR, F04, F06 files until after LINK9 returns to MYSTRAN.for
+      ! Leave the closing of BUG, ERR, F06 files until after LINK9 returns to MYSTRAN.for
 
       ! Close some files
       IF ((SOL_NAME(1:8) == 'BUCKLING') .OR. (SOL_NAME(1:8) == 'DIFFEREN') .OR. (SOL_NAME(1:8) == 'NLSTATIC')) THEN
@@ -1605,7 +1605,7 @@ j_do: DO JVEC=1,NUM_SOLNS
       SUBROUTINE GET_FG_INERTIA_FORCES
 
       USE PENTIUM_II_KIND
-      USE IOUNT1, ONLY                :  ERR, F04, F06, LINK2I, L2I, L2I_MSG, L2ISTAT
+      USE IOUNT1, ONLY                :  ERR, F06, LINK2I, L2I, L2I_MSG, L2ISTAT
       USE SCONTR, ONLY                :  NDOFA, NDOFF, NDOFG, NDOFL, NDOFM, NDOFN, NDOFO, NDOFS, NDOFR, NTERM_MLL
       USE SPARSE_MATRICES, ONLY       :  I_MLL, J_MLL, MLL, SYM_MLL
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL

@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1N, L1N_MSG, LINK1N
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1N, L1N_MSG, LINK1N
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NAOCARD, NDOFO, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TSET_CHR_LEN, TSET

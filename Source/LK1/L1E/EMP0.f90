@@ -40,7 +40,7 @@
 ! If field 3 of PARAM SETLKTK is 2: then the estimate of LTERM_MGGE is based on actual elem ME matrices unconnected.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  LTERM_MGGE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  GRIDSEQ, SETLKTM, USR_LTERM_MGG
@@ -86,7 +86,7 @@
 ! Estimates LTERM_MGGE based on full elem mass matrices in an unassembled state (not connected)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  LTERM_MGGE, NELE, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SPARSTOR, SUPINFO
@@ -147,7 +147,7 @@
 ! Estimates LTERM_MGG based on actual element mass matrices unconnected.
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LTERM_MGGE, MELDOF, NELE, NSUB
       USE PARAMS, ONLY                :  EPSIL, SETLKTM, SPARSTOR, SUPINFO
       USE TIMDAT, ONLY                :  TSEC

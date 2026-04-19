@@ -29,7 +29,7 @@
 ! Reads DOF table data (TSET, TDOF, TDOFI) from file LINK1C
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F04, F06, L1C, LINK1C, L1C_MSG
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, ERR, F06, L1C, LINK1C, L1C_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DATA_NAM_LEN, MTDOF, NDOFG, NGRID
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOFI, TDOF, TSET

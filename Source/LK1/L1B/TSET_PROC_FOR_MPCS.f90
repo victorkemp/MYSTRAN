@@ -29,7 +29,7 @@
 ! DOF Processor for MPC's 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1S, L1S_MSG, LINK1S
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1S, L1S_MSG, LINK1S
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LIND_GRDS_MPCS, LMPCADDC, NDOFM, NGRID, NIND_GRDS_MPCS, NMPC,    &
                                          NMPCADD, NTERM_RMG, NUM_MPCSIDS 
       USE TIMDAT, ONLY                :  TSEC

@@ -29,7 +29,7 @@
 ! Reads data from files LINK1B, LINK1G, LINK1K, LINK1Q, LINK1Y (created in LINK1) needed in LINK1 restart
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06   , FILE_NAM_MAXLEN,                                                        &
+      USE IOUNT1, ONLY                :  ERR, F06   , FILE_NAM_MAXLEN,                                                        &
                                          L1B    , L1G    , L1K    , L1Q   , L1Y     ,                                              &
                                          LINK1B , LINK1G , LINK1K , LINK1Q, LINK1Y  ,                                              &
                                          L1B_MSG, L1G_MSG, L1K_MSG, L1Q_MSG, L1Y_MSG,                                              &

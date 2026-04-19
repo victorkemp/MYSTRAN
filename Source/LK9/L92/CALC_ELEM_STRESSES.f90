@@ -30,7 +30,7 @@
 ! that will be written to the F06 file
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  TYPE

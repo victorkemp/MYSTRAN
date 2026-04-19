@@ -33,7 +33,7 @@
  
       USE PENTIUM_II_KIND, ONLY       :  LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, NGRID
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE TIMDAT, ONLY                :  TSEC
       USE DOF_TABLES, ONLY            :  TDOF_ROW_START
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG

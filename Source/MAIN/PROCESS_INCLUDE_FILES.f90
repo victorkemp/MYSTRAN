@@ -31,7 +31,7 @@
 ! the INCLUDE files. This file then becomes the input file by re-opening it as INFILE (the normal input file)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN0, IN1, INC, INFILE
+      USE IOUNT1, ONLY                :  ERR, F06, IN0, IN1, INC, INFILE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, EC_ENTRY_LEN, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
 

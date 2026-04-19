@@ -29,7 +29,7 @@
 ! Processes PLOAD2 Bulk Data Cards. Reads and checks data and then writes CARD to file LINK1Q for later processing
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1Q
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1Q
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LPLOAD, LSUB, NPCARD, NPLOAD, NSUB
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  PRESS_SIDS, SUBLOD

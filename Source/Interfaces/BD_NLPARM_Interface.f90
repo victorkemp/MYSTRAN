@@ -32,7 +32,7 @@
 
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LSUB
       USE TIMDAT, ONLY                :  TSEC
       USE NONLINEAR_PARAMS, ONLY      :  NL_MAXITER, NL_NUM_LOAD_STEPS, NL_SID

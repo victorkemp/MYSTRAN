@@ -30,7 +30,7 @@
 ! constraint matrix is written to file LINK1J in format: i, j, RMG(i,j)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L1J, LINK1J, L1J_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1J, LINK1J, L1J_MSG
       USE SCONTR, ONLY                :  NDOFM, NTERM_RMG, BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

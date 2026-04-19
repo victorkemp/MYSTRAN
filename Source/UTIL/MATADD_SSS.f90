@@ -45,7 +45,6 @@
 ! symmetric and the other is not. The user is required to ensure that this is the case.
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  

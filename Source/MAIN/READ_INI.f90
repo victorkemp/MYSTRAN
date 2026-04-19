@@ -34,7 +34,7 @@
 
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, DEFDIR, INIFIL, SC1, MOU4, WRT_ERR
 
-      USE IOUNT1, ONLY                :  BUG,     ERR,     F04,     F06,     IN0,     IN1,     INI,     L1A,     NEU,              &
+      USE IOUNT1, ONLY                :  BUG,     ERR,     F06,     IN0,     IN1,     INI,     L1A,     NEU,                       &
                                          SEQ,     SPC,                                                                             &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &
@@ -44,7 +44,7 @@
                                          L2K,     L2L,     L2M,     L2N,     L2O,     L2P,     L2Q,     L2R,     L2S,     L2T,     &
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OU4
 
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUGSTAT, ERRSTAT, F04STAT, F06STAT, IN0STAT, IN1STAT,                   &
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, BUGSTAT, ERRSTAT, F06STAT, IN0STAT, IN1STAT,                            &
                                          L1ASTAT, NEUSTAT, SEQSTAT, SPCSTAT,                                                       &
                                          F21STAT, F22STAT, F23STAT, F24STAT, F25STAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &
@@ -217,9 +217,6 @@
 
                ELSE IF (CARD(1:3) == 'ERR') THEN           ! 04
                   CALL READ_INI_LINE ( 'ERR', ERR, ERRSTAT, WRT_HDR, WRT_CARD, FLD_ERR_MSG )
-
-               ELSE IF (CARD(1:3) == 'F04') THEN           ! 05
-                  CALL READ_INI_LINE ( 'F04', F04, F04STAT, WRT_HDR, WRT_CARD, FLD_ERR_MSG )
 
                ELSE IF (CARD(1:3) == 'F06') THEN           ! 06 (NOTE: F06STAT not allowed to be changed here)
                   DUMSTAT(1:) = ' '
@@ -801,7 +798,6 @@
  
       USE PENTIUM_II_KIND, ONLY        :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                 :  PROG_NAME
-      USE IOUNT1, ONLY                 :  F04
  
       IMPLICIT NONE
  
@@ -924,7 +920,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Prints Bulk Data card errors and warnings
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, F04
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  IERRFL
  
       IMPLICIT NONE
@@ -970,7 +966,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Shifts an 8 character string so that it is left adjusted
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, F04
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  
@@ -1008,7 +1004,7 @@ j_do:       DO J=1,8                                       ! CYCLE through 8 cha
 ! Reads a field of CHARACTER data that can be 1 to 8 chars in length
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  IERRFL, FATAL_ERR
  
       IMPLICIT NONE

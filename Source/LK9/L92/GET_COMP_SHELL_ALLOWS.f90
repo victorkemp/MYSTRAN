@@ -30,7 +30,6 @@
 ! data on the MATi Bulk Data entries in material processing subrs called by subr EMG.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04
       USE TIMDAT, ONLY                :  TSEC
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE MACHINE_PARAMS, ONLY        :  MACH_LARGE_NUM

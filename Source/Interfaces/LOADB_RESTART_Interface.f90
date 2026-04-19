@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, IN1
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, IN1
       USE SCONTR, ONLY                :  BD_ENTRY_LEN, BLNK_SUB_NAM, ECHO, FATAL_ERR, JCARD_LEN, JF, PROG_NAME, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  SUPWARN

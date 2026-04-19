@@ -69,7 +69,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
 
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, IN0, IN1, L1A, NEU, SC1 
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, IN0, IN1, L1A, NEU, SC1 
 
       USE IOUNT1, ONLY                :  F06FIL, IN0FIL, INFILE, NEUFIL 
 
@@ -381,7 +381,7 @@ iters:      DO
 !xx      CALL FILE_CLOSE ( NEU, NEUFIL, 'KEEP', 'Y' )
 !xx   ENDIF
 
-! Write MYSTRAN END to BUG, ERR, F04, F06 and then close those files
+! Write MYSTRAN END to BUG, ERR, F06 and then close those files
 
       WRITE(F06,*)
       CALL CPU_TIME ( TIME_END )

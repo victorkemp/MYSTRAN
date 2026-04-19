@@ -29,7 +29,7 @@
 ! Call routines to reduce stiffness, mass, loads from A-set to L, R-sets
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, SC1, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, LINKNO,   NDOFA, NDOFG, NDOFL, NDOFR, NSUB, SOL_NAME,                       &
                                          NTERM_KAA , NTERM_KLL , NTERM_KRL , NTERM_KRR ,                                           &
                                          NTERM_KAAD, NTERM_KLLD, NTERM_KRLD, NTERM_KRRD,                                           &

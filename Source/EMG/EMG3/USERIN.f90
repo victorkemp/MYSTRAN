@@ -45,7 +45,7 @@
 ! entry was read
   
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, IN4, IN4_MSG, IN4FIL
+      USE IOUNT1, ONLY                :  ERR, F06, IN4, IN4_MSG, IN4FIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEDAT0_CUSERIN, MELDOF, NDOFG, NGRID, NSUB
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
@@ -348,7 +348,7 @@
 
       USE PENTIUM_II_KIND
       USE SCONTR, ONLY                :  FATAL_ERR, NCORD
-      USE IOUNT1, ONLY                :  ERR, F04, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  CORD, NUM_EMG_FATAL_ERRS, RCORD, USERIN_CID0
 
@@ -408,7 +408,7 @@ j_do12:     DO J=1,NCORD
 !  (2) Translate from USERIN basic coord sys origin to overall model basic coord sys origin. Final result is USERIN_RBM0
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      use iount1, only                :  err, f04, f06
+      use iount1, only                :  err, f06
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  RCORD, USERIN_RBM0
 

@@ -27,7 +27,7 @@
       SUBROUTINE WRITE_TDOF ( TDOF_MSG )
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MTDOF, NDOFG, NDOFM, NDOFN, NDOFSA, NDOFSB, NDOFSG, NDOFSZ, NDOFSE, NDOFS,  &
                                          NDOFF, NDOFO, NDOFA, NDOFR, NDOFL, NGRID, NUM_USET_U1, NUM_USET_U2
       USE TIMDAT, ONLY                :  TSEC

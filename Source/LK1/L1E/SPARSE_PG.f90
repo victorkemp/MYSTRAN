@@ -30,7 +30,7 @@
 ! written (for nonzero loads) is: G-set DOF number, internal subcase number, non-zero load value  
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L1E, L1E_MSG, L1ESTAT, LINK1E, SC1, WRT_ERR
+      USE IOUNT1, ONLY                :  ERR, F06, L1E, L1E_MSG, L1ESTAT, LINK1E, SC1, WRT_ERR
       USE SCONTR, ONLY                :  FATAL_ERR, NDOFG, NSUB, NTERM_PG, BLNK_SUB_NAM, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE PARAMS, ONLY                :  EPSIL, PRTFOR

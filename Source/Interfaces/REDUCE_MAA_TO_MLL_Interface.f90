@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, L2M, L2N, LINK2M, LINK2N, L2M_MSG, L2N_MSG
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L2M, L2N, LINK2M, LINK2N, L2M_MSG, L2N_MSG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, NDOFA, NDOFL, NDOFR, NTERM_MAA, NTERM_MLL, NTERM_MRL, NTERM_MRR, &
                                          SOL_NAME
       USE PARAMS, ONLY                :  EPSIL

@@ -29,7 +29,7 @@
 ! Gets shell element number of plies (1 unless elem uses PCOMP props) given the element's internal ID
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  F04, f06
+      USE IOUNT1, ONLY                :  f06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, DEDAT_Q4_SHELL_KEY, DEDAT_T3_SHELL_KEY, NPCOMP, FATAL_ERR
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  EDAT, EID, EPNT, ETYPE, INTL_PID, NUM_PLIES, PCOMP, TYPE

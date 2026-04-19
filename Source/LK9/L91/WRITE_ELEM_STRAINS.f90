@@ -30,7 +30,7 @@
 ! all 2-D, 3-D  plus several 1-D elements (i.e. that have strain calculations).
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06, OP2
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, OP2
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, BARTOR, INT_SC_NUM, MAX_NUM_STR, NDOFR, NUM_CB_DOFS,             &
                                          NVEC, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC

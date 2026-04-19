@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, F04, SC1
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, WRT_ERR, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  STIME, TSEC
 

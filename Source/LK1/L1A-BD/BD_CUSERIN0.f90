@@ -29,7 +29,6 @@
 ! Processes CUSERIN Bulk Data Cards to determine how many grids and SPOINT's are defined (so arrays can be allocated)
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, IERRFL, JCARD_LEN, JF
       USE TIMDAT, ONLY                :  TSEC
  

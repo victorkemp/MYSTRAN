@@ -31,7 +31,7 @@
 ! Gets name (incl path) of the MYSTRAN.INI initialization file.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
-      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, F04, INIFIL
+      USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN, INIFIL
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, PROG_NAME
       USE TIMDAT, ONLY                :  TSEC
 

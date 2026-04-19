@@ -29,7 +29,7 @@
 ! Calculate BM strain/displ matrix for 4 node membrane isoparametric element (quadratic). Called by subrs QMEM1, QSHEAR
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, F04, WRT_BUG
+      USE IOUNT1, ONLY                :  BUG, WRT_BUG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, ELDT_BUG_BMAT_BIT, ELDT_BUG_BCHK_BIT
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO

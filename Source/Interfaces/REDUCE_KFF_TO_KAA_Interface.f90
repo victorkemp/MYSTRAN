@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  ERR, F04, F06, L2E, LINK2E, L2E_MSG, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, L2E, LINK2E, L2E_MSG, SC1
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, KOO_SDIA, NDOFF, NDOFA, NDOFO, NTERM_KFF,       &
                                          NTERM_KAA, NTERM_KAO, NTERM_KOO, NTERM_GOA
       USE PARAMS, ONLY                :  KOORAT, MATSPARS, SOLLIB, SPARSTOR, SPARSE_FLAVOR, RCONDK

@@ -29,7 +29,7 @@
 ! Writes a matrix one column at a time in a format that has 10 terms across the page (repeated un til col is completely written)
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                :  TSEC
  

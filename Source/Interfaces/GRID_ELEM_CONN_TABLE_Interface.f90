@@ -33,7 +33,7 @@
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MAX_ELEM_DEGREE, NELE, NGRID
-      USE IOUNT1, ONLY                :  F04, F06
+      USE IOUNT1, ONLY                :  F06
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  AGRID, ELGP, ETYPE, ESORT1, ESORT2, GRID_ID, GRID_ELEM_CONN_ARRAY 
       USE PARAMS, ONLY                :  PRTCONN 

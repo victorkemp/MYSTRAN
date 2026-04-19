@@ -35,7 +35,7 @@
 !   2) To get the individual matrices for a single ply of the element used for stress/strain calcs for that ply
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  BUG, ERR, F04, F06, WRT_BUG, WRT_ERR
+      USE IOUNT1, ONLY                :  BUG, ERR, F06, WRT_BUG, WRT_ERR
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MEMATC, MRMATLC, MPCOMP_PLIES, MPCOMP0, MRPCOMP_PLIES, MRPCOMP0, &
                                          WARN_ERR
       USE TIMDAT, ONLY                :  TSEC

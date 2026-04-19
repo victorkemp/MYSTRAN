@@ -29,7 +29,7 @@
 ! Processes SPCADD Bulk Data Cards. Reads and checks data and enters data into array SPCADD_SIDS
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F04, F06
+      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, IERRFL, JCARD_LEN, JF, LSPCADDR, LSUB, NSPCADD, LSPCADDC, NSUB
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  SPCADD_SIDS, SPCSET, SUBLOD

@@ -32,7 +32,7 @@
 
  
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  F04, err
+      USE IOUNT1, ONLY                :  err
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NCCCD, NSUB 
       USE TIMDAT, ONLY                :  TSEC
       USE MODEL_STUF, ONLY            :  SC_ELFE, SC_ELFN

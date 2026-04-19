@@ -33,7 +33,6 @@
  
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, MPCOMP_PLIES, MPCOMP0, MRPCOMP_PLIES, MRPCOMP0
-      USE IOUNT1, ONLY                :  F04
       USE MODEL_STUF, ONLY            :  EPROP, INTL_PID, NUM_PLIES, RPCOMP, TPLY
       USE PARAMS, ONLY                :  PCMPTSTM 
       USE CONSTANTS_1, ONLY           :  ZERO, THIRD
