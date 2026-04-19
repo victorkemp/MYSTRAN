@@ -6,13 +6,11 @@
       USE SCONTR, ONLY                   :  BLNK_SUB_NAM
       USE TIMDAT, ONLY                   :  HOUR, MINUTE, SEC,
      &                                      TSEC
-      USE SUBR_BEGEND_LEVELS, ONLY       :  LAPACK_BEGEND
       USE LAPACK_BLAS_AUX
       USE LAPACK_SYM_MAT_INV
 
       USE OURTIM_Interface
 
-      INTEGER(LONG), PARAMETER :: SUBR_BEGEND = LAPACK_BEGEND
 
 *
 *  -- LAPACK routine (version 3.0) --
