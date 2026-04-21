@@ -357,7 +357,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
   set(CMAKE_CXX_FLAGS_DETERMINISTIC
     "${CMAKE_C_FLAGS_DETERMINISTIC}"
   )
-  set(CMAKE_PROFILING_FLAGS "-O2 -g -fno-omit-frame-pointer -fno-inline-functions")
+  set(CMAKE_PROFILING_FLAGS "-O2 -g -fno-inline -fno-omit-frame-pointer -fno-inline-functions")
   set(CMAKE_C_FLAGS_PROFILING "${CMAKE_PROFILING_FLAGS}")
   set(CMAKE_CXX_FLAGS_PROFILING "${CMAKE_PROFILING_FLAGS}")
   set(CMAKE_Fortran_FLAGS_PROFILING "${CMAKE_PROFILING_FLAGS}")
