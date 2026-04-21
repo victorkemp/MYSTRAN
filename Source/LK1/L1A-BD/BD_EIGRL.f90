@@ -208,7 +208,9 @@
             ! INITIAL_NEV*(2**MAX_DOUBLINGS), both being 10 and unlikely to be
             ! changed unless someone *really* wants more than 10k modes AND
             ! doesn't want to specify nmodes manually.
-            LSUB = 10240
+            IF (SOL_NAME /= 'BUCKLING') THEN
+               LSUB = 10240
+            END IF
          END IF
 
          CALL WRITE_L1M
