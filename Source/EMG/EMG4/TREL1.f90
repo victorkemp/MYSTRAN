@@ -222,7 +222,7 @@
 
                DO K=1,ELDOF
                   DO L=1,ELDOF
-                     KE(K,L) = KE(K,L) + (DUM2(K,L) + DUM2(L,K))
+                     KE(K,L) = KE(K,L) + AREA*(DUM2(K,L) + DUM2(L,K))
                   ENDDO
                ENDDO
 
