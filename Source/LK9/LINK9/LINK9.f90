@@ -917,9 +917,10 @@ j_do: DO JVEC=1,NUM_SOLNS
             IF (SOL_NAME(1:5) == 'MODES') THEN
                CALL MATMULT_SFF ( 'MGG', NDOFG, NDOFG, NTERM_MGG, SYM_MGG, I_MGG, J_MGG, MGG, 'UG', NDOFG, 1, UG_COL, 'Y',         &
                                   'FG', -EIGEN_VAL(JVEC), FG_COL )
-                                                           ! DEBUG(192): calc FG_COL as if all inertia force due to MAA*UA_DDOT
-               IF ((NDOFO == 0) .AND. (DEBUG(192) == 2)) THEN
-                  CALL GET_FG_INERTIA_FORCES
+                                                           ! DEBUG(191): calc FG_COL as if all inertia force due to MAA*UA_DDOT
+               IF ((NDOFO == 0) .AND. (DEBUG(191) == 2)) THEN
+                  ! Disabled because it's nothing to do with DEBUG(191) (temperature averaging for thermal loads) and it crashes if used.
+                  ! CALL GET_FG_INERTIA_FORCES
                ENDIF
                                                            ! Mult MGG*PHIXG for FG unless JVEC > NDOFR+NVEC, otherwise FG is null
             ELSE IF (SOL_NAME(1:12) == 'GEN CB MODEL') THEN! Get FG_COL from L5B for CB soln
