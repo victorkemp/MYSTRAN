@@ -917,8 +917,8 @@ j_do: DO JVEC=1,NUM_SOLNS
             IF (SOL_NAME(1:5) == 'MODES') THEN
                CALL MATMULT_SFF ( 'MGG', NDOFG, NDOFG, NTERM_MGG, SYM_MGG, I_MGG, J_MGG, MGG, 'UG', NDOFG, 1, UG_COL, 'Y',         &
                                   'FG', -EIGEN_VAL(JVEC), FG_COL )
-                                                           ! DEBUG(191): calc FG_COL as if all inertia force due to MAA*UA_DDOT
-               IF ((NDOFO == 0) .AND. (DEBUG(191) == 2)) THEN
+                                                           ! DEBUG(192): calc FG_COL as if all inertia force due to MAA*UA_DDOT
+               IF ((NDOFO == 0) .AND. (DEBUG(192) == 2)) THEN
                   CALL GET_FG_INERTIA_FORCES
                ENDIF
                                                            ! Mult MGG*PHIXG for FG unless JVEC > NDOFR+NVEC, otherwise FG is null
