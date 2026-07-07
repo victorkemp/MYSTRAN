@@ -37,9 +37,8 @@
 !  5) KED       = element differen stiff matrix calc   , if OPT(6) = 'Y' = 'Y'
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06
+      USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_TRIA, MAX_ORDER_GAUSS, NTSUB
-      USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  HALF, THIRD, ZERO
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE PARAMS, ONLY                :  EPSIL
@@ -375,7 +374,7 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
                   ENDDO
                   CALL MATMULT_FFF_T ( BI, EALP, 6, 3*ELGP, 1, DUM0 )
                   INTFAC = DETJ(GAUSS_PT)*HH_IJ(IJ)*HH_K(K)
-                  IF (DEBUG(192) == 0) THEN                ! Use temperatures at Gauss points for PTE
+                  IF (DEBUG(191) == 0) THEN                ! Use temperatures at Gauss points for PTE
                      CALL SHP3DP ( IJ, IJ, K, ELGP, SUBR_NAME, IORD_MSG, IORD_IJ, IORD_K, SS_I(IJ), SS_J(IJ), SS_K(K),             &
                                    'N', PSH, DPSHG )
                      CALL MATMULT_FFF ( PSH, GRID_DT_ARRAY, 1, ELGP, NTSUB, TGAUSS )
