@@ -98,6 +98,8 @@
 
 ! **********************************************************************************************************************************
 ! Calc stresses for 1D elements
+! Warning: For ELAS1/2/3/4, the STRESS() array contains force, not stress. This is because we must calculate stress from force, not
+! the other way around.
 
       IF ((TYPE(1:3) == 'BAR') .OR. (TYPE(1:4) == 'BUSH') .OR. (TYPE(1:4) == 'ELAS') .OR. (TYPE(1:3) == 'ROD') .OR.                &
           (TYPE(1:5) == 'USER1')) THEN

@@ -1421,6 +1421,7 @@
 
       REAL(DOUBLE)                    :: FCONV(3)            = (/(ZERO, I=1,3)/)
                                                              ! Array of constants to convert stresses to engr forces for elem
+                                                             ! Except CELAS where it converts force to stress
 
       REAL(DOUBLE)                    :: HBAR                = ZERO
                                                              ! For the quad elem, the dist from the mean plane to the G.P.'s
@@ -1511,6 +1512,7 @@
 
       REAL(DOUBLE)                    :: STRESS(9)           = (/(ZERO, I=1,9)/)
                                                              ! Array of elem stresses for one S/C
+                                                             ! Except CELAS where it is force, not stress.
 
       REAL(DOUBLE)                    :: TE(3,3)             = RESHAPE ( (/(ZERO, I=1,3*3)/), (/3,3/) )
                                                              ! Coord system transformation matrix (3 x 3) such that UEL = TE*UEB

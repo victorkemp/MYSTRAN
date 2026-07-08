@@ -75,11 +75,11 @@
       ENDIF
 
 ! **********************************************************************************************************************************
-! Calculate SE1 matrix for stress recovery.
+! Calculate SE1 matrix for force recovery.
 
       IF (OPT(3) == 'Y') THEN
-         SE1(1,I1,1) =  K*FCONV(1)
-         SE1(1,I2,1) = -K*FCONV(1)
+         SE1(1,I1,1) =  K
+         SE1(1,I2,1) = -K
       ENDIF
 
 
