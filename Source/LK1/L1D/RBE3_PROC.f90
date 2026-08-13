@@ -34,9 +34,8 @@
 ! The derivation of the equations for the RBE3 are shown in Appendix E to the MYSTRAN User's Reference Manual
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, LINK1F, L1F_MSG, L1J
+      USE IOUNT1, ONLY                :  ERR, F06, L1F, LINK1F, L1F_MSG, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MRBE3, NCORD, NGRID, NTERM_RMG
-      USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE MODEL_STUF, ONLY            :  CORD, GRID_ID, GRID, RCORD, RGRID
       USE PARAMS, ONLY                :  EPSIL
@@ -85,6 +84,9 @@
       REAL(DOUBLE)                    :: DX_BAR            ! Wgt'd avg diff in x dist from indep pt i to ref pt A (in ref pt global)
       REAL(DOUBLE)                    :: DY_BAR            ! Wgt'd avg diff in y dist from indep pt i to ref pt A (in ref pt global)
       REAL(DOUBLE)                    :: DZ_BAR            ! Wgt'd avg diff in z dist from indep pt i to ref pt A (in ref pt global)
+      REAL(DOUBLE)                    :: SX_DY_BAR, SX_DZ_BAR   ! X-weight applied to Y, Z offsets
+      REAL(DOUBLE)                    :: SY_DX_BAR, SY_DZ_BAR   ! Y-weight applied to X, Z offsets
+      REAL(DOUBLE)                    :: SZ_DX_BAR, SZ_DY_BAR   ! Z-weight applied to X, Y offsets
       REAL(DOUBLE)                    :: DX0(3)            ! Differences in coords of one indep pt and ref pt in basic coord system
       REAL(DOUBLE)                    :: DXI(MRBE3)        ! Differences in X coords of indep pt and ref pt in ref pt global system
       REAL(DOUBLE)                    :: DYI(MRBE3)        ! Differences in Y coords of indep pt and ref pt in ref pt global system
@@ -221,6 +223,9 @@
       DX_BAR = ZERO
       DY_BAR = ZERO
       DZ_BAR = ZERO
+      SX_DY_BAR = ZERO;  SX_DZ_BAR = ZERO
+      SY_DX_BAR = ZERO;  SY_DZ_BAR = ZERO
+      SZ_DX_BAR = ZERO;  SZ_DY_BAR = ZERO
 
       DO J=1,IRBE3
 
@@ -239,6 +244,12 @@
          DX_BAR = DX_BAR + WTi6(J,1)*DXI(J)
          DY_BAR = DY_BAR + WTi6(J,2)*DYI(J)
          DZ_BAR = DZ_BAR + WTi6(J,3)*DZI(J)
+         SX_DY_BAR = SX_DY_BAR + WTi6(J,1)*DYI(J)
+         SX_DZ_BAR = SX_DZ_BAR + WTi6(J,1)*DZI(J)
+         SY_DX_BAR = SY_DX_BAR + WTi6(J,2)*DXI(J)
+         SY_DZ_BAR = SY_DZ_BAR + WTi6(J,2)*DZI(J)
+         SZ_DX_BAR = SZ_DX_BAR + WTi6(J,3)*DXI(J)
+         SZ_DY_BAR = SZ_DY_BAR + WTi6(J,3)*DYI(J)
 
 
       ENDDO
@@ -315,36 +326,36 @@ cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component 
                IF      (I == 1) THEN                       ! Write coeffs for the R2, R3 comps at the ref pt for the 1st eqn
 
                   IF (CDOF_D(5) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), +DZ_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), +SX_DZ_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
                   IF (CDOF_D(6) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -DY_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SX_DY_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
                ELSE IF (I == 2) THEN                       ! Write coeffs for the R1, R3 comps at the ref pt for the 2nd eqn
 
                   IF (CDOF_D(4) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -DZ_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SY_DZ_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
                   IF (CDOF_D(6) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), +DX_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), +SY_DX_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
                ELSE IF (I == 3) THEN                       ! Write coeffs for the R1, R2 comps at the ref pt for the 3rd eqn
 
                   IF (CDOF_D(4) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), +DY_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), +SZ_DY_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
                   IF (CDOF_D(5) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -DX_BAR
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SZ_DX_BAR
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
 
@@ -399,23 +410,23 @@ cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component 
                ENDIF
 
                IF (I == 4) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), -DZ_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), -SY_DZ_BAR
                   ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), +DY_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), +SZ_DY_BAR
                   ITERM_RMG = ITERM_RMG + 1
                ENDIF
 
                IF (I == 5) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), +DZ_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), +SX_DZ_BAR
                   ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), -DX_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), -SZ_DX_BAR
                   ITERM_RMG = ITERM_RMG + 1
                ENDIF
 
                IF (I == 6) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), -DY_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), -SX_DY_BAR
                   ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), +DX_BAR
+                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), +SY_DX_BAR
                   ITERM_RMG = ITERM_RMG + 1
                ENDIF
 
@@ -626,36 +637,36 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
       IF      (I == 4) THEN                                ! Rotation about x, i.e. in yz (23) plane
 
          IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, +WTi6(J,1)*DZI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, +WTi6(J,2)*DZI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
          IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, -WTi6(J,1)*DYI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, -WTi6(J,3)*DYI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
       ELSE IF (I == 5) THEN                                ! Rotation about y, i.e. in zx (31) plane
 
          IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, -WTi6(J,2)*DZI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, -WTi6(J,1)*DZI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
          IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, +WTi6(J,2)*DXI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, +WTi6(J,3)*DXI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
       ELSE IF (I == 6) THEN                                ! Rotation about z, i.e. in xy (12) plane
 
          IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, +WTi6(J,3)*DYI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, +WTi6(J,1)*DYI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
          IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, -WTi6(J,3)*DXI(J)
+            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, -WTi6(J,2)*DXI(J)
             ITERM_RMG = ITERM_RMG +1
          ENDIF
 
