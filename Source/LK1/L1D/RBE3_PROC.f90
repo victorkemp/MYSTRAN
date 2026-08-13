@@ -369,12 +369,14 @@ cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component 
                      WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SXY
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SZX
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(5) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SXY
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
+                  IF (RMG_COL_NUM_D(6) > 0) THEN
+                    WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SZX
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
                IF (I == 5) THEN
@@ -385,12 +387,14 @@ cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component 
                      WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SXY
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SYZ
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(4) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SXY
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF 
+                  IF (RMG_COL_NUM_D(6) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SYZ
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
                IF (I == 6) THEN
@@ -401,33 +405,47 @@ cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component 
                      WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
                      ITERM_RMG = ITERM_RMG + 1
                   ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SZX
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SYZ
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(4) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SZX
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF           
+                  IF (RMG_COL_NUM_D(5) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SYZ
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
                IF (I == 4) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), -SY_DZ_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), +SZ_DY_BAR
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(2) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), -SY_DZ_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
+                  IF (RMG_COL_NUM_D(3) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), +SZ_DY_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
                IF (I == 5) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), +SX_DZ_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), -SZ_DX_BAR
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(1) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), +SX_DZ_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
+                  IF (RMG_COL_NUM_D(3) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), -SZ_DX_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
                IF (I == 6) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), -SX_DY_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), +SY_DX_BAR
-                  ITERM_RMG = ITERM_RMG + 1
+                  IF (RMG_COL_NUM_D(1) > 0) THEN
+                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), -SX_DY_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
+                  IF (RMG_COL_NUM_D(2) > 0) THEN
+                    WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), +SY_DX_BAR
+                     ITERM_RMG = ITERM_RMG + 1
+                  ENDIF
                ENDIF
 
             ELSE
