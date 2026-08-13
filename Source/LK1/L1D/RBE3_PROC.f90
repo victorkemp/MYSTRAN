@@ -504,7 +504,7 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
                IF ((I == 1) .OR. (I == 2) .OR. (I == 3)) THEN
                   CALL WRITE_L1J_123 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, COMPS_I, TDI )
                ELSE
-                  CALL WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI )
+                  CALL WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI, TDI )
                ENDIF
 
             ENDDO do_j1
@@ -614,12 +614,12 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
 
 ! ##################################################################################################################################
 
-      SUBROUTINE WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI )
+      SUBROUTINE WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI, TDI )
 
       USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
       USE IOUNT1, ONLY                :  L1J
       USE SCONTR, ONLY                :  FATAL_ERR, NGRID, MRBE3
-      USE CONSTANTS_1, ONLY           :  ONE
+      USE CONSTANTS_1, ONLY           :  ONE, ZERO
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE MODEL_STUF, ONLY            :  GRID_ID
 
@@ -631,6 +631,7 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
       INTEGER(LONG), INTENT(IN)       :: RMG_ROW_NUM       ! Row no. of a term in array RMG
       INTEGER(LONG), INTENT(INOUT)    :: ITERM_RMG         ! Count of number of records written to L1J (should be NTERM_RMG at end)
       INTEGER(LONG)                   :: IGRID             ! Internal grid ID
+      INTEGER(LONG)                   :: K                 ! DO loop index
       INTEGER(LONG)                   :: RMG_COL_NUM_START ! Col no. of a term in array RMG
       INTEGER(LONG)                   :: ROW_NUM_START_I   ! DOF number where TDOF data begins for a grid
 
@@ -638,6 +639,10 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
       REAL(DOUBLE) , INTENT(IN)       :: DYI(MRBE3)        ! Distances from ref pt to pt i in Y global directions at ref pt
       REAL(DOUBLE) , INTENT(IN)       :: DZI(MRBE3)        ! Distances from ref pt to pt i in Z global directions at ref pt
       REAL(DOUBLE) , INTENT(IN)       :: WTi6(MRBE3,6)     ! Weight value for an indep grid (PER-DOF)
+      REAL(DOUBLE) , INTENT(IN)       :: TDI(3,3)          ! T0D'*T0I -- combines the dependent grid's and
+                                                           ! this independent grid's own displacement coordinate
+                                                           ! systems. Needed whenever either grid has a non-basic CD.
+      REAL(DOUBLE)                    :: COEF              ! generalized coefficient
 
 ! **********************************************************************************************************************************
 !xx   CALL CALC_TDOF_ROW_NUM ( AGRID_I(J), ROW_NUM_START_I, 'N' )
@@ -654,39 +659,69 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
 
       IF      (I == 4) THEN                                ! Rotation about x, i.e. in yz (23) plane
 
-         IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, +WTi6(J,2)*DZI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, -WTi6(J,3)*DYI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
+         DO K=1,3
+            IF (CDOF_I(K) == '1') THEN
+               COEF = WTi6(J,K)*(DZI(J)*TDI(2,K) - DYI(J)*TDI(3,K))
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+K, COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
+ 
+         DO K=1,3                                          ! Independent grid's own rotation averages in through TDI too
+            IF (CDOF_I(K+3) == '1') THEN
+               COEF = -WTi6(J,K+3)*TDI(1,K)
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+(K+3), COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
 
       ELSE IF (I == 5) THEN                                ! Rotation about y, i.e. in zx (31) plane
 
-         IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, -WTi6(J,1)*DZI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, +WTi6(J,3)*DXI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
+         DO K=1,3
+            IF (CDOF_I(K) == '1') THEN
+               COEF = WTi6(J,K)*(-DZI(J)*TDI(1,K) + DXI(J)*TDI(3,K))
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+K, COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
+ 
+         DO K=1,3
+            IF (CDOF_I(K+3) == '1') THEN
+               COEF = -WTi6(J,K+3)*TDI(2,K)
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+(K+3), COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
 
       ELSE IF (I == 6) THEN                                ! Rotation about z, i.e. in xy (12) plane
 
-         IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, +WTi6(J,1)*DYI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, -WTi6(J,2)*DXI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
+         DO K=1,3
+            IF (CDOF_I(K) == '1') THEN
+               COEF = WTi6(J,K)*(DYI(J)*TDI(1,K) - DXI(J)*TDI(2,K))
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+K, COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
+ 
+         DO K=1,3
+            IF (CDOF_I(K+3) == '1') THEN
+               COEF = -WTi6(J,K+3)*TDI(3,K)
+               IF (COEF /= ZERO) THEN
+                  WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+(K+3), COEF
+                  ITERM_RMG = ITERM_RMG +1
+               ENDIF
+            ENDIF
+         ENDDO
 
       ENDIF
 
