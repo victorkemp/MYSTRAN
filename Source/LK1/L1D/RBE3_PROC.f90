@@ -108,14 +108,11 @@
       REAL(DOUBLE)                    :: SXY,SZX,SYZ       ! new Rdd terms according to victor
       REAL(DOUBLE)                    :: WTi6(MRBE3,6)     ! per-DoF grid weights
 
-! FIX (partial-REFC coupling bug): the full 6x6 coupled rigid-body least-squares system and the
-! full coefficient table (one column per active independent-grid component) are now ALWAYS built,
+! The full 6x6 coupled rigid-body least-squares system and the
+! full coefficient table (one column per active independent-grid component) are now always built,
 ! regardless of which components REFC selects as dependent. Whenever REFC excludes some
 ! components, they are eliminated via a Schur complement (not simply dropped), so the retained
-! (REFC-selected) rows correctly account for their coupling to the excluded ones -- matching MSC
-! Nastran's actual behavior (confirmed: MSC always solves the full 6-DOF system internally and
-! REFC only controls what's output, not what's computed). When REFC=123456 (nothing excluded),
-! this reduces identically to the original per-row computation -- verified by regression test.
+! (REFC-selected) rows correctly account for their coupling to the excluded ones.
       REAL(DOUBLE)                    :: A6(6,6)              ! full coupled system matrix
       REAL(DOUBLE)                    :: B6(6,6*MRBE3)        ! full coefficient table (row, indep grid*comp)
       INTEGER(LONG)                   :: B6_COL_RMG(6*MRBE3)  ! actual RMG column number for each B6 column (0=inactive)
@@ -127,6 +124,8 @@
       REAL(DOUBLE)                    :: RHS_MAT(5,6+6*MRBE3) ! combined RHS for the Gauss solve: [A_dr | B_d]
       REAL(DOUBLE)                    :: A_EFF(6,6)           ! Schur-reduced system matrix (only r,r entries meaningful)
       REAL(DOUBLE)                    :: B_EFF(6,6*MRBE3)     ! Schur-reduced coefficient table (only r rows meaningful)
+      REAL(DOUBLE)                    :: A_LOCAL_COPY(6,6)    ! Temporary copy to avoid in-place aliasing on re-expand
+      REAL(DOUBLE)                    :: B_LOCAL_COPY(6,6*MRBE3) ! Temporary copy to avoid in-place aliasing on re-expand
       INTEGER(LONG)                   :: II, JJ, KK, PIVROW   ! loop/pivot indices for the Gauss elimination
       REAL(DOUBLE)                    :: PIVVAL, FACTOR, TMPSWAP
 
@@ -322,7 +321,7 @@
 ! the IRBE3 grids in the "independent" set (the i points). There are up to 6 constraint eqns per RBE3 (1 each for T1, T2, T3,
 ! R1, R2 R3 comps in the indep set for the RBE3)
 
-! FIX (partial-REFC coupling bug): build the FULL 6x6 coupled system A6 first, regardless of REFC.
+! Build the full 6x6 coupled system A6 first, regardless of REFC.
 ! This is exactly the same math as before (WT6 diagonal for translation rows, EBAR for rotation
 ! rows, the S-terms and DX_BAR-family cross terms) -- just assembled into an explicit matrix
 ! instead of being written straight to RMG one REFC-selected row at a time.
@@ -347,8 +346,7 @@
          ENDDO
       ENDDO
 ! Build the full coefficient table B6: one column per (independent grid, active component),
-! for ALL 6 rows -- again regardless of REFC. TDI is computed once per independent grid here
-! (previously computed inside the row loop, redundantly, once per REFC-selected row).
+! for ALL 6 rows -- again regardless of REFC. TDI is computed once per independent grid here.
 
       NB6COLS = 0
       DO JJ=1,6*MRBE3
@@ -441,8 +439,8 @@
          ENDIF
       ENDDO
 
-      IF (ND == 0) THEN                                     ! Nothing to eliminate -- exact fast path, byte-identical
-         DO II=1,6                                          ! to the original (pre-fix) computation.
+      IF (ND == 0) THEN                                    ! Nothing to eliminate -- exact fast path
+         DO II=1,6
             DO JJ=1,6
                A_EFF(II,JJ) = A6(II,JJ)
             ENDDO
@@ -453,7 +451,7 @@
             ENDDO
          ENDDO
       ELSE
-                                                              ! Build A_dd and the combined RHS [A_dr | B_d]
+                                                           ! Build A_dd and the combined RHS [A_dr | B_d]
          DO II=1,ND
             DO JJ=1,ND
                ADD(II,JJ) = A6(D_IDX(II),D_IDX(JJ))
@@ -465,8 +463,8 @@
                RHS_MAT(II,NR+JJ) = B6(D_IDX(II),JJ)
             ENDDO
          ENDDO
-                                                              ! Gauss elimination with partial pivoting: solve
-                                                              ! ADD * X = RHS_MAT for X (overwrite RHS_MAT with X)
+                                                           ! Gauss elimination with partial pivoting: solve
+                                                           ! ADD * X = RHS_MAT for X (overwrite RHS_MAT with X)
          DO KK=1,ND
             PIVROW = KK
             PIVVAL = DABS(ADD(KK,KK))
@@ -496,7 +494,7 @@
                ENDDO
             ENDIF
          ENDDO
-                                                              ! Back-substitution
+                                                           ! Back-substitution
          DO KK=ND,1,-1
             IF (DABS(ADD(KK,KK)) > EPS1) THEN
                DO JJ=1,NR+NB6COLS
@@ -505,13 +503,13 @@
                   ENDDO
                   RHS_MAT(KK,JJ) = RHS_MAT(KK,JJ)/ADD(KK,KK)
                ENDDO
-            ELSE                                             ! degenerate discarded block: no correction from this DOF
+            ELSE                                           ! degenerate discarded block: no correction from this DOF
                DO JJ=1,NR+NB6COLS
                   RHS_MAT(KK,JJ) = ZERO
                ENDDO
             ENDIF
          ENDDO
-                                                              ! A_eff = A_rr - A_rd*X ;  B_eff = B_r - A_rd*Y
+                                                           ! A_eff = A_rr - A_rd*X ;  B_eff = B_r - A_rd*Y
          DO II=1,NR
             DO JJ=1,NR
                A_EFF(II,JJ) = A6(R_IDX(II),R_IDX(JJ))
@@ -526,21 +524,22 @@
                ENDDO
             ENDDO
          ENDDO
-                                                              ! Re-expand A_EFF/B_EFF back to full 1..6 row indexing
-                                                              ! (rows for indices in R_IDX only; others unused/ignored)
-         DO II=NR,1,-1
+                                                           ! Re-expand A_EFF/B_EFF back to full 1..6 row indexing
+                                                           ! (rows for indices in R_IDX only; others unused/ignored)
+         A_LOCAL_COPY(1:NR,1:NR) = A_EFF(1:NR,1:NR)
+         B_LOCAL_COPY(1:NR,1:NB6COLS) = B_EFF(1:NR,1:NB6COLS)
+         DO II=1,NR
             DO JJ=1,NR
-               A_EFF(R_IDX(II),R_IDX(JJ)) = A_EFF(II,JJ)
+               A_EFF(R_IDX(II),R_IDX(JJ)) = A_LOCAL_COPY(II,JJ)
             ENDDO
             DO JJ=1,NB6COLS
-               B_EFF(R_IDX(II),JJ) = B_EFF(II,JJ)
+               B_EFF(R_IDX(II),JJ) = B_LOCAL_COPY(II,JJ)
             ENDDO
          ENDDO
       ENDIF
 
 ! Write terms to L1J for the constraint equations, now using the (possibly Schur-reduced) A_EFF
-! and B_EFF instead of the raw pivots/S-terms/DX_BAR-family sums and per-row WRITE_L1J_123/456
-! calls. There are up to 6 constraint eqns per RBE3 (1 each for T1, T2, T3, R1, R2, R3 comps).
+! and B_EFF. There are up to 6 constraint eqns per RBE3 (1 each for T1, T2, T3, R1, R2, R3 comps).
 
       ITERM_RMG = 0
 do_i1:DO I=1,6
