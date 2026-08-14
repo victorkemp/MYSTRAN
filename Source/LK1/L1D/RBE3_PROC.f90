@@ -262,11 +262,12 @@
       EBAR_XY = ZERO
 
       DO J=1,IRBE3
-
          EBAR_YZ = EBAR_YZ + WTi6(J,3)*DYI(J)*DYI(J) + WTi6(J,2)*DZI(J)*DZI(J)
          EBAR_ZX = EBAR_ZX + WTi6(J,1)*DZI(J)*DZI(J) + WTi6(J,3)*DXI(J)*DXI(J)
          EBAR_XY = EBAR_XY + WTi6(J,2)*DXI(J)*DXI(J) + WTi6(J,1)*DYI(J)*DYI(J)
-
+         EBAR_YZ = EBAR_YZ + WTi6(J,4)
+         EBAR_ZX = EBAR_ZX + WTi6(J,5)
+         EBAR_XY = EBAR_XY + WTi6(J,6)
       ENDDO
 
 ! Calc the S-terms
