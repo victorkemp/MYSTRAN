@@ -34,7 +34,7 @@
                                          MELGP, MOGEL, NGRID, SOL_NAME
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE PARAMS, ONLY                :  OTMSKIP, PRTNEU
+      USE PARAMS, ONLY                :  OTMSKIP, PRTNEU, POST
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
       USE MODEL_STUF, ONLY            :  ANY_ACCE_OUTPUT, ANY_DISP_OUTPUT, ANY_OLOA_OUTPUT, GROUT, GRID, GRID_ID
       USE LINK9_STUFF, ONLY           :  GID_OUT_ARRAY, MAXREQ, OGEL
@@ -157,7 +157,7 @@
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
                   WRITE_F06 = ACCE_OUT%WRITE_F06
-                  WRITE_OP2 = ACCE_OUT%WRITE_OP2
+                  WRITE_OP2 = (POST == -1)
                   WRITE_PCH = ACCE_OUT%WRITE_PCH
                   IF (WRITE_OP2) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
@@ -245,7 +245,7 @@
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
                   WRITE_F06 = DISP_OUT%WRITE_F06
-                  WRITE_OP2 = DISP_OUT%WRITE_OP2
+                  WRITE_OP2 = (POST == -1)
                   WRITE_PCH = DISP_OUT%WRITE_PCH
                   IF (WRITE_OP2) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
@@ -326,7 +326,7 @@
 
                IF (NUM == NREQ) THEN
                   WRITE_F06 = OLOA_OUT%WRITE_F06
-                  WRITE_OP2 = OLOA_OUT%WRITE_OP2
+                  WRITE_OP2 = (POST == -1)
                   WRITE_PCH = OLOA_OUT%WRITE_PCH
                   IF (WRITE_OP2) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )

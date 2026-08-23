@@ -259,7 +259,7 @@
 !                                                              seems to be a more popular value in other FEA programs
 
 ! ----------------------------------------------------------------------------------------------------------------------------------
-      INTEGER(LONG)            :: POST           =     0     ! If = -1 write FEMAP Neutral File (NEU)
+      INTEGER(LONG)            :: POST           =     0     ! If = -1 write to OP2 for all output requests
 
 ! ----------------------------------------------------------------------------------------------------------------------------------
       INTEGER(LONG)            :: PRTBASIC       =     0     ! If = 1, print grids in the basic coordinate system

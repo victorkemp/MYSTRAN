@@ -34,7 +34,7 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, BARTOR, INT_SC_NUM, MAX_NUM_STR, NDOFR, NUM_CB_DOFS,             &
                                          NVEC, SOL_NAME
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE PARAMS, ONLY                :  STR_CID
+      USE PARAMS, ONLY                :  STR_CID, POST
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE LINK9_STUFF, ONLY           :  EID_OUT_ARRAY, GID_OUT_ARRAY, OGEL, POLY_FIT_ERR, POLY_FIT_ERR_INDEX
       USE MODEL_STUF, ONLY            :  ELEM_ONAME, ELMTYP, LABEL, SCNUM, STITLE, TITLE, TYPE
@@ -138,7 +138,7 @@
       FIELD5_INT_MODE = 0
       FIELD6_EIGENVALUE = 0.0
       WRITE_F06 = STRN_OUT%WRITE_F06
-      WRITE_OP2 = STRN_OUT%WRITE_OP2
+      WRITE_OP2 = (POST == -1)
 
       IF (STRN_CUR == 'FIBER') THEN
          IS_FIBER_DISTANCE = 1

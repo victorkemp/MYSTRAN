@@ -816,6 +816,7 @@
              PRTF06 = 'Y'
              PRTNEU = 'Y'
              PRTOP2 = 'Y'
+             POST = -1
          ENDIF
 
       ! PRTOP2 writes all outputs for the f06 file regardless of other flags besides PRTALL
@@ -1513,18 +1514,18 @@
          CALL CRDERR ( CARD )                              ! CRDERR prints errors found when reading fields
 
 
-      ! POST writes FEMAP data to file NEU
+      ! POST = -1 writes all output requests to OP2
       ELSE IF (JCARD(2)(1:8) == 'POST    ') THEN
          PARNAM = 'POST    '
          CALL I4FLD ( JCARD(3), JF(3), I4PARM )
          IF (IERRFL(3) == 'N') THEN
-            IF (I4PARM <= 0) THEN
+            IF (I4PARM == -1) THEN
                POST = I4PARM
-               PRTNEU = 'Y'
+               PRTOP2 = 'Y'
             ELSE
                WARN_ERR = WARN_ERR + 1
                WRITE(ERR,101) CARD
-               WRITE(ERR,1172) PARNAM,'>= 0',I4PARM,POST
+               WRITE(ERR,1172) PARNAM,'0 or -1',I4PARM,POST
                IF (SUPWARN == 'N') THEN
                   IF (ECHO == 'NONE  ') THEN
                      WRITE(F06,101) CARD
