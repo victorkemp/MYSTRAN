@@ -64,7 +64,7 @@
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT, ACCE_OUT, OLOA_OUT, SPCF_OUT, MPCF_OUT, FORC_OUT, GPFO_OUT, STRE_OUT, STRN_OUT
       USE TIMDAT, ONLY                :  STIME
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE PARAMS, ONLY                :  EPSIL, MPFOUT, SUPINFO, SUPWARN, WTMASS, PRTF06, PRTOP2, PRTNEU, POST
+      USE PARAMS, ONLY                :  EPSIL, MPFOUT, SUPINFO, SUPWARN, WTMASS, PRTNEU, POST
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE COL_VECS, ONLY              :  FG_COL, UG_COL, PG_COL, PM_COL, PS_COL, QSYS_COL, QGm_COL, QGr_COL, QGs_COL, QR_COL,      &
                                          PHIXG_COL, PHIXN_COL
@@ -189,37 +189,6 @@
       EPS1 = EPSIL(1)
 
       WRITE_NEU = (PRTNEU == 'Y')
-      ! setup PRTF06, PRTNEU, PRTOP2
-      !IF (DEBUG(200) > 0) THEN
-      !   PRTNEU = 'Y'
-      !ENDIF
-      !IF (PRTNEU == 'Y') THEN
-      !   DEBUG(200) = 1
-      !ENDIF
-      ! IF (PRTF06 == 'Y') THEN
-      !    DISP_OUT(1:1) = 'Y'  ! f06
-      !    ACCE_OUT(2:2) = 'Y'
-      !    OLOA_OUT(1:1) = 'Y'
-      !    SPCF_OUT(1:1) = 'Y'
-      !    MPCF_OUT(1:1) = 'Y'
-      !    STRE_OUT(1:1) = 'Y'
-      !    STRN_OUT(1:1) = 'Y'
-      !    FORC_OUT(1:1) = 'Y'
-      !    GPFO_OUT(1:1) = 'Y'
-      ! ENDIF
-      ! IF (PRTOP2 == 'Y') THEN
-      !    DISP_OUT(2:2) = 'Y'  ! op2
-      !    ACCE_OUT(2:2) = 'Y'
-      !    OLOA_OUT(2:2) = 'Y'
-      !    SPCF_OUT(2:2) = 'Y'
-      !    MPCF_OUT(2:2) = 'Y'
-      !    STRE_OUT(2:2) = 'Y'
-      !    STRN_OUT(2:2) = 'Y'
-      !    FORC_OUT(2:2) = 'Y'
-      !    GPFO_OUT(2:2) = 'Y'
-      ! ENDIF
-      !DISP_OUT(3:3) = 'Y'  ! pch
-      !------------------------------------------------------------------------
 
       ! Make units for writing errors the screen until we open output files
       OUNT(1) = SC1
