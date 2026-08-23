@@ -42,6 +42,7 @@
       USE COL_VECS, ONLY              :  FG_COL, PG_COL, QGm_COL, QGs_COL, QGr_COL, UG_COL
       USE CC_OUTPUT_DESCRIBERS, ONLY  :  GPFO_OUT
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
+      USE PARAMS, ONLY                :  POST
 
       USE GP_FORCE_BALANCE_PROC_USE_IFs
 
@@ -126,7 +127,7 @@
       IS_MODES = ((SOL_NAME(1:5) == 'MODES') .OR. (SOL_NAME(1:12) == 'GEN CB MODEL'))
 
       WRITE_F06 = GPFO_OUT%WRITE_F06
-      WRITE_OP2 = GPFO_OUT%WRITE_OP2
+      WRITE_OP2 = (POST == -1)
 
       ! OP2: Write output headers if this is not the first use of this subr.
       ANALYSIS_CODE = -1

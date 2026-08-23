@@ -40,7 +40,7 @@
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START, TDOFI
       USE EIGEN_MATRICES_1, ONLY      :  EIGEN_VAL, GEN_MASS, MEFFMASS, MPFACTOR_N6
       USE MODEL_STUF, ONLY            :  ANY_SPCF_OUTPUT, ANY_MPCF_OUTPUT, GRID, GRID_ID, GROUT, MEFFMASS_CALC, MPFACTOR_CALC
-      USE PARAMS, ONLY                :  AUTOSPC_SPCF, EPSIL, MEFMCORD, OTMSKIP, PRTNEU
+      USE PARAMS, ONLY                :  AUTOSPC_SPCF, EPSIL, MEFMCORD, OTMSKIP, PRTNEU, POST
 
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE SPARSE_MATRICES, ONLY       :  I_GMN  , J_GMN  , GMN    , I_GMNt  , J_GMNt , GMNt   , I_HMN, J_HMN, HMN,                 &
@@ -284,7 +284,7 @@
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
                   WRITE_F06 = SPCF_OUT%WRITE_F06
-                  WRITE_OP2 = SPCF_OUT%WRITE_OP2
+                  WRITE_OP2 = (POST == -1)
                   WRITE_PCH = SPCF_OUT%WRITE_PCH
                   IF (WRITE_OP2) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
@@ -572,7 +572,7 @@
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
                   WRITE_F06 = MPCF_OUT%WRITE_F06
-                  WRITE_OP2 = MPCF_OUT%WRITE_OP2
+                  WRITE_OP2 = (POST == -1)
                   WRITE_PCH = MPCF_OUT%WRITE_PCH
                   IF (WRITE_OP2) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
