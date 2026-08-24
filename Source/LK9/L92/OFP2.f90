@@ -53,7 +53,7 @@
                                          QGm_COL, QGs_COL, QM_COL, QN_COL, QS_COL, QSYS_COL
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
       USE OUTPUT4_MATRICES, ONLY      :  OTM_MPCF, OTM_SPCF, TXT_MPCF, TXT_SPCF
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  MPCF_OUT, SPCF_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  MPCF_F06, SPCF_F06
 
       USE OFP2_USE_IFs
 
@@ -287,7 +287,7 @@
                      NEW_RESULT = .FALSE.
                   ENDIF
 
-                  IF (SPCF_OUT%WRITE_F06) THEN
+                  IF (SPCF_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, SPCF_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
@@ -569,7 +569,7 @@
                      NEW_RESULT = .FALSE.
                   ENDIF
 
-                  IF (MPCF_OUT%WRITE_F06) THEN
+                  IF (MPCF_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, MPCF_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF

@@ -28,7 +28,6 @@
 
       USE PENTIUM_II_KIND, ONLY         :  BYTE, LONG
       USE SCONTR, ONLY                  :  CC_CMD_DESCRIBERS
-      USE DERIVED_DATA_TYPES, ONLY      :  OUTPUT_TARGETS
 
       IMPLICIT NONE
 
@@ -41,42 +40,42 @@
       !  Case Control, warning messages are written to the MYSTRAN output file.
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: ACCE_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS) :: ACCE_OUT  = OUTPUT_TARGETS(.TRUE.)  ! print, plot, punch, neu, csv
+      LOGICAL                           :: ACCE_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: ACCE_MAG  = 'MAG     '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: DISP_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: DISP_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: DISP_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: DISP_MAG  = 'MAG     '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: GPFO_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: GPFO_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: GPFO_F06  = .TRUE.
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: MPCF_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: MPCF_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: MPCF_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: MPCF_MAG  = 'MAG     '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: OLOA_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: OLOA_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: OLOA_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: OLOA_MAG  = 'MAG     '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: SPCF_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: SPCF_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: SPCF_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: SPCF_MAG  = 'MAG     '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: FORC_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: FORC_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: FORC_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: FORC_MAG  = 'MAG     '
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: FORC_LOC  = 'CENTER  '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRN_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: STRN_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: STRN_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRN_MAG  = 'MAG     '
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRN_OPT  = 'VONMISES'
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRN_CUR  = 'STRCUR  '
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRN_LOC  = 'CENTER  '
 
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRE_SORT = 'SORT1   '
-      TYPE(OUTPUT_TARGETS)              :: STRE_OUT  = OUTPUT_TARGETS(.TRUE.)
+      LOGICAL                           :: STRE_F06  = .TRUE.
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRE_MAG  = 'MAG     '
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRE_OPT  = 'VONMISES'
       CHARACTER(LEN(CC_CMD_DESCRIBERS)) :: STRE_LOC  = 'CENTER  '

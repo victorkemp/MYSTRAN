@@ -31,7 +31,7 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  SPCF_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  SPCF_F06
       USE MODEL_STUF, ONLY            :  SC_SPCF
 
       USE CC_SPCF_USE_IFs
@@ -52,7 +52,7 @@
       ! (they all have some common code so it is put there)
       CALL CC_OUTPUTS ( CARD, 'SPCF', SETID )
 
-      CALL COMPUTE_OUTPUT_TARGETS(SPCF_OUT)
+      CALL COMPUTE_OUTPUT_TARGETS(SPCF_F06)
 
 
       ! Set CASE CONTROL output request variable to SETID

@@ -62,7 +62,7 @@
                                          GROUT_GPFO_BIT, ELOUT_ELFN_BIT, ELOUT_ELFE_BIT, ELOUT_STRE_BIT, ELOUT_STRN_BIT,           &
                                          ELDT_F25_U_P_BIT
 
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_F06
       USE TIMDAT, ONLY                :  YEAR, MONTH, DAY, HOUR, MINUTE, SEC, SFRAC, STIME, TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
       USE PARAMS, ONLY                :  EPSIL, MPFOUT, POST, SUPINFO, SUPWARN, WTMASS

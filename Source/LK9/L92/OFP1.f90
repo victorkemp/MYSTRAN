@@ -40,7 +40,7 @@
       USE LINK9_STUFF, ONLY           :  GID_OUT_ARRAY, MAXREQ, OGEL
       USE COL_VECS, ONLY              :  UG_COL, UG0_COL, PG_COL, PHIXG_COL, PHIXN_COL
       USE OUTPUT4_MATRICES, ONLY      :  OTM_ACCE, OTM_DISP, TXT_ACCE, TXT_DISP
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  ACCE_OUT, DISP_OUT, OLOA_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  ACCE_F06, DISP_F06, OLOA_F06
       USE DEBUG_PARAMETERS, ONLY      :  DEBUG
 
       USE OFP1_USE_IFs
@@ -159,7 +159,7 @@
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (ACCE_OUT%WRITE_F06) THEN
+                  IF (ACCE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, ACCE_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
@@ -240,7 +240,7 @@
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (DISP_OUT%WRITE_F06) THEN
+                  IF (DISP_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, DISP_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
@@ -315,7 +315,7 @@
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (OLOA_OUT%WRITE_F06) THEN
+                  IF (OLOA_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, OLOAD_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
