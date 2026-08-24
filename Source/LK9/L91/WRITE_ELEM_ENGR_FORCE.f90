@@ -37,7 +37,7 @@
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE LINK9_STUFF, ONLY           :  EID_OUT_ARRAY, GID_OUT_ARRAY, OGEL
       USE MODEL_STUF, ONLY            :  ELEM_ONAME, LABEL, SCNUM, STITLE, TITLE, TYPE
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  FORC_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  FORC_F06
       USE PARAMS, ONLY                :  POST
       USE WRITE_ELEM_ENGR_FORCE_USE_IFs
 
@@ -104,7 +104,7 @@
       FIELD5_INT_MODE = 0
       FIELD6_EIGENVALUE = 0.0
 
-      WRITE_F06 = FORC_OUT%WRITE_F06
+      WRITE_F06 = FORC_F06
       WRITE_OP2 = (POST == -1)
 
 
@@ -265,7 +265,6 @@ headr:IF (IHDR == 'Y') THEN
            WRITE(F06,1103) FILL(1: 0), FILL(1: 0), (MAX_ANS(J),J=1,8), FILL(1: 0), (MIN_ANS(J),J=1,8), FILL(1: 0),                 &
                                                    (ABS_ANS(J),J=1,8), FILL(1: 0)
          ENDIF
-!        IF (FORC_OUT(3:3) == 'Y')  CALL WRITE_GRD_PCH_OUTPUTS(JVEC, NUM, WHAT)  ! pch/punch
 !        IF (FORC_OUT(4:4) == 'Y')  CALL WRITE_GRD_NEU_OUTPUTS(JVEC, NUM, WHAT)  ! NEU
 !        IF (FORC_OUT(5:5) == 'Y')  CALL WRITE_GRD_CSV_OUTPUTS(JVEC, NUM, WHAT)  ! CSV
 

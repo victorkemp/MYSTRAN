@@ -29,10 +29,9 @@
 ! Processes Case Control ACCE cards
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  PCHSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  ACCE_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  ACCE_F06
       USE MODEL_STUF, ONLY            :  SC_ACCE
 
       USE CC_ACCE_USE_IFs
@@ -55,7 +54,7 @@
 
 ! Check to see if BOTH, ENGR or NODE were in the ELFO request
 
-      CALL COMPUTE_OUTPUT_TARGETS(ACCE_OUT)
+      CALL COMPUTE_OUTPUT_TARGETS(ACCE_F06)
 
 ! Set CASE CONTROL output request variable to SETID
 

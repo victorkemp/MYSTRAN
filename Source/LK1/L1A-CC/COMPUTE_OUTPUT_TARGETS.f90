@@ -27,44 +27,26 @@
 MODULE COMPUTE_OUTPUT_TARGETS_MOD
 
   CONTAINS
-  SUBROUTINE COMPUTE_OUTPUT_TARGETS(REQUEST_OUT)
-    USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-    USE IOUNT1, ONLY                :  PCHSTAT
+  SUBROUTINE COMPUTE_OUTPUT_TARGETS(REQUEST_F06)
+    USE PENTIUM_II_KIND, ONLY       :  LONG
     USE SCONTR, ONLY                :  CC_CMD_DESCRIBERS, NCCCD
-    USE DERIVED_DATA_TYPES, ONLY    :  OUTPUT_TARGETS
 
     IMPLICIT NONE
 
-    TYPE(OUTPUT_TARGETS), INTENT(OUT) :: REQUEST_OUT
+    LOGICAL, INTENT(OUT)              :: REQUEST_F06
     LOGICAL                           :: FOUND_PRINT       ! CC_CMD_DESCRIBERS has request for "PRINT"
     LOGICAL                           :: FOUND_PLOT        ! CC_CMD_DESCRIBERS has request for "PLOT"
-    LOGICAL                           :: FOUND_PUNCH       ! CC_CMD_DESCRIBERS has request for "PUNCH"
-    LOGICAL                           :: FOUND_NEU         ! CC_CMD_DESCRIBERS has request for "NEU"
-    LOGICAL                           :: FOUND_CSV         ! CC_CMD_DESCRIBERS has request for "CSV"
 
     INTEGER(LONG)                     :: I                 ! DO loop index
 
-    ! Check to see if PLOT, PRINT, PUNCH, NEU, CSV were in the request
     FOUND_PRINT = .FALSE.
     FOUND_PLOT  = .FALSE.
-    FOUND_PUNCH = .FALSE.
-    FOUND_NEU   = .FALSE.
-    FOUND_CSV   = .FALSE.
     DO I=1,NCCCD
       IF (CC_CMD_DESCRIBERS(I)(1:5) == 'PRINT') FOUND_PRINT = .TRUE.
       IF (CC_CMD_DESCRIBERS(I)(1:4) == 'PLOT')  FOUND_PLOT  = .TRUE.
-      IF (CC_CMD_DESCRIBERS(I)(1:5) == 'PUNCH') FOUND_PUNCH = .TRUE.
-      IF (CC_CMD_DESCRIBERS(I)(1:3) == 'NEU')   FOUND_NEU   = .TRUE.
-      IF (CC_CMD_DESCRIBERS(I)(1:3) == 'CSV')   FOUND_CSV   = .TRUE.
     ENDDO
 
-    ! only write files specifically requested
-    REQUEST_OUT%WRITE_F06 = FOUND_PRINT
-    REQUEST_OUT%WRITE_PCH = FOUND_PUNCH
+    REQUEST_F06 = FOUND_PRINT .OR. .NOT. FOUND_PLOT
 
-    ! no PRINT nor PLOT nor PUNCH? default to PRINT
-    IF (.NOT. (FOUND_PRINT .OR. FOUND_PLOT .OR. FOUND_PUNCH)) THEN
-      REQUEST_OUT%WRITE_F06 = .TRUE.
-    END IF
   END SUBROUTINE COMPUTE_OUTPUT_TARGETS
 END MODULE COMPUTE_OUTPUT_TARGETS_MOD

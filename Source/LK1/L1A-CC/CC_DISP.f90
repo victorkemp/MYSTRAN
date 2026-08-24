@@ -29,10 +29,9 @@
       ! Processes Case Control cards for requests for displacement outputs
       ! - DISP: displacement
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  PCHSTAT
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_CMD_DESCRIBERS, LSUB, NSUB, NCCCD
       USE TIMDAT, ONLY                :  TSEC
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  DISP_F06
       USE MODEL_STUF, ONLY            :  SC_DISP
 
       USE CC_DISP_USE_IFs
@@ -53,7 +52,7 @@
       ! (they all have some common code so it is put there)
       CALL CC_OUTPUTS ( CARD, 'DISP', SETID )
 
-      CALL COMPUTE_OUTPUT_TARGETS(DISP_OUT)
+      CALL COMPUTE_OUTPUT_TARGETS(DISP_F06)
 
       ! Set CASE CONTROL output request variable to SETID
       IF (NSUB == 0) THEN
