@@ -47,7 +47,6 @@
 
       IMPLICIT NONE
 
-      LOGICAL                         :: WRITE_F06, WRITE_OP2, WRITE_PCH   ! flag
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OFP1'
       CHARACTER(LEN=*) , INTENT(IN)   :: WHAT              ! Indicator whether to process displ or force output requests
       CHARACTER( 1*BYTE)              :: ACCE_ALL_SAME_CID ! Indicator of whether all grids, for the output set, have the same
@@ -156,18 +155,11 @@
                ENDDO
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
-                  WRITE_F06 = ACCE_OUT%WRITE_F06
-                  WRITE_OP2 = (POST == -1)
-                  WRITE_PCH = ACCE_OUT%WRITE_PCH
-                  IF (WRITE_OP2) THEN
+                  IF (POST == -1) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (WRITE_PCH) THEN
-                     CALL WRITE_GRD_PCH_OUTPUTS ( JVEC, NUM, WHAT )
-                  ENDIF
-
-                  IF (WRITE_F06) THEN
+                  IF (ACCE_OUT%WRITE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, ACCE_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
@@ -244,18 +236,11 @@
                ENDDO
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
-                  WRITE_F06 = DISP_OUT%WRITE_F06
-                  WRITE_OP2 = (POST == -1)
-                  WRITE_PCH = DISP_OUT%WRITE_PCH
-                  IF (WRITE_OP2) THEN
+                  IF (POST == -1) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (WRITE_PCH) THEN
-                     CALL WRITE_GRD_PCH_OUTPUTS ( JVEC, NUM, WHAT )
-                  ENDIF
-
-                  IF (WRITE_F06) THEN
+                  IF (DISP_OUT%WRITE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, DISP_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
@@ -325,18 +310,12 @@
                ENDDO
 
                IF (NUM == NREQ) THEN
-                  WRITE_F06 = OLOA_OUT%WRITE_F06
-                  WRITE_OP2 = (POST == -1)
-                  WRITE_PCH = OLOA_OUT%WRITE_PCH
-                  IF (WRITE_OP2) THEN
+
+                  IF (POST == -1) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                   ENDIF
 
-                  IF (WRITE_PCH) THEN
-                     CALL WRITE_GRD_PCH_OUTPUTS ( JVEC, NUM, WHAT )
-                  ENDIF
-
-                  IF (WRITE_F06) THEN
+                  IF (OLOA_OUT%WRITE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, OLOAD_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF

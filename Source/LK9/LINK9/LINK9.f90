@@ -31,31 +31,30 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  WRT_BUG, WRT_ERR
 
-      USE IOUNT1, ONLY                :  ERR, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                &
-                                         L5A, L5B, NEU, OT4, OU4, PCH, SC1
+      USE IOUNT1, ONLY                :  ERR, F06, F25, L1E, L1M, L1R, L2A, L2B, L2C, L2D, L2I, L2J, L2R, L2S,                     &
+                                         L5A, L5B, NEU, OT4, OU4, SC1
 
       USE IOUNT1, ONLY                :  F06FIL, F25FIL, LINK1B, LINK1E, LINK1M, LINK1R, LINK2A, LINK2B, LINK2C, LINK2D,           &
-                                         LINK2I, LINK2J, LINK2R, LINK2S, LINK5A, LINK5B, MOT4  , MOU4  , NEUFIL, OT4FIL, OU4FIL,   &
-                                         PCHFIL
+                                         LINK2I, LINK2J, LINK2R, LINK2S, LINK5A, LINK5B, MOT4  , MOU4  , NEUFIL, OT4FIL, OU4FIL
 
       USE IOUNT1, ONLY                :  L1ASTAT, L1ESTAT, L1MSTAT, L1RSTAT, L2ASTAT, L2BSTAT, L2CSTAT, L2ISTAT, L2JSTAT, L2RSTAT, &
-                                         L2SSTAT, OT4STAT, OU4STAT, PCHSTAT
+                                         L2SSTAT, OT4STAT, OU4STAT
 
       USE IOUNT1, ONLY                :  F25_MSG, L1E_MSG, L1M_MSG, L1R_MSG, L2A_MSG, L2B_MSG, L2C_MSG, L2D_MSG, L2I_MSG,          &
-                                         L2J_MSG, L2R_MSG, L2S_MSG, L5A_MSG, L5B_MSG, NEU_MSG, PCH_MSG,                            &
+                                         L2J_MSG, L2R_MSG, L2S_MSG, L5A_MSG, L5B_MSG, NEU_MSG,                                     &
                                          OT4_MSG, OU4_MSG, OT4_GRD_OTM, OT4_ELM_OTM, OU4_GRD_OTM, OU4_ELM_OTM
 
-      USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, COMM, IBIT, INT_EIG_NUM, INT_SC_NUM, JTSUB, FATAL_ERR,          &
+      USE SCONTR, ONLY                :  BLNK_SUB_NAM, CC_ENTRY_LEN, COMM, IBIT, INT_EIG_NUM, INT_SC_NUM, JTSUB, FATAL_ERR,        &
                                          FEMAP_VERSION, LINKNO, MBUG,                                                              &
                                          NDOFF, NDOFG, NDOFL, NDOFM, NDOFN, ndofo, NDOFR, NDOFS, NDOFSA, NGRID, NSUB, NVEC,        &
                                          NTERM_IF_LTM, NTERM_GMN, NTERM_HMN, NTERM_KFS, NTERM_KFSD, NTERM_LMN, NTERM_MFS,          &
                                          NTERM_MGG, NTERM_MLL,NTERM_PG, NTERM_PM, NTERM_PS, NTERM_QSYS,                            &
-                                         NUM_BUCKLING_SUBS, NUM_CB_DOFS, NUM_EIGENS,                                                          &
+                                         NUM_BUCKLING_SUBS, NUM_CB_DOFS, NUM_EIGENS,                                               &
                                          NROWS_OTM_ACCE, NROWS_OTM_DISP, NROWS_OTM_MPCF, NROWS_OTM_SPCF,                           &
                                          NROWS_OTM_ELFE, NROWS_OTM_ELFN, NROWS_OTM_STRE, NROWS_OTM_STRN,                           &
                                          NROWS_TXT_ACCE, NROWS_TXT_DISP, NROWS_TXT_MPCF, NROWS_TXT_SPCF,                           &
-                                         NROWS_TXT_ELFE, NROWS_TXT_ELFN, NROWS_TXT_STRE, NROWS_TXT_STRN, RESTART, SOL_NAME, WARN_ERR, &
-                                         MODE_SUBCASE
+                                         NROWS_TXT_ELFE, NROWS_TXT_ELFN, NROWS_TXT_STRE, NROWS_TXT_STRN, RESTART, SOL_NAME,        &
+                                         WARN_ERR, MODE_SUBCASE
 
       USE SCONTR, ONLY                :  GROUT_ACCE_BIT, GROUT_DISP_BIT, GROUT_OLOA_BIT, GROUT_SPCF_BIT, GROUT_MPCF_BIT,           &
                                          GROUT_GPFO_BIT, ELOUT_ELFN_BIT, ELOUT_ELFE_BIT, ELOUT_STRE_BIT, ELOUT_STRN_BIT,           &
@@ -95,7 +94,7 @@
 
       IMPLICIT NONE
 
-      LOGICAL                         :: WRITE_F06, WRITE_OP2, WRITE_PCH, WRITE_NEU   ! flag
+      LOGICAL                         :: WRITE_NEU         ! flag
       LOGICAL                         :: LEXIST            ! .TRUE. if a file exists
       LOGICAL                         :: LOPEN             ! .TRUE. if a file is opened
 
@@ -197,16 +196,6 @@
       ! Make units for writing errors the error file and output file
       OUNT(1) = ERR
       OUNT(2) = F06
-
-      WRITE_F06 = DISP_OUT%WRITE_F06
-      WRITE_OP2 = (POST == -1)
-      WRITE_PCH = DISP_OUT%WRITE_PCH
-      IF (WRITE_PCH) THEN
-         INQUIRE (FILE=PCHFIL, OPENED=LOPEN)
-         IF (.NOT.LOPEN) THEN                          ! Otherwise we assume it is positioned at its end and ready for write
-            CALL FILE_OPEN ( PCH, PCHFIL, OUNT, 'OLD', PCH_MSG, 'WRITE_STIME', 'FORMATTED', 'READWRITE', 'REWIND', 'Y', 'Y' )
-         ENDIF
-      ENDIF
 
       ! Write info to text files
       WRITE(ERR,150) LINKNO

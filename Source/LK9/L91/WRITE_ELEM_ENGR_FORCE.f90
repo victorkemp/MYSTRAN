@@ -265,7 +265,6 @@ headr:IF (IHDR == 'Y') THEN
            WRITE(F06,1103) FILL(1: 0), FILL(1: 0), (MAX_ANS(J),J=1,8), FILL(1: 0), (MIN_ANS(J),J=1,8), FILL(1: 0),                 &
                                                    (ABS_ANS(J),J=1,8), FILL(1: 0)
          ENDIF
-!        IF (FORC_OUT(3:3) == 'Y')  CALL WRITE_GRD_PCH_OUTPUTS(JVEC, NUM, WHAT)  ! pch/punch
 !        IF (FORC_OUT(4:4) == 'Y')  CALL WRITE_GRD_NEU_OUTPUTS(JVEC, NUM, WHAT)  ! NEU
 !        IF (FORC_OUT(5:5) == 'Y')  CALL WRITE_GRD_CSV_OUTPUTS(JVEC, NUM, WHAT)  ! CSV
 

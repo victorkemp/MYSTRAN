@@ -59,7 +59,6 @@
 
       IMPLICIT NONE
 
-      LOGICAL                         :: WRITE_F06, WRITE_OP2, WRITE_PCH   ! flag
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'OFP2'
       CHARACTER(LEN=*) , INTENT(IN)   :: WHAT              ! Indicator of whether to process output requests for SPC or MPC forces
       CHARACTER(LEN=*) , INTENT(IN)   :: ZERO_GEN_STIFF    ! Indicator of whether there are zero gen stiffs (can't calc MEFFMASS)
@@ -283,24 +282,18 @@
 
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
-                  WRITE_F06 = SPCF_OUT%WRITE_F06
-                  WRITE_OP2 = (POST == -1)
-                  WRITE_PCH = SPCF_OUT%WRITE_PCH
-                  IF (WRITE_OP2) THEN
+                  IF (POST == -1) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                      NEW_RESULT = .FALSE.
                   ENDIF
 
-                  IF (WRITE_PCH) THEN
-                     CALL WRITE_GRD_PCH_OUTPUTS ( JVEC, NUM, WHAT )
-                  ENDIF
-
-                  IF (WRITE_F06) THEN
+                  IF (SPCF_OUT%WRITE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, SPCF_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
 
                   EXIT
+                  
                ENDIF
 
                IF ((SOL_NAME(1:12) == 'GEN CB MODEL') .AND. (JVEC == 1) .AND. (IROW_FILE >= 1)) THEN
@@ -571,19 +564,12 @@
 
                IF ((NUM == NREQ) .AND. (SC_OUT_REQ > 0)) THEN
 
-                  WRITE_F06 = MPCF_OUT%WRITE_F06
-                  WRITE_OP2 = (POST == -1)
-                  WRITE_PCH = MPCF_OUT%WRITE_PCH
-                  IF (WRITE_OP2) THEN
+                  IF (POST == -1) THEN
                      CALL WRITE_GRD_OP2_OUTPUTS ( JVEC, NUM, WHAT, ITABLE, NEW_RESULT )
                      NEW_RESULT = .FALSE.
                   ENDIF
 
-                  IF (WRITE_PCH) THEN
-                     CALL WRITE_GRD_PCH_OUTPUTS ( JVEC, NUM, WHAT )
-                  ENDIF
-
-                  IF (WRITE_F06) THEN
+                  IF (MPCF_OUT%WRITE_F06) THEN
                      CALL CHK_OGEL_ZEROS ( NUM )
                      CALL WRITE_GRD_PRT_OUTPUTS ( JVEC, NUM, WHAT, IHDR, MPCF_ALL_SAME_CID, WRITE_OGEL )
                   ENDIF
