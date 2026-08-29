@@ -183,7 +183,7 @@ k_do2:      DO K = 1,NSID                                  ! There is a match; w
                PDATA(NPDAT) = SCALE*RPDAT
             ELSE IF ((NAME(1:7) == 'PLOAD4 ') .OR. (NAME(1:7) == 'PLOAD4*')) THEN
                NPDAT = NPDAT + 1
-               READ(JCARD(K+3),'(F16.0)') RPDAT1
+               READ(JCARD(4),'(F16.0)') RPDAT1
                PDATA(NPDAT) = SCALE*RPDAT1
                DO K = 5,7
                   NPDAT = NPDAT + 1
