@@ -63,7 +63,7 @@
 
          TOTAL = TOTAL + ALLOCATED_ARRAY_MEM(I)
 
-         IF (DEBUG(107) > 0) THEN                          ! Write info for all arrays (even ones that have no memory allocated
+         IF (DEBUG(106) > 0) THEN                          ! Write info for all arrays (even ones that have no memory allocated
 
             IF (ALLOCATED_ARRAY_MEM(I) > ZERO) THEN
                NUM_ARRAYS_ALLOCTD = NUM_ARRAYS_ALLOCTD + 1

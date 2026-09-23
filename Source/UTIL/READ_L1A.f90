@@ -34,7 +34,7 @@
       USE IOUNT1, ONLY                :  MOT4,    MOU4,    WRT_ERR
 
       USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     INI,                       &
-                                         L1A,     NEU,     OT4,     PCH,     SEQ,     SPC,     SC1,                                &
+                                         L1A,     NEU,     OT4,     SEQ,     SPC,     SC1,                                         &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     L1K,     &
                                          L1L,     L1M,     L1N,     L1O,     L1P,     L1Q,     L1R,     L1S,     L1T,     L1U,     &
@@ -44,7 +44,7 @@
                                          L3A,     L4A,     L4B,     L4C,     L4D,     L5A,     L5B,     OP2,     OU4
 
       USE IOUNT1, ONLY                :  BUGSTAT, EINSTAT, ENFSTAT, ERRSTAT, F06STAT, IN0STAT, IN1STAT, INISTAT,                   &
-                                         L1ASTAT, NEUSTAT, OT4STAT, PCHSTAT, SEQSTAT, SPCSTAT,                                     &
+                                         L1ASTAT, NEUSTAT, OT4STAT, SEQSTAT, SPCSTAT,                                              &
                                          F21STAT, F22STAT, F23STAT, F24STAT, F25STAT,                                              &
                                          L1BSTAT, L1CSTAT, L1DSTAT, L1ESTAT, L1FSTAT, L1GSTAT, L1HSTAT, L1ISTAT, L1JSTAT, L1KSTAT, &
                                          L1LSTAT, L1MSTAT, L1NSTAT, L1OSTAT, L1PSTAT, L1QSTAT, L1RSTAT, L1SSTAT, L1TSTAT, L1USTAT, &
@@ -54,7 +54,7 @@
                                          L3ASTAT, L4ASTAT, L4BSTAT, L4CSTAT, L4DSTAT, L5ASTAT, L5BSTAT, OP2STAT, OU4STAT
 
       USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F06FIL,  IN0FIL,  INIFIL,  LINK1A,                    &
-                                         NEUFIL,  OT4FIL,  PCHFIL,  SEQFIL,  SPCFIL,  F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,  &
+                                         NEUFIL,  OT4FIL,  SEQFIL,  SPCFIL,  F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,           &
                                          LINK1A,  LINK1B,  LINK1C,  LINK1D,  LINK1E,  LINK1F,  LINK1G,  LINK1H,  LINK1I,  LINK1J,  &
                                          LINK1K,  LINK1L,  LINK1M,  LINK1N,  LINK1O,  LINK1P,  LINK1Q,  LINK1R,  LINK1S,  LINK1T,  &
                                          LINK1U,  LINK1V,  LINK1W,  LINK1X,  LINK1Y,  LINK1Z,                                      &
@@ -63,7 +63,7 @@
                                          LINK3A,  LINK4A,  LINK4B,  LINK4C,  LINK4D,  LINK5A,  LINK5B,  OP2FIL,  OU4FIL
 
       USE IOUNT1, ONLY                :  BUG_MSG, EIN_MSG, ENF_MSG, ERR_MSG, F06_MSG, IN0_MSG, IN1_MSG, INI_MSG,                   &
-                                         L1A_MSG, NEU_MSG, OT4_MSG, PCH_MSG, SEQ_MSG, SPC_MSG,                                     &
+                                         L1A_MSG, NEU_MSG, OT4_MSG, SEQ_MSG, SPC_MSG,                                              &
                                          F21_MSG, F22_MSG, F23_MSG, F24_MSG, F25_MSG,                                              &
                                          L1B_MSG, L1C_MSG, L1D_MSG, L1E_MSG, L1F_MSG, L1G_MSG, L1H_MSG, L1I_MSG, L1J_MSG, L1K_MSG, &
                                          L1L_MSG, L1M_MSG, L1N_MSG, L1O_MSG, L1P_MSG, L1Q_MSG, L1R_MSG, L1S_MSG, L1T_MSG, L1U_MSG, &
@@ -178,7 +178,7 @@
       READ(L1A,151,IOSTAT=IOCHKI(  9)) IN0,IN0STAT,IN0_MSG,IN0FIL
       READ(L1A,151,IOSTAT=IOCHKI( 10)) L1A,L1ASTAT,L1A_MSG,LINK1A
       READ(L1A,151,IOSTAT=IOCHKI( 11)) NEU,NEUSTAT,NEU_MSG,NEUFIL
-      READ(L1A,151,IOSTAT=IOCHKI( 12)) PCH,PCHSTAT,PCH_MSG,PCHFIL
+
       READ(L1A,151,IOSTAT=IOCHKI( 13)) SEQ,SEQSTAT,SEQ_MSG,SEQFIL
       READ(L1A,151,IOSTAT=IOCHKI( 14)) SPC,SPCSTAT,SPC_MSG,SPCFIL
 
@@ -571,7 +571,6 @@
       READ(L1A,160,IOSTAT=IOCHKI(300)) NUM_USET_U2         ! 300 (From module SCONTR)
       READ(L1A,160,IOSTAT=IOCHKI(301)) NVEC                ! 301 (From module SCONTR)
       READ(L1A,160,IOSTAT=IOCHKI(302)) NVVEC               ! 302 (From module SCONTR)
-      READ(L1A,160,IOSTAT=IOCHKI(303)) PCH_LINE_NUM        ! 303 (From module SCONTR)
       READ(L1A,160,IOSTAT=IOCHKI(304)) SETLEN              ! 304 (From module SCONTR)
 
       DO I=1,NUMIO

@@ -69,7 +69,7 @@
       USE DOF_TABLES, ONLY            :  TDOFI
       USE PARAMS, ONLY                :  CHKGRDS, EPSIL, EQCHK_OUTPUT, GRDPNT, GRDPNT_IN, GRIDSEQ, MEFMGRID, MEFMLOC, PRTCONN,     &
                                          PRTBASIC, PRTCORD, PRTDOF, PRTTSET, PRTSTIFD, PRTSTIFF, SETLKTK, SETLKTM, SUPINFO,        &
-                                         SUPWARN, WTMASS, PRTF06, PRTOP2
+                                         SUPWARN, WTMASS
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE MACHINE_PARAMS, ONLY        :  MACH_PREC
       USE MODEL_STUF, ONLY            :  ANY_GPFO_OUTPUT, EIG_METH, ELDT, ETYPE, MEFFMASS_CALC, NUM_EMG_FATAL_ERRS, PLY_NUM, OELDT,&

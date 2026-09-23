@@ -32,7 +32,7 @@
 
       USE IOUNT1, ONLY                :  BUGOUT, F06FIL, SC1,                                                 &
                                          BUGSTAT, BUGSTAT_OLD, ERRSTAT, ERRSTAT_OLD,                          &
-                                         OP2STAT, PCHSTAT, L1ASTAT
+                                         OP2STAT, L1ASTAT
 
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, LINKNO, WARN_ERR
       USE TIMDAT, ONLY                :  TSEC
@@ -102,7 +102,7 @@
 
       ENDIF
 
-      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, OP2STAT, PCHSTAT )
+      CALL CLOSE_OUTFILES ( BUGSTAT, ERRSTAT, OP2STAT )
 
       STOP
 

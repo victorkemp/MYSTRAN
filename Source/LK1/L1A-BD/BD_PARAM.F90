@@ -69,8 +69,7 @@
                                          THRESHK         , THRESHK_LAP     , TINY            ,                                     &
                                          TSTM_DEF        , USR_JCT         , USR_LTERM_KGG   , USR_LTERM_MGG   , WINAMEM         , &
                                          WTMASS          , K6ROT,                                                                  &
-                                         PRTALL          , PRTF06          , PRTNEU          , PRTOP2          ,                   &
-                                         SPIENV6         , SPIENV7         , SPIENV8         , SLU_NTHR
+                                         PRTNEU          , SPIENV6         , SPIENV7         , SPIENV8         , SLU_NTHR
 
       USE BD_PARAM_USE_IFs
 
@@ -808,30 +807,11 @@
 !zzzz    CALL CRDERR ( CARD )                              ! CRDERR prints errors found when reading fields
 
 
-      ! PRTALL writes all outputs for all output files regardless of other flags
-      ELSE IF ((PARAM_NAME(1:8) == 'PRTALL  ') .OR. (PARAM_NAME(1:8) == 'FILES   ')) THEN
-         PARNAM = 'PRTALL  '
-         CALL YES_NO_CHECK(CARD, JCARD, CHRPARM, PARNAM, PRTALL)
-         IF (PRTALL == 'Y') THEN
-             PRTF06 = 'Y'
-             PRTNEU = 'Y'
-             PRTOP2 = 'Y'
-         ENDIF
 
-      ! PRTOP2 writes all outputs for the f06 file regardless of other flags besides PRTALL
-      ELSE IF ((PARAM_NAME(1:8) == 'PRTF06  ') .OR. (PARAM_NAME(1:8) == 'F06     ')) THEN
-         PARNAM = 'PRTF06  '
-         CALL YES_NO_CHECK(CARD, JCARD, CHRPARM, PARNAM, PRTF06)
-
-      ! PRTNEU writes all outputs for the neu file regardless of other flags besides PRTALL
+      ! PRTNEU writes all outputs for the neu file
       ELSE IF ((PARAM_NAME(1:8) == 'PRTNEU  ') .OR. (PARAM_NAME(1:8) == 'NEU     ')) THEN
          PARNAM = 'PRTNEU  '
          CALL YES_NO_CHECK(CARD, JCARD, CHRPARM, PARNAM, PRTNEU)
-
-      ! PRTOP2 writes all outputs for the op2 file regardless of other flags besides PRTALL
-      ELSE IF ((PARAM_NAME(1:8) == 'PRTOP2  ') .OR. (PARAM_NAME(1:8) == 'OP2     ')) THEN
-         PARNAM = 'PRTOP2  '
-         CALL YES_NO_CHECK(CARD, JCARD, CHRPARM, PARNAM, PRTOP2)
 
       ! GRDPNT causes the grid point weight generator to be run to calculate mass of the model relative to G.P defined by PARAM GRDPNT.
       ELSE IF (JCARD(2)(1:8) == 'GRDPNT  ') THEN
@@ -1513,18 +1493,17 @@
          CALL CRDERR ( CARD )                              ! CRDERR prints errors found when reading fields
 
 
-      ! POST writes FEMAP data to file NEU
+      ! POST = -1 writes all output requests to OP2
       ELSE IF (JCARD(2)(1:8) == 'POST    ') THEN
          PARNAM = 'POST    '
          CALL I4FLD ( JCARD(3), JF(3), I4PARM )
          IF (IERRFL(3) == 'N') THEN
-            IF (I4PARM <= 0) THEN
+            IF (I4PARM == -1 .OR. I4PARM == 9999999) THEN
                POST = I4PARM
-               PRTNEU = 'Y'
             ELSE
                WARN_ERR = WARN_ERR + 1
                WRITE(ERR,101) CARD
-               WRITE(ERR,1172) PARNAM,'>= 0',I4PARM,POST
+               WRITE(ERR,1172) PARNAM,'-1 or 9999999',I4PARM,POST
                IF (SUPWARN == 'N') THEN
                   IF (ECHO == 'NONE  ') THEN
                      WRITE(F06,101) CARD

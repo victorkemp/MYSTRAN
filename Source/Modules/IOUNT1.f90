@@ -62,7 +62,6 @@
       CHARACTER(FILE_NAM_MAXLEN*BYTE) :: F06FIL                ! (filename.F06) Output file
       CHARACTER(FILE_NAM_MAXLEN*BYTE) :: IN0FIL                ! (filename.F06) Input file with all INCLUDE files
       CHARACTER(FILE_NAM_MAXLEN*BYTE) :: INFILE                ! (filename.DAT) Input file
-      CHARACTER(FILE_NAM_MAXLEN*BYTE) :: PCHFIL                ! (filename.PCH) Punch output file
       CHARACTER(FILE_NAM_MAXLEN*BYTE),                                                                                             &
                           ALLOCATABLE :: IN4FIL(:)             ! Names of IN4 files containing USERIN matrices
       CHARACTER(FILE_NAM_MAXLEN*BYTE) :: INCFIL                ! Names of B.D. INCLUDE files
@@ -153,7 +152,6 @@
       CHARACTER(  8*BYTE)             :: INISTAT       = 'KEEP    '  ! close status for file INIFIL
       CHARACTER(  8*BYTE)             :: L1ASTAT       = 'DELETE  '  ! close status for file LINK1A
       CHARACTER(  8*BYTE)             :: NEUSTAT       = 'DELETE  '  ! close status for file NEUFIL
-      CHARACTER(  8*BYTE)             :: PCHSTAT       = 'DELETE  '  ! close status for file PCHFIL
       CHARACTER(  8*BYTE)             :: SEQSTAT       = 'DELETE  '  ! close status for file SEQFIL
       CHARACTER(  8*BYTE)             :: SPCSTAT       = 'DELETE  '  ! close status for file SPCFIL
 
@@ -238,7 +236,6 @@
       CHARACTER( 64*BYTE)             :: INI_MSG       = 'PROGRAM INITIALIZATION FILE'
       CHARACTER( 64*BYTE)             :: L1A_MSG       = 'LINK1A TEXT FILE (I/O UNITS, COUNTERS, ETC)'
       CHARACTER( 64*BYTE)             :: NEU_MSG       = 'FEMAP NEUTRAL FILE'
-      CHARACTER( 64*BYTE)             :: PCH_MSG       = 'PUNCH OUTPUT FILE'
       CHARACTER( 64*BYTE)             :: SEQ_MSG       = 'BANDIT SEQGP CARD IMAGES'
       CHARACTER( 64*BYTE)             :: SPC_MSG       = 'SPC1 TEXT FILE'
 
@@ -340,7 +337,6 @@
       INTEGER(LONG)                   :: INI           =    9 ! Unit no. for MYSTRAN.INI file
       INTEGER(LONG)                   :: L1A           =  101 ! Unit no. for file LINK1A
       INTEGER(LONG)                   :: NEU           =   10 ! Unit no. for FEMPA neutral file
-      INTEGER(LONG)                   :: PCH           =   11 !
       INTEGER(LONG)                   :: SEQ           =   12 ! Unit no. for SEQGP card images from BANDIT
       INTEGER(LONG)                   :: SPC           =   13 ! Unit no. for SPC1 text file
 
@@ -469,19 +465,6 @@
 
 ! LINK1A is a formatted file first created in the LINK1. It is read at the beginning of each subsequent LINK and rewritten at the
 ! end of each link. This file MUST be present to start any other LINK in the Program execution after the 1st one has run.
-
-! PCHFIL is a formatted file containing "punch" output of items such as displacements in the format:
-! $TITLE   = 2D ANALYSIS                                                         1
-! $SUBTITLE= 2D ANALYSIS - NASTRAN EIGEN VALUE                                   2
-! $LABEL   =                                                                     3
-! $DISPLACEMENTS                                                                 4
-! $REAL OUTPUT                                                                   5
-! $SUBCASE ID =           1                                                      6
-!          1       G      0.000000E+00      0.000000E+00      0.000000E+00       7
-! -CONT-                  0.000000E+00      0.000000E+00      0.000000E+00       8
-!          2       G     -1.000000E-05      0.000000E+00      0.000000E+00       9
-! -CONT-                  0.000000E+00      0.000000E+00      0.000000E+00      10
-
 
 !    LINK number
 !    SOL name                                    See module SCONTR for description.

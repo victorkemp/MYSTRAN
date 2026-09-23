@@ -55,10 +55,10 @@
 ! Set element property and material constants
 
       K        = EPROP(1)
-      IF ((TYPE(1:5) == 'ELAS1') .OR. (TYPE(1:5) == 'ELAS3')) THEN
+      IF ((TYPE(1:5) == 'ELAS1') .OR. (TYPE(1:5) == 'ELAS2') .OR. (TYPE(1:5) == 'ELAS3')) THEN
          FCONV(1) = EPROP(3)
       ELSE
-         FCONV(1) = 1.D0
+         FCONV(1) = 0.0
       ENDIF
       I1       = ELAS_COMP(1)
       CALL GET_GRID_NUM_COMPS ( BGRID(1), NUM_COMPS_GRID_1, SUBR_NAME )
@@ -75,11 +75,11 @@
       ENDIF
 
 ! **********************************************************************************************************************************
-! Calculate SE1 matrix for stress recovery.
+! Calculate SE1 matrix for force recovery.
 
       IF (OPT(3) == 'Y') THEN
-         SE1(1,I1,1) =  K*FCONV(1)
-         SE1(1,I2,1) = -K*FCONV(1)
+         SE1(1,I1,1) =  K
+         SE1(1,I2,1) = -K
       ENDIF
 
 

@@ -38,7 +38,7 @@
       USE FEMAP_ARRAYS, ONLY          :  FEMAP_EL_NUMS, FEMAP_EL_VECS
       USE PARAMS, ONLY                :  OTMSKIP, PRTNEU
       USE MODEL_STUF, ONLY            :  ANY_ELFE_OUTPUT, BUSH_CID, BUSH_VVEC, EDAT, ELAS_COMP, ELEM_LEN_12, ELEM_LEN_AB, EPNT,    &
-                                         ETYPE, EID, ELMTYP, ELOUT, FCONV, METYPE, NUM_EMG_FATAL_ERRS, OFFDIS_GA_GB, OFFDIS_L,     &
+                                         ETYPE, EID, ELMTYP, ELOUT, METYPE, NUM_EMG_FATAL_ERRS, OFFDIS_GA_GB, OFFDIS_L,            &
                                          PE_GA_GB, PEL, PLY_NUM, STRESS, TE, TE_GA_GB, TYPE, XEL
       USE LINK9_STUFF, ONLY           :  EID_OUT_ARRAY, MAXREQ, OGEL
       USE OUTPUT4_MATRICES, ONLY      :  OTM_ELFE, TXT_ELFE
@@ -188,11 +188,7 @@ elems_2: DO J = 1,NELE
                         CALL ELEM_STRE_STRN_ARRAYS ( 1 )
                         NDUM = 0
                         CALL CALC_ELEM_STRESSES ( 1, NDUM, 0, 'N', 'N' )
-                        IF (FCONV(1) > ZERO) THEN          ! ELAS engr force is stress/FCONV
-                           OGEL(NUM_OGEL,1) = STRESS(1)/FCONV(1)
-                        ELSE
-                           OGEL(NUM_OGEL,1) = ZERO
-                        ENDIF
+                        OGEL(NUM_OGEL,1) = STRESS(1)       ! ELAS engr force is stored in the stress array
                      ! end elas
 !                    ---------------------------------------------------------------------------------------------------------------
                      ELSE IF (ETYPE(J)(1:4) == 'BUSH') THEN
@@ -553,8 +549,6 @@ elems_2: DO J = 1,NELE
          ENDIF
          CALL DEALLOCATE_FEMAP_DATA
 
-! For ELAS we need to calculate elem engr forces from the stresses since there is no "local" elem coord system
-
 ! elas1  ---------------------------------------------------------------------------------------------------------------------------
          NDUM = 0
          NUM_FROWS= 0
@@ -577,11 +571,7 @@ elems_2: DO J = 1,NELE
                CALL ELMDIS
                CALL ELEM_STRE_STRN_ARRAYS ( 1 )
                CALL CALC_ELEM_STRESSES ( NCELAS1, NDUM, NUM_FROWS, 'N', 'Y' )
-               IF (FCONV(1) > 0.D0) THEN
-                  FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)/FCONV(1)
-               ELSE
-
-               ENDIF
+               FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)
             ENDIF
          ENDDO
          IF (NUM_FROWS > 0) THEN
@@ -611,11 +601,7 @@ elems_2: DO J = 1,NELE
                CALL ELMDIS
                CALL ELEM_STRE_STRN_ARRAYS ( 1 )
                CALL CALC_ELEM_STRESSES ( NCELAS2, NDUM, NUM_FROWS, 'N', 'Y' )
-               IF (FCONV(1) > 0.D0) THEN
-                  FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)/FCONV(1)
-               ELSE
-
-               ENDIF
+               FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)
             ENDIF
          ENDDO
          IF (NUM_FROWS > 0) THEN
@@ -645,11 +631,7 @@ elems_2: DO J = 1,NELE
                CALL ELMDIS
                CALL ELEM_STRE_STRN_ARRAYS ( 1 )
                CALL CALC_ELEM_STRESSES ( NCELAS3, NDUM, NUM_FROWS, 'N', 'Y' )
-               IF (FCONV(1) > 0.D0) THEN
-                  FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)/FCONV(1)
-               ELSE
-
-               ENDIF
+               FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)
             ENDIF
          ENDDO
          IF (NUM_FROWS > 0) THEN
@@ -679,11 +661,7 @@ elems_2: DO J = 1,NELE
                CALL ELMDIS
                CALL ELEM_STRE_STRN_ARRAYS ( 1 )
                CALL CALC_ELEM_STRESSES ( NCELAS4, NDUM, NUM_FROWS, 'N', 'Y' )
-               IF (FCONV(1) > 0.D0) THEN
-                  FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)/FCONV(1)
-               ELSE
-
-               ENDIF
+               FEMAP_EL_VECS(NUM_FROWS,1) = STRESS(1)
             ENDIF
          ENDDO
          IF (NUM_FROWS > 0) THEN

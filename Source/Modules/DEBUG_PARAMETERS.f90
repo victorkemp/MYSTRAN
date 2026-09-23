@@ -277,8 +277,6 @@
 !                   = 2, debug BUSH for calculation of the stiffness and stress/strain rcovery matrices
 !                   = 9, do all of above in BUSH
 
-!        DEBUG 205  = 1 print MATOUT full matrix in subr SPARSE_CRS_TO_FULL
-
 !        DEBUG 248  > 0 override fatal error and continue with orthotropic material properties for MIN4T QUAD4
 
 !        DEBUG 249  > 0 In BREL1 call code for Timoshenko BART instead of BAR1

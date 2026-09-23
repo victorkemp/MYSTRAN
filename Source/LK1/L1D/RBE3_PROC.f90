@@ -26,19 +26,19 @@
 
       SUBROUTINE RBE3_PROC ( RTYPE, REC_NO, IERR )
 
-! Processes a single RBE3 "rigid" element, per call, to get terms for the RMG constraint matrix. When the Bulk data was read, the
-! RBE3 input data was written to file LINK1F. In this subr, file LINK1F is read and RBE3 terms for array RMG are calculated and
-! written to file LINK1J.  Later, in subr SPARSE_RMG, LINK1J will be read to create the sparse array RMG (of all rigid element and
-! MPC coefficients) which will be used in LINK2 to reduce the G-set mass, stiffness and load matrices to the N-set.
-
-! The derivation of the equations for the RBE3 are shown in Appendix E to the MYSTRAN User's Reference Manual
+! Form the RMG constraint equations for one RBE3 element. Each active scalar independent DOF contributes one residual to a weighted
+! rigid-body least-squares fit. If H is the kinematic vector for that DOF, its contribution is
+!
+!                  A6 = A6 + WEIGHT*H*TRANSPOSE(H)       and       B6(:,COL) = -WEIGHT*H .
+!
+! The six reference-grid components satisfy A6*Q + B6*U = 0. Components omitted by REFC are eliminated with a rank-revealing LAPACK
+! solve before the retained equations are written to LINK1J. See Appendix E of the MYSTRAN User's Reference Manual.
 
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
-      USE IOUNT1, ONLY                :  WRT_ERR, ERR, F06, L1F, LINK1F, L1F_MSG, L1J
+      USE IOUNT1, ONLY                :  ERR, F06, L1F, LINK1F, L1F_MSG, L1J
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MRBE3, NCORD, NGRID, NTERM_RMG
-      USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, ONE
-      USE MODEL_STUF, ONLY            :  CORD, GRID_ID, GRID, RCORD, RGRID
+      USE MODEL_STUF, ONLY            :  CORD, GRID_ID, GRID, RGRID
       USE PARAMS, ONLY                :  EPSIL
       USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
 
@@ -46,477 +46,98 @@
 
       IMPLICIT NONE
 
+      INTEGER(LONG), PARAMETER        :: NUM_RIGID_DOF = 6
+      INTEGER(LONG), PARAMETER        :: NUM_VECTOR_DOF = 3
+      INTEGER(LONG), PARAMETER        :: ALL_DOF(NUM_RIGID_DOF) = [1_LONG, 2_LONG, 3_LONG, 4_LONG, 5_LONG, 6_LONG]
+
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'RBE3_PROC'
-      CHARACTER( 8*BYTE), INTENT(IN)  :: RTYPE             ! The type of rigid element being processed (RBE2)
-      CHARACTER( 1*BYTE)              :: CDOF_D(6)         ! An output from subr RDOF (= 1 if a displ comp is in COMPS_D)
-      CHARACTER( 1*BYTE)              :: CDOF_I(6)         ! An output from subr RDOF (= 1 if a displ comp 1-6 is in COMPS_I)
+      CHARACTER( 8*BYTE), INTENT(IN)  :: RTYPE
 
-      INTEGER(LONG), INTENT(INOUT)    :: IERR              ! Count of errors in RIGID_ELEM_PROC
-      INTEGER(LONG), INTENT(INOUT)    :: REC_NO            ! Record number when reading file L1F
-      INTEGER(LONG)                   :: AGRID_D           ! Dep   grid ID (actual) read from a record of file LINK1F
-      INTEGER(LONG)                   :: AGRID_I(MRBE3)    ! Indep grid ID (actual) read from a record of file LINK1F
-      INTEGER(LONG)                   :: COMPS_D           ! Dipsl components associated with dep   grid, AGRID_D
-      INTEGER(LONG)                   :: COMPS_I(MRBE3)    ! Dipsl components associated with indep grid, AGRID_I
-      INTEGER(LONG)                   :: ECORD_D           ! Global coord ID (actual) for grid AGRID_D
-      INTEGER(LONG)                   :: ECORD_I           ! Global coord ID (actual) for grid AGRID_I
-      INTEGER(LONG)                   :: GRID_ID_ROW_NUM_D ! Row number in array GRID_ID where AGRID_D is found
-      INTEGER(LONG)                   :: GRID_ID_ROW_NUM_I ! Row number in array GRID_ID where AGRID_I is found
-      INTEGER(LONG)                   :: G_SET_COL_NUM     ! Col no., in TDOF array, of the G-set DOF list
-      INTEGER(LONG)                   :: I,J,K,L           ! DO loop indices
-      INTEGER(LONG)                   :: ICORD_D           ! Internal coord ID corresponding to ECORD_D
-      INTEGER(LONG)                   :: ICORD_I           ! Internal coord ID corresponding to ECORD_I
-      INTEGER(LONG)                   :: IGRID             ! Internal grid ID
-      INTEGER(LONG)                   :: IOCHK             ! IOSTAT error number when opening/reading a file
-      INTEGER(LONG)                   :: IRBE3             ! Number of triplets of grid/comp/weight on L1F for RBE3 elems
-      INTEGER(LONG)                   :: IROW              ! A row number in matrix RDI_GLOBAL
-      INTEGER(LONG)                   :: JERR              ! Local error count
-      INTEGER(LONG)                   :: ITERM_RMG         ! Countof number of records written to L1J (should be NTERM_RMG at end)
-      INTEGER(LONG)                   :: M_SET_COL_NUM     ! Col no., in TDOF array, of the M-set DOF list
-      INTEGER(LONG)                   :: NUM_COMPS         ! Number of displ components for a grid
-      INTEGER(LONG)                   :: OUNT(2)           ! File units to write messages to. Input to subr UNFORMATTED_OPEN
-      INTEGER(LONG)                   :: REID              ! RBE2 elem ID read from file LINK1F
-      INTEGER(LONG)                   :: RMG_COL_NUM_D(6)  ! Col no's. in RMG for 6 components of dep DOF at ref pt (if they exist)
-      INTEGER(LONG)                   :: RMG_ROW_NUM       ! Row no. of a term in array RMG
-      INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
-      INTEGER(LONG)                   :: ROW_NUM_START_D   ! DOF number where TDOF data begins for the ref grid
+      INTEGER(LONG), INTENT(INOUT)    :: IERR
+      INTEGER(LONG), INTENT(INOUT)    :: REC_NO
 
+      CHARACTER( 1*BYTE)              :: INDEP_DOF_ACTIVE(NUM_RIGID_DOF)
+      CHARACTER( 1*BYTE)              :: REF_DOF_ACTIVE(NUM_RIGID_DOF)
 
-      REAL(DOUBLE)                    :: EPS1              ! Small number
-      REAL(DOUBLE)                    :: DX_BAR            ! Wgt'd avg diff in x dist from indep pt i to ref pt A (in ref pt global)
-      REAL(DOUBLE)                    :: DY_BAR            ! Wgt'd avg diff in y dist from indep pt i to ref pt A (in ref pt global)
-      REAL(DOUBLE)                    :: DZ_BAR            ! Wgt'd avg diff in z dist from indep pt i to ref pt A (in ref pt global)
-      REAL(DOUBLE)                    :: DX0(3)            ! Differences in coords of one indep pt and ref pt in basic coord system
-      REAL(DOUBLE)                    :: DXI(MRBE3)        ! Differences in X coords of indep pt and ref pt in ref pt global system
-      REAL(DOUBLE)                    :: DYI(MRBE3)        ! Differences in Y coords of indep pt and ref pt in ref pt global system
-      REAL(DOUBLE)                    :: DZI(MRBE3)        ! Differences in Z coords of indep pt and ref pt in ref pt global system
-      REAL(DOUBLE)                    :: PHID, THETAD      ! Angles output from subr GEN_T0L, called herein but not needed here
-      REAL(DOUBLE)                    :: DUM3(3)           ! Intermediate result in a calc
-      REAL(DOUBLE)                    :: EBAR_YZ           ! Sum of weights times radii squared divided by WT for rotation about x
-      REAL(DOUBLE)                    :: EBAR_ZX           ! Sum of weights times radii squared divided by WT for rotation about y
-      REAL(DOUBLE)                    :: EBAR_XY           ! Sum of weights times radii squared divided by WT for rotation about z
-      REAL(DOUBLE)                    :: T0D(3,3)          ! Transform a vector to basic coords from one in global coords at AGRID_D
-      REAL(DOUBLE)                    :: TDI(3,3)          ! TOD'*T0I
-      REAL(DOUBLE)                    :: T0I(3,3)          ! Transform a vector to basic coords from one in global coords at AGRID_I
-      REAL(DOUBLE)                    :: X0_D(3)           ! Basic coords of AGRID_D reference point
-      REAL(DOUBLE)                    :: X0_I(3)           ! Basic coords of AGRID_D reference point
-      REAL(DOUBLE)                    :: WTi(MRBE3)        ! Weight value for an indep grid
-      REAL(DOUBLE)                    :: WT                ! Sum of weights on this RBE3
-      REAL(DOUBLE)                    :: WT6(6)            ! WT6(i) = Sum of weights in comp i of an indep grid NB *** new 10/03/21
+      INTEGER(LONG)                   :: AGRID_D
+      INTEGER(LONG)                   :: AGRID_I(MRBE3)
+      INTEGER(LONG)                   :: B6_COL_RMG(NUM_RIGID_DOF*MRBE3)
+      INTEGER(LONG)                   :: COMPS_D
+      INTEGER(LONG)                   :: COMPS_I(MRBE3)
+      INTEGER(LONG)                   :: DISCARDED_IDX(NUM_RIGID_DOF)
+      INTEGER(LONG)                   :: G_SET_COL_NUM
+      INTEGER(LONG)                   :: GRID_ID_ROW_NUM_D
+      INTEGER(LONG)                   :: IRBE3
+      INTEGER(LONG)                   :: ITERM_RMG
+      INTEGER(LONG)                   :: JERR
+      INTEGER(LONG)                   :: M_SET_COL_NUM
+      INTEGER(LONG)                   :: NB6COLS
+      INTEGER(LONG)                   :: NUM_DISCARDED
+      INTEGER(LONG)                   :: NUM_RETAINED
+      INTEGER(LONG)                   :: REID
+      INTEGER(LONG)                   :: RETAINED_IDX(NUM_RIGID_DOF)
 
-      REAL(DOUBLE)                    :: SXY,SZX,SYZ       ! new Rdd terms according to victor
-      REAL(DOUBLE)                    :: WTi6(MRBE3,6)     ! per-DoF grid weights
+      REAL(DOUBLE)                    :: A6(NUM_RIGID_DOF,NUM_RIGID_DOF)
+      REAL(DOUBLE)                    :: A_REDUCED(NUM_RIGID_DOF,NUM_RIGID_DOF)
+      REAL(DOUBLE)                    :: B6(NUM_RIGID_DOF,NUM_RIGID_DOF*MRBE3)
+      REAL(DOUBLE)                    :: B_REDUCED(NUM_RIGID_DOF,NUM_RIGID_DOF*MRBE3)
+      REAL(DOUBLE)                    :: EPS1
+      REAL(DOUBLE)                    :: REFERENCE_POSITION(NUM_VECTOR_DOF)
+      REAL(DOUBLE)                    :: T0D(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
+      REAL(DOUBLE)                    :: WEIGHT(MRBE3)
+      REAL(DOUBLE)                    :: WEIGHT_SUM_ON_FILE
 
-
+      INTERFACE
+         SUBROUTINE DGELSY ( M, N, NRHS, A, LDA, B, LDB, JPVT, RCOND, RANK, WORK, LWORK, INFO )
+            IMPORT LONG, DOUBLE
+            INTEGER(LONG), INTENT(IN)    :: M, N, NRHS, LDA, LDB, LWORK
+            INTEGER(LONG), INTENT(INOUT) :: JPVT(*)
+            INTEGER(LONG), INTENT(OUT)   :: RANK, INFO
+            REAL(DOUBLE), INTENT(INOUT)  :: A(LDA,*), B(LDB,*), WORK(*)
+            REAL(DOUBLE), INTENT(IN)     :: RCOND
+         END SUBROUTINE DGELSY
+      END INTERFACE
 
 ! **********************************************************************************************************************************
-! File LINK1F contains data from the logical RBE3 cards in the input B.D. deck. For each logical RBE3 card, LINK1F has:
-!     1st record          :'RBE3' the element type. This record was read in subr RIGID_ELEM_PROC before calling this subr
-
-!     2nd record          : REID   : elem ID
-!                           AGRID_D: reference (or dependent) grid
-!                           COMPS_D: dependent displ comps
-!                           IRBE3  : number of independent sets of grid/components/weight in the element
-!                           WT     : total of all of the WTi weights on the RBE3 entry (calc'd when RBE3 bdf entry read in BD_RBE3
-
-!     3rd record          : GRID(1), COMP(1), WTi(1): 1st independent grid, the independent components and the weight for this grid
-
-!     4th record          : GRID(2), COMP(2), WTi(2): 2nd independent grid, the independent components and the weight for this grid
-
-!     5th record, and on, : GRID(3), COMP(3), WTi(3): 3rd independent grid, the independent components and the weight for this grid
-
-! The above record structure is repeated for each RBE3 logical card in the data deck (in the order in which they were read from the
-! B.D. deck).
-
-! Make units for writing errors the error file and output file
-
-      OUNT(1) = ERR
-      OUNT(2) = F06
 
       EPS1 = EPSIL(1)
-
       JERR = 0
 
-! Init weight totals in each of the 6 components           ! NB *** new 10/03/21
-
-      DO I=1,6                                             ! NB *** new 10/03/21
-         WT6(I) = ZERO                                     ! NB *** new 10/03/21
-      ENDDO                                                ! NB *** new 10/03/21
-
-      ! zero-init WTi6
-      WTi6 = ZERO
-
-! Start reading at the 2nd record of L1F for this RBE3 (first record, RYPE, was read above in calling subr, RIGID_ELEM_PROC):
-                                                           ! Read 2nd record from L1F for this RBE3
-      READ(L1F,IOSTAT=IOCHK) REID, AGRID_D, COMPS_D, IRBE3, WT
-
-      CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_D, GRID_ID_ROW_NUM_D )
-
-      REC_NO = REC_NO + 1
-      IF (IOCHK == 0) THEN
-         CALL GET_GRID_NUM_COMPS ( GRID_ID_ROW_NUM_D, NUM_COMPS, SUBR_NAME )
-         IF (NUM_COMPS /= 6) THEN
-            IERR  = IERR + 1
-            JERR = JERR + 1
-            WRITE(ERR,1951) 'RBE3', REID, NUM_COMPS
-            WRITE(F06,1951) 'RBE3', REID, NUM_COMPS
-         ENDIF
-      ELSE
-         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
-         IERR = IERR + 1
-         JERR = JERR + 1
-      ENDIF
-
-      DO I=1,IRBE3                                         ! Read remaining records from L1F for this RBE3
-         READ(L1F,IOSTAT=IOCHK) AGRID_I(I), COMPS_I(I), WTi(I)
-         REC_NO = REC_NO + 1
-         IF (IOCHK /= 0) THEN
-            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
-            IERR = IERR + 1
-            JERR = JERR + 1
-         ENDIF
-         CALL RDOF ( COMPS_I(I), CDOF_I )
-         DO J=1,6
-            IF (CDOF_I(J) == '1') THEN
-               WTi6(I,J) = WTi(I)
-               WT6(J) = WT6(J) + WTi(I)
-            END IF
-         END DO
-      ENDDO
-
-! Return if error
-
+      CALL READ_RBE3_INPUT
       IF (JERR /= 0) THEN
          FATAL_ERR = FATAL_ERR + 1
          RETURN
       ENDIF
 
-! Get T0D (transforms global vector at AGRID_D to basic)
-
-      ECORD_D = GRID(GRID_ID_ROW_NUM_D,3)
-      IF (ECORD_D /= 0) THEN
-         DO I=1,NCORD
-            IF (ECORD_D == CORD(I,2)) THEN
-               ICORD_D = I
-               EXIT
-            ENDIF
-         ENDDO
-         CALL GEN_T0L ( GRID_ID_ROW_NUM_D, ICORD_D, THETAD, PHID, T0D )
-      ELSE
-         DO I=1,3
-            DO J=1,3
-               T0D(I,J) = ZERO
-            ENDDO
-            T0D(I,I) = ONE
-         ENDDO
-      ENDIF
-
-! Get coords of the reference grid (AGRID_D) in basic coord system
-
-      DO I=1,3
-         X0_D(I) = RGRID(GRID_ID_ROW_NUM_D,I)
-      ENDDO
-
-! Calc DXI, DYI, DZI, DX_BAR, DY_BAR, DZ_BAR
-
-      DX_BAR = ZERO
-      DY_BAR = ZERO
-      DZ_BAR = ZERO
-
-      DO J=1,IRBE3
-
-         CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I(J), GRID_ID_ROW_NUM_I )
-         DO K=1,3
-            X0_I(K) = RGRID(GRID_ID_ROW_NUM_I,K)
-            DX0(K)  = X0_I(K) - X0_D(K)
-         ENDDO
-                                                           ! Transform rel coords from basic to the coord sys at the ref pt
-         CALL MATMULT_FFF_T ( T0D, DX0, 3, 3, 1, DUM3 )
-                                                           ! Calc radius and in-plane angle from ref pt to indep points
-         DXI(J) = DUM3(1)
-         DYI(J) = DUM3(2)
-         DZI(J) = DUM3(3)
-
-         DX_BAR = DX_BAR + WTi6(J,1)*DXI(J)
-         DY_BAR = DY_BAR + WTi6(J,2)*DYI(J)
-         DZ_BAR = DZ_BAR + WTi6(J,3)*DZI(J)
-
-
-      ENDDO
-
-
-! Calc the EBAR's
-
-      EBAR_YZ = ZERO
-      EBAR_ZX = ZERO
-      EBAR_XY = ZERO
-
-      DO J=1,IRBE3
-
-         EBAR_YZ = EBAR_YZ + WTi6(J,3)*DYI(J)*DYI(J) + WTi6(J,2)*DZI(J)*DZI(J)
-         EBAR_ZX = EBAR_ZX + WTi6(J,1)*DZI(J)*DZI(J) + WTi6(J,3)*DXI(J)*DXI(J)
-         EBAR_XY = EBAR_XY + WTi6(J,2)*DXI(J)*DXI(J) + WTi6(J,1)*DYI(J)*DYI(J)
-
-      ENDDO
-
-! Calc the S-terms
-      SXY = ZERO
-      SZX = ZERO
-      SYZ = ZERO
-
-      DO J=1,IRBE3
-         SXY = SXY + WTi6(J,3) * DXI(J) * DYI(J)
-         SZX = SZX + WTi6(J,2) * DZI(J) * DXI(J)
-         SYZ = SYZ + WTi6(J,1) * DYI(J) * DZI(J)
-      END DO
-
       CALL TDOF_COL_NUM ( 'G ', G_SET_COL_NUM )
       CALL TDOF_COL_NUM ( 'M ', M_SET_COL_NUM )
-      CALL RDOF ( COMPS_D, CDOF_D )
-! Calc RMG_COL_NUM_D's no's for up to 6 DOF's for ref pt
 
-!xx   CALL CALC_TDOF_ROW_NUM ( AGRID_D, ROW_NUM_START_D, 'N' )
-      CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_D, IGRID )
-      ROW_NUM_START_D = TDOF_ROW_START(IGRID)
-      DO I=1,6
-         RMG_COL_NUM_D(I) = 0
-         IF (CDOF_D(I) == '1') THEN
-            IROW = I
-            RMG_COL_NUM_D(I) = TDOF(ROW_NUM_START_D+I-1, G_SET_COL_NUM)
-         ENDIF
-      ENDDO
+      CALL GET_GRID_TRANSFORM ( GRID_ID_ROW_NUM_D, T0D )
+      IF (JERR /= 0) THEN
+         FATAL_ERR = FATAL_ERR + 1
+         RETURN
+      ENDIF
+      REFERENCE_POSITION = RGRID(GRID_ID_ROW_NUM_D,1:NUM_VECTOR_DOF)
 
-! Write terms to L1J for the constraint equations. The outer loop is for each of the RBE3 equations and the inner loop cycles over
-! the IRBE3 grids in the "independent" set (the i points). There are up to 6 constraint eqns per RBE3 (1 each for T1, T2, T3,
-! R1, R2 R3 comps in the indep set for the RBE3)
-
-      ITERM_RMG = 0
-do_i1:DO I=1,6
-cdof_dep:IF (CDOF_D(I) == '1') THEN                        ! The I-th component is in DDOF so write this row to RMG
-            IROW = I
-!xx         CALL CALC_TDOF_ROW_NUM ( AGRID_D, ROW_NUM_START_D, 'N' )
-            CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_D, IGRID )
-            ROW_NUM_START_D = TDOF_ROW_START(IGRID)
-            ROW_NUM = ROW_NUM_START_D + I - 1
-            RMG_ROW_NUM = TDOF(ROW_NUM, M_SET_COL_NUM)
-
-            IF ((RMG_ROW_NUM > 0) .AND. (RMG_COL_NUM_D(I) > 0)) THEN
-                                                          ! Write coeff for the T1, T2 or T3 component at the ref pt
-               IF ((I == 1) .OR. (I == 2) .OR. (I == 3)) THEN
-                  IF (DABS(WT) > EPS1) THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), WT6(I)
-                     ITERM_RMG = ITERM_RMG + 1
-                  ELSE
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), WT6(I)
-                     ITERM_RMG = ITERM_RMG + 1
-                     CYCLE do_i1
-                  ENDIF
-               ENDIF
-
-               IF      (I == 1) THEN                       ! Write coeffs for the R2, R3 comps at the ref pt for the 1st eqn
-
-                  IF (CDOF_D(5) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), +DZ_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  IF (CDOF_D(6) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -DY_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-               ELSE IF (I == 2) THEN                       ! Write coeffs for the R1, R3 comps at the ref pt for the 2nd eqn
-
-                  IF (CDOF_D(4) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -DZ_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  IF (CDOF_D(6) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), +DX_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-               ELSE IF (I == 3) THEN                       ! Write coeffs for the R1, R2 comps at the ref pt for the 3rd eqn
-
-                  IF (CDOF_D(4) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), +DY_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  IF (CDOF_D(5) /= '0') THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -DX_BAR
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-               ENDIF
-                                                           ! Write coeffs for the R1, R2 and R3 comps at the ref pt for eqns 4,5,6
-               IF (I == 4) THEN
-                  IF (DABS(EBAR_YZ) > EPS1) THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), EBAR_YZ
-                     ITERM_RMG = ITERM_RMG + 1
-                  ELSE
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SXY
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SZX
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-               IF (I == 5) THEN
-                  IF (DABS(EBAR_ZX) > EPS1) THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), EBAR_ZX
-                     ITERM_RMG = ITERM_RMG + 1
-                  ELSE
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SXY
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(6), -SYZ
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-               IF (I == 6) THEN
-                  IF (DABS(EBAR_XY) > EPS1) THEN
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), EBAR_XY
-                     ITERM_RMG = ITERM_RMG + 1
-                  ELSE
-                     WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(I), ONE
-                     ITERM_RMG = ITERM_RMG + 1
-                  ENDIF
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(4), -SZX
-                  ITERM_RMG = ITERM_RMG + 1
-
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(5), -SYZ
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-               IF (I == 4) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), -DZ_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), +DY_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-               IF (I == 5) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), +DZ_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(3), -DX_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-               IF (I == 6) THEN
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(1), -DY_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-                  WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_D(2), +DX_BAR
-                  ITERM_RMG = ITERM_RMG + 1
-               ENDIF
-
-            ELSE
-               IF (RMG_ROW_NUM  == 0) THEN
-                  WRITE(ERR,1509) SUBR_NAME,RTYPE,REID,AGRID_D,IROW
-                  WRITE(F06,1509) SUBR_NAME,RTYPE,REID,AGRID_D,IROW
-                  FATAL_ERR = FATAL_ERR + 1
-                  IERR = IERR + 1
-                  JERR = JERR + 1
-               ENDIF
-               IF (RMG_COL_NUM_D(I) == 0) THEN
-                  WRITE(ERR,1510) SUBR_NAME,RTYPE,REID,AGRID_D,IROW
-                  WRITE(F06,1510) SUBR_NAME,RTYPE,REID,AGRID_D,IROW
-                  FATAL_ERR = FATAL_ERR + 1
-                  IERR = IERR + 1
-                  JERR = JERR + 1
-               ENDIF
-            ENDIF
-
-do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" terms (some here may actually be dep elsewhere)
-                                                           ! Get T0I (transforms global vector at AGRID_I to basic)
-               CALL RDOF ( COMPS_I(J), CDOF_I )
-
-               CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I(J), GRID_ID_ROW_NUM_I )
-
-               CALL GET_GRID_NUM_COMPS ( GRID_ID_ROW_NUM_I, NUM_COMPS, SUBR_NAME )
-               IF (NUM_COMPS /= 6) THEN
-                  IERR  = IERR + 1
-                  JERR  = JERR + 1
-                  WRITE(ERR,1951) 'RBE3', REID, NUM_COMPS
-                  WRITE(F06,1951) 'RBE3', REID, NUM_COMPS
-                  FATAL_ERR = FATAL_ERR + 1
-                  RETURN
-               ENDIF
-
-               ECORD_I= GRID(GRID_ID_ROW_NUM_I,3)
-               IF (ECORD_I /= 0) THEN
-                  DO K=1,NCORD
-                     IF (ECORD_I == CORD(K,2)) THEN
-                        ICORD_I = K
-                        EXIT
-                     ENDIF
-                  ENDDO
-                  CALL GEN_T0L ( GRID_ID_ROW_NUM_I, ICORD_I, THETAD, PHID, T0I )
-               ELSE
-                  DO K=1,3
-                     DO L=1,3
-                        T0I(K,L) = ZERO
-                     ENDDO
-                     T0I(K,K) = ONE
-                  ENDDO
-               ENDIF
-
-               CALL MATMULT_FFF_T ( T0D, T0I, 3, 3, 3, TDI )
-
-               IF ((I == 1) .OR. (I == 2) .OR. (I == 3)) THEN
-                  CALL WRITE_L1J_123 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, COMPS_I, TDI )
-               ELSE
-                  CALL WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI )
-               ENDIF
-
-            ENDDO do_j1
-
-         ENDIF cdof_dep
-
-      ENDDO do_i1
-
-      NTERM_RMG = NTERM_RMG + ITERM_RMG
-
-! Return if JERR > 0
-
-      IF (JERR > 0) THEN
+      CALL ASSEMBLE_LEAST_SQUARES_SYSTEM
+      IF (JERR /= 0) THEN
+         FATAL_ERR = FATAL_ERR + 1
          RETURN
       ENDIF
 
+      CALL SELECT_REFERENCE_COMPONENTS
+      CALL REDUCE_TO_REFERENCE_COMPONENTS
+      IF (JERR /= 0) THEN
+         FATAL_ERR = FATAL_ERR + 1
+         RETURN
+      ENDIF
 
+      CALL WRITE_RMG_TERMS ( ITERM_RMG )
+      NTERM_RMG = NTERM_RMG + ITERM_RMG
+
+      IF (JERR /= 0) FATAL_ERR = FATAL_ERR + 1
 
       RETURN
-
-! **********************************************************************************************************************************
- 1503 FORMAT(' *ERROR  1503: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
-                    ,/,14X,' FOR RBE3 ',I8,', THE COUNT OF RECORDS WRITTEN TO FILE'                                                &
-                    ,/,15X,A                                                                                                       &
-                    ,/,14X,' IS ITERM_RMG = ',I8,' BUT SHOULD BE NTERM_RMG = ',I8,' DETERMINED IN ANOTHER SUBR')
-
- 1509 FORMAT(' *ERROR  1509: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
-                    ,/,15X,A8,' RIGID ELEMENT NUMBER ',I8,', DEPENDENT GRID NUMBER ',I8,', COMPONENT ',I2                          &
-                    ,/,14X,' IS NOT A M-SET DOF IN TABLE TDOFI')
-
- 1510 FORMAT(' *ERROR  1510: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
-                    ,/,15X,A8,' RIGID ELEMENT NUMBER ',I8,', INDEPENDENT GRID NUMBER ',I8,', COMPONENT ',I2                        &
-                    ,/,14X,' IS NOT A G-SET DOF IN TABLE TDOFI')
-
- 1951 FORMAT(' *ERROR  1951: ',A,I8,' USES GRID ',I8,' WHICH IS A SCALAR POINT. SCALAR POINTS NOT ALLOWED FOR THIS ELEM TYPE')
-
-
-
-
-
-
 
 ! **********************************************************************************************************************************
 
@@ -524,150 +145,464 @@ do_j1:      DO J=1,IRBE3                                   ! Cycle over "indep" 
 
 ! ##################################################################################################################################
 
-      SUBROUTINE WRITE_L1J_123 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, COMPS_I, TDI )
+      SUBROUTINE READ_RBE3_INPUT
 
-      USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  L1J
-      USE SCONTR, ONLY                :  FATAL_ERR, MRBE3, NGRID
-      USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
-      USE MODEL_STUF, ONLY            :  GRID_ID
+      INTEGER(LONG)                   :: I
+      INTEGER(LONG)                   :: IOCHK
+      INTEGER(LONG)                   :: NUM_COMPS
+      INTEGER(LONG)                   :: OUNT(2)
+      INTEGER(LONG)                   :: REID_LOCAL
 
-      CHARACTER( 1*BYTE), INTENT(IN)  :: CDOF_I(6)         ! An output from subr RDOF (= 1 if a displ comp 1-6 is in COMPS_I)
+      OUNT = [ERR, F06]
+      AGRID_I = 0
+      COMPS_I = 0
+      WEIGHT = ZERO
 
-      INTEGER(LONG), INTENT(IN)       :: I,J               ! DO loop indices
-      INTEGER(LONG), INTENT(IN)       :: AGRID_I(MRBE3)    ! Indep grid ID (actual) read from a record of file LINK1F
-      INTEGER(LONG), INTENT(IN)       :: COMPS_I(MRBE3)    ! Dipsl components associated with indep grid, AGRID_I
-      INTEGER(LONG), INTENT(IN)       :: G_SET_COL_NUM     ! Col no., in TDOF array, of the G-set DOF list
-      INTEGER(LONG), INTENT(IN)       :: RMG_ROW_NUM       ! Row no. of a term in array RMG
-      INTEGER(LONG), INTENT(INOUT)    :: ITERM_RMG         ! Count of number of records written to L1J (should be NTERM_RMG at end)
-      INTEGER(LONG)                   :: IGRID             ! Internal grid ID
-      INTEGER(LONG)                   :: K                 ! DO loop index
-      INTEGER(LONG)                   :: RMG_COL_NUM_I     ! Col no. of a term in array RMG
-      INTEGER(LONG)                   :: ROW_NUM           ! A row number in array TDOF
-      INTEGER(LONG)                   :: ROW_NUM_START_I   ! DOF number where TDOF data begins for a grid
+! The element type record was read by RIGID_ELEM_PROC. Read the header and only use its values after IOSTAT has been checked.
 
-      REAL(DOUBLE) , INTENT(IN)       :: TDI(3,3)          ! TOD'*T0I
-      REAL(DOUBLE) , INTENT(IN)       :: WTi6(MRBE3,6)     ! Weight value for an indep grid (PER-DOF)
+      READ(L1F,IOSTAT=IOCHK) REID_LOCAL, AGRID_D, COMPS_D, IRBE3, WEIGHT_SUM_ON_FILE
+      REC_NO = REC_NO + 1
+      IF (IOCHK /= 0) THEN
+         CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
+         IERR = IERR + 1
+         JERR = JERR + 1
+         RETURN
+      ENDIF
+      REID = REID_LOCAL
 
-! **********************************************************************************************************************************
+      IF ((IRBE3 < 1) .OR. (IRBE3 > MRBE3)) THEN
+         WRITE(ERR,1952) REID, IRBE3, MRBE3
+         WRITE(F06,1952) REID, IRBE3, MRBE3
+         IERR = IERR + 1
+         JERR = JERR + 1
+         RETURN
+      ENDIF
 
-      DO K=1,3
+      CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_D, GRID_ID_ROW_NUM_D )
+      CALL GET_GRID_NUM_COMPS ( GRID_ID_ROW_NUM_D, NUM_COMPS, SUBR_NAME )
+      IF (NUM_COMPS /= NUM_RIGID_DOF) THEN
+         WRITE(ERR,1951) 'RBE3', REID, AGRID_D
+         WRITE(F06,1951) 'RBE3', REID, AGRID_D
+         IERR = IERR + 1
+         JERR = JERR + 1
+      ENDIF
 
-         IF (CDOF_I(K) == '1') THEN
-!xx         CALL CALC_TDOF_ROW_NUM ( AGRID_I(J), ROW_NUM_START_I, 'N' )
-            CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I(J), IGRID )
-            ROW_NUM_START_I = TDOF_ROW_START(IGRID)
-            ROW_NUM = ROW_NUM_START_I + K - 1
-            RMG_COL_NUM_I = TDOF(ROW_NUM,G_SET_COL_NUM)
-
-            IF (RMG_COL_NUM_I > 0) THEN                    ! NB *** new 10/03/21 Change WT (below) to WT6(K)
-               WRITE(L1J) RMG_ROW_NUM, RMG_COL_NUM_I, -WTi6(J,K)*TDI(I,K)
-               ITERM_RMG = ITERM_RMG + 1
-            ELSE
-               WRITE(ERR,1513) 'RBE3_PROC', AGRID_I(J) ,COMPS_I(J), RMG_COL_NUM_I
-               WRITE(F06,1513) 'RBE3_PROC', AGRID_I(J) ,COMPS_I(J), RMG_COL_NUM_I
-               FATAL_ERR = FATAL_ERR + 1
-               CALL OUTA_HERE ( 'Y' )
-            ENDIF
-
+      DO I = 1, IRBE3
+         READ(L1F,IOSTAT=IOCHK) AGRID_I(I), COMPS_I(I), WEIGHT(I)
+         REC_NO = REC_NO + 1
+         IF (IOCHK /= 0) THEN
+            CALL READERR ( IOCHK, LINK1F, L1F_MSG, REC_NO, OUNT )
+            IERR = IERR + 1
+            JERR = JERR + 1
+            RETURN
          ENDIF
-
       ENDDO
 
-! **********************************************************************************************************************************
- 1513 FORMAT(' *ERROR  1513: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
-                    ,/,14X,' COL NUMBER IN ARRAY RMG CALCULATED FOR GRID ',I8,', COMPONENT ',I2,' MUST BE > 0 BUT IS = ',I8)
+ 1951 FORMAT(' *ERROR  1951: ',A,I8,' USES GRID ',I8,' WHICH IS A SCALAR POINT. SCALAR POINTS NOT ALLOWED FOR THIS ELEM TYPE')
+ 1952 FORMAT(' *ERROR  1952: RBE3 ',I8,' HAS ',I8,' INDEPENDENT GRID RECORDS; THE SUPPORTED RANGE IS 1 THROUGH ',I8)
 
-
-! **********************************************************************************************************************************
-
-      END SUBROUTINE WRITE_L1J_123
+      END SUBROUTINE READ_RBE3_INPUT
 
 ! ##################################################################################################################################
 
-      SUBROUTINE WRITE_L1J_456 ( I, J, ITERM_RMG, G_SET_COL_NUM, RMG_ROW_NUM, WTi6, AGRID_I, CDOF_I, DXI, DYI, DZI )
+      SUBROUTINE GET_GRID_TRANSFORM ( GRID_ROW, TRANSFORM )
 
-      USE PENTIUM_II_KIND, ONLY       :  LONG, DOUBLE
-      USE IOUNT1, ONLY                :  L1J
-      USE SCONTR, ONLY                :  FATAL_ERR, NGRID, MRBE3
-      USE CONSTANTS_1, ONLY           :  ONE
-      USE DOF_TABLES, ONLY            :  TDOF, TDOF_ROW_START
-      USE MODEL_STUF, ONLY            :  GRID_ID
+      INTEGER(LONG), INTENT(IN)      :: GRID_ROW
+      REAL(DOUBLE), INTENT(OUT)      :: TRANSFORM(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
 
-      CHARACTER( 1*BYTE), INTENT(IN)  :: CDOF_I(6)         ! An output from subr RDOF (= 1 if a displ comp 1-6 is in COMPS_I)
+      INTEGER(LONG)                  :: COORD_ID
+      INTEGER(LONG)                  :: COORD_ROW
+      REAL(DOUBLE)                   :: PHI
+      REAL(DOUBLE)                   :: THETA
 
-      INTEGER(LONG), INTENT(IN)       :: I,J               ! DO loop indices
-      INTEGER(LONG), INTENT(IN)       :: AGRID_I(MRBE3)    ! Indep grid ID (actual) read from a record of file LINK1F
-      INTEGER(LONG), INTENT(IN)       :: G_SET_COL_NUM     ! Col no., in TDOF array, of the G-set DOF list
-      INTEGER(LONG), INTENT(IN)       :: RMG_ROW_NUM       ! Row no. of a term in array RMG
-      INTEGER(LONG), INTENT(INOUT)    :: ITERM_RMG         ! Count of number of records written to L1J (should be NTERM_RMG at end)
-      INTEGER(LONG)                   :: IGRID             ! Internal grid ID
-      INTEGER(LONG)                   :: RMG_COL_NUM_START ! Col no. of a term in array RMG
-      INTEGER(LONG)                   :: ROW_NUM_START_I   ! DOF number where TDOF data begins for a grid
-
-      REAL(DOUBLE) , INTENT(IN)       :: DXI(MRBE3)        ! Distances from ref pt to pt i in X global directions at ref pt
-      REAL(DOUBLE) , INTENT(IN)       :: DYI(MRBE3)        ! Distances from ref pt to pt i in Y global directions at ref pt
-      REAL(DOUBLE) , INTENT(IN)       :: DZI(MRBE3)        ! Distances from ref pt to pt i in Z global directions at ref pt
-      REAL(DOUBLE) , INTENT(IN)       :: WTi6(MRBE3,6)     ! Weight value for an indep grid (PER-DOF)
-
-! **********************************************************************************************************************************
-!xx   CALL CALC_TDOF_ROW_NUM ( AGRID_I(J), ROW_NUM_START_I, 'N' )
-      CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I(J), IGRID )
-      ROW_NUM_START_I = TDOF_ROW_START(IGRID)
-      RMG_COL_NUM_START = TDOF(ROW_NUM_START_I,G_SET_COL_NUM)
-
-      IF (RMG_COL_NUM_START <= 0) THEN
-         WRITE(ERR,1513) 'RBE3_PROC', AGRID_I(J) ,'1', RMG_COL_NUM_START
-         WRITE(F06,1513) 'RBE3_PROC', AGRID_I(J) ,'1', RMG_COL_NUM_START
-         FATAL_ERR = FATAL_ERR + 1
-         CALL OUTA_HERE ( 'Y' )
+      COORD_ID = GRID(GRID_ROW,3)
+      IF (COORD_ID == 0) THEN
+         TRANSFORM = IDENTITY_3()
+         RETURN
       ENDIF
 
-      IF      (I == 4) THEN                                ! Rotation about x, i.e. in yz (23) plane
-
-         IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, +WTi6(J,1)*DZI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, -WTi6(J,1)*DYI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-      ELSE IF (I == 5) THEN                                ! Rotation about y, i.e. in zx (31) plane
-
-         IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, -WTi6(J,2)*DZI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(3) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+3, +WTi6(J,2)*DXI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-      ELSE IF (I == 6) THEN                                ! Rotation about z, i.e. in xy (12) plane
-
-         IF (CDOF_I(1) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+1, +WTi6(J,3)*DYI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
-         IF (CDOF_I(2) == '1') THEN
-            WRITE(L1J) RMG_ROW_NUM, (RMG_COL_NUM_START-1)+2, -WTi6(J,3)*DXI(J)
-            ITERM_RMG = ITERM_RMG +1
-         ENDIF
-
+      COORD_ROW = FINDLOC(CORD(1:NCORD,2), COORD_ID, DIM=1)
+      IF (COORD_ROW == 0) THEN
+         WRITE(ERR,1953) REID, GRID_ID(GRID_ROW), COORD_ID
+         WRITE(F06,1953) REID, GRID_ID(GRID_ROW), COORD_ID
+         IERR = IERR + 1
+         JERR = JERR + 1
+         TRANSFORM = ZERO
+         RETURN
       ENDIF
 
+      CALL GEN_T0L ( GRID_ROW, COORD_ROW, THETA, PHI, TRANSFORM )
+
+ 1953 FORMAT(' *ERROR  1953: RBE3 ',I8,' USES GRID ',I8,' WITH UNRESOLVED DISPLACEMENT COORDINATE SYSTEM ',I8)
+
+      END SUBROUTINE GET_GRID_TRANSFORM
+
+! ##################################################################################################################################
+
+      SUBROUTINE ASSEMBLE_LEAST_SQUARES_SYSTEM
+
+      INTEGER(LONG)                  :: COMPONENT
+      INTEGER(LONG)                  :: GRID_INDEX
+      INTEGER(LONG)                  :: GRID_ROW
+      INTEGER(LONG)                  :: NUM_COMPS
+      INTEGER(LONG)                  :: RMG_COLUMN
+      INTEGER(LONG)                  :: ROW_START
+      REAL(DOUBLE)                   :: H(NUM_RIGID_DOF)
+      REAL(DOUBLE)                   :: RELATIVE_POSITION(NUM_VECTOR_DOF)
+      REAL(DOUBLE)                   :: T0I(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
+      REAL(DOUBLE)                   :: TDI(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
+
+      A6 = ZERO
+      B6 = ZERO
+      B6_COL_RMG = 0
+      NB6COLS = 0
+
+      DO GRID_INDEX = 1, IRBE3
+         CALL GET_ARRAY_ROW_NUM ( 'GRID_ID', SUBR_NAME, NGRID, GRID_ID, AGRID_I(GRID_INDEX), GRID_ROW )
+         CALL GET_GRID_NUM_COMPS ( GRID_ROW, NUM_COMPS, SUBR_NAME )
+         IF (NUM_COMPS /= NUM_RIGID_DOF) THEN
+            WRITE(ERR,1951) 'RBE3', REID, AGRID_I(GRID_INDEX)
+            WRITE(F06,1951) 'RBE3', REID, AGRID_I(GRID_INDEX)
+            IERR = IERR + 1
+            JERR = JERR + 1
+            CYCLE
+         ENDIF
+
+         CALL GET_GRID_TRANSFORM ( GRID_ROW, T0I )
+         IF (JERR /= 0) CYCLE
+
+         RELATIVE_POSITION = MATMUL(TRANSPOSE(T0D), RGRID(GRID_ROW,1:NUM_VECTOR_DOF) - REFERENCE_POSITION)
+         TDI = MATMUL(TRANSPOSE(T0D), T0I)
+         ROW_START = TDOF_ROW_START(GRID_ROW)
+
+         CALL RDOF ( COMPS_I(GRID_INDEX), INDEP_DOF_ACTIVE )
+         DO COMPONENT = 1, NUM_RIGID_DOF
+            IF (INDEP_DOF_ACTIVE(COMPONENT) /= '1') CYCLE
+
+            RMG_COLUMN = TDOF(ROW_START + COMPONENT - 1,G_SET_COL_NUM)
+            IF (RMG_COLUMN <= 0) THEN
+               WRITE(ERR,1513) SUBR_NAME, AGRID_I(GRID_INDEX), COMPONENT, RMG_COLUMN
+               WRITE(F06,1513) SUBR_NAME, AGRID_I(GRID_INDEX), COMPONENT, RMG_COLUMN
+               IERR = IERR + 1
+               JERR = JERR + 1
+               CYCLE
+            ENDIF
+
+            H = KINEMATIC_VECTOR(COMPONENT, TDI, RELATIVE_POSITION)
+
+            NB6COLS = NB6COLS + 1
+            B6_COL_RMG(NB6COLS) = RMG_COLUMN
+            B6(:,NB6COLS) = -WEIGHT(GRID_INDEX)*H
+            A6 = A6 + WEIGHT(GRID_INDEX)*OUTER_PRODUCT_6(H)
+         ENDDO
+      ENDDO
+
+ 1513 FORMAT(' *ERROR  1513: PROGRAMMING ERROR IN SUBROUTINE ',A,/,14X,'G-SET COLUMN FOR GRID ',I8,', COMPONENT ',I2,              &
+                    ' MUST BE > 0 BUT IS ',I8)
+ 1951 FORMAT(' *ERROR  1951: ',A,I8,' USES GRID ',I8,' WHICH IS A SCALAR POINT. SCALAR POINTS NOT ALLOWED FOR THIS ELEM TYPE')
+
+      END SUBROUTINE ASSEMBLE_LEAST_SQUARES_SYSTEM
+
+! ##################################################################################################################################
+
+      SUBROUTINE SELECT_REFERENCE_COMPONENTS
+
+      LOGICAL                        :: IS_RETAINED(NUM_RIGID_DOF)
+
+      CALL RDOF ( COMPS_D, REF_DOF_ACTIVE )
+      IS_RETAINED = (REF_DOF_ACTIVE == '1')
+      NUM_RETAINED = COUNT(IS_RETAINED)
+      NUM_DISCARDED = NUM_RIGID_DOF - NUM_RETAINED
+
+      RETAINED_IDX = 0
+      DISCARDED_IDX = 0
+      RETAINED_IDX(1:NUM_RETAINED) = PACK(ALL_DOF, IS_RETAINED)
+      IF (NUM_DISCARDED > 0) DISCARDED_IDX(1:NUM_DISCARDED) = PACK(ALL_DOF, .NOT. IS_RETAINED)
+
+      END SUBROUTINE SELECT_REFERENCE_COMPONENTS
+
+! ##################################################################################################################################
+
+      SUBROUTINE REDUCE_TO_REFERENCE_COMPONENTS
+
+      INTEGER(LONG)                  :: INFO
+      INTEGER(LONG)                  :: NUM_RIGHT_HAND_SIDES
+      INTEGER(LONG)                  :: RANK
+      REAL(DOUBLE)                   :: A_DD(5,5)
+      REAL(DOUBLE)                   :: A_DD_ORIGINAL(5,5)
+      REAL(DOUBLE)                   :: A_RD(NUM_RIGID_DOF,5)
+      REAL(DOUBLE)                   :: RANK_CHECK_A(NUM_RIGID_DOF,NUM_RIGID_DOF)
+      REAL(DOUBLE)                   :: RANK_CHECK_B(NUM_RIGID_DOF,1)
+      REAL(DOUBLE)                   :: RESIDUAL_SCALE
+      REAL(DOUBLE)                   :: RHS(5,NUM_RIGID_DOF+NUM_RIGID_DOF*MRBE3)
+      REAL(DOUBLE)                   :: RHS_ORIGINAL(5,NUM_RIGID_DOF+NUM_RIGID_DOF*MRBE3)
+
+      A_REDUCED = ZERO
+      B_REDUCED = ZERO
+
+      IF (NUM_RETAINED == 0) THEN
+         WRITE(ERR,1954) REID, COMPS_D
+         WRITE(F06,1954) REID, COMPS_D
+         IERR = IERR + 1
+         JERR = JERR + 1
+         RETURN
+      ENDIF
+
+      IF (NUM_DISCARDED == 0) THEN
+         A_REDUCED(1:NUM_RETAINED,1:NUM_RETAINED) = A6(RETAINED_IDX(1:NUM_RETAINED),RETAINED_IDX(1:NUM_RETAINED))
+         B_REDUCED(1:NUM_RETAINED,1:NB6COLS) = B6(RETAINED_IDX(1:NUM_RETAINED),1:NB6COLS)
+      ELSE
+         NUM_RIGHT_HAND_SIDES = NUM_RETAINED + NB6COLS
+         A_DD = ZERO
+         RHS = ZERO
+         A_RD = ZERO
+
+         A_DD(1:NUM_DISCARDED,1:NUM_DISCARDED) = &
+            A6(DISCARDED_IDX(1:NUM_DISCARDED),DISCARDED_IDX(1:NUM_DISCARDED))
+         A_RD(1:NUM_RETAINED,1:NUM_DISCARDED) = &
+            A6(RETAINED_IDX(1:NUM_RETAINED),DISCARDED_IDX(1:NUM_DISCARDED))
+         RHS(1:NUM_DISCARDED,1:NUM_RETAINED) = &
+            A6(DISCARDED_IDX(1:NUM_DISCARDED),RETAINED_IDX(1:NUM_RETAINED))
+         RHS(1:NUM_DISCARDED,NUM_RETAINED+1:NUM_RIGHT_HAND_SIDES) = &
+            B6(DISCARDED_IDX(1:NUM_DISCARDED),1:NB6COLS)
+
+         A_DD_ORIGINAL = A_DD
+         RHS_ORIGINAL = RHS
+         CALL SOLVE_MINIMUM_NORM ( A_DD, RHS, NUM_DISCARDED, NUM_RIGHT_HAND_SIDES, RANK, INFO )
+         IF (INFO /= 0) THEN
+            WRITE(ERR,1955) REID, INFO
+            WRITE(F06,1955) REID, INFO
+            IERR = IERR + 1
+            JERR = JERR + 1
+            RETURN
+         ENDIF
+
+! A rank-deficient discarded block is permitted only when all elimination right-hand sides are in its range. DGELSY then supplies
+! the unique minimum-norm solution needed for the generalized Schur complement.
+
+         RESIDUAL_SCALE = MAX(ONE, MAXVAL(ABS(RHS_ORIGINAL(1:NUM_DISCARDED,1:NUM_RIGHT_HAND_SIDES))))
+         IF (MAXIMUM_RESIDUAL(A_DD_ORIGINAL(1:NUM_DISCARDED,1:NUM_DISCARDED), &
+                              RHS(1:NUM_DISCARDED,1:NUM_RIGHT_HAND_SIDES), &
+                              RHS_ORIGINAL(1:NUM_DISCARDED,1:NUM_RIGHT_HAND_SIDES)) > SQRT(EPS1)*RESIDUAL_SCALE) THEN
+            WRITE(ERR,1956) REID, RANK, NUM_DISCARDED
+            WRITE(F06,1956) REID, RANK, NUM_DISCARDED
+            IERR = IERR + 1
+            JERR = JERR + 1
+            RETURN
+         ENDIF
+
+         A_REDUCED(1:NUM_RETAINED,1:NUM_RETAINED) = SCHUR_REDUCTION( &
+            A6(RETAINED_IDX(1:NUM_RETAINED),RETAINED_IDX(1:NUM_RETAINED)), &
+            A_RD(1:NUM_RETAINED,1:NUM_DISCARDED), RHS(1:NUM_DISCARDED,1:NUM_RETAINED))
+         B_REDUCED(1:NUM_RETAINED,1:NB6COLS) = SCHUR_REDUCTION( &
+            B6(RETAINED_IDX(1:NUM_RETAINED),1:NB6COLS), A_RD(1:NUM_RETAINED,1:NUM_DISCARDED), &
+            RHS(1:NUM_DISCARDED,NUM_RETAINED+1:NUM_RIGHT_HAND_SIDES))
+      ENDIF
+
+! A singular retained block cannot define every requested dependent DOF. Diagnose it here instead of inventing unit pivot terms.
+
+      RANK_CHECK_A = ZERO
+      RANK_CHECK_B = ZERO
+      RANK_CHECK_A(1:NUM_RETAINED,1:NUM_RETAINED) = A_REDUCED(1:NUM_RETAINED,1:NUM_RETAINED)
+      CALL SOLVE_MINIMUM_NORM ( RANK_CHECK_A, RANK_CHECK_B, NUM_RETAINED, 1_LONG, RANK, INFO )
+      IF ((INFO /= 0) .OR. (RANK < NUM_RETAINED)) THEN
+         WRITE(ERR,1957) REID, NUM_RETAINED, RANK
+         WRITE(F06,1957) REID, NUM_RETAINED, RANK
+         IERR = IERR + 1
+         JERR = JERR + 1
+      ENDIF
+
+ 1954 FORMAT(' *ERROR  1954: RBE3 ',I8,' HAS NO VALID REFC COMPONENTS IN VALUE ',I8)
+ 1955 FORMAT(' *ERROR  1955: LAPACK DGELSY FAILED WHILE REDUCING RBE3 ',I8,'; INFO = ',I8)
+ 1956 FORMAT(' *ERROR  1956: RBE3 ',I8,' HAS AN INCONSISTENT RANK-DEFICIENT DISCARDED-COMPONENT SYSTEM (RANK ',I2,' OF ',I2,')')
+ 1957 FORMAT(' *ERROR  1957: RBE3 ',I8,' CANNOT DETERMINE ALL ',I2,' REQUESTED REFC COMPONENTS; REDUCED RANK IS ',I2)
+
+      END SUBROUTINE REDUCE_TO_REFERENCE_COMPONENTS
+
+! ##################################################################################################################################
+
+      SUBROUTINE SOLVE_MINIMUM_NORM ( MATRIX, RHS, N, NRHS, RANK, INFO )
+
+      REAL(DOUBLE), INTENT(INOUT)    :: MATRIX(:,:)
+      REAL(DOUBLE), INTENT(INOUT)    :: RHS(:,:)
+      INTEGER(LONG), INTENT(IN)      :: N
+      INTEGER(LONG), INTENT(IN)      :: NRHS
+      INTEGER(LONG), INTENT(OUT)     :: RANK
+      INTEGER(LONG), INTENT(OUT)     :: INFO
+
+      INTEGER(LONG)                  :: JPVT(NUM_RIGID_DOF)
+      INTEGER(LONG)                  :: LWORK
+      REAL(DOUBLE), ALLOCATABLE      :: WORK(:)
+      REAL(DOUBLE)                   :: WORK_QUERY(1)
+
+      JPVT = 0
+      CALL DGELSY ( N, N, NRHS, MATRIX, SIZE(MATRIX,1,KIND=LONG), RHS, SIZE(RHS,1,KIND=LONG), JPVT, EPS1, RANK, &
+                    WORK_QUERY, -1_LONG, INFO )
+      IF (INFO /= 0) RETURN
+
+      LWORK = MAX(1_LONG, INT(WORK_QUERY(1),KIND=LONG))
+      ALLOCATE(WORK(LWORK))
+      JPVT = 0
+      CALL DGELSY ( N, N, NRHS, MATRIX, SIZE(MATRIX,1,KIND=LONG), RHS, SIZE(RHS,1,KIND=LONG), JPVT, EPS1, RANK, WORK, LWORK, INFO )
+      DEALLOCATE(WORK)
+
+      END SUBROUTINE SOLVE_MINIMUM_NORM
+
+! ##################################################################################################################################
+
+      SUBROUTINE WRITE_RMG_TERMS ( TERM_COUNT )
+
+      INTEGER(LONG), INTENT(OUT)     :: TERM_COUNT
+
+      INTEGER(LONG)                  :: DEP_COMPONENT
+      INTEGER(LONG)                  :: I
+      INTEGER(LONG)                  :: J
+      INTEGER(LONG)                  :: REF_COL(NUM_RIGID_DOF)
+      INTEGER(LONG)                  :: REF_ROW_START
+      INTEGER(LONG)                  :: RMG_ROW
+      REAL(DOUBLE)                   :: COEFFICIENT_SCALE
+      REAL(DOUBLE)                   :: WRITE_TOLERANCE
+
+      TERM_COUNT = 0
+      REF_COL = 0
+      REF_ROW_START = TDOF_ROW_START(GRID_ID_ROW_NUM_D)
+
+      DO I = 1, NUM_RETAINED
+         DEP_COMPONENT = RETAINED_IDX(I)
+         REF_COL(I) = TDOF(REF_ROW_START + DEP_COMPONENT - 1,G_SET_COL_NUM)
+      ENDDO
+
+      DO I = 1, NUM_RETAINED
+         DEP_COMPONENT = RETAINED_IDX(I)
+         RMG_ROW = TDOF(REF_ROW_START + DEP_COMPONENT - 1,M_SET_COL_NUM)
+         IF ((RMG_ROW <= 0) .OR. (REF_COL(I) <= 0)) THEN
+            IF (RMG_ROW <= 0) THEN
+               WRITE(ERR,1509) SUBR_NAME, RTYPE, REID, AGRID_D, DEP_COMPONENT
+               WRITE(F06,1509) SUBR_NAME, RTYPE, REID, AGRID_D, DEP_COMPONENT
+            ENDIF
+            IF (REF_COL(I) <= 0) THEN
+               WRITE(ERR,1510) SUBR_NAME, RTYPE, REID, AGRID_D, DEP_COMPONENT
+               WRITE(F06,1510) SUBR_NAME, RTYPE, REID, AGRID_D, DEP_COMPONENT
+            ENDIF
+            IERR = IERR + 1
+            JERR = JERR + 1
+            CYCLE
+         ENDIF
+
+         COEFFICIENT_SCALE = MAX(MAXVAL(ABS(A_REDUCED(I,1:NUM_RETAINED))), MAXVAL(ABS(B_REDUCED(I,1:NB6COLS))))
+         WRITE_TOLERANCE = 10.0_DOUBLE*EPS1*COEFFICIENT_SCALE
+
+         DO J = 1, NUM_RETAINED
+            IF (ABS(A_REDUCED(I,J)) <= WRITE_TOLERANCE) CYCLE
+            WRITE(L1J) RMG_ROW, REF_COL(J), A_REDUCED(I,J)
+            TERM_COUNT = TERM_COUNT + 1
+         ENDDO
+
+         DO J = 1, NB6COLS
+            IF (ABS(B_REDUCED(I,J)) <= WRITE_TOLERANCE) CYCLE
+            WRITE(L1J) RMG_ROW, B6_COL_RMG(J), B_REDUCED(I,J)
+            TERM_COUNT = TERM_COUNT + 1
+         ENDDO
+      ENDDO
+
+ 1509 FORMAT(' *ERROR  1509: PROGRAMMING ERROR IN SUBROUTINE ',A,/,15X,A8,' RIGID ELEMENT NUMBER ',I8,                           &
+                    ', DEPENDENT GRID NUMBER ',I8,', COMPONENT ',I2,/,14X,' IS NOT AN M-SET DOF IN TABLE TDOFI')
+ 1510 FORMAT(' *ERROR  1510: PROGRAMMING ERROR IN SUBROUTINE ',A,/,15X,A8,' RIGID ELEMENT NUMBER ',I8,                           &
+                    ', DEPENDENT GRID NUMBER ',I8,', COMPONENT ',I2,/,14X,' IS NOT A G-SET DOF IN TABLE TDOFI')
+
+      END SUBROUTINE WRITE_RMG_TERMS
+
+! ##################################################################################################################################
+
+      PURE FUNCTION KINEMATIC_VECTOR ( COMPONENT, TDI, RELATIVE_POSITION ) RESULT ( H )
+
+! Return the reference-motion coefficients for one scalar independent DOF. For translation, H = [D; R cross D]. For rotation,
+! H = [0; D]. D is the independent component direction expressed in the reference grid's displacement coordinate system.
+
+      INTEGER(LONG), INTENT(IN)      :: COMPONENT
+      REAL(DOUBLE), INTENT(IN)       :: TDI(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
+      REAL(DOUBLE), INTENT(IN)       :: RELATIVE_POSITION(NUM_VECTOR_DOF)
+      REAL(DOUBLE)                   :: DIRECTION(NUM_VECTOR_DOF)
+      REAL(DOUBLE)                   :: H(NUM_RIGID_DOF)
+
+      H = ZERO
+      IF (COMPONENT <= NUM_VECTOR_DOF) THEN
+         DIRECTION = TDI(:,COMPONENT)
+         H(1:NUM_VECTOR_DOF) = DIRECTION
+         H(4:NUM_RIGID_DOF) = CROSS_PRODUCT_3(RELATIVE_POSITION, DIRECTION)
+      ELSE
+         DIRECTION = TDI(:,COMPONENT - NUM_VECTOR_DOF)
+         H(4:NUM_RIGID_DOF) = DIRECTION
+      ENDIF
+
+      END FUNCTION KINEMATIC_VECTOR
+
+! ##################################################################################################################################
+
+      PURE FUNCTION SCHUR_REDUCTION ( RETAINED, COUPLING, ELIMINATED_SOLUTION ) RESULT ( REDUCED )
+
+      REAL(DOUBLE), INTENT(IN)       :: RETAINED(:,:)
+      REAL(DOUBLE), INTENT(IN)       :: COUPLING(:,:)
+      REAL(DOUBLE), INTENT(IN)       :: ELIMINATED_SOLUTION(:,:)
+      REAL(DOUBLE)                   :: REDUCED(SIZE(RETAINED,1),SIZE(RETAINED,2))
+
+      REDUCED = RETAINED - MATMUL(COUPLING, ELIMINATED_SOLUTION)
+
+      END FUNCTION SCHUR_REDUCTION
+
+! ##################################################################################################################################
+
+      PURE FUNCTION MAXIMUM_RESIDUAL ( MATRIX, SOLUTION, RHS ) RESULT ( MAX_RESIDUAL )
+
+      REAL(DOUBLE), INTENT(IN)       :: MATRIX(:,:)
+      REAL(DOUBLE), INTENT(IN)       :: SOLUTION(:,:)
+      REAL(DOUBLE), INTENT(IN)       :: RHS(:,:)
+      REAL(DOUBLE)                   :: MAX_RESIDUAL
+      REAL(DOUBLE)                   :: RESIDUAL(SIZE(RHS,1),SIZE(RHS,2))
+
+      RESIDUAL = MATMUL(MATRIX, SOLUTION) - RHS
+      MAX_RESIDUAL = MAXVAL(ABS(RESIDUAL))
+
+      END FUNCTION MAXIMUM_RESIDUAL
+
+! ##################################################################################################################################
+
+      PURE FUNCTION CROSS_PRODUCT_3 ( LEFT, RIGHT ) RESULT ( PRODUCT )
+
+      REAL(DOUBLE), INTENT(IN)       :: LEFT(NUM_VECTOR_DOF)
+      REAL(DOUBLE), INTENT(IN)       :: RIGHT(NUM_VECTOR_DOF)
+      REAL(DOUBLE)                   :: PRODUCT(NUM_VECTOR_DOF)
+
+      PRODUCT = [ LEFT(2)*RIGHT(3) - LEFT(3)*RIGHT(2), &
+                  LEFT(3)*RIGHT(1) - LEFT(1)*RIGHT(3), &
+                  LEFT(1)*RIGHT(2) - LEFT(2)*RIGHT(1) ]
+
+      END FUNCTION CROSS_PRODUCT_3
+
+! ##################################################################################################################################
+
+      PURE FUNCTION IDENTITY_3 () RESULT ( IDENTITY )
+
+      REAL(DOUBLE)                   :: IDENTITY(NUM_VECTOR_DOF,NUM_VECTOR_DOF)
+
+      IDENTITY = ZERO
+      IDENTITY(1,1) = ONE
+      IDENTITY(2,2) = ONE
+      IDENTITY(3,3) = ONE
+
+      END FUNCTION IDENTITY_3
+
+! ##################################################################################################################################
+
+      PURE FUNCTION OUTER_PRODUCT_6 ( VECTOR ) RESULT ( PRODUCT )
+
+      REAL(DOUBLE), INTENT(IN)       :: VECTOR(NUM_RIGID_DOF)
+      REAL(DOUBLE)                   :: PRODUCT(NUM_RIGID_DOF,NUM_RIGID_DOF)
+
+      PRODUCT = SPREAD(VECTOR,DIM=2,NCOPIES=NUM_RIGID_DOF)*SPREAD(VECTOR,DIM=1,NCOPIES=NUM_RIGID_DOF)
+
+      END FUNCTION OUTER_PRODUCT_6
+
 ! **********************************************************************************************************************************
- 1513 FORMAT(' *ERROR  1513: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
-                    ,/,14X,' COL NUMBER IN ARRAY RMG CALCULATED FOR GRID ',I8,', COMPONENT ',A,' MUST BE > 0 BUT IS = ',I8)
-
-
-! **********************************************************************************************************************************
-
-      END SUBROUTINE WRITE_L1J_456
 
       END SUBROUTINE RBE3_PROC

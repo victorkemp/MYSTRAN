@@ -33,9 +33,8 @@
       USE PENTIUM_II_KIND, ONLY       :  BYTE, LONG, DOUBLE
       USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR
-      USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO
-      USE MODEL_STUF, ONLY            :  STRESS, TYPE, ZS
+      USE MODEL_STUF, ONLY            :  STRESS, TYPE, ZS, FCONV
       USE LINK9_STUFF, ONLY           :  MSPRNT, OGEL
       USE FEMAP_ARRAYS, ONLY          :  FEMAP_EL_VECS
       USE PARAMS, ONLY                :  PRTNEU
@@ -184,11 +183,11 @@
                FATAL_ERR = FATAL_ERR + 1
                CALL OUTA_HERE ( 'Y' )
             ENDIF
-            OGEL(NUM1,1) = STRESS(1)
+            OGEL(NUM1,1) = FCONV(1)*STRESS(1)              ! STRESS() contains force and FCONV(1) is S.
          ENDIF
          IF (WRITE_NEU .AND. (WRITE_FEMAP == 'Y')) THEN
-            FEMAP_EL_VECS(NUM_FEMAP_ROWS,1) = STRESS(1)
-            FEMAP_EL_VECS(NUM_FEMAP_ROWS,2) = STRESS(1)
+            FEMAP_EL_VECS(NUM_FEMAP_ROWS,1) = FCONV(1)*STRESS(1)
+            FEMAP_EL_VECS(NUM_FEMAP_ROWS,2) = FCONV(1)*STRESS(1)
          ENDIF
 
       ELSE IF (TYPE == 'ROD     ') THEN                    ! ROD1 elements

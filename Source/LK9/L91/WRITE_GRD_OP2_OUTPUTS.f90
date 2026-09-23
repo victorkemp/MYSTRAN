@@ -42,15 +42,11 @@
       USE MODEL_STUF, ONLY            :  GRID, LABEL, SCNUM, SUBLOD, STITLE, TITLE
       USE EIGEN_MATRICES_1 , ONLY     :  EIGEN_VAL
 
-!     TODO: not sure how to use this...
-!     USE WRITE_GRD_PCH_OUTPUTS_USE_IFs
-
       IMPLICIT NONE
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)) :: SUBR_NAME = 'WRITE_GRD_OP2_OUTPUTS'
       CHARACTER(LEN=*), INTENT(IN)     :: WHAT               ! Indicator whether to process displ or
                                                             ! force output requests
 !     CHARACTER(LEN=1)                 :: G_OR_S            ! 'G' if a grid point or 'S' if a scalar point
-!     CHARACTER(LEN=19)                :: OUTNAM            ! An output name for a header for the PCH file
       CHARACTER(LEN=8)                 :: TABLE_NAME        ! Name of the op2 table that we're writing
       CHARACTER(LEN=128)                :: TITLEI            ! Solution title
       CHARACTER(LEN=128)                :: STITLEI           ! Subcase subtitle

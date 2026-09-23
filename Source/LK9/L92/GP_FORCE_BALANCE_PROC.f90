@@ -40,8 +40,9 @@
       USE MODEL_STUF, ONLY            :  AGRID, EID, ELGP, ESORT1, ETYPE, GRID, GRID_ELEM_CONN_ARRAY, GRID_ID, &
                                          GROUT, LABEL, PLY_NUM, PEG, PTE, SCNUM, STITLE, SUBLOD, TITLE, TYPE
       USE COL_VECS, ONLY              :  FG_COL, PG_COL, QGm_COL, QGs_COL, QGr_COL, UG_COL
-      USE CC_OUTPUT_DESCRIBERS, ONLY  :  GPFO_OUT
+      USE CC_OUTPUT_DESCRIBERS, ONLY  :  GPFO_F06
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
+      USE PARAMS, ONLY                :  POST
 
       USE GP_FORCE_BALANCE_PROC_USE_IFs
 
@@ -125,8 +126,8 @@
       IS_THERMAL = (SUBLOD(INT_SC_NUM,2) > 0)
       IS_MODES = ((SOL_NAME(1:5) == 'MODES') .OR. (SOL_NAME(1:12) == 'GEN CB MODEL'))
 
-      WRITE_F06 = GPFO_OUT%WRITE_F06
-      WRITE_OP2 = GPFO_OUT%WRITE_OP2
+      WRITE_F06 = GPFO_F06
+      WRITE_OP2 = (POST == -1)
 
       ! OP2: Write output headers if this is not the first use of this subr.
       ANALYSIS_CODE = -1

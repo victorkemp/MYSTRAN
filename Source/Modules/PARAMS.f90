@@ -143,14 +143,8 @@
       CHARACTER(  1*BYTE)      :: EQCHK_NORM     =    'N'    ! 'Y'/'N' indicates whether to norm the equil check on stiff mat diags
 
 ! ----------------------------------------------------------------------------------------------------------------------------------
-      CHARACTER(  1*BYTE)      :: PRTALL         =    'N'    ! 'Y', 'N' flag to write all output for all files regardless of other flags
-      CHARACTER(  1*BYTE)      :: PRTF06         =    'N'    ! 'Y', 'N' flag to write all f06 outputs regardless of other flags besides PRTALL
-      CHARACTER(  1*BYTE)      :: PRTNEU         =    'N'    ! 'Y', 'N' flag to write all neu outputs regardless of other flags besides PRTALL
-      CHARACTER(  1*BYTE)      :: PRTOP2         =    'N'    ! 'Y', 'N' flag to write all op2 outputs regardless of other flags besides PRTALL
+      CHARACTER(  1*BYTE)      :: PRTNEU         =    'N'    ! 'Y', 'N' flag to write all neu outputs
 
-! case 1: PRTALL=Y, PRTOP2=N -> all op2 output will be created and all neu output
-! case 2: PRTALL=N, PRTOP2=Y -> all op2 output will be created
-! case 3: PRTALL=N, PRTOP2=N -> do whatever the case control says
 ! ----------------------------------------------------------------------------------------------------------------------------------
       INTEGER(LONG)            :: GRDPNT         =    -1     ! Ref grid for GPWG (neg integer so 0 can be interp as basic origin)
 
@@ -259,7 +253,7 @@
 !                                                              seems to be a more popular value in other FEA programs
 
 ! ----------------------------------------------------------------------------------------------------------------------------------
-      INTEGER(LONG)            :: POST           =     0     ! If = -1 write FEMAP Neutral File (NEU)
+      INTEGER(LONG)            :: POST           =  9999999  ! If = -1 write to OP2 for all output requests
 
 ! ----------------------------------------------------------------------------------------------------------------------------------
       INTEGER(LONG)            :: PRTBASIC       =     0     ! If = 1, print grids in the basic coordinate system

@@ -35,7 +35,7 @@
       USE IOUNT1, ONLY                :  FILE_NAM_MAXLEN,  MOT4,    MOU4,    OU4_EXT, OT4_EXT
 
       USE IOUNT1, ONLY                :  BUG,     EIN,     ENF,     ERR,     F06,     IN0,     IN1,     NEU,                       &
-                                         PCH,     SEQ,     SC1,     SPC,                                                           &
+                                         SEQ,     SC1,     SPC,                                                                    &
                                          F21,     F22,     F23,     F24,     F25,                                                  &
                                          L1A,     L1B,     L1C,     L1D,     L1E,     L1F,     L1G,     L1H,     L1I,     L1J,     &
                                          L1K,     L1L,     L1M,     L1N,     L1O,     L1P,     L1Q,     L1R,     L1S,     L1T,     &
@@ -46,7 +46,7 @@
                                          MAX_FIL
 
       USE IOUNT1, ONLY                :  BUGFIL,  EINFIL,  ENFFIL,  ERRFIL,  F06FIL,  IN0FIL,  INFILE,  NEUFIL,                    &
-                                         PCHFIL,  SEQFIL,  SPCFIL,                                                                 &
+                                         SEQFIL,  SPCFIL,                                                                          &
                                          F21FIL,  F22FIL,  F23FIL,  F24FIL,  F25FIL,                                               &
                                          LINK1A,  LINK1B,  LINK1C,  LINK1D,  LINK1E,  LINK1F,  LINK1G,  LINK1H,  LINK1I,  LINK1J,  &
                                          LINK1K,  LINK1L,  LINK1M,  LINK1N,  LINK1O,  LINK1P,  LINK1Q,  LINK1R,  LINK1S,  LINK1T,  &
