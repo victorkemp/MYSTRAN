@@ -27,10 +27,11 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
 
   USE PENTIUM_II_KIND, ONLY   : DOUBLE
   USE MODEL_STUF, ONLY    : ELGP, EPROP
-  USE CONSTANTS_1, ONLY       : ZERO, ONE
+  USE CONSTANTS_1, ONLY       : ZERO, HALF, ONE
 
   USE MITC4_B_Interface
   USE MITC4_CARTESIAN_LOCAL_BASIS_Interface
+  USE MITC_COVARIANT_BASIS_Interface
   USE MITC_TRANSFORM_B_Interface
 
   IMPLICIT NONE
@@ -44,6 +45,8 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
   REAL(DOUBLE)        :: BBOT(6, 6*ELGP)
   REAL(DOUBLE)        :: BTOP(6, 6*ELGP)
   REAL(DOUBLE)        :: BSHR(6, 6*ELGP)
+  REAL(DOUBLE)        :: G(3,3)            ! Covariant basis at the mid-surface, in element coordinates
+  REAL(DOUBLE)        :: M1, M2            ! In-plane slope of the director relative to the element facet
 
 ! **********************************************************************************************************************************
 ! Subr MITC4_B returns the strain-displacement matrix in the CARTESIAN LOCAL basis, whose x axis lies along the covariant g_r
@@ -52,11 +55,7 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
 ! coordinate system. So the rows have to be rotated out of the cartesian local basis before they are handed back.
 !
 ! For a rectangular element the two systems differ by 180 degrees about z, because the element x axis starts along side 1-2
-! while the cartesian local x axis lies along g_r, and side 1-2 runs in the negative r direction in Bathe's node ordering. A
-! 180 degree rotation about z leaves the in-plane rows xx, yy and xy untouched and negates both transverse shear rows, which is
-! why omitting this step produced correctly signed membrane and bending output alongside transverse shear strain, stress and
-! engineering force of the wrong sign. For a skewed or warped element the angle is not 180 degrees and the in-plane rows are
-! wrong as well, so this is a rotation and not a sign correction.
+! while the cartesian local x axis lies along g_r, and side 1-2 runs in the negative r direction in Bathe's node ordering.
 !
 ! MITC4_B doubles rows 4 to 6 on the way out to make them engineering shear strains. MITC_TRANSFORM_B rotates tensor
 ! components, so those rows are halved before the rotation and doubled again afterwards. This matches what subr MITC4 on the
@@ -97,6 +96,37 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
 
   BS(1,:) = BSHR(6,:)  ! zx
   BS(2,:) = BSHR(5,:)  ! yz
+
+! **********************************************************************************************************************************
+! Remove the spurious membrane to transverse shear coupling that a director which is not normal to the element facet produces.
+!
+! The reference geometry of the degenerated shell is X(r,s,t) = Xbar(r,s) + (t*h/2) * V, so when the director V is not normal to
+! the facet the through-thickness fibre is slanted and a point at height z sits in-plane offset by z*m, where m is the in-plane
+! slope of V in element coordinates. Straining the mid-surface then drags the top of the fibre relative to the bottom by
+! (du/dx) * m * z, which the covariant strain registers as transverse shear even though the fibre has not rotated relative to the
+! facet at all. In element coordinates that spurious shear is exactly the in-plane strain contracted with the slope,
+!
+!    gamma_xz = eps_xx * m1 + eps_xy * m2 ,   gamma_yz = eps_xy * m1 + eps_yy * m2
+!
+! written in the sign convention of BS as it is returned above, and it is removed below.
+!
+! For a shell whose geometry is modelled exactly the director is the surface normal, m is zero and the term does not exist. It is
+! produced purely by the mismatch between the flat facet and the nodal normals, so it is faceting error, not physics, and it grows
+! linearly with the tilt. Subtracting it leaves the element free of membrane-shear coupling. Only the symmetric (strain) part of
+! the in-plane displacement gradient is removed. The antisymmetric part is the in-plane rigid rotation, whose contribution is
+! cancelled by the corresponding fibre rotation, so removing it as well would destroy rigid body invariance.
+
+  CALL MITC_COVARIANT_BASIS( R, S, ZERO, G )
+
+  IF (DABS(G(3,3)) > 1.0D-12 * DSQRT(DOT_PRODUCT(G(:,3), G(:,3)))) THEN
+
+     M1 = G(1,3) / G(3,3)
+     M2 = G(2,3) / G(3,3)
+
+     BS(1,:) = BS(1,:) - ( BM(1,:) * M1 + HALF * BM(3,:) * M2 )
+     BS(2,:) = BS(2,:) - ( HALF * BM(3,:) * M1 + BM(2,:) * M2 )
+
+  ENDIF
 
   RETURN
 
