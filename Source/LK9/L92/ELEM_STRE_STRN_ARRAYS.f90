@@ -47,6 +47,7 @@
                                          TREF, TYPE, UEL, UEB, SE1, SE2, SE3, STE1, STE2, STE3, ELGP, ISOLID
       USE DEBUG_PARAMETERS
       USE PARAMS, ONLY                :  STR_CID, QUAD4TYP
+      USE MITC_STUF, ONLY             :  THERM_KAPPA, MSTRPT
 
 
       USE ELEM_STRE_STRN_ARRAYS_USE_IFs
@@ -210,6 +211,23 @@
              ALPTB(I) = ALPVEC(I  ,2)*DT(5,JTSUB)
              ALPTT(I) = ALPVEC(I+3,3)*(TBAR - TREF(1))
            ENDDO
+
+                                                           ! MITC4/MITC4+ on a curved reference surface also has a free thermal
+                                                           ! curvature from uniform mid-surface scaling, the same term subr MITC4
+                                                           ! puts in the thermal load vector. It has to come out of the recovered
+                                                           ! curvature here as well, or a free uniformly heated curved shell -
+                                                           ! which deforms correctly precisely because the load vector carries the
+                                                           ! term - reports a bending stress of [EB]{k_th} that is not there. The
+                                                           ! stress point ordering matches the BEi third index that subr MITC4
+                                                           ! filled, and THERM_KAPPA is zero for a flat element whose director is
+                                                           ! normal to it, so flat plates are unchanged.
+           IF ((TYPE(1:5) == 'QUAD4') .AND. ((QUAD4TYP == 'MITC4 ') .OR. (QUAD4TYP == 'MITC4+'))) THEN
+             IF ((STR_PT_NUM >= 1) .AND. (STR_PT_NUM <= MSTRPT)) THEN
+               DO I=1,3
+                 ALPTB(I) = ALPTB(I) + THERM_KAPPA(I,STR_PT_NUM)*(TBAR - TREF(1))
+               ENDDO
+             ENDIF
+           ENDIF
          ELSE
             ALPTM(:) = ZERO
             ALPTB(:) = ZERO
