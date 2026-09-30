@@ -42,7 +42,7 @@
                                          FCONV, EPROP, PTE, ALPVEC, TREF, DT, PPE, PRESS, MASS_PER_UNIT_AREA,                      &
                                          NUM_PLIES, PCOMP_LAM, PLY_NUM, TPLY, STRESS, KED,                                         &
                                          SHELL_A, SHELL_B, SHELL_D, SHELL_T, SHELL_AALP, SHELL_BALP, SHELL_DALP, SHELL_TALP
-      USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, FOUR
+      USE CONSTANTS_1, ONLY           :  ZERO, HALF, ONE, TWO, FOUR, QUARTER
 
       USE MITC_INITIALIZE_Interface
       USE ORDER_GAUSS_Interface
@@ -62,6 +62,7 @@
       USE CROSS_Interface
       USE MITC_SHAPE_FUNCTIONS_Interface
       USE MITC_COVARIANT_BASIS_Interface
+      USE MITC_CONTRAVARIANT_BASIS_Interface
       USE EXPAND_MASS_DOFS_Interface
 
       IMPLICIT NONE
@@ -138,6 +139,24 @@
       REAL(DOUBLE)                    :: DUM14(3,3)
       REAL(DOUBLE)                    :: DUM33(3,3)
       REAL(DOUBLE)                    :: JAC2x2(2,2)
+
+      ! Thermal curvature change caused by uniform mid-surface scaling (OPT(2))
+      LOGICAL                         :: THERM_CURV        ! .TRUE. if the thermal curvature change term is active
+      INTEGER(LONG)                   :: IA, IB, IC, ID    ! Tensor / DO loop indices for the thermal curvature term
+      REAL(DOUBLE)                    :: SIDE              ! T = +1 or -1 surface used to build the curvature operator
+      REAL(DOUBLE)                    :: DETA              ! Determinant of SHELL_A
+      REAL(DOUBLE)                    :: ADJA(3,3)         ! Adjugate of SHELL_A
+      REAL(DOUBLE)                    :: EPS_TH(3)         ! Free mid-surface thermal strain per unit temperature (xx,yy,xy eng.)
+      REAL(DOUBLE)                    :: EPS_TEN(3,3)      ! EPS_TH as a 3x3 tensor in element coordinates
+      REAL(DOUBLE)                    :: GTOP(3,3)         ! Covariant basis at T = +1
+      REAL(DOUBLE)                    :: GBOT(3,3)         ! Covariant basis at T = -1
+      REAL(DOUBLE)                    :: GSIDE(3,3)        ! Covariant basis at T = SIDE
+      REAL(DOUBLE)                    :: GCON(3,3)         ! Contravariant basis at T = SIDE
+      REAL(DOUBLE)                    :: DIRW(3,2)         ! d(director*thickness)/dR, /dS  (= g_(r,s)|T=+1 - g_(r,s)|T=-1)
+      REAL(DOUBLE)                    :: EPSX(3,2)         ! EPS_TEN * g_r, EPS_TEN * g_s (mid-surface displacement gradient)
+      REAL(DOUBLE)                    :: QTH(2,2)          ! Covariant T-linear thermal strain coefficient
+      REAL(DOUBLE)                    :: KTEN(3,3)         ! Thermal curvature tensor in element coordinates
+      REAL(DOUBLE)                    :: KAP_TH(3)         ! Thermal curvature per unit temperature (kxx, kyy, kxy eng.)
 
 ! **********************************************************************************************************************************
 
@@ -259,8 +278,55 @@
 ! is not used, since there is no gradient input to pair it with.
 !
 !    PTE = ( [Bm]' [A_alpha] + [Bb]' [B_alpha] ) * (TBAR - TREF)   integrated over mid-surface area
+!
+! On a curved reference surface the free thermal strain also contains the change of the generalized curvature produced by
+! uniform mid-surface scaling. If the mid-surface is scaled by the free strain e = alpha*(TBAR - TREF) while the director field
+! is held fixed, the mid-surface tangents become (1+e) x_,a, so the curvature x_,a . d_,b changes by e x_,a . d_,b. Without this
+! term a uniformly heated cylinder can avoid artificial bending energy by opening its seam instead of expanding radially.
+! The free transverse shear strain remains zero. Including the coupling to the complete section tangent gives
+!
+!    PTE = ( [Bm]' ( [A_alpha] + [B] {k_th} ) + [Bb]' ( [B_alpha] + [D] {k_th} ) ) * (TBAR - TREF)
+!
+! where {k_th} is the thermal curvature per unit temperature, {k_th} = (k_xx, k_yy, k_xy(engineering)), built here for a general
+! in-plane free strain tensor {e_th} = [A]^-1 {A_alpha} (for an isotropic material {e_th} = alpha*(1,1,0), i.e. the scalar
+! uniform mid-surface scaling above). With the free strain tensor e_th acting on the mid-surface tangents g_i (i = r,s), the
+! T-linear covariant strain coefficient is
+!
+!    q_ij = 1/4 ( (e_th g_i) . w_j + (e_th g_j) . w_i ),     w_j = d(director*thickness)/d(xi_j) = g_j(T=+1) - g_j(T=-1)
+!
+! and it is carried to element coordinates and normalised by the thickness in exactly the same way that MITC4_BMBS builds the
+! curvature operator (top minus bottom surface, each with the contravariant basis at its own T, divided by EPROP(1)), so that
+! {k_th} is in the same basis and sign convention as [Bb]. For a flat element with the director normal to it, w_j = 0 and the
+! term vanishes identically, so flat-plate thermal loads are unchanged.
 
          UNIT_PTE(:) = ZERO
+
+                                                           ! Free mid-surface thermal strain per unit temperature:
+                                                           ! {e_th} = [A]^-1 {A_alpha}, via the adjugate of the 3x3 SHELL_A.
+         THERM_CURV = .FALSE.
+         EPS_TH(:)  = ZERO
+         DETA = SHELL_A(1,1)*(SHELL_A(2,2)*SHELL_A(3,3) - SHELL_A(2,3)*SHELL_A(3,2))                                               &
+              - SHELL_A(1,2)*(SHELL_A(2,1)*SHELL_A(3,3) - SHELL_A(2,3)*SHELL_A(3,1))                                               &
+              + SHELL_A(1,3)*(SHELL_A(2,1)*SHELL_A(3,2) - SHELL_A(2,2)*SHELL_A(3,1))
+         IF (DABS(DETA) > 1.0D-12*DABS(SHELL_A(1,1)*SHELL_A(2,2)*SHELL_A(3,3))) THEN
+            ADJA(1,1) = SHELL_A(2,2)*SHELL_A(3,3) - SHELL_A(2,3)*SHELL_A(3,2)
+            ADJA(1,2) = SHELL_A(1,3)*SHELL_A(3,2) - SHELL_A(1,2)*SHELL_A(3,3)
+            ADJA(1,3) = SHELL_A(1,2)*SHELL_A(2,3) - SHELL_A(1,3)*SHELL_A(2,2)
+            ADJA(2,1) = SHELL_A(2,3)*SHELL_A(3,1) - SHELL_A(2,1)*SHELL_A(3,3)
+            ADJA(2,2) = SHELL_A(1,1)*SHELL_A(3,3) - SHELL_A(1,3)*SHELL_A(3,1)
+            ADJA(2,3) = SHELL_A(1,3)*SHELL_A(2,1) - SHELL_A(1,1)*SHELL_A(2,3)
+            ADJA(3,1) = SHELL_A(2,1)*SHELL_A(3,2) - SHELL_A(2,2)*SHELL_A(3,1)
+            ADJA(3,2) = SHELL_A(1,2)*SHELL_A(3,1) - SHELL_A(1,1)*SHELL_A(3,2)
+            ADJA(3,3) = SHELL_A(1,1)*SHELL_A(2,2) - SHELL_A(1,2)*SHELL_A(2,1)
+            EPS_TH(1:3) = MATMUL( ADJA, SHELL_AALP ) / DETA
+            THERM_CURV  = .TRUE.
+         ENDIF
+
+         EPS_TEN(:,:) = ZERO                               ! Tensor form of {e_th} in element coordinates (engineering xy -> /2)
+         EPS_TEN(1,1) = EPS_TH(1)
+         EPS_TEN(2,2) = EPS_TH(2)
+         EPS_TEN(1,2) = HALF*EPS_TH(3)
+         EPS_TEN(2,1) = HALF*EPS_TH(3)
 
          CALL ORDER_GAUSS ( IORD_IJ, SS_IJ, HH_IJ )
 
@@ -281,6 +347,51 @@
                UNIT_PTE(1:6*ELGP) = UNIT_PTE(1:6*ELGP)                                                                             &
                                    + MATMUL( TRANSPOSE(BMI3), SHELL_AALP ) * INTFAC                                                &
                                    + MATMUL( TRANSPOSE(BBI3), SHELL_BALP ) * INTFAC
+
+               IF (THERM_CURV) THEN
+                                                           ! Change of curvature from uniform mid-surface scaling.
+                                                           ! G holds the mid-surface (T=0) covariant basis from above.
+                  CALL MITC_COVARIANT_BASIS( R, S, +ONE, GTOP )
+                  CALL MITC_COVARIANT_BASIS( R, S, -ONE, GBOT )
+                  DO IA=1,2
+                     DIRW(:,IA) = GTOP(:,IA) - GBOT(:,IA)
+                     EPSX(:,IA) = MATMUL( EPS_TEN, G(:,IA) )
+                  ENDDO
+
+                  DO IA=1,2
+                     DO IB=1,2
+                        QTH(IA,IB) = QUARTER*( DOT_PRODUCT( EPSX(:,IA), DIRW(:,IB) ) + DOT_PRODUCT( EPSX(:,IB), DIRW(:,IA) ) )
+                     ENDDO
+                  ENDDO
+
+                                                           ! Top minus bottom surface, as in MITC4_BMBS. The covariant
+                                                           ! coefficient is +Q at T=+1 and -Q at T=-1, so the two surface
+                                                           ! contributions add.
+                  KTEN(:,:) = ZERO
+                  DO ID=1,2
+                     SIDE = ONE
+                     IF (ID == 2) SIDE = -ONE
+                     CALL MITC_COVARIANT_BASIS( R, S, SIDE, GSIDE )
+                     CALL MITC_CONTRAVARIANT_BASIS( GSIDE, GCON )
+                     DO IA=1,3
+                        DO IB=1,3
+                           DO K=1,2
+                              DO L=1,2
+                                 KTEN(IA,IB) = KTEN(IA,IB) + GCON(IA,K)*GCON(IB,L)*QTH(K,L)
+                              ENDDO
+                           ENDDO
+                        ENDDO
+                     ENDDO
+                  ENDDO
+
+                  KAP_TH(1) =     KTEN(1,1)/EPROP(1)
+                  KAP_TH(2) =     KTEN(2,2)/EPROP(1)
+                  KAP_TH(3) = TWO*KTEN(1,2)/EPROP(1)       ! Engineering xy component, same as row 3 of BBI3
+
+                  UNIT_PTE(1:6*ELGP) = UNIT_PTE(1:6*ELGP)                                                                          &
+                                      + MATMUL( TRANSPOSE(BMI3), MATMUL( SHELL_B, KAP_TH ) ) * INTFAC                              &
+                                      + MATMUL( TRANSPOSE(BBI3), MATMUL( SHELL_D, KAP_TH ) ) * INTFAC
+               ENDIF
 
             ENDDO
          ENDDO

@@ -97,6 +97,13 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
   BS(1,:) = BSHR(6,:)  ! zx
   BS(2,:) = BSHR(5,:)  ! yz
 
+
+
+! Shear coupling correction removed because it worsens curved shell thermal loads.
+! Parallelogram elements wouldn't happen naturally with averaged normals except at
+! the transition between +ve and -ve curvature which is only a 1D line so the effect
+! should vanish with mesh refinement.
+
 ! **********************************************************************************************************************************
 ! Remove the spurious membrane to transverse shear coupling that a director which is not normal to the element facet produces.
 !
@@ -116,17 +123,22 @@ SUBROUTINE MITC4_BMBS ( R, S, BM, BB, BS )
 ! the in-plane displacement gradient is removed. The antisymmetric part is the in-plane rigid rotation, whose contribution is
 ! cancelled by the corresponding fibre rotation, so removing it as well would destroy rigid body invariance.
 
-  CALL MITC_COVARIANT_BASIS( R, S, ZERO, G )
+  ! CALL MITC_COVARIANT_BASIS( R, S, ZERO, G )
 
-  IF (DABS(G(3,3)) > 1.0D-12 * DSQRT(DOT_PRODUCT(G(:,3), G(:,3)))) THEN
+  ! IF (DABS(G(3,3)) > 1.0D-12 * DSQRT(DOT_PRODUCT(G(:,3), G(:,3)))) THEN
 
-     M1 = G(1,3) / G(3,3)
-     M2 = G(2,3) / G(3,3)
+     ! M1 = G(1,3) / G(3,3)
+     ! M2 = G(2,3) / G(3,3)
 
-     BS(1,:) = BS(1,:) - ( BM(1,:) * M1 + HALF * BM(3,:) * M2 )
-     BS(2,:) = BS(2,:) - ( HALF * BM(3,:) * M1 + BM(2,:) * M2 )
+     ! BS(1,:) = BS(1,:) - ( BM(1,:) * M1 + HALF * BM(3,:) * M2 )
+     ! BS(2,:) = BS(2,:) - ( HALF * BM(3,:) * M1 + BM(2,:) * M2 )
 
-  ENDIF
+  ! ENDIF
+
+
+
+
+
 
   RETURN
 
