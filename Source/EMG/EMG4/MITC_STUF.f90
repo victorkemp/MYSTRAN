@@ -50,6 +50,17 @@
                                                            ! R and S coordinates of each element node
       REAL(DOUBLE)                    :: GP_RS(2,MELGP)
 
+                                                           ! Number of stress recovery points MITC4 fills (centre + 4 Gauss pts)
+      INTEGER(LONG), PARAMETER        :: MSTRPT = 5
+
+                                                           ! Free thermal curvature per unit temperature at each stress recovery
+                                                           ! point, in element coordinates, (kxx, kyy, kxy engineering). Set by
+                                                           ! subr MITC4 alongside BE1/BE2/BE3 and consumed by subr
+                                                           ! ELEM_STRE_STRN_ARRAYS, which subtracts it from the recovered
+                                                           ! curvature so the reported bending stress is mechanical only. Zero
+                                                           ! for a flat element whose director is normal to it.
+      REAL(DOUBLE)                    :: THERM_KAPPA(3,MSTRPT)
+
 
 ! **********************************************************************************************************************************
 
