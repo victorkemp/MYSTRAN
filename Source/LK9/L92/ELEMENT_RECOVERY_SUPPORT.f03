@@ -333,13 +333,9 @@
 ! stress = ES*(strain - alpha*(T(x) - TREF)) with the temperature of the point.
 
          IF (SUBLOD(INT_SC_NUM,2) > 0) THEN
-            DO I=1,6
-               ALPT(I) = ALPVEC(I,1)*STE3(1,JTSUB,STR_PT_NUM)
-            ENDDO
+            ALPT = ALPVEC(:,1)*STE3(1,JTSUB,STR_PT_NUM)
          ELSE
-            DO I=1,6
-               ALPT(I) = ZERO
-            ENDDO
+            ALPT = ZERO
          ENDIF
 
          CALL MATMULT_FFF ( ES, STRAIN, 6, 6, 1, STRESS_MECH )
