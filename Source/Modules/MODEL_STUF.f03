@@ -1644,6 +1644,7 @@
       REAL(DOUBLE) , ALLOCATABLE      :: STE2(:,:,:)         ! Elem thermal stress corrections for bending stress
 
       REAL(DOUBLE) , ALLOCATABLE      :: STE3(:,:,:)         ! Elem thermal stress corrections for transv shear stress
+!                                                              (3D solids: row 1 = temperature - TREF at the point)
 
       REAL(DOUBLE) , ALLOCATABLE      :: UGG(:)              ! Array of displs at grids of one elem in global coords for one S/C
                                                              ! UGG is a partition of the G-set global displs solved for in MYSTRAN

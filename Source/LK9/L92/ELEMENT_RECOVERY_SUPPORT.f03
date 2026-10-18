@@ -52,7 +52,7 @@
       USE IOUNT1, ONLY                :  ERR, F06
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, INT_SC_NUM, JTSUB
       USE TIMDAT, ONLY                :  TSEC
-      USE CONSTANTS_1, ONLY           :  ZERO, one, four
+      USE CONSTANTS_1, ONLY           :  ZERO, one
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, BE3, DT, EM, EB, ES, ET, ELDOF, PEL, PHI_SQ, STRAIN, STRESS, SUBLOD,    &
                                          TREF, TYPE, UEL, UEB, SE1, SE2, SE3, STE1, STE2, STE3, ELGP, ISOLID
       USE DEBUG_PARAMETERS
@@ -329,14 +329,18 @@
             ENDDO
          ENDDO
 
-         DO I=1,6
-            IF (SUBLOD(INT_SC_NUM,2) > 0) THEN
-               TBAR = (DT(1,JTSUB) + DT(2,JTSUB) + DT(3,JTSUB) + DT(4,JTSUB))/FOUR
-               ALPT(I) = ALPVEC(I,1)*(TBAR - TREF(1))
-            ELSE
+! For solids the element routines (HEXA, PENTA, TETRA) put the temperature minus TREF at each recovery point in STE3(1), so that
+! stress = ES*(strain - alpha*(T(x) - TREF)) with the temperature of the point.
+
+         IF (SUBLOD(INT_SC_NUM,2) > 0) THEN
+            DO I=1,6
+               ALPT(I) = ALPVEC(I,1)*STE3(1,JTSUB,STR_PT_NUM)
+            ENDDO
+         ELSE
+            DO I=1,6
                ALPT(I) = ZERO
-            ENDIF
-         ENDDO
+            ENDDO
+         ENDIF
 
          CALL MATMULT_FFF ( ES, STRAIN, 6, 6, 1, STRESS_MECH )
 

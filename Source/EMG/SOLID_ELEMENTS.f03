@@ -62,7 +62,7 @@
       USE PARAMS, ONLY                :  EPSIL
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE MODEL_STUF, ONLY            :  AGRID, ALPVEC, BE1, BE2, DT, EID, ELGP, NUM_EMG_FATAL_ERRS, ES, KE, KED, ME,              &
-                                         NUM_EMG_FATAL_ERRS, PLOAD4_3D_DATA, PPE, PRESS, PTE, RHO, SE1, SE2, STE1, STRESS, TREF,   &
+                                         NUM_EMG_FATAL_ERRS, PLOAD4_3D_DATA, PPE, PRESS, PTE, RHO, SE1, SE2, STE3, STRESS, TREF,   &
                                          TYPE, XEL
       USE FILE_LIFECYCLE, ONLY   :  OUTA_HERE
       USE RESULT_COORDINATES, ONLY    :  ELMDIS
@@ -197,7 +197,7 @@
 
 ! Calc TBAR (used for PTE, STEi)
 
-      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y')) THEN
+      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(6) == 'Y')) THEN
          DO J=1,NTSUB
             TBAR(J) = ZERO
             DO K=1,ELGP
@@ -474,10 +474,12 @@
             ENDDO
           ENDDO
 
-          DO J=1,NTSUB                                     ! STE thermal stress terms
-            STE1(1,J,STR_PT_NUM) = EALP(1)*TBAR(J)
-            STE1(2,J,STR_PT_NUM) = EALP(2)*TBAR(J)
-            STE1(3,J,STR_PT_NUM) = EALP(3)*TBAR(J)
+          DO J=1,NTSUB                                     ! Thermal recovery data (see ELEM_STRE_STRN_ARRAYS): temperature
+            IF (DEBUG(191) == 0) THEN                      ! minus TREF at the point (element average, as for PTE, with
+               STE3(1,J,STR_PT_NUM) = DOT_PRODUCT(PSH, DT(1:ELGP,J)) - TREF1   ! DEBUG(191) > 0)
+            ELSE
+               STE3(1,J,STR_PT_NUM) = TBAR(J)
+            ENDIF
           ENDDO
 
           DO I=1,3                                         ! Strain-displ matrices
@@ -1093,7 +1095,7 @@
       USE PARAMS, ONLY                :  EPSIL
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, DT, EID, ELGP, NUM_EMG_FATAL_ERRS, ES, KE, KED, ME, PTE, RHO,           &
-                                         SE1, SE2, STE1, STRESS, TREF, TYPE
+                                         SE1, SE2, STE3, STRESS, TREF, TYPE
 
       USE FULL_MATRIX_ALGEBRA, ONLY   :  MATMULT_FFF, MATMULT_FFF_T
       USE ELEMENT_RECOVERY_SUPPORT, ONLY:  ELEM_STRE_STRN_ARRAYS
@@ -1233,7 +1235,7 @@
 
 ! Calc TBAR (used for PTE, STEi)
 
-      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y')) THEN
+      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(6) == 'Y')) THEN
          DO J=1,NTSUB
             TBAR(J) = ZERO
             DO K=1,ELGP
@@ -1487,10 +1489,12 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
             ENDDO
           ENDDO
 
-          DO J=1,NTSUB                                     ! STE thermal stress terms
-            STE1(1,J,STR_PT_NUM) = EALP(1)*TBAR(J)
-            STE1(2,J,STR_PT_NUM) = EALP(2)*TBAR(J)
-            STE1(3,J,STR_PT_NUM) = EALP(3)*TBAR(J)
+          DO J=1,NTSUB                                     ! Thermal recovery data (see ELEM_STRE_STRN_ARRAYS): temperature
+            IF (DEBUG(191) == 0) THEN                      ! minus TREF at the point (element average, as for PTE, with
+               STE3(1,J,STR_PT_NUM) = DOT_PRODUCT(PSH, DT(1:ELGP,J)) - TREF1   ! DEBUG(191) > 0)
+            ELSE
+               STE3(1,J,STR_PT_NUM) = TBAR(J)
+            ENDIF
           ENDDO
 
           DO I=1,3                                         ! Strain-displ matrix
@@ -1672,7 +1676,7 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE PARAMS, ONLY                :  EPSIL
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, DT, EID, ELGP, NUM_EMG_FATAL_ERRS, ES, KE, KED, ME, PTE, RHO,           &
-                                         SE1, SE2, STE1, STRESS, TREF, TYPE
+                                         SE1, SE2, STE3, STRESS, TREF, TYPE
 
       USE FULL_MATRIX_ALGEBRA, ONLY   :  MATMULT_FFF, MATMULT_FFF_T
       USE ELEMENT_RECOVERY_SUPPORT, ONLY:  ELEM_STRE_STRN_ARRAYS
@@ -1798,7 +1802,7 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
 
 ! Calc TBAR (used for PTE, STEi)
 
-      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y')) THEN
+      IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(6) == 'Y')) THEN
          DO J=1,NTSUB
             TBAR(J) = ZERO
             DO K=1,ELGP
@@ -1938,10 +1942,12 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
             ENDDO
           ENDDO
 
-          DO J=1,NTSUB                                     ! STE thermal stress terms
-            STE1(1,J,STR_PT_NUM) = EALP(1)*TBAR(J)
-            STE1(2,J,STR_PT_NUM) = EALP(2)*TBAR(J)
-            STE1(3,J,STR_PT_NUM) = EALP(3)*TBAR(J)
+          DO J=1,NTSUB                                     ! Thermal recovery data (see ELEM_STRE_STRN_ARRAYS): temperature
+            IF (DEBUG(191) == 0) THEN                      ! minus TREF at the point (element average, as for PTE, with
+               STE3(1,J,STR_PT_NUM) = DOT_PRODUCT(PSH, DT(1:ELGP,J)) - TREF1   ! DEBUG(191) > 0)
+            ELSE
+               STE3(1,J,STR_PT_NUM) = TBAR(J)
+            ENDIF
           ENDDO
 
           DO I=1,3                                         ! Strain-displ matrix
