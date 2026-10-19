@@ -1943,9 +1943,9 @@ opt234:IF ((OPT(2) == 'Y') .OR. (OPT(3) == 'Y') .OR. (OPT(4) == 'Y') .OR. (OPT(6
           ENDDO
 
           DO J=1,NTSUB                                     ! Thermal recovery data (see ELEM_STRE_STRN_ARRAYS): temperature
-            IF (DEBUG(191) == 0) THEN                      ! minus TREF at the point (element average, as for PTE, with
-               STE3(1,J,STR_PT_NUM) = DOT_PRODUCT(PSH, DT(1:ELGP,J)) - TREF1   ! DEBUG(191) > 0)
-            ELSE
+            IF ((DEBUG(191) == 0) .AND. (ELGP /= 4)) THEN  ! minus TREF at the point. TETRA4 has a constant strain, so it
+               STE3(1,J,STR_PT_NUM) = DOT_PRODUCT(PSH, DT(1:ELGP,J)) - TREF1   ! always uses the element average, which is
+            ELSE                                           ! also what DEBUG(191) > 0 selects for every solid (as for PTE)
                STE3(1,J,STR_PT_NUM) = TBAR(J)
             ENDIF
           ENDDO
