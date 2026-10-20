@@ -465,11 +465,7 @@
 
           IORD_MSG = 'for 3-D solid strains,                      = '
           CALL SHP3DH ( 0, 0, 0, ELGP, SUBR_NAME, IORD_MSG, 1, SSI, SSJ, SSK, 'N', PSH, DPSHG )
-          IF (SCALED_JACOBIAN(DPSHG) > EPS1) THEN
-             CALL HEXA_STRAIN_DISPL ( SSI, SSJ, SSK, BI )
-          ELSE
-             CALL HEXA_EXTRAPOLATED_STRAIN_DISPL ( SSI, SSJ, SSK, BI )
-          ENDIF
+          CALL HEXA_EXTRAPOLATED_STRAIN_DISPL ( SSI, SSJ, SSK, BI )
           DUM2 = MATMUL(ES,BI)
 
           DO I=1,3                                         ! Stress-displ matrices
@@ -799,36 +795,6 @@
 ! ##################################################################################################################################
 
       CONTAINS
-
-! ##################################################################################################################################
-
-      FUNCTION SCALED_JACOBIAN ( DPSHG_PT )
-
-! det(J) divided by the product of the row lengths of J at a point: 1 for an undistorted element, <= 0 where it is degenerate
-
-      IMPLICIT NONE
-
-      REAL(DOUBLE), INTENT(IN)        :: DPSHG_PT(3,ELGP)    ! Shape function derivatives w.r.t. xi, eta, zeta at the point
-      REAL(DOUBLE)                    :: SCALED_JACOBIAN     ! Function result
-
-      REAL(DOUBLE)                    :: JPT(3,3)            ! Jacobian at the point
-      REAL(DOUBLE)                    :: ROW_NORMS           ! Product of the lengths of the rows of JPT
-
-! **********************************************************************************************************************************
-
-      JPT = MATMUL(DPSHG_PT, XEL(1:ELGP,1:3))
-      ROW_NORMS = NORM2(JPT(1,:))*NORM2(JPT(2,:))*NORM2(JPT(3,:))
-      IF (ROW_NORMS > ZERO) THEN
-         SCALED_JACOBIAN = ( JPT(1,1)*(JPT(2,2)*JPT(3,3) - JPT(2,3)*JPT(3,2))                                                      &
-                           - JPT(1,2)*(JPT(2,1)*JPT(3,3) - JPT(2,3)*JPT(3,1))                                                      &
-                           + JPT(1,3)*(JPT(2,1)*JPT(3,2) - JPT(2,2)*JPT(3,1)) ) / ROW_NORMS
-      ELSE
-         SCALED_JACOBIAN = ZERO
-      ENDIF
-
-! **********************************************************************************************************************************
-
-      END FUNCTION SCALED_JACOBIAN
 
 ! ##################################################################################################################################
 
