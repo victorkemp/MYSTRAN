@@ -220,8 +220,10 @@
            ALPTM(1) = ALPVEC(1  ,1)*(TBAR - TREF(1))
            ALPTM(2) = ALPVEC(2  ,1)*(TBAR - TREF(1))
            ALPTM(3) = ALPVEC(4  ,1)*(TBAR - TREF(1))
+           ALPTB(1) = ALPVEC(1  ,2)*DT(5,JTSUB)            ! Bending: rows xx, yy, xy (= 4) of ALPVEC, as for ALPTM
+           ALPTB(2) = ALPVEC(2  ,2)*DT(5,JTSUB)
+           ALPTB(3) = ALPVEC(4  ,2)*DT(5,JTSUB)
            DO I=1,3
-             ALPTB(I) = ALPVEC(I  ,2)*DT(5,JTSUB)
              ALPTT(I) = ALPVEC(I+3,3)*(TBAR - TREF(1))
            ENDDO
 

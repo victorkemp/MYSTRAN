@@ -213,7 +213,7 @@ mem:  IF (MTRL_TYPE(1) /= 0) THEN
 
             ALPVEC(1,1)   = ALPHA1
             ALPVEC(2,1)   = ALPHA2
-            ALPVEC(3,1)   = ALPHA3
+            ALPVEC(4,1)   = ALPHA3                      ! alpha_12 goes in the xy row (4) of ALPVEC: rows are xx, yy, zz, xy, yz, zx
 
          ELSE IF (MTRL_TYPE(1) == 8) THEN                  ! Orthotropic properties
 !                                                            ----------------------                                                           ! Remove the following l.c. code when MIN4T prob w/ ortho mat'l is fixed
@@ -461,7 +461,7 @@ bend: IF (MTRL_TYPE(2) /= 0) THEN
 
             ALPVEC(1,2)   = ALPHA1
             ALPVEC(2,2)   = ALPHA2
-            ALPVEC(3,2)   = ALPHA3
+            ALPVEC(4,2)   = ALPHA3                      ! alpha_12 goes in the xy row (4) of ALPVEC: rows are xx, yy, zz, xy, yz, zx
 
          ELSE IF (MTRL_TYPE(2) == 8) THEN                  ! Orthotropic properties
 !                                                            ----------------------
@@ -798,7 +798,7 @@ coup: IF (MTRL_TYPE(4) /= 0) THEN
 
             ALPVEC(1,4) = ALPHA1
             ALPVEC(2,4) = ALPHA2
-            ALPVEC(3,4) = ALPHA3
+            ALPVEC(4,4) = ALPHA3                      ! alpha_12 goes in the xy row (4) of ALPVEC: rows are xx, yy, zz, xy, yz, zx
 
          ELSE IF (MTRL_TYPE(4) == 8) THEN                  ! Orthotropic properties
 !                                                            ----------------------
