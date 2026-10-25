@@ -59,7 +59,8 @@
                                          INTL_MID, INTL_PID, MASS_PER_UNIT_AREA, MATL, MEPROP, MTRL_TYPE,                          &
                                          NUM_EMG_FATAL_ERRS, NUM_PLIES, PLY_NUM, PCOMP, PCOMP_LAM, PCOMP_PROPS, RPCOMP, PSHEL,     &
                                          RPSHEL, RHO, RMATL, SHELL_A, SHELL_B, SHELL_D, SHELL_T, SHELL_AALP, SHELL_BALP,           &
-                                         SHELL_DALP, SHELL_TALP, SHELL_T_MOD, THETA_PLY, TPLY, TYPE, ULT_STRE, ULT_STRN, ZPLY, ZS
+                                         SHELL_DALP, SHELL_TALP, SHELL_T_MOD, THETA_PLY, TPLY, TYPE, ULT_STRE, ULT_STRN, ZPLY, ZS, &
+                                         SHELL_MB_COUPLING
 
 
       USE DATE_TIME_UTILS, ONLY       :  OURTIM
@@ -182,9 +183,22 @@ pcom0:IF (PCOMP_PROPS == 'N') THEN                         ! Element is not a co
                DO J=1,3
                   SHELL_A(I,J) = TM*EM(I,J)                ! Units are force/distance
                   SHELL_D(I,J) = IB*EB(I,J)                ! Units are force*distance^2
-                  SHELL_B(I,J) = TM*TM*EBM(I,J)            ! Units are force
+                  SHELL_B(I,J) = -TM*TM*EBM(I,J)           ! Units are force. Nastran convention, [G4] = -[B]/T^2, the
+!                                                            same one subr WRITE_PCOMP_EQUIV uses for the equivalent PSHELL
                ENDDO
             ENDDO
+         ENDIF
+
+         SHELL_MB_COUPLING = 'N'
+         IF ((TYPE /= 'SHEAR   ') .AND. (INTL_MID(4) /= 0)) THEN
+            SHELL_MB_COUPLING = 'Y'
+                                                           ! Only the MITC4/MITC4+ QUAD4 includes the PSHELL MID4 coupling
+            IF (.NOT. ((TYPE == 'QUAD4   ') .AND. ((QUAD4TYP == 'MITC4 ') .OR. (QUAD4TYP == 'MITC4+')))) THEN
+               NUM_EMG_FATAL_ERRS = NUM_EMG_FATAL_ERRS + 1
+               FATAL_ERR = FATAL_ERR + 1
+               WRITE(ERR,1966) TYPE, EID
+               WRITE(F06,1966) TYPE, EID
+            ENDIF
          ENDIF
 
          DO I=1,2
@@ -210,6 +224,10 @@ pcom0:IF (PCOMP_PROPS == 'N') THEN                         ! Element is not a co
          DO I=1,3
             SHELL_AALP(I) = TM*DUM(I)
          ENDDO
+                                                           ! Not otherwise set for PSHELL; reset so values from a previously
+                                                           ! processed PCOMP element are not carried over.
+         SHELL_BALP(:) = ZERO
+         SHELL_TALP(:) = ZERO
 
 ! ---------------------------------------------------------------------------------------------------------------------------------
       ELSE pcom0                                           ! This element is a composite with properties defined on PCOMP
@@ -253,8 +271,10 @@ pcom0:IF (PCOMP_PROPS == 'N') THEN                         ! Element is not a co
 
          IF (PCOMP(INTL_PID,4) == 1) THEN                  ! Check whether elem is sym or nonsym layuo
             PCOMP_LAM = 'SYM'
+            SHELL_MB_COUPLING = 'N'
          ELSE
             PCOMP_LAM = 'NON'                              ! If nonsym layup, make sure int order = 2 (BIG_BB, BIG_BM for QUAD)
+            SHELL_MB_COUPLING = 'Y'
             IF ((TYPE(1:6) == 'QUAD4 ') .AND. (QUAD4TYP == 'MIN4T ')) THEN
                IF (IORQ1M /= 2) THEN
                   WARN_ERR = WARN_ERR + 1
@@ -517,6 +537,9 @@ ply_do:  DO K=1,NUM_PLIES_TO_PROC
       RETURN
 
 ! **********************************************************************************************************************************
+ 1966 FORMAT(' *ERROR  1966: PSHELL MID4 (MEMBRANE-BENDING COUPLING) IS ONLY SUPPORTED FOR CQUAD4 WITH PARAM QUAD4TYP MITC4+.'  &
+                    ,/,14X,' IT IS USED BY ',A,' ELEMENT ',I8)
+
  1946 FORMAT(' *ERROR  1946: PROGRAMMING ERROR IN SUBROUTINE ',A                                                                   &
                     ,/,14X,' ELEMENT TYPE ',A,' IS NOT ONE OF THE ELEMENT TYPES PROCESSED IN SUBR ',A)
 
