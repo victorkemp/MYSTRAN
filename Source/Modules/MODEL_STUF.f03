@@ -1305,6 +1305,11 @@
       CHARACTER(3*BYTE)               :: PCOMP_LAM           = '   '
                                                              ! If 'SYM' then PCOMP is a symmetric layup, otherwise it is nonsym
 
+      CHARACTER(1*BYTE)               :: SHELL_MB_COUPLING   = 'N'
+                                                             ! 'Y' if the shell has membrane-bending coupling (SHELL_B /= 0):
+                                                             ! a nonsymmetric PCOMP layup or a PSHELL with MID4. Set in subr
+                                                             ! SHELL_ABD_MATRICES.
+
       CHARACTER(1*BYTE)               :: SHELL_T_MOD         = 'N'
                                                              ! Reset to 'Y' if SHELL_T is modified (as for example when
                                                              ! INTL_MID(3) = 0 or G1Z, G2Z transverse shear modulii = 0 (in order

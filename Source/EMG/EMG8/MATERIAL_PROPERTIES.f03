@@ -92,6 +92,9 @@
       ! Material membrane and bending matrices
       EM = ZERO
       EB = ZERO
+      ! Material membrane-bending coupling matrix. Must be reset here: it is only set when the element has a
+      ! coupling material, and subr SHELL_ABD_MATRICES builds SHELL_B from it for every PSHELL element.
+      EBM = ZERO
       ! Material transverse shear matrix
       ET = ZERO
       ! Vector of CTE's

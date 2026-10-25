@@ -54,7 +54,8 @@
       USE TIMDAT, ONLY                :  TSEC
       USE CONSTANTS_1, ONLY           :  ZERO, one
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, BE3, DT, EM, EB, ES, ET, ELDOF, PEL, PHI_SQ, STRAIN, STRESS, SUBLOD,    &
-                                         TREF, TYPE, UEL, UEB, SE1, SE2, SE3, STE1, STE2, STE3, ELGP, ISOLID
+                                         TREF, TYPE, UEL, UEB, SE1, SE2, SE3, STE1, STE2, STE3, ELGP, ISOLID,                      &
+                                         FCONV, PCOMP_PROPS, SHELL_B, SHELL_MB_COUPLING
       USE DEBUG_PARAMETERS
       USE PARAMS, ONLY                :  STR_CID, QUAD4TYP
       USE MITC_STUF, ONLY             :  THERM_KAPPA, MSTRPT
@@ -306,6 +307,24 @@
                   STRESS(I+6) = STRESS(I+6) - STE3(I,JTSUB,STR_PT_NUM)
                ENDIF
             ENDDO
+         ENDIF
+
+                                                           ! PSHELL with MID4: add the membrane-bending coupling to the force
+                                                           ! resultants, N = [A]{e} + [B]{k} and M = [B]{e} + [D]{k}. STRESS(1:3)
+                                                           ! and STRESS(4:6) are the resultants divided by FCONV(1) = TM and
+                                                           ! -FCONV(2) = IB (subr SHELL_ENGR_FORCE_OGEL multiplies them back), so the
+                                                           ! [A] and [D] parts are already there from EM, EB above. PCOMP is
+                                                           ! excluded: its ply stresses come from ply strains that already include
+                                                           ! the coupling.
+         IF ((PCOMP_PROPS == 'N') .AND. (SHELL_MB_COUPLING == 'Y')) THEN
+            IF ((DABS(FCONV(1)) > ZERO) .AND. (DABS(FCONV(2)) > ZERO)) THEN
+               CALL MATMULT_FFF ( SHELL_B, STRAIN2, 3, 3, 1, DUM31 )
+               CALL MATMULT_FFF ( SHELL_B, STRAIN1, 3, 3, 1, DUM32 )
+               DO I=1,3
+                  STRESS(I)   = STRESS(I)   + DUM31(I)/FCONV(1)
+                  STRESS(I+3) = STRESS(I+3) - DUM32(I)/FCONV(2)
+               ENDDO
+            ENDIF
          ENDIF
 
 
