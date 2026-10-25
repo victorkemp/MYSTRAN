@@ -55,7 +55,7 @@
       USE CONSTANTS_1, ONLY           :  ZERO, one
       USE MODEL_STUF, ONLY            :  ALPVEC, BE1, BE2, BE3, DT, EM, EB, ES, ET, ELDOF, PEL, PHI_SQ, STRAIN, STRESS, SUBLOD,    &
                                          TREF, TYPE, UEL, UEB, SE1, SE2, SE3, STE1, STE2, STE3, ELGP, ISOLID,                      &
-                                         FCONV, PCOMP_PROPS, SHELL_B, SHELL_MB_COUPLING
+                                         FCONV, PCOMP_PROPS, SHELL_B, SHELL_BALP, SHELL_MB_COUPLING
       USE DEBUG_PARAMETERS
       USE PARAMS, ONLY                :  STR_CID, QUAD4TYP
       USE MITC_STUF, ONLY             :  THERM_KAPPA, MSTRPT
@@ -320,6 +320,11 @@
             IF ((DABS(FCONV(1)) > ZERO) .AND. (DABS(FCONV(2)) > ZERO)) THEN
                CALL MATMULT_FFF ( SHELL_B, STRAIN2, 3, 3, 1, DUM31 )
                CALL MATMULT_FFF ( SHELL_B, STRAIN1, 3, 3, 1, DUM32 )
+               IF (SUBLOD(INT_SC_NUM,2) > 0) THEN          ! Less the thermal moment [B]{alpha4}(TBAR - TREF)
+                  DO I=1,3
+                     DUM32(I) = DUM32(I) - SHELL_BALP(I)*(TBAR - TREF(1))
+                  ENDDO
+               ENDIF
                DO I=1,3
                   STRESS(I)   = STRESS(I)   + DUM31(I)/FCONV(1)
                   STRESS(I+3) = STRESS(I+3) - DUM32(I)/FCONV(2)
