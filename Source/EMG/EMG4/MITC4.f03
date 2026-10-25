@@ -526,15 +526,9 @@
 
             ELSE
 
-
-               IF (PCOMP_LAM == 'NON') THEN                ! Delete this IF block to allow the LAM field set to nonsymmetric.
-                  FATAL_ERR          = FATAL_ERR + 1
-                  NUM_EMG_FATAL_ERRS = NUM_EMG_FATAL_ERRS + 1
-                  WRITE(ERR,*) ' *ERROR: Code not written for non-symmetric composite buckling or differential stiffness.'
-                  WRITE(F06,*) ' *ERROR: Code not written for non-symmetric composite buckling or differential stiffness.'
-                  CALL OUTA_HERE ( 'Y' )
-               ENDIF
-
+               ! Ply membrane forces from the ply strains at the ply mid-plane, e = e0 + z k (subr ELMDIS_PLY,
+               ! z = ZPLY from the reference plane). Summed over the plies this is N = [A]{e0} + [B]{k}
+               ! exactly, so it is also correct for nonsymmetric layups.
                PLY_NUM = JPLY                              ! Used by SHELL_ABD_MATRICES
                CALL SHELL_ABD_MATRICES ( INT_ELEM_ID, 'N' )! Get EM, ZPLY, TPLY, ALPVEC for this ply
                CALL ELMDIS
