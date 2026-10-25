@@ -224,9 +224,14 @@ pcom0:IF (PCOMP_PROPS == 'N') THEN                         ! Element is not a co
          DO I=1,3
             SHELL_AALP(I) = TM*DUM(I)
          ENDDO
-                                                           ! Not otherwise set for PSHELL; reset so values from a previously
-                                                           ! processed PCOMP element are not carried over.
-         SHELL_BALP(:) = ZERO
+                                                           ! Thermal moment per unit temperature from membrane-bending coupling,
+                                                           ! [B]{alpha4} with the in-plane CTE's of the MID4 material (same rows as
+                                                           ! ALPM). Zero when there is no MID4 (SHELL_B = 0). This is also what subr
+                                                           ! WRITE_PCOMP_EQUIV writes as the MID4 CTE's of an equivalent PSHELL.
+         ALPB(1) = ALPVEC(1,4)
+         ALPB(2) = ALPVEC(2,4)
+         ALPB(3) = ALPVEC(4,4)
+         CALL MATMULT_FFF ( SHELL_B, ALPB, 3, 3, 1, SHELL_BALP )
          SHELL_TALP(:) = ZERO
 
 ! ---------------------------------------------------------------------------------------------------------------------------------
@@ -466,7 +471,6 @@ ply_do:  DO K=1,NUM_PLIES_TO_PROC
 
             DO I=1,3
                ALPD(I) = ALPVEC(I,2)
-               ALPB(I) = ALPVEC(I,4)
             ENDDO
 
             DO I=1,2
@@ -474,7 +478,11 @@ ply_do:  DO K=1,NUM_PLIES_TO_PROC
             ENDDO
 
             CALL MATMULT_FFF ( PLY_A, ALPM, 3, 3, 1, AALP )
-            CALL MATMULT_FFF ( PLY_B, ALPB, 3, 3, 1, BALP )
+                                                           ! Thermal moment of a uniform temperature change: the ply's own in-plane
+                                                           ! CTE (ALPM, as for AALP) times its first moment of stiffness PLY_B. Was
+                                                           ! ALPB = ALPVEC(:,4), which is never set for a PCOMP ply (MTRL_TYPE(4) = 0),
+                                                           ! so a nonsymmetric layup got no thermal moment.
+            CALL MATMULT_FFF ( PLY_B, ALPM, 3, 3, 1, BALP )
             CALL MATMULT_FFF ( PLY_D, ALPD, 3, 3, 1, DALP )
             CALL MATMULT_FFF ( PLY_T, ALPT, 2, 2, 1, TALP )
             DO I=1,3
