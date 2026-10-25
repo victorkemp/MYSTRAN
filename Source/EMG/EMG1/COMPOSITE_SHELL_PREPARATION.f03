@@ -207,9 +207,9 @@ pcom0:IF (PCOMP_PROPS == 'N') THEN                         ! Element is not a co
             ENDDO
          ENDDO
 
-         DO I=1,3
-            ALPB(I) = ALPVEC(I,2)
-         ENDDO
+         ALPB(1) = ALPVEC(1,2)                             ! Bending CTE's: rows xx, yy, xy (= 4) of ALPVEC, as for ALPM
+         ALPB(2) = ALPVEC(2,2)
+         ALPB(3) = ALPVEC(4,2)
 
          ALPM(1) = ALPVEC(1,1)                             ! xx
          ALPM(2) = ALPVEC(2,1)                             ! yy
@@ -469,9 +469,9 @@ ply_do:  DO K=1,NUM_PLIES_TO_PROC
             ALPM(2) = ALPVEC(2,1)
             ALPM(3) = ALPVEC(4,1)
 
-            DO I=1,3
-               ALPD(I) = ALPVEC(I,2)
-            ENDDO
+            ALPD(1) = ALPVEC(1,2)                          ! Bending CTE's: rows xx, yy, xy (= 4) of ALPVEC, as for ALPM
+            ALPD(2) = ALPVEC(2,2)
+            ALPD(3) = ALPVEC(4,2)
 
             DO I=1,2
                ALPT(I) = ALPVEC(I,3)

@@ -1817,7 +1817,8 @@
                I2 = MRPCOMP0 + 2*PCOMP_PLIES0*MRPCOMP_PLIES - MRPCOMP_PLIES*(I-1) - (MRPCOMP_PLIES - 1)
                RPCOMP(NPCOMP,I2)   =  RPCOMP(NPCOMP,I1)
                RPCOMP(NPCOMP,I2+1) =  RPCOMP(NPCOMP,I1+1)
-               RPCOMP(NPCOMP,I2+2) = -RPCOMP(NPCOMP,I1+2)
+               RPCOMP(NPCOMP,I2+2) = TWO*Z0 + TT - RPCOMP(NPCOMP,I1+2)! Mirror about the laminate mid-plane, z = Z0 + TT/2
+!                                                                    (not about the reference plane z = 0 unless Z0 = -TT/2)
             ENDDO
 
          ENDIF
@@ -2292,7 +2293,8 @@
                I2 = MRPCOMP0 + 2*PCOMP_PLIES0*MRPCOMP_PLIES - MRPCOMP_PLIES*(I-1) - (MRPCOMP_PLIES - 1)
                RPCOMP(NPCOMP,I2)   =  RPCOMP(NPCOMP,I1)
                RPCOMP(NPCOMP,I2+1) =  RPCOMP(NPCOMP,I1+1)
-               RPCOMP(NPCOMP,I2+2) = -RPCOMP(NPCOMP,I1+2)
+               RPCOMP(NPCOMP,I2+2) = TWO*Z0 + TT - RPCOMP(NPCOMP,I1+2)! Mirror about the laminate mid-plane, z = Z0 + TT/2
+!                                                                    (not about the reference plane z = 0 unless Z0 = -TT/2)
             ENDDO
 
          ENDIF

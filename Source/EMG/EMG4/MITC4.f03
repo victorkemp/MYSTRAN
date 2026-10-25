@@ -107,6 +107,7 @@
       REAL(DOUBLE)                    :: THERMAL_STRAIN(6) ! Thermal strain vector
       REAL(DOUBLE)                    :: TBAR              ! Average elem temperature
       REAL(DOUBLE)                    :: UNIT_PTE(6*ELGP)  ! Thermal load vector for unit temperature change.
+      REAL(DOUBLE)                    :: UNIT_PTE_G(6*ELGP)! Thermal load vector for unit through-thickness temperature gradient.
       REAL(DOUBLE)                    :: UNIT_PPE(6*ELGP)  ! Pressure load vector for unit pressure.
       REAL(DOUBLE)                    :: PSH(ELGP)
       REAL(DOUBLE)                    :: DPSHG(2,ELGP)     ! Derivatives of shape functions with respect to R and S.
@@ -260,12 +261,13 @@
 ! layups) from SHELL_ABD_MATRICES, instead of a homogeneous-material (R,S,T) volume Gauss
 ! integration -- same conversion, and same rationale, as the OPT(4) stiffness assembly above.
 !
-! Only a spatially-uniform temperature change (TBAR, averaged over the 4 corner grid points) is
-! supported here, matching what this routine supported before this conversion; SHELL_DALP (the
-! weight-z^2 thermal resultant that would respond to a through-thickness temperature *gradient*)
-! is not used, since there is no gradient input to pair it with.
+! The in-plane temperature is the uniform TBAR (averaged over the 4 corner grid points). A linear
+! through-thickness temperature gradient (TEMPP1/TEMPRB field TPRIME, carried in DT(5,J)) loads the
+! element through SHELL_DALP, the weight-z^2 thermal resultant (bending stiffness times bending CTE),
+! in the same way as for the MIN4 element (subr QPLT2):
 !
-!    PTE = ( [Bm]' [A_alpha] + [Bb]' [B_alpha] ) * (TBAR - TREF)   integrated over mid-surface area
+!    PTE = ( [Bm]' [A_alpha] + [Bb]' [B_alpha] ) * (TBAR - TREF) + [Bb]' [D_alpha] * TPRIME
+!                                                                    integrated over mid-surface area
 !
 ! On a curved reference surface the free thermal strain also contains the change of the generalized curvature produced by
 ! uniform mid-surface scaling. If the mid-surface is scaled by the free strain e = alpha*(TBAR - TREF) while the director field
@@ -288,6 +290,7 @@
 ! term vanishes identically, so flat-plate thermal loads are unchanged.
 
          UNIT_PTE(:) = ZERO
+         UNIT_PTE_G(:) = ZERO
 
          CALL ORDER_GAUSS ( IORD_IJ, SS_IJ, HH_IJ )
 
@@ -311,6 +314,9 @@
 
                                                            ! Change of curvature from uniform mid-surface scaling.
                                                            ! KAP_TH is zero for a flat element whose director is normal to it.
+                                                           ! Through-thickness gradient (per unit TPRIME)
+               UNIT_PTE_G(1:6*ELGP) = UNIT_PTE_G(1:6*ELGP) + MATMUL( TRANSPOSE(BBI3), SHELL_DALP ) * INTFAC
+
                CALL THERM_CURV_AT_RS ( R, S, KAP_TH )
 
                UNIT_PTE(1:6*ELGP) = UNIT_PTE(1:6*ELGP)                                                                             &
@@ -327,7 +333,7 @@
                                                   ! linear elements.
             TBAR = (DT(1,J) + DT(2,J) + DT(3,J) + DT(4,J))/FOUR
 
-            PTE(1:6*ELGP,J) = UNIT_PTE(1:6*ELGP) * (TBAR - TREF(1))
+            PTE(1:6*ELGP,J) = UNIT_PTE(1:6*ELGP) * (TBAR - TREF(1)) + UNIT_PTE_G(1:6*ELGP) * DT(5,J)
          ENDDO
 
 
