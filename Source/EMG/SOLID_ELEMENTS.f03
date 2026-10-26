@@ -457,12 +457,8 @@
               SSI = -1; SSJ = +1; SSK = +1
           END SELECT
 
-         DUM2 = ZERO
+          DUM2 = ZERO
                                                            ! Calc SE1,2,3
-! The strain-displacement matrix is evaluated directly at the point. A valid element can still have a zero or negative Jacobian
-! at a corner (e.g. a corner of a concave or collapsed hex) where B is undefined; there the strains are extrapolated from the
-! 2x2x2 Gauss sampling points instead.
-
           IORD_MSG = 'for 3-D solid strains,                      = '
           CALL SHP3DH ( 0, 0, 0, ELGP, SUBR_NAME, IORD_MSG, 1, SSI, SSJ, SSK, 'N', PSH, DPSHG )
           CALL HEXA_EXTRAPOLATED_STRAIN_DISPL ( SSI, SSJ, SSK, BI )
