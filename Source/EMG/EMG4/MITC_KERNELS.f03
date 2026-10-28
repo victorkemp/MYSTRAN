@@ -326,7 +326,7 @@
 ! Victor todo this is not very useful because different matrices are used in different places:
 ! MITC4+ stiffness:     membrane, bending+shear
 ! MITC4+ thermal load:  membrane
-! MITC8 stiffness:      membrane+shear. Could be bending+shear because QUAD8 requires MID1=MID2.
+! MITC8 stiffness:      not used. Uses SHELL_A, SHELL_D, SHELL_T like MITC4+.
 
                                                            ! Convert 2D material elasticity matrices to 3D.
       MITC_ELASTICITY(:,:) = ZERO
