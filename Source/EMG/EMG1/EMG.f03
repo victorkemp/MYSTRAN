@@ -97,6 +97,7 @@
       CHARACTER( 2*BYTE)              :: LOC                ! Location where THETAM is calculated (for DEBUG output purposes)
       CHARACTER( 1*BYTE)              :: FIX_EDAT      = 'N'! If 'Y', run code to change order of grids in EDAT for 3D elems
       CHARACTER( 1*BYTE)              :: RED_INT_SHEAR = 'N'! If 'Y', use Gaussian weighted average of B matrices for shear terms
+      CHARACTER( 1*BYTE)              :: BUBBLE        = 'N'! If 'Y', HEXA8 bubble element (enhanced assumed strain)
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID        ! Internal element ID for which
       INTEGER(LONG)                   :: CASE_NUM    = 0    ! Can be subcase number (e.g. for UEL, PEL outout)
@@ -394,8 +395,14 @@
          ENDIF
 
          IF ((TYPE == 'HEXA8   ') .OR. (TYPE == 'HEXA20  ')) THEN
-            INT_ORDER = ISOLID(4)                          ! Integration order
-            CALL HEXA ( OPT, INT_ELEM_ID, INT_ORDER, RED_INT_SHEAR, WRITE_WARN )
+            IF (ISOLID(4) == 0) THEN                       ! IN = BUBBLE (HEXA8 only), integrated with 2x2x2 points
+               INT_ORDER = 2
+               BUBBLE    = 'Y'
+            ELSE
+               INT_ORDER = ISOLID(4)                       ! Integration order
+               BUBBLE    = 'N'
+            ENDIF
+            CALL HEXA ( OPT, INT_ELEM_ID, INT_ORDER, RED_INT_SHEAR, BUBBLE, WRITE_WARN )
          ELSE IF ((TYPE == 'PENTA6  ') .OR. (TYPE == 'PENTA15 ')) THEN
             IF (ISOLID(4) == 2) THEN                       ! Integration order
                IORD_K  = 2
