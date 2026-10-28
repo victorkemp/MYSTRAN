@@ -41,24 +41,27 @@
 
    CONTAINS
 
-      SUBROUTINE HEXA ( OPT, INT_ELEM_ID,IORD, RED_INT_SHEAR, WRITE_WARN )
+      SUBROUTINE HEXA ( OPT, INT_ELEM_ID,IORD, RED_INT_SHEAR, BUBBLE, WRITE_WARN )
 
 ! Isoparametric hexahedron solid element (8 or 20 nodes)
 
-! Formulation (selected by PSOLID ISOP; RED_INT_SHEAR = 'Y' for ISOP blank/REDUCED, which is the default):
+! Formulation (selected by PSOLID IN and ISOP as for the Nastran CHEXA; the defaults are BUBBLE for HEXA8 and THREE for HEXA20,
+! with ISOP blank):
 
-!  HEXA8,  ISOP blank/REDUCED: Enhanced assumed strain element Q1/E21 (Andelfinger & Ramm 1993). 21 internal strain modes,
-!                              defined in the natural (xi,eta,zeta) frame and symmetric in the three directions, are pushed
-!                              forward with the centroid Jacobian and scaled by det(J0)/det(J) (Simo & Rifai 1990) so the
-!                              element passes the patch test on distorted meshes. The modes are statically condensed at the
-!                              element level. Relieves shear (bending) and volumetric locking without any preferred direction,
-!                              is invariant to rigid rotation and to node relabeling, and has no spurious zero-energy modes.
-!  HEXA20, ISOP blank/REDUCED: IN = TWO: Jacobian-weighted averages of the shear rows of B over the Gauss points of opposite faces.
-!                              IN = THREE: shear strain energy integrated with 2x2x2 points, the rest with 3x3x3.
-!  ISOP = FULL               : Standard displacement-based isoparametric element with full Gaussian integration.
+!  HEXA8 bubble element     : IN = BUBBLE, or blank with ISOP blank/REDUCED (BUBBLE = 'Y').
+!                             Enhanced assumed strain element Q1/E21 (Andelfinger & Ramm 1993). 21 internal strain modes,
+!                             defined in the natural (xi,eta,zeta) frame and symmetric in the three directions, are pushed
+!                             forward with the centroid Jacobian and scaled by det(J0)/det(J) (Simo & Rifai 1990) so the
+!                             element passes the patch test on distorted meshes. The modes are statically condensed at the
+!                             element level. Relieves shear (bending) and volumetric locking without any preferred direction,
+!                             is invariant to rigid rotation and to node relabeling, and has no spurious zero-energy modes.
+!  ISOP blank/REDUCED       : Reduced shear (RED_INT_SHEAR = 'Y').
+!                             IN = TWO: Jacobian-weighted averages of the shear rows of B over the Gauss points of opposite faces.
+!                             IN = THREE: shear strain energy integrated with 2x2x2 points, the rest with 3x3x3.
+!  ISOP = FULL              : Standard displacement-based isoparametric element with full Gaussian integration.
 
-! For HEXA8 the same enhanced strain-displacement operator is used consistently for the stiffness, the thermal loads and the
-! stress/strain recovery matrices.
+! For the HEXA8 bubble element the same enhanced strain-displacement operator is used consistently for the stiffness, the thermal
+! loads and the stress/strain recovery matrices.
 
 ! Subroutine calculates:
 
@@ -88,8 +91,10 @@
       IMPLICIT NONE
 
       CHARACTER(LEN=LEN(BLNK_SUB_NAM)):: SUBR_NAME = 'HEXA'
-      CHARACTER( 1*BYTE), INTENT(IN)  :: RED_INT_SHEAR          ! 'Y' for ISOP blank/REDUCED: use the EAS (HEXA8) or reduced shear (HEXA20)
-!                                                                 formulation. 'N' for ISOP = FULL: standard displacement element
+      CHARACTER( 1*BYTE), INTENT(IN)  :: RED_INT_SHEAR          ! 'Y' for ISOP blank/REDUCED: reduced shear formulation (not used
+!                                                                 by the HEXA8 bubble element). 'N' for ISOP = FULL: standard
+!                                                                 displacement element
+      CHARACTER( 1*BYTE), INTENT(IN)  :: BUBBLE                 ! 'Y' for the HEXA8 bubble element: Q1/E21 enhanced assumed strain
       CHARACTER( 1*BYTE), INTENT(IN)  :: OPT(6)                 ! 'Y'/'N' flags for whether to calc certain elem matrices
       CHARACTER(LEN=*), INTENT(IN)    :: WRITE_WARN             ! If 'Y" write warning messages, otherwise do not
 
@@ -181,7 +186,7 @@
       REAL(DOUBLE)                    :: JACI(3,3)              ! An output from subr JAC3D, called herein. 3 x 3 Jacobian inverse.
       REAL(DOUBLE)                    :: KWW(3,3)               ! Portion of differential stiffness matrix
 
-      LOGICAL                         :: HEXA8_EAS              ! True for HEXA8  with the default (EAS) formulation
+      LOGICAL                         :: HEXA8_EAS              ! True for the HEXA8 bubble element (EAS formulation)
 
       REAL(DOUBLE)                    :: JAC0_INV(3,3)          ! Jacobian inverse at element centroid (Simo & Rifai J0)
       REAL(DOUBLE)                    :: DETJ0                  ! Determinant of centroid Jacobian
@@ -210,7 +215,7 @@
 ! **********************************************************************************************************************************
 
       EPS1      = EPSIL(1)
-      HEXA8_EAS = (TYPE == 'HEXA8   ') .AND. (RED_INT_SHEAR == 'Y')
+      HEXA8_EAS = (TYPE == 'HEXA8   ') .AND. (BUBBLE == 'Y')
 
 ! Calculate ID array
 
@@ -336,7 +341,7 @@
             ENDDO
          ENDDO
 
-         IF ((RED_INT_SHEAR == 'Y') .AND. (.NOT. HEXA8_EAS)) THEN      ! HEXA20 reduced shear (HEXA8 uses EAS instead)
+         IF ((RED_INT_SHEAR == 'Y') .AND. (.NOT. HEXA8_EAS)) THEN      ! Reduced shear (the bubble element uses EAS instead)
 
             IF (IORD == 2) THEN                               ! Use selective substitution for the 2x2x2 integration
 
