@@ -26,7 +26,7 @@
 
    MODULE MITC8_MOD
 
-   USE MITC_KERNELS, ONLY :  MITC_ADD_TO_B, MITC_CONTRAVARIANT_BASIS, MITC_COVARIANT_BASIS, MITC_COVARIANT_STRAIN_DIRECT_INTERPOLATION, MITC_DETJ, MITC_ELASTICITY, MITC_INITIALIZE, MITC_SHAPE_FUNCTIONS, MITC_TRANSFORM_B
+   USE MITC_KERNELS, ONLY :  MITC_ADD_TO_B, MITC_CONTRAVARIANT_BASIS, MITC_COVARIANT_BASIS, MITC_COVARIANT_STRAIN_DIRECT_INTERPOLATION, MITC_INITIALIZE, MITC_SHAPE_FUNCTIONS, MITC_TRANSFORM_B
 
    IMPLICIT NONE
 
@@ -51,7 +51,7 @@
       USE SCONTR, ONLY                :  BLNK_SUB_NAM, FATAL_ERR, MAX_ORDER_GAUSS, MAX_STRESS_POINTS
       USE NONLINEAR_PARAMS, ONLY      :  LOAD_ISTEP
       USE MODEL_STUF, ONLY            :  NUM_EMG_FATAL_ERRS, PCOMP_PROPS, ELGP, ES, KE, EM, ET, BE1, BE2, BE3, PHI_SQ, FCONV,      &
-                                         EPROP, SHELL_STR_ANGLE
+                                         EPROP, SHELL_STR_ANGLE, SHELL_A, SHELL_B, SHELL_D, SHELL_T
       USE CONSTANTS_1, ONLY           :  ZERO, ONE, TWO, FOUR
       USE PARAMS, ONLY                :  TSTM_DEF
       USE MITC_STUF, ONLY             :  GP_RS
@@ -68,25 +68,23 @@
 
       INTEGER(LONG), INTENT(IN)       :: INT_ELEM_ID       ! Internal element ID
       INTEGER(LONG), PARAMETER        :: IORD_IJ = 3       ! Integration order for stiffness matrix
-      INTEGER(LONG), PARAMETER        :: IORD_K = 2        ! Integration order for stiffness matrix in thickness direction
       INTEGER(LONG), PARAMETER        :: IORD_STRESS_Q8 = 2! Gauss integration order for stress/strain recovery matrices
       INTEGER(LONG)                   :: I,J,K,L,M         ! DO loop indices
       INTEGER(LONG)                   :: STR_PT_NUM        ! Stress recovery point number
 
       REAL(DOUBLE)                    :: HH_IJ(MAX_ORDER_GAUSS) ! Gauss weights for integration in in-layer directions
       REAL(DOUBLE)                    :: SS_IJ(MAX_ORDER_GAUSS) ! Gauss abscissa's for integration in in-layer directions
-      REAL(DOUBLE)                    :: HH_K(MAX_ORDER_GAUSS)  ! Gauss weights for integration in thickness direction
-      REAL(DOUBLE)                    :: SS_K(MAX_ORDER_GAUSS)  ! Gauss abscissa's for integration in thickness direction
-      REAL(DOUBLE)                    :: R, S, T                ! Isoparametric coordinates of a point
-      REAL(DOUBLE)                    :: BI(6,6*ELGP)      ! Strain-displ matrix for this element for one Gauss point
-      REAL(DOUBLE)                    :: BI1(6,6*ELGP)     ! Strain-displ matrix for this element for one Gauss point bottom
-      REAL(DOUBLE)                    :: BI2(6,6*ELGP)     ! Strain-displ matrix for this element for one Gauss point top
-      REAL(DOUBLE)                    :: DUM1(6,6*ELGP)    ! Intermediate matrix
+      REAL(DOUBLE)                    :: R, S                   ! Isoparametric coordinates of a point
+      REAL(DOUBLE)                    :: BMI3(3,6*ELGP)    ! Mid-surface membrane strain-disp operator (MITC8_BMBS)
+      REAL(DOUBLE)                    :: BBI3(3,6*ELGP)    ! Mid-surface curvature strain-disp operator (MITC8_BMBS)
+      REAL(DOUBLE)                    :: BSI2(2,6*ELGP)    ! Mid-surface trans shear strain-disp operator (MITC8_BMBS)
+      REAL(DOUBLE)                    :: DUM1_3(3,6*ELGP)  ! Intermediate matrix for 3-row (membrane/bending) matmults
+      REAL(DOUBLE)                    :: DUM1_2(2,6*ELGP)  ! Intermediate matrix for 2-row (transverse shear) matmults
       REAL(DOUBLE)                    :: DUM2(6*ELGP,6*ELGP)    ! Intermediate matrix
+      REAL(DOUBLE)                    :: DUM4(3)           ! Intermediate vector
+      REAL(DOUBLE)                    :: G(3,3)            ! Covariant basis vectors
       REAL(DOUBLE)                    :: INTFAC            ! An integration factor (constant multiplier for the Gauss integration)
-      REAL(DOUBLE)                    :: DETJ              ! Jacobian determinant
-      REAL(DOUBLE)                    :: E(6,6)            ! Elasticity matrix in the material coordinate system.
-      REAL(DOUBLE)                    :: EE(6,6)           ! Elasticity matrix in the cartesian local coordinate system.
+      REAL(DOUBLE)                    :: DETJ              ! Mid-surface area Jacobian |g_r x g_s|
       REAL(DOUBLE)                    :: LOCAL_BASIS(3,3)  ! Cartesian local basis
       REAL(DOUBLE)                    :: ELEMENT_BASIS(3,3)! Element coordinate system basis
       REAL(DOUBLE)                    :: XL(3)
@@ -222,24 +220,13 @@
                R = SS_IJ(I)
                S = SS_IJ(J)
 
-               CALL MITC8_B( R, S, -ONE, .TRUE., .TRUE., BI1)
-               CALL MITC8_B( R, S, +ONE, .TRUE., .TRUE., BI2)
+                                                  ! Same mid-surface operators as used for the stiffness matrix:
+                                                  ! membrane strain at the mid-surface, curvature, transverse shear.
+               CALL MITC8_BMBS( R, S, BMI3, BBI3, BSI2 )
 
-                                                  ! Membrane strain is the average of the strains at the two t points.
-               BE1(1,:,STR_PT_NUM) = (BI2(1,:) + BI1(1,:)) / TWO           ! xx
-               BE1(2,:,STR_PT_NUM) = (BI2(2,:) + BI1(2,:)) / TWO           ! yy
-               BE1(3,:,STR_PT_NUM) = (BI2(4,:) + BI1(4,:)) / TWO           ! xy
-
-                                                  ! Curvature is (strain_top - strain_bottom) / thickness
-                                                  ! To allow grid point thicknesses, this should be the thickness
-                                                  ! interpolated at the Gauss point.
-               BE2(1,:,STR_PT_NUM) = (BI2(1,:) - BI1(1,:)) / EPROP(1)      ! xx
-               BE2(2,:,STR_PT_NUM) = (BI2(2,:) - BI1(2,:)) / EPROP(1)      ! yy
-               BE2(3,:,STR_PT_NUM) = (BI2(4,:) - BI1(4,:)) / EPROP(1)      ! xy
-
-                                                  ! Transverse shear strain. Note reversed order of rows.
-               BE3(1,:,STR_PT_NUM) = (BI2(6,:) + BI1(6,:)) / TWO           ! zx
-               BE3(2,:,STR_PT_NUM) = (BI2(5,:) + BI1(5,:)) / TWO           ! yz
+               BE1(1:3,:,STR_PT_NUM) = BMI3(1:3,:)                         ! xx, yy, xy
+               BE2(1:3,:,STR_PT_NUM) = BBI3(1:3,:)                         ! xx, yy, xy
+               BE3(1:2,:,STR_PT_NUM) = BSI2(1:2,:)                         ! zx, yz
 
             ENDDO
          ENDDO
@@ -273,49 +260,77 @@
       IF(OPT(4) == 'Y') THEN
 
 ! Based on
-! MITC4 paper "A continuum mechanics based four-node shell element for general nonlinear analysis"
-!   by Dvorkin and Bathe
 ! MITC8 paper "A FORMULATION OF GENERAL SHELL ELEMENTS-THE USE OF MIXED INTERPOLATION OF TENSORIAL COMPONENTS"
 !   by Dvorkin and Bathe, 1986
-
-
-         ! K = int( [B]^T [EE] [B] dV )
-         !    dV = |det(J)|dr ds dt
-         ! K = int( [B]^T [EE] [B] |det(J)| dr ds dt )
-         !
-         ! [EE] is material elasticity matrix in cartesian local coordinates
-         ! stress = [EE] * strain
-         ! strain = [B] * displacement
-         ! K is in the basic coordinate system
-
-         E = MITC_ELASTICITY()
+!
+! Assembled the same way as the MITC4/MITC4+ QUAD4 (see subr MITC4), using the A/B/D/T (classical-lamination-theory idealized)
+! section matrices from SHELL_ABD_MATRICES and integrating over the mid-surface area only:
+!
+!    KE = int over mid-surface area of:
+!       [Bm]' [A] [Bm]  +  [Bm]' [B] [Bb] + [Bb]' [B]' [Bm]  +  [Bb]' [D] [Bb]  +  [Bs]' [T] [Bs]  dA
+!
+!    dA = |g_r x g_s| dR dS, evaluated at the mid-surface (T = 0)
+!
+! Previously KE was integrated through the thickness as a degenerated solid, K = int( [B]^T [E] [B] |det(J(R,S,T))| dR dS dT ).
+! On a curved element |det(J)| grows with T on the convex side of the mid-surface and shrinks on the concave side, so the outer
+! half of the thickness carried more area (and stiffness) than the inner half. The QUAD4 doesn't do this, so the two elements
+! disagreed for curved shells and the QUAD8 had a membrane-bending coupling that depends on the curvature. Integrating over the
+! mid-surface with the section matrices gives the material symmetric about the mid-surface like the QUAD4.
+!
+! Bm, Bb, Bs come from MITC8_BMBS, which keeps the MITC8 tying-point interpolation of MITC8_B.
+!
+! The strain-displacement operators are in the cartesian local basis while SHELL_A etc. are in the element/material system.
+! This is OK because QUAD8 only allows isotropic MAT1 materials. To allow non-isotropic materials, the section matrices should be
+! rotated to the cartesian local basis at each Gauss point.
 
          KE(1:6*ELGP,1:6*ELGP) = ZERO
 
          CALL ORDER_GAUSS ( IORD_IJ, SS_IJ, HH_IJ )
-         CALL ORDER_GAUSS ( IORD_K, SS_K, HH_K )
 
          DO I=1,IORD_IJ
             DO J=1,IORD_IJ
-               DO K=1,IORD_K
-                  R = SS_IJ(I)
-                  S = SS_IJ(J)
-                  T = SS_K(K)
-                  CALL MITC8_B( R, S, T, .TRUE., .TRUE., BI)
+               R = SS_IJ(I)
+               S = SS_IJ(J)
 
-                  ! For non-isotropic materials, this should be rotated from the material coordinate system to the cartesian local
-                  ! coordinate system here. The rotation angle may be different at each Gauss point.
-                  EE(:,:) = E(:,:)
+               CALL MITC8_BMBS( R, S, BMI3, BBI3, BSI2 )
 
-                  CALL MATMULT_FFF ( EE, BI, 6, 6, 6*ELGP, DUM1 )
-                  CALL MATMULT_FFF_T ( BI, DUM1, 6, 6*ELGP, 6*ELGP, DUM2 )
-                  DETJ = MITC_DETJ ( R, S, T )
-                  INTFAC = DETJ*HH_IJ(I)*HH_IJ(J)*HH_K(K)
-                  KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
-               ENDDO
+                                                           ! Mid-surface area Jacobian: dA = |g_r x g_s| dR dS.
+               CALL MITC_COVARIANT_BASIS( R, S, ZERO, G )
+               CALL CROSS( G(:,1), G(:,2), DUM4 )
+               DETJ = DSQRT(DOT_PRODUCT(DUM4, DUM4))
+               INTFAC = DETJ*HH_IJ(I)*HH_IJ(J)
+
+                                                           ! Membrane
+                                                           ! ∫ Bm' A Bm dA
+               CALL MATMULT_FFF   ( SHELL_A, BMI3, 3, 3, 6*ELGP, DUM1_3 )
+               CALL MATMULT_FFF_T ( BMI3, DUM1_3, 3, 6*ELGP, 6*ELGP, DUM2 )
+               KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
+
+                                                           ! Bending
+                                                           ! ∫ Bb' D Bb dA
+               CALL MATMULT_FFF   ( SHELL_D, BBI3, 3, 3, 6*ELGP, DUM1_3 )
+               CALL MATMULT_FFF_T ( BBI3, DUM1_3, 3, 6*ELGP, 6*ELGP, DUM2 )
+               KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
+
+                                                           ! Transverse shear
+                                                           ! ∫ Bs' T Bs dA
+               CALL MATMULT_FFF   ( SHELL_T, BSI2, 2, 2, 6*ELGP, DUM1_2 )
+               CALL MATMULT_FFF_T ( BSI2, DUM1_2, 2, 6*ELGP, 6*ELGP, DUM2 )
+               KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
+
+                                                           ! Membrane-bending coupling
+                                                           ! Zero for QUAD8 because MID4 and offsets aren't allowed,
+                                                           ! but kept to match MITC4.
+                                                           ! ∫ Bm' B Bb dA + ∫ Bb' B' Bm dA
+               CALL MATMULT_FFF   ( SHELL_B, BBI3, 3, 3, 6*ELGP, DUM1_3 )
+               CALL MATMULT_FFF_T ( BMI3, DUM1_3, 3, 6*ELGP, 6*ELGP, DUM2 )
+               KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
+               CALL MATMULT_FFF_T ( SHELL_B, BMI3, 3, 3, 6*ELGP, DUM1_3 )
+               CALL MATMULT_FFF_T ( BBI3, DUM1_3, 3, 6*ELGP, 6*ELGP, DUM2 )
+               KE(1:6*ELGP,1:6*ELGP) = KE(1:6*ELGP,1:6*ELGP) + DUM2(:,:)*INTFAC
+
             ENDDO
          ENDDO
-
 
       ENDIF
 
@@ -360,10 +375,15 @@
 
       END SUBROUTINE MITC8
 
-      SUBROUTINE MITC8_B ( R, S, T, INLAYER, SHEAR, B )
+      SUBROUTINE MITC8_B ( R, S, T, TG, INLAYER, SHEAR, B )
 
 ! Calculates the strain-displacement matrix in the cartesian local coordinate system
 ! for MITC8 shell at one point in isoparametric coordinates.
+!
+! The covariant strain components are evaluated at thickness coordinate T. The geometry used to convert them to the cartesian
+! local basis (the covariant/contravariant basis vectors at the sampling points) is evaluated at thickness coordinate TG.
+! TG = T gives the degenerated solid strain at T. For a fixed TG the result is linear in the covariant strains, which lets
+! MITC8_BMBS separate the membrane and bending parts.
 ! Based on
 ! MITC8 paper "A FORMULATION OF GENERAL SHELL ELEMENTS-THE USE OF MIXED INTERPOLATION OF TENSORIAL COMPONENTS"
 !   by Dvorkin and Bathe, 1986
@@ -389,6 +409,7 @@
       INTEGER(LONG)                   :: POINT_B           ! Corner sampling point number adjacent to midside one.
 
       REAL(DOUBLE) , INTENT(IN)       :: R, S, T           ! Isoparametric coordinates
+      REAL(DOUBLE) , INTENT(IN)       :: TG                ! Isoparametric thickness coordinate for the geometry (metric)
       REAL(DOUBLE) , INTENT(OUT)      :: B(6, 6*ELGP)      ! Strain-displacement matrix
       REAL(DOUBLE)                    :: E(6, 6*ELGP)      ! Strain-displacement matrix directly interpolated
       REAL(DOUBLE)                    :: A
@@ -474,7 +495,7 @@
           ! The contribution to ε in the global (basic) basis is
           ! = hIS(i) * ( ε~_rr g^r g^r|_i  +  ε~_ss g^s g^s|_i  +  ε~_rs [g^r g^s|_i  + g^r g^s|_i^T] )
 
-          CALL MITC_COVARIANT_BASIS( POINT_R(POINT), POINT_S(POINT), T, G )
+          CALL MITC_COVARIANT_BASIS( POINT_R(POINT), POINT_S(POINT), TG, G )
           CALL MITC_CONTRAVARIANT_BASIS( G, G_CONTRA )
           CALL MITC_COVARIANT_STRAIN_DIRECT_INTERPOLATION( POINT_R(POINT), POINT_S(POINT), T, 1, 4, E )
 
@@ -515,7 +536,7 @@
                                                            ! ε_ss g^s g^s |_SamplingPoint if sampling point is 5 or 7
                                                            ! ε_rr g^r g^r |_SamplingPoint if sampling point is 6 or 8
           CALL MITC_COVARIANT_STRAIN_DIRECT_INTERPOLATION( POINT_R(POINT), POINT_S(POINT), T, J, J, EJJ )
-          CALL MITC_COVARIANT_BASIS(POINT_R(POINT), POINT_S(POINT), T, G)
+          CALL MITC_COVARIANT_BASIS(POINT_R(POINT), POINT_S(POINT), TG, G)
 
           !              _
           ! Convert g to g
@@ -701,6 +722,85 @@
 ! **********************************************************************************************************************************
 
       END SUBROUTINE MITC8_B
+
+      SUBROUTINE MITC8_BMBS ( R, S, BM, BB, BS )
+
+! Mid-surface membrane, curvature and transverse shear strain-displacement operators for MITC8 at one point, in the cartesian local
+! basis. Same construction as MITC4_BMBS for the MITC4/MITC4+ QUAD4:
+!
+!   BM = membrane strain at the mid-surface (T = 0)
+!   BB = (bending strain at the top - bending strain at the bottom) / thickness
+!   BS = transverse shear strain at the mid-surface
+!
+! The covariant in-layer strain of the degenerated shell is quadratic in T,
+!
+!   e(T) = e_m + T e_b1 + T^2 e_b2
+!
+! where e_m = 1/2 (dx_m . du_m + ...) is the membrane part. MITC4_BMBS gets the curvature from bending-only strains (everything
+! except e_m) at T = +-1, each converted to the cartesian local basis with the metric at that T. MITC8_B can't separate membrane and
+! bending, but the bending-only strain at T is e(T) - e(0), so with TG the thickness coordinate of the metric in MITC8_B,
+!
+!   bending strain at T = MITC8_B(T, TG=T) - MITC8_B(0, TG=T)
+!
+! Excluding e_m from the top/bottom difference matters on a curved element. Otherwise the change of metric through the thickness
+! turns the mid-surface membrane strain into spurious curvature. Rows are xx, yy, xy for BM and BB and zx, yz for BS, matching
+! SHELL_A, SHELL_D, SHELL_T.
+
+      USE PENTIUM_II_KIND, ONLY       :  DOUBLE
+      USE MODEL_STUF, ONLY            :  ELGP, EPROP
+      USE CONSTANTS_1, ONLY           :  ZERO, ONE
+
+      IMPLICIT NONE
+
+      REAL(DOUBLE), INTENT(IN)        :: R, S              ! Isoparametric coordinates
+      REAL(DOUBLE), INTENT(OUT)       :: BM(3, 6*ELGP)     ! Membrane strain-displacement operator
+      REAL(DOUBLE), INTENT(OUT)       :: BB(3, 6*ELGP)     ! Curvature strain-displacement operator
+      REAL(DOUBLE), INTENT(OUT)       :: BS(2, 6*ELGP)     ! Transverse shear strain-displacement operator
+
+      REAL(DOUBLE)                    :: BMID(6, 6*ELGP)
+      REAL(DOUBLE)                    :: BBOT(6, 6*ELGP)
+      REAL(DOUBLE)                    :: BTOP(6, 6*ELGP)
+      REAL(DOUBLE)                    :: BMEM(6, 6*ELGP)
+      REAL(DOUBLE)                    :: BSHR(6, 6*ELGP)
+
+! **********************************************************************************************************************************
+! Membrane
+
+      CALL MITC8_B( R, S, ZERO, ZERO, .TRUE., .FALSE., BMID )
+
+      BM(1,:) = BMID(1,:)                                  ! xx
+      BM(2,:) = BMID(2,:)                                  ! yy
+      BM(3,:) = BMID(4,:)                                  ! xy
+
+! **********************************************************************************************************************************
+! Curvature from the bending-only strains at the bottom and top.
+! To allow grid point thicknesses, this should be the thickness interpolated at R, S.
+
+      CALL MITC8_B( R, S, -ONE, -ONE, .TRUE., .FALSE., BBOT )
+      CALL MITC8_B( R, S, ZERO, -ONE, .TRUE., .FALSE., BMEM )
+      BBOT = BBOT - BMEM
+
+      CALL MITC8_B( R, S, +ONE, +ONE, .TRUE., .FALSE., BTOP )
+      CALL MITC8_B( R, S, ZERO, +ONE, .TRUE., .FALSE., BMEM )
+      BTOP = BTOP - BMEM
+
+      BB(1,:) = (BTOP(1,:) - BBOT(1,:)) / EPROP(1)         ! xx
+      BB(2,:) = (BTOP(2,:) - BBOT(2,:)) / EPROP(1)         ! yy
+      BB(3,:) = (BTOP(4,:) - BBOT(4,:)) / EPROP(1)         ! xy
+
+! **********************************************************************************************************************************
+! Transverse shear. MITC8_B evaluates it at the mid-surface regardless of T. Note reversed order of rows.
+
+      CALL MITC8_B( R, S, ZERO, ZERO, .FALSE., .TRUE., BSHR )
+
+      BS(1,:) = BSHR(6,:)                                  ! zx
+      BS(2,:) = BSHR(5,:)                                  ! yz
+
+      RETURN
+
+! **********************************************************************************************************************************
+
+      END SUBROUTINE MITC8_BMBS
 
       FUNCTION MITC8_CARTESIAN_LOCAL_BASIS ( R, S )
 
